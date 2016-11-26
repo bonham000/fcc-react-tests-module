@@ -6,13 +6,11 @@ import { transform } from 'babel-standalone'
 
 import 'codemirror/mode/javascript/javascript';
 
-import { challengeTitle, challengeInstructions, seedCode, solutionCode, executeTests } from './challenges/Challenge_1'
-
 export default class TestComponent extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			code: seedCode,
+			code: this.props.seedCode,
 			testResults: [],
 			solution: false,
 			option: 'Load Solution'
@@ -29,7 +27,7 @@ export default class TestComponent extends React.Component {
 	testCode() {
 
 		const { code } = this.state;
-		const results = executeTests(code);
+		const results = this.props.executeTests(code);
 
 		this.setState({
 			passed: results.passed,
@@ -40,13 +38,13 @@ export default class TestComponent extends React.Component {
 	toggleCode() {
 		if (this.state.solution) {
 			this.setState({
-				code: seedCode,
+				code: this.props.seedCode,
 				solution: false,
 				option: 'Load Solution'
 			});			
 		} else {
 			this.setState({
-				code: solutionCode,
+				code: this.props.solutionCode,
 				solution: true,
 				option: 'Reload Seed'
 			});
@@ -59,8 +57,8 @@ export default class TestComponent extends React.Component {
       theme: 'monokai',
       fontSize: '30px'
     };
-    const renderTitle = () => { return { __html: challengeTitle }}
-    const renderInstructions = () => { return { __html: challengeInstructions }}
+    const renderTitle = () => { return { __html: this.props.challengeTitle }}
+    const renderInstructions = () => { return { __html: this.props.challengeInstructions }}
     const { testResults } = this.state;
     
     let passingTests, totalTests
