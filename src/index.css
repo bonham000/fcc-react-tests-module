@@ -1,0 +1,107 @@
+body {
+  margin: 0;
+  padding: 25px;
+  padding-bottom: 125px;
+  background: rgb(25,25,25);
+  color: white;
+  font-family: sans-serif;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.editor {
+	font-size: 18px;
+	border: 1px solid rgba(250,250,250,0.15);
+}
+
+.instructionsContainer {
+	background: rgb(40,40,30);
+	border: 1px solid rgba(250,250,250,0.15);
+	color: white;
+	margin-bottom: 15px;
+	padding: 15px 50px 15px 15px;
+}
+.default {
+	color: rgb(150,150,150);
+}
+.title {
+	font-size: 32px;
+	margin: 15px auto;
+}
+.instructions {
+	font-size: 16px;
+	display: inline-block;
+	margin-top: 5px;
+	margin-bottom: 15px;
+	line-height: 25px;
+	font-family: 'Raleway', serif;
+}
+code {
+	padding: 3px 6px;
+	margin-left: 3px;
+	margin-right: 3px;
+	background: rgb(150,150,150);
+	border-radius: 5px;
+	color: black;
+	font-size: 15px;
+}
+
+
+
+.testControls {
+	margin-top: 22px;
+	margin-bottom: 28px;
+	padding-left: 22px;
+}
+button {
+	width: 215px;
+	margin: 5px;
+	font-size: 26px;
+	padding: 8px 12px;
+	border: none;
+	border-radius: 5px;
+	background: white;
+	font-family: 'Montserrat', sans-serif;
+}
+button:hover {
+	cursor: pointer;
+	background: #3FB2FD;
+}
+button:focus {
+	outline: none;
+}
+.msg {
+	font-size: 24px;
+	margin: 0 auto 0 25px;
+	display: inline-block;
+}
+.error {
+	color: #FA3F3A;
+}
+.success {
+	color: #00D484;
+}
+
+hr {
+	width: 95vw;
+}
+
+.test {
+	font-size: 18px;
+	margin-top: 3px;
+	margin-bottom: 3px;
+	padding-left: 12px;
+	font-family: 'Raleway', serif;
+}
+.resultsTitle {
+	margin-top: 18px;
+	margin-bottom: 12px;
+}
+.fa {
+	margin-right: 10px;
+}
+.testSuccess {
+	color: #00D484;
+}
+.testFailure {
+	color: #FA3F3A;
+}
