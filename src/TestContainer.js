@@ -7,10 +7,6 @@ import { transform } from 'babel-standalone'
 
 import 'codemirror/mode/jsx/jsx';
 
-// import CodeMirrorModeMeta from 'codemirror/mode/meta.js';
-// import CodeMirrorLoadMode from 'codemirror/addon/mode/loadmode.js';
-// import 'codemirror-jsx/replace-js';
-
 export default class TestComponent extends React.Component {
 	constructor(props) {
 		super(props);
