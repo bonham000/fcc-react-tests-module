@@ -5,9 +5,9 @@ import CodeMirror from 'react-codemirror'
 import { transform } from 'babel-standalone'
 
 // -------------- define challenge title and challenge instructions --------------
-export const challengeTitle = `<span class = 'default'>Challenge:</span> Use React to Render an h1 Tag`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Use React to Render an h1 Tag`
 export const challengeInstructions = `
-	<span class = 'default'>Instructions:</span> This React Component returns an empty <code>div</code> element at the moment.
+	<span class = 'default'>Instructions: </span>This React Component returns an empty <code>div</code> element at the moment.
 	Modify it to return an <code>h1</code> tag within the <code>div</code> element which includes the text 'Hello React!'
 `
 // ---------------------------- define challenge seed code ----------------------------
@@ -36,6 +36,20 @@ export default class MyComponent extends React.Component {
     );
   }
 };`
+
+// ---------------------------- define live render function ----------------------------
+
+export const liveRender = (code) => {
+
+	try {
+		const es5 = transform(code, { presets: [ 'es2015', 'react' ] }).code;
+		const renderedComponent = React.createElement(eval(es5));
+		return renderedComponent;
+	} catch (err) {
+		console.log(err);
+	}
+
+}
 
 // ---------------------------- define challenge tests ----------------------------
 
@@ -138,7 +152,7 @@ export const executeTests = (code) => {
 
 	return {
 		passed,
-		testResults
+		testResults,
 	}
 	
 }

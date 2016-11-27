@@ -8,9 +8,18 @@ body {
 	font-family: 'Montserrat', sans-serif;
 }
 
+#testOutput {
+	color: white;
+	z-index: 5;
+}
+
 .editor {
 	font-size: 18px;
 	border: 1px solid rgba(250,250,250,0.15);
+}
+.CodeMirror {
+	height: auto;
+	padding: 12px 3px;
 }
 
 .instructionsContainer {
@@ -45,6 +54,10 @@ code {
 	font-size: 15px;
 }
 
+.title {
+	color: rgb(150,150,150);
+	font-size: 26px;
+}
 
 
 .testControls {
@@ -67,10 +80,10 @@ button:hover {
 	background: #3FB2FD;
 }
 .testBtn {
-	background: #AE84FF;
+	background: #FF6C31;
 }
 .testBtn:hover {
-	background: #FF6C31;
+	background: #25F56B;
 }
 button:focus {
 	outline: none;
@@ -89,7 +102,13 @@ button:focus {
 hr {
 	width: 95vw;
 }
-
+.testResults {
+	margin-bottom: 20px;
+}
+.outputTitle {
+	color: rgb(150,150,150);
+	font-size: 26px;
+}
 .test {
 	font-size: 18px;
 	margin-top: 3px;
@@ -110,4 +129,10 @@ hr {
 }
 .testFailure {
 	color: #FA3F3A;
+}
+
+#liveOutput {
+	background: white;
+	color: black;
+	padding: 12px;
 }

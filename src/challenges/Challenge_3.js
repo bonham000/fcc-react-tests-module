@@ -5,30 +5,48 @@ import CodeMirror from 'react-codemirror'
 import { transform } from 'babel-standalone'
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>_ADD_YOUR_TITLE_HERE_`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Modify an Unordered List`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>_ADD_YOUR_INSTRUCTIONS_HERE_`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>This React Component returns a <code>ul</code> of
+items. Add a listitem <code>li</code> containing the text "Coffee".`
 
 // ---------------------------- define challenge seed code ----------------------------
-export const seedCode = `
-export default class MyComponent extends React.Component {
+export const seedCode =
+`export default class MyComponent extends React.Component {
   render() {
     return (
 	    // change code below this line
-	    
+	    <div>
+	    	<h1 style = {{ color: 'blue' }}>This is a React Component</h1>
+	    	<p>It renders a list of items:</p>
+	    	<ul>
+	    		<li>Eggs</li>
+	    		<li>Bread</li>
+	    		<li>Milk</li>
+	    	</ul>
+	    </div>
 	    // change code above this line
     );
   }
 };`
 
 // ---------------------------- define challenge solution code ----------------------------
-export const solutionCode = `
-export default class MyComponent extends React.Component {
+export const solutionCode =
+`export default class MyComponent extends React.Component {
   render() {
     return (
 	    // change code below this line
-	    
+	    <div>
+	    	<h1 style = {{ color: 'blue' }}>This is a React Component</h1>
+	    	<p>It renders a list of items:</p>
+	    	<ul>
+	    		<li>Eggs</li>
+	    		<li>Bread</li>
+	    		<li>Milk</li>
+	    		<li>Coffee</li>
+	    	</ul>
+	    </div>
 	    // change code above this line
     );
   }
@@ -64,20 +82,20 @@ export const executeTests = (code) => {
 		{
 			test: 1,
 			status: false,
-			failure: '',
-			success: ''
+			failure: 'The React Component does not return a <div> element.',
+			success: 'The React Component returns a <div> element.'
 		},
 		{
 			test: 2,
 			status: false,
-			failure: '',
-			success: ''
+			failure: 'The component does not return 3 unordered list items.',
+			success: 'The component returns 3 unordered list items.'
 		},
 		{
 			test: 3,
 			status: false,
-			failure: '',
-			success: ''
+			failure: 'The 4th list item does not contain the text "Coffee".',
+			success: 'The 4th list item contains the text "Coffee".'
 		}
 	]
 	
@@ -102,17 +120,9 @@ export const executeTests = (code) => {
 		passed = false;
 	}
 
-	// run challenge-specific tests
-	try {
-		expect();
-	} catch (err) {
-		console.log(err);
-		passed = false;
-	}
-
 	// test 1:
 	try {
-		expect();
+		expect(mockedComponent.type).toBe('div');
 		testResults[1].status = true;
 	} catch (err) {
 		console.log(err);
@@ -122,7 +132,7 @@ export const executeTests = (code) => {
 
 	// test 2:
 	try {
-		expect();
+		expect(mockedComponent.props.children[2].props.children.length).toBe(4);
 		testResults[2].status = true;
 	} catch (err) {
 		console.log(err);
@@ -132,12 +142,12 @@ export const executeTests = (code) => {
 
 	// test 3:
 	try {
-		expect();
+		expect(mockedComponent.props.children[2].props.children[3].props.children).toEqual("Coffee");
 		testResults[3].status = true;
 	} catch (err) {
 		console.log(err);
 		passed = false;
-		testResults[3].status = false;
+		testResults[3].status = false;		
 	}
 
 	return {

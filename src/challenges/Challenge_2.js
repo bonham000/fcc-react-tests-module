@@ -5,9 +5,9 @@ import CodeMirror from 'react-codemirror'
 import { transform } from 'babel-standalone'
 
 // -------------- define challenge title and challenge instructions --------------
-export const challengeTitle = `<span class = 'default'>Challenge:</span> Use React to Render Nested Components.`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Use React to Render Nested Components.`
 export const challengeInstructions = `
-	<span class = 'default'>Instructions:</span> This React Component returns an empty <code>div</code> element at the moment.
+	<span class = 'default'>Instructions: </span>This React Component returns an empty <code>div</code> element at the moment.
 	 Render two additional components inside this <code>div</code>. We've provided an <code>Account</code> and <code>UserList</code> component for you.
 	 You can include these directly within the React Component's render method.
 `
@@ -120,6 +120,8 @@ export const executeTests = (code) => {
 		passed = false;
 		testResults[2].status = false;		
 	}
+
+	ReactDOM.render(<es5 />, document.getElementById('testOutput'));
 
 	return {
 		passed,
