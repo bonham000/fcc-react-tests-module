@@ -49,7 +49,7 @@ code {
 
 .testControls {
 	margin-top: 22px;
-	margin-bottom: 28px;
+	margin-bottom: 22px;
 	padding-left: 22px;
 }
 button {
@@ -66,12 +66,17 @@ button:hover {
 	cursor: pointer;
 	background: #3FB2FD;
 }
+.testBtn {
+	background: #AE84FF;
+}
+.testBtn:hover {
+	background: #FF6C31;
+}
 button:focus {
 	outline: none;
 }
 .msg {
-	font-size: 24px;
-	margin: 0 auto 0 25px;
+	margin: 0 auto 0 12px;
 	display: inline-block;
 }
 .error {
@@ -95,6 +100,7 @@ hr {
 .resultsTitle {
 	margin-top: 18px;
 	margin-bottom: 12px;
+	font-size: 26px;
 }
 .fa {
 	margin-right: 10px;

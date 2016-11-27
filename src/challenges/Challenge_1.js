@@ -80,9 +80,16 @@ export const executeTests = (code) => {
 		testResults[0].status = false;
 	}
 	
-	// render transpiled React code with React test utils
+	// create the renderer
 	const renderer = ReactTestUtils.createRenderer();
-	renderer.render(React.createElement(eval(es5)));
+	// render transpiled React code with React test utils
+	try {
+		renderer.render(React.createElement(eval(es5)));
+	} catch (err) {
+		console.log(err);
+		passed = false;
+		testResults[0].status = false;
+	}
 
 	try {	
 		mockedComponent = renderer.getRenderOutput();

@@ -11,13 +11,12 @@ export default class TestComponent extends React.Component {
 		super(props);
 		this.state = {
 			code: this.props.seedCode,
-			testResults: [],
-			solution: false,
-			option: 'Load Solution'
+			testResults: []
 		}
 		this.updateCode = this.updateCode.bind(this);
 		this.testCode = this.testCode.bind(this);
-		this.toggleCode = this.toggleCode.bind(this);
+		this.seedCode = this.seedCode.bind(this);
+		this.solutionCode = this.solutionCode.bind(this);
 	}
   updateCode(newCode) {
     this.setState({
@@ -35,20 +34,15 @@ export default class TestComponent extends React.Component {
 		});
 
 	}
-	toggleCode() {
-		if (this.state.solution) {
-			this.setState({
-				code: this.props.seedCode,
-				solution: false,
-				option: 'Load Solution'
-			});			
-		} else {
-			this.setState({
-				code: this.props.solutionCode,
-				solution: true,
-				option: 'Reload Seed'
-			});
-		}
+	seedCode() {
+		this.setState({
+			code: this.props.seedCode
+		});
+	}
+	solutionCode() {
+		this.setState({
+			code: this.props.solutionCode
+		});
 	}
 	componentDidMount() { this.testCode() }
 	render() {
@@ -82,17 +76,19 @@ export default class TestComponent extends React.Component {
 	    		options = {options} />
 	    	
 	    	<div className = 'testControls'>
-	    		<button onClick = {this.testCode}>Test Code</button>
-	    		<button onClick = {this.toggleCode}>{this.state.option}</button>
-	    		{ this.state.passed ?
-	    			<p className = 'msg success'>All tests passed!</p> :
-	    			<p className = 'msg error'>Your code does not pass the tests, {passingTests} out of {totalTests} tests are passing</p> }
+	    		<button onClick = {this.testCode} className = 'testBtn'>Test Code</button>
+	    		<button onClick = {this.seedCode}>Reload Seed</button>
+	    		<button onClick = {this.solutionCode}>Solution Code</button>
 		    </div>
 
 		    <hr />
 
 		    <div className = 'testResults'>
-		    	<h1 className = 'default resultsTitle'>Test Results:</h1>
+		    	<h1 className = 'default resultsTitle'>Test Results:
+						{ this.state.passed ?
+	    				<span className = 'msg success'>All tests passed!</span> :
+	    				<span className = 'msg error'>Your code does not pass the tests, {passingTests} out of {totalTests} tests are passing</span> }
+		    	</h1>
 		    	
 		    	{
 		    		testResults.map( (test, idx) => {
