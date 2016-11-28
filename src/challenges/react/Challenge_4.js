@@ -2,7 +2,6 @@ import React from 'react'
 import expect from 'expect'
 import { shallow, mount } from 'enzyme'
 import { transform } from 'babel-standalone'
-import CodeMirror from 'react-codemirror'
 
 // ---------------------------- define challenge title ----------------------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Create a Component with State`

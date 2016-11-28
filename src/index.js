@@ -5,7 +5,7 @@ import App from './App'
 // import all CSS
 import 'codemirror/lib/codemirror.css'
 import 'codemirror/theme/monokai.css' 	
-import './styles/index.css'
+import './index.css'
 
 ReactDOM.render(
   <App />,

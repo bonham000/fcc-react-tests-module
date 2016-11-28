@@ -65,14 +65,20 @@ export default class TestComponent extends React.Component {
 	}
 	componentDidMount() {
 		this.testCode();
-		this.liveRender();
+		this.liveRender(this.state.code);
 	}
 	render() {
     const options = {
     	mode: 'jsx',
       lineNumbers: true,
       theme: 'monokai',
-      fontSize: '30px'
+      fontSize: '30px',
+      extraKeys: {
+      	'Cmd-Enter': () => { 
+	    		this.testCode();
+	    		return false;
+	    	}
+	    }
     };
     const renderTitle = () => { return { __html: this.props.challengeTitle }}
     const renderInstructions = () => { return { __html: this.props.challengeInstructions }}
@@ -87,7 +93,7 @@ export default class TestComponent extends React.Component {
     return (
     	<div>
 
-    		<h1 className = 'title'>Free Code Camp React/Redux Challenge Demo:</h1>
+    		<h1 className = 'title'>Free Code Camp React Challenge Demo:</h1>
 
     		<div className = 'instructionsContainer'>
 					<h1 className = 'challengeTitle' dangerouslySetInnerHTML = {renderTitle()} />
@@ -107,7 +113,7 @@ export default class TestComponent extends React.Component {
 		    	<div id = 'liveOutput'></div>
 		    </div>
 
-		    <h1 className = 'title'>Run Tests:</h1>
+		    <h1 className = 'title'>Run Tests <span className = 'keyShortcut'>(Cmd-Enter)</span>:</h1>
 	    	
 	    	<div className = 'testControls'>
 	    		<button onClick = {this.testCode} className = 'testBtn'>Test Code</button>
@@ -147,7 +153,7 @@ export default class TestComponent extends React.Component {
 		    <hr />
 
 		    <div>
-		    	<p className = 'referenceLink'>- This project is using <a target = "_blank" href="http://airbnb.io/enzyme/index.html">Enzyme</a> for testing | <a target = "_blank" href="https://github.com/bonham000/fcc-react-tests-module">View the code on GitHub</a></p>
+		    	<p className = 'referenceLink'>- This project is using <a target = "_blank" href="http://airbnb.io/enzyme/index.html">Enzyme</a> to test React Components | <a target = "_blank" href="https://github.com/bonham000/fcc-react-tests-module">View the code on GitHub</a></p>
 		    </div>
 
     	</div>

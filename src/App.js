@@ -1,20 +1,22 @@
 import React from 'react';
-import TestComponent from './test/TestComponent'
+import ReactTestComponent from './test-components/ReactTestComponent'
+import ReduxTestComponent from './test-components/ReduxTestComponent'
 
 // INSTRUCTIONS:
-// Copy the code in ./challenges/Challenge_Template.js into a new file
-// Save this in the same folder: /challenges
+// Copy one of the challenge templates from the /challenge-templates folder
+// Save this as a new file in the appropriate challenges path: /react or /redux
 // Follow the template file to write a new challenge and tests
-// Import your challenge by changing the below import to import
-// from the challenge you have written. Have fun!
+// Import your challenge by changing the below import statement
+// And change the App component to render the correct test component
 
 import { challengeTitle,
          challengeInstructions,
          seedCode,
          solutionCode,
          executeTests,
-         liveRender } from './challenges/Challenge_4'
+         liveRender } from './challenges/react/Challenge_4'
 
+// Change the nested component to React or Redux for which you are testing
 export default class App extends React.Component {
 	constructor(props) {
 		super(props);
@@ -22,7 +24,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <TestComponent 
+        <ReactTestComponent 
           challengeTitle = {challengeTitle}
           challengeInstructions = {challengeInstructions} 
           seedCode = {seedCode}

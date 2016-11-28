@@ -1,18 +1,20 @@
 #This is a demo prototype for a module to run tests against React code in an in-browser code editor#
 
-To create a new challenge to test use the template challenge in the `src/challenges` directory and then change the import statement in `src/App.js` to import your challenge as follows:
+To create a new challenge to test use the template challenge in the `src/challenge-templates` directory and then change the import statement in `src/App.js` to import your challenge as follows:
 
 ###Change from:###
 
 ```javascript
-import { ... } from './challenges/Challenge_1'
+import { ... } from './challenges/react/Challenge_1'
 ```
 
 ###To:###
 
 ```javascript
-import { ... } from './challenges/<YOUR_CHALLENGE_NAME>'
+import { ... } from './challenges/react/<YOUR_CHALLENGE_NAME>'
 ```
+
+To import a redux challenge use the redux template and import from the `./challenges/redux/` path.
 
 Then run `npm start` and try out your challenge in the browser window that opens up. All of challenge information is passed as props into the `TestComponent`. Once it's running you can then edit your code, run your tests, and load the solution code to verify everything is working properly.
 

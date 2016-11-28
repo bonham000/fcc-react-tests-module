@@ -67,6 +67,9 @@ code {
 	margin-bottom: 22px;
 	padding-left: 22px;
 }
+.keyShortcut {
+	color: rgb(225,225,225);
+}
 button {
 	width: 215px;
 	margin: 5px;
@@ -79,10 +82,10 @@ button {
 }
 button:hover {
 	cursor: pointer;
-	background: #3FB2FD;
+	background: #FFCB4D;
 }
 .testBtn {
-	background: #FF6C31;
+	background: #3FB2FD;
 }
 .testBtn:hover {
 	background: #25F56B;
@@ -137,6 +140,12 @@ hr {
 #liveOutput {
 	background: white;
 	color: black;
+	padding: 12px;
+}
+#consoleOutput {
+	border: 1px solid rgba(250,250,250,0.15);
+	background: rgb(40,40,40);
+	color: rgb(15,225,50);
 	padding: 12px;
 }
 

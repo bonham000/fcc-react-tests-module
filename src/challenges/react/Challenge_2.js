@@ -2,7 +2,6 @@ import React from 'react'
 import expect from 'expect'
 import { shallow } from 'enzyme'
 import { transform } from 'babel-standalone'
-import CodeMirror from 'react-codemirror'
 
 // -------------- define challenge title and challenge instructions --------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Use React to Render Nested Components.`

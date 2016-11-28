@@ -2,7 +2,6 @@ import React from 'react'
 import expect from 'expect'
 import { shallow } from 'enzyme'
 import { transform } from 'babel-standalone'
-import CodeMirror from 'react-codemirror'
 
 // -------------- define challenge title and challenge instructions --------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Use React to Render an h1 Tag`
@@ -17,6 +16,7 @@ export default class MyComponent extends React.Component {
     return (
 	    // change code below this line
 	    <div>
+
 	    </div>
 	    // change code above this line
     );
