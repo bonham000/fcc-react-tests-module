@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 25px;
-  padding-bottom: 125px;
+  padding-bottom: 55px;
   background: rgb(25,25,25);
   color: white;
   font-family: sans-serif;
@@ -32,12 +32,12 @@ body {
 .default {
 	color: rgb(150,150,150);
 }
-.title {
+.challengeTitle {
 	font-size: 32px;
 	margin: 15px auto;
 }
 .instructions {
-	font-size: 16px;
+	font-size: 22px;
 	display: inline-block;
 	margin-top: 5px;
 	margin-bottom: 15px;
@@ -100,6 +100,7 @@ button:focus {
 }
 
 hr {
+	margin-top: 30px;
 	width: 95vw;
 }
 .testResults {
@@ -135,4 +136,18 @@ hr {
 	background: white;
 	color: black;
 	padding: 12px;
+}
+
+.referenceLink {
+	font-family: 'Raleway', sans-serif;
+	font-size: 22px;
+	color: rgb(150,150,150);
+}
+
+a, a:visited {
+	color: white;
+	text-decoration: undeline;
+}
+a:hover {
+	color: #3FB2FD;
 }

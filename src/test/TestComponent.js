@@ -90,7 +90,7 @@ export default class TestComponent extends React.Component {
     		<h1 className = 'title'>Free Code Camp React/Redux Challenge Demo:</h1>
 
     		<div className = 'instructionsContainer'>
-					<h1 className = 'title' dangerouslySetInnerHTML = {renderTitle()} />
+					<h1 className = 'challengeTitle' dangerouslySetInnerHTML = {renderTitle()} />
 					<p className = 'instructions' dangerouslySetInnerHTML = {renderInstructions()} />
     		</div>
 
@@ -142,6 +142,12 @@ export default class TestComponent extends React.Component {
 			    	})
 		    	}
 
+		    </div>
+
+		    <hr />
+
+		    <div>
+		    	<p className = 'referenceLink'>- This project is using <a target = "_blank" href="http://airbnb.io/enzyme/index.html">Enzyme</a> for testing | <a target = "_blank" href="https://github.com/bonham000/fcc-react-tests-module">View the code on GitHub</a></p>
 		    </div>
 
     	</div>
