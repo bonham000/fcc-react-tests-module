@@ -1,11 +1,19 @@
 import React from 'react';
-import TestContainer from './TestContainer'
+import TestComponent from './test/TestComponent'
 
-// create an import statement here to import your challenge code from the ./challenges directory
-import { challengeTitle, challengeInstructions, seedCode, solutionCode, executeTests, liveRender } from './challenges/Challenge_3'
+// INSTRUCTIONS:
+// Copy the code in ./challenges/Challenge_Template.js into a new file
+// Save this in the same folder: /challenges
+// Follow the template file to write a new challenge and tests
+// Import your challenge by changing the below import to import
+// from the challenge you have written. Have fun!
 
-// uncomment the below line, and comment the above line, to run the Challenge_2 code:
-//import { challengeTitle, challengeInstructions, seedCode, solutionCode, executeTests } from './challenges/Challenge_2'
+import { challengeTitle,
+         challengeInstructions,
+         seedCode,
+         solutionCode,
+         executeTests,
+         liveRender } from './challenges/Challenge_1'
 
 export default class App extends React.Component {
 	constructor(props) {
@@ -14,7 +22,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <TestContainer 
+        <TestComponent 
           challengeTitle = {challengeTitle}
           challengeInstructions = {challengeInstructions} 
           seedCode = {seedCode}

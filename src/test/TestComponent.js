@@ -31,7 +31,13 @@ export default class TestComponent extends React.Component {
 		const { code } = this.state;
 		const renderComponent = this.props.liveRender(code);
 
-		ReactDOM.render(renderComponent, document.getElementById('liveOutput'));
+		// try to live render the component
+		// some renders may fail so this has to be wrapped in a try/catch
+		try {
+			ReactDOM.render(renderComponent, document.getElementById('liveOutput'));
+		} catch (err) {
+			console.log('Live rendering error:', err);
+		}
 
 	}
 	testCode() {

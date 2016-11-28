@@ -1,8 +1,8 @@
 import React from 'react'
 import expect from 'expect'
-import ReactTestUtils from 'react-addons-test-utils'
-import CodeMirror from 'react-codemirror'
+import { shallow } from 'enzyme'
 import { transform } from 'babel-standalone'
+import CodeMirror from 'react-codemirror'
 
 // ---------------------------- define challenge title ----------------------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Modify an Unordered List`
@@ -52,25 +52,11 @@ export const solutionCode =
   }
 };`
 
-// ---------------------------- define live render function ----------------------------
-
-export const liveRender = (code) => {
-
-	try {
-		const es5 = transform(code, { presets: [ 'es2015', 'react' ] }).code;
-		const renderedComponent = React.createElement(eval(es5));
-		return renderedComponent;
-	} catch (err) {
-		console.log(err);
-	}
-
-}
-
 // ---------------------------- define challenge tests ----------------------------
 
 export const executeTests = (code) => {
 
-	let es5, mockedComponent, passed = true;
+	let es5, mockedComponent, shallowRender, passed = true;
 
 	let testResults = [
 		{
@@ -82,14 +68,14 @@ export const executeTests = (code) => {
 		{
 			test: 1,
 			status: false,
-			failure: 'The React Component does not return a <div> element.',
-			success: 'The React Component returns a <div> element.'
+			failure: 'The React component does not return a <div> element.',
+			success: 'The React component returns a <div> element.'
 		},
 		{
 			test: 2,
 			status: false,
-			failure: 'The component does not return 3 unordered list items.',
-			success: 'The component returns 3 unordered list items.'
+			failure: 'The component does not return an unordered list with four items.',
+			success: 'The component returns an unordered list with four items.'
 		},
 		{
 			test: 3,
@@ -109,18 +95,9 @@ export const executeTests = (code) => {
 		testResults[0].status = false;
 	}
 	
-	// render transpiled React code with React test utils
-	const renderer = ReactTestUtils.createRenderer();
+	// shallow render the component with Enzyme
 	try {
-		renderer.render(React.createElement(eval(es5)));
-	} catch (err) {
-		console.log(err);
-		passed = false;
-		testResults[0].status = false;
-	}
-
-	try {	
-		mockedComponent = renderer.getRenderOutput();
+		shallowRender = shallow(React.createElement(eval(es5)))
 	} catch (err) {
 		console.log(err);
 		passed = false;
@@ -128,7 +105,7 @@ export const executeTests = (code) => {
 
 	// test 1:
 	try {
-		expect(mockedComponent.type).toBe('div');
+		expect(shallowRender.type()).toEqual('div');
 		testResults[1].status = true;
 	} catch (err) {
 		console.log(err);
@@ -138,7 +115,7 @@ export const executeTests = (code) => {
 
 	// test 2:
 	try {
-		expect(mockedComponent.props.children[2].props.children.length).toBe(4);
+		expect(shallowRender.find('ul').children().length).toEqual(4);
 		testResults[2].status = true;
 	} catch (err) {
 		console.log(err);
@@ -148,7 +125,7 @@ export const executeTests = (code) => {
 
 	// test 3:
 	try {
-		expect(mockedComponent.props.children[2].props.children[3].props.children).toEqual("Coffee");
+		expect(shallowRender.find('ul').childAt(3).text()).toEqual('Coffee');
 		testResults[3].status = true;
 	} catch (err) {
 		console.log(err);
@@ -161,4 +138,18 @@ export const executeTests = (code) => {
 		testResults
 	}
 	
+}
+
+// ---------------------------- define live render function ----------------------------
+
+export const liveRender = (code) => {
+
+	try {
+		const es5 = transform(code, { presets: [ 'es2015', 'react' ] }).code;
+		const renderedComponent = React.createElement(eval(es5));
+		return renderedComponent;
+	} catch (err) {
+		console.log(err);
+	}
+
 }

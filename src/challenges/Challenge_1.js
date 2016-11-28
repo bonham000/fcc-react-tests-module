@@ -1,8 +1,8 @@
 import React from 'react'
 import expect from 'expect'
-import ReactTestUtils from 'react-addons-test-utils'
-import CodeMirror from 'react-codemirror'
+import { shallow } from 'enzyme'
 import { transform } from 'babel-standalone'
+import CodeMirror from 'react-codemirror'
 
 // -------------- define challenge title and challenge instructions --------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Use React to Render an h1 Tag`
@@ -37,25 +37,11 @@ export default class MyComponent extends React.Component {
   }
 };`
 
-// ---------------------------- define live render function ----------------------------
-
-export const liveRender = (code) => {
-
-	try {
-		const es5 = transform(code, { presets: [ 'es2015', 'react' ] }).code;
-		const renderedComponent = React.createElement(eval(es5));
-		return renderedComponent;
-	} catch (err) {
-		console.log(err);
-	}
-
-}
-
 // ---------------------------- define challenge tests ----------------------------
 
 export const executeTests = (code) => {
 
-	let es5, mockedComponent, passed = true;
+	let es5, mockedComponent, shallowRender, passed = true;
 
 	let testResults = [
 		{
@@ -67,8 +53,8 @@ export const executeTests = (code) => {
 		{
 			test: 1,
 			status: false,
-			failure: 'The React Component does not return a <div> element.',
-			success: 'The React Component returns a <div> element.'
+			failure: 'The React component does not return a <div> element.',
+			success: 'The React component returns a <div> element.'
 		},
 		{
 			test: 2,
@@ -94,27 +80,9 @@ export const executeTests = (code) => {
 		testResults[0].status = false;
 	}
 	
-	// create the renderer
-	const renderer = ReactTestUtils.createRenderer();
-	// render transpiled React code with React test utils
+	// shallow render the component with Enzyme
 	try {
-		renderer.render(React.createElement(eval(es5)));
-	} catch (err) {
-		console.log(err);
-		passed = false;
-		testResults[0].status = false;
-	}
-
-	try {	
-		mockedComponent = renderer.getRenderOutput();
-	} catch (err) {
-		console.log(err);
-		passed = false;
-	}
-
-	// run challenge-specific tests
-	try {
-		expect(mockedComponent).toExist();
+		shallowRender = shallow(React.createElement(eval(es5)))
 	} catch (err) {
 		console.log(err);
 		passed = false;
@@ -122,7 +90,7 @@ export const executeTests = (code) => {
 
 	// test 1:
 	try {
-		expect(mockedComponent.type).toBe('div');
+		expect(shallowRender.type()).toEqual('div');
 		testResults[1].status = true;
 	} catch (err) {
 		console.log(err);
@@ -132,7 +100,7 @@ export const executeTests = (code) => {
 
 	// test 2:
 	try {
-		expect(mockedComponent.props.children.type).toBe('h1');
+		expect(shallowRender.children().type()).toEqual('h1');
 		testResults[2].status = true;
 	} catch (err) {
 		console.log(err);
@@ -142,7 +110,7 @@ export const executeTests = (code) => {
 
 	// test 3:
 	try {
-		expect(mockedComponent.props.children.props.children).toEqual("Hello React!")
+		expect(shallowRender.contains(<h1>Hello React!</h1>)).toEqual(true);
 		testResults[3].status = true;
 	} catch (err) {
 		console.log(err);
@@ -155,4 +123,18 @@ export const executeTests = (code) => {
 		testResults,
 	}
 	
+}
+
+// ---------------------------- define live render function ----------------------------
+
+export const liveRender = (code) => {
+
+	try {
+		const es5 = transform(code, { presets: [ 'es2015', 'react' ] }).code;
+		const renderedComponent = React.createElement(eval(es5));
+		return renderedComponent;
+	} catch (err) {
+		console.log(err);
+	}
+
 }

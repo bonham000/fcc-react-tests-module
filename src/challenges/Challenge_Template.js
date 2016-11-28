@@ -1,8 +1,8 @@
 import React from 'react'
 import expect from 'expect'
-import ReactTestUtils from 'react-addons-test-utils'
-import CodeMirror from 'react-codemirror'
+import { shallow } from 'enzyme'
 import { transform } from 'babel-standalone'
+import CodeMirror from 'react-codemirror'
 
 // ---------------------------- define challenge title ----------------------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>_ADD_YOUR_TITLE_HERE_`
@@ -33,20 +33,6 @@ export default class MyComponent extends React.Component {
     );
   }
 };`
-
-// ---------------------------- define live render function ----------------------------
-
-export const liveRender = (code) => {
-
-	try {
-		const es5 = transform(code, { presets: [ 'es2015', 'react' ] }).code;
-		const renderedComponent = React.createElement(eval(es5));
-		return renderedComponent;
-	} catch (err) {
-		console.log(err);
-	}
-
-}
 
 // ---------------------------- define challenge tests ----------------------------
 
@@ -91,30 +77,16 @@ export const executeTests = (code) => {
 		testResults[0].status = false;
 	}
 	
-	// render transpiled React code with React test utils
-	const renderer = ReactTestUtils.createRenderer();
+	// try to shallow render the component with Enzyme
 	try {
-		renderer.render(React.createElement(eval(es5)));
-	} catch (err) {
-		console.log(err);
-		passed = false;
-		testResults[0].status = false;
-	}
-
-	try {	
-		mockedComponent = renderer.getRenderOutput();
+		shallowRender = shallow(mockedComponent);
 	} catch (err) {
 		console.log(err);
 		passed = false;
 	}
 
-	// run challenge-specific tests
-	try {
-		expect();
-	} catch (err) {
-		console.log(err);
-		passed = false;
-	}
+	// run specific tests to verify the functionality
+	// that the challenge is trying to assess:
 
 	// test 1:
 	try {
@@ -151,4 +123,18 @@ export const executeTests = (code) => {
 		testResults
 	}
 	
+}
+
+// ---------------------------- define live render function ----------------------------
+
+export const liveRender = (code) => {
+
+	try {
+		const es5 = transform(code, { presets: [ 'es2015', 'react' ] }).code;
+		const renderedComponent = React.createElement(eval(es5));
+		return renderedComponent;
+	} catch (err) {
+		console.log(err);
+	}
+
 }
