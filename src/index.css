@@ -8,11 +8,6 @@ body {
 	font-family: 'Montserrat', sans-serif;
 }
 
-#testOutput {
-	color: white;
-	z-index: 5;
-}
-
 .editor {
 	font-size: 18px;
 	border: 1px solid rgba(250,250,250,0.15);
@@ -60,7 +55,15 @@ code {
 	color: rgb(150,150,150);
 	font-size: 26px;
 }
-
+select {
+	background: white;
+	border: none;
+	font-size: 24px;
+	margin-left: 18px;
+}
+select:focus {
+	outline: none;
+}
 
 .testControls {
 	margin-top: 22px;

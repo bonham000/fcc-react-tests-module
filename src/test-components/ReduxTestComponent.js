@@ -18,6 +18,7 @@ export default class TestComponent extends React.Component {
 		this.testCode = this.testCode.bind(this);
 		this.seedCode = this.seedCode.bind(this);
 		this.solutionCode = this.solutionCode.bind(this);
+		this.selectChallenge = this.selectChallenge.bind(this);
 	}
   updateCode(newCode) {
     this.setState({
@@ -61,6 +62,12 @@ export default class TestComponent extends React.Component {
 	componentDidMount() {
 		this.testCode();
 	}
+	selectChallenge(event) {
+		setTimeout( () => { this.seedCode() }, 50);
+		setTimeout( () => { this.testCode() }, 50);
+		setTimeout( () => { this.liveRender() }, 50);
+		this.props.select(event.target.value);
+	}
 	render() {
     const options = {
     	mode: 'jsx',
@@ -84,10 +91,20 @@ export default class TestComponent extends React.Component {
 	    totalTests = testResults.length;
     }
     
+    const renderChallenges = this.props.challenges.map( (challenge, idx) => {
+      return <option value={challenge.id} key = {idx}>{challenge.id}</option>
+    });
+
     return (
     	<div>
 
-    		<h1 className = 'title'>Free Code Camp Redux Challenge Demo:</h1>
+    		<h1 className = 'title'>Free Code Camp Redux Challenge Demo:
+
+	        <select onChange = {this.selectChallenge.bind(this)}>
+	          {renderChallenges}
+	        </select>
+	        
+    		</h1>
 
     		<div className = 'instructionsContainer'>
 					<h1 className = 'challengeTitle' dangerouslySetInnerHTML = {renderTitle()} />

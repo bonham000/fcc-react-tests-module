@@ -9,28 +9,81 @@ import ReduxTestComponent from './test-components/ReduxTestComponent'
 // Import your challenge by changing the below import statement
 // And change the App component to render the correct test component
 
-import { challengeTitle,
-         challengeInstructions,
-         seedCode,
-         solutionCode,
-         executeTests,
-         liveRender } from './challenges/react/Challenge_4'
+// import React Challenges:
+import * as React_1 from './challenges/react/Challenge_1'
+import * as React_2 from './challenges/react/Challenge_2'
+import * as React_3 from './challenges/react/Challenge_3'
+import * as React_4 from './challenges/react/Challenge_4'
+
+// import Redux Challenges:
+import * as Redux_1 from './challenges/redux/Challenge_1'
+
+// add a new challenge to this array:
+const challenges = [
+  { type: 'React', id: 'React_1'},
+  { type: 'React', id: 'React_2'},
+  { type: 'React', id: 'React_3'},
+  { type: 'React', id: 'React_4'},
+  { type: 'Redux', id: 'Redux_1'}
+];
+
 
 // Change the nested component to React or Redux for which you are testing
 export default class App extends React.Component {
 	constructor(props) {
 		super(props);
+    this.state = {
+      challenges: [],
+      selectedChallenge: {
+        type: 'React',
+        id: 'React_1'
+      }
+    }
 	}
+  componentDidMount() {
+    this.setState({
+      challenges
+    });
+    this.select = this.select.bind(this);
+  }
+  select(event) {
+    const challenge = this.state.challenges.filter( (challenge) => challenge.id === event );
+    this.setState({
+      selectedChallenge: challenge[0]
+    });
+  }
   render() {
+    const challengeType = this.state.selectedChallenge.type;
+    const challenge = this.state.selectedChallenge.id;
     return (
       <div>
-        <ReactTestComponent 
-          challengeTitle = {challengeTitle}
-          challengeInstructions = {challengeInstructions} 
-          seedCode = {seedCode}
-          solutionCode = {solutionCode}
-          executeTests = {executeTests}
-          liveRender = {liveRender} />
+
+        {
+
+          challengeType === 'React' ?
+        
+            <ReactTestComponent 
+              challengeTitle = {eval(challenge).challengeTitle}
+              challengeInstructions = {eval(challenge).challengeInstructions} 
+              seedCode = {eval(challenge).seedCode}
+              solutionCode = {eval(challenge).solutionCode}
+              executeTests = {eval(challenge).executeTests}
+              liveRender = {eval(challenge).liveRender} 
+              challenges = {this.state.challenges} 
+              select = {this.select} /> :
+          
+            <ReduxTestComponent 
+              challengeTitle = {eval(challenge).challengeTitle}
+              challengeInstructions = {eval(challenge).challengeInstructions} 
+              seedCode = {eval(challenge).seedCode}
+              solutionCode = {eval(challenge).solutionCode}
+              executeTests = {eval(challenge).executeTests}
+              liveRender = {eval(challenge).liveRender} 
+              challenges = {this.state.challenges} 
+              select = {this.select} />
+
+          }
+
       </div>
     );
   }

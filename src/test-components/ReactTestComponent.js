@@ -65,7 +65,12 @@ export default class TestComponent extends React.Component {
 	}
 	componentDidMount() {
 		this.testCode();
-		this.liveRender(this.state.code);
+	}
+	selectChallenge(event) {
+		setTimeout( () => { this.seedCode() }, 50);
+		setTimeout( () => { this.testCode() }, 50);
+		setTimeout( () => { this.liveRender() }, 50);
+		this.props.select(event.target.value);
 	}
 	render() {
     const options = {
@@ -89,11 +94,21 @@ export default class TestComponent extends React.Component {
 	    passingTests = testResults.filter( (test) => test.status === true ).length;
 	    totalTests = testResults.length;
     }
-    
+
+    const renderChallenges = this.props.challenges.map( (challenge, idx) => {
+      return <option value={challenge.id} key = {idx}>{challenge.id}</option>
+    });
+
     return (
     	<div>
 
-    		<h1 className = 'title'>Free Code Camp React Challenge Demo:</h1>
+    		<h1 className = 'title'>Free Code Camp React Challenge Demo:
+
+	        <select onChange = {this.selectChallenge.bind(this)}>
+	          {renderChallenges}
+	        </select>
+
+    		</h1>
 
     		<div className = 'instructionsContainer'>
 					<h1 className = 'challengeTitle' dangerouslySetInnerHTML = {renderTitle()} />
