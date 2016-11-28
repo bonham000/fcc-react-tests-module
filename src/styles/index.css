@@ -28,6 +28,7 @@ body {
 	color: white;
 	margin-bottom: 15px;
 	padding: 15px 50px 15px 15px;
+	font-family: 'Cabin', sans-serif;
 }
 .default {
 	color: rgb(150,150,150);
@@ -35,6 +36,7 @@ body {
 .challengeTitle {
 	font-size: 32px;
 	margin: 15px auto;
+	font-family: 'Muli', serif;
 }
 .instructions {
 	font-size: 22px;
@@ -42,7 +44,7 @@ body {
 	margin-top: 5px;
 	margin-bottom: 15px;
 	line-height: 25px;
-	font-family: 'Raleway', serif;
+	font-family: 'Muli', serif;
 }
 code {
 	padding: 3px 6px;

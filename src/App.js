@@ -13,7 +13,7 @@ import { challengeTitle,
          seedCode,
          solutionCode,
          executeTests,
-         liveRender } from './challenges/Challenge_3'
+         liveRender } from './challenges/Challenge_4'
 
 export default class App extends React.Component {
 	constructor(props) {
