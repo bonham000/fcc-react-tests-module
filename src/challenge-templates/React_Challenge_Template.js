@@ -37,8 +37,6 @@ export default class MyComponent extends React.Component {
 
 export const executeTests = (code) => {
 
-	let es5, mockedComponent, testRender, passed = true;
-
 	let testResults = [
 		{
 			test: 0,
@@ -64,7 +62,9 @@ export const executeTests = (code) => {
 			failure: '',
 			success: ''
 		}
-	]
+	];
+
+	let es5, mockedComponent, testRender, passed = true;
 	
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {

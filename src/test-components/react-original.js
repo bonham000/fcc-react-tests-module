@@ -7,7 +7,7 @@ import { transform } from 'babel-standalone'
 
 import 'codemirror/mode/jsx/jsx';
 
-export default class ReduxTestComponent extends React.Component {
+export default class ReactTestComponent extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -15,15 +15,30 @@ export default class ReduxTestComponent extends React.Component {
 			testResults: []
 		}
 		this.updateCode = this.updateCode.bind(this);
+		this.liveRender = this.liveRender.bind(this);
 		this.testCode = this.testCode.bind(this);
 		this.seedCode = this.seedCode.bind(this);
 		this.solutionCode = this.solutionCode.bind(this);
-		this.selectChallenge = this.selectChallenge.bind(this);
 	}
   updateCode(newCode) {
     this.setState({
         code: newCode
     });
+    this.liveRender();
+	}
+	liveRender() {
+
+		const { code } = this.state;
+		const renderComponent = this.props.liveRender(code);
+
+		// try to live render the component
+		// some renders may fail so this has to be wrapped in a try/catch
+		try {
+			ReactDOM.render(renderComponent, document.getElementById('liveOutput'));
+		} catch (err) {
+			console.log('Live rendering error:', err);
+		}
+
 	}
 	testCode() {
 
@@ -35,36 +50,26 @@ export default class ReduxTestComponent extends React.Component {
 			testResults: results.testResults
 		});
 
-		// run live render function to get console.log messages
-		const result = this.props.liveRender(code);
-
-		document.getElementById('consoleOutput').innerHTML = '';
-
-		// display these messages to the UI
-		if (result !== undefined) {
-			for (let msg of result) {
-				document.getElementById('consoleOutput').innerHTML += msg;
-				document.getElementById('consoleOutput').innerHTML += '<br>';
-			}
-		}
-
 	}
 	seedCode() {
 		this.setState({
 			code: this.props.seedCode
 		});
+		setTimeout( () => { this.liveRender() }, 50);
 	}
 	solutionCode() {
 		this.setState({
 			code: this.props.solutionCode
 		});
+		setTimeout( () => { this.liveRender() }, 50);
 	}
 	componentDidMount() {
 		this.testCode();
 	}
 	selectChallenge(event) {
-		setTimeout( () => { this.seedCode(); }, 50);
-		setTimeout( () => { this.testCode(); }, 50);
+		this.seedCode();
+		this.testCode();
+		this.liveRender();
 		this.props.select(event.target.value);
 	}
 	render() {
@@ -72,12 +77,13 @@ export default class ReduxTestComponent extends React.Component {
     	mode: 'jsx',
       lineNumbers: true,
       theme: 'monokai',
+      fontSize: '30px',
       extraKeys: {
       	'Cmd-Enter': () => { 
 	    		this.testCode();
 	    		return false;
 	    	}
-	    } 
+	    }
     };
     const renderTitle = () => { return { __html: this.props.challengeTitle }}
     const renderInstructions = () => { return { __html: this.props.challengeInstructions }}
@@ -88,7 +94,7 @@ export default class ReduxTestComponent extends React.Component {
 	    passingTests = testResults.filter( (test) => test.status === true ).length;
 	    totalTests = testResults.length;
     }
-    
+
     const renderChallenges = this.props.challenges.map( (challenge, idx) => {
       return (
       	<option value={challenge.id} key = {idx} selected = {challenge.id === this.props.selectedChallenge}>
@@ -100,12 +106,12 @@ export default class ReduxTestComponent extends React.Component {
     return (
     	<div>
 
-    		<h1 className = 'title mainTitle'>Free Code Camp Redux Challenge Demo:
+    		<h1 className = 'title'>Free Code Camp React Challenge Demo:
 
 	        <select onChange = {this.selectChallenge.bind(this)}>
 	          {renderChallenges}
 	        </select>
-	        
+
     		</h1>
 
     		<div className = 'instructionsContainer'>
@@ -113,62 +119,53 @@ export default class ReduxTestComponent extends React.Component {
 					<p className = 'instructions' dangerouslySetInnerHTML = {renderInstructions()} />
     		</div>
 
-    		<div className = 'outputContainer'>
-		    	<h1 className = 'outputTitle'>Console Output:</h1>
-		    	<div id = 'consoleOutput'></div>
+    		<h1 className = 'title'>Code:</h1>
+
+	    	<CodeMirror
+	    		className = 'editor'
+	    		value = {this.state.code}
+	    		onChange = {this.updateCode}
+	    		options = {options} />
+
+	    	<div className = 'outputContainer'>
+		    	<h1 className = 'outputTitle'>Live Output:</h1>
+		    	<div id = 'liveOutput'></div>
 		    </div>
 
-				<hr />
+		    <h1 className = 'title'>Run Tests <span className = 'keyShortcut'>(Cmd-Enter)</span>:</h1>
+	    	
+	    	<div className = 'testControls'>
+	    		<button onClick = {this.testCode} className = 'testBtn'>Test Code</button>
+	    		<button onClick = {this.seedCode}>Reload Seed</button>
+	    		<button onClick = {this.solutionCode}>Solution Code</button>
+		    </div>
 
-    		<div className = 'mainContainer'>
-
-					<div className="testWrapper">
-				    <h1 className = 'title'>Tests <span className = 'keyShortcut'>(Cmd-Enter)</span>:</h1>
-			    	
-			    	<div className = 'testControls'>
-			    		<button onClick = {this.testCode} className = 'testBtn'>Test Code</button>
-			    		<button onClick = {this.seedCode}>Reload Seed</button>
-			    		<button onClick = {this.solutionCode}>Solution Code</button>
-				    </div>
-
-				    <div className = 'testResults'>
-
-				    	{ this.state.passed ?
-		    				<p className = 'msg success'>All tests passed!</p> :
-		    				<p className = 'msg error'>Your code does not pass the tests, {passingTests} out of {totalTests} tests are passing</p> }
-				    	
-				    	{
-				    		testResults.map( (test, idx) => {
-					    		if (test.status) {
-					    			return (
-					    				<p className = 'test testSuccess' key = {idx}>
-					    					<i className="fa fa-check" aria-hidden="true"></i>
-					    					{test.success}
-					    				</p>
-					    			)
-					    		} else {
-						    		return (
-						    			<p className = 'test testFailure' key = {idx}>
-					    					<i className="fa fa-times" aria-hidden="true"></i>
-					    					{test.failure}
-					    				</p>
-						    		)
-						    	}
-					    	})
+		    <div className = 'testResults'>
+		    	<h1 className = 'default resultsTitle'>Results:
+						{ this.state.passed ?
+	    				<span className = 'msg success'>All tests passed!</span> :
+	    				<span className = 'msg error'>Your code does not pass the tests, {passingTests} out of {totalTests} tests are passing</span> }
+		    	</h1>
+		    	
+		    	{
+		    		testResults.map( (test, idx) => {
+			    		if (test.status) {
+			    			return (
+			    				<p className = 'test testSuccess' key = {idx}>
+			    					<i className="fa fa-check" aria-hidden="true"></i>
+			    					{test.success}
+			    				</p>
+			    			)
+			    		} else {
+				    		return (
+				    			<p className = 'test testFailure' key = {idx}>
+			    					<i className="fa fa-times" aria-hidden="true"></i>
+			    					{test.failure}
+			    				</p>
+				    		)
 				    	}
-
-				    </div>
-					</div>
-
-					<div className = 'codeWrapper'>
-		    		<h1 className = 'title'>Code:</h1>
-
-			    	<CodeMirror
-			    		className = 'editor'
-			    		value = {this.state.code}
-			    		onChange = {this.updateCode}
-			    		options = {options} />
-		    	</div>
+			    	})
+		    	}
 
 		    </div>
 

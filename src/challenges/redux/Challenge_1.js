@@ -18,9 +18,7 @@ export const seedCode =
 export const solutionCode =
 `const store = Redux.createStore(
 	(state = 5) => state
-);
-console.log('hi')
-`
+);`
 
 // ---------------------------- define challenge tests ----------------------------
 
@@ -37,6 +35,12 @@ export const executeTests = (code) => {
 		},
 		{
 			test: 1,
+			status: false,
+			failure: 'The redux store does not exist.',
+			success: 'The redux store exists.'
+		},
+		{
+			test: 2,
 			status: false,
 			failure: 'The redux store does not have a value of 5 for the state.',
 			success: 'The redux store has a value of 5 for the state.'
@@ -66,15 +70,25 @@ export const executeTests = (code) => {
 		console.log(err);
 		passed = false;
 	}
-	
-	//test 1:
+
+	// test 1:
 	try {
-		expect(store.getState()).toEqual(5);
+		expect(typeof store.getState).toBe('function');
 		testResults[1].status = true;
 	} catch (err) {
 		console.log(err);
 		passed = false;
 		testResults[1].status = false;
+	}
+
+	// test 2:
+	try {
+		expect(store.getState()).toEqual(5);
+		testResults[2].status = true;
+	} catch (err) {
+		console.log(err);
+		passed = false;
+		testResults[2].status = false;
 	}
 
 	return {

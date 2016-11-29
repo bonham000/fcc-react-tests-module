@@ -17,6 +17,7 @@ import * as React_4 from './challenges/react/Challenge_4'
 
 // import Redux Challenges:
 import * as Redux_1 from './challenges/redux/Challenge_1'
+import * as Redux_2 from './challenges/redux/Challenge_2'
 
 // add a new challenge to this array:
 const challenges = [
@@ -24,7 +25,8 @@ const challenges = [
   { type: 'React', id: 'React_2'},
   { type: 'React', id: 'React_3'},
   { type: 'React', id: 'React_4'},
-  { type: 'Redux', id: 'Redux_1'}
+  { type: 'Redux', id: 'Redux_1'},
+  { type: 'Redux', id: 'Redux_2'}
 ];
 
 
@@ -69,7 +71,8 @@ export default class App extends React.Component {
               solutionCode = {eval(challenge).solutionCode}
               executeTests = {eval(challenge).executeTests}
               liveRender = {eval(challenge).liveRender} 
-              challenges = {this.state.challenges} 
+              selectedChallenge = {challenge}
+              challenges = {this.state.challenges}
               select = {this.select} /> :
           
             <ReduxTestComponent 
@@ -78,7 +81,8 @@ export default class App extends React.Component {
               seedCode = {eval(challenge).seedCode}
               solutionCode = {eval(challenge).solutionCode}
               executeTests = {eval(challenge).executeTests}
-              liveRender = {eval(challenge).liveRender} 
+              liveRender = {eval(challenge).liveRender}
+              selectedChallenge = {challenge}
               challenges = {this.state.challenges} 
               select = {this.select} />
 

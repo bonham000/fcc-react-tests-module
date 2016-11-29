@@ -63,8 +63,8 @@ export default class ReduxTestComponent extends React.Component {
 		this.testCode();
 	}
 	selectChallenge(event) {
-		setTimeout( () => { this.seedCode(); }, 50);
-		setTimeout( () => { this.testCode(); }, 50);
+		this.seedCode();
+		this.testCode();
 		this.props.select(event.target.value);
 	}
 	render() {
@@ -72,6 +72,7 @@ export default class ReduxTestComponent extends React.Component {
     	mode: 'jsx',
       lineNumbers: true,
       theme: 'monokai',
+      fontSize: '30px',
       extraKeys: {
       	'Cmd-Enter': () => { 
 	    		this.testCode();
@@ -100,7 +101,7 @@ export default class ReduxTestComponent extends React.Component {
     return (
     	<div>
 
-    		<h1 className = 'title mainTitle'>Free Code Camp Redux Challenge Demo:
+    		<h1 className = 'title'>Free Code Camp Redux Challenge Demo:
 
 	        <select onChange = {this.selectChallenge.bind(this)}>
 	          {renderChallenges}
@@ -113,62 +114,53 @@ export default class ReduxTestComponent extends React.Component {
 					<p className = 'instructions' dangerouslySetInnerHTML = {renderInstructions()} />
     		</div>
 
-    		<div className = 'outputContainer'>
-		    	<h1 className = 'outputTitle'>Console Output:</h1>
+    		<h1 className = 'title'>Code:</h1>
+
+	    	<CodeMirror
+	    		className = 'editor'
+	    		value = {this.state.code}
+	    		onChange = {this.updateCode}
+	    		options = {options} />
+
+	    	<div className = 'outputContainer'>
+		    	<h1 className = 'outputTitle'>Console.log Output:</h1>
 		    	<div id = 'consoleOutput'></div>
 		    </div>
 
-				<hr />
+		    <h1 className = 'title'>Run Tests <span className = 'keyShortcut'>(Cmd-Enter)</span>:</h1>
+	    	
+	    	<div className = 'testControls'>
+	    		<button onClick = {this.testCode} className = 'testBtn'>Test Code</button>
+	    		<button onClick = {this.seedCode}>Reload Seed</button>
+	    		<button onClick = {this.solutionCode}>Solution Code</button>
+		    </div>
 
-    		<div className = 'mainContainer'>
-
-					<div className="testWrapper">
-				    <h1 className = 'title'>Tests <span className = 'keyShortcut'>(Cmd-Enter)</span>:</h1>
-			    	
-			    	<div className = 'testControls'>
-			    		<button onClick = {this.testCode} className = 'testBtn'>Test Code</button>
-			    		<button onClick = {this.seedCode}>Reload Seed</button>
-			    		<button onClick = {this.solutionCode}>Solution Code</button>
-				    </div>
-
-				    <div className = 'testResults'>
-
-				    	{ this.state.passed ?
-		    				<p className = 'msg success'>All tests passed!</p> :
-		    				<p className = 'msg error'>Your code does not pass the tests, {passingTests} out of {totalTests} tests are passing</p> }
-				    	
-				    	{
-				    		testResults.map( (test, idx) => {
-					    		if (test.status) {
-					    			return (
-					    				<p className = 'test testSuccess' key = {idx}>
-					    					<i className="fa fa-check" aria-hidden="true"></i>
-					    					{test.success}
-					    				</p>
-					    			)
-					    		} else {
-						    		return (
-						    			<p className = 'test testFailure' key = {idx}>
-					    					<i className="fa fa-times" aria-hidden="true"></i>
-					    					{test.failure}
-					    				</p>
-						    		)
-						    	}
-					    	})
+		    <div className = 'testResults'>
+		    	<h1 className = 'default resultsTitle'>Results:
+						{ this.state.passed ?
+	    				<span className = 'msg success'>All tests passed!</span> :
+	    				<span className = 'msg error'>Your code does not pass the tests, {passingTests} out of {totalTests} tests are passing</span> }
+		    	</h1>
+		    	
+		    	{
+		    		testResults.map( (test, idx) => {
+			    		if (test.status) {
+			    			return (
+			    				<p className = 'test testSuccess' key = {idx}>
+			    					<i className="fa fa-check" aria-hidden="true"></i>
+			    					{test.success}
+			    				</p>
+			    			)
+			    		} else {
+				    		return (
+				    			<p className = 'test testFailure' key = {idx}>
+			    					<i className="fa fa-times" aria-hidden="true"></i>
+			    					{test.failure}
+			    				</p>
+				    		)
 				    	}
-
-				    </div>
-					</div>
-
-					<div className = 'codeWrapper'>
-		    		<h1 className = 'title'>Code:</h1>
-
-			    	<CodeMirror
-			    		className = 'editor'
-			    		value = {this.state.code}
-			    		onChange = {this.updateCode}
-			    		options = {options} />
-		    	</div>
+			    	})
+		    	}
 
 		    </div>
 

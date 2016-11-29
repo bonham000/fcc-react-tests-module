@@ -24,8 +24,6 @@ export const solutionCode =
 
 export const executeTests = (code) => {
 
-	let es5, store, passed = true;
-
 	let testResults = [
 		{
 			test: 0,
@@ -38,7 +36,7 @@ export const executeTests = (code) => {
 			status: false,
 			failure: 'The redux store does not have a value of 5 for the state.',
 			success: 'The redux store has a value of 5 for the state.'
-		}
+		},
 		{
 			test: 2,
 			status: false,
@@ -51,10 +49,13 @@ export const executeTests = (code) => {
 			failure: '',
 			success: ''
 		}
-	]
+	];
+
+	let es5, store, passed = true;
 
 	// this code hijacks the user input to create an IIFE 
 	// which returns the store from Redux as an object
+	// or whatever you need from the client code
 	const prepend = `(function() {`
 	const apend = `; return store })()`
 	const modifiedCode = prepend.concat(code).concat(apend);
@@ -72,14 +73,14 @@ export const executeTests = (code) => {
 	// save the store from redux to test here
 	// now you can access the redux store methods
 	try {
-		const store = eval(es5)
+		store = eval(es5)
 	} catch (err) {
 		console.log(err);
 		passed = false;
 	}
 
 	
-	//test 1:
+	// test 1:
 	try {
 		expect(store.getState()).toEqual(5);
 		testResults[1].status = true;

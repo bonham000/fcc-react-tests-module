@@ -1,15 +1,31 @@
 body {
   margin: 0;
-  padding: 25px;
-  padding-bottom: 55px;
+  padding: 12px 25px 55px 25px;
   background: rgb(25,25,25);
   color: white;
   font-family: sans-serif;
 	font-family: 'Montserrat', sans-serif;
+	min-width: 1300px;
+}
+
+.mainContainer {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+}
+
+.codeWrapper {
+	width: 55%;
+}
+
+.testWrapper {
+	width: 45%;
+	padding-left: 8px;
+	padding-right: 12px;
 }
 
 .editor {
-	font-size: 18px;
+	font-size: 15px;
 	border: 1px solid rgba(250,250,250,0.15);
 }
 .CodeMirror {
@@ -48,18 +64,25 @@ code {
 	background: rgb(150,150,150);
 	border-radius: 5px;
 	color: black;
-	font-size: 15px;
+	font-size: 12px;
 }
 
 .title {
 	color: rgb(150,150,150);
 	font-size: 26px;
 }
+.mainTitle {
+	color: #FFCB4D;
+}
+
 select {
 	background: white;
 	border: none;
 	font-size: 24px;
-	margin-left: 18px;
+	margin-top: 22px;
+	margin-bottom: 22px;
+	margin-left: 22px;
+	width: 425px;
 }
 select:focus {
 	outline: none;
@@ -68,15 +91,14 @@ select:focus {
 .testControls {
 	margin-top: 22px;
 	margin-bottom: 22px;
-	padding-left: 22px;
 }
 .keyShortcut {
 	color: rgb(225,225,225);
 }
 button {
-	width: 215px;
+	width: 185px;
 	margin: 5px;
-	font-size: 26px;
+	font-size: 22px;
 	padding: 8px 12px;
 	border: none;
 	border-radius: 5px;
@@ -97,8 +119,9 @@ button:focus {
 	outline: none;
 }
 .msg {
-	margin: 0 auto 0 12px;
-	display: inline-block;
+	margin-top: 4px;
+	margin-bottom: 18px;
+	font-size: 18px;
 }
 .error {
 	color: #FA3F3A;
@@ -119,15 +142,14 @@ hr {
 	font-size: 26px;
 }
 .test {
-	font-size: 18px;
-	margin-top: 3px;
-	margin-bottom: 3px;
-	padding-left: 12px;
+	font-size: 16px;
+	margin-top: 4px;
+	margin-bottom: 4px;
+	margin-left: 22px;
+	text-indent: -12px;
 	font-family: 'Raleway', serif;
 }
 .resultsTitle {
-	margin-top: 18px;
-	margin-bottom: 12px;
 	font-size: 26px;
 }
 .fa {
