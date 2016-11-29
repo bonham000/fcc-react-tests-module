@@ -66,14 +66,14 @@ export const executeTests = (code) => {
 		{
 			test: 1,
 			status: false,
-			failure: 'There are not two action functions with names \'add\' and \'subtract\'',
-			success: 'There are two action functions with names \'add\' and \'subtract\''
+			failure: 'There are not two action functions with names \'add\' and \'subtract\'.',
+			success: 'There are two action functions with names \'add\' and \'subtract\'.'
 		},
 		{
 			test: 2,
 			status: false,
-			failure: 'The store is not initialized with a state of 0',
-			success: 'The store is initialized with a state of 0'
+			failure: 'The store is not initialized with a state of 0.',
+			success: 'The store is initialized with a state of 0.'
 		},
 		{
 			test: 3,

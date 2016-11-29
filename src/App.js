@@ -35,19 +35,14 @@ export default class App extends React.Component {
 	constructor(props) {
 		super(props);
     this.state = {
-      challenges: [],
+      challenges,
       selectedChallenge: {
         type: 'React',
         id: 'React_1'
       }
     }
-	}
-  componentDidMount() {
-    this.setState({
-      challenges
-    });
     this.select = this.select.bind(this);
-  }
+	}
   select(event) {
     const challenge = this.state.challenges.filter( (challenge) => challenge.id === event );
     this.setState({
@@ -55,8 +50,9 @@ export default class App extends React.Component {
     });
   }
   render() {
-    const challengeType = this.state.selectedChallenge.type;
-    const challenge = this.state.selectedChallenge.id;
+    const { selectedChallenge } = this.state;
+    const challengeType = selectedChallenge.type;
+    const challenge = selectedChallenge.id;
     return (
       <div>
 
@@ -73,7 +69,9 @@ export default class App extends React.Component {
               liveRender = {eval(challenge).liveRender} 
               selectedChallenge = {challenge}
               challenges = {this.state.challenges}
-              select = {this.select} /> :
+              select = {this.select} />
+
+          :
           
             <ReduxTestComponent 
               challengeTitle = {eval(challenge).challengeTitle}
@@ -86,7 +84,7 @@ export default class App extends React.Component {
               challenges = {this.state.challenges} 
               select = {this.select} />
 
-          }
+        }
 
       </div>
     );

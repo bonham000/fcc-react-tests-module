@@ -58,7 +58,7 @@ export default class MyComponent extends React.Component {
 	    // change code below this line
 	    <div>
 
-			<h1>{this.state.name}</h1>
+				<h1>{this.state.name}</h1>
 
 	    </div>
 	    // change code above this line

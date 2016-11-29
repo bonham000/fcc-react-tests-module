@@ -117,7 +117,7 @@ export const executeTests = (code) => {
 	
 }
 
-// liveRender modifies console.log in user input and returns message data
+// liveRender modifies console.log in user input and returns message data -----------------------
 export const liveRender = (code) => {
 
 	// this code modifies the user input to return all

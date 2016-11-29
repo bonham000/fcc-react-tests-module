@@ -1,9 +1,5 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
-import expect from 'expect'
-import ReactTestUtils from 'react-addons-test-utils'
 import CodeMirror from 'react-codemirror'
-import { transform } from 'babel-standalone'
 
 import 'codemirror/mode/jsx/jsx';
 
@@ -72,6 +68,7 @@ export default class ReduxTestComponent extends React.Component {
     	mode: 'jsx',
       lineNumbers: true,
       theme: 'monokai',
+      tabSize: 2,
       extraKeys: {
       	'Cmd-Enter': () => { 
 	    		this.testCode();
@@ -92,7 +89,7 @@ export default class ReduxTestComponent extends React.Component {
     const renderChallenges = this.props.challenges.map( (challenge, idx) => {
       return (
       	<option value={challenge.id} key = {idx} selected = {challenge.id === this.props.selectedChallenge}>
-      		Displaying Challenge: {challenge.id}
+      		Current Challenge: {challenge.id}
       	</option>
       );
     });
@@ -118,12 +115,10 @@ export default class ReduxTestComponent extends React.Component {
 		    	<div id = 'consoleOutput'></div>
 		    </div>
 
-				<hr />
-
     		<div className = 'mainContainer'>
 
 					<div className="testWrapper">
-				    <h1 className = 'title'>Tests <span className = 'keyShortcut'>(Cmd-Enter)</span>:</h1>
+				    <h1 className = 'title'>Tests</h1>
 			    	
 			    	<div className = 'testControls'>
 			    		<button onClick = {this.testCode} className = 'testBtn'>Test Code</button>
@@ -161,7 +156,7 @@ export default class ReduxTestComponent extends React.Component {
 					</div>
 
 					<div className = 'codeWrapper'>
-		    		<h1 className = 'title'>Code:</h1>
+		    		<h1 className = 'title'>Code <span className = 'keyShortcut'>press (Cmd-Enter) to run</span></h1>
 
 			    	<CodeMirror
 			    		className = 'editor'
@@ -175,7 +170,7 @@ export default class ReduxTestComponent extends React.Component {
 		    <hr />
 
 		    <div>
-		    	<p className = 'referenceLink'>- This project is using <a target = "_blank" href="http://airbnb.io/enzyme/index.html">Enzyme</a> to test React Components | <a target = "_blank" href="https://github.com/bonham000/fcc-react-tests-module">View the code on GitHub</a></p>
+		    	<p className = 'referenceLink'>- This project is testing Redux live on the client with JavaScript | <a target = "_blank" href="https://github.com/bonham000/fcc-react-tests-module">View the code on GitHub</a></p>
 		    </div>
 
     	</div>

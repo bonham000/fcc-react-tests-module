@@ -21,7 +21,7 @@ body {
 .testWrapper {
 	width: 45%;
 	padding-left: 8px;
-	padding-right: 12px;
+	padding-right: 22px;
 }
 
 .editor {
@@ -50,7 +50,7 @@ body {
 	font-family: 'Muli', serif;
 }
 .instructions {
-	font-size: 22px;
+	font-size: 18px;
 	display: inline-block;
 	margin-top: 5px;
 	margin-bottom: 15px;
@@ -73,6 +73,7 @@ code {
 }
 .mainTitle {
 	color: #FFCB4D;
+	font-size: 30px;
 }
 
 select {
@@ -82,7 +83,7 @@ select {
 	margin-top: 22px;
 	margin-bottom: 22px;
 	margin-left: 22px;
-	width: 425px;
+	width: 350px;
 }
 select:focus {
 	outline: none;
@@ -102,7 +103,7 @@ button {
 	padding: 8px 12px;
 	border: none;
 	border-radius: 5px;
-	background: white;
+	background: rgb(200,200,200);
 	font-family: 'Montserrat', sans-serif;
 }
 button:hover {
@@ -166,6 +167,7 @@ hr {
 	background: white;
 	color: black;
 	padding: 12px;
+	border-radius: 2px;
 }
 #consoleOutput {
 	border: 1px solid rgba(250,250,250,0.15);
