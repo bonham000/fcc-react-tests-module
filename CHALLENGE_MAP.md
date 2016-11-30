@@ -1,44 +1,44 @@
 #Challenge Map:#
 
-- [x] Challenge are fully written and QA'd :white_check_mark:
-- [ ] Challenges are written but need to be QA'd :pencil:
-- [ ] challenges need to be written :pencil2:
+- [x] Challenge is fully written and QA'd :white_check_mark:
+- [ ] Challenge is written but needs QA :pencil:
+- [ ] Challenge needs to be written :pencil2:
 
 ###React Challenges:###
 
 - [X] **JSX**
-  - [X] [Create a simple JSX element]
-  - [X] [Create a new element with composition]
-  - [X] [Add a CSS class with the className property]
-  - [X] [Create an element using React.createElement 
-  - [X] [Add Comments in JSX]
+  - [X] Create a simple JSX element
+  - [X] Create a new element with composition
+  - [X] Add a CSS class with the className property
+  - [X] Create an element using React.createElement 
+  - [X] Add Comments in JSX
 - [X] **Rendering**
-  - [X] [Render an HTML element to the DOM]
-  - [X] [Render a component to the DOM]
+  - [X] Render an HTML element to the DOM
+  - [X] Render a component to the DOM
 - [x] **Components**
   - [x] Create a functional component
-  - [x] [Create a component using the class syntax]
-  - [x] [Render a pair of divs from a component]
+  - [x] Create a component using the class syntax
+  - [x] Render a pair of divs from a component
 - [ ] **Props**
-  - [X] [Pass a string to a component using JSX]
-  - [X] [Access props using `this.props`]
+  - [X] Pass a string to a component using JSX
+  - [X] Access props using `this.props`
   - [ ] Pass an array to a component using JSX
   - [ ] Pass an array to a component using React.createElement
   - [ ] Set the default props using the defaultProps static component property
   - [ ] Define your components shape with propTypes
 - [x] **State**
-  - [x] [Define the initial state within the components constructor]
+  - [x] Define the initial state within the components constructor
     - [x] Display state with `this.state`
-  - [x] [Update state with `setState`]
+  - [x] Update state with `setState`
 - [ ] **Components, again?**
   - [ ] Conditionally render elements from a component
-  - [ ] componentWillMount 
+  - [ ] componentWillMount
   - [ ] Ajax data with componentDidMount
   - [ ] Everybody cleanup with componentWillUnmount
   - [ ] Update state with componentWillReceiveProps
   - [ ] Prevent re-render with shouldComponentUpdate
   - [ ] child lifecycle order 
-- [ ] Rendering, node style
+- [ ] **Rendering, node style**
   - [ ] render server side with renderToString
 
 ---
@@ -73,17 +73,17 @@
 ###React-Redux Challenges:###
 
 - [X] **Creating `stateless` components**
-  - [X] [Create `GroceryForm` component]
-  - [X] [Create `GroceryList` component]
+  - [X] Create `GroceryForm` component
+  - [X] Create `GroceryList` component
 - [X] **Creating `statefull` components**
-  - [X] [A `GroceryPage` component, that renders both the aforementioned components]
-  - [X] [Render `GroceryPage`]
+  - [X] A `GroceryPage` component, that renders both the aforementioned components
+  - [X] Render `GroceryPage`
 - [X] **Be careful about `this`**
-  - [X] [Create `onChange
-  - [X] [`bind` the context `this` to both functions]
+  - [X] Create `onChange
+  - [X] `bind` the context `this` to both functions
 - [ ] **Passing `props` down**
-  - [X] [Passing down `onChange
-  - [X] [Passing down a list 
+  - [X] Passing down `onChange
+  - [X] Passing down a list 
   - [ ] Validate `props` with `React.PropTypes`
 - [ ] **Creating Actions**
   - [ ] Create a JS module for `actions`
