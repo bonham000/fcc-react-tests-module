@@ -1,10 +1,14 @@
-#This is a demo prototype for a module to run tests against React code in an in-browser code editor#
+#Free Code Camp React/Redux Challenge Development#
+
+###This repo contains an in-browser test module prototype for React/Redux code and the proposed React & Redux challenges for the Free Code Camp Curriculum Expansion.###
 
 [See this project live here](http://hysterical-amusement.surge.sh/)
 
-*View the CHALLENGE_MAP file to see an overview of the challenges and their development progress.*
+*View `CHALLENGE_MAP.md` to see an overview of the challenges and their development progress.*
 
-To create a new challenge to test use the template challenge in the `src/challenge-templates` directory and then import it in `src/App.js`:
+---
+
+To contribute a new challenge find a challenge that needs to be written from the CHALLENGE_MAP and use the appropriate template challenge in the `src/challenge-templates` directory and then import it in `src/App.js`, changing the `#` to the appropriate challenge `#`:
 
 ###Add an Import for your Challenge:###
 
@@ -12,9 +16,9 @@ To create a new challenge to test use the template challenge in the `src/challen
 import { * as React_# } from './challenges/react/<YOUR_CHALLENGE_NAME>'
 ```
 
-To import a redux challenge use the redux template and import from the `./challenges/redux/` path. After importing the challenge add it to the `challenges` array following the pattern of the other challenges.
+To import a redux challenge use the redux template, save you challenge in the `./challenges/redux/` path, and import it like above. After importing the challenge add it to the `challenges` array in `src/App.js` following the pattern of the other challenges.
 
-Then run `npm start` and try out your challenge in the browser window that opens up. All of challenge information is passed as props into the `TestComponent`. Once it's running you can then edit your code, run your tests, and load the solution code to verify everything is working properly.
+Now run `npm start` and try out your challenge in the browser window that opens up. All of challenge information is passed as props into the `TestComponent`. Once it's running you can then edit your code, run your tests, and load the solution code to verify everything is working properly. Once you have your challenge written and appropriate tests running, submit a pull request to have it added.
 
 ##Instructions on writing a new challenge:##
 
@@ -34,6 +38,12 @@ assert.strictEqual(shallowRender.type(), 'div', 'The component renders a div ele
 ```
 
 All of the tests follow this basic pattern, and the [Enzyme documentation](http://airbnb.io/enzyme/docs/api/ShallowWrapper/children.html) is a great reference for seeing what we can test.
+
+***
+
+##Instructions for QA:##
+
+Once a challenge is completed written (title, instructions, seed code, solution code, and tests are all completed) it needs to be reviewed to ensure that it correctly assesses what it is trying to assess and the tests function properly. After a challenge has been reviewed its status can be updated.
 
 ***
 
