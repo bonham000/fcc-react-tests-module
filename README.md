@@ -2,6 +2,8 @@
 
 [See this project live here](http://hysterical-amusement.surge.sh/)
 
+*View the CHALLENGE_MAP file to see an overview of the challenges and their development progress.*
+
 To create a new challenge to test use the template challenge in the `src/challenge-templates` directory and then import it in `src/App.js`:
 
 ###Add an Import for your Challenge:###
@@ -16,7 +18,7 @@ Then run `npm start` and try out your challenge in the browser window that opens
 
 ##Instructions on writing a new challenge:##
 
-A new challenge requires all of the following:
+A new challenge requires all of the following, all of which is provided in a challenge template file:
 - **QA:** Current review status of challenge.
 - **Challenge Title:** A concise name for the challenge.
 - **Challenge Instructions:** Instructions for solving the challenge.
@@ -25,10 +27,10 @@ A new challenge requires all of the following:
 - **executeTests:** A function which defines all the tests for the challenge.
 - **liveRender:** You don't need to modify this function.
 
-**Notes on completing the executeTests function:** You need to provide messages for the success and failure of each of your tests and then you need to write each of the tests. We are using the [Enzyme testing module from Airbnb](http://airbnb.io/enzyme/docs/api/index.html) and the npm expect module for writing assertions. For example, after we shallow render our component, we could assert:
+**Notes on completing the executeTests function:** You need to provide messages for the success and failure of each of your tests and then you need to write each of the tests. We are using the [Enzyme testing module from Airbnb](http://airbnb.io/enzyme/docs/api/index.html) and assert for writing assertions. For example, after we shallow render our component, we could assert:
 
 ```javascript
-expect(shallowRender.type()).toEqual('div');
+assert.strictEqual(shallowRender.type(), 'div', 'The component renders a div element');
 ```
 
 All of the tests follow this basic pattern, and the [Enzyme documentation](http://airbnb.io/enzyme/docs/api/ShallowWrapper/children.html) is a great reference for seeing what we can test.
