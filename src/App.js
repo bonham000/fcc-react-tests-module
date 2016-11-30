@@ -10,7 +10,11 @@ import ReduxTestComponent from './test-components/ReduxTestComponent'
 // And change the App component to render the correct test component
 
 // import React Challenges:
-import * as React_1 from './challenges/react/Challenge_1'
+
+import * as React_1 from './challenges/react/React_1'
+
+// DEMO CHALLENGES:
+//import * as React_1 from './challenges/react/Challenge_1'
 import * as React_2 from './challenges/react/Challenge_2'
 import * as React_3 from './challenges/react/Challenge_3'
 import * as React_4 from './challenges/react/Challenge_4'

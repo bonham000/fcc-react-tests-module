@@ -31,26 +31,22 @@ export const executeTests = (code) => {
 		{
 			test: 0,
 			status: false,
-			failure: 'Your code could not be transpiled successfully.',
-			success: 'Your code was transpiled successfully.'
+			condition: 'Your code was transpiled successfully.'
 		},
 		{
 			test: 1,
 			status: false,
-			failure: 'The redux store does not have a value of 5 for the state.',
-			success: 'The redux store has a value of 5 for the state.'
+			condition: 'The redux store has a value of 5 for the state.'
 		},
 		{
 			test: 2,
 			status: false,
-			failure: '',
-			success: ''
+			condition: ''
 		},
 		{
 			test: 3,
 			status: false,
-			failure: '',
-			success: ''
+			condition: ''
 		}
 	];
 

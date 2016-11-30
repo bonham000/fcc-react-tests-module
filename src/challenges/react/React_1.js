@@ -7,10 +7,11 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>_ADD_YOUR_TITLE_HERE_`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>First React Challenge`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>_ADD_YOUR_INSTRUCTIONS_HERE_`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>Render a simple <code>div</code>
+element to the page.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = `
@@ -30,7 +31,8 @@ export default class MyComponent extends React.Component {
   render() {
     return (
 	    // change code below this line
-	    
+	    <div>
+	    </div>
 	    // change code above this line
     );
   }
@@ -44,23 +46,12 @@ export const executeTests = (code) => {
 		{
 			test: 0,
 			status: false,
-			failure: 'Your JSX code could not be transpiled successfully.',
-			success: 'Your JSX code was transpiled successfully.'
+			condition: 'Your JSX code was transpiled successfully.'
 		},
 		{
 			test: 1,
 			status: false,
-			condition: ''
-		},
-		{
-			test: 2,
-			status: false,
-			condition: ''
-		},
-		{
-			test: 3,
-			status: false,
-			condition: ''
+			condition: 'The component renders a div'
 		}
 	];
 
@@ -91,32 +82,12 @@ export const executeTests = (code) => {
 
 	// test 1:
 	try {
-
+		assert.strictEqual(testRender.type(), 'div', 'The component renders a div')
 		testResults[1].status = true;
 	} catch (err) {
 		console.log(err);
 		passed = false;
 		testResults[1].status = false;
-	}
-
-	// test 2:
-	try {
-
-		testResults[2].status = true;
-	} catch (err) {
-		console.log(err);
-		passed = false;
-		testResults[2].status = false;		
-	}
-
-	// test 3:
-	try {
-
-		testResults[3].status = true;
-	} catch (err) {
-		console.log(err);
-		passed = false;
-		testResults[3].status = false;
 	}
 
 	return {
