@@ -4,14 +4,18 @@
 - [ ] Challenge is written but needs QA :pencil:
 - [ ] Challenge needs to be written :pencil2:
 
+---
+
 ###React Challenges:###
 
 - [X] **JSX**
   - [X] Create a simple JSX element
-  - [X] Create a new element with composition
-  - [X] Add a CSS class with the className property
-  - [X] Create an element using React.createElement 
   - [X] Add Comments in JSX
+  - [X] Add a CSS class with the className property
+  - [ ] Add inline styles
+  - [ ] Create Nested HTML
+  - [X] Create an element using React.createElement (do we need to keep this?)
+  - [X] Create a new element with composition
 - [X] **Rendering**
   - [X] Render an HTML element to the DOM
   - [X] Render a component to the DOM
@@ -27,10 +31,10 @@
   - [ ] Set the default props using the defaultProps static component property
   - [ ] Define your components shape with propTypes
 - [x] **State**
-  - [x] Define the initial state within the components constructor
+  - [x] Define the initial state within the component's constructor
     - [x] Display state with `this.state`
   - [x] Update state with `setState`
-- [ ] **Components, again?**
+- [ ] **Component Lifecycle Hooks?**
   - [ ] Conditionally render elements from a component
   - [ ] componentWillMount
   - [ ] Ajax data with componentDidMount
@@ -66,7 +70,7 @@
   - [ ] Reducer provides the next state
   - [ ] Store combines all root level reducers
   - [ ] Store saves a snapshot of application state
-- Advanced section: Async [TODO]
+- [ ] **Advanced section: Async [TODO]**
 
 ---
 
