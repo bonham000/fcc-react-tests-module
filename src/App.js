@@ -66,7 +66,8 @@ export default class App extends React.Component {
               seedCode = {eval(challenge).seedCode}
               solutionCode = {eval(challenge).solutionCode}
               executeTests = {eval(challenge).executeTests}
-              liveRender = {eval(challenge).liveRender} 
+              liveRender = {eval(challenge).liveRender}
+              QA = {eval(challenge).QA}
               selectedChallenge = {challenge}
               challenges = {this.state.challenges}
               select = {this.select} />
@@ -80,6 +81,7 @@ export default class App extends React.Component {
               solutionCode = {eval(challenge).solutionCode}
               executeTests = {eval(challenge).executeTests}
               liveRender = {eval(challenge).liveRender}
+              QA = {eval(challenge).QA}
               selectedChallenge = {challenge}
               challenges = {this.state.challenges} 
               select = {this.select} />

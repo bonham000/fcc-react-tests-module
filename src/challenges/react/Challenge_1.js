@@ -1,7 +1,10 @@
 import React from 'react'
-import expect from 'expect'
+import assert from 'assert'
 import { shallow } from 'enzyme'
 import { transform } from 'babel-standalone'
+
+// SET TO TRUE WHEN QA IS COMPLETE:
+export const QA = false;
 
 // -------------- define challenge title and challenge instructions --------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Use React to Render an h1 Tag`
@@ -47,26 +50,22 @@ export const executeTests = (code) => {
 		{
 			test: 0,
 			status: false,
-			failure: 'Your JSX code could not be transpiled successfully.',
-			success: 'Your JSX code was transpiled successfully.'
+			condition: 'Your JSX code was transpiled successfully.'
 		},
 		{
 			test: 1,
 			status: false,
-			failure: 'The React component does not return a <div> element.',
-			success: 'The React component returns a <div> element.'
+			condition: 'The React component returns a <div> element.'
 		},
 		{
 			test: 2,
 			status: false,
-			failure: 'There is no <h1> tag rendered within the returned <div>.',
-			success: 'There is a <h1> tag rendered within the returned <div>.'
+			condition: 'There is a <h1> tag rendered within the returned <div>.'
 		},
 		{
 			test: 3,
 			status: false,
-			failure: 'The <h1> tag does not include the text \'Hello React!\'',
-			success: 'The <h1> tag includes the text \'Hello React!\''
+			condition: 'The <h1> tag includes the text \'Hello React!\''
 		}
 	]
 	
@@ -90,7 +89,7 @@ export const executeTests = (code) => {
 
 	// test 1:
 	try {
-		expect(shallowRender.type()).toEqual('div');
+		assert.strictEqual(shallowRender.type(), 'div', 'The React component returns a <div> element.');
 		testResults[1].status = true;
 	} catch (err) {
 		console.log(err);
@@ -100,7 +99,7 @@ export const executeTests = (code) => {
 
 	// test 2:
 	try {
-		expect(shallowRender.children().type()).toEqual('h1');
+		assert.strictEqual(shallowRender.children().type(), 'h1', 'There is a <h1> tag rendered within the returned <div>.');
 		testResults[2].status = true;
 	} catch (err) {
 		console.log(err);
@@ -110,7 +109,7 @@ export const executeTests = (code) => {
 
 	// test 3:
 	try {
-		expect(shallowRender.contains(<h1>Hello React!</h1>)).toEqual(true);
+		assert.strictEqual(shallowRender.contains(<h1>Hello React!</h1>), true, 'The <h1> tag includes the text \'Hello React!\'');
 		testResults[3].status = true;
 	} catch (err) {
 		console.log(err);

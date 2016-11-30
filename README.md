@@ -17,6 +17,7 @@ Then run `npm start` and try out your challenge in the browser window that opens
 ##Instructions on writing a new challenge:##
 
 A new challenge requires all of the following:
+- **QA:** Current review status of challenge.
 - **Challenge Title:** A concise name for the challenge.
 - **Challenge Instructions:** Instructions for solving the challenge.
 - **Seed Code:** Code to be populated on page load as the challenge starting point.

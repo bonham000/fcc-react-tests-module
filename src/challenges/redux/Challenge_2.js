@@ -1,5 +1,8 @@
-import expect from 'expect'
+import assert from 'assert'
 import { transform } from 'babel-standalone'
+
+// SET TO TRUE WHEN QA IS COMPLETE:
+export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Create a Counter with Redux`
@@ -60,32 +63,32 @@ export const executeTests = (code) => {
 		{
 			test: 0,
 			status: false,
-			failure: 'Your code could not be transpiled successfully.',
-			success: 'Your code was transpiled successfully.'
+			condition: 'Your code was transpiled successfully.'
 		},
 		{
 			test: 1,
 			status: false,
-			failure: 'There are not two action functions with names \'add\' and \'subtract\'.',
-			success: 'There are two action functions with names \'add\' and \'subtract\'.'
+			condition: 'There is a function with name \'add\'.'
 		},
 		{
 			test: 2,
 			status: false,
-			failure: 'The store is not initialized with a state of 0.',
-			success: 'The store is initialized with a state of 0.'
+			condition: 'There is a function with name \'subtract\'.'
 		},
 		{
 			test: 3,
 			status: false,
-			failure: 'Dispatching an action of type \'ADD\' against the store does not increment the state by 1.',
-			success: 'Dispatching an action of type \'ADD\' against the store increments the state by 1.'
+			condition: 'The store is initialized with a state of 0.'
 		},
 		{
 			test: 4,
 			status: false,
-			failure: 'Dispatching an action of type \'SUBTRACT\' against the store does not decrement the state by 1.',
-			success: 'Dispatching an action of type \'SUBTRACT\' against the store decrements the state by 1.'
+			condition: 'Dispatching an action of type \'ADD\' against the store increments the state by 1.'
+		},
+		{
+			test: 5,
+			status: false,
+			condition: 'Dispatching an action of type \'SUBTRACT\' against the store decrements the state by 1.'
 		}
 	];
 
@@ -109,11 +112,19 @@ export const executeTests = (code) => {
 		testResults[0].status = false;
 	}
 
-	// test 1:
+	// evaluate Redux Code:
 	try {
 		reduxCodeObject = eval(es5);
-		expect(typeof reduxCodeObject.add).toBe('function');
-		expect(typeof reduxCodeObject.subtract).toBe('function');
+		testResults[0].status = true;
+	} catch (err) {
+		console.log(err);
+		passed = false;
+		testResults[0].status = false;
+	}
+
+	// test 1:
+	try {
+		assert.strictEqual(typeof reduxCodeObject.add, 'function', 'There is a function with name \'add\'.');
 		testResults[1].status = true;
 	} catch (err) {
 		console.log(err);
@@ -123,34 +134,45 @@ export const executeTests = (code) => {
 
 	// test 2:
 	try {
-		expect(reduxCodeObject.store.getState()).toEqual(0);
+		assert.strictEqual(typeof reduxCodeObject.subtract, 'function', 'There is a function with name \'subtract\'.');
 		testResults[2].status = true;
 	} catch (err) {
 		console.log(err);
 		passed = false;
-		testResults[2].status = false;		
+		testResults[2].status = false;
 	}
+
 
 	// test 3:
 	try {
-		reduxCodeObject.store.dispatch({ type: 'ADD' });
-		expect(reduxCodeObject.store.getState()).toEqual(1);
+		assert.strictEqual(reduxCodeObject.store.getState(), 0, 'The store is initialized with a state of 0.');
 		testResults[3].status = true;
 	} catch (err) {
 		console.log(err);
 		passed = false;
-		testResults[3].status = false;
+		testResults[3].status = false;		
 	}
 
 	// test 4:
 	try {
-		reduxCodeObject.store.dispatch({ type: 'SUBTRACT' });
-		expect(reduxCodeObject.store.getState()).toEqual(0);
+		reduxCodeObject.store.dispatch({ type: 'ADD' });
+		assert.strictEqual(reduxCodeObject.store.getState(), 1, 'Dispatching an action of type \'ADD\' against the store increments the state by 1.');
 		testResults[4].status = true;
 	} catch (err) {
 		console.log(err);
 		passed = false;
 		testResults[4].status = false;
+	}
+
+	// test 5:
+	try {
+		reduxCodeObject.store.dispatch({ type: 'SUBTRACT' });
+		assert.strictEqual(reduxCodeObject.store.getState(), 0, 'Dispatching an action of type \'SUBTRACT\' against the store decrements the state by 1.');
+		testResults[5].status = true;
+	} catch (err) {
+		console.log(err);
+		passed = false;
+		testResults[5].status = false;
 	}
 
 	return {

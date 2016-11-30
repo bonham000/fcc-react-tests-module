@@ -138,14 +138,14 @@ export default class ReduxTestComponent extends React.Component {
 					    			return (
 					    				<p className = 'test testSuccess' key = {idx}>
 					    					<i className="fa fa-check" aria-hidden="true"></i>
-					    					{test.success}
+					    					{test.condition}
 					    				</p>
 					    			)
 					    		} else {
 						    		return (
 						    			<p className = 'test testFailure' key = {idx}>
 					    					<i className="fa fa-times" aria-hidden="true"></i>
-					    					{test.failure}
+					    					{test.condition}
 					    				</p>
 						    		)
 						    	}

@@ -1,7 +1,10 @@
 import React from 'react'
-import expect from 'expect'
+import assert from 'assert'
 import { shallow } from 'enzyme'
 import { transform } from 'babel-standalone'
+
+// SET TO TRUE WHEN QA IS COMPLETE:
+export const QA = false;
 
 // -------------- define challenge title and challenge instructions --------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Use React to Render Nested Components.`
@@ -55,32 +58,27 @@ export const executeTests = (code) => {
 		{
 			test: 0,
 			status: false,
-			failure: 'Your JSX code could not be transpiled successfully.',
-			success: 'Your JSX code was transpiled successfully.'
+			condition: 'Your JSX code was transpiled successfully.'
 		},
 		{
 			test: 1,
 			status: false,
-			failure: 'The React component does not return a single <div> element.',
-			success: 'The React component returns a single <div> element.'
+			condition: 'The React component returns a single <div> element.'
 		},
 		{
 			test: 2,
 			status: false,
-			failure: 'The component does not return two nested components.',
-			success: 'The component does return two nested components.'
+			condition: 'The component does return two nested components.'
 		},
 		{
 			test: 3,
 			status: false,
-			failure: 'The first child of the component is not the <Account /> component.',
-			success: 'The first child of the component is the <Account /> component.'
+			condition: 'The first child of the component is the <Account /> component.'
 		},
 		{
 			test: 4,
 			status: false,
-			failure: 'The second child of the component is not the <UserList /> component.',
-			success: 'The second child of the component is not the <UserList /> component.'
+			condition: 'The second child of the component is not the <UserList /> component.'
 		}
 	]
 
@@ -104,7 +102,8 @@ export const executeTests = (code) => {
 
 	// test 1:
 	try {
-		expect(shallowRender.type()).toEqual('div');
+		//expect(shallowRender.type()).toEqual('div');
+		assert.strictEqual(shallowRender.type(), 'div', 'The React component returns a single <div> element.');
 		testResults[1].status = true;
 	} catch (err) {
 		console.log(err);
@@ -114,7 +113,8 @@ export const executeTests = (code) => {
 
 	//test 2:
 	try {
-		expect(shallowRender.children().length).toBe(2);
+		//expect(shallowRender.children().length).toBe(2);
+		assert.strictEqual(shallowRender.children().length, 2, 'The component does return two nested components.');
 		testResults[2].status = true;
 	} catch (err) {
 		console.log(err);
@@ -124,7 +124,8 @@ export const executeTests = (code) => {
 
 	// test 3:
 	try {
-		expect(shallowRender.find('div').childAt(0).name()).toEqual('Account');
+		//expect(shallowRender.find('div').childAt(0).name()).toEqual('Account');
+		assert.strictEqual(shallowRender.find('div').childAt(0).name(), 'Account', 'The first child of the component is the <Account /> component.');
 		testResults[3].status = true;
 	} catch (err) {
 		console.log(err);
@@ -134,7 +135,8 @@ export const executeTests = (code) => {
 
 	// test 4:
 	try {
-		expect(shallowRender.find('div').childAt(1).name()).toEqual('UserList');
+		//expect(shallowRender.find('div').childAt(1).name()).toEqual('UserList');
+		assert.strictEqual(shallowRender.find('div').childAt(1).name(), 'UserList', 'The second child of the component is not the <UserList /> component.');
 		testResults[4].status = true;
 	} catch (err) {
 		console.log(err);

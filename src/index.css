@@ -44,6 +44,21 @@ body {
 .default {
 	color: rgb(150,150,150);
 }
+.qa {
+	font-family: 'Muli', serif;
+	color: rgb(150,150,150);
+	font-size: 22px;
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+.qa-complete {
+	color: #25F56B;
+	font-weight: bold;
+}
+.qa-needed {
+	color: #FA3F3A;
+	font-weight: bold;
+}
 .challengeTitle {
 	font-size: 32px;
 	margin: 15px auto;

@@ -1,5 +1,8 @@
-import expect from 'expect'
+import assert from 'assert'
 import { transform } from 'babel-standalone'
+
+// SET TO TRUE WHEN QA IS COMPLETE:
+export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Create a Redux Store`
@@ -82,7 +85,7 @@ export const executeTests = (code) => {
 	
 	// test 1:
 	try {
-		expect(store.getState()).toEqual(5);
+
 		testResults[1].status = true;
 	} catch (err) {
 		console.log(err);
@@ -92,7 +95,7 @@ export const executeTests = (code) => {
 
 	// test 2:
 	try {
-		expect();
+
 		testResults[2].status = true;
 	} catch (err) {
 		console.log(err);
@@ -102,7 +105,7 @@ export const executeTests = (code) => {
 
 	// test 3:
 	try {
-		expect();
+
 		testResults[3].status = true;
 	} catch (err) {
 		console.log(err);

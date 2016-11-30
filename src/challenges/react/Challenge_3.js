@@ -1,7 +1,10 @@
 import React from 'react'
-import expect from 'expect'
+import assert from 'assert'
 import { shallow } from 'enzyme'
 import { transform } from 'babel-standalone'
+
+// SET TO TRUE WHEN QA IS COMPLETE:
+export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Modify an Unordered List`
@@ -61,26 +64,22 @@ export const executeTests = (code) => {
 		{
 			test: 0,
 			status: false,
-			failure: 'Your JSX code could not be transpiled successfully.',
-			success: 'Your JSX code was transpiled successfully.'
+			condition: 'Your JSX code was transpiled successfully.'
 		},
 		{
 			test: 1,
 			status: false,
-			failure: 'The React component does not return a <div> element.',
-			success: 'The React component returns a <div> element.'
+			condition: 'The React component returns a <div> element.'
 		},
 		{
 			test: 2,
 			status: false,
-			failure: 'The component does not return an unordered list with four items.',
-			success: 'The component returns an unordered list with four items.'
+			condition: 'The component returns an unordered list with four items.'
 		},
 		{
 			test: 3,
 			status: false,
-			failure: 'The 4th list item does not contain the text "Coffee".',
-			success: 'The 4th list item contains the text "Coffee".'
+			condition: 'The 4th list item contains the text "Coffee".'
 		}
 	]
 	
@@ -104,7 +103,7 @@ export const executeTests = (code) => {
 
 	// test 1:
 	try {
-		expect(shallowRender.type()).toEqual('div');
+		assert.strictEqual(shallowRender.type(), 'div', 'The React component returns a <div> element.');
 		testResults[1].status = true;
 	} catch (err) {
 		console.log(err);
@@ -114,7 +113,7 @@ export const executeTests = (code) => {
 
 	// test 2:
 	try {
-		expect(shallowRender.find('ul').children().length).toEqual(4);
+		assert.strictEqual(shallowRender.find('ul').children().length, 4, 'The component returns an unordered list with four items.');
 		testResults[2].status = true;
 	} catch (err) {
 		console.log(err);
@@ -124,7 +123,7 @@ export const executeTests = (code) => {
 
 	// test 3:
 	try {
-		expect(shallowRender.find('ul').childAt(3).text()).toEqual('Coffee');
+		assert.strictEqual(shallowRender.find('ul').childAt(3).text(), 'Coffee', 'The 4th list item contains the text "Coffee".');
 		testResults[3].status = true;
 	} catch (err) {
 		console.log(err);

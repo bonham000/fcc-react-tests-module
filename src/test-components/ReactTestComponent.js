@@ -114,6 +114,10 @@ export default class Component extends React.Component {
     		<div className = 'instructionsContainer'>
 					<h1 className = 'challengeTitle' dangerouslySetInnerHTML = {renderTitle()} />
 					<p className = 'instructions' dangerouslySetInnerHTML = {renderInstructions()} />
+					<p className = 'qa'>QA status: {this.props.QA ?
+						<span className = 'qa-complete'>Review Complete</span> :
+						<span className = 'qa-needed'>Needs Review</span>}
+					</p>
     		</div>
 
     		<div className = 'outputContainer'>
@@ -144,14 +148,14 @@ export default class Component extends React.Component {
 					    			return (
 					    				<p className = 'test testSuccess' key = {idx}>
 					    					<i className="fa fa-check" aria-hidden="true"></i>
-					    					{test.success}
+					    					{test.condition}
 					    				</p>
 					    			)
 					    		} else {
 						    		return (
 						    			<p className = 'test testFailure' key = {idx}>
 					    					<i className="fa fa-times" aria-hidden="true"></i>
-					    					{test.failure}
+					    					{test.condition}
 					    				</p>
 						    		)
 						    	}

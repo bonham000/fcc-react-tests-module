@@ -1,7 +1,10 @@
 import React from 'react'
-import expect from 'expect'
+import assert from 'assert'
 import { shallow } from 'enzyme'
 import { transform } from 'babel-standalone'
+
+// SET TO TRUE WHEN QA IS COMPLETE:
+export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>_ADD_YOUR_TITLE_HERE_`
@@ -80,7 +83,7 @@ export const executeTests = (code) => {
 	// you can also use mount to perform a full render to the DOM environment
 	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
 	try {
-		testRender = shallow(React.createElement(eval(es51)));
+		testRender = shallow(React.createElement(eval(es5)));
 	} catch (err) {
 		console.log(err);
 		passed = false;
@@ -91,7 +94,7 @@ export const executeTests = (code) => {
 
 	// test 1:
 	try {
-		expect();
+
 		testResults[1].status = true;
 	} catch (err) {
 		console.log(err);
@@ -101,7 +104,7 @@ export const executeTests = (code) => {
 
 	// test 2:
 	try {
-		expect();
+
 		testResults[2].status = true;
 	} catch (err) {
 		console.log(err);
@@ -111,7 +114,7 @@ export const executeTests = (code) => {
 
 	// test 3:
 	try {
-		expect();
+
 		testResults[3].status = true;
 	} catch (err) {
 		console.log(err);

@@ -1,7 +1,10 @@
 import React from 'react'
-import expect from 'expect'
+import assert from 'assert'
 import { shallow, mount } from 'enzyme'
 import { transform } from 'babel-standalone'
+
+// SET TO TRUE WHEN QA IS COMPLETE:
+export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Create a Component with State`
@@ -76,26 +79,22 @@ export const executeTests = (code) => {
 		{
 			test: 0,
 			status: false,
-			failure: 'Your JSX code could not be transpiled successfully.',
-			success: 'Your JSX code was transpiled successfully.'
+			condition: 'Your JSX code was transpiled successfully.'
 		},
 		{
 			test: 1,
 			status: false,
-			failure: 'The component does not have a key "name" with value "Free Code Camp" stored in its state.',
-			success: 'The component has a key "name" with value "Free Code Camp" stored in its state'
+			condition: 'The component has a key "name" with value "Free Code Camp" stored in its state'
 		},
 		{
 			test: 2,
 			status: false,
-			failure: 'The component does not render an h1 tag',
-			success: 'The component does render an h1 tag'
+			condition: 'The component does render an h1 tag'
 		},
 		{
 			test: 3,
 			status: false,
-			failure: 'The rendered h1 tag does not contain text rendered from the component\'s state',
-			success: 'The rendered h1 tag contains text rendered from the component\'s state'
+			condition: 'The rendered h1 tag contains text rendered from the component\'s state'
 		}
 	]
 	
@@ -119,7 +118,7 @@ export const executeTests = (code) => {
 
 	// test 1:
 	try {
-		expect(mountedComponent.state('name')).toEqual('Free Code Camp');;
+		assert.strictEqual(mountedComponent.state('name'), 'Free Code Camp', 'The component has a key "name" with value "Free Code Camp" stored in its state');
 		testResults[1].status = true;
 	} catch (err) {
 		console.log(err);
@@ -129,7 +128,7 @@ export const executeTests = (code) => {
 
 	// test 2:
 	try {
-		expect(mountedComponent.children().type()).toEqual('h1')
+		assert.strictEqual(mountedComponent.children().type(), 'h1', 'The component does render an h1 tag');
 		testResults[2].status = true;
 	} catch (err) {
 		console.log(err);
@@ -140,7 +139,7 @@ export const executeTests = (code) => {
 	// test 3:
 	try {
 		mountedComponent.setState({name: 'TestName'});
-		expect(mountedComponent.contains(<h1>TestName</h1>)).toEqual(true);
+		assert.strictEqual(mountedComponent.contains(<h1>TestName</h1>), true, 'The rendered h1 tag contains text rendered from the component\'s state');
 		testResults[3].status = true;
 	} catch (err) {
 		console.log(err);

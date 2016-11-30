@@ -1,5 +1,8 @@
-import expect from 'expect'
+import assert from 'assert'
 import { transform } from 'babel-standalone'
+
+// SET TO TRUE WHEN QA IS COMPLETE:
+export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Create a Redux Store`
@@ -30,20 +33,17 @@ export const executeTests = (code) => {
 		{
 			test: 0,
 			status: false,
-			failure: 'Your code could not be transpiled successfully.',
-			success: 'Your code was transpiled successfully.'
+			condition: 'Your code was transpiled successfully.'
 		},
 		{
 			test: 1,
 			status: false,
-			failure: 'The redux store does not exist.',
-			success: 'The redux store exists.'
+			condition: 'The redux store exists.'
 		},
 		{
 			test: 2,
 			status: false,
-			failure: 'The redux store does not have a value of 5 for the state.',
-			success: 'The redux store has a value of 5 for the state.'
+			condition: 'The redux store has a value of 5 for the state.'
 		}
 	]
 
@@ -73,7 +73,8 @@ export const executeTests = (code) => {
 
 	// test 1:
 	try {
-		expect(typeof store.getState).toBe('function');
+		//expect(typeof store.getState).toBe('function');
+		assert.strictEqual(typeof store.getState, 'function', 'The redux store exists.');
 		testResults[1].status = true;
 	} catch (err) {
 		console.log(err);
@@ -83,7 +84,8 @@ export const executeTests = (code) => {
 
 	// test 2:
 	try {
-		expect(store.getState()).toEqual(5);
+		//expect(store.getState()).toEqual(5);
+		assert.strictEqual(store.getState(), 5, 'The redux store has a value of 5 for the state.');
 		testResults[2].status = true;
 	} catch (err) {
 		console.log(err);
