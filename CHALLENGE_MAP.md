@@ -21,7 +21,6 @@
   - :pencil: 9: Create a new element with composition
   - :pencil: 10: Render nested components with composition
   - :pencil: 11: Compose React Components
-  
   - :pencil2: 12: [Render a class component to the DOM](https://github.com/FreeCodeCamp/CurriculumExpansion/issues/2#issuecomment-238180483) (Peter)
 
 - **Props & Conditional Rendering**
@@ -40,7 +39,7 @@
   - OnChange handlers: controlled input box
   - Passing methods as props
 
-- **Component Lifecycle Hooks?**
+- **Component Lifecycle Hooks**
   - Conditionally render elements from a component
   - componentWillMount
   - Ajax data with componentDidMount
