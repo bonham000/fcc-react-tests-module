@@ -25,15 +25,15 @@ import * as React_11 from './challenges/react/curriculum/React_11'
 
 // add a new challenge to this array:
 const challenges = [
-  { type: 'React', id: 'React_1'},
-  { type: 'React', id: 'React_2'},
-  { type: 'React', id: 'React_3'},
-  { type: 'React', id: 'React_4'},
-  { type: 'React', id: 'React_5'},
-  { type: 'React', id: 'React_6'},
-  { type: 'React', id: 'React_7'},
-  { type: 'React', id: 'React_8'},
-  { type: 'React', id: 'React_9'},
+  { type: 'React', id: 'React_01'},
+  { type: 'React', id: 'React_02'},
+  { type: 'React', id: 'React_03'},
+  { type: 'React', id: 'React_04'},
+  { type: 'React', id: 'React_05'},
+  { type: 'React', id: 'React_06'},
+  { type: 'React', id: 'React_07'},
+  { type: 'React', id: 'React_08'},
+  { type: 'React', id: 'React_09'},
   { type: 'React', id: 'React_10'},
   { type: 'React', id: 'React_11'}
 ];
@@ -46,7 +46,7 @@ export default class App extends React.Component {
       challenges,
       selectedChallenge: {
         type: 'React',
-        id: 'React_1'
+        id: 'React_01'
       }
     }
     this.select = this.select.bind(this);
