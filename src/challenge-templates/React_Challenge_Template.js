@@ -9,6 +9,9 @@ export const QA = false;
 // ---------------------------- define challenge title ----------------------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>_ADD_YOUR_TITLE_HERE_`
 
+// ---------------------------- challenge text ----------------------------
+export const challengeText = `<span class = 'default'>Intro: </span>Challenge Text`
+
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>_ADD_YOUR_INSTRUCTIONS_HERE_`
 

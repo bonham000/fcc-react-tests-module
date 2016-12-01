@@ -8,32 +8,32 @@
 
 ###React Challenges:###
 
-- [X] **JSX**
-  - [X] Create a simple JSX element
-  - [X] Add Comments in JSX
+- [X] **JSX and simple rendering**
+  - [X] 1: Create a simple JSX element :pencil:
+  - [X] 2: Render more complex JSX :pencil:
+  - [X] 3: Add Comments in JSX (*may need to revise test for comment*) :pencil:
+  - [X] 4: Render an HTML element to the DOM from JSX :pencil:
+- [ ] **Introducing React/Components**
+  - [X] Create a simple functional component that renders HTML
+  - [X] Render this simple component to the DOM
+  - [X] Create a component with ES6 class syntax
   - [X] Add a CSS class with the className property
   - [ ] Add inline styles
-  - [ ] Create Nested HTML
-  - [X] Create an element using React.createElement (do we need to keep this?)
+  - [ ] Create Nested HTML (just more complex HTML from a component)
   - [X] Create a new element with composition
-- [X] **Rendering**
-  - [X] Render an HTML element to the DOM
-  - [X] Render a component to the DOM
-- [x] **Components**
-  - [x] Create a functional component
-  - [x] Create a component using the class syntax
-  - [x] Render a pair of divs from a component
+  - [ ] Render a class component to the DOM
 - [ ] **Props**
   - [X] Pass a string to a component using JSX
   - [X] Access props using `this.props`
   - [ ] Pass an array to a component using JSX
-  - [ ] Pass an array to a component using React.createElement
   - [ ] Set the default props using the defaultProps static component property
-  - [ ] Define your components shape with propTypes
-- [x] **State**
-  - [x] Define the initial state within the component's constructor
-    - [x] Display state with `this.state`
-  - [x] Update state with `setState`
+  - [ ] Define your component's shape with propTypes
+  - [ ] Pass props to a child component from a parent
+- [ ] **State**
+  - [X] Define the initial state within the component's constructor
+  - [X] Display state with `this.state`
+  - [ ] Render conditionally based on values in component state
+  - [X] Update state with `setState`
 - [ ] **Component Lifecycle Hooks?**
   - [ ] Conditionally render elements from a component
   - [ ] componentWillMount
@@ -89,6 +89,9 @@
   - [X] Passing down `onChange
   - [X] Passing down a list 
   - [ ] Validate `props` with `React.PropTypes`
+
+#the above are more specific to React ^^^#
+
 - [ ] **Creating Actions**
   - [ ] Create a JS module for `actions`
   - [ ] Create `addGrocery` action

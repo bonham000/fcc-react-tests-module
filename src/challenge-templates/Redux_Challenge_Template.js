@@ -7,6 +7,9 @@ export const QA = false;
 // ---------------------------- define challenge title ----------------------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Create a Redux Store`
 
+// ---------------------------- challenge text ----------------------------
+export const challengeText = `<span class = 'default'>Intro: </span>Challenge Text`
+
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>Create a redux store with the Redux method
 createStore() and initalize its state to be 5.`

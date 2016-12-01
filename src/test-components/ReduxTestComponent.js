@@ -77,6 +77,7 @@ export default class ReduxTestComponent extends React.Component {
 	    } 
     };
     const renderTitle = () => { return { __html: this.props.challengeTitle }}
+    const renderText = () => { return { __html: this.props.challengeText }}
     const renderInstructions = () => { return { __html: this.props.challengeInstructions }}
     const { testResults } = this.state;
     
@@ -107,6 +108,7 @@ export default class ReduxTestComponent extends React.Component {
 
     		<div className = 'instructionsContainer'>
 					<h1 className = 'challengeTitle' dangerouslySetInnerHTML = {renderTitle()} />
+					<p className = 'challengeText' dangerouslySetInnerHTML = {renderText()} />
 					<p className = 'instructions' dangerouslySetInnerHTML = {renderInstructions()} />
     		</div>
 

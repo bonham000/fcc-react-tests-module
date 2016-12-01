@@ -83,6 +83,7 @@ export default class Component extends React.Component {
 	    }
     };
     const renderTitle = () => { return { __html: this.props.challengeTitle }}
+    const renderText = () => { return { __html: this.props.challengeText }}
     const renderInstructions = () => { return { __html: this.props.challengeInstructions }}
     const { testResults } = this.state;
     
@@ -113,6 +114,7 @@ export default class Component extends React.Component {
 
     		<div className = 'instructionsContainer'>
 					<h1 className = 'challengeTitle' dangerouslySetInnerHTML = {renderTitle()} />
+					<p className = 'challengeText' dangerouslySetInnerHTML = {renderText()} />
 					<p className = 'instructions' dangerouslySetInnerHTML = {renderInstructions()} />
 					<p className = 'qa'>QA status: {this.props.QA ?
 						<span className = 'qa-complete'>Review Complete</span> :
@@ -182,6 +184,8 @@ export default class Component extends React.Component {
 		    <div>
 		    	<p className = 'referenceLink'>- This project is using <a target = "_blank" href="http://airbnb.io/enzyme/index.html">Enzyme</a> to test React Components live in a browser | <a target = "_blank" href="https://github.com/bonham000/fcc-react-tests-module">View the code on GitHub</a></p>
 		    </div>
+
+		    <div id = 'challenge-node' style = {{ display: 'none' }}></div>
 
     	</div>
     );

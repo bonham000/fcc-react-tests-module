@@ -7,6 +7,8 @@ export const QA = false;
 // ---------------------------- define challenge title ----------------------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Create a Counter with Redux`
 
+export const challengeText = `<span class = 'default'>Intro: </span>Challenge Text`
+
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>Create a simple counter
 tool using Redux. The counter should begin with an initial state of 0 and you should be able to increment

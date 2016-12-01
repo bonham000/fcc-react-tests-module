@@ -9,6 +9,8 @@ export const QA = false;
 // ---------------------------- define challenge title ----------------------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Create a Component with State`
 
+export const challengeText = `<span class = 'default'>Intro: </span>Challenge Text`
+
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>This component has a constructor defined already.
 The constructor is where you can define the state for a component. State is basically a way of keeping tracking of any data that

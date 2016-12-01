@@ -10,13 +10,15 @@
 
 To contribute a new challenge find a challenge that needs to be written from the CHALLENGE_MAP and use the appropriate template challenge in the `src/challenge-templates` directory and then import it in `src/App.js`, changing the `#` to the appropriate challenge `#`:
 
+**The challenges for the actual curriculum are being saved in the `challenges/react/curriculum` path and `challenges/redux/curriculum` for redux.
+
 ###Add an Import for your Challenge:###
 
 ```javascript
 import { * as React_# } from './challenges/react/<YOUR_CHALLENGE_NAME>'
 ```
 
-To import a redux challenge use the redux template, save you challenge in the `./challenges/redux/` path, and import it like above. After importing the challenge add it to the `challenges` array in `src/App.js` following the pattern of the other challenges.
+To import a redux challenge use the redux template, save your challenge in the `./challenges/redux/curriculum` path, and import it like above. After importing the challenge add it to the `challenges` array in `src/App.js` following the pattern of the other challenges.
 
 Now run `npm start` and try out your challenge in the browser window that opens up. All of challenge information is passed as props into the `TestComponent`. Once it's running you can then edit your code, run your tests, and load the solution code to verify everything is working properly. Once you have your challenge written and appropriate tests running, submit a pull request to have it added.
 

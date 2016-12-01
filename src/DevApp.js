@@ -1,3 +1,6 @@
+
+// you can use this component to quickly test one component challenge at a time
+
 import React from 'react';
 import ReactTestComponent from './test-components/ReactTestComponent'
 import ReduxTestComponent from './test-components/ReduxTestComponent'
@@ -10,18 +13,10 @@ import ReduxTestComponent from './test-components/ReduxTestComponent'
 // And change the App component to render the correct test component
 
 // import React Challenges:
-import * as React_1 from './challenges/react/curriculum/React_1'
-import * as React_2 from './challenges/react/curriculum/React_2'
-import * as React_3 from './challenges/react/curriculum/React_3'
-import * as React_4 from './challenges/react/curriculum/React_4'
+import * as React_1 from './challenges/react/curriculum/React_4'
 
 // add a new challenge to this array:
-const challenges = [
-  { type: 'React', id: 'React_1'},
-  { type: 'React', id: 'React_2'},
-  { type: 'React', id: 'React_3'},
-  { type: 'React', id: 'React_4'}
-];
+const challenges = [ { type: 'React', id: 'React_1'} ];
 
 // Change the nested component to React or Redux for which you are testing
 export default class App extends React.Component {
@@ -29,10 +24,7 @@ export default class App extends React.Component {
 		super(props);
     this.state = {
       challenges,
-      selectedChallenge: {
-        type: 'React',
-        id: 'React_1'
-      }
+      selectedChallenge: { type: 'React', id: 'React_1' }
     }
     this.select = this.select.bind(this);
 	}

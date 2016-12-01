@@ -6,20 +6,29 @@ import { transform } from 'babel-standalone'
 // SET TO TRUE WHEN QA IS COMPLETE:
 export const QA = false;
 
-// -------------- define challenge title and challenge instructions --------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Use React to Render an h1 Tag`
-export const challengeInstructions = `
-	<span class = 'default'>Instructions: </span>This React Component returns an empty <code>div</code> element at the moment.
-	Modify it to return an <code>h1</code> tag within the <code>div</code> element which includes the text 'Hello React!'
-`
+// ---------------------------- define challenge title ----------------------------
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Modify an Unordered List`
+
+export const challengeText = `<span class = 'default'>Intro: </span>Challenge Text`
+
+// ---------------------------- challenge instructions ----------------------------
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>This React Component returns a <code>ul</code> of
+items. Add a listitem <code>li</code> containing the text "Coffee".`
+
 // ---------------------------- define challenge seed code ----------------------------
-export const seedCode = `
-export default class MyComponent extends React.Component {
+export const seedCode =
+`export default class MyComponent extends React.Component {
   render() {
     return (
 	    // change code below this line
 	    <div>
-
+	    	<h1 style = {{ color: 'blue' }}>This is a React Component</h1>
+	    	<p>It renders a list of items:</p>
+	    	<ul>
+	    		<li>Eggs</li>
+	    		<li>Bread</li>
+	    		<li>Milk</li>
+	    	</ul>
 	    </div>
 	    // change code above this line
     );
@@ -27,13 +36,20 @@ export default class MyComponent extends React.Component {
 };`
 
 // ---------------------------- define challenge solution code ----------------------------
-export const solutionCode = `
-export default class MyComponent extends React.Component {
+export const solutionCode =
+`export default class MyComponent extends React.Component {
   render() {
     return (
 	    // change code below this line
 	    <div>
-	    	<h1>Hello React!</h1>
+	    	<h1 style = {{ color: 'blue' }}>This is a React Component</h1>
+	    	<p>It renders a list of items:</p>
+	    	<ul>
+	    		<li>Eggs</li>
+	    		<li>Bread</li>
+	    		<li>Milk</li>
+	    		<li>Coffee</li>
+	    	</ul>
 	    </div>
 	    // change code above this line
     );
@@ -60,12 +76,12 @@ export const executeTests = (code) => {
 		{
 			test: 2,
 			status: false,
-			condition: 'There is a <h1> tag rendered within the returned <div>.'
+			condition: 'The component returns an unordered list with four items.'
 		},
 		{
 			test: 3,
 			status: false,
-			condition: 'The <h1> tag includes the text \'Hello React!\''
+			condition: 'The 4th list item contains the text "Coffee".'
 		}
 	]
 	
@@ -99,7 +115,7 @@ export const executeTests = (code) => {
 
 	// test 2:
 	try {
-		assert.strictEqual(shallowRender.children().type(), 'h1', 'There is a <h1> tag rendered within the returned <div>.');
+		assert.strictEqual(shallowRender.find('ul').children().length, 4, 'The component returns an unordered list with four items.');
 		testResults[2].status = true;
 	} catch (err) {
 		console.log(err);
@@ -109,17 +125,17 @@ export const executeTests = (code) => {
 
 	// test 3:
 	try {
-		assert.strictEqual(shallowRender.contains(<h1>Hello React!</h1>), true, 'The <h1> tag includes the text \'Hello React!\'');
+		assert.strictEqual(shallowRender.find('ul').childAt(3).text(), 'Coffee', 'The 4th list item contains the text "Coffee".');
 		testResults[3].status = true;
 	} catch (err) {
 		console.log(err);
 		passed = false;
-		testResults[3].status = false;
+		testResults[3].status = false;		
 	}
 
 	return {
 		passed,
-		testResults,
+		testResults
 	}
 	
 }

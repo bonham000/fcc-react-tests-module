@@ -7,11 +7,11 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // -------------- define challenge title and challenge instructions --------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Use React to Render Nested Components.`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Use React to Render an h1 Tag`
+export const challengeText = `<span class = 'default'>Intro: </span>Challenge Text`
 export const challengeInstructions = `
 	<span class = 'default'>Instructions: </span>This React Component returns an empty <code>div</code> element at the moment.
-	 Render two additional components inside this <code>div</code>. We've provided an <code>Account</code> and <code>UserList</code> component for you.
-	 You can include these directly within the React Component's render method.
+	Modify it to return an <code>h1</code> tag within the <code>div</code> element which includes the text 'Hello React!'
 `
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = `
@@ -20,6 +20,7 @@ export default class MyComponent extends React.Component {
     return (
 	    // change code below this line
 	    <div>
+
 	    </div>
 	    // change code above this line
     );
@@ -33,8 +34,7 @@ export default class MyComponent extends React.Component {
     return (
 	    // change code below this line
 	    <div>
-	    	<Account />
-	    	<UserList />
+	    	<h1>Hello React!</h1>
 	    </div>
 	    // change code above this line
     );
@@ -44,13 +44,6 @@ export default class MyComponent extends React.Component {
 // ---------------------------- define challenge tests ----------------------------
 
 export const executeTests = (code) => {
-
-	const prependedCode = `
-	const Account = () => <div></div>
-	const UserList = () => <div></div>`
-
-	// provide Account and UserList to code:
-	const input = prependedCode.concat(code);
 
 	let es5, mockedComponent, shallowRender, passed = true;
 
@@ -63,28 +56,23 @@ export const executeTests = (code) => {
 		{
 			test: 1,
 			status: false,
-			condition: 'The React component returns a single <div> element.'
+			condition: 'The React component returns a <div> element.'
 		},
 		{
 			test: 2,
 			status: false,
-			condition: 'The component does return two nested components.'
+			condition: 'There is a <h1> tag rendered within the returned <div>.'
 		},
 		{
 			test: 3,
 			status: false,
-			condition: 'The first child of the component is the <Account /> component.'
-		},
-		{
-			test: 4,
-			status: false,
-			condition: 'The second child of the component is not the <UserList /> component.'
+			condition: 'The <h1> tag includes the text \'Hello React!\''
 		}
 	]
-
+	
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
-		es5 = transform(input, { presets: [ 'es2015', 'react' ] }).code;
+		es5 = transform(code, { presets: [ 'es2015', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
 		console.log(err);
@@ -94,7 +82,7 @@ export const executeTests = (code) => {
 	
 	// shallow render the component with Enzyme
 	try {
-		shallowRender = shallow(React.createElement(eval(es5)));
+		shallowRender = shallow(React.createElement(eval(es5)))
 	} catch (err) {
 		console.log(err);
 		passed = false;
@@ -102,8 +90,7 @@ export const executeTests = (code) => {
 
 	// test 1:
 	try {
-		//expect(shallowRender.type()).toEqual('div');
-		assert.strictEqual(shallowRender.type(), 'div', 'The React component returns a single <div> element.');
+		assert.strictEqual(shallowRender.type(), 'div', 'The React component returns a <div> element.');
 		testResults[1].status = true;
 	} catch (err) {
 		console.log(err);
@@ -111,42 +98,29 @@ export const executeTests = (code) => {
 		testResults[1].status = false;
 	}
 
-	//test 2:
+	// test 2:
 	try {
-		//expect(shallowRender.children().length).toBe(2);
-		assert.strictEqual(shallowRender.children().length, 2, 'The component does return two nested components.');
+		assert.strictEqual(shallowRender.children().type(), 'h1', 'There is a <h1> tag rendered within the returned <div>.');
 		testResults[2].status = true;
 	} catch (err) {
 		console.log(err);
 		passed = false;
-		testResults[2].status = false;
+		testResults[2].status = false;		
 	}
 
 	// test 3:
 	try {
-		//expect(shallowRender.find('div').childAt(0).name()).toEqual('Account');
-		assert.strictEqual(shallowRender.find('div').childAt(0).name(), 'Account', 'The first child of the component is the <Account /> component.');
+		assert.strictEqual(shallowRender.contains(<h1>Hello React!</h1>), true, 'The <h1> tag includes the text \'Hello React!\'');
 		testResults[3].status = true;
 	} catch (err) {
 		console.log(err);
 		passed = false;
-		testResults[3].status = false;		
-	}
-
-	// test 4:
-	try {
-		//expect(shallowRender.find('div').childAt(1).name()).toEqual('UserList');
-		assert.strictEqual(shallowRender.find('div').childAt(1).name(), 'UserList', 'The second child of the component is not the <UserList /> component.');
-		testResults[4].status = true;
-	} catch (err) {
-		console.log(err);
-		passed = false;
-		testResults[4].status = false;		
+		testResults[3].status = false;
 	}
 
 	return {
 		passed,
-		testResults
+		testResults,
 	}
 	
 }
