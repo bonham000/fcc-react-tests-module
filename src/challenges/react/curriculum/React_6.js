@@ -3,38 +3,26 @@ import assert from 'assert'
 import { shallow } from 'enzyme'
 import { transform } from 'babel-standalone'
 
-// snippet for defining HTML: <code>&#60;div /&#62</code>
-
 // SET TO TRUE WHEN QA IS COMPLETE:
 export const QA = false;
 
 // -------------- define challenge title and challenge instructions --------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Add Comments in JSX`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Define a Self-Closing JSX Tag`
 export const challengeText = `<span class = 'default'>Intro: </span>
-JSX is a syntax, that gets compiled to JS. But it is a syntax nonetheless.
-Sometimes, for readability, we might need to add comments to our code.<br><br>
+Now let's learn about another difference in JSX. JSX allows you to write self-closing HTML tags for elements that have no children.
+For example, if you have a <code>div</code> element with no children you could simply declare <code>&#60;div /&#62</code>.<br><br>
 
-We can put comments inside JSX using the syntax {/* */} to wrap around the comment text.`
+This is a small distinction but will come in handy when defining child components within React, and has other uses as well.`
 
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>
-We've provided a JSX element similiar to what you just wrote. Add a comment after the <code>h1</code>.`
+Modify the JSX code that returns a <code>div</code> to instead return a <code>div</code> with a self-closing tag.`
 
 // ---------------------------- define challenge seed code ----------------------------
-export const seedCode = 
-`const JSX = (
-<div>
-	<h1>This is a block of JSX</h1>
-	<p>Here's a subtitle</p>
-</div>);`
+export const seedCode =
+`const JSX = <div></div>;`
 
 // ---------------------------- define challenge solution code ----------------------------
-export const solutionCode =
-`const JSX = (
-<div>
-	<h1>This is a block of JSX</h1>
-	{ /* this is a JSX comment */ }
-	<p>Here's a subtitle</p>
-</div>);`
+export const solutionCode = `const JSX = <div />;`
 
 // ---------------------------- define challenge tests ----------------------------
 
@@ -56,17 +44,7 @@ export const executeTests = (code) => {
 		{
 			test: 2,
 			status: false,
-			condition: 'The div contains an h1 tag as the second element.'
-		},
-		{
-			test: 3,
-			status: false,
-			condition: 'The div contains an p tag as the second element.'
-		},
-		{
-			test: 4,
-			status: false,
-			condition: 'The JSX includes a comment.'
+			condition: 'The div is written with a self-closing tag.'
 		}
 	];
 
@@ -102,35 +80,18 @@ export const executeTests = (code) => {
 		testResults[1].status = false;
 	}
 
+	console.log(modifiedCode)
+	console.log(modifiedCode.includes('div /'))
+
 	// test 2:
 	try {
-		assert.strictEqual(jsx.props.children[0].type, 'h1', 'The div contains an h1 tag as the first element.');
+		assert.strictEqual(modifiedCode.includes('<div />'), true, 'The div is written with a self-closing tag.');
 		testResults[2].status = true;
 	} catch (err) {
 		console.log(err);
 		passed = false;
 		testResults[2].status = false;
 	}
-
-	// test 3:
-	try {
-		assert.strictEqual(jsx.props.children[1].type, 'p', 'The div contains an p tag as the second element.');
-		testResults[3].status = true;
-	} catch (err) {
-		console.log(err);
-		passed = false;
-		testResults[3].status = false;
-	}
-
-	// test 4:
-	try {
-		assert.strictEqual(modifiedCode.includes('/*'), true, 'The JSX includes a comment.');
-		testResults[4].status = true;
-	} catch (err) {
-		console.log(err);
-		passed = false;
-		testResults[4].status = false;
-	}	
 
 	return {
 		passed,

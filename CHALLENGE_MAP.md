@@ -14,19 +14,18 @@
   - :pencil: 3: Add Comments in JSX (*may need to revise test for comment*)
   - :pencil: 4: Render an HTML element to the DOM from JSX
   - :pencil: 5: Add HTML classes to JSX elements with className
-  - :pencil2: 6: Learn about self-closing JSX tags
+  - :pencil: 6: Learn about self-closing JSX tags
 - **Introducing React/Components**
-  - Create a simple functional component that renders HTML
+  - :pencil: 7: Create a simple functional component that renders HTML
   - Render this simple component to the DOM
-  - Create a component with ES6 class syntax
-  - Add a CSS class with the className property
-  - Add inline styles
-  - Create Nested HTML (just more complex HTML from a component)
+  - :pencil: 9: Create a component with ES6 class syntax
   - Create a new element with composition
+  - Render nested components with composition
+  - Add inline styles in React
   - Render a class component to the DOM
 - **Props**
-  - Pass a string to a component using JSX
-  - Access props using `this.props`
+  - Pass a string to a component using JSX functional component
+  - Access props using `this.props`, passing a string to a React Component
   - Pass an array to a component using JSX
   - Set the default props using the defaultProps static component property
   - Define your component's shape with propTypes

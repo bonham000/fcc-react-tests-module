@@ -13,7 +13,7 @@ import ReduxTestComponent from './test-components/ReduxTestComponent'
 // And change the App component to render the correct test component
 
 // import React Challenges:
-import * as React_1 from './challenges/react/curriculum/React_5'
+import * as React_1 from './challenges/react/curriculum/React_9'
 
 // add a new challenge to this array:
 const challenges = [ { type: 'React', id: 'React_1'} ];

@@ -3,27 +3,32 @@ import assert from 'assert'
 import { shallow } from 'enzyme'
 import { transform } from 'babel-standalone'
 
-// snippet for defining HTML: <code>&#60;div /&#62</code>
-
 // SET TO TRUE WHEN QA IS COMPLETE:
 export const QA = false;
 
-// ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>_ADD_YOUR_TITLE_HERE_`
+// -------------- define challenge title and challenge instructions --------------
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Create a Component with React`
 
-// ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>Challenge Text`
+export const challengeText = `<span class = 'default'>Intro: </span>Now let's use React to create a component. With ES6 we define
+a component in React with the class syntax, where our component extends <code>React.Component</code>, for example
+<code>class MyComponent extends React.Component</code>.<br><br>
 
-// ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>_ADD_YOUR_INSTRUCTIONS_HERE_`
+Creating a React Component like this gives our component access to React's <code>state</code> and <code>lifecycle hooks</code>. As we will see
+these tools provide special advantages when working with React. For now, let's just try to render our first React Component.`
 
+export const challengeInstructions = `
+	<span class = 'default'>Instructions: </span>This React Component has a <code>render</code> method which is returning nothing at the moment.
+	Modify it to return a <code>div</code> element which includes the text 'Hello React! within a <code>h1</code> tag.'
+`
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = `
 export default class MyComponent extends React.Component {
   render() {
     return (
 	    // change code below this line
-	    
+
+
+
 	    // change code above this line
     );
   }
@@ -35,7 +40,9 @@ export default class MyComponent extends React.Component {
   render() {
     return (
 	    // change code below this line
-	    
+	    <div>
+	    	<h1>Hello React!</h1>
+	    </div>
 	    // change code above this line
     );
   }
@@ -44,6 +51,8 @@ export default class MyComponent extends React.Component {
 // ---------------------------- define challenge tests ----------------------------
 
 export const executeTests = (code) => {
+
+	let es5, mockedComponent, shallowRender, passed = true;
 
 	let testResults = [
 		{
@@ -54,21 +63,19 @@ export const executeTests = (code) => {
 		{
 			test: 1,
 			status: false,
-			condition: ''
+			condition: 'The React component returns a <div> element.'
 		},
 		{
 			test: 2,
 			status: false,
-			condition: ''
+			condition: 'There is a <h1> tag rendered within the returned <div>.'
 		},
 		{
 			test: 3,
 			status: false,
-			condition: ''
+			condition: 'The <h1> tag includes the text \'Hello React!\''
 		}
-	];
-
-	let es5, mockedComponent, testRender, passed = true;
+	]
 	
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
@@ -80,22 +87,17 @@ export const executeTests = (code) => {
 		testResults[0].status = false;
 	}
 	
-	// now we will try to shallow render the component with Enzyme's shallow method
-	// you can also use mount to perform a full render to the DOM environment
-	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
+	// shallow render the component with Enzyme
 	try {
-		testRender = shallow(React.createElement(eval(es5)));
+		shallowRender = shallow(React.createElement(eval(es5)))
 	} catch (err) {
 		console.log(err);
 		passed = false;
 	}
 
-	// run specific tests to verify the functionality
-	// that the challenge is trying to assess:
-
 	// test 1:
 	try {
-
+		assert.strictEqual(shallowRender.type(), 'div', 'The React component returns a <div> element.');
 		testResults[1].status = true;
 	} catch (err) {
 		console.log(err);
@@ -105,7 +107,7 @@ export const executeTests = (code) => {
 
 	// test 2:
 	try {
-
+		assert.strictEqual(shallowRender.children().type(), 'h1', 'There is a <h1> tag rendered within the returned <div>.');
 		testResults[2].status = true;
 	} catch (err) {
 		console.log(err);
@@ -115,7 +117,7 @@ export const executeTests = (code) => {
 
 	// test 3:
 	try {
-
+		assert.strictEqual(shallowRender.contains(<h1>Hello React!</h1>), true, 'The <h1> tag includes the text \'Hello React!\'');
 		testResults[3].status = true;
 	} catch (err) {
 		console.log(err);
@@ -125,7 +127,7 @@ export const executeTests = (code) => {
 
 	return {
 		passed,
-		testResults
+		testResults,
 	}
 	
 }
