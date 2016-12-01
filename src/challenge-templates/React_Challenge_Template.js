@@ -44,8 +44,7 @@ export const executeTests = (code) => {
 		{
 			test: 0,
 			status: false,
-			failure: 'Your JSX code could not be transpiled successfully.',
-			success: 'Your JSX code was transpiled successfully.'
+			condition: 'Your JSX code was transpiled successfully.'
 		},
 		{
 			test: 1,
