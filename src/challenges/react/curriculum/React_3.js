@@ -18,23 +18,21 @@ export const challengeInstructions = `<span class = 'default'>Instructions: </sp
 We've provided a JSX element similiar to what you just wrote. Add a comment after the <code>h1</code>.`
 
 // ---------------------------- define challenge seed code ----------------------------
-export const seedCode = `
-const JSX = (
+export const seedCode = 
+`const JSX = (
 <div>
 	<h1>This is a block of JSX</h1>
 	<p>Here's a subtitle</p>
-</div>);
-`
+</div>);`
 
 // ---------------------------- define challenge solution code ----------------------------
-export const solutionCode = `
-const JSX = (
+export const solutionCode =
+`const JSX = (
 <div>
 	<h1>This is a block of JSX</h1>
 	{ /* this is a JSX comment */ }
 	<p>Here's a subtitle</p>
-</div>);
-`
+</div>);`
 
 // ---------------------------- define challenge tests ----------------------------
 

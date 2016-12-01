@@ -13,6 +13,8 @@
   - [X] :pencil: 2: Render more complex JSX
   - [X] :pencil: 3: Add Comments in JSX (*may need to revise test for comment*)
   - [X] :pencil: 4: Render an HTML element to the DOM from JSX
+  - [X] :pencil: 5: Add HTML classes to JSX elements with className
+  - [ ] 6: Learn about self-closing JSX tags
 - [ ] **Introducing React/Components**
   - [X] Create a simple functional component that renders HTML
   - [X] Render this simple component to the DOM

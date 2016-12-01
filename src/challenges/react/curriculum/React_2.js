@@ -20,8 +20,8 @@ each element. When rendering multiple elements like this, you can wrap them all 
 export const seedCode = `// write your code here`
 
 // ---------------------------- define challenge solution code ----------------------------
-export const solutionCode = `
-const JSX = (
+export const solutionCode = 
+`const JSX = (
 <div>
 	<h1>Hello JSX!</h1>
 	<p>Some info</p>
@@ -30,8 +30,7 @@ const JSX = (
 		<li>Another item</li>
 		<li>A third item</li>
 	</ul>
-</div>);
-`
+</div>);`
 
 // ---------------------------- define challenge tests ----------------------------
 
