@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react'
 import assert from 'assert'
 import { shallow } from 'enzyme'
@@ -20,12 +21,14 @@ for example the line-break tag can be written as <code>&lt;br&gt;</code> or as <
 
 In JSX though, we follow a slightly different convention: ALL JSX tags MUST be closed with a forward slash, even in instances where it is optional in HTML. 
 Our standard tags, such as <code>div</code> and <code>h1</code>, can be written as usual, as we have already seen. But the line-break tag, for example, 
-must always be written as <code>&lt;br /&gt;</code> in order to be valid JSX than can be transpiled. We will see later, that this syntax also comes in handy when rendering React components.`
+must always be written as <code>&lt;br /&gt;</code> in order to be valid JSX than can be transpiled. We will see later, that this syntax also comes in handy when rendering React components.
+In fact, in JSX any HTML element that has no children can be written with a self-closing tag.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span><br>
 Fix the errors in the code below so that it is valid JSX that can be successfully transpiled and render it to the DOM using the <code>ReactDOM.render</code> method.
-We've provided a <code>div</code> with ID 'challenge-node' for you to render to.`
+We've provided a <code>div</code> with ID 'challenge-node' for you to render to. Be sure not to change any of the content but only to add self-closing tags where
+they are needed.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = 
@@ -37,7 +40,8 @@ export const seedCode =
 	{/* change code above this line */}
 </div>
 );
-// change code below this line`
+// change code below this line
+ReactDOM.render(JSX, document.getElementById('challenge-node'));`
 
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode = 
@@ -72,7 +76,7 @@ export const executeTests = (code) => {
 		{
 			test: 2,
 			status: false,
-			condition: 'The div contains an br tag.'
+			condition: 'The div contains a br tag.'
 		},
 		{
 			test: 3,
@@ -122,7 +126,7 @@ export const executeTests = (code) => {
 
 	// test 3:
 	try {
-		assert.strictEqual(jsx.props.children[1].type, 'br', 'The div contains an br tag.');
+		assert.strictEqual(jsx.props.children[1].type, 'br', 'The div contains a br tag.');
 		testResults[3].status = true;
 	} catch (err) {
 		console.log(err);

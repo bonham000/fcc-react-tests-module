@@ -46,6 +46,10 @@ export default class MyComponent extends React.Component {
 
 export const executeTests = (code) => {
 
+	const error_1 = '';
+	const error_2 = '';
+	const error_3 = '';
+
 	let testResults = [
 		{
 			test: 0,
@@ -55,17 +59,17 @@ export const executeTests = (code) => {
 		{
 			test: 1,
 			status: false,
-			condition: ''
+			condition: error_1
 		},
 		{
 			test: 2,
 			status: false,
-			condition: ''
+			condition: error_2
 		},
 		{
 			test: 3,
 			status: false,
-			condition: ''
+			condition: error_3
 		}
 	];
 
