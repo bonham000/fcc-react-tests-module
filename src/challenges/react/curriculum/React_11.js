@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react'
 import assert from 'assert'
 import { shallow } from 'enzyme'
@@ -138,8 +139,6 @@ export const executeTests = (code) => {
 		passed = false;
 	}
 
-	console.log(es5);
-	console.log(shallowRender);
 	// test 1:
 	try {
 		//expect(shallowRender.type()).toEqual('div');

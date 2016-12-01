@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import ReactTestComponent from './test-components/ReactTestComponent'
 import ReduxTestComponent from './test-components/ReduxTestComponent'
@@ -39,15 +40,15 @@ export default class App extends React.Component {
     this.select = this.select.bind(this);
 	}
   select(event) {
-    const challenge = this.state.challenges.filter( (challenge) => challenge.id === event );
+    const challenge=this.state.challenges.filter( (challenge) => challenge.id === event );
     this.setState({
       selectedChallenge: challenge[0]
     });
   }
   render() {
-    const { selectedChallenge } = this.state;
-    const challengeType = selectedChallenge.type;
-    const challenge = selectedChallenge.id;
+    const { selectedChallenge }=this.state;
+    const challengeType=selectedChallenge.type;
+    const challenge=selectedChallenge.id;
     return (
       <div>
 
@@ -56,32 +57,32 @@ export default class App extends React.Component {
           challengeType === 'React' ?
         
             <ReactTestComponent 
-              challengeTitle = {eval(challenge).challengeTitle}
-              challengeText = {eval(challenge).challengeText}
-              challengeInstructions = {eval(challenge).challengeInstructions} 
-              seedCode = {eval(challenge).seedCode}
-              solutionCode = {eval(challenge).solutionCode}
-              executeTests = {eval(challenge).executeTests}
-              liveRender = {eval(challenge).liveRender}
-              QA = {eval(challenge).QA}
-              selectedChallenge = {challenge}
-              challenges = {this.state.challenges}
-              select = {this.select} />
+              challengeTitle={eval(challenge).challengeTitle}
+              challengeText={eval(challenge).challengeText}
+              challengeInstructions={eval(challenge).challengeInstructions} 
+              seedCode={eval(challenge).seedCode}
+              solutionCode={eval(challenge).solutionCode}
+              executeTests={eval(challenge).executeTests}
+              liveRender={eval(challenge).liveRender}
+              QA={eval(challenge).QA}
+              selectedChallenge={challenge}
+              challenges={this.state.challenges}
+              select={this.select} />
 
           :
           
             <ReduxTestComponent 
-              challengeTitle = {eval(challenge).challengeTitle}
-              challengeText = {eval(challenge).challengeText}
-              challengeInstructions = {eval(challenge).challengeInstructions} 
-              seedCode = {eval(challenge).seedCode}
-              solutionCode = {eval(challenge).solutionCode}
-              executeTests = {eval(challenge).executeTests}
-              liveRender = {eval(challenge).liveRender}
-              QA = {eval(challenge).QA}
-              selectedChallenge = {challenge}
-              challenges = {this.state.challenges} 
-              select = {this.select} />
+              challengeTitle={eval(challenge).challengeTitle}
+              challengeText={eval(challenge).challengeText}
+              challengeInstructions={eval(challenge).challengeInstructions} 
+              seedCode={eval(challenge).seedCode}
+              solutionCode={eval(challenge).solutionCode}
+              executeTests={eval(challenge).executeTests}
+              liveRender={eval(challenge).liveRender}
+              QA={eval(challenge).QA}
+              selectedChallenge={challenge}
+              challenges={this.state.challenges} 
+              select={this.select} />
 
         }
 

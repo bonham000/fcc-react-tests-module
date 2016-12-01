@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react'
 import CodeMirror from 'react-codemirror'
 
@@ -10,11 +11,11 @@ export default class ReduxTestComponent extends React.Component {
 			code: this.props.seedCode,
 			testResults: []
 		}
-		this.updateCode = this.updateCode.bind(this);
-		this.testCode = this.testCode.bind(this);
-		this.seedCode = this.seedCode.bind(this);
-		this.solutionCode = this.solutionCode.bind(this);
-		this.selectChallenge = this.selectChallenge.bind(this);
+		this.updateCode=this.updateCode.bind(this);
+		this.testCode=this.testCode.bind(this);
+		this.seedCode=this.seedCode.bind(this);
+		this.solutionCode=this.solutionCode.bind(this);
+		this.selectChallenge=this.selectChallenge.bind(this);
 	}
   updateCode(newCode) {
     this.setState({
@@ -23,8 +24,8 @@ export default class ReduxTestComponent extends React.Component {
 	}
 	testCode() {
 
-		const { code } = this.state;
-		const results = this.props.executeTests(code);
+		const { code }=this.state;
+		const results=this.props.executeTests(code);
 
 		this.setState({
 			passed: results.passed,
@@ -32,7 +33,7 @@ export default class ReduxTestComponent extends React.Component {
 		});
 
 		// run live render function to get console.log messages
-		const result = this.props.liveRender(code);
+		const result=this.props.liveRender(code);
 
 		document.getElementById('consoleOutput').innerHTML = '';
 
@@ -87,7 +88,7 @@ export default class ReduxTestComponent extends React.Component {
 	    totalTests = testResults.length;
     }
     
-    const renderChallenges = this.props.challenges.map( (challenge, idx) => {
+    const renderChallenges=this.props.challenges.map( (challenge, idx) => {
       return (
       	<option value={challenge.id} key = {idx} selected = {challenge.id === this.props.selectedChallenge}>
       		Current Challenge: {challenge.id}
@@ -98,54 +99,54 @@ export default class ReduxTestComponent extends React.Component {
     return (
     	<div>
 
-    		<h1 className = 'title mainTitle'>Free Code Camp Redux Challenge Demo:
+    		<h1 className='title mainTitle'>Free Code Camp Redux Challenge Demo:
 
-	        <select onChange = {this.selectChallenge.bind(this)}>
+	        <select onChange={this.selectChallenge.bind(this)}>
 	          {renderChallenges}
 	        </select>
 	        
     		</h1>
 
-    		<div className = 'instructionsContainer'>
-					<h1 className = 'challengeTitle' dangerouslySetInnerHTML = {renderTitle()} />
-					<p className = 'challengeText' dangerouslySetInnerHTML = {renderText()} />
-					<p className = 'instructions' dangerouslySetInnerHTML = {renderInstructions()} />
+    		<div className='instructionsContainer'>
+					<h1 className='challengeTitle' dangerouslySetInnerHTML={renderTitle()} />
+					<p className='challengeText' dangerouslySetInnerHTML={renderText()} />
+					<p className='instructions' dangerouslySetInnerHTML={renderInstructions()} />
     		</div>
 
-    		<div className = 'outputContainer'>
-		    	<h1 className = 'outputTitle'>Console Output:</h1>
-		    	<div id = 'consoleOutput'></div>
+    		<div className='outputContainer'>
+		    	<h1 className='outputTitle'>Console Output:</h1>
+		    	<div id='consoleOutput'></div>
 		    </div>
 
-    		<div className = 'mainContainer'>
+    		<div className='mainContainer'>
 
 					<div className="testWrapper">
-				    <h1 className = 'title'>Tests</h1>
+				    <h1 className='title'>Tests</h1>
 			    	
-			    	<div className = 'testControls'>
-			    		<button onClick = {this.testCode} className = 'testBtn'>Test Code</button>
-			    		<button onClick = {this.seedCode}>Reload Seed</button>
-			    		<button onClick = {this.solutionCode}>Solution Code</button>
+			    	<div className='testControls'>
+			    		<button onClick={this.testCode} className='testBtn'>Test Code</button>
+			    		<button onClick={this.seedCode}>Reload Seed</button>
+			    		<button onClick={this.solutionCode}>Solution Code</button>
 				    </div>
 
-				    <div className = 'testResults'>
+				    <div className='testResults'>
 
 				    	{ this.state.passed ?
-		    				<p className = 'msg success'>All tests passed!</p> :
-		    				<p className = 'msg error'>Your code does not pass the tests, {passingTests} out of {totalTests} tests are passing</p> }
+		    				<p className='msg success'>All tests passed!</p> :
+		    				<p className='msg error'>Your code does not pass the tests, {passingTests} out of {totalTests} tests are passing</p> }
 				    	
 				    	{
 				    		testResults.map( (test, idx) => {
 					    		if (test.status) {
 					    			return (
-					    				<p className = 'test testSuccess' key = {idx}>
+					    				<p className='test testSuccess' key={idx}>
 					    					<i className="fa fa-check" aria-hidden="true"></i>
 					    					{test.condition}
 					    				</p>
 					    			)
 					    		} else {
 						    		return (
-						    			<p className = 'test testFailure' key = {idx}>
+						    			<p className='test testFailure' key={idx}>
 					    					<i className="fa fa-times" aria-hidden="true"></i>
 					    					{test.condition}
 					    				</p>
@@ -157,14 +158,14 @@ export default class ReduxTestComponent extends React.Component {
 				    </div>
 					</div>
 
-					<div className = 'codeWrapper'>
-		    		<h1 className = 'title'>Code <span className = 'keyShortcut'>press (Cmd-Enter) to run</span></h1>
+					<div className='codeWrapper'>
+		    		<h1 className='title'>Code <span className='keyShortcut'>press (Cmd-Enter) to run</span></h1>
 
 			    	<CodeMirror
-			    		className = 'editor'
-			    		value = {this.state.code}
-			    		onChange = {this.updateCode}
-			    		options = {options} />
+			    		className='editor'
+			    		value={this.state.code}
+			    		onChange={this.updateCode}
+			    		options={options} />
 		    	</div>
 
 		    </div>
@@ -172,7 +173,7 @@ export default class ReduxTestComponent extends React.Component {
 		    <hr />
 
 		    <div>
-		    	<p className = 'referenceLink'>- This project is testing Redux live on the client with JavaScript | <a target = "_blank" href="https://github.com/bonham000/fcc-react-tests-module">View the code on GitHub</a></p>
+		    	<p className='referenceLink'>- This project is testing Redux live on the client with JavaScript | <a target="_blank" href="https://github.com/bonham000/fcc-react-tests-module">View the code on GitHub</a></p>
 		    </div>
 
     	</div>

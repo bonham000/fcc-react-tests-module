@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react'
 import assert from 'assert'
 import { shallow } from 'enzyme'
