@@ -10,7 +10,7 @@
 
 To contribute a new challenge find a challenge that needs to be written from the CHALLENGE_MAP and use the appropriate template challenge in the `src/challenge-templates` directory and then import it in `src/App.js`, changing the `#` to the appropriate challenge `#`:
 
-**The challenges for the actual curriculum are being saved in the `challenges/react/curriculum` path and `challenges/redux/curriculum` for redux.
+**The challenges for the actual curriculum are being saved in the `challenges/react/curriculum` path and `challenges/redux/curriculum` for redux.**
 
 ###Add an Import for your Challenge:###
 

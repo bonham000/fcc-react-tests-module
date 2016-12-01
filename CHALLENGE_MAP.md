@@ -9,10 +9,10 @@
 ###React Challenges:###
 
 - [X] **JSX and simple rendering**
-  - [X] 1: Create a simple JSX element :pencil:
-  - [X] 2: Render more complex JSX :pencil:
-  - [X] 3: Add Comments in JSX (*may need to revise test for comment*) :pencil:
-  - [X] 4: Render an HTML element to the DOM from JSX :pencil:
+  - [X] :pencil: 1: Create a simple JSX element
+  - [X] :pencil: 2: Render more complex JSX
+  - [X] :pencil: 3: Add Comments in JSX (*may need to revise test for comment*)
+  - [X] :pencil: 4: Render an HTML element to the DOM from JSX
 - [ ] **Introducing React/Components**
   - [X] Create a simple functional component that renders HTML
   - [X] Render this simple component to the DOM
