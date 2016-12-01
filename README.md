@@ -27,6 +27,7 @@ Now run `npm start` and try out your challenge in the browser window that opens 
 A new challenge requires all of the following, all of which is provided in a challenge template file:
 - **QA:** Current review status of challenge.
 - **Challenge Title:** A concise name for the challenge.
+- **Challenge Title:** Text/Introduction to the challenge.
 - **Challenge Instructions:** Instructions for solving the challenge.
 - **Seed Code:** Code to be populated on page load as the challenge starting point.
 - **Solution Code:** A passing solution to the challenge.
