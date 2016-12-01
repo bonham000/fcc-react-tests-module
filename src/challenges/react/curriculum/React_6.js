@@ -80,9 +80,6 @@ export const executeTests = (code) => {
 		testResults[1].status = false;
 	}
 
-	console.log(modifiedCode)
-	console.log(modifiedCode.includes('div /'))
-
 	// test 2:
 	try {
 		assert.strictEqual(modifiedCode.includes('<div />'), true, 'The div is written with a self-closing tag.');

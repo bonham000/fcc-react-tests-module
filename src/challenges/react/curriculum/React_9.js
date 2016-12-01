@@ -14,7 +14,13 @@ a component in React with the class syntax, where our component extends <code>Re
 <code>class MyComponent extends React.Component</code>.<br><br>
 
 Creating a React Component like this gives our component access to React's <code>state</code> and <code>lifecycle hooks</code>. As we will see
-these tools provide special advantages when working with React. For now, let's just try to render our first React Component.`
+these tools provide special advantages when working with React. For now, let's just try to render our first React Component.<br><br>
+
+You will see that our component class now has a <code>constructor</code> defined within it that calls <code>super()</code>. The constructor is a
+special method used during the initialization of objects created with the class keyword. Calling super then calls the constructor of the parent
+class, in this case <code>React.Component</code>. It is best practice to always call a component's constructor with super and pass in <code>props</code> to each so
+the component can be initialized properly. For now, just know that it is best practice for this code to be included. We will soon see other uses for
+the constructor as well as <code>props.</code>`
 
 export const challengeInstructions = `
 	<span class = 'default'>Instructions: </span>This React Component has a <code>render</code> method which is returning nothing at the moment.
@@ -23,6 +29,9 @@ export const challengeInstructions = `
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = `
 export default class MyComponent extends React.Component {
+	constructor(props) {
+		super(props);
+	}
   render() {
     return (
 	    // change code below this line
@@ -37,6 +46,9 @@ export default class MyComponent extends React.Component {
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode = `
 export default class MyComponent extends React.Component {
+	constructor(props) {
+		super(props);
+	}
   render() {
     return (
 	    // change code below this line
