@@ -17,12 +17,12 @@
   - :pencil: 6: Learn about self-closing JSX tags
 - **Introducing React/Components**
   - :pencil: 7: Create a simple functional component that renders HTML
-  - Render this simple component to the DOM
+  - Render this simple component to the DOM (---remove)
   - :pencil: 9: Create a component with ES6 class syntax
-  - Create a new element with composition
-  - Render nested components with composition
-  - Add inline styles in React
-  - Render a class component to the DOM
+  - :pencil2: 10: [Create a new element with composition](https://github.com/FreeCodeCamp/CurriculumExpansion/issues/2#issuecomment-238143914) (Sean)
+  - :pencil2: 11: Render nested components with composition (Sean)
+  - :pencil2: 12: Add inline styles in React (Peter)
+  - :pencil2: 13: [Render a class component to the DOM](https://github.com/FreeCodeCamp/CurriculumExpansion/issues/2#issuecomment-238180483) (Peter) 
 - **Props**
   - Pass a string to a component using JSX functional component
   - Access props using `this.props`, passing a string to a React Component
@@ -91,7 +91,7 @@
   - Passing down a list 
   - Validate `props` with `React.PropTypes`
 
-#the above are more specific to React ^^^#
+**the above are more specific to React and need to be moved up^^^**
 
 - **Creating Actions**
   - Create a JS module for `actions`
@@ -102,6 +102,11 @@
 - **Creating `store`**
   - Setup `store`
   - Initiate `store` with default ES6 syntax
+
+**the above are specific to Redux and not React-Redux**
+
+**the below are react-redux challenges**
+
 - **Connect Redux with React views**
   - Import React-Redux and setup provider
 - **Connect `stateful` components to Redux**
@@ -114,3 +119,5 @@
   - Create `CHECK_GROCERY_ITEM` action
   - Create `REMOVE_GROCERY_ITEM` action
   - Create `EDIT_GROCERY_ITEM" action
+
+**Do we want to add react-router challenges?** 
