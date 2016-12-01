@@ -58,6 +58,7 @@ export default class ReduxTestComponent extends React.Component {
 	}
 	componentDidMount() {
 		this.testCode();
+		this.liveRender();
 	}
 	selectChallenge(event) {
 		setTimeout( () => { this.seedCode(); }, 50);

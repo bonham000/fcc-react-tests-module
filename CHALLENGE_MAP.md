@@ -17,10 +17,10 @@
   - :pencil: 6: Learn about self-closing JSX tags
 - **Introducing React/Components**
   - :pencil: 7: Create a simple functional component that renders HTML
-  - Render this simple component to the DOM (---remove)
-  - :pencil: 9: Create a component with ES6 class syntax
-  - :pencil2: 10: [Create a new element with composition](https://github.com/FreeCodeCamp/CurriculumExpansion/issues/2#issuecomment-238143914) (Sean)
-  - :pencil2: 11: Render nested components with composition (Sean)
+  - :pencil: 8: Create a component with ES6 class syntax
+  - :pencil: 9: Create a new element with composition
+  - :pencil: 10: Render nested components with composition
+  - :pencil: 11: Compose React Components
   - :pencil2: 12: Add inline styles in React (Peter)
   - :pencil2: 13: [Render a class component to the DOM](https://github.com/FreeCodeCamp/CurriculumExpansion/issues/2#issuecomment-238180483) (Peter) 
 - **Props**

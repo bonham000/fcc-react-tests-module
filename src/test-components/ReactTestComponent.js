@@ -63,6 +63,7 @@ export default class Component extends React.Component {
 	}
 	componentDidMount() {
 		this.testCode();
+		this.liveRender();
 	}
 	selectChallenge(event) {
 		setTimeout( () => { this.seedCode() }, 50);

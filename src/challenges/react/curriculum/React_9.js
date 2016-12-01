@@ -1,62 +1,68 @@
 /* eslint-disable */
 import React from 'react'
 import assert from 'assert'
-import { shallow } from 'enzyme'
+import { shallow, mount } from 'enzyme'
 import { transform } from 'babel-standalone'
 
 // SET TO TRUE WHEN QA IS COMPLETE:
 export const QA = false;
 
 // -------------- define challenge title and challenge instructions --------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Create a Component with React`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Create a Component with Composition`
 
-export const challengeText = `<span class = 'default'>Intro: </span>Now let's use React to create a component. With ES6 we define
-a component in React with the class syntax, where our component extends <code>React.Component</code>, for example
-<code>class MyComponent extends React.Component</code>.<br><br>
-
-Creating a React Component like this gives our component access to React's <code>state</code> and <code>lifecycle hooks</code>. As we will see
-these tools provide special advantages when working with React. For now, let's just try to render our first React Component.<br><br>
-
-You will see that our component class now has a <code>constructor</code> defined within it that calls <code>super()</code>. The constructor is a
-special method used during the initialization of objects created with the class keyword. Calling super then calls the constructor of the parent
-class, in this case <code>React.Component</code>. It is best practice to always call a component's constructor with super and pass in <code>props</code> to each so
-the component can be initialized properly. For now, just know that it is best practice for this code to be included. We will soon see other uses for
-the constructor as well as <code>props.</code>`
+export const challengeText = `<span class = 'default'>Intro: </span>Now that you have created a simple React Component let's
+learn about another important principle in React: composition. In React, everything is a component and multiple components
+can be composed together to create more complex components. Let's see how this works.`
 
 export const challengeInstructions = `
-	<span class = 'default'>Instructions: </span>This React Component has a <code>render</code> method which is returning nothing at the moment.
-	Modify it to return a <code>div</code> element which includes the text 'Hello React! within a <code>h1</code> tag.'
+<span class = 'default'>Instructions: </span>In this example we've provided a simple functional component called
+<code>ChildComponent</code> and a React component called <code>ParentComponent</code>. Compose the two together by rendering
+the <code>ChildComponent</code> within the <code>ParentComponent</code>. You can enclose the <code>ChildComponent</code> in
+HTML opening and closing braces just as if it was an HTML element.
 `
 // ---------------------------- define challenge seed code ----------------------------
-export const seedCode = `
-export default class MyComponent extends React.Component {
-	constructor(props) {
-		super(props);
-	}
+export const seedCode =
+`const ChildComponent = () => {
+	return (
+		<div>
+			<p>I am the child</p>
+		</div>
+	);
+};
+
+export default class ParentComponent extends React.Component {
   render() {
     return (
-	    // change code below this line
-
-
-
-	    // change code above this line
+	    <div>
+	    <h1>I am the parent</h1>
+	    { /* change code below this line */ }
+	    
+	
+	    { /* change code above this line */ }
+	    </div>
     );
   }
 };`
 
 // ---------------------------- define challenge solution code ----------------------------
-export const solutionCode = `
-export default class MyComponent extends React.Component {
-	constructor(props) {
-		super(props);
-	}
+export const solutionCode = 
+`const ChildComponent = () => {
+	return (
+		<div>
+			<p>I am the child</p>
+		</div>
+	);
+};
+
+export default class ParentComponent extends React.Component {
   render() {
     return (
-	    // change code below this line
 	    <div>
-	    	<h1>Hello React!</h1>
+	    	<h1>I am the parent</h1>
+	    	{ /* change code below this line */ }
+	    	<ChildComponent />
+	    	{ /* change code above this line */ }
 	    </div>
-	    // change code above this line
     );
   }
 };`
@@ -67,6 +73,10 @@ export const executeTests = (code) => {
 
 	let es5, mockedComponent, shallowRender, passed = true;
 
+	const error_1 = 'The React component returns a single <div> element.';
+	const error_2 = 'The component returns two nested elements.';
+	const error_3 = 'The component returns the ChildComponent as its second child';
+
 	let testResults = [
 		{
 			test: 0,
@@ -76,20 +86,20 @@ export const executeTests = (code) => {
 		{
 			test: 1,
 			status: false,
-			condition: 'The React component returns a <div> element.'
+			condition: error_1
 		},
 		{
 			test: 2,
 			status: false,
-			condition: 'There is a <h1> tag rendered within the returned <div>.'
+			condition: error_2
 		},
 		{
 			test: 3,
 			status: false,
-			condition: 'The <h1> tag includes the text \'Hello React!\''
+			condition: error_3
 		}
 	]
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(code, { presets: [ 'es2015', 'react' ] }).code;
@@ -102,7 +112,7 @@ export const executeTests = (code) => {
 	
 	// shallow render the component with Enzyme
 	try {
-		shallowRender = shallow(React.createElement(eval(es5)))
+		shallowRender = shallow(React.createElement(eval(es5)));
 	} catch (err) {
 		console.log(err);
 		passed = false;
@@ -110,7 +120,8 @@ export const executeTests = (code) => {
 
 	// test 1:
 	try {
-		assert.strictEqual(shallowRender.type(), 'div', 'The React component returns a <div> element.');
+		//expect(shallowRender.type()).toEqual('div');
+		assert.strictEqual(shallowRender.type(), 'div', error_1);
 		testResults[1].status = true;
 	} catch (err) {
 		console.log(err);
@@ -118,29 +129,30 @@ export const executeTests = (code) => {
 		testResults[1].status = false;
 	}
 
-	// test 2:
+	//test 2:
 	try {
-		assert.strictEqual(shallowRender.children().type(), 'h1', 'There is a <h1> tag rendered within the returned <div>.');
+		//expect(shallowRender.children().length).toBe(2);
+		assert.strictEqual(shallowRender.children().length, 2, error_2);
 		testResults[2].status = true;
 	} catch (err) {
 		console.log(err);
 		passed = false;
-		testResults[2].status = false;		
+		testResults[2].status = false;
 	}
 
 	// test 3:
 	try {
-		assert.strictEqual(shallowRender.contains(<h1>Hello React!</h1>), true, 'The <h1> tag includes the text \'Hello React!\'');
+		assert.strictEqual(shallowRender.node.props.children[1].type.name, 'ChildComponent', error_3);
 		testResults[3].status = true;
 	} catch (err) {
 		console.log(err);
 		passed = false;
-		testResults[3].status = false;
+		testResults[3].status = false;		
 	}
 
 	return {
 		passed,
-		testResults,
+		testResults
 	}
 	
 }

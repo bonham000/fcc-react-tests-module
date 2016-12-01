@@ -1,81 +1,77 @@
 /* eslint-disable */
 import React from 'react'
 import assert from 'assert'
-import { shallow } from 'enzyme'
+import { shallow, mount} from 'enzyme'
 import { transform } from 'babel-standalone'
+
+// snippet for defining HTML: <code>&#60;div /&#62</code>
 
 // SET TO TRUE WHEN QA IS COMPLETE:
 export const QA = false;
 
-// -------------- define challenge title and challenge instructions --------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Use React to Render Nested Components.`
+// ---------------------------- define challenge title ----------------------------
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Composition with React Components`
 
-export const challengeText = `<span class = 'default'>Intro: </span>Now we've seen how to compose two components together let's look
-at composition a little further. You can compose components in many different ways with React. We've defined two functional components
-for you, <code>Account</code> and <code>Users</code>.`
+// ---------------------------- challenge text ----------------------------
+export const challengeText = `<span class = 'default'>Intro: </span>You've now seen how composition works with
+React and JSX elements. Now let's compose some React components together. It is just as easy as composing JSX elements.
+To compose a React component as a child you simply declare it within the component you want to serve as the parent.<br><br>
 
-export const challengeInstructions = `
-<span class = 'default'>Instructions: </span>Take these two components and compose them within the MyComponent class so that <code>MyComponent</code>
-returns both <code>Account</code> and <code>Users</code> within the <code>&#60;div /&#62</code> it returns.
-`
+Note: Our parent wrapper component begins with <code>export default</code>. This is required for how we are extracting the
+component from the code editor, however it is just normal ES6 module syntax. If you add additional React components that you
+are going to use within the same file, this is not necessary, as you can see in the class declaration of
+<code>ChildComponent</code> here.`
+
+// ---------------------------- challenge instructions ----------------------------
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've provided child and parent components
+like before. Compose the child component within the parent.`
+
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
-`const Account = () => {
-	return (
+`class ChildComponent extends React.Component {
+	render() {
+		return (
 		<div>
-			<h1>Account Component</h1>
+			<p>Child</p>
 		</div>
-	);
-};
+		)
+	}
+}
 
-const Users = () => {
-	return (
-		<div>
-			<h1>Users Component</h1>
-		</div>
-	);
-};
-
-export default class MyComponent extends React.Component {
+export default class ParentComponent extends React.Component {
   render() {
     return (
-	    <div>
-	    // change code below this line
-	    
-	
-	    // change code above this line
-	    </div>
+    	<div>
+				<h1>Parent</h1>
+	    	{ /* change code below this line */ }
+
+	    	{ /* change code above this line */ }
+    	</div>
     );
   }
 };`
 
 // ---------------------------- define challenge solution code ----------------------------
-export const solutionCode = 
-`const Account = () => {
-	return (
+export const solutionCode =
+`class ChildComponent extends React.Component {
+	render() {
+		return (
 		<div>
-			<h1>Account Component</h1>
+			<p>Child</p>
 		</div>
-	);
-};
+		)
+	}
+}
 
-const Users = () => {
-	return (
-		<div>
-			<h1>Users Component</h1>
-		</div>
-	);
-};
-
-export default class MyComponent extends React.Component {
+export default class ParentComponent extends React.Component {
   render() {
     return (
-	    // change code below this line
 	    <div>
-	    	<Account />
-	    	<Users />
-	    </div>
-	    // change code above this line
+				<h1>Parent</h1>
+	    	{ /* change code below this line */ }
+				<ChildComponent />
+	    	{ /* change code above this line */ }
+    	</div>
     );
   }
 };`
@@ -84,14 +80,9 @@ export default class MyComponent extends React.Component {
 
 export const executeTests = (code) => {
 
-	const prependedCode = `
-	const Account = () => <div></div>
-	const UserList = () => <div></div>`
-
-	// provide Account and UserList to code:
-	const input = prependedCode.concat(code);
-
-	let es5, mockedComponent, shallowRender, passed = true;
+	const error_1 = 'The ParentComponent renders a div element.';
+	const error_2 = 'The ParentComponent renders the ChildComponent.';
+	const error_3 = 'The ChildComponent returns a p element with text \'Child\'.';
 
 	let testResults = [
 		{
@@ -102,25 +93,22 @@ export const executeTests = (code) => {
 		{
 			test: 1,
 			status: false,
-			condition: 'The React component returns a single <div> element.'
+			condition: error_1
 		},
 		{
 			test: 2,
 			status: false,
-			condition: 'The component does return two nested components.'
+			condition: error_2
 		},
 		{
 			test: 3,
 			status: false,
-			condition: 'The first child of the component is the <Account /> component.'
-		},
-		{
-			test: 4,
-			status: false,
-			condition: 'The second child of the component is not the <UserList /> component.'
+			condition: error_3
 		}
-	]
+	];
 
+	let es5, mockedComponent, passed = true;
+	
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(code, { presets: [ 'es2015', 'react' ] }).code;
@@ -131,18 +119,22 @@ export const executeTests = (code) => {
 		testResults[0].status = false;
 	}
 	
-	// shallow render the component with Enzyme
+	// now we will try to shallow render the component with Enzyme's shallow method
+	// you can also use mount to perform a full render to the DOM environment
+	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
 	try {
-		shallowRender = shallow(React.createElement(eval(es5)));
+		mockedComponent = shallow(React.createElement(eval(es5)));
 	} catch (err) {
 		console.log(err);
 		passed = false;
 	}
 
+	// run specific tests to verify the functionality
+	// that the challenge is trying to assess:
+
 	// test 1:
 	try {
-		//expect(shallowRender.type()).toEqual('div');
-		assert.strictEqual(shallowRender.type(), 'div', 'The React component returns a single <div> element.');
+		assert.strictEqual(mockedComponent.node.type, 'div', error_1);
 		testResults[1].status = true;
 	} catch (err) {
 		console.log(err);
@@ -150,37 +142,25 @@ export const executeTests = (code) => {
 		testResults[1].status = false;
 	}
 
-	//test 2:
+	// test 2:
 	try {
-		//expect(shallowRender.children().length).toBe(2);
-		assert.strictEqual(shallowRender.children().length, 2, 'The component does return two nested components.');
+		assert.strictEqual(mockedComponent.nodes[0].props.children[1].type.name, 'ChildComponent', error_2);
 		testResults[2].status = true;
 	} catch (err) {
 		console.log(err);
 		passed = false;
-		testResults[2].status = false;
+		testResults[2].status = false;		
 	}
 
 	// test 3:
 	try {
-		//expect(shallowRender.find('div').childAt(0).name()).toEqual('Account');
-		assert.strictEqual(shallowRender.find('div').childAt(0).name(), 'Account', 'The first child of the component is the <Account /> component.');
+		let mountRender = mount(React.createElement(eval(es5)));
+		assert.strictEqual(mountRender.find('p').node.innerHTML, 'Child', error_3);
 		testResults[3].status = true;
 	} catch (err) {
 		console.log(err);
 		passed = false;
-		testResults[3].status = false;		
-	}
-
-	// test 4:
-	try {
-		//expect(shallowRender.find('div').childAt(1).name()).toEqual('UserList');
-		assert.strictEqual(shallowRender.find('div').childAt(1).name(), 'Users', 'The second child of the component is not the <UserList /> component.');
-		testResults[4].status = true;
-	} catch (err) {
-		console.log(err);
-		passed = false;
-		testResults[4].status = false;		
+		testResults[3].status = false;
 	}
 
 	return {

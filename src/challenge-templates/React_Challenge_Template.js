@@ -23,9 +23,9 @@ export const seedCode = `
 export default class MyComponent extends React.Component {
   render() {
     return (
-	    // change code below this line
+	    { /* change code below this line */ }
 	    
-	    // change code above this line
+	    { /* change code above this line */ }
     );
   }
 };`
@@ -35,9 +35,9 @@ export const solutionCode = `
 export default class MyComponent extends React.Component {
   render() {
     return (
-	    // change code below this line
+	   	{ /* change code below this line */ }
 	    
-	    // change code above this line
+	    { /* change code above this line */ }
     );
   }
 };`
@@ -73,7 +73,7 @@ export const executeTests = (code) => {
 		}
 	];
 
-	let es5, mockedComponent, testRender, passed = true;
+	let es5, mockedComponent, passed = true;
 	
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
@@ -89,11 +89,13 @@ export const executeTests = (code) => {
 	// you can also use mount to perform a full render to the DOM environment
 	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
 	try {
-		testRender = shallow(React.createElement(eval(es5)));
+		mockedComponent = shallow(React.createElement(eval(es5)));
 	} catch (err) {
 		console.log(err);
 		passed = false;
 	}
+
+	console.log(mockedComponent);
 
 	// run specific tests to verify the functionality
 	// that the challenge is trying to assess:
