@@ -16,6 +16,8 @@ Define a new constant 'JSX' which renders a <code>div</code> which contains, in 
 a <code>p</code> tag followed by an unordered list with three <code>li</code> items. You can include whatever text you want within
 each element. When rendering multiple elements like this, you can wrap them all in parathenses but it's not strictly required.`
 
+// Maybe here ^^ would be a good place to mention that all nested JSX needs to have only one outer level?
+
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = `// write your code here`
 

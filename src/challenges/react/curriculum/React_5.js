@@ -13,7 +13,9 @@ Now that you're getting comfortable writing JSX you may be wondering if it has a
 So far it seems like you can just write normal HTML, right?<br><br>
 
 One key difference is that you can no longer use the word 'class' to define HTML classes, because 'class' is a
-reserverd word in JavaScript. In its place we will use 'className' in JSX.`
+reserved word in JavaScript. In its place we will use 'className' in JSX.`
+
+// class and className should perhaps be wrapped in code tags rather than quotes for consistency?
 
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>
 Apply a class of 'myDiv' to the div provided in the JSX code.`

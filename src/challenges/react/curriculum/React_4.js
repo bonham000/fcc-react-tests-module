@@ -7,7 +7,7 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // -------------- define challenge title and challenge instructions --------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Create a Complex JSX Element`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Render HTML Elements to the DOM` 
 export const challengeText = `<span class = 'default'>Intro: </span>
 Now that we've learned how to compose HTML with JSX, let's learn how React allows us to render this JSX as HTML to the DOM.`
 

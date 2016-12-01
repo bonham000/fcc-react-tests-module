@@ -12,7 +12,7 @@ export const challengeText = `<span class = 'default'>Intro: </span>
 JSX is a syntax, that gets compiled to JS. But it is a syntax nonetheless.
 Sometimes, for readability, we might need to add comments to our code.<br><br>
 
-We can put comments inside JSX using the syntax {/* */} to wrap around the comment text.`
+We can put comments inside JSX using the syntax <code>{/* */}</code> to wrap around the comment text.`
 
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>
 We've provided a JSX element similiar to what you just wrote. Add a comment after the <code>h1</code>.`
