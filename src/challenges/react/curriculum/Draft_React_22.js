@@ -8,7 +8,7 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Create a Component with State`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Render State in the UI`
 
 export const challengeText = `<span class = 'default'>Intro: </span>Now that we have learned how to define a component's initial
 state let's see how this state can be displayed in the UI that we render. If a component is stateful, it will always have access

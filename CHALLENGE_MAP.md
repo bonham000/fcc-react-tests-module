@@ -37,9 +37,9 @@
 - **State**
   - :pencil2: 21: Define the initial state within the component's constructor (Jason)
   - :pencil: 22: Display state with `this.state`
-  - :pencil2: 23: Another way to display state with `this.state` in render, and notes on Virtual DOM
+  - :pencil: 23: Another way to display state with `this.state` in render
   - :pencil2: 24: `this`
-  - :pencil2: 25: Update state with `setState` with click: simple counter
+  - :pencil2: 25: Update state with `setState` with click: simple counter: notes on Virtual DOM
   - :pencil2: 26: `OnChange` handlers: controlled input box
   - :pencil2: 27: More complex example: Controlled form with submit button
   - :pencil2: 28: Pass `state` to child as props: Unidirectional data flow

@@ -8,25 +8,20 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Create a Component with State`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Render State in the UI Another Way`
 
-export const challengeText = `<span class = 'default'>Intro: </span>Now that we have learned how to define a component's initial
-state let's see how this state can be displayed in the UI that we render. If a component is stateful, it will always have access
-to the data in <code>state</code> in the <code>render</code> method. You can access this data with <code>this.state</code>.
-If you want to access this state value within the <code>return</code> of the return method, you have to enclose the value in
-curly braces. This instructs the enclosed code to be evaluated directly as JavaScript. We will see more examples of this later on.<br><br>
-
-<code>State</code> is one of the most powerful features of components in React. It allows you to track important data in your app and
-render a UI in response to this data. If your data changes, your UI will change. It is important to note that if you make a component
-stateful, no other components are aware of its <code>state</code>. Its <code>state</code> is completely encapsulated or local to
-that component, unless it decides to pass down some peice of its state to a child component as <code>props</code>. We will soon
-see an example of this. This notion of encapsulated <code>state</code> is very useful because it allows us to write certain logic
-and have that logic be contained and isolated within a single component.`
+export const challengeText = `<span class = 'default'>Intro: </span>Now we will see one more way to access <code>state</code>
+before moving on. In the <code>render</code> method, before the <code>return</code> you can write JavaScript directly. For
+example you could declare functions, access data from <code>state</code> or <code>props</code>, perform computations on this
+data and so on. Then, you can assign any data to variables that you will then have access to in the <code>return</code>. As a
+simple example of this powerful feature, lets see a different way to access <code>this.state</code>.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>This component is already stateful.
-Define an <code>&lt;h1&gt;</code> tag in the component's render method which renders out the value of <code>this.state.name</code>
-from the component's state. Note: the <code>&lt;h1&gt;</code> should only render the value from <code>state</code> and nothing else.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>This component is just like the one before.
+Now, let's define a <code>const</code> in the <code>render</code> method called 'name' and set it equal to the name value in the
+component's <code>state</code>. Because we are just writing JavaScript now, you don't have to enclose this reference in curly braces.
+Next, to render this value, you can just reference it directly in the <code>return</code>, but of course now that we are back in 
+JSX you will have to enclose it in curly braces.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
@@ -38,6 +33,9 @@ export const seedCode =
 		}
 	}
 	render() {
+		// change code below this line
+				
+	  // change code above this line
   	return (
 	    <div>
 	    	{ /* change code below this line */ }
@@ -58,10 +56,13 @@ export const solutionCode =
 		}
 	}
   render() {
+  	// change code below this line
+		const name = this.state.name;
+	  // change code above this line
     return (
 	    <div>
-				{ /* change code below this line */ }
-				<h1>{this.state.name}</h1>
+	    	{ /* change code below this line */ }
+				<h1>{name}</h1>
 	    	{ /* change code above this line */ }
 	    </div>
     );
@@ -75,7 +76,8 @@ export const executeTests = (code) => {
 	const error_0 = 'Your JSX code was transpiled successfully.';
 	const error_1 = 'The component has a key "name" with value "Free Code Camp" stored in its state';
 	const error_2 = 'The component renders an h1 tag';
-	const error_3 = 'The rendered h1 tag contains text rendered from the component\'s state';
+	const error_3 = 'The rendered h1 tag includes a reference to {name}';
+	const error_4 = 'The rendered h1 tag contains text rendered from the component\'s state';
 
 	let testResults = [
 		{
@@ -97,6 +99,11 @@ export const executeTests = (code) => {
 			test: 3,
 			status: false,
 			condition: error_3
+		},
+		{
+			test: 4,
+			status: false,
+			condition: error_4
 		}
 	];
 
@@ -145,13 +152,23 @@ export const executeTests = (code) => {
 
 	// test 3:
 	try {
-		mockedComponent.setState({name: 'TestName'});
-		assert.strictEqual(mockedComponent.contains(<h1>TestName</h1>), true, error_3);
+		assert.strictEqual(modifiedCode.includes('<h1>{name}</h1>'), true, error_3);
 		testResults[3].status = true;
 	} catch (err) {
 		console.log(err);
 		passed = false;
-		testResults[3].status = false;
+		testResults[3].status = false;		
+	}	
+
+	// test 4:
+	try {
+		mockedComponent.setState({name: 'TestName'});
+		assert.strictEqual(mockedComponent.contains(<h1>TestName</h1>), true, error_4);
+		testResults[4].status = true;
+	} catch (err) {
+		console.log(err);
+		passed = false;
+		testResults[4].status = false;
 	}
 
 	return {
