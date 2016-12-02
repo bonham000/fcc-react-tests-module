@@ -22,39 +22,40 @@
   - :pencil: 10: Render nested components with composition
   - :pencil: 11: Compose React Components
   - :pencil2: 12: [Render a class component to the DOM](https://github.com/FreeCodeCamp/CurriculumExpansion/issues/2#issuecomment-238180483) (Peter)
+  - :pencil2: *13(?): Pulling it all together: Write a React Component from scratch and render it to the DOM.*
 
 - **Props & Conditional Rendering**
   - :pencil2: 13: Pass a string to a component using JSX functional component (Peter)
   - :pencil2: 14: Access props using `this.props`, passing a string to a React Component (Peter)
   - :pencil2: 15: Pass an array to a component using JSX (Peter)
-  - :pencil2: 16: Set the default props using the defaultProps static component property (Sean)
-  - :pencil2: 17: Define your component's shape with propTypes (Sean)
-  - :pencil2: 18: Pass props to a child component from a parent (Sean)
-  - :pencil2: 19: Functional Stateless Components
+  - :pencil: 16: Set the default props using the defaultProps static component property (Sean)
+  - :pencil: 17: Modify props directly to override defaultProps (Sean) *(cannot check `defaultProps` on child, test could be cheated)*
+  - :pencil: 18: Define your component's shape with propTypes (Sean) *(`propTypes` unused in production, tested with regex `.includes`)*
+  - :pencil: 19: Functional Stateless React Components (Sean) *(`propTypes` unused in production, tested with regex `.includes()`)*
 
 - **State**
-  - Define the initial state within the component's constructor (Jason)
-  - Display state with `this.state`
-  - Update state with `setState` with click
-  - OnChange handlers: controlled input box
-  - Passing methods as props
+  - :pencil2: Define the initial state within the component's constructor (Jason)
+  - :pencil2: Display state with `this.state`
+  - :pencil2: Update state with `setState` with click
+  - :pencil2: OnChange handlers: controlled input box
+  - :pencil2: Passing methods as props
 
 - **Component Lifecycle Hooks**
-  - componentWillMount
-  - Ajax data with componentDidMount
-  - Everybody cleanup with componentWillUnmount
-  - Update state with componentWillReceiveProps
-  - Prevent re-render with shouldComponentUpdate
-  - component lifecycle order
+  - :pencil2: `componentWillMount`
+  - :pencil2: Ajax data with `componentDidMount`
+  - :pencil2: Everybody cleanup with `componentWillUnmount`
+  - :pencil2: Update state with `componentWillReceiveProps`
+  - :pencil2: Prevent re-render with `shouldComponentUpdate`
+  - :pencil2: component lifecycle order
 
 - **Advanced Rendering**
-  - Conditional rendering based on props
-  - Uses JavaScript in render & return of React Component
-  - Map, filter, reduce
-  - Inline CSS (Peter)
+  - :pencil2: Conditional rendering based on props
+  - :pencil2: Uses JavaScript in render & return of React Component
+  - :pencil2: Map, filter, reduce
+  - :pencil2: Inline CSS (Peter)
 
 - **Rendering, node style**
-  - render server side with renderToString
+  - :pencil2: render server side with renderToString
 
 ---
 
@@ -65,7 +66,7 @@
   - Action emitted by user interaction
   - Example of Action payload as a JS object
 - **Reducers**
-  - Using `Object.assign
+  - Using `Object.assign`
   - Switch statement to parse relevant action
   - `(state, action) => state`, must not modify `state`
   - Reducers can rollback state
@@ -74,7 +75,7 @@
   - Combine various root level reducers with `combineReducer()`
   - Access state with `getState()`
   - Update state with `dispatch(action)`
-  - Register listener via `subscribe(listener)
+  - Register listener via `subscribe(listener)`
   - Unregister listener
 - **One Way Data Flow**
   - Dispatching action with `store.dispatch(action)`
@@ -98,6 +99,6 @@
 - **Add more action**
   - Create `CHECK_GROCERY_ITEM` action
   - Create `REMOVE_GROCERY_ITEM` action
-  - Create `EDIT_GROCERY_ITEM" action
+  - Create `EDIT_GROCERY_ITEM` action
 
 **Do we want to add react-router challenges?** 

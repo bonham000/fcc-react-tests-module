@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from 'react'
 import assert from 'assert'
-import { shallow } from 'enzyme'
+import { mount } from 'enzyme'
 import { transform } from 'babel-standalone'
 
 // snippet for defining HTML: <code>&lt;div /&gt;</code>
@@ -10,41 +10,68 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>_ADD_YOUR_TITLE_HERE_`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Override Default Props`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>Challenge Text`
+export const challengeText = `<span class = 'default'>Intro: </span>Now that you have learned how to set default props let's
+get some practice overriding default props by explicitly setting prop values.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>_ADD_YOUR_INSTRUCTIONS_HERE_`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've modified the previous components so that
+now the ShoppingCart renders a child Items components. This Items component has a default prop of <code>quantity</code> set to the integer 0.
+Let's pass in a value of 10 instead for the prop <code>quantity</code>. Note: to pass an integer value as a prop you must enclose it in curly
+braces, for instance like this: <code>{100}</code>. This is the syntax so JSX knows to interpret the value within the braces directly
+as JavaScript. We will learn more about the uses of curly braces like this in later lessons.`
 
 // ---------------------------- define challenge seed code ----------------------------
-export const seedCode = `
-export default class MyComponent extends React.Component {
+export const seedCode =
+`class Items extends React.Component {
+	constructor(props) {
+		super(props);
+	}
+	render() {
+		return <h1>Current Quantity of Items in Cart: {this.props.quantity}</h1>
+	}
+}
+
+Items.defaultProps = {
+	quantity: 0
+}
+
+class ShoppingCart extends React.Component {
 	constructor(props) {
 		super(props);
 	}
   render() {
-    return (
-	    { /* change code below this line */ }
-	    
-	    { /* change code above this line */ }
-    );
+    { /* change code above this line */ }
+    return <Items />
+    { /* change code below this line */ }
   }
 };`
 
 // ---------------------------- define challenge solution code ----------------------------
-export const solutionCode = `
-export default class MyComponent extends React.Component {
+export const solutionCode =
+`class Items extends React.Component {
+	constructor(props) {
+		super(props);
+	}
+	render() {
+		return <h1>Current Quantity of Items in Cart: {this.props.quantity}</h1>
+	}
+}
+
+Items.defaultProps = {
+	quantity: 0
+}
+
+class ShoppingCart extends React.Component {
 	constructor(props) {
 		super(props);
 	}
   render() {
-    return (
-	   	{ /* change code below this line */ }
-	    
-	    { /* change code above this line */ }
-    );
+  	{ /* change code above this line */ }
+    return <Items quantity = {10} />
+    { /* change code below this line */ }
   }
 };`
 
@@ -52,16 +79,15 @@ export default class MyComponent extends React.Component {
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
-	const error_1 = '';
-	const error_2 = '';
-	const error_3 = '';
+	const error_1 = 'The component ShoppingCart is rendered.';
+	const error_2 = 'The component Items is rendered.';
+	const error_3 = 'The Items component has a prop of { quantity: 10 }';
 
 	let testResults = [
 		{
 			test: 0,
 			status: false,
-			condition: error_0
+			condition: 'Your JSX code was transpiled successfully.'
 		},
 		{
 			test: 1,
@@ -82,9 +108,7 @@ export const executeTests = (code) => {
 
 	let es5, mockedComponent, passed = true;
 
-	// this applies an export to the user's code so
-	// we can access their component here for tests
-	const exportScript = '\n export default MyComponent'
+	const exportScript = '\n export default ShoppingCart'
 	const modifiedCode = code.concat(exportScript);
 	
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
@@ -96,25 +120,23 @@ export const executeTests = (code) => {
 		passed = false;
 		testResults[0].status = false;
 	}
-	
+
 	// now we will try to shallow render the component with Enzyme's shallow method
 	// you can also use mount to perform a full render to the DOM environment
 	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
 	try {
-		mockedComponent = shallow(React.createElement(eval(es5)));
+		mockedComponent = mount(React.createElement(eval(es5)));
 	} catch (err) {
 		console.log(err);
 		passed = false;
 	}
-
-	console.log(mockedComponent);
 
 	// run specific tests to verify the functionality
 	// that the challenge is trying to assess:
 
 	// test 1:
 	try {
-
+		assert.strictEqual(mockedComponent.find('ShoppingCart').length, 1, error_1);
 		testResults[1].status = true;
 	} catch (err) {
 		console.log(err);
@@ -124,23 +146,24 @@ export const executeTests = (code) => {
 
 	// test 2:
 	try {
-
+		assert.strictEqual(mockedComponent.find('Items').length, 1, error_2);
 		testResults[2].status = true;
 	} catch (err) {
 		console.log(err);
 		passed = false;
-		testResults[2].status = false;		
+		testResults[2].status = false;
 	}
 
 	// test 3:
 	try {
-
+		assert.strictEqual(mockedComponent.find('Items').props().quantity, 10, error_3);
 		testResults[3].status = true;
 	} catch (err) {
 		console.log(err);
 		passed = false;
 		testResults[3].status = false;
-	}
+	}	
+
 
 	return {
 		passed,
@@ -154,7 +177,7 @@ export const executeTests = (code) => {
 export const liveRender = (code) => {
 
 	try {
-		const exportScript = '\n export default MyComponent'
+		const exportScript = '\n export default ShoppingCart'
 		const modifiedCode = code.concat(exportScript);
 		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		const renderedComponent = React.createElement(eval(es5));
