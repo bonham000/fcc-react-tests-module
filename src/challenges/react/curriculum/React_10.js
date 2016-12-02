@@ -50,7 +50,7 @@ const Food = () => {
 	);
 };
 
-export default class TypesOfFoodComponent extends React.Component {
+class TypesOfFoodComponent extends React.Component {
   render() {
     return (
 	    <div>
@@ -89,7 +89,7 @@ const Food = () => {
 	);
 };
 
-export default class TypesOfFoodComponent extends React.Component {
+class TypesOfFoodComponent extends React.Component {
   render() {
     return (
 	    <div>
@@ -138,11 +138,14 @@ export const executeTests = (code) => {
 			status: false,
 			condition: error_4
 		}
-	]
+	];
+
+	const exportScript = '\n export default TypesOfFoodComponent'
+	const modifiedCode = code.concat(exportScript);
 
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
-		es5 = transform(code, { presets: [ 'es2015', 'react' ] }).code;
+		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
 		console.log(err);
@@ -211,7 +214,9 @@ export const executeTests = (code) => {
 export const liveRender = (code) => {
 
 	try {
-		const es5 = transform(code, { presets: [ 'es2015', 'react' ] }).code;
+		const exportScript = '\n export default TypesOfFoodComponent'
+		const modifiedCode = code.concat(exportScript);
+		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		const renderedComponent = React.createElement(eval(es5));
 		return renderedComponent;
 	} catch (err) {

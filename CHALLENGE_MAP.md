@@ -33,20 +33,19 @@
   - :pencil2: 19: Functional Stateless Components
 
 - **State**
-  - Define the initial state within the component's constructor
+  - Define the initial state within the component's constructor (Jason)
   - Display state with `this.state`
   - Update state with `setState` with click
   - OnChange handlers: controlled input box
   - Passing methods as props
 
 - **Component Lifecycle Hooks**
-  - Conditionally render elements from a component
   - componentWillMount
   - Ajax data with componentDidMount
   - Everybody cleanup with componentWillUnmount
   - Update state with componentWillReceiveProps
   - Prevent re-render with shouldComponentUpdate
-  - child lifecycle order 
+  - component lifecycle order
 
 - **Advanced Rendering**
   - Conditional rendering based on props

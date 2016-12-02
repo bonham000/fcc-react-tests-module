@@ -30,7 +30,7 @@ export const seedCode =
 	);
 };
 
-export default class ParentComponent extends React.Component {
+class ParentComponent extends React.Component {
   render() {
     return (
 	    <div>
@@ -54,7 +54,7 @@ export const solutionCode =
 	);
 };
 
-export default class ParentComponent extends React.Component {
+class ParentComponent extends React.Component {
   render() {
     return (
 	    <div>
@@ -98,11 +98,14 @@ export const executeTests = (code) => {
 			status: false,
 			condition: error_3
 		}
-	]
+	];
+
+	const exportScript = '\n export default ParentComponent'
+	const modifiedCode = code.concat(exportScript);
 
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
-		es5 = transform(code, { presets: [ 'es2015', 'react' ] }).code;
+		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
 		console.log(err);
@@ -120,7 +123,6 @@ export const executeTests = (code) => {
 
 	// test 1:
 	try {
-		//expect(shallowRender.type()).toEqual('div');
 		assert.strictEqual(shallowRender.type(), 'div', error_1);
 		testResults[1].status = true;
 	} catch (err) {
@@ -131,7 +133,6 @@ export const executeTests = (code) => {
 
 	//test 2:
 	try {
-		//expect(shallowRender.children().length).toBe(2);
 		assert.strictEqual(shallowRender.children().length, 2, error_2);
 		testResults[2].status = true;
 	} catch (err) {
@@ -162,7 +163,9 @@ export const executeTests = (code) => {
 export const liveRender = (code) => {
 
 	try {
-		const es5 = transform(code, { presets: [ 'es2015', 'react' ] }).code;
+		const exportScript = '\n export default ParentComponent'
+		const modifiedCode = code.concat(exportScript);
+		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		const renderedComponent = React.createElement(eval(es5));
 		return renderedComponent;
 	} catch (err) {

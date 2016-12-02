@@ -29,7 +29,7 @@ export const challengeInstructions = `
 `
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = `
-export default class MyComponent extends React.Component {
+class MyComponent extends React.Component {
 	constructor(props) {
 		super(props);
 	}
@@ -46,7 +46,7 @@ export default class MyComponent extends React.Component {
 
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode = `
-export default class MyComponent extends React.Component {
+class MyComponent extends React.Component {
 	constructor(props) {
 		super(props);
 	}
@@ -88,11 +88,14 @@ export const executeTests = (code) => {
 			status: false,
 			condition: 'The <h1> tag includes the text \'Hello React!\''
 		}
-	]
+	];
+
+	const exportScript = '\n export default MyComponent'
+	const modifiedCode = code.concat(exportScript);
 	
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
-		es5 = transform(code, { presets: [ 'es2015', 'react' ] }).code;
+		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
 		console.log(err);
@@ -150,7 +153,9 @@ export const executeTests = (code) => {
 export const liveRender = (code) => {
 
 	try {
-		const es5 = transform(code, { presets: [ 'es2015', 'react' ] }).code;
+		const exportScript = '\n export default MyComponent'
+		const modifiedCode = code.concat(exportScript);
+		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		const renderedComponent = React.createElement(eval(es5));
 		return renderedComponent;
 	} catch (err) {

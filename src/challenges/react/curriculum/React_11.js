@@ -29,6 +29,9 @@ like before. Compose the child component within the parent.`
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
 `class ChildComponent extends React.Component {
+	 constructor(props) {
+    super(props);
+  }
 	render() {
 		return (
 		<div>
@@ -38,7 +41,10 @@ export const seedCode =
 	}
 }
 
-export default class ParentComponent extends React.Component {
+class ParentComponent extends React.Component {
+	 constructor(props) {
+    super(props);
+  }
   render() {
     return (
     	<div>
@@ -63,7 +69,7 @@ export const solutionCode =
 	}
 }
 
-export default class ParentComponent extends React.Component {
+class ParentComponent extends React.Component {
   render() {
     return (
 	    <div>
@@ -108,10 +114,13 @@ export const executeTests = (code) => {
 	];
 
 	let es5, mockedComponent, passed = true;
+
+	const exportScript = '\n export default ParentComponent'
+	const modifiedCode = code.concat(exportScript);
 	
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
-		es5 = transform(code, { presets: [ 'es2015', 'react' ] }).code;
+		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
 		console.log(err);
@@ -175,7 +184,9 @@ export const executeTests = (code) => {
 export const liveRender = (code) => {
 
 	try {
-		const es5 = transform(code, { presets: [ 'es2015', 'react' ] }).code;
+		const exportScript = '\n export default ParentComponent'
+		const modifiedCode = code.concat(exportScript);
+		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		const renderedComponent = React.createElement(eval(es5));
 		return renderedComponent;
 	} catch (err) {

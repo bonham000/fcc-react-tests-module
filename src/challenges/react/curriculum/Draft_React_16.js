@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from 'react'
 import assert from 'assert'
-import { shallow } from 'enzyme'
+import { mount } from 'enzyme'
 import { transform } from 'babel-standalone'
 
 // snippet for defining HTML: <code>&lt;div /&gt;</code>
@@ -10,41 +10,62 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>_ADD_YOUR_TITLE_HERE_`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Use Default Props`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>Challenge Text`
+export const challengeText = `<span class = 'default'>Intro: </span>Now that you understand how props work let's
+learn about default props.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>_ADD_YOUR_INSTRUCTIONS_HERE_`
 
 // ---------------------------- define challenge seed code ----------------------------
-export const seedCode = `
-export default class MyComponent extends React.Component {
+export const seedCode =
+`class Items extends React.Component {
+	constructor(props) {
+		super(props);
+	}
+	render() {
+		return <h1>{this.props.name}</h1>
+	}
+}
+
+{ /* change code below this line */ }
+
+{ /* change code above this line */ }
+
+export default class ShoppingCart extends React.Component {
 	constructor(props) {
 		super(props);
 	}
   render() {
-    return (
-	    { /* change code below this line */ }
-	    
-	    { /* change code above this line */ }
-    );
+    return <Items />
   }
 };`
 
 // ---------------------------- define challenge solution code ----------------------------
-export const solutionCode = `
-export default class MyComponent extends React.Component {
+export const solutionCode =
+`class Items extends React.Component {
+	constructor(props) {
+		super(props);
+	}
+	render() {
+		return <h1>Current Quantity of Items in Cart: {this.props.quantity}</h1>
+	}
+}
+
+{ /* change code below this line */ }
+Items.defaultProps = {
+	quantity: 0
+}
+{ /* change code above this line */ }
+
+class ShoppingCart extends React.Component {
 	constructor(props) {
 		super(props);
 	}
   render() {
-    return (
-	   	{ /* change code below this line */ }
-	    
-	    { /* change code above this line */ }
-    );
+    return <Items />
   }
 };`
 
@@ -52,9 +73,8 @@ export default class MyComponent extends React.Component {
 
 export const executeTests = (code) => {
 
-	const error_1 = '';
-	const error_2 = '';
-	const error_3 = '';
+	const error_1 = 'The component ShoppingCart returns the component Items';
+	const error_2 = 'The Items component has a default prop of { quantity: 0 }';
 
 	let testResults = [
 		{
@@ -66,24 +86,12 @@ export const executeTests = (code) => {
 			test: 1,
 			status: false,
 			condition: error_1
-		},
-		{
-			test: 2,
-			status: false,
-			condition: error_2
-		},
-		{
-			test: 3,
-			status: false,
-			condition: error_3
 		}
 	];
 
 	let es5, mockedComponent, passed = true;
 
-	// this applies an export to the user's code so
-	// we can access their component here for tests
-	const exportScript = '\n export default MyComponent'
+	const exportScript = '\n export default ShoppingCart'
 	const modifiedCode = code.concat(exportScript);
 	
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
@@ -100,16 +108,17 @@ export const executeTests = (code) => {
 	// you can also use mount to perform a full render to the DOM environment
 	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
 	try {
-		mockedComponent = shallow(React.createElement(eval(es5)));
+		mockedComponent = mount(React.createElement(eval(es5)));
 	} catch (err) {
 		console.log(err);
 		passed = false;
 	}
 
-	console.log(mockedComponent);
-
 	// run specific tests to verify the functionality
 	// that the challenge is trying to assess:
+
+	console.log(mockedComponent);
+	console.log(mockedComponent.find('Items'));
 
 	// test 1:
 	try {
@@ -119,26 +128,6 @@ export const executeTests = (code) => {
 		console.log(err);
 		passed = false;
 		testResults[1].status = false;
-	}
-
-	// test 2:
-	try {
-
-		testResults[2].status = true;
-	} catch (err) {
-		console.log(err);
-		passed = false;
-		testResults[2].status = false;		
-	}
-
-	// test 3:
-	try {
-
-		testResults[3].status = true;
-	} catch (err) {
-		console.log(err);
-		passed = false;
-		testResults[3].status = false;
 	}
 
 	return {
@@ -153,7 +142,7 @@ export const executeTests = (code) => {
 export const liveRender = (code) => {
 
 	try {
-		const exportScript = '\n export default MyComponent'
+		const exportScript = '\n export default ShoppingCart'
 		const modifiedCode = code.concat(exportScript);
 		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		const renderedComponent = React.createElement(eval(es5));
