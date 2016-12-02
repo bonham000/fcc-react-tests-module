@@ -15,12 +15,7 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Composi
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>You've now seen how composition works with
 React and JSX elements. Now let's compose some React components together. It is just as easy as composing JSX elements.
-To compose a React component as a child you simply declare it within the component you want to serve as the parent.<br><br>
-
-Note: Our parent wrapper component begins with <code>export default</code>. This is required for how we are extracting the
-component from the code editor, however it is just normal ES6 module syntax. If you add additional React components that you
-are going to use within the same file, this is not necessary, as you can see in the class declaration of
-<code>ChildComponent</code> here.`
+To compose a React component as a child you simply declare it within the component you want to serve as the parent.<br><br>`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've provided child and parent components

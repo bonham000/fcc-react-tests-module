@@ -20,7 +20,7 @@ export const challengeInstructions = `<span class = 'default'>Instructions: </sp
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = `
-export default class MyComponent extends React.Component {
+class MyComponent extends React.Component {
 	constructor(props) {
 		super(props);
 	}
@@ -35,7 +35,7 @@ export default class MyComponent extends React.Component {
 
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode = `
-export default class MyComponent extends React.Component {
+class MyComponent extends React.Component {
 	constructor(props) {
 		super(props);
 	}

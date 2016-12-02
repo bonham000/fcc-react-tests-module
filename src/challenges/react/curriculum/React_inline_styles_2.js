@@ -17,7 +17,7 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Add Inline Styles in React 2`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span><br><br>
+export const challengeText = `<span class = 'default'>Intro: </span><br>
 Do you notice anything else that is different about the way this is written? Beyond the fact that we are setting the style 
 attribute equal to a javascript object, there are other some important differences that we must note. <br><br>
 
@@ -40,7 +40,7 @@ Before we move on, let's cover an additional way that we can represent the appli
 `
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span><br><br>
+export const challengeInstructions = `<span class = 'default'>Instructions: </span><br>
 If we are dealing with a larger set of styles, our code could get a bit messy if we write it right into the JSX element's tag. So instead,
 let's assign that style <code>object</code> to the <code>styles</code> constant that we have provided above the React component. Uncomment the variable, and declare an <code>object</code>
 which represents 3 style properties and their values. Give the <code>div</code> a color of <code>"purple"</code>, a font size of <code>40</code> and a border of <code>"2px solid purple"</code>.
@@ -50,7 +50,7 @@ When you are finshed defining your styles, set the <code>style</code> attribute 
 export const seedCode = `
 // const styles = 
 // change code above this line
-class MyComponent extends React.Component {
+class Colorful extends React.Component {
   render() {
   	// change code below this line
     return (
@@ -59,8 +59,7 @@ class MyComponent extends React.Component {
     // change code above this line
   }
 };
-
-export default MyComponent;`
+`
 
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode = `
@@ -70,7 +69,7 @@ const styles = {
 	border: "2px solid purple"
 };
 // change code above this line
-class MyComponent extends React.Component {
+class Colorful extends React.Component {
   render() {
   	// change code below this line
     return (
@@ -79,8 +78,7 @@ class MyComponent extends React.Component {
     );
   }
 };
-
-export default MyComponent;`
+`
 // ---------------------------- define challenge tests ----------------------------
 
 export const executeTests = (code) => {
@@ -131,14 +129,18 @@ export const executeTests = (code) => {
 	];
 
 	let es5, mockedComponent, stylesConst, stylesObj, testRender, passed = true;
+	const exportScript = '\n export default Colorful;'
+	const modifiedCode =  code.concat(exportScript);
+	
+	// for analyzing just the styles const
 	const prepend = `(function() {`
 	const apend = `; return styles })()`
-	const modifiedCode = prepend.concat(code.slice(0, code.indexOf('class'))).concat(apend);
-	
+	const partialCode = prepend.concat(code.slice(0, code.indexOf('class'))).concat(apend);
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
-		es5 = transform(code, { presets: [ 'es2015', 'react' ] }).code;
-		stylesConst = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
+		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
+		stylesConst = transform(partialCode, { presets: [ 'es2015', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
 		console.log(err);
@@ -230,7 +232,9 @@ export const executeTests = (code) => {
 export const liveRender = (code) => {
 
 	try {
-		const es5 = transform(code, { presets: [ 'es2015', 'react' ] }).code;
+		const exportScript = '\n export default Colorful;'
+		const modifiedCode = code.concat(exportScript);
+		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		const renderedComponent = React.createElement(eval(es5));
 		return renderedComponent;
 	} catch (err) {

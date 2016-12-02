@@ -35,27 +35,25 @@ export const challengeInstructions = `<span class = 'default'>Instructions: </sp
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = `
-class MyComponent extends React.Component {
+class Colorful extends React.Component {
   render() {
     return (
 	    <div {/*style={{color: "red", fontSize: 72}} */}>Big Red</div>
     );
   }
 };
-
-export default MyComponent;`
+`
 
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode = `
-class MyComponent extends React.Component {
+class Colorful extends React.Component {
   render() {
     return (
 	    <div style={{color: "red", fontSize: 72}}>Big Red</div>
     );
   }
 };
-
-export default MyComponent;`
+`
 
 // ---------------------------- define challenge tests ----------------------------
 
@@ -89,10 +87,12 @@ export const executeTests = (code) => {
 	];
 
 	let es5, mockedComponent, testRender, passed = true;
+	const exportScript = '\n export default Colorful;'
+	const modifiedCode = code.concat(exportScript);
 	
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
-		es5 = transform(code, { presets: [ 'es2015', 'react' ] }).code;
+		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
 		console.log(err);
@@ -156,7 +156,9 @@ export const executeTests = (code) => {
 export const liveRender = (code) => {
 
 	try {
-		const es5 = transform(code, { presets: [ 'es2015', 'react' ] }).code;
+		const exportScript = '\n export default Colorful;'
+		const modifiedCode = code.concat(exportScript);
+		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		const renderedComponent = React.createElement(eval(es5));
 		return renderedComponent;
 	} catch (err) {

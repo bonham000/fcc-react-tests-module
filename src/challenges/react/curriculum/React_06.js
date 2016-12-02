@@ -107,7 +107,6 @@ export const executeTests = (code) => {
 	// shallow render the component with Enzyme
 	try {
 		jsx = eval(es5);
-		console.log(jsx.type, 'peter')
 	} catch (err) {
 		console.log(err);
 		passed = false;

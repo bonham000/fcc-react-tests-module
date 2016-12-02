@@ -108,7 +108,7 @@ export const executeTests = (code) => {
 	let es5, mockedComponent, mockRender, shallowRender, passed = true;
 
 	const error_1 = 'The React component returns a single <div> element.';
-	const error_2 = 'MyComponent returns the Food Component.';
+	const error_2 = 'TypesOfFoodComponent returns the Food Component.';
 	const error_3 = 'The Food Component returns the Fruit Component.';
 	const error_4 = 'The Fruit component returns the h2 and ul elements.';
 
