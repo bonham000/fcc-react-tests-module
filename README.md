@@ -34,7 +34,7 @@ A new challenge requires all of the following, all of which is provided in a cha
 - **executeTests:** A function which defines all the tests for the challenge.
 - **liveRender:** You don't need to modify this function.
 
-**Notes on completing the executeTests function:** You need to provide messages for each test condition and then you need to write each of the tests. We are using the [Enzyme testing module from Airbnb](http://airbnb.io/enzyme/docs/api/index.html) and assert for writing assertions. For example, after we shallow render our component, we could assert:
+**Notes on completing the `executeTests` function:** You need to provide messages for each test condition and then you need to write each of the tests. We are using the [Enzyme testing module from Airbnb](http://airbnb.io/enzyme/docs/api/index.html) and assert for writing assertions. For example, after we shallow render our component, we could assert:
 
 ```javascript
 assert.strictEqual(shallowRender.type(), 'div', 'The component renders a div element');
