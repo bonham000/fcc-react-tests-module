@@ -1,0 +1,240 @@
+/* eslint-disable */
+import React from 'react'
+import assert from 'assert'
+import { shallow } from 'enzyme'
+import { transform } from 'babel-standalone'
+
+// snippet for defining HTML: <code>&#60;div /&#62</code>
+
+// SET TO TRUE WHEN QA IS COMPLETE:
+export const QA = false;
+
+// NOTES: For this one (besides re-doing the intro since we will likely have covered most of this already
+// by the time we get to this challenge) - still need a way to make sure they've used the styles const rather than 
+// applying same 3 styles in-line.
+
+// ---------------------------- define challenge title ----------------------------
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Add Inline Styles in React 2`
+
+// ---------------------------- challenge text ----------------------------
+export const challengeText = `<span class = 'default'>Intro: </span><br><br>
+Do you notice anything else that is different about the way this is written? Beyond the fact that we are setting the style 
+attribute equal to a javascript object, there are other some important differences that we must note. <br><br>
+
+The first and most obvious is that the object itself seems to be placed between another set of curly braces <code>{ }</code>. If this looks familiar,
+it is becuase you have already seen it before in a previous lesson! JSX comments are also placed in between curly braces. The reason
+for this is the way that JSX code is being transpiled &mdash; in order for the transpiler to interpret literal javascript within JSX code, it must
+be placed within curly braces. Knowing this, the way we apply inline styles in React seems to make a lot more sense. <br><br>
+
+In this sense, we are <strong><em>injecting</em></strong> javascript into our JSX code. This is a very important concept in React, so don't worry, we
+will cover it in greater depth in later challenges. <br><br>
+
+The other important piece of information here, is the sytactical difference in which we write style properties. For example, you
+might have noticed that to control the size of the font, we used <code>fontSize</code>, rather than <code>font-size</code>. Again,this boils down
+to transpilation, so the most important thing to know about this, is that any style properties which you would normally hyphenate, would be applied in React 
+by using camel-case instead. Lastly, all propery value units (for things like <code>height</code>, <code>width</code>, and <code>fontSize</code>) are assumed to 
+be in <code>px</code> unless otherwise specified (you might have noticed we did not include a unit desigation). If you want to use <code>em</code> for example, you must
+specify and wrap the value declaration in quotes. Aside from numbers assumed to be in <code>px</code> all other property values should also be wrapped in quotes.<br><br>
+
+Before we move on, let's cover an additional way that we can represent the application of inline styles.
+`
+
+// ---------------------------- challenge instructions ----------------------------
+export const challengeInstructions = `<span class = 'default'>Instructions: </span><br><br>
+If we are dealing with a larger set of styles, our code could get a bit messy if we write it right into the JSX element's tag. So instead,
+let's assign that style <code>object</code> to the <code>styles</code> constant that we have provided above the React component. Uncomment the variable, and declare an <code>object</code>
+which represents 3 style properties and their values. Give the <code>div</code> a color of <code>"purple"</code>, a font size of <code>40</code> and a border of <code>"2px solid purple"</code>.
+When you are finshed defining your styles, set the <code>style</code> attribute equal to the <code>styles</code> constant.`
+
+// ---------------------------- define challenge seed code ----------------------------
+export const seedCode = `
+// const styles = 
+// change code above this line
+class MyComponent extends React.Component {
+  render() {
+  	// change code below this line
+    return (
+	    <div style={{color: "yellow", fontSize: 24}}>Style Me!</div>
+    );
+    // change code above this line
+  }
+};
+
+export default MyComponent;`
+
+// ---------------------------- define challenge solution code ----------------------------
+export const solutionCode = `
+const styles = {
+	color: "purple",
+	fontSize: 40,
+	border: "2px solid purple"
+};
+// change code above this line
+class MyComponent extends React.Component {
+  render() {
+  	// change code below this line
+    return (
+	    <div style={styles}>Style Me!</div>
+	// change code above this line
+    );
+  }
+};
+
+export default MyComponent;`
+// ---------------------------- define challenge tests ----------------------------
+
+export const executeTests = (code) => {
+
+	const error_1 = 'The const variable styles is an object with 3 properties.';
+	const error_2 = 'styles has a color property set to a value of "purple".';
+	const error_3 = 'styles has a fontSize property set to a value of 40.';
+	const error_4 = 'styles has a border property set to a value of "2px solid purple".';
+	const error_5 = 'The component renders a <div> elememt.';
+	const error_6 = 'The <div> element has the styles defined by the styles object applied to it.';
+
+	let testResults = [
+		{
+			test: 0,
+			status: false,
+			condition: 'Your JSX code was transpiled successfully.'
+		},
+		{
+			test: 1,
+			status: false,
+			condition: error_1
+		},
+		{
+			test: 2,
+			status: false,
+			condition: error_2
+		},
+		{
+			test: 3,
+			status: false,
+			condition: error_3
+		},
+		{
+			test: 4,
+			status: false,
+			condition: error_4
+		},
+		{
+			test: 5,
+			status: false,
+			condition: error_5
+		},
+		{
+			test: 6,
+			status: false,
+			condition: error_6
+		}
+	];
+
+	let es5, mockedComponent, stylesConst, stylesObj, testRender, passed = true;
+	const prepend = `(function() {`
+	const apend = `; return styles })()`
+	const modifiedCode = prepend.concat(code.slice(0, code.indexOf('class'))).concat(apend);
+	
+	// test 0: try to transpile JSX, ES6 code to ES5 in browser
+	try {
+		es5 = transform(code, { presets: [ 'es2015', 'react' ] }).code;
+		stylesConst = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
+		testResults[0].status = true;
+	} catch (err) {
+		console.log(err);
+		passed = false;
+		testResults[0].status = false;
+	}
+	
+	// now we will try to shallow render the component with Enzyme's shallow method
+	// you can also use mount to perform a full render to the DOM environment
+	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
+	try {
+		testRender = shallow(React.createElement(eval(es5)));
+		stylesConst = eval(stylesConst);
+	} catch (err) {
+		console.log(err);
+		passed = false;
+	}
+
+	console.log(stylesConst)
+	// run specific tests to verify the functionality
+	// that the challenge is trying to assess:
+
+	try {
+		assert.strictEqual(typeof stylesConst, "object", error_1);
+		assert.strictEqual(Object.keys(stylesConst).length, 3, error_1);
+		testResults[1].status = true;
+	} catch (err) {
+		console.log(err);
+		passed = false;
+		testResults[1].status = false;
+	}
+
+	try {
+		assert.strictEqual(stylesConst.color, 'purple', error_2);
+		testResults[2].status = true;
+	} catch (err) {
+		console.log(err);
+		passed = false;
+		testResults[2].status = false;
+	}
+
+	try {
+		assert.strictEqual(stylesConst.fontSize, 40, error_3);
+		testResults[3].status = true;
+	} catch (err) {
+		console.log(err);
+		passed = false;
+		testResults[3].status = false;
+	}
+
+	try {
+		assert.strictEqual(stylesConst.border, "2px solid purple", error_4);
+		testResults[4].status = true;
+	} catch (err) {
+		console.log(err);
+		passed = false;
+		testResults[4].status = false;		
+	}
+
+	try {
+		assert.strictEqual(testRender.type(), 'div', error_5);
+		testResults[5].status = true;
+	} catch (err) {
+		console.log(err);
+		passed = false;
+		testResults[5].status = false;
+	}
+
+	try {
+		assert.strictEqual(testRender.nodes[0].props.style.color, "purple", error_6);
+		assert.strictEqual(testRender.nodes[0].props.style.fontSize, 40, error_6);
+		assert.strictEqual(testRender.nodes[0].props.style.border, "2px solid purple", error_6);
+		testResults[6].status = true;
+	} catch (err) {
+		console.log(err);
+		passed = false;
+		testResults[6].status = false;
+	}
+
+	return {
+		passed,
+		testResults
+	}
+	
+}
+
+// ---------------------------- define live render function ----------------------------
+
+export const liveRender = (code) => {
+
+	try {
+		const es5 = transform(code, { presets: [ 'es2015', 'react' ] }).code;
+		const renderedComponent = React.createElement(eval(es5));
+		return renderedComponent;
+	} catch (err) {
+		console.log(err);
+	}
+
+}

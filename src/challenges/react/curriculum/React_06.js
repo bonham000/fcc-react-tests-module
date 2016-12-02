@@ -127,21 +127,21 @@ export const executeTests = (code) => {
 	// test 2:
 	try {
 		assert.strictEqual(jsx.props.children[1].type, 'br', 'The div contains a br tag.');
-		testResults[3].status = true;
-	} catch (err) {
-		console.log(err);
-		passed = false;
-		testResults[3].status = false;
-	}
-
-	// test 3:
-	try {
-		assert.strictEqual(jsx.props.children[2].type, 'img', 'The div contains an img tag.');
 		testResults[2].status = true;
 	} catch (err) {
 		console.log(err);
 		passed = false;
 		testResults[2].status = false;
+	}
+
+	// test 3:
+	try {
+		assert.strictEqual(jsx.props.children[2].type, 'img', 'The div contains an img tag.');
+		testResults[3].status = true;
+	} catch (err) {
+		console.log(err);
+		passed = false;
+		testResults[3].status = false;
 	}
 
 	// test 4:
