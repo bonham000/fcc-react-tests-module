@@ -37,9 +37,12 @@
 - **State**
   - :pencil2: Define the initial state within the component's constructor (Jason)
   - :pencil2: Display state with `this.state`
-  - :pencil2: Update state with `setState` with click
-  - :pencil2: OnChange handlers: controlled input box
-  - :pencil2: Passing methods as props
+  - :pencil2: `this`
+  - :pencil2: Update state with `setState` with click: simple counter
+  - :pencil2: `OnChange` handlers: controlled input box
+  - :pencil2: More complex example: Controlled form with submit button
+  - :pencil2: Pass `state` to child as props: Unidirectional data flow
+  - :pencil2: Passing methods as callbacks to children: child is stateless
 
 - **Component Lifecycle Hooks**
   - :pencil2: `componentWillMount`
@@ -91,23 +94,23 @@
   - Store combines all root level reducers
   - Store saves a snapshot of application state
 
-- **Advanced section: Async [TODO]**
+- **Advanced section: Async [TODO] w/ `redux-thunk` Middleware (?)**
 
 ---
 
 ###React-Redux Challenges:###
 
 - **Connect Redux with React views**
-  - Import React-Redux and setup provider
+  - Import React-Redux and setup `Provider`
 
 - **Connect `stateful` components to Redux**
-  - Connect from `react-redux`
-  - `mapStateToProps`
-  - `mapDispatchToProps`
-  - `bindActionCreators`
-  - Dispatch an action
+  - `connect` method from `react-redux`
+  - Render Redux state in React with `mapStateToProps`
+  - Map dispatch actions to React with `mapDispatchToProps`
+  - Use `bindActionCreators` to map dispatch actions
+  - Dispatch a Redux action from a React Component
 
-- **Add more action**
+- **Add more actions (?) /// simple to-do or counter application with Redux (?)**
   - Create `CHECK_GROCERY_ITEM` action
   - Create `REMOVE_GROCERY_ITEM` action
   - Create `EDIT_GROCERY_ITEM` action
