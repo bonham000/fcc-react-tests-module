@@ -54,6 +54,9 @@ ReactDOM.render(JSX, document.getElementById('challenge-node'));`
 
 export const executeTests = (code) => {
 
+	// clear the target DOM node before running the tests
+	document.getElementById('challenge-node').innerHTML = '';
+
 	let es5, mockedComponent, jsx, passed = true;
 
 	let testResults = [

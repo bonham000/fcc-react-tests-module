@@ -100,6 +100,9 @@ const prependCode = `
 
 export const executeTests = (code) => {
 
+	// clear the target DOM node before running the tests
+	document.getElementById('challenge-node').innerHTML = '';
+
 	const error_0 = 'Your JSX code was transpiled successfully.';
 	const error_1 = 'The TypesOfFood component renders a div.';
 	const error_2 = 'The div\'s first child is the Fruit component.';
