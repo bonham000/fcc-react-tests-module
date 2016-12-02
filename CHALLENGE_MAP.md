@@ -23,16 +23,16 @@
   - :pencil: 10: Render nested components with composition
   - :pencil: 11: Compose React Components
   - :pencil2: 12: [Render a class component to the DOM](https://github.com/FreeCodeCamp/CurriculumExpansion/issues/2#issuecomment-238180483) (Peter)
-  - :pencil2: *13(?): Pulling it all together: Write a React Component from scratch and render it to the DOM*
+  - :pencil: 13: Pulling it all together: Write a React Component from scratch and render it to the DOM
 
 - **Props & Conditional Rendering**
-  - :pencil2: 13: Pass a string to a component using JSX functional component (Peter)
-  - :pencil2: 14: Access props using `this.props`, passing a string to a React Component (Peter)
-  - :pencil2: 15: Pass an array to a component using JSX (Peter)
-  - :pencil: 16: Set the default props using the defaultProps static component property
-  - :pencil: 17: Override defaultProps *(cannot check `defaultProps` on child)*
-  - :pencil: 18: Define Component propTypes *(regex `.includes` test for `propTypes`)*
-  - :pencil: 19: Functional Stateless React Components *(regex `.includes` test for `propTypes`)*
+  - :pencil2: 14: Pass a string to a component using JSX functional component (Peter)
+  - :pencil2: 15: Access props using `this.props`, passing a string to a React Component (Peter)
+  - :pencil2: 16: Pass an array to a component using JSX (Peter)
+  - :pencil: 17: Set the default props using the defaultProps static component property
+  - :pencil: 18: Override defaultProps *(cannot check `defaultProps` on child)*
+  - :pencil: 19: Define Component propTypes *(regex `.includes` test for `propTypes`)*
+  - :pencil: 20: Functional Stateless React Components *(regex `.includes` test for `propTypes`)*
 
 - **State**
   - :pencil2: Define the initial state within the component's constructor (Jason)

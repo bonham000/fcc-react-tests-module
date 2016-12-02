@@ -34,7 +34,7 @@ A new challenge requires all of the following, all of which is provided in a cha
 - **executeTests:** A function which defines all the tests for the challenge.
 - **liveRender:** You don't need to modify this function.
 
-**Notes on completing the executeTests function:** You need to provide messages for the success and failure of each of your tests and then you need to write each of the tests. We are using the [Enzyme testing module from Airbnb](http://airbnb.io/enzyme/docs/api/index.html) and assert for writing assertions. For example, after we shallow render our component, we could assert:
+**Notes on completing the executeTests function:** You need to provide messages for each test condition and then you need to write each of the tests. We are using the [Enzyme testing module from Airbnb](http://airbnb.io/enzyme/docs/api/index.html) and assert for writing assertions. For example, after we shallow render our component, we could assert:
 
 ```javascript
 assert.strictEqual(shallowRender.type(), 'div', 'The component renders a div element');
@@ -46,7 +46,7 @@ All of the tests follow this basic pattern, and the [Enzyme documentation](http:
 
 ##Instructions for QA:##
 
-Once a challenge is completed written (title, instructions, seed code, solution code, and tests are all completed) it needs to be reviewed to ensure that it correctly assesses what it is trying to assess and the tests function properly. After a challenge has been reviewed its status can be updated.
+Once a challenge is completely written (title, instructions, seed code, solution code, and tests are all completed) it needs to be reviewed to ensure that it correctly assesses what it is trying to assess and the tests function properly. After a challenge has been reviewed its status can be updated.
 
 ***
 
