@@ -135,7 +135,7 @@ export const executeTests = (code) => {
 	// for analyzing just the styles const
 	const prepend = `(function() {`
 	const apend = `; return styles })()`
-	const partialCode = prepend.concat(code.slice(0, code.indexOf('class'))).concat(apend);
+	const partialCode = prepend.concat(code).concat(apend);
 
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
@@ -158,13 +158,11 @@ export const executeTests = (code) => {
 		console.log(err);
 		passed = false;
 	}
-
-	console.log(stylesConst)
+	
 	// run specific tests to verify the functionality
 	// that the challenge is trying to assess:
 
 	try {
-		assert.strictEqual(typeof stylesConst, "object", error_1);
 		assert.strictEqual(Object.keys(stylesConst).length, 3, error_1);
 		testResults[1].status = true;
 	} catch (err) {
@@ -210,9 +208,9 @@ export const executeTests = (code) => {
 	}
 
 	try {
-		assert.strictEqual(testRender.nodes[0].props.style.color, "purple", error_6);
-		assert.strictEqual(testRender.nodes[0].props.style.fontSize, 40, error_6);
-		assert.strictEqual(testRender.nodes[0].props.style.border, "2px solid purple", error_6);
+		assert(testRender.nodes[0].props.style.color === "purple" && 
+			testRender.nodes[0].props.style.fontSize === 40 && 
+			testRender.nodes[0].props.style.border === "2px solid purple", error_6);
 		testResults[6].status = true;
 	} catch (err) {
 		console.log(err);
