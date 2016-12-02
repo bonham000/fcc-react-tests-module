@@ -59,6 +59,7 @@
   - :pencil2: Use map to dynamically render an array of data
   - :pencil2: Use filter to dynamically filter an array of data
   - :pencil2: Use reduce for something cool
+  - :pencil2: Prevent a component from rendering with `null`
   - :pencil2: Incline CSS comment challenge (Peter)
   - :pencil2: Inline CSS (Peter)
 
