@@ -22,7 +22,7 @@
   - :pencil: 9: Create a new element with composition
   - :pencil: 10: Render nested components with composition
   - :pencil: 11: Compose React Components
-  - :pencil2: 12: [Render a class component to the DOM](https://github.com/FreeCodeCamp/CurriculumExpansion/issues/2#issuecomment-238180483) (Peter)
+  - :pencil: 12: Render a class component to the DOM
   - :pencil: 13: Pulling it all together: Write a React Component from scratch and render it to the DOM
 
 - **Props & Conditional Rendering**
@@ -61,8 +61,8 @@
   - :pencil2: Use filter to dynamically filter an array of data
   - :pencil2: Use reduce for something cool
   - :pencil2: Prevent a component from rendering with `null`
-  - :pencil2: Incline CSS comment challenge (Peter)
-  - :pencil2: Inline CSS (Peter)
+  - :pencil: Incline CSS 1
+  - :pencil: Inline CSS 2
 
 - **Rendering, node style**
   - :pencil2: Server side rendering with `renderToString`
