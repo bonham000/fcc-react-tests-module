@@ -6,6 +6,8 @@
 
 *View [`CHALLENGE_MAP.md`](https://github.com/bonham000/fcc-react-tests-module/blob/master/CHALLENGE_MAP.md) to see an overview of the challenges and their development progress.*
 
+**Note: If you do want to contribute a challenge please lets us know by opening an Issue or contacting us, because we are updating and adding these challenges very quickly.**
+
 ---
 
 **Note:** *For development, we are using a `src/DevApp.js` file that is being git-ignored which allows us to just load the challenge we are working on into the app. You can create this file from the example `src/DevAppExample.js`. Be sure `src/index.js` is rendering the `DevApp` now if it isn't already.*
@@ -15,7 +17,7 @@ To write a new challenge use the appropriate template challenge in the `src/chal
 ###Add an Import for your Challenge:###
 
 ```javascript
-import { * as React_# } from './challenges/react/<YOUR_CHALLENGE_NAME>'
+import { * as React_1 } from './challenges/react/<YOUR_CHALLENGE_NAME>'
 ```
 
 To import a redux challenge use the redux template, save your challenge in the `./challenges/redux/curriculum` path, and import it like above. After importing the challenge add it to the `challenges` array in `src/App.js` following the pattern of the other challenges.
@@ -41,8 +43,6 @@ assert.strictEqual(shallowRender.type(), 'div', 'The component renders a div ele
 All of the tests follow this basic pattern, and the [Enzyme documentation](http://airbnb.io/enzyme/docs/api/ShallowWrapper/children.html) is a great reference for seeing what we can test.
 
 Now run `npm start` and try out your challenge in the browser window that opens up. All of challenge information is passed as props into the `TestComponent`. Once it's running you can then edit your code, run your tests, and load the solution code to verify everything is working properly. Once you have your challenge written and appropriate tests running, submit a pull request to have it added.
-
-**Note: If you do want to contribute a challenge please lets us know by opening an Issue or contacting us, because we are updating and adding these challenges very quickly.**
 
 ***
 
