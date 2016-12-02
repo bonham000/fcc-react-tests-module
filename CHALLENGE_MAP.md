@@ -51,8 +51,12 @@
 
 - **Advanced Rendering**
   - :pencil2: Conditional rendering based on props
-  - :pencil2: Uses JavaScript in render & return of React Component
-  - :pencil2: Map, filter, reduce
+  - :pencil2: Conditional rendering based on state (button click toggle's element)
+  - :pencil2: Write JavaScript in render & return of React Component
+  - :pencil2: Use map to dynamically render an array of data
+  - :pencil2: Use filter to dynamically filter an array of data
+  - :pencil2: Use reduce for something cool
+  - :pencil2: Incline CSS comment challenge (Peter)
   - :pencil2: Inline CSS (Peter)
 
 - **Rendering, node style**
@@ -102,7 +106,7 @@
   - `mapDispatchToProps`
   - `bindActionCreators`
   - Dispatch an action
-  
+
 - **Add more action**
   - Create `CHECK_GROCERY_ITEM` action
   - Create `REMOVE_GROCERY_ITEM` action
