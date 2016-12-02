@@ -18,7 +18,7 @@ export const challengeInstructions = `
 <span class = 'default'>Instructions: </span>In this example we've provided a simple functional component called
 <code>ChildComponent</code> and a React component called <code>ParentComponent</code>. Compose the two together by rendering
 the <code>ChildComponent</code> within the <code>ParentComponent</code>. You can enclose the <code>ChildComponent</code> in
-HTML opening and closing braces just as if it was an HTML element.
+a single set of HTML opening and closing braces, <code>&lt; &gt;</code>, just as if it was a self-closing HTML element, being sure to close the tag with a forward slash.
 `
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
