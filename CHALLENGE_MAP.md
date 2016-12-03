@@ -77,12 +77,17 @@
 ###Redux Challenges:###
 
 - **Store**
-  - Create a Redux Store | single source of truth for all application state
-  - Access state with `getState()`
-  - Update state with `dispatch(action)`
-  - Register listener via `subscribe(listener)`
-  - Unregister listener
-  - Combine various root level reducers with `combineReducer()`
+  - :pencil: 1: Create a Redux Store | single source of truth for all application state
+  - :pencil: 2: Access state with `getState()`
+  - :pencil: 3: Define an `action`
+  - :pencil: 4: Define an `action creator`
+  - :pencil: 5: Dispatch an action with `store.dispatch(action)`
+  - :pencil: 6: Update store in response to dispatched action
+  - :pencil2: 7: Refactor to use `const` for action types
+  
+  - :pencil2: Register listener via `subscribe(listener)`
+  - :pencil2: Unregister listener
+  - :pencil2: Combine various root level reducers with `combineReducer()`
 
 - **Actions and One Way Data Flow**
   - Create a simple action
