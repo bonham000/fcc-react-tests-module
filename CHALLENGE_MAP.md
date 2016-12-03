@@ -46,7 +46,7 @@
   - :pencil: 29: `OnChange` handlers: create a controlled input box
   - :pencil: 30: More complex example: Controlled form with submit button
   - :pencil: 31: Pass `state` to child as props: Unidirectional data flow
-  - :pencil2: 32: Passing methods as callbacks to children: child is stateless
+  - :pencil: 32: Passing methods as callbacks to children: child is stateless
 
 - **Component Lifecycle Hooks**
   - :pencil2: `componentWillMount`
