@@ -10,25 +10,28 @@ export const QA = false;
 // -------------- define challenge title and challenge instructions --------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Use React to Render Nested Components`
 
-export const challengeText = `<span class = 'default'>Intro: </span>Now we've seen how to compose two components together let's look
-at composition a little further. You can compose components in many different ways with React. Component composition is one of React's
-powerful features.<br><br>
+export const challengeText = `<span class = 'default'>Intro: </span><br>
+Now that we've seen how to compose two components together, let's look at composition a little further. 
+You can compose components in many different ways with React. Component composition is one of React's
+powerful and endearing features.<br><br>
 
 The process of breaking a UI down into components separates code and logic and makes writing and maintaining a project much easier. It is
-important to begin to see a UI in terms of components like this when working with React. Now let's practice with a little more complex
-composition.`
+important to begin to see a UI in terms of components like this when working with React. Now let's practice with some composition that's a 
+bit more complex.`
 
 export const challengeInstructions = `
-<span class = 'default'>Instructions: </span>Here we've defined two functional components for you, <code>Fruit</code> and <code>Food</code>.
-Take the <code>Fruit</code> component and compose it within the <code>Food</code> component, then take this <code>Food</code> component and
-compose it within the <code>TypesOfFoodComponent</code> component. The result should be one parent wrapper component with a child that is the
-parent of another child component.`
+<span class = 'default'>Instructions: </span><br>
+Here we've defined two functional components for you, <code>TypesOfFruit</code> and <code>Fruits</code>.
+Take the <code>TypesOfFruit</code> component and compose it, or <em>nest</em> it, within the <code>Fruits</code> component, then take the <code>Fruits</code> component and
+nest it within the <code>TypesOfFood</code> component. The result should be a child component, nested within a parent component, which is 
+nested within a parent component of its own!`
+
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
-`const Fruit = () => {
+`const TypesOfFruit = () => {
 	return (
 		<div>
-			<h2>Fruit:</h2>
+			<h2>Fruits:</h2>
 			<ul>
 				<li>Apples</li>
 				<li>Blueberries</li>
@@ -39,10 +42,9 @@ export const seedCode =
 	);
 };
 
-const Food = () => {
+const Fruits = () => {
 	return (
 		<div>
-			<h1>Types of Food:</h1>
 			{ /* change code below this line */ }
 
 			{ /* change code above this line */ }
@@ -50,10 +52,15 @@ const Food = () => {
 	);
 };
 
-class TypesOfFoodComponent extends React.Component {
+class TypesOfFood extends React.Component {
+  constructor(props) {
+  	super(props);
+
+  }
   render() {
     return (
 	    <div>
+	    	<h1>Types of Food:</h1>
 		    { /* change code below this line */ }
 		
 		    { /* change code above this line */ }
@@ -64,10 +71,10 @@ class TypesOfFoodComponent extends React.Component {
 
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode = 
-`const Fruit = () => {
+`const TypesOfFruit = () => {
 	return (
 		<div>
-			<h2>Fruit:</h2>
+			<h2>Fruits:</h2>
 			<ul>
 				<li>Apples</li>
 				<li>Blueberries</li>
@@ -78,24 +85,28 @@ export const solutionCode =
 	);
 };
 
-const Food = () => {
+const Fruits = () => {
 	return (
 		<div>
-			<h1>Types of Food:</h1>
 			{ /* change code below this line */ }
-			<Fruit />
+				<TypesOfFruit />
 			{ /* change code above this line */ }
 		</div>
 	);
 };
 
-class TypesOfFoodComponent extends React.Component {
+class TypesOfFood extends React.Component {
+  constructor(props) {
+  	super(props);
+
+  }
   render() {
     return (
 	    <div>
-	    { /* change code below this line */ }
-			<Food />
-	    { /* change code above this line */ }
+	    	<h1>Types of Food:</h1>
+		    { /* change code below this line */ }
+				<Fruits />
+		    { /* change code above this line */ }
 	    </div>
     );
   }
@@ -107,10 +118,10 @@ export const executeTests = (code) => {
 
 	let es5, mockedComponent, mockRender, shallowRender, passed = true;
 
-	const error_1 = 'The React component returns a single <div> element.';
-	const error_2 = 'TypesOfFoodComponent returns the Food Component.';
-	const error_3 = 'The Food Component returns the Fruit Component.';
-	const error_4 = 'The Fruit component returns the h2 and ul elements.';
+	const error_1 = 'The TypesOfFood component returns a single <div> element.';
+	const error_2 = 'TypesOfFood returns the Fruits Component.';
+	const error_3 = 'The Fruits Component returns the TypesOfFruit Component.';
+	const error_4 = 'The TypesOfFruit component returns the h2 and ul elements.';
 
 	let testResults = [
 		{
@@ -140,7 +151,7 @@ export const executeTests = (code) => {
 		}
 	];
 
-	const exportScript = '\n export default TypesOfFoodComponent'
+	const exportScript = '\n export default TypesOfFood'
 	const modifiedCode = code.concat(exportScript);
 
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
@@ -172,9 +183,11 @@ export const executeTests = (code) => {
 		testResults[1].status = false;
 	}
 
+		console.log(shallowRender, mockRender)
+
 	//test 2:
 	try {
-		assert.strictEqual(shallowRender.nodes[0].props.children.type.name, 'Food', error_2);
+		assert.strictEqual(shallowRender.nodes[0].props.children[1].type.name, 'Fruits', error_2);
 		testResults[2].status = true;
 	} catch (err) {
 		console.log(err);
@@ -184,7 +197,7 @@ export const executeTests = (code) => {
 
 	// test 3:
 	try {
-		assert.strictEqual(mockRender.find('h1').node.innerHTML, 'Types of Food:', error_3);
+		assert.strictEqual(mockRender.find('h2').node.innerHTML, 'Fruits:', error_3);
 		testResults[3].status = true;
 	} catch (err) {
 		console.log(err);
@@ -214,7 +227,7 @@ export const executeTests = (code) => {
 export const liveRender = (code) => {
 
 	try {
-		const exportScript = '\n export default TypesOfFoodComponent'
+		const exportScript = '\n export default TypesOfFood'
 		const modifiedCode = code.concat(exportScript);
 		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		const renderedComponent = React.createElement(eval(es5));
