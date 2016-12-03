@@ -100,18 +100,11 @@
 ###React-Redux Challenges:###
 
 - **Connect Redux with React views**
-  - Import React-Redux and setup `Provider`
-
-- **Connect `stateful` components to Redux**
-  - `connect` method from `react-redux`
-  - Render Redux state in React with `mapStateToProps`
-  - Map dispatch actions to React with `mapDispatchToProps`
-  - Use `bindActionCreators` to map dispatch actions
-  - Dispatch a Redux action from a React Component
-
-- **Add more actions (?) /// simple to-do or counter application with Redux (?)**
-  - Create `CHECK_GROCERY_ITEM` action
-  - Create `REMOVE_GROCERY_ITEM` action
-  - Create `EDIT_GROCERY_ITEM` action
+  - :pencil2: Import React-Redux and setup `Provider`
+  - :pencil2: Pass Redux state to React with `mapStateToProps` and `connect`
+  - :pencil2: Replace local state with Redux store state and `mapStateToProps`
+  - :pencil2: Map dispatch actions to React with `mapDispatchToProps`
+  - :pencil2: Use `bindActionCreators` to map dispatch actions
+  - :pencil2: Dispatch a Redux action from a React Component
 
 **Do we want to add react-router challenges?** 
