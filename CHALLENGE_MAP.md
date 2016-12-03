@@ -42,7 +42,7 @@
   - :pencil: 25: Use `bind` to bind `this` to a class method
   - :pencil: 26: Use `this.setState` with a fat arrow function
   - :pencil: 27: Write a method that toggles a state value 'on' and 'off'
-  - :pencil2: 28: Write a simple counter using `this.setState`
+  - :pencil: 28: Write a simple counter using `this.setState`
   - :pencil2: 29: `OnChange` handlers: create a controlled input box
   - :pencil2: 30: More complex example: Controlled form with submit button
   - :pencil2: 31: Pass `state` to child as props: Unidirectional data flow
