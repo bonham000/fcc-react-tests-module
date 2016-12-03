@@ -43,6 +43,9 @@ import * as React_29 from './challenges/react/curriculum/React_29'
 import * as React_30 from './challenges/react/curriculum/React_30'
 import * as React_31 from './challenges/react/curriculum/React_31'
 import * as React_32 from './challenges/react/curriculum/React_32'
+import * as React_33 from './challenges/react/curriculum/React_33'
+import * as React_34 from './challenges/react/curriculum/React_34'
+import * as React_35 from './challenges/react/curriculum/React_35'
 
 // add a new challenge to this array:
 const challenges = [
@@ -77,7 +80,10 @@ const challenges = [
   { type: 'React', id: 'React_29'},
   { type: 'React', id: 'React_30'},
   { type: 'React', id: 'React_31'},
-  { type: 'React', id: 'React_32'}
+  { type: 'React', id: 'React_32'},
+  { type: 'React', id: 'React_33'},
+  { type: 'React', id: 'React_34'},
+  { type: 'React', id: 'React_35'}
 ];
 
 // Change the nested component to React or Redux for which you are testing

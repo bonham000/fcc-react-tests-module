@@ -194,7 +194,7 @@ export const liveRender = (code) => {
 	const prepend = `
 	(function() { 
 		let log = []
-		const message = (msg) => log[log.length] = msg;
+		const message = (msg) => log.push(msg);
 	`
 	const apend = `; return log })();`
 	const consoleReplaced = code.replace(/console.log/g, 'message');

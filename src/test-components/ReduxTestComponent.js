@@ -24,8 +24,8 @@ export default class ReduxTestComponent extends React.Component {
 	}
 	testCode() {
 
-		const { code }=this.state;
-		const results=this.props.executeTests(code);
+		const { code } = this.state;
+		const results = this.props.executeTests(code);
 
 		this.setState({
 			passed: results.passed,
@@ -33,7 +33,7 @@ export default class ReduxTestComponent extends React.Component {
 		});
 
 		// run live render function to get console.log messages
-		const result=this.props.liveRender(code);
+		const result = this.props.liveRender(code);
 
 		document.getElementById('consoleOutput').innerHTML = '';
 
@@ -60,7 +60,6 @@ export default class ReduxTestComponent extends React.Component {
 	}
 	componentDidMount() {
 		this.testCode();
-		this.liveRender();
 	}
 	selectChallenge(event) {
 		setTimeout( () => { this.seedCode(); }, 50);

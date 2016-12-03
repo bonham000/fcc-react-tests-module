@@ -49,24 +49,24 @@
   - :pencil: 32: Passing methods as callbacks to children: child is stateless
 
 - **Component Lifecycle Hooks**
-  - :pencil2: `componentWillMount`
-  - :pencil2: Ajax data with `componentDidMount`
-  - :pencil2: Everybody cleanup with `componentWillUnmount`
-  - :pencil2: Update state with `componentWillReceiveProps`
-  - :pencil2: Prevent re-render with `shouldComponentUpdate`
-  - :pencil2: component lifecycle order
+  - :pencil: 33: `componentWillMount`
+  - :pencil: 34: Ajax data with `componentDidMount`
+  - :pencil: 35: Add event listeners in `componentDidMount` *(is the explanation correct?)*
+  - :pencil2: 36: Update state with `componentWillReceiveProps`
+  - :pencil2: 37: Prevent re-render with `shouldComponentUpdate` — note on Virtual DOM
 
 - **Advanced Rendering**
-  - :pencil2: Conditional rendering based on props
-  - :pencil2: Conditional rendering based on state (button click toggle's element)
-  - :pencil2: Write JavaScript in render & return of React Component
-  - :pencil2: Use map to dynamically render an array of data
-  - :pencil2: Use filter to dynamically filter an array of data
-  - :pencil2: Use reduce for something cool
+  - :pencil2: Conditional rendering based on `props`
+  - :pencil2: Conditional rendering: `&&` for `if/else` condition
+  - :pencil2: Conditional rendering: ternary condition
+  - :pencil2: Write JavaScript in `render` & `return` of React Component
+  - :pencil2: Use `map` to dynamically render an array of data
+  - :pencil2: Use `filter` to dynamically filter an array of data
+  - :pencil2: Use `reduce` for something cool
   - :pencil2: Prevent a component from rendering with `null`
   - :pencil: Inline CSS 1
   - :pencil: Inline CSS 2
-  - :pencil: SOMEWHERE: JSX Gotchas? Key difference in attribute names, etc.
+  - :pencil: JSX Gotchas: Key difference in attribute names, etc.
 
 - **Rendering, node style**
   - :pencil2: Server side rendering with `renderToString`
