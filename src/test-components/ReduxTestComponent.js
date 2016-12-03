@@ -50,11 +50,13 @@ export default class ReduxTestComponent extends React.Component {
 		this.setState({
 			code: this.props.seedCode
 		});
+		setTimeout(() => {this.testCode()}, 50);
 	}
 	solutionCode() {
 		this.setState({
 			code: this.props.solutionCode
 		});
+		setTimeout(() => {this.testCode()}, 50);
 	}
 	componentDidMount() {
 		this.testCode();
@@ -62,7 +64,7 @@ export default class ReduxTestComponent extends React.Component {
 	}
 	selectChallenge(event) {
 		setTimeout( () => { this.seedCode(); }, 50);
-		setTimeout( () => { this.testCode(); }, 50);
+		setTimeout( () => { this.testCode() }, 50);
 		this.props.select(event.target.value);
 	}
 	render() {
@@ -109,6 +111,11 @@ export default class ReduxTestComponent extends React.Component {
     		</h1>
 
     		<div className='instructionsContainer'>
+    		  <p className='qa'>QA status: {this.props.QA ?
+						<span className='qa-complete'>Review Complete</span> :
+						<span className='qa-needed'>Needs Review</span>}
+					</p>
+					<hr className='qa-line'/>
 					<h1 className='challengeTitle' dangerouslySetInnerHTML={renderTitle()} />
 					<p className='challengeText' dangerouslySetInnerHTML={renderText()} />
 					<p className='instructions' dangerouslySetInnerHTML={renderInstructions()} />

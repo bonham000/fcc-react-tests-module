@@ -33,6 +33,7 @@ export const solutionCode =
 
 export const executeTests = (code) => {
 
+	const error_0 = 'Your JSX code was transpiled successfully.';
 	const error_1 = 'The redux store has a value of 5 for the state.';
 	const error_2 = '';
 	const error_3 = '';
@@ -41,7 +42,7 @@ export const executeTests = (code) => {
 		{
 			test: 0,
 			status: false,
-			condition: 'Your code was transpiled successfully.'
+			condition: error_0
 		},
 		{
 			test: 1,

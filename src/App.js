@@ -22,6 +22,22 @@ import * as React_08 from './challenges/react/curriculum/React_08'
 import * as React_09 from './challenges/react/curriculum/React_09'
 import * as React_10 from './challenges/react/curriculum/React_10'
 import * as React_11 from './challenges/react/curriculum/React_11'
+import * as React_12 from './challenges/react/curriculum/React_12'
+import * as React_13 from './challenges/react/curriculum/React_13'
+//import * as React_14 from './challenges/react/curriculum/React_14'
+//import * as React_15 from './challenges/react/curriculum/React_15'
+//import * as React_16 from './challenges/react/curriculum/React_16'
+import * as React_17 from './challenges/react/curriculum/React_17'
+import * as React_18 from './challenges/react/curriculum/React_18'
+import * as React_19 from './challenges/react/curriculum/React_19'
+import * as React_20 from './challenges/react/curriculum/React_20'
+//import * as React_21 from './challenges/react/curriculum/React_21'
+import * as React_22 from './challenges/react/curriculum/React_22'
+import * as React_23 from './challenges/react/curriculum/React_23'
+import * as React_24 from './challenges/react/curriculum/React_24'
+import * as React_25 from './challenges/react/curriculum/React_25'
+import * as React_26 from './challenges/react/curriculum/React_26'
+import * as React_27 from './challenges/react/curriculum/React_27'
 
 // add a new challenge to this array:
 const challenges = [
@@ -35,7 +51,23 @@ const challenges = [
   { type: 'React', id: 'React_08'},
   { type: 'React', id: 'React_09'},
   { type: 'React', id: 'React_10'},
-  { type: 'React', id: 'React_11'}
+  { type: 'React', id: 'React_11'},
+  { type: 'React', id: 'React_12'},
+  { type: 'React', id: 'React_13'},
+  //{ type: 'React', id: 'React_14'},
+  //{ type: 'React', id: 'React_15'},
+  //{ type: 'React', id: 'React_16'},
+  { type: 'React', id: 'React_17'},
+  { type: 'React', id: 'React_18'},
+  { type: 'React', id: 'React_19'},
+  { type: 'React', id: 'React_20'},
+  //{ type: 'React', id: 'React_21'},
+  { type: 'React', id: 'React_22'},
+  { type: 'React', id: 'React_23'},
+  { type: 'React', id: 'React_24'},
+  { type: 'React', id: 'React_25'},
+  { type: 'React', id: 'React_26'},
+  { type: 'React', id: 'React_27'}
 ];
 
 // Change the nested component to React or Redux for which you are testing

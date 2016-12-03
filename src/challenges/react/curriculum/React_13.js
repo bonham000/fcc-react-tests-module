@@ -10,52 +10,56 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>_ADD_YOUR_TITLE_HERE_`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Write a React Component from Scratch`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>Challenge Text`
+export const challengeText = `<span class = 'default'>Intro: </span>Now that you've learned the basics of JSX and
+React Components, let's try to write one from scratch. React components are the core building blocks of React Apps
+so it's important to become very familiar with writing them.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>_ADD_YOUR_INSTRUCTIONS_HERE_`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>Define a class <code>MyComponent</code>
+that extends <code>React.Component</code>. This should return a <code>&lt;div&gt;&lt;/div&gt;</code> which is wrapped around an
+<code>&lth1&gt;</code> tag which includes the text: 'My First React Component!'. Be sure to include this exact text and don't
+forget to call your component's constructor.<br><br>
+
+Then, render this component to the DOM using <code>ReactDOM.render()</code>, passing in your component and the target DOM node
+just like before. We've provided a <code>&lt;div /&gt;</code> with id <code>challenge-node</code> again for you to render to.<br><br>
+
+Good luck!`
 
 // ---------------------------- define challenge seed code ----------------------------
-export const seedCode = `
-class MyComponent extends React.Component {
-	constructor(props) {
-		super(props);
-	}
-  render() {
-    return (
-	    { /* change code below this line */ }
-	    
-	    { /* change code above this line */ }
-    );
-  }
-};`
+export const seedCode = `// change code below this line`
 
 // ---------------------------- define challenge solution code ----------------------------
-export const solutionCode = `
+export const solutionCode =
+`// change code below this line
 class MyComponent extends React.Component {
 	constructor(props) {
 		super(props);
 	}
   render() {
     return (
-	   	{ /* change code below this line */ }
-	    
-	    { /* change code above this line */ }
+			<div>
+				<h1>My First React Component!</h1>
+			</div>
     );
   }
-};`
+};
+
+ReactDOM.render(<MyComponent />, document.getElementById('challenge-node'));`
 
 // ---------------------------- define challenge tests ----------------------------
 
 export const executeTests = (code) => {
 
+	// this will clear the target DOM node before the challenge code
+	document.getElementById('challenge-node').innerHTML = '';
+
 	const error_0 = 'Your JSX code was transpiled successfully.';
-	const error_1 = '';
-	const error_2 = '';
-	const error_3 = '';
+	const error_1 = 'There is a React component called \'MyComponent\'';
+	const error_2 = 'MyComponent contains an h1 tag with text \'My First React Component!\'';
+	const error_3 = 'MyComponent is rendered to the DOM.';
 
 	let testResults = [
 		{
@@ -107,14 +111,12 @@ export const executeTests = (code) => {
 		passed = false;
 	}
 
-	console.log(mockedComponent);
-
 	// run specific tests to verify the functionality
 	// that the challenge is trying to assess:
 
 	// test 1:
 	try {
-
+		assert.strictEqual(mockedComponent.find('div').length, 1, error_1);
 		testResults[1].status = true;
 	} catch (err) {
 		console.log(err);
@@ -124,7 +126,7 @@ export const executeTests = (code) => {
 
 	// test 2:
 	try {
-
+		assert.strictEqual(mockedComponent.contains(<h1>My First React Component!</h1>), true, error_2);
 		testResults[2].status = true;
 	} catch (err) {
 		console.log(err);
@@ -134,7 +136,7 @@ export const executeTests = (code) => {
 
 	// test 3:
 	try {
-
+		assert.strictEqual(document.getElementById('challenge-node').childNodes.length, 1, error_3);
 		testResults[3].status = true;
 	} catch (err) {
 		console.log(err);
