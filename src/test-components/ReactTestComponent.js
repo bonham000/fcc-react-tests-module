@@ -53,13 +53,19 @@ export default class Component extends React.Component {
 		this.setState({
 			code: this.props.seedCode
 		});
-		setTimeout( () => { this.liveRender() }, 50);
+		setTimeout( () => { 
+			this.liveRender(); 
+			this.testCode();
+		}, 50);
 	}
 	solutionCode() {
 		this.setState({
 			code: this.props.solutionCode
 		});
-		setTimeout( () => { this.liveRender() }, 50);
+		setTimeout( () => { 
+			this.liveRender();
+			this.testCode(); 
+			}, 50);
 	}
 	componentDidMount() {
 		this.testCode();
@@ -67,8 +73,6 @@ export default class Component extends React.Component {
 	}
 	selectChallenge(event) {
 		setTimeout( () => { this.seedCode() }, 50);
-		setTimeout( () => { this.testCode() }, 50);
-		setTimeout( () => { this.liveRender() }, 50);
 		this.props.select(event.target.value);
 	}
 	render() {

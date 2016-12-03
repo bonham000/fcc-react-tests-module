@@ -66,6 +66,7 @@
   - :pencil2: Prevent a component from rendering with `null`
   - :pencil: Inline CSS 1
   - :pencil: Inline CSS 2
+  - :pencil: SOMEWHERE: JSX Gotchas? Key difference in attribute names, etc.
 
 - **Rendering, node style**
   - :pencil2: Server side rendering with `renderToString`

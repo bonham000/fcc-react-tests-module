@@ -32,16 +32,21 @@ For JSX elements, we simply pass in the name of the elmemt that we want to rende
 we must use the same syntax which we would use to render a component within another component. Note that while here we are rendering an ES6 Class Component, 
 the syntax for rendering a functional component would be the same.<br><br>
 
-We have already defined a component named <code>Fruit</code> and a component named <code>Vegetables</code>. Render both components as children of the <code>TypesOfFood</code> component
+We have already defined components named <code>Fruits</code> and <code>Vegetables</code> in our last challenge. Render both components as children of the <code>TypesOfFood</code> component
 and render <code>TypesOfFood</code> to the <code>div</code> we have provided that has 
 an ID of <code>challenge-node</code>.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = `
 class TypesOfFood extends React.Component {
+  constructor(props) {
+  	super(props);
+
+  }
   render() {
     return (
 	    <div>
+			<h1>Types of Food:</h1>
 			{/* change code below this line */} 
 			
 			{/* change code above this line */} 
@@ -55,11 +60,16 @@ class TypesOfFood extends React.Component {
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode = `
 class TypesOfFood extends React.Component {
+  constructor(props) {
+  	super(props);
+
+  }
   render() {
     return (
 	    <div>
+	    	<h1>Types of Food:</h1>
 	    	{/* change code below this line */} 
-	    		<Fruit />
+	    		<Fruits />
 		   		<Vegetables />
 		   	{/* change code above this line */} 
 	    </div>
@@ -72,31 +82,39 @@ ReactDOM.render(<TypesOfFood />, document.getElementById('challenge-node'));`
 
 // ---------------------------- define challenge tests ----------------------------
 const prependCode = `
-	const Fruit = () => {
-		return (
-			<div>
-				<h2>Fruit:</h2>
+const Fruits = () => {
+	return (
+		<div>
+			<h2>Fruits:</h2>
+			<h4>Non-Citrus:</h4>
 				<ul>
 					<li>Apples</li>
 					<li>Blueberries</li>
 					<li>Strawberries</li>
 					<li>Bananas</li>
 				</ul>
-			</div>
-		);
-	};
-	const Vegetables = () => {
-		return (
-			<div>
-				<h2>Vegetables:</h2>
+			<h4>Citrus:</h4>
 				<ul>
-					<li>Brussel Sprouts</li>
-					<li>Broccoli</li>
-					<li>Squash</li>
+					<li>Lemon</li>
+					<li>Lime</li>
+					<li>Orange</li>
+					<li>Grapefruit</li>
 				</ul>
-			</div>
-		);
-	};`
+		</div>
+	);
+};
+const Vegetables = () => {
+	return (
+		<div>
+			<h2>Vegetables:</h2>
+			<ul>
+				<li>Brussel Sprouts</li>
+				<li>Broccoli</li>
+				<li>Squash</li>
+			</ul>
+		</div>
+	);
+};`
 
 export const executeTests = (code) => {
 
@@ -104,9 +122,9 @@ export const executeTests = (code) => {
 	document.getElementById('challenge-node').innerHTML = '';
 
 	const error_0 = 'Your JSX code was transpiled successfully.';
-	const error_1 = 'The TypesOfFood component renders a div.';
-	const error_2 = 'The div\'s first child is the Fruit component.';
-	const error_3 = 'The div\'s second child is the Vegetables component.';
+	const error_1 = 'The TypesOfFood component returns a single <div> element.';
+	const error_2 = 'The TypesOfFood component renders the Fruits component after the h1 element.';
+	const error_3 = 'The TypesOfFood component renders the Vegetables component after Fruits.';
 	const error_4 = 'The TypesOfFood componenet is rendered to the DOM within the "challenge-node" div.';
 
 	let testResults = [
@@ -179,7 +197,7 @@ export const executeTests = (code) => {
 
 	// test 2:
 	try {
-		assert(mockedComponent.nodes[0].props.children[0].type.name || mockedComponent.nodes[0].props.children[1].type.name === 'Fruit', error_2)
+		assert.strictEqual(mockedComponent.nodes[0].props.children[1].type.name,'Fruits', error_2)
 		testResults[2].status = true;
 	} catch (err) {
 		console.log(err);
@@ -189,7 +207,7 @@ export const executeTests = (code) => {
 
 	// test 3:
 	try {
-		assert(mockedComponent.nodes[0].props.children[0].type.name || mockedComponent.nodes[0].props.children[1].type.name === 'Vegetables', error_3)
+		assert.strictEqual(mockedComponent.nodes[0].props.children[2].type.name, 'Vegetables', error_3)
 		testResults[3].status = true;
 	} catch (err) {
 		console.log(err);
@@ -200,8 +218,8 @@ export const executeTests = (code) => {
 	// test 4:
 	try {
 		assert(document.getElementById('challenge-node').childNodes[0].innerHTML ===
-		'<div><h2>Fruit:</h2><ul><li>Apples</li><li>Blueberries</li><li>Strawberries</li><li>Bananas</li></ul></div><div><h2>Vegetables:</h2><ul><li>Brussel Sprouts</li><li>Broccoli</li><li>Squash</li></ul></div>'
-		|| '<div><h2>Vegetables:</h2><ul><li>Brussel Sprouts</li><li>Broccoli</li><li>Squash</li></ul></div><div><h2>Fruit:</h2><ul><li>Apples</li><li>Blueberries</li><li>Strawberries</li><li>Bananas</li></ul></div>',
+		'<div><h2>Fruits:</h2><ul><li>Apples</li><li>Blueberries</li><li>Strawberries</li><li>Bananas</li></ul></div><div><h2>Vegetables:</h2><ul><li>Brussel Sprouts</li><li>Broccoli</li><li>Squash</li></ul></div>'
+		|| '<div><h2>Vegetables:</h2><ul><li>Brussel Sprouts</li><li>Broccoli</li><li>Squash</li></ul></div><div><h2>Fruits:</h2><ul><li>Apples</li><li>Blueberries</li><li>Strawberries</li><li>Bananas</li></ul></div>',
 		error_4)
 		testResults[4].status = true;
 	} catch (err) {
