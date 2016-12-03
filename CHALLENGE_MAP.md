@@ -56,11 +56,11 @@
   - :pencil2: 37: Prevent re-render with `shouldComponentUpdate` — note on Virtual DOM
 
 - **Advanced Rendering**
-  - :pencil2: Conditional rendering based on `props`
-  - :pencil2: Conditional rendering: `&&` for `if/else` condition
-  - :pencil2: Conditional rendering: ternary condition
-  - :pencil2: Write JavaScript in `render` & `return` of React Component
-  - :pencil2: Use `map` to dynamically render an array of data
+  - :pencil2: Conditional rendering based on `props`(Peter)
+  - :pencil2: Conditional rendering: `&&` for `if/else` condition 
+  - :pencil2: Conditional rendering: ternary condition (Peter)
+  - :pencil2: Write JavaScript in `render` & `return` of React Component (Peter)
+  - :pencil2: Use `map` to dynamically render an array of data (Peter)
   - :pencil2: Use `filter` to dynamically filter an array of data
   - :pencil2: Use `reduce` for something cool
   - :pencil2: Prevent a component from rendering with `null`
