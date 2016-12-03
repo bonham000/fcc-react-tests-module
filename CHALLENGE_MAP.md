@@ -99,7 +99,7 @@
 
 ###React-Redux Challenges:###
 
-- **Connect Redux with React views**
+- **Use Redux with React with `react-redux` Module**
   - :pencil2: Import React-Redux and setup `Provider`
   - :pencil2: Pass Redux state to React with `mapStateToProps` and `connect`
   - :pencil2: Replace local state with Redux store state and `mapStateToProps`
