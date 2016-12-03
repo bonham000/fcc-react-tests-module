@@ -76,7 +76,7 @@
 
 ###Redux Challenges:###
 
-- **Store**
+- **Basic Redux: Store, Actions, & Reducers**
   - :pencil: 1: Create a Redux Store | single source of truth for all application state
   - :pencil: 2: Access state with `getState()`
   - :pencil: 3: Define an `action`
@@ -84,25 +84,16 @@
   - :pencil: 5: Dispatch an action with `store.dispatch(action)`
   - :pencil: 6: Update store in response to dispatched action
   - :pencil2: 7: Refactor to use `const` for action types
-  
-  - :pencil2: Register listener via `subscribe(listener)`
-  - :pencil2: Unregister listener
-  - :pencil2: Combine various root level reducers with `combineReducer()`
+  - :pencil2: 8: Register a store listener with `store.subscribe(listener)`
+  - :pencil2: 9: Combine various reducers with `combineReducer()`
 
-- **Actions and One Way Data Flow**
-  - Create a simple action
-  - Dispatching action with `store.dispatch(action)`
-  - Reducer provides the next state
-  - Store combines all root level reducers
-  - Store saves a snapshot of application state
+- **Enforcing State Immutability**
+  - :pencil2: Using `Object.assign`
+  - :pencil2: ES6 spread operator for objects and arrays
+  - :pencil2: Reducers can rollback state & time travel — 'whoa!'
 
-- **Reducers**
-  - Using `Object.assign`
-  - Switch statement to parse relevant action
-  - `(state, action) => state`, must not modify `state`
-  - Reducers can rollback state
-
-- **Advanced section: Async [TODO] w/ `redux-thunk` Middleware (?)**
+- **Advanced section:**
+  - :pencil2: Dispatching async actions in action creators
 
 ---
 
