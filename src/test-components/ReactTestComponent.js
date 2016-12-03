@@ -115,13 +115,14 @@ export default class Component extends React.Component {
     		</h1>
 
     		<div className='instructionsContainer'>
-					<h1 className='challengeTitle' dangerouslySetInnerHTML={renderTitle()} />
-					<p className='challengeText' dangerouslySetInnerHTML={renderText()} />
-					<p className='instructions' dangerouslySetInnerHTML={renderInstructions()} />
-					<p className='qa'>QA status: {this.props.QA ?
+    			<p className='qa'>QA status: {this.props.QA ?
 						<span className='qa-complete'>Review Complete</span> :
 						<span className='qa-needed'>Needs Review</span>}
 					</p>
+					<hr className='qa-line'/>
+					<h1 className='challengeTitle' dangerouslySetInnerHTML={renderTitle()} />
+					<p className='challengeText' dangerouslySetInnerHTML={renderText()} />
+					<p className='instructions' dangerouslySetInnerHTML={renderInstructions()} />
     		</div>
 
     		<div className='outputContainer'>

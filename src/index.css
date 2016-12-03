@@ -34,30 +34,35 @@ body {
 }
 
 .instructionsContainer {
-	background: rgb(40,40,30);
+	background: rgb(250,250,250);
 	border: 1px solid rgba(250,250,250,0.15);
-	color: white;
+	color: rgb(10,10,10);
 	margin-bottom: 15px;
 	padding: 15px 50px 15px 15px;
 	font-family: 'Cabin', sans-serif;
 }
 .default {
-	color: rgb(150,150,150);
+	color: black;
+	font-weight: bold;
 }
 .qa {
 	font-family: 'Muli', serif;
-	color: rgb(150,150,150);
+	color: black;
 	font-size: 22px;
 	margin-top: 2px;
 	margin-bottom: 2px;
+	font-weight: bold;
 }
 .qa-complete {
 	color: #25F56B;
-	font-weight: bold;
 }
 .qa-needed {
 	color: #FA3F3A;
-	font-weight: bold;
+}
+.qa-line {
+	margin-top: 12px;
+	border: 1px solid rgba(5,5,5,0.75);
+	width: 100%;
 }
 .challengeTitle {
 	font-size: 32px;
@@ -65,21 +70,21 @@ body {
 	font-family: 'Muli', serif;
 }
 .instructions, .challengeText {
-	font-size: 18px;
+	font-size: 20px;
 	display: inline-block;
 	margin-top: 5px;
 	margin-bottom: 15px;
-	line-height: 25px;
+	line-height: 24px;
 	font-family: 'Muli', serif;
 }
 code {
-	padding: 3px 6px;
+	padding: 1px 6px;
 	margin-left: 3px;
 	margin-right: 3px;
-	background: rgb(150,150,150);
 	border-radius: 5px;
-	color: black;
-	font-size: 14px;
+	font-size: 18px;
+	color: #c7254e;
+  background-color: #f9f2f4;
 }
 
 .title {
