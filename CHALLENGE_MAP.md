@@ -10,14 +10,15 @@
 
 - **JSX and simple rendering**
   - :pencil: 1: Create a simple JSX element
-  - :pencil: 2: Render more complex JSX
+  - :pencil: 2: Render more complex JSX 
+  - (add multiple elements need to be wrapped in () and in single outer element to existing challenges)
   - :pencil: 3: Add Comments in JSX (*may need to revise test for comment*)
   - :pencil: 4: Render an HTML element to the DOM from JSX
   - :pencil: 5: Add HTML classes to JSX elements with className
   - :pencil: 6: Learn about self-closing JSX tags
 
 - **Introducing React/Components**
-  - :pencil: 7: Create a simple functional component that renders HTML
+  - :pencil: 7: Create a simple functional component that renders HTML (also intro => syntax for this?)
   - :pencil: 8: Create a component with ES6 class syntax
   - :pencil: 9: Create a new element with composition
   - :pencil: 10: Render nested components with composition
