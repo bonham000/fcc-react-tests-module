@@ -13,7 +13,7 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Working with Event Listeners`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span><code>componentDidMount</code> is also the best place
+export const challengeText = `<span class = 'default'>Intro: </span><code>componentDidMount()</code> is also the best place
 to attach any event listeners you need to add for specific functionality. React uses a special event system which we will
 describe here as we discuss event listeners. React provides a synthetic event system which wraps the native event system
 present in browsers. This means that the synthetic event system behaves exactly the same regardless of the browser React is
@@ -25,11 +25,11 @@ to the document or window, you will have to do this directly. That's what we'll 
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>Attach an event listener in the
-<code>componentDidMount</code> method for <code>keydown</code> events and have these events trigger the callback
+<code>componentDidMount()</code> method for <code>keydown</code> events and have these events trigger the callback
 <code>handleKeyPress</code>. You can use <code>document.addEventListener()</code> which takes the event as the first argument
 and the callback as the second argument.<br><br>
 
-Then, in <code>componentWillUnmount</code> remove this same event listener. You can pass the same arguments to
+Then, in <code>componentWillUnmount()</code> remove this same event listener. You can pass the same arguments to
 <code>documet.removeEventListener()</code>. It's a good idea to utilize this lifecycle method to do any clean up on React
 components before they are unmounted and destroyed, removing event listeners is a perfect example of one such clean up action.`
 

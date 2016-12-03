@@ -53,8 +53,8 @@
   - :pencil: 33: `componentWillMount`
   - :pencil: 34: Ajax data with `componentDidMount`
   - :pencil: 35: Add event listeners in `componentDidMount` *(is the explanation correct?)*
-  - :pencil2: 36: Update state with `componentWillReceiveProps`
-  - :pencil2: 37: Prevent re-render with `shouldComponentUpdate` — note on Virtual DOM
+  - :pencil: 36: Managing updates with `componentWillReceiveProps` and `componentDidUpdate`
+  - :pencil: 37: Prevent re-render with `shouldComponentUpdate` — *(note on Virtual DOM?)*
 
 - **Advanced Rendering**
   - :pencil2: Conditional rendering based on `props`(Peter)
@@ -76,30 +76,26 @@
 
 ###Redux Challenges:###
 
-- **Actions**
-  - Must have a type
-  - Action emitted by user interaction
-  - Example of Action payload as a JS object
+- **Store**
+  - Create a Redux Store | single source of truth for all application state
+  - Access state with `getState()`
+  - Update state with `dispatch(action)`
+  - Register listener via `subscribe(listener)`
+  - Unregister listener
+  - Combine various root level reducers with `combineReducer()`
+
+- **Actions and One Way Data Flow**
+  - Create a simple action
+  - Dispatching action with `store.dispatch(action)`
+  - Reducer provides the next state
+  - Store combines all root level reducers
+  - Store saves a snapshot of application state
 
 - **Reducers**
   - Using `Object.assign`
   - Switch statement to parse relevant action
   - `(state, action) => state`, must not modify `state`
   - Reducers can rollback state
-
-- **Store**
-  - Source of truth for all application state
-  - Combine various root level reducers with `combineReducer()`
-  - Access state with `getState()`
-  - Update state with `dispatch(action)`
-  - Register listener via `subscribe(listener)`
-  - Unregister listener
-
-- **One Way Data Flow**
-  - Dispatching action with `store.dispatch(action)`
-  - Reducer provides the next state
-  - Store combines all root level reducers
-  - Store saves a snapshot of application state
 
 - **Advanced section: Async [TODO] w/ `redux-thunk` Middleware (?)**
 

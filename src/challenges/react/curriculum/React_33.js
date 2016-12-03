@@ -30,9 +30,9 @@ The next few lessons will go over some of the basic use cases for these lifecycl
 some action with one of these methods.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span><code>componentWillMount</code> is called
+export const challengeInstructions = `<span class = 'default'>Instructions: </span><code>componentWillMount()</code> is called
 before the <code>render</code> method when a component is being mounted. We've provided a simple component with that renders a
-<code>div</code>. Log something to the console within <code>componentWillMount</code>.`
+<code>div</code>. Log something to the console within <code>componentWillMount()</code>.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =

@@ -16,14 +16,14 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Lifecyc
 export const challengeText = `<span class = 'default'>Intro: </span>You will inevitablely encounter the need to call
 some API endpoint to retrieve data and if you're working with React you'll need to do where to perform this action.
 
-The best practice with React is to place API calls or any calls to your server in the lifecycle method <code>componentDidMount</code>.
+The best practice with React is to place API calls or any calls to your server in the lifecycle method <code>componentDidMount()</code>.
 This method is called after a component is mounted and any calls to <code>setState</code> here will trigger a re-rendering of
 your component. Calling an API here and setting your state with the data that returns will automatically trigger the update
 once you receive the data.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've created a mock API call in
-<code>componentDidMount</code>. It just sets state after 2.5 seconds to simulate calling a server to retrieve the current
+<code>componentDidMount()</code>. It just sets state after 2.5 seconds to simulate calling a server to retrieve the current
 total active users for a site (or whatever data you might need). In the render method, render the value of <code>activeUsers</code> in the <code>h1</code>.
 Watch what happens in the preview. Play around with changing the timeout.<br><br>
 
