@@ -8,54 +8,42 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Bind 'this' to a Class Method`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Bind 'this' with an ES6 Arrow Function`
 
-export const challengeText = `<span class = 'default'>Intro: </span>Now you've learned how to set the state of a
-component, let's learn a little more about defining methods on your component class. A class method typically needs
-to be <code>this</code> aware so that it can access properties on the class, such as <code>state</code> and
-<code>props</code>. There are a few ways to allow your class methods to access <code>this</code>.<br><br>
+export const challengeText = `<span class = 'default'>Intro: </span>Let's look at one more way that we can bind
+<code>this</code> when writing methods in React component classes. A useful, concise way to bind <code>this</code>
+is to use an ES6 fat arrow function, which does not assign its own value for <code>this</code> but rather adopts
+the value of <code>this</code> from the context surrounding the function when it is written. In other words, an
+arrow function binds <code>this</code> automatically from its surrounding context.<br><br>
 
-One common way is to explicitly bind <code>this</code> in the constructor so <code>this</code> becomes bound
-to the class methods when the component is initialized. In the last lesson we accomplished this by writing
-<code>this.click = this.click.bind(this)</code> in the constructor. Then, when you call a function like
-<code>this.setState()</code> within your class method, <code>this</code> will not be <code>undefined</code>.`
+This means we can simply define a class method as an arrow function and we don't have to worry about explicitly
+binding <code>this</code> in the constructor. Nice! However, the arrow function is ES6 syntax so it will need to
+be transpiled in order to work correctly in most browsers. Because of this, it's useful to be aware of both options when writing
+methods on React classes.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've provided a similar example
-for you here. In this example, we have a component with a state that can keep track of an item count and a method
-which allows you to increment this item count. However, right now the method is not <code>this</code> aware. Fix this
-by explicitly binding <code>this</code> to the <code>addItem</code> method in the component's constructor.<br><br>
-
-You will also see that our button has no click handler anymore. We need to add a click handler which triggers our
-<code>addItem</code> method when the button receives a click event. Let's add this click handler as well,
-remembering that the method we pass to the <code>onClick</code> handler should be enclosed with curly braces
-because we want it to be interpreted directly as JavaScript.<br><br>
-
-Go ahead and try it out! Once you complete the above steps you should be able to click the button and see the item
-count increment in the HTML! Pretty cool!`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've provided a React Component
+that renders a <code>button</code> which triggers a <code>setMessage</code> function when clicked. Define this
+method with a fat arrow function on the MyComponent class. Let's also initialize the state of MyComponent to have
+a property <code>message</code> with text 'Hello!'.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
 `class MyComponent extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			itemCount: 0
-		};
 		// change code below this line
 
 		// change code above this line
 	}
-	addItem() {
-		this.setState({
-			itemCount: this.state.itemCount + 1
-		});
-	}
+	// change code below this line
+
+	// change code above this line
 	render() {
   	return (
 	    <div>
-        <button>Click Me</button>
-        <h1>Current Item Count: {this.state.itemCount}</h1>
+        <button onClick = {this.setMessage}>Click Me</button>
+        <h1>{this.state.message}</h1>
 	    </div>
     );
   }
@@ -67,20 +55,19 @@ export const solutionCode =
 	constructor(props) {
 		super(props);
 		this.state = {
-			itemCount: 0
+			message: 'Hello!'
 		};
-		this.addItem = this.addItem.bind(this);
 	}
-	addItem() {
+	setMessage = () => {
 		this.setState({
-			itemCount: this.state.itemCount + 1
+			message: 'Goodbye!'
 		});
 	}
 	render() {
   	return (
 	    <div>
-        <button onClick = {this.addItem}>Click Me</button>
-        <h1>Current Item Count: {this.state.itemCount}</h1>
+        <button onClick = {this.setMessage}>Click Me</button>
+        <h1>{this.state.message}</h1>
 	    </div>
     );
   }
@@ -92,8 +79,9 @@ export const executeTests = (code) => {
 
 	const error_0 = 'Your JSX code was transpiled successfully.';
 	const error_1 = 'MyComponent returns a div element which wraps 2 elements, a button and h1 element, in that order.'
-	const error_2 = 'The state of MyComponent is initialized with the key value pair { itemCount: 0}';
-	const error_3 = 'Clicking the button element runs the addItem method and increments the state itemCount by 1.';
+	const error_2 = 'The state of MyComponent is initialized with a message containing the string \'Hello!\'';
+	const error_3 = 'Clicking the button element runs the setMessage method and upates the message property in the state to say \'Goodbye!\'';
+	const error_4 = 'The setMessage method is defined with a fat arrow function.'
 
 	let testResults = [
 		{
@@ -115,6 +103,11 @@ export const executeTests = (code) => {
 			test: 3,
 			status: false,
 			condition: error_3
+		},
+		{
+			test: 4,
+			status: false,
+			condition: error_4
 		}
 	];
 
@@ -143,7 +136,6 @@ export const executeTests = (code) => {
 
 	// test 1:
 	try {
-		console.log(mockedComponent.find('div').children());
 		assert(
 			mockedComponent.find('div').length === 1
 			&& mockedComponent.find('div').children().nodes[0].tagName === 'BUTTON'
@@ -159,7 +151,7 @@ export const executeTests = (code) => {
 
 	// test 2:
 	try {
-		assert.strictEqual(mockedComponent.state('itemCount'), 0, error_2);
+		assert.strictEqual(mockedComponent.state('message'), 'Hello!', error_2);
 		testResults[2].status = true;
 	} catch (err) {
 		console.log(err);
@@ -169,17 +161,28 @@ export const executeTests = (code) => {
 
 	//test 3:
 	try {
-		mockedComponent.setState({itemCount: 0});
-		const before = mockedComponent.state('itemCount');
+		mockedComponent.setState({message: 'InitialState!'});
+		const before = mockedComponent.state('message');
 		mockedComponent.find('button').simulate('click');
-		const after = mockedComponent.state('itemCount');
-		assert.strictEqual(before === 0 && after === 1, true, error_3);
+		const after = mockedComponent.state('message');
+		assert.strictEqual(before === 'InitialState!' && after === 'Goodbye!', true, error_3);
 		testResults[3].status = true;
 	} catch (err) {
 		console.log(err);
 		passed = false;
 		testResults[3].status = false;
 	}
+
+	// test 4:
+	try {
+		const noWhiteSpace = modifiedCode.replace(/\s/g,'');
+		assert.strictEqual(noWhiteSpace.includes('setMessage=()=>{this.setState({message:\'Goodbye!\'});}'), true, error_4);
+		testResults[4].status = true;
+	} catch (err) {
+		console.log(err);
+		passed = false;
+		testResults[4].status = false;
+	}	
 
 	return {
 		passed,

@@ -40,14 +40,13 @@
   - :pencil: 23: Another way to display state with `this.state` in render
   - :pencil: 24: Use `this.setState` on a button click & `bind(this)`
   - :pencil: 25: Use `bind` to bind `this` to a class method
-  - :pencil2: 26: Use `this.setState` with a fat arrow function
-  - :pencil2: 27: Write a class method from scratch
-  - :pencil2: 28: Write a method that toggles a state value 'on' and 'off'
-  - :pencil2: 26: Write a simple counter using `this.setState`
-  - :pencil2: 26: `OnChange` handlers: controlled input box
-  - :pencil2: 27: More complex example: Controlled form with submit button
-  - :pencil2: 28: Pass `state` to child as props: Unidirectional data flow
-  - :pencil2: 29: Passing methods as callbacks to children: child is stateless
+  - :pencil: 26: Use `this.setState` with a fat arrow function
+  - :pencil: 27: Write a method that toggles a state value 'on' and 'off'
+  - :pencil2: 28: Write a simple counter using `this.setState`
+  - :pencil2: 29: `OnChange` handlers: create a controlled input box
+  - :pencil2: 30: More complex example: Controlled form with submit button
+  - :pencil2: 31: Pass `state` to child as props: Unidirectional data flow
+  - :pencil2: 32: Passing methods as callbacks to children: child is stateless
 
 - **Component Lifecycle Hooks**
   - :pencil2: `componentWillMount`
