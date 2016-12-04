@@ -64,6 +64,18 @@ import * as Redux_11 from './challenges/redux/curriculum/Redux_11'
 import * as Redux_12 from './challenges/redux/curriculum/Redux_12'
 import * as Redux_13 from './challenges/redux/curriculum/Redux_13'
 
+// import React-Redux Challenges
+// import * as React_Redux_01 from './challenges/react-redux/curriculum/React_Redux_01'
+// import * as React_Redux_02 from './challenges/react-redux/curriculum/React_Redux_02'
+// import * as React_Redux_03 from './challenges/react-redux/curriculum/React_Redux_03'
+// import * as React_Redux_04 from './challenges/react-redux/curriculum/React_Redux_04'
+// import * as React_Redux_05 from './challenges/react-redux/curriculum/React_Redux_05'
+// import * as React_Redux_06 from './challenges/react-redux/curriculum/React_Redux_06'
+// import * as React_Redux_07 from './challenges/react-redux/curriculum/React_Redux_07'
+// import * as React_Redux_08 from './challenges/react-redux/curriculum/React_Redux_08'
+// import * as React_Redux_09 from './challenges/react-redux/curriculum/React_Redux_09'
+// import * as React_Redux_10 from './challenges/react-redux/curriculum/React_Redux_10'
+
 // add a new challenge to this array:
 const challenges = [
   // start React challenges:

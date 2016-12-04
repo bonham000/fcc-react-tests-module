@@ -30,7 +30,7 @@ const addMessage = (message) => {
   }
 };
 
-const reducer = (state = [], action) => {
+const messageReducer = (state = [], action) => {
   switch (action.type) {
     case ADD:
       return state.concat(action.message);
@@ -39,7 +39,7 @@ const reducer = (state = [], action) => {
   }
 };
 
-const store = Redux.createStore(reducer);
+const store = Redux.createStore(messageReducer);
 
 // React:
 const Provider = ReactRedux.Provider;
