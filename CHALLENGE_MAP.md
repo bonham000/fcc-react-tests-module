@@ -85,7 +85,7 @@
   - :pencil: 6: Update store in response to dispatched action
   - :pencil: 7: Use a `switch` statement to handle multiple actions
   - :pencil: 8: Refactor to use `const` for action types
-  - :pencil2: 9: Register a store listener with `store.subscribe(listener)`
+  - :pencil: 9: Register a store listener with `store.subscribe(listener)`
   - :pencil2: 10: Combine various reducers with `combineReducer()`
 
 - **Enforcing State Immutability**

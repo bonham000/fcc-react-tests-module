@@ -135,10 +135,10 @@ export const liveRender = (code) => {
 	// displayed on the client UI
 	const prepend = `
 	(function() { 
-		let log = []
-		const message = (msg) => log.push(msg);
+		let __Custom__Log = []
+		const message = (msg) => __Custom__Log.push(msg);
 	`
-	const apend = `; return log })();`
+	const apend = `; return __Custom__Log })();`
 	const consoleReplaced = code.replace(/console.log/g, 'message');
 	const hijackedCode = prepend.concat(consoleReplaced).concat(apend);
 	
