@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from 'react'
 import assert from 'assert'
-import { shallow } from 'enzyme'
+import { mount } from 'enzyme'
 import { transform } from 'babel-standalone'
 
 // snippet for defining HTML: <code>&lt;div /&gt;</code>
@@ -10,59 +10,69 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Write a React Component from Scratch`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Lifecycle Methods: componentWillMount`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>Now that you've learned the basics of JSX and
-React Components, let's try to write one from scratch. React components are the core building blocks of React Apps
-so it's important to become very familiar with writing them. Remember, a typical React component is an ES6
-<code>class</code> which extends <code>React.Component</code> and contains a <code>render</code> method which
-returns HTML in the form of JSX. This is the basic form of a React component. Once you understand this well, you will
-be prepared to start building more complex React projects.`
+export const challengeText = `<span class = 'default'>Intro: </span>React components have several special methods
+that provide opportunities to perform certain actions at specific points in the lifecycle of a component. These are
+called lifecycle methods and allow us to catch componets are certain points in time, for instance before they are rendered,
+before they update, before they receive props, before they unmount, and so on. Here is a list of some of the main
+lifecycle methods:
+<code>componentWillMount()</code>,
+<code>componentDidMount()</code>,
+<code>componentWillReceiveProps()</code>,
+<code>shouldComponentUpdate()</code>,
+<code>componentWillUpdate()</code>,
+<code>componentDidUpdate()</code>,
+<code>componentWillUnmount()</code>.<br><br>
+
+The next few lessons will go over some of the basic use cases for these lifecycle methods. First let's see how we can perform
+some action with one of these methods.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>Define a class <code>MyComponent</code>
-that extends <code>React.Component</code>. This should return a <code>&lt;div&gt;&lt;/div&gt;</code> which is wrapped around an
-<code>&lth1&gt;</code> tag which includes the text: 'My First React Component!'. Be sure to include this exact text and don't
-forget to call your component's constructor.<br><br>
-
-Then, render this component to the DOM using <code>ReactDOM.render()</code>, passing in your component and the target DOM node
-just like before. We've provided a <code>&lt;div /&gt;</code> with id <code>challenge-node</code> again for you to render to.<br><br>
-
-Good luck!`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span><code>componentWillMount()</code> is called
+before the <code>render</code> method when a component is being mounted. We've provided a simple component with that renders a
+<code>div</code>. Log something to the console within <code>componentWillMount()</code>.`
 
 // ---------------------------- define challenge seed code ----------------------------
-export const seedCode = `// change code below this line`
-
-// ---------------------------- define challenge solution code ----------------------------
-export const solutionCode =
-`// change code below this line
-class MyComponent extends React.Component {
+export const seedCode =
+`class MyComponent extends React.Component {
 	constructor(props) {
 		super(props);
 	}
-  render() {
-    return (
-			<div>
-				<h1>My First React Component!</h1>
-			</div>
-    );
-  }
-};
+	componentWillMount() {
+		// change code below this line
 
-ReactDOM.render(<MyComponent />, document.getElementById('challenge-node'));`
+		// change code above this line
+	}
+  render() {
+    return <div />
+  }
+};`
+
+// ---------------------------- define challenge solution code ----------------------------
+export const solutionCode =
+`class MyComponent extends React.Component {
+	constructor(props) {
+		super(props);
+	}
+	componentWillMount() {
+		// change code below this line
+		console.log('Component is mounting...');
+		// change code above this line
+	}
+  render() {
+    return <div />
+  }
+};`
 
 // ---------------------------- define challenge tests ----------------------------
 
 export const executeTests = (code) => {
 
-	// this will clear the target DOM node before the challenge code
-	document.getElementById('challenge-node').innerHTML = '';
-
 	const error_0 = 'Your JSX code was transpiled successfully.';
-	const error_1 = 'There is a React component called \'MyComponent\'';
-	const error_2 = 'MyComponent contains an h1 tag with text \'My First React Component!\'';
-	const error_3 = 'MyComponent is rendered to the DOM.';
+	const error_1 = 'MyComponent renders a div element.';
+	const error_2 = 'console.log is called in componentWillMount.';
 
 	let testResults = [
 		{
@@ -79,11 +89,6 @@ export const executeTests = (code) => {
 			test: 2,
 			status: false,
 			condition: error_2
-		},
-		{
-			test: 3,
-			status: false,
-			condition: error_3
 		}
 	];
 
@@ -96,7 +101,7 @@ export const executeTests = (code) => {
 	
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
-		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
+		es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
 		console.log(err);
@@ -108,7 +113,7 @@ export const executeTests = (code) => {
 	// you can also use mount to perform a full render to the DOM environment
 	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
 	try {
-		mockedComponent = shallow(React.createElement(eval(es5)));
+		mockedComponent = mount(React.createElement(eval(es5)));
 	} catch (err) {
 		console.log(err);
 		passed = false;
@@ -129,22 +134,13 @@ export const executeTests = (code) => {
 
 	// test 2:
 	try {
-		assert.strictEqual(mockedComponent.contains(<h1>My First React Component!</h1>), true, error_2);
+		const lifecycle = React.createElement(eval(es5)).type.prototype.componentWillMount.toString().replace(/\s/g,'');
+		assert.strictEqual(lifecycle.includes('console.log('), true, error_2);
 		testResults[2].status = true;
 	} catch (err) {
 		console.log(err);
 		passed = false;
 		testResults[2].status = false;		
-	}
-
-	// test 3:
-	try {
-		assert.strictEqual(document.getElementById('challenge-node').childNodes.length, 1, error_3);
-		testResults[3].status = true;
-	} catch (err) {
-		console.log(err);
-		passed = false;
-		testResults[3].status = false;
 	}
 
 	return {
@@ -161,7 +157,7 @@ export const liveRender = (code) => {
 	try {
 		const exportScript = '\n export default MyComponent'
 		const modifiedCode = code.concat(exportScript);
-		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
+		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
 		const renderedComponent = React.createElement(eval(es5));
 		return renderedComponent;
 	} catch (err) {

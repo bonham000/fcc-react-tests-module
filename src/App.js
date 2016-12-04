@@ -38,9 +38,35 @@ import * as React_24 from './challenges/react/curriculum/React_24'
 import * as React_25 from './challenges/react/curriculum/React_25'
 import * as React_26 from './challenges/react/curriculum/React_26'
 import * as React_27 from './challenges/react/curriculum/React_27'
+import * as React_28 from './challenges/react/curriculum/React_28'
+import * as React_29 from './challenges/react/curriculum/React_29'
+import * as React_30 from './challenges/react/curriculum/React_30'
+import * as React_31 from './challenges/react/curriculum/React_31'
+import * as React_32 from './challenges/react/curriculum/React_32'
+import * as React_33 from './challenges/react/curriculum/React_33'
+import * as React_34 from './challenges/react/curriculum/React_34'
+import * as React_35 from './challenges/react/curriculum/React_35'
+import * as React_36 from './challenges/react/curriculum/React_36'
+import * as React_37 from './challenges/react/curriculum/React_37'
+
+// import Redux Challenges:
+import * as Redux_01 from './challenges/redux/curriculum/Redux_01'
+import * as Redux_02 from './challenges/redux/curriculum/Redux_02'
+import * as Redux_03 from './challenges/redux/curriculum/Redux_03'
+import * as Redux_04 from './challenges/redux/curriculum/Redux_04'
+import * as Redux_05 from './challenges/redux/curriculum/Redux_05'
+import * as Redux_06 from './challenges/redux/curriculum/Redux_06'
+import * as Redux_07 from './challenges/redux/curriculum/Redux_07'
+import * as Redux_08 from './challenges/redux/curriculum/Redux_08'
+import * as Redux_09 from './challenges/redux/curriculum/Redux_09'
+import * as Redux_10 from './challenges/redux/curriculum/Redux_10'
+import * as Redux_11 from './challenges/redux/curriculum/Redux_11'
+import * as Redux_12 from './challenges/redux/curriculum/Redux_12'
+import * as Redux_13 from './challenges/redux/curriculum/Redux_13'
 
 // add a new challenge to this array:
 const challenges = [
+  // start React challenges:
   { type: 'React', id: 'React_01'},
   { type: 'React', id: 'React_02'},
   { type: 'React', id: 'React_03'},
@@ -67,7 +93,29 @@ const challenges = [
   { type: 'React', id: 'React_24'},
   { type: 'React', id: 'React_25'},
   { type: 'React', id: 'React_26'},
-  { type: 'React', id: 'React_27'}
+  { type: 'React', id: 'React_27'},
+  { type: 'React', id: 'React_28'},
+  { type: 'React', id: 'React_29'},
+  { type: 'React', id: 'React_30'},
+  { type: 'React', id: 'React_31'},
+  { type: 'React', id: 'React_32'},
+  { type: 'React', id: 'React_33'},
+  { type: 'React', id: 'React_34'},
+  { type: 'React', id: 'React_35'},
+  // start Redux challenges:
+  { type: 'Redux', id: 'Redux_01'},
+  { type: 'Redux', id: 'Redux_02'},
+  { type: 'Redux', id: 'Redux_03'},
+  { type: 'Redux', id: 'Redux_04'},
+  { type: 'Redux', id: 'Redux_05'},
+  { type: 'Redux', id: 'Redux_06'},
+  { type: 'Redux', id: 'Redux_07'},
+  { type: 'Redux', id: 'Redux_08'},
+  { type: 'Redux', id: 'Redux_09'},
+  { type: 'Redux', id: 'Redux_10'},
+  { type: 'Redux', id: 'Redux_11'},
+  { type: 'Redux', id: 'Redux_12'},
+  { type: 'Redux', id: 'Redux_13'}
 ];
 
 // Change the nested component to React or Redux for which you are testing

@@ -10,14 +10,15 @@
 
 - **JSX and simple rendering**
   - :pencil: 1: Create a simple JSX element
-  - :pencil: 2: Render more complex JSX
+  - :pencil: 2: Render more complex JSX 
+  - (add multiple elements need to be wrapped in () and in single outer element to existing challenges)
   - :pencil: 3: Add Comments in JSX (*may need to revise test for comment*)
   - :pencil: 4: Render an HTML element to the DOM from JSX
   - :pencil: 5: Add HTML classes to JSX elements with className
   - :pencil: 6: Learn about self-closing JSX tags
 
 - **Introducing React/Components**
-  - :pencil: 7: Create a simple functional component that renders HTML
+  - :pencil: 7: Create a simple functional component that renders HTML (also intro => syntax for this?)
   - :pencil: 8: Create a component with ES6 class syntax
   - :pencil: 9: Create a new element with composition
   - :pencil: 10: Render nested components with composition
@@ -43,30 +44,30 @@
   - :pencil: 26: Use `this.setState` with a fat arrow function
   - :pencil: 27: Write a method that toggles a state value 'on' and 'off'
   - :pencil: 28: Write a simple counter using `this.setState`
-  - :pencil2: 29: `OnChange` handlers: create a controlled input box
-  - :pencil2: 30: More complex example: Controlled form with submit button
-  - :pencil2: 31: Pass `state` to child as props: Unidirectional data flow
-  - :pencil2: 32: Passing methods as callbacks to children: child is stateless
+  - :pencil: 29: `OnChange` handlers: create a controlled input box
+  - :pencil: 30: More complex example: Controlled form with submit button
+  - :pencil: 31: Pass `state` to child as props: Unidirectional data flow
+  - :pencil: 32: Passing methods as callbacks to children: child is stateless
 
 - **Component Lifecycle Hooks**
-  - :pencil2: `componentWillMount`
-  - :pencil2: Ajax data with `componentDidMount`
-  - :pencil2: Everybody cleanup with `componentWillUnmount`
-  - :pencil2: Update state with `componentWillReceiveProps`
-  - :pencil2: Prevent re-render with `shouldComponentUpdate`
-  - :pencil2: component lifecycle order
+  - :pencil: 33: `componentWillMount`
+  - :pencil: 34: Ajax data with `componentDidMount`
+  - :pencil: 35: Add event listeners in `componentDidMount` *(is the explanation correct?)*
+  - :pencil: 36: Managing updates with `componentWillReceiveProps` and `componentDidUpdate`
+  - :pencil: 37: Prevent re-render with `shouldComponentUpdate` — *(note on Virtual DOM?)*
 
 - **Advanced Rendering**
-  - :pencil2: Conditional rendering based on props
-  - :pencil2: Conditional rendering based on state (button click toggle's element)
-  - :pencil2: Write JavaScript in render & return of React Component
-  - :pencil2: Use map to dynamically render an array of data
-  - :pencil2: Use filter to dynamically filter an array of data
-  - :pencil2: Use reduce for something cool
+  - :pencil2: Conditional rendering based on `props`(Peter)
+  - :pencil2: Conditional rendering: `&&` for `if/else` condition 
+  - :pencil2: Conditional rendering: ternary condition (Peter)
+  - :pencil2: Write JavaScript in `render` & `return` of React Component (Peter)
+  - :pencil2: Use `map` to dynamically render an array of data (Peter)
+  - :pencil2: Use `filter` to dynamically filter an array of data
+  - :pencil2: Use `reduce` for something cool
   - :pencil2: Prevent a component from rendering with `null`
   - :pencil: Inline CSS 1
   - :pencil: Inline CSS 2
-  - :pencil: SOMEWHERE: JSX Gotchas? Key difference in attribute names, etc.
+  - :pencil: JSX Gotchas: Key difference in attribute names, etc.
 
 - **Rendering, node style**
   - :pencil2: Server side rendering with `renderToString`
@@ -75,50 +76,41 @@
 
 ###Redux Challenges:###
 
-- **Actions**
-  - Must have a type
-  - Action emitted by user interaction
-  - Example of Action payload as a JS object
+- **Basic Redux: Store, Actions, & Reducers**
+  - :pencil: 1: Create a Redux Store
+  - :pencil: 2: Access state with `getState()`
+  - :pencil: 3: Define an `action`
+  - :pencil: 4: Define an `action creator`
+  - :pencil: 5: Dispatch an action with `store.dispatch(action)`
+  - :pencil: 6: Update store in response to dispatched action
+  - :pencil: 7: Use a `switch` statement to handle multiple actions
+  - :pencil: 8: Refactor to use `const` for action types
+  - :pencil: 9: Register a store listener with `store.subscribe(listener)`
+  - :pencil: 10: Combine various reducers with `combineReducer()`
+  - :pencil: 11: Passing action data to the store
+  - :pencil: 12: Dispatching async actions in action creators *(Async testing... hacked with regex of course)*
+  - :pencil: 13: Pulling it all together: write a counter with Redux
 
-- **Reducers**
-  - Using `Object.assign`
-  - Switch statement to parse relevant action
-  - `(state, action) => state`, must not modify `state`
-  - Reducers can rollback state
-
-- **Store**
-  - Source of truth for all application state
-  - Combine various root level reducers with `combineReducer()`
-  - Access state with `getState()`
-  - Update state with `dispatch(action)`
-  - Register listener via `subscribe(listener)`
-  - Unregister listener
-
-- **One Way Data Flow**
-  - Dispatching action with `store.dispatch(action)`
-  - Reducer provides the next state
-  - Store combines all root level reducers
-  - Store saves a snapshot of application state
-
-- **Advanced section: Async [TODO] w/ `redux-thunk` Middleware (?)**
+- **Enforcing State Immutability**
+  - :pencil2: 14: Using `Object.assign`
+  - :pencil2: 15: ES6 spread operator for objects and arrays
+  - :pencil2: 16: `.concat()`?, other methods?
+  - :pencil2: 17: Reducers can rollback state & time travel — 'whoa!'
 
 ---
 
 ###React-Redux Challenges:###
 
-- **Connect Redux with React views**
-  - Import React-Redux and setup `Provider`
-
-- **Connect `stateful` components to Redux**
-  - `connect` method from `react-redux`
-  - Render Redux state in React with `mapStateToProps`
-  - Map dispatch actions to React with `mapDispatchToProps`
-  - Use `bindActionCreators` to map dispatch actions
-  - Dispatch a Redux action from a React Component
-
-- **Add more actions (?) /// simple to-do or counter application with Redux (?)**
-  - Create `CHECK_GROCERY_ITEM` action
-  - Create `REMOVE_GROCERY_ITEM` action
-  - Create `EDIT_GROCERY_ITEM` action
+- **Use `react-redux` to Manage a List of Messages**
+  - :pencil2: 1: Create a controlled input and a submit button on a form which updates an array in local `state`
+  - :pencil2: 2: Create a Redux store and actions that can lift this `state` out of the React component
+  - :pencil2: 3: Use `Provider` to wrap our React Component so it can connect to Redux
+  - :pencil2: 4: Write `mapStateToProps`
+  - :pencil2: 5: Write `mapDispatchToProps` | discuss `bindActionCreators`
+  - :pencil2: 6: Use `connect` to connect `state` and `dispatch` to React and refactor out local `state`
+  - :pencil2: 7: Connect it all together and dispatch actions from our React Component 
 
 **Do we want to add react-router challenges?** 
+
+
+

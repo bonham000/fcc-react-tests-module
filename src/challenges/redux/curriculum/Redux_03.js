@@ -8,35 +8,39 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Create a Redux Store`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Define a Redux Action`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>Challenge Text`
+export const challengeText = `<span class = 'default'>Intro: </span>Now lets learn how to update state in Redux. In Redux, all
+state updates are triggered by dispatching actions. An <code>action</code> is simply a JavaScript object which contains information
+about what action happened. The Redux store will receive these action objects and then update its state accordingly. Sometimes a Redux
+<code>action</code> will also carry a payload of data, for example a username after a user logs in, but they don't have to. What they
+must carry however is a <code>type</code> property which specifies the 'type' of action that occurred.<br><br>
+
+Think of Redux actions as messengers that deliver information about events in your app to the Redux store. The store will then
+conduct the business of updating state according to the nature of these actions.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>Create a redux store with the Redux method
-createStore() and initalize its state to be 5.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>Here we will write our first Redux <code>action</code>.
+Its as simple as declaring an object with a type property. Declare an object named 'action' and give it a type property set to the
+string 'LOGIN'.`
 
 // ---------------------------- define challenge seed code ----------------------------
-export const seedCode =
-`// Redux methods are available from a Redux object
-// For example: Redux.createStore()
-// Define the store here:`
+export const seedCode =`// Define an action here:`
 
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode =
-`const store = Redux.createStore(
-	(state = 5) => state
-);`
+`const action = {
+	type: 'LOGIN'
+}`
 
 // ---------------------------- define challenge tests ----------------------------
 
 export const executeTests = (code) => {
 
 	const error_0 = 'Your JSX code was transpiled successfully.';
-	const error_1 = 'The redux store has a value of 5 for the state.';
-	const error_2 = '';
-	const error_3 = '';
+	const error_1 = 'An action object exists.';
+	const error_2 = 'The action has a key property \'type\' with value \'LOGIN\'.';
 
 	let testResults = [
 		{
@@ -53,21 +57,16 @@ export const executeTests = (code) => {
 			test: 2,
 			status: false,
 			condition: error_2
-		},
-		{
-			test: 3,
-			status: false,
-			condition: error_3
 		}
 	];
 
-	let es5, store, passed = true;
+	let es5, action, passed = true;
 
 	// this code hijacks the user input to create an IIFE 
 	// which returns the store from Redux as an object
 	// or whatever you need from the client code
 	const prepend = `(function() {`
-	const apend = `;\n return store })()`
+	const apend = `;\n return action })()`
 	const modifiedCode = prepend.concat(code).concat(apend);
 	
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
@@ -83,16 +82,15 @@ export const executeTests = (code) => {
 	// save the store from redux to test here
 	// now you can access the redux store methods
 	try {
-		store = eval(es5)
+		action = eval(es5)
 	} catch (err) {
 		console.log(err);
 		passed = false;
 	}
-
 	
 	// test 1:
 	try {
-
+		assert.strictEqual(typeof action, 'object', error_1);
 		testResults[1].status = true;
 	} catch (err) {
 		console.log(err);
@@ -102,22 +100,12 @@ export const executeTests = (code) => {
 
 	// test 2:
 	try {
-
+		assert.strictEqual(action.type, 'LOGIN', error_2);
 		testResults[2].status = true;
 	} catch (err) {
 		console.log(err);
 		passed = false;
 		testResults[2].status = false;		
-	}
-
-	// test 3:
-	try {
-
-		testResults[3].status = true;
-	} catch (err) {
-		console.log(err);
-		passed = false;
-		testResults[3].status = false;
 	}
 
 	return {
@@ -135,10 +123,10 @@ export const liveRender = (code) => {
 	// displayed on the client UI
 	const prepend = `
 	(function() { 
-		let __Custom__Log = []
-		const message = (msg) => __Custom__Log.push(msg);
+		let log = []
+		const message = (msg) => log.push(msg);
 	`
-	const apend = `; return __Custom__Log })();`
+	const apend = `; return log })();`
 	const consoleReplaced = code.replace(/console.log/g, 'message');
 	const hijackedCode = prepend.concat(consoleReplaced).concat(apend);
 	
