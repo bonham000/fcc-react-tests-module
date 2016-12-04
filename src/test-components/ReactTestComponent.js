@@ -56,7 +56,7 @@ export default class Component extends React.Component {
 		setTimeout( () => { 
 			this.liveRender(); 
 			this.testCode();
-		}, 50);
+		}, 55);
 	}
 	solutionCode() {
 		this.setState({
@@ -65,7 +65,7 @@ export default class Component extends React.Component {
 		setTimeout( () => { 
 			this.liveRender();
 			this.testCode(); 
-			}, 50);
+		}, 50);
 	}
 	componentDidMount() {
 		this.testCode();
@@ -73,9 +73,19 @@ export default class Component extends React.Component {
 	}
 	selectChallenge(event) {
 		setTimeout( () => { this.seedCode() }, 50);
-		setTimeout( () => { this.testCode() }, 50);
 		setTimeout( () => { this.liveRender() }, 50);
+		setTimeout( () => { this.testCode() }, 50);
 		this.props.select(event.target.value);
+	}
+	nextChallenge() {
+		setTimeout( () => { this.seedCode() }, 50);
+		setTimeout( () => { this.liveRender() }, 50);
+		setTimeout( () => { this.testCode() }, 50);
+		this.props.advanceOneChallenge();
+	}
+	previousChallenge() {
+		setTimeout( () => { this.seedCode() }, 50);
+		this.props.previousChallenge();
 	}
 	render() {
     const options = {
@@ -144,7 +154,9 @@ export default class Component extends React.Component {
 			    	<div className='testControls'>
 			    		<button onClick={this.testCode} className='testBtn'>Test Code</button>
 			    		<button onClick={this.seedCode}>Reload Seed</button>
-			    		<button onClick={this.solutionCode}>Solution Code</button>
+			    		<button onClick={this.previousChallenge.bind(this)}>Previous Challenge</button>
+			    		<button onClick={this.nextChallenge.bind(this)}>Next Challenge</button>
+			    		<button className= 'solveBtn' onClick={this.solutionCode}>Solution Code</button>
 				    </div>
 
 				    <div className='testResults'>
