@@ -94,20 +94,21 @@
 - **Enforcing State Immutability**
   - :pencil2: 14: Using `Object.assign`
   - :pencil2: 15: ES6 spread operator for objects and arrays
-  - :pencil2: 16: Reducers can rollback state & time travel — 'whoa!'
+  - :pencil2: 16: `.concat()`?, other methods?
+  - :pencil2: 17: Reducers can rollback state & time travel — 'whoa!'
 
 ---
 
 ###React-Redux Challenges:###
 
-- **Use `react-redux` to Manage a List of User Messages**
+- **Use `react-redux` to Manage a List of Messages**
   - :pencil2: 1: Create a controlled input and a submit button on a form which updates an array in local `state`
   - :pencil2: 2: Create a Redux store and actions that can lift this `state` out of the React component
   - :pencil2: 3: Use `Provider` to wrap our React Component so it can connect to Redux
   - :pencil2: 4: Write `mapStateToProps`
   - :pencil2: 5: Write `mapDispatchToProps` | discuss `bindActionCreators`
-  - :pencil2: 6: Use `connect` to connect `state` and `dispatch` to our React Component and refactor out local state management
-  - :pencil2: 7: Connect it all together and dispatch actions from React Component 
+  - :pencil2: 6: Use `connect` to connect `state` and `dispatch` to React and refactor out local `state`
+  - :pencil2: 7: Connect it all together and dispatch actions from our React Component 
 
 **Do we want to add react-router challenges?** 
 
