@@ -77,15 +77,16 @@
 ###Redux Challenges:###
 
 - **Basic Redux: Store, Actions, & Reducers**
-  - :pencil: 1: Create a Redux Store | single source of truth for all application state
+  - :pencil: 1: Create a Redux Store
   - :pencil: 2: Access state with `getState()`
   - :pencil: 3: Define an `action`
   - :pencil: 4: Define an `action creator`
   - :pencil: 5: Dispatch an action with `store.dispatch(action)`
   - :pencil: 6: Update store in response to dispatched action
-  - :pencil2: 7: Refactor to use `const` for action types
-  - :pencil2: 8: Register a store listener with `store.subscribe(listener)`
-  - :pencil2: 9: Combine various reducers with `combineReducer()`
+  - :pencil: 7: Use a `switch` statement to handle multiple actions
+  - :pencil: 8: Refactor to use `const` for action types
+  - :pencil2: 9: Register a store listener with `store.subscribe(listener)`
+  - :pencil2: 10: Combine various reducers with `combineReducer()`
 
 - **Enforcing State Immutability**
   - :pencil2: Using `Object.assign`
