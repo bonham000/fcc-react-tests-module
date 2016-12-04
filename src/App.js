@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from 'react';
-import ReactTestComponent from './test-components/ReactTestComponent'
-import ReduxTestComponent from './test-components/ReduxTestComponent'
+import ReactTestComponent from './test-components/ReactTestComponent';
+import ReduxTestComponent from './test-components/ReduxTestComponent';
 
 // INSTRUCTIONS:
 // Copy one of the challenge templates from the /challenge-templates folder
@@ -142,12 +142,41 @@ export default class App extends React.Component {
       }
     }
     this.select = this.select.bind(this);
+    this.advanceOneChallenge = this.advanceOneChallenge.bind(this);
+    this.previousChallenge = this.previousChallenge.bind(this);
 	}
   select(event) {
     const challenge=this.state.challenges.filter( (challenge) => challenge.id === event );
     this.setState({
       selectedChallenge: challenge[0]
     });
+  }
+  advanceOneChallenge() {
+    console.log('working')
+    let nextChallenge;
+    for (let idx= 0; idx < this.state.challenges.length; idx++) {
+      if (this.state.selectedChallenge.id === this.state.challenges[idx].id) {
+        nextChallenge= this.state.challenges[idx + 1];
+      }
+    }
+    if (nextChallenge) {
+      this.setState({
+        selectedChallenge: nextChallenge
+      });
+    }
+  }
+  previousChallenge() {
+    let prevChallenge;
+    for (let idx= 0; idx < this.state.challenges.length; idx++) {
+      if (this.state.selectedChallenge.id === this.state.challenges[idx].id) {
+        prevChallenge= this.state.challenges[idx - 1];
+      }
+    }
+    if (prevChallenge) {
+      this.setState({
+        selectedChallenge: prevChallenge
+      });
+    }
   }
   render() {
     const { selectedChallenge }=this.state;
@@ -171,7 +200,9 @@ export default class App extends React.Component {
               QA={eval(challenge).QA}
               selectedChallenge={challenge}
               challenges={this.state.challenges}
-              select={this.select} />
+              select={this.select} 
+              advanceOneChallenge={this.advanceOneChallenge}
+              previousChallenge={this.previousChallenge} />
 
           :
           
@@ -186,7 +217,9 @@ export default class App extends React.Component {
               QA={eval(challenge).QA}
               selectedChallenge={challenge}
               challenges={this.state.challenges} 
-              select={this.select} />
+              select={this.select}
+              advanceOneChallenge={this.advanceOneChallenge} 
+              previousChallenge={this.previousChallenge} />
 
         }
 
