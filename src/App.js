@@ -152,7 +152,6 @@ export default class App extends React.Component {
     });
   }
   advanceOneChallenge() {
-    console.log('working')
     let nextChallenge;
     for (let idx= 0; idx < this.state.challenges.length; idx++) {
       if (this.state.selectedChallenge.id === this.state.challenges[idx].id) {

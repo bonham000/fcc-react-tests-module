@@ -12,19 +12,18 @@ export default class Component extends React.Component {
 			code: this.props.seedCode,
 			testResults: []
 		}
-		this.updateCode=this.updateCode.bind(this);
-		this.liveRender=this.liveRender.bind(this);
-		this.testCode=this.testCode.bind(this);
-		this.seedCode=this.seedCode.bind(this);
-		this.solutionCode=this.solutionCode.bind(this);
 	}
-  updateCode(newCode) {
+	componentDidMount() {
+		this.testCode();
+		this.liveRender();
+	}
+  updateCode = (newCode) => {
     this.setState({
         code: newCode
     });
     this.liveRender();
 	}
-	liveRender() {
+	liveRender = (condition) =>{
 
 		const { code }=this.state;
 		const renderComponent=this.props.liveRender(code);
@@ -34,11 +33,14 @@ export default class Component extends React.Component {
 		try {
 			ReactDOM.render(renderComponent, document.getElementById('liveOutput'));
 		} catch (err) {
+			if (condition) {
+				document.getElementById('liveOutput').innerHTML = '';
+			}
 			console.log('Live rendering error:', err);
 		}
 
 	}
-	testCode() {
+	testCode = () => {
 
 		const { code }=this.state;
 		const results=this.props.executeTests(code);
@@ -49,16 +51,16 @@ export default class Component extends React.Component {
 		});
 
 	}
-	seedCode() {
+	seedCode = (condition) => {
 		this.setState({
 			code: this.props.seedCode
 		});
 		setTimeout( () => { 
-			this.liveRender(); 
+			this.liveRender(condition); 
 			this.testCode();
 		}, 55);
 	}
-	solutionCode() {
+	solutionCode = () => {
 		this.setState({
 			code: this.props.solutionCode
 		});
@@ -67,27 +69,20 @@ export default class Component extends React.Component {
 			this.testCode(); 
 		}, 50);
 	}
-	componentDidMount() {
-		this.testCode();
-		this.liveRender();
-	}
-	selectChallenge(event) {
-		setTimeout( () => { this.seedCode() }, 50);
-		setTimeout( () => { this.liveRender() }, 50);
-		setTimeout( () => { this.testCode() }, 50);
+	selectChallenge = (event) => {
+		setTimeout( () => { this.seedCode(true) }, 25);
 		this.props.select(event.target.value);
 	}
-	nextChallenge() {
-		setTimeout( () => { this.seedCode() }, 50);
-		setTimeout( () => { this.liveRender() }, 50);
-		setTimeout( () => { this.testCode() }, 50);
+	nextChallenge = () => {
+		setTimeout( () => { this.seedCode(true) }, 25);
 		this.props.advanceOneChallenge();
 	}
-	previousChallenge() {
-		setTimeout( () => { this.seedCode() }, 50);
+	previousChallenge = () => {
+		setTimeout( () => { this.seedCode(true) }, 25);
 		this.props.previousChallenge();
 	}
 	render() {
+
     const options = {
     	mode: 'jsx',
       lineNumbers: true,
@@ -100,12 +95,15 @@ export default class Component extends React.Component {
 	    	}
 	    }
     };
+
     const renderTitle = () => { return { __html: this.props.challengeTitle }}
     const renderText = () => { return { __html: this.props.challengeText }}
     const renderInstructions = () => { return { __html: this.props.challengeInstructions }}
+
     const { testResults } = this.state;
     
-    let passingTests, totalTests
+    let passingTests, totalTests;
+
     if (testResults.length > 0) {
 	    passingTests = testResults.filter( (test) => test.status === true ).length;
 	    totalTests = testResults.length;
@@ -152,11 +150,11 @@ export default class Component extends React.Component {
 				    <h1 className='title'>Tests</h1>
 			    	
 			    	<div className='testControls'>
+			    		<button onClick={this.seedCode} className='seedBtn'>Reload Seed</button>
+			    		<button onClick={this.solutionCode} className='solnBtn'>Solution Code</button>
+			    		<button onClick={this.previousChallenge.bind(this)} className='travelBtn'>Previous Challenge</button>
+			    		<button onClick={this.nextChallenge.bind(this)} className='travelBtn'>Next Challenge</button>
 			    		<button onClick={this.testCode} className='testBtn'>Test Code</button>
-			    		<button onClick={this.seedCode}>Reload Seed</button>
-			    		<button onClick={this.previousChallenge.bind(this)}>Previous Challenge</button>
-			    		<button onClick={this.nextChallenge.bind(this)}>Next Challenge</button>
-			    		<button className= 'solveBtn' onClick={this.solutionCode}>Solution Code</button>
 				    </div>
 
 				    <div className='testResults'>

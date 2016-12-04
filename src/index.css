@@ -134,8 +134,20 @@ button:hover {
 .testBtn:hover {
 	background: #25F56B;
 }
-.solveBtn {
+.testBtn {
 	width: 490px;
+}
+.seedBtn:hover {
+	background: #F65A39;
+}
+.solnBtn:hover {
+	background: #25F56B;
+}
+.travelBtn {
+	background: #FFCB4D;
+}
+.travelBtn:hover {
+	background: #FFEE3F;
 }
 button:focus {
 	outline: none;

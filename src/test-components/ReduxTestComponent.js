@@ -11,18 +11,16 @@ export default class ReduxTestComponent extends React.Component {
 			code: this.props.seedCode,
 			testResults: []
 		}
-		this.updateCode=this.updateCode.bind(this);
-		this.testCode=this.testCode.bind(this);
-		this.seedCode=this.seedCode.bind(this);
-		this.solutionCode=this.solutionCode.bind(this);
-		this.selectChallenge=this.selectChallenge.bind(this);
 	}
-  updateCode(newCode) {
+	componentDidMount() {
+		this.testCode();
+	}
+  updateCode = (newCode) => {
     this.setState({
         code: newCode
     });
 	}
-	testCode() {
+	testCode = () => {
 
 		const { code } = this.state;
 		const results = this.props.executeTests(code);
@@ -46,35 +44,33 @@ export default class ReduxTestComponent extends React.Component {
 		}
 
 	}
-	seedCode() {
+	seedCode = () => {
 		this.setState({
 			code: this.props.seedCode
 		});
 		setTimeout(() => {this.testCode()}, 55);
 	}
-	solutionCode() {
+	solutionCode = () => {
 		this.setState({
 			code: this.props.solutionCode
 		});
 		setTimeout(() => {this.testCode()}, 50);
 	}
-	componentDidMount() {
-		this.testCode();
-	}
-	selectChallenge(event) {
+	selectChallenge = (event) => {
 		setTimeout( () => { this.seedCode(); }, 50);
 		setTimeout( () => { this.testCode() }, 50);
 		this.props.select(event.target.value);
 	}
-	nextChallenge() {
+	nextChallenge = () => {
 		setTimeout( () => { this.seedCode() }, 50);
 		this.props.advanceOneChallenge();
 	}
-	previousChallenge() {
+	previousChallenge = () => {
 		setTimeout( () => { this.seedCode() }, 50);
 		this.props.previousChallenge();
 	}
 	render() {
+
     const options = {
     	mode: 'jsx',
       lineNumbers: true,
@@ -87,9 +83,11 @@ export default class ReduxTestComponent extends React.Component {
 	    	}
 	    } 
     };
+
     const renderTitle = () => { return { __html: this.props.challengeTitle }}
     const renderText = () => { return { __html: this.props.challengeText }}
     const renderInstructions = () => { return { __html: this.props.challengeInstructions }}
+    
     const { testResults } = this.state;
     
     let passingTests, totalTests
@@ -139,11 +137,11 @@ export default class ReduxTestComponent extends React.Component {
 				    <h1 className='title'>Tests</h1>
 			    	
 			    	<div className='testControls'>
+			    		<button onClick={this.seedCode} className='seedBtn'>Reload Seed</button>
+			    		<button onClick={this.solutionCode} className='solnBtn'>Solution Code</button>
+			    		<button onClick={this.previousChallenge.bind(this)} className='travelBtn'>Previous Challenge</button>
+			    		<button onClick={this.nextChallenge.bind(this)} className='travelBtn'>Next Challenge</button>
 			    		<button onClick={this.testCode} className='testBtn'>Test Code</button>
-			    		<button onClick={this.seedCode}>Reload Seed</button>
-			    		<button onClick={this.previousChallenge.bind(this)}>Previous Challenge</button>
-			    		<button onClick={this.nextChallenge.bind(this)}>Next Challenge</button>
-			    		<button className= 'solveBtn' onClick={this.solutionCode}>Solution Code</button>
 				    </div>
 
 				    <div className='testResults'>
