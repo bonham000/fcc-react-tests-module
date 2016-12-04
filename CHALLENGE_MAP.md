@@ -86,15 +86,15 @@
   - :pencil: 7: Use a `switch` statement to handle multiple actions
   - :pencil: 8: Refactor to use `const` for action types
   - :pencil: 9: Register a store listener with `store.subscribe(listener)`
-  - :pencil2: 10: Combine various reducers with `combineReducer()`
+  - :pencil: 10: Combine various reducers with `combineReducer()`
+  - :pencil: 11: Passing action data to the store
+  - :pencil: 12: Dispatching async actions in action creators *(Async testing... hacked with regex of course)*
+  - :pencil: 13: Pulling it all together: write a counter with Redux
 
 - **Enforcing State Immutability**
-  - :pencil2: Using `Object.assign`
-  - :pencil2: ES6 spread operator for objects and arrays
-  - :pencil2: Reducers can rollback state & time travel — 'whoa!'
-
-- **Advanced section:**
-  - :pencil2: Dispatching async actions in action creators
+  - :pencil2: 14: Using `Object.assign`
+  - :pencil2: 15: ES6 spread operator for objects and arrays
+  - :pencil2: 16: Reducers can rollback state & time travel — 'whoa!'
 
 ---
 
@@ -109,3 +109,6 @@
   - :pencil2: Dispatch a Redux action from a React Component
 
 **Do we want to add react-router challenges?** 
+
+
+
