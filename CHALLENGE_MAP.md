@@ -100,13 +100,14 @@
 
 ###React-Redux Challenges:###
 
-- **Use Redux with React with `react-redux` Module**
-  - :pencil2: Import React-Redux and setup `Provider`
-  - :pencil2: Pass Redux state to React with `mapStateToProps` and `connect`
-  - :pencil2: Replace local state with Redux store state and `mapStateToProps`
-  - :pencil2: Map dispatch actions to React with `mapDispatchToProps`
-  - :pencil2: Use `bindActionCreators` to map dispatch actions
-  - :pencil2: Dispatch a Redux action from a React Component
+- **Use `react-redux` to Manage a List of User Messages**
+  - :pencil2: 1: Create a controlled input and a submit button on a form which updates an array in local `state`
+  - :pencil2: 2: Create a Redux store and actions that can lift this `state` out of the React component
+  - :pencil2: 3: Use `Provider` to wrap our React Component so it can connect to Redux
+  - :pencil2: 4: Write `mapStateToProps`
+  - :pencil2: 5: Write `mapDispatchToProps` | discuss `bindActionCreators`
+  - :pencil2: 6: Use `connect` to connect `state` and `dispatch` to our React Component and refactor out local state management
+  - :pencil2: 7: Connect it all together and dispatch actions from React Component 
 
 **Do we want to add react-router challenges?** 
 
