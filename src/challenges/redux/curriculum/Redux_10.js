@@ -283,7 +283,7 @@ export const liveRender = (code) => {
 		let __Custom__Log = []
 		const message = (msg) => __Custom__Log.push(msg);
 	`
-	const apend = `; return __Custom__Log })();`
+	const apend = `;\n return __Custom__Log })();`
 	const consoleReplaced = code.replace(/console.log/g, 'message');
 	const hijackedCode = prepend.concat(consoleReplaced).concat(apend);
 	

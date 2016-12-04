@@ -106,10 +106,11 @@
   - :pencil: 2: Create a controlled input and a submit button on a form which updates an array in local `state`
   - :pencil: 3: Create a Redux store and actions that can lift this `state` out of the React component
   - :pencil: 4: Use `Provider` to wrap our React Component so it can connect to Redux
-  - :pencil2: 5: Write `mapStateToProps`
-  - :pencil2: 6: Write `mapDispatchToProps` | discuss `bindActionCreators`
-  - :pencil2: 7: Use `connect` to connect `state` and `dispatch` to React and refactor out local `state`
-  - :pencil2: 8: Connect it all together and dispatch actions from our React Component
+  - :pencil: 5: Write `mapStateToProps`
+  - :pencil: 6: Write `mapDispatchToProps`
+  - :pencil2: 7 Review `mapStateToProps` and `mapDispatchToProps`
+  - :pencil2: 8: Use `connect` to connect `state` and `dispatch` to React and refactor out local `state`
+  - :pencil2: 9: Connect it all together and dispatch actions from our React Component
 
 **Do we want to add react-router challenges?** 
 

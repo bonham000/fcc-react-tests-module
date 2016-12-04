@@ -151,7 +151,7 @@ export const liveRender = (code) => {
 		let log = []
 		const message = (msg) => log.push(msg);
 	`
-	const apend = `; return log })();`
+	const apend = `;\n return log })();`
 	const consoleReplaced = code.replace(/console.log/g, 'message');
 	const hijackedCode = prepend.concat(consoleReplaced).concat(apend);
 	
