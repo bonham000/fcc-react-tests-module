@@ -14,6 +14,20 @@ export default class ReduxTestComponent extends React.Component {
 	}
 	componentDidMount() {
 		this.testCode();
+		document.addEventListener('keydown', this.handleKeyPress);
+	}
+	handleKeyPress = (event) => {
+		if (event.keyCode === 39 && event.metaKey) {
+			this.nextChallenge();
+		} else if (event.keyCode === 37 && event.metaKey) {
+			this.previousChallenge();
+		} else if (event.keyCode === 13 && event.metaKey) {
+			this.testCode();
+		} else if (event.keyCode === 83 && event.shiftKey) {
+			this.solutionCode();
+		} else if (event.keyCode === 82 && event.shiftKey) {
+			this.seedCode();
+		}
 	}
   updateCode = (newCode) => {
     this.setState({
