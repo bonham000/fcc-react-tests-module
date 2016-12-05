@@ -13,128 +13,74 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Render React on the Server with renderToString`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>`
+export const challengeText = `<span class = 'default'>Intro: </span>So far we have been rendering React components on the client.
+Normally, this is what you will always be doing. However, there are some use cases were it makes sense to render a React
+component on the server. Since React is just a JavaScript view library and we can run JavaScript on the server with Node,
+this shouldn't be too hard to do. React even provides us with a <code>renderToString()</code> method we can use just for this
+purpose which we will apply here.<br><br>
+
+There are two key reasons why rendering on the server may be used in a real world app. The first is that without doing this,
+our React apps would consist of a relatively empty HTML file and a large bundle of JavaScript when initially load to the browser.
+This may not be ideal for search engines that are trying to index the content of our pages so people can find us. So if we
+render our initial HTML markup on the server and send this to the client, the initial page load will contain all of our page's
+markup which can be crawled by search engines. Additionally, this creates a faster initial page load experience because our
+rendered HTML will be smaller than the JavaScript code of our entire app. React will still be able to recognize our app
+and will be able to takeover its management after this initial load.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>Use the <code>renderToString()</code> method
+which is provided on the <code>ReactDOM</code> global object to render <code>&lt;App/&gt;</code> to a string.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = `
-class MyComponent extends React.Component {
+class App extends React.Component {
 	constructor(props) {
 		super(props);
 	}
   render() {
-    return (
-	    { /* change code below this line */ }
-	    
-	    { /* change code above this line */ }
-    );
+    return <div/>
   }
-};`
+};
+
+// change code below this line`
 
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode = `
-class MyComponent extends React.Component {
+class App extends React.Component {
 	constructor(props) {
 		super(props);
 	}
   render() {
-    return (
-	   	{ /* change code below this line */ }
-	    
-	    { /* change code above this line */ }
-    );
+    return <div/>
   }
-};`
+};
+
+// change code below this line
+ReactDOM.renderToString(<App/>);`
 
 // ---------------------------- define challenge tests ----------------------------
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
-	const error_1 = '';
-	const error_2 = '';
-	const error_3 = '';
+	const error_0 = 'The App component is rendered to a string using ReactDOM.renderToString';
 
 	let testResults = [
 		{
 			test: 0,
 			status: false,
 			condition: error_0
-		},
-		{
-			test: 1,
-			status: false,
-			condition: error_1
-		},
-		{
-			test: 2,
-			status: false,
-			condition: error_2
-		},
-		{
-			test: 3,
-			status: false,
-			condition: error_3
 		}
 	];
 
-	let es5, mockedComponent, passed = true;
+	let passed = true;
 
-	// this applies an export to the user's code so
-	// we can access their component here for tests
-	const exportScript = '\n export default MyComponent'
-	const modifiedCode = code.concat(exportScript);
-	
-	// test 0: try to transpile JSX, ES6 code to ES5 in browser
+	// test 0:
 	try {
-		es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
+		assert.strictEqual(code.replace(/\s/g,'').includes('ReactDOM.renderToString(<App/>)'), true, error_0);
 		testResults[0].status = true;
 	} catch (err) {
 		passed = false;
 		testResults[0].status = false;
-	}
-	
-	// now we will try to shallow render the component with Enzyme's shallow method
-	// you can also use mount to perform a full render to the DOM environment
-	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
-	try {
-		mockedComponent = shallow(React.createElement(eval(es5)));
-	} catch (err) {
-		passed = false;
-	}
-
-	console.log(mockedComponent);
-
-	// run specific tests to verify the functionality
-	// that the challenge is trying to assess:
-
-	// test 1:
-	try {
-
-		testResults[1].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[1].status = false;
-	}
-
-	// test 2:
-	try {
-
-		testResults[2].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[2].status = false;		
-	}
-
-	// test 3:
-	try {
-
-		testResults[3].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[3].status = false;
 	}
 
 	return {
@@ -146,16 +92,4 @@ export const executeTests = (code) => {
 
 // ---------------------------- define live render function ----------------------------
 
-export const liveRender = (code) => {
-
-	try {
-		const exportScript = '\n export default MyComponent'
-		const modifiedCode = code.concat(exportScript);
-		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
-		const renderedComponent = React.createElement(eval(es5));
-		return renderedComponent;
-	} catch (err) {
-		console.log(err);
-	}
-
-}
+export const liveRender = (code) => undefined;

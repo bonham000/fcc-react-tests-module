@@ -73,7 +73,7 @@
   - :pencil: 46: Inline CSS 1
   - :pencil: 47: Inline CSS 2
   - :pencil2: 48: JSX Gotchas: Key difference in attribute names, etc (Peter)
-  - :pencil2: 49: Server side rendering with `renderToString`
+  - :pencil: 49: Server side rendering with `renderToString`
 
 ---
 

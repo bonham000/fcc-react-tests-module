@@ -23,9 +23,9 @@ export default class ReactTestComponent extends React.Component {
 	}
 	handleKeyPress = (event) => {
 		if (event.keyCode === 39 && event.shiftKey) {
-      setTimeout( () => { this.seedCode() }, 25);
+      setTimeout( () => { this.seedCode(true) }, 25);
     } else if (event.keyCode === 37 && event.shiftKey) {
-      setTimeout( () => { this.seedCode() }, 25);
+      setTimeout( () => { this.seedCode(true) }, 25);
 		} else if (event.keyCode === 13 && event.metaKey) {
 			this.testCode();
 		} else if (event.keyCode === 83 && event.shiftKey) {

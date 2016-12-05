@@ -42,18 +42,17 @@ import * as React_35 from './challenges/react/curriculum/React_35'
 import * as React_36 from './challenges/react/curriculum/React_36'
 import * as React_37 from './challenges/react/curriculum/React_37'
 // import * as React_38 from './challenges/react/curriculum/React_38'
-// import * as React_39 from './challenges/react/curriculum/React_39'
-// import * as React_40 from './challenges/react/curriculum/React_40'
-// import * as React_41 from './challenges/react/curriculum/React_41'
+import * as React_39 from './challenges/react/curriculum/React_39'
+import * as React_40 from './challenges/react/curriculum/React_40'
+import * as React_41 from './challenges/react/curriculum/React_41'
 // import * as React_42 from './challenges/react/curriculum/React_42'
 // import * as React_43 from './challenges/react/curriculum/React_43'
 // import * as React_44 from './challenges/react/curriculum/React_44'
-// import * as React_45 from './challenges/react/curriculum/React_45'
-// import * as React_46 from './challenges/react/curriculum/React_46'
-// import * as React_47 from './challenges/react/curriculum/React_47'
+import * as React_45 from './challenges/react/curriculum/React_45'
+import * as React_46 from './challenges/react/curriculum/React_46'
+import * as React_47 from './challenges/react/curriculum/React_47'
 // import * as React_48 from './challenges/react/curriculum/React_48'
-// import * as React_49 from './challenges/react/curriculum/React_49'
-// import * as React_50 from './challenges/react/curriculum/React_50'
+import * as React_49 from './challenges/react/curriculum/React_49'
 
 // import Redux Challenges:
 import * as Redux_01 from './challenges/redux/curriculum/Redux_01'
@@ -129,18 +128,17 @@ const challenges = [
   { type: 'React', id: 'React_36'},
   { type: 'React', id: 'React_37'},
   // { type: 'React', id: 'React_38'},
-  // { type: 'React', id: 'React_39'},
-  // { type: 'React', id: 'React_40'},
-  // { type: 'React', id: 'React_41'},
+  { type: 'React', id: 'React_39'},
+  { type: 'React', id: 'React_40'},
+  { type: 'React', id: 'React_41'},
   // { type: 'React', id: 'React_42'},
   // { type: 'React', id: 'React_43'},
   // { type: 'React', id: 'React_44'},
-  // { type: 'React', id: 'React_45'},
-  // { type: 'React', id: 'React_46'},
-  // { type: 'React', id: 'React_47'},
+  { type: 'React', id: 'React_45'},
+  { type: 'React', id: 'React_46'},
+  { type: 'React', id: 'React_47'},
   // { type: 'React', id: 'React_48'},
-  // { type: 'React', id: 'React_49'},
-  // { type: 'React', id: 'React_50'},
+  { type: 'React', id: 'React_49'},
 
   // Redux challenges:
   { type: 'Redux', id: 'Redux_01'},
