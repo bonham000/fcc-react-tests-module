@@ -10,8 +10,7 @@
 
 - **JSX and simple rendering**
   - :pencil: 1: Create a simple JSX element
-  - :pencil: 2: Render more complex JSX 
-  - (add multiple elements need to be wrapped in () and in single outer element to existing challenges)
+  - :pencil: 2: Render more complex JSX (explain that several elements must be enclosed)
   - :pencil: 3: Add Comments in JSX (*may need to revise test for comment*)
   - :pencil: 4: Render an HTML element to the DOM from JSX
   - :pencil: 5: Add HTML classes to JSX elements with className
@@ -94,7 +93,7 @@
 - **Enforcing State Immutability**
   - :pencil2: 14: Using `Object.assign`
   - :pencil2: 15: ES6 spread operator for objects and arrays
-  - :pencil2: 16: `.concat()`?, other methods?
+  - :pencil2: 16: `.concat()`? Other methods?
   - :pencil2: 17: Reducers can rollback state & time travel — 'whoa!'
 
 ---
