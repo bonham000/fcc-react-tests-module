@@ -171,7 +171,6 @@ export const executeTests = (code) => {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[0].status = false;
 	}
@@ -183,7 +182,6 @@ export const executeTests = (code) => {
 		mockedComponent = shallow(React.createElement(eval(es5)));
 		mockRender = mount(React.createElement(eval(es5)));
 	} catch (err) {
-		console.log(err);
 		passed = false;
 	}
 
@@ -197,7 +195,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(mockedComponent.type(), 'div', error_1)
 		testResults[1].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[1].status = false;
 	}
@@ -207,7 +204,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(mockedComponent.nodes[0].props.children[2].type.name, 'Selections', error_2)
 		testResults[2].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[2].status = false;		
 	}
@@ -217,7 +213,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(mockedComponent.nodes[0].props.children[4].type.name, 'Selections', error_2)
 		testResults[3].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[3].status = false;		
 	}
@@ -234,7 +229,6 @@ export const executeTests = (code) => {
 			typeof mockedComponent.props().children[4].props.shoes === 'object', error_4)
 		testResults[4].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[4].status = false;		
 	}
@@ -244,7 +238,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(mockRender.find('div').nodes[1].innerText, "A super-casusal day. I\'m going to wear a sweatshirt, pajama pants, and slippers.", error_4)
 		testResults[5].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[5].status = false;
 	}
@@ -254,7 +247,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(mockRender.find('div').nodes[2].innerText, "A casusal day. I\'m going to wear a t-shirt, blue jeans, and sneakers.", error_4)
 		testResults[6].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[6].status = false;
 	}
@@ -277,7 +269,7 @@ export const liveRender = (code) => {
 		const renderedComponent = React.createElement(eval(es5));
 		return renderedComponent;
 	} catch (err) {
-		console.log(err);
+		console.log('Live rendering failed', err);
 	}
 
 }

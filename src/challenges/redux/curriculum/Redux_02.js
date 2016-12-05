@@ -78,7 +78,6 @@ export const executeTests = (code) => {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[0].status = false;
 	}
@@ -88,7 +87,6 @@ export const executeTests = (code) => {
 	try {
 		store = eval(es5)
 	} catch (err) {
-		console.log(err);
 		passed = false;
 	}
 	
@@ -97,7 +95,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(store.getState(), 5, 'The redux store has a value of 5 for the state.');
 		testResults[1].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[1].status = false;
 	}
@@ -125,7 +122,6 @@ export const executeTests = (code) => {
 
 		testResults[2].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[2].status = false;
 	}	

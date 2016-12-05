@@ -114,7 +114,6 @@ export const executeTests = (code) => {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[0].status = false;
 	}
@@ -130,7 +129,6 @@ export const executeTests = (code) => {
 		store = reduxCode.store;
 
 	} catch (err) {
-		console.log(err);
 		passed = false;
 	}
 
@@ -140,7 +138,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(ADD, 'ADD', error_1);
 		testResults[1].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[1].status = false;
 	}
@@ -157,7 +154,6 @@ export const executeTests = (code) => {
 
 		testResults[2].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[2].status = false;		
 	}
@@ -167,7 +163,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(typeof messageReducer, 'function', error_3);
 		testResults[3].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[3].status = false;
 	}
@@ -187,7 +182,6 @@ export const executeTests = (code) => {
 
 		testResults[4].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[4].status = false;
 	}
@@ -201,7 +195,6 @@ export const executeTests = (code) => {
 
 		testResults[5].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[5].status = false;		
 	}
@@ -215,7 +208,6 @@ export const executeTests = (code) => {
 
 		testResults[6].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[6].status = false;
 	}	

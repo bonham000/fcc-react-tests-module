@@ -152,7 +152,6 @@ export const executeTests = (code) => {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[0].status = false;
 	}
@@ -166,7 +165,6 @@ export const executeTests = (code) => {
 		wakeUp = reduxCode.wakeUp;
 		immutableReducer = reduxCode.immutableReducer;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 	}
 
@@ -185,7 +183,6 @@ export const executeTests = (code) => {
 		);
 		testResults[1].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[1].status = false;
 	}
@@ -199,7 +196,6 @@ export const executeTests = (code) => {
 		);
 		testResults[2].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[2].status = false;		
 	}
@@ -215,7 +211,6 @@ export const executeTests = (code) => {
 		);
 		testResults[3].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[3].status = false;
 	}

@@ -99,7 +99,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(code.includes('console.log(\'Now I know React and Redux!\')'), true, error_0);
 		testResults[0].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[0].status = false;
 	}

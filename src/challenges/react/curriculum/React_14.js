@@ -144,7 +144,6 @@ export const executeTests = (code) => {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[0].status = false;
 	}
@@ -155,7 +154,6 @@ export const executeTests = (code) => {
 	try {
 		mockedComponent = shallow(React.createElement(eval(es5)));
 	} catch (err) {
-		console.log(err);
 		passed = false;
 	}
 
@@ -167,7 +165,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(mockedComponent.type(), 'div', error_1);
 		testResults[1].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[1].status = false;
 	}
@@ -177,7 +174,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(mockedComponent.nodes[0].props.children[1].type.name, 'ReturnUsername', error_2)
 		testResults[2].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[2].status = false;		
 	}
@@ -187,7 +183,6 @@ export const executeTests = (code) => {
 		assert(mockedComponent.props().children[1].props.hasOwnProperty('username'), error_3)
 		testResults[3].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[3].status = false;
 	}
@@ -198,7 +193,6 @@ export const executeTests = (code) => {
 			mockedComponent.props().children[1].props.username.length > 0, error_4)
 		testResults[4].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[4].status = false;
 	}
@@ -221,7 +215,7 @@ export const liveRender = (code) => {
 		const renderedComponent = React.createElement(eval(es5));
 		return renderedComponent;
 	} catch (err) {
-		console.log(err);
+		console.log('Live rendering failed', err);
 	}
 
 }

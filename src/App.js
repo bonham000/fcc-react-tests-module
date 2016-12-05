@@ -3,13 +3,6 @@ import React from 'react';
 import ReactTestComponent from './test-components/ReactTestComponent';
 import ReduxTestComponent from './test-components/ReduxTestComponent';
 
-// INSTRUCTIONS:
-// Copy one of the challenge templates from the /challenge-templates folder
-// Save this as a new file in the appropriate challenges path: /react or /redux
-// Follow the template file to write a new challenge and tests
-// Import your challenge by changing the below import statement
-// And change the App component to render the correct test component
-
 // import React Challenges:
 import * as React_01 from './challenges/react/curriculum/React_01'
 import * as React_02 from './challenges/react/curriculum/React_02'
@@ -182,7 +175,6 @@ const challenges = [
   { type: 'Redux', id: 'React_Redux_10'}
 ];
 
-// Change the nested component to React or Redux for which you are testing
 export default class App extends React.Component {
 	constructor(props) {
 		super(props);
@@ -193,9 +185,6 @@ export default class App extends React.Component {
         id: 'React_01'
       }
     }
-    this.select = this.select.bind(this);
-    this.advanceOneChallenge = this.advanceOneChallenge.bind(this);
-    this.previousChallenge = this.previousChallenge.bind(this);
 	}
   componentDidMount() {
     document.addEventListener('keydown', this.handleKeyPress);
@@ -207,44 +196,44 @@ export default class App extends React.Component {
       this.previousChallenge();
     }
   }
-  select(event) {
-    const challenge=this.state.challenges.filter( (challenge) => challenge.id === event );
+  select = (selectID) => {
+    const challenge = this.state.challenges.filter( (challenge) => challenge.id === selectID );
     this.setState({
       selectedChallenge: challenge[0]
     });
   }
-  advanceOneChallenge() {
+  findIndex = (identifier) => {
     const { challenges, selectedChallenge } = this.state;
-    let nextChallenge;
-    for (let i = 0; i < this.state.challenges.length; i++) {
-      if (selectedChallenge.id === challenges[i].id) {
-        nextChallenge = challenges[i + 1];
+    let currentIndex;
+    for (let i = 0; i < challenges.length; i++) {
+      if (identifier === challenges[i].id) {
+        currentIndex = i;
       }
     }
-    if (nextChallenge) {
+    return currentIndex;
+  }
+  advanceOneChallenge = () => {
+    const { challenges, selectedChallenge } = this.state;
+    let currentIndex = this.findIndex(selectedChallenge.id);
+    if (currentIndex <= challenges.length - 2) {
       this.setState({
-        selectedChallenge: nextChallenge
+        selectedChallenge: challenges[currentIndex + 1]
       });
     }
   }
-  previousChallenge() {
+  previousChallenge = () => {
     const { challenges, selectedChallenge } = this.state;
-    let prevChallenge;
-    for (let i = 0; i < this.state.challenges.length; i++) {
-      if (selectedChallenge.id === challenges[i].id) {
-        prevChallenge = challenges[i - 1];
-      }
-    }
-    if (prevChallenge) {
+    let currentIndex = this.findIndex(selectedChallenge.id);
+    if (currentIndex > 0) {
       this.setState({
-        selectedChallenge: prevChallenge
+        selectedChallenge: challenges[currentIndex - 1]
       });
     }
   }
   render() {
-    const { selectedChallenge }=this.state;
-    const challengeType=selectedChallenge.type;
-    const challenge=selectedChallenge.id;
+    const { selectedChallenge } = this.state;
+    const challengeType = selectedChallenge.type;
+    const challenge = selectedChallenge.id;
     return (
       <div>
 

@@ -16,6 +16,9 @@ export default class ReduxTestComponent extends React.Component {
 		this.testCode();
 		document.addEventListener('keydown', this.handleKeyPress);
 	}
+	componentWillUnmount() {
+		document.removeEventListener('keydown', this.handleKeyPress);
+	}
 	handleKeyPress = (event) => {
 		if (event.keyCode === 39 && event.shiftKey) {
       setTimeout( () => { this.seedCode() }, 25);
@@ -62,17 +65,16 @@ export default class ReduxTestComponent extends React.Component {
 		this.setState({
 			code: this.props.seedCode
 		});
-		setTimeout(() => {this.testCode()}, 25);
+		setTimeout(() => {this.testCode()}, 35);
 	}
 	solutionCode = () => {
 		this.setState({
 			code: this.props.solutionCode
 		});
-		setTimeout(() => {this.testCode()}, 25);
+		setTimeout(() => {this.testCode()}, 35);
 	}
-	selectChallenge = (event) => {
-		setTimeout( () => { this.seedCode(); }, 25);
-		setTimeout( () => { this.testCode() }, 25);
+	select = (event) => {
+		setTimeout( () => { this.seedCode(true) }, 25);
 		this.props.select(event.target.value);
 	}
 	nextChallenge = () => {
@@ -112,7 +114,7 @@ export default class ReduxTestComponent extends React.Component {
     
     const renderChallenges=this.props.challenges.map( (challenge, idx) => {
       return (
-      	<option value={challenge.id} key = {idx} selected = {challenge.id === this.props.selectedChallenge}>
+      	<option value={challenge.id} key={idx}>
       		Challenge: {challenge.id.replace(/_/g, ' ')}
       	</option>
       );
@@ -123,7 +125,7 @@ export default class ReduxTestComponent extends React.Component {
 
     		<h1 className='title mainTitle'>Free Code Camp Redux Challenge Demo:
 
-	        <select onChange={this.selectChallenge.bind(this)}>
+	        <select value={this.props.selectedChallenge} onChange={this.select.bind(this)}>
 	          {renderChallenges}
 	        </select>
 	        

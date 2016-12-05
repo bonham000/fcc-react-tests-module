@@ -91,7 +91,6 @@ export const executeTests = (code) => {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[0].status = false;
 	}
@@ -102,7 +101,6 @@ export const executeTests = (code) => {
 	try {
 		jsx = eval(es5);
 	} catch (err) {
-		console.log(err);
 		passed = false;
 	}
 
@@ -114,7 +112,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(typeof jsx, 'function', 'myComponent is a function.');
 		testResults[1].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[1].status = false;
 	}
@@ -125,7 +122,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(typeof testRender, 'object', 'myComponent returns a React Element.');
 		testResults[2].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[2].status = false;		
 	}
@@ -135,7 +131,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(testRender.type, 'div', 'myComponent returns a div element.');
 		testResults[3].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[3].status = false;
 	}
@@ -145,7 +140,6 @@ export const executeTests = (code) => {
 		assert.notStrictEqual(testRender.props.children.length, 0, 'The div element contains a string of text.');
 		testResults[4].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[4].status = false;
 	}	
@@ -166,7 +160,7 @@ export const liveRender = (code) => {
 		const renderedComponent = React.createElement(eval(es5));
 		return renderedComponent;
 	} catch (err) {
-		console.log(err);
+		console.log('Live rendering failed', err);
 	}
 
 }

@@ -143,7 +143,6 @@ export const executeTests = (code) => {
 		stylesConst = transform(partialCode, { presets: [ 'es2015', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[0].status = false;
 	}
@@ -155,7 +154,6 @@ export const executeTests = (code) => {
 		testRender = shallow(React.createElement(eval(es5)));
 		stylesConst = eval(stylesConst);
 	} catch (err) {
-		console.log(err);
 		passed = false;
 	}
 	
@@ -166,7 +164,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(Object.keys(stylesConst).length, 3, error_1);
 		testResults[1].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[1].status = false;
 	}
@@ -175,7 +172,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(stylesConst.color, 'purple', error_2);
 		testResults[2].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[2].status = false;
 	}
@@ -184,7 +180,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(stylesConst.fontSize, 40, error_3);
 		testResults[3].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[3].status = false;
 	}
@@ -193,7 +188,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(stylesConst.border, "2px solid purple", error_4);
 		testResults[4].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[4].status = false;		
 	}
@@ -202,7 +196,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(testRender.type(), 'div', error_5);
 		testResults[5].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[5].status = false;
 	}
@@ -213,7 +206,6 @@ export const executeTests = (code) => {
 			testRender.nodes[0].props.style.border === "2px solid purple", error_6);
 		testResults[6].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[6].status = false;
 	}
@@ -236,7 +228,7 @@ export const liveRender = (code) => {
 		const renderedComponent = React.createElement(eval(es5));
 		return renderedComponent;
 	} catch (err) {
-		console.log(err);
+		console.log('Live rendering failed', err);
 	}
 
 }

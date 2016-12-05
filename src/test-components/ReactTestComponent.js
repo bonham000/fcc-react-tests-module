@@ -5,7 +5,7 @@ import CodeMirror from 'react-codemirror'
 
 import 'codemirror/mode/jsx/jsx';
 
-export default class Component extends React.Component {
+export default class ReactTestComponent extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -17,6 +17,9 @@ export default class Component extends React.Component {
 		this.testCode();
 		this.liveRender();
 		document.addEventListener('keydown', this.handleKeyPress);
+	}
+	componentWillUnmount() {
+		document.removeEventListener('keydown', this.handleKeyPress);
 	}
 	handleKeyPress = (event) => {
 		if (event.keyCode === 39 && event.shiftKey) {
@@ -39,14 +42,15 @@ export default class Component extends React.Component {
 	}
 	liveRender = (condition) =>{
 
-		const { code }=this.state;
-		const renderComponent=this.props.liveRender(code);
+		const { code } = this.state;
+		const renderComponent = this.props.liveRender(code);
 
 		// try to live render the component
 		// some renders may fail so this has to be wrapped in a try/catch
 		try {
 			ReactDOM.render(renderComponent, document.getElementById('liveOutput'));
 		} catch (err) {
+			// this will clear the preview box on initial load if live-rendering fails
 			if (condition) {
 				document.getElementById('liveOutput').innerHTML = '';
 			}
@@ -56,8 +60,8 @@ export default class Component extends React.Component {
 	}
 	testCode = () => {
 
-		const { code }=this.state;
-		const results=this.props.executeTests(code);
+		const { code } = this.state;
+		const results = this.props.executeTests(code);
 
 		this.setState({
 			passed: results.passed,
@@ -72,7 +76,7 @@ export default class Component extends React.Component {
 		setTimeout( () => { 
 			this.liveRender(condition); 
 			this.testCode();
-		}, 25);
+		}, 35);
 	}
 	solutionCode = () => {
 		this.setState({
@@ -81,9 +85,9 @@ export default class Component extends React.Component {
 		setTimeout( () => { 
 			this.liveRender();
 			this.testCode(); 
-		}, 25);
+		}, 35);
 	}
-	selectChallenge = (event) => {
+	select = (event) => {
 		setTimeout( () => { this.seedCode(true) }, 25);
 		this.props.select(event.target.value);
 	}
@@ -125,7 +129,7 @@ export default class Component extends React.Component {
 
     const renderChallenges = this.props.challenges.map( (challenge, idx) => {
       return (
-      	<option value={challenge.id} key = {idx} selected = {challenge.id === this.props.selectedChallenge}>
+      	<option value={challenge.id} key={idx}>
       		Challenge: {challenge.id.replace(/_/g, ' ')}
       	</option>
       );
@@ -136,7 +140,7 @@ export default class Component extends React.Component {
 
     		<h1 className='title mainTitle'>Free Code Camp React Challenge Demo:
 
-	        <select onChange={this.selectChallenge.bind(this)}>
+	        <select value={this.props.selectedChallenge} onChange={this.select.bind(this)}>
 	          {renderChallenges}
 	        </select>
 

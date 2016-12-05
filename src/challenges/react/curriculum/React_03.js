@@ -80,7 +80,6 @@ export const executeTests = (code) => {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[0].status = false;
 	}
@@ -89,7 +88,6 @@ export const executeTests = (code) => {
 	try {
 		jsx = eval(es5);
 	} catch (err) {
-		console.log(err);
 		passed = false;
 	}
 
@@ -98,7 +96,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(jsx.type, 'div', 'The constant JSX returns an <div> element.');
 		testResults[1].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[1].status = false;
 	}
@@ -108,7 +105,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(jsx.props.children[0].type, 'h1', 'The div contains an h1 tag as the first element.');
 		testResults[2].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[2].status = false;
 	}
@@ -118,7 +114,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(jsx.props.children[1].type, 'p', 'The div contains an p tag as the second element.');
 		testResults[3].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[3].status = false;
 	}
@@ -128,7 +123,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(modifiedCode.includes('/*'), true, 'The JSX includes a comment.');
 		testResults[4].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[4].status = false;
 	}	
@@ -149,7 +143,7 @@ export const liveRender = (code) => {
 		const renderedComponent = React.createElement(eval(es5));
 		return renderedComponent;
 	} catch (err) {
-		console.log(err);
+		console.log('Live rendering failed', err);
 	}
 
 }
