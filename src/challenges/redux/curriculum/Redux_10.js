@@ -8,7 +8,7 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Combined Multiple Reducers`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Combine Multiple Reducers`
 
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>Lets see what happens when the state of our app

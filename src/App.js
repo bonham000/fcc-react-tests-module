@@ -76,9 +76,9 @@ import * as Redux_10 from './challenges/redux/curriculum/Redux_10'
 import * as Redux_11 from './challenges/redux/curriculum/Redux_11'
 import * as Redux_12 from './challenges/redux/curriculum/Redux_12'
 import * as Redux_13 from './challenges/redux/curriculum/Redux_13'
-// import * as Redux_14 from './challenges/redux/curriculum/Redux_14'
-// import * as Redux_15 from './challenges/redux/curriculum/Redux_15'
-// import * as Redux_16 from './challenges/redux/curriculum/Redux_16'
+import * as Redux_14 from './challenges/redux/curriculum/Redux_14'
+import * as Redux_15 from './challenges/redux/curriculum/Redux_15'
+import * as Redux_16 from './challenges/redux/curriculum/Redux_16'
 // import * as Redux_17 from './challenges/redux/curriculum/Redux_17'
 
 // import React-Redux Challenges
@@ -162,9 +162,9 @@ const challenges = [
   { type: 'Redux', id: 'Redux_11'},
   { type: 'Redux', id: 'Redux_12'},
   { type: 'Redux', id: 'Redux_13'},
-  // { type: 'Redux', id: 'Redux_14'},
-  // { type: 'Redux', id: 'Redux_15'},
-  // { type: 'Redux', id: 'Redux_16'},
+  { type: 'Redux', id: 'Redux_14'},
+  { type: 'Redux', id: 'Redux_15'},
+  { type: 'Redux', id: 'Redux_16'},
   // { type: 'Redux', id: 'Redux_17'},
 
   // React-Redux challenges:
@@ -195,6 +195,16 @@ export default class App extends React.Component {
     this.advanceOneChallenge = this.advanceOneChallenge.bind(this);
     this.previousChallenge = this.previousChallenge.bind(this);
 	}
+  componentDidMount() {
+    document.addEventListener('keydown', this.handleKeyPress);
+  }
+  handleKeyPress = (event) => {
+    if (event.keyCode === 39 && event.metaKey) {
+      this.advanceOneChallenge();
+    } else if (event.keyCode === 37 && event.metaKey) {
+      this.previousChallenge();
+    }
+  }
   select(event) {
     const challenge=this.state.challenges.filter( (challenge) => challenge.id === event );
     this.setState({
@@ -202,10 +212,11 @@ export default class App extends React.Component {
     });
   }
   advanceOneChallenge() {
+    const { challenges, selectedChallenge } = this.state;
     let nextChallenge;
-    for (let idx= 0; idx < this.state.challenges.length; idx++) {
-      if (this.state.selectedChallenge.id === this.state.challenges[idx].id) {
-        nextChallenge= this.state.challenges[idx + 1];
+    for (let i = 0; i < this.state.challenges.length; i++) {
+      if (selectedChallenge.id === challenges[i].id) {
+        nextChallenge = challenges[i + 1];
       }
     }
     if (nextChallenge) {
@@ -215,10 +226,11 @@ export default class App extends React.Component {
     }
   }
   previousChallenge() {
+    const { challenges, selectedChallenge } = this.state;
     let prevChallenge;
-    for (let idx= 0; idx < this.state.challenges.length; idx++) {
-      if (this.state.selectedChallenge.id === this.state.challenges[idx].id) {
-        prevChallenge= this.state.challenges[idx - 1];
+    for (let i = 0; i < this.state.challenges.length; i++) {
+      if (selectedChallenge.id === challenges[i].id) {
+        prevChallenge = challenges[i - 1];
       }
     }
     if (prevChallenge) {

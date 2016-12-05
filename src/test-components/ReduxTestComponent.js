@@ -18,10 +18,10 @@ export default class ReduxTestComponent extends React.Component {
 	}
 	handleKeyPress = (event) => {
 		if (event.keyCode === 39 && event.metaKey) {
-			this.nextChallenge();
-		} else if (event.keyCode === 37 && event.metaKey) {
-			this.previousChallenge();
-		} else if (event.keyCode === 13 && event.metaKey) {
+      setTimeout( () => { this.seedCode() }, 25);
+    } else if (event.keyCode === 37 && event.metaKey) {
+      setTimeout( () => { this.seedCode() }, 25);
+    } else if (event.keyCode === 13 && event.metaKey) {
 			this.testCode();
 		} else if (event.keyCode === 83 && event.shiftKey) {
 			this.solutionCode();
@@ -62,25 +62,25 @@ export default class ReduxTestComponent extends React.Component {
 		this.setState({
 			code: this.props.seedCode
 		});
-		setTimeout(() => {this.testCode()}, 55);
+		setTimeout(() => {this.testCode()}, 25);
 	}
 	solutionCode = () => {
 		this.setState({
 			code: this.props.solutionCode
 		});
-		setTimeout(() => {this.testCode()}, 50);
+		setTimeout(() => {this.testCode()}, 25);
 	}
 	selectChallenge = (event) => {
-		setTimeout( () => { this.seedCode(); }, 50);
-		setTimeout( () => { this.testCode() }, 50);
+		setTimeout( () => { this.seedCode(); }, 25);
+		setTimeout( () => { this.testCode() }, 25);
 		this.props.select(event.target.value);
 	}
 	nextChallenge = () => {
-		setTimeout( () => { this.seedCode() }, 50);
+		setTimeout( () => { this.seedCode() }, 25);
 		this.props.advanceOneChallenge();
 	}
 	previousChallenge = () => {
-		setTimeout( () => { this.seedCode() }, 50);
+		setTimeout( () => { this.seedCode() }, 25);
 		this.props.previousChallenge();
 	}
 	render() {

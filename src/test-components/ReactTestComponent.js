@@ -20,9 +20,9 @@ export default class Component extends React.Component {
 	}
 	handleKeyPress = (event) => {
 		if (event.keyCode === 39 && event.metaKey) {
-			this.nextChallenge();
-		} else if (event.keyCode === 37 && event.metaKey) {
-			this.previousChallenge();
+      setTimeout( () => { this.seedCode() }, 50);
+    } else if (event.keyCode === 37 && event.metaKey) {
+      setTimeout( () => { this.seedCode() }, 50);
 		} else if (event.keyCode === 13 && event.metaKey) {
 			this.testCode();
 		} else if (event.keyCode === 83 && event.shiftKey) {
@@ -72,7 +72,7 @@ export default class Component extends React.Component {
 		setTimeout( () => { 
 			this.liveRender(condition); 
 			this.testCode();
-		}, 55);
+		}, 25);
 	}
 	solutionCode = () => {
 		this.setState({
@@ -81,7 +81,7 @@ export default class Component extends React.Component {
 		setTimeout( () => { 
 			this.liveRender();
 			this.testCode(); 
-		}, 50);
+		}, 25);
 	}
 	selectChallenge = (event) => {
 		setTimeout( () => { this.seedCode(true) }, 25);

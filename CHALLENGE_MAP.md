@@ -91,10 +91,11 @@
   - :pencil: 13: Pulling it all together: write a counter with Redux
 
 - **Enforcing State Immutability**
-  - :pencil2: 14: Using `Object.assign`
-  - :pencil2: 15: ES6 spread operator for objects and arrays
-  - :pencil2: 16: `.concat()`? Other methods?
-  - :pencil2: 17: Reducers can rollback state & time travel — 'whoa!'
+  - :pencil: 14: Never mutate state
+  - :pencil: 15: Using the spread operator on arrays
+  - :pencil: 16: Remove an object from an array
+  - :pencil: 17: Using `Object.assign` for objects
+  - :pencil2: 18: ES6 spread operator for objects
 
 ---
 
