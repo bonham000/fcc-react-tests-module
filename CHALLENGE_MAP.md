@@ -69,12 +69,11 @@
   - :pencil2: 42: Conditional rendering: ternary condition (Peter)
   - :pencil2: 43: Conditional rendering based on `props`(Peter)
   - :pencil2: 44: Use `map` to dynamically render an array of data (Peter)
-  - :pencil2: 45: Use `filter` to dynamically filter an array of data
-  - :pencil2: 46: Use `reduce` dynamically on an array of data
-  - :pencil: 47: Inline CSS 1
-  - :pencil: 48: Inline CSS 2
-  - :pencil2: 49: JSX Gotchas: Key difference in attribute names, etc (Peter)
-  - :pencil2: 50: Server side rendering with `renderToString`
+  - :pencil: 45: Use `filter` to dynamically filter an array of data
+  - :pencil: 46: Inline CSS 1
+  - :pencil: 47: Inline CSS 2
+  - :pencil2: 48: JSX Gotchas: Key difference in attribute names, etc (Peter)
+  - :pencil2: 49: Server side rendering with `renderToString`
 
 ---
 

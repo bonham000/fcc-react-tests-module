@@ -1,6 +1,6 @@
 #Free Code Camp React/Redux Challenge Development#
 
-###This repo contains an in-browser test module prototype for React/Redux code and the proposed React & Redux challenges for the Free Code Camp Curriculum Expansion.###
+###This is an in-browser test module for developing the React/Redux challenges for the Free Code Camp Curriculum Expansion.###
 
 [See this project live here](http://hysterical-amusement.surge.sh/)
 
@@ -9,7 +9,7 @@
 ---
 
 To run this project locally clone the repository, install the dependencies, make sure the `src/index.js` file is rendering
-`App` to the DOM, and run `npm start`. Now you can view all the finished challenges live in the browser.
+`App` and not `DevApp`, and run `npm start`. Now you can view all the finished challenges live in the browser.
 
 We're conducting tests on React components using [Enzyme documentation](http://airbnb.io/enzyme/) which look like this:
 
@@ -29,7 +29,7 @@ progress of all the challenges. Challenges that are completely written will be m
 * The challenge content explains the information relevant to the challenge
 * The instructions are clear 
 * The tests correctly test for the desired functionality
-* The challenge fits into the overall curriculum narrative well
+* The challenge fits into the overall narrative of the curriculum
 
 Once a challenge has been fully QA'd its status will be updated to :white_check_mark:
 
