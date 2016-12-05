@@ -20,9 +20,9 @@ export default class Component extends React.Component {
 	}
 	handleKeyPress = (event) => {
 		if (event.keyCode === 39 && event.metaKey) {
-      setTimeout( () => { this.seedCode() }, 50);
+      setTimeout( () => { this.seedCode() }, 25);
     } else if (event.keyCode === 37 && event.metaKey) {
-      setTimeout( () => { this.seedCode() }, 50);
+      setTimeout( () => { this.seedCode() }, 25);
 		} else if (event.keyCode === 13 && event.metaKey) {
 			this.testCode();
 		} else if (event.keyCode === 83 && event.shiftKey) {

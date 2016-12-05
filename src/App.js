@@ -201,9 +201,9 @@ export default class App extends React.Component {
     document.addEventListener('keydown', this.handleKeyPress);
   }
   handleKeyPress = (event) => {
-    if (event.keyCode === 39 && event.metaKey) {
+    if (event.keyCode === 39 && event.shiftKey) {
       this.advanceOneChallenge();
-    } else if (event.keyCode === 37 && event.metaKey) {
+    } else if (event.keyCode === 37 && event.shiftKey) {
       this.previousChallenge();
     }
   }

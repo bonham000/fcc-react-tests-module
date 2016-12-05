@@ -353,7 +353,7 @@ export const executeTests = (code) => {
 
 	// test 5:
 	try {
-		assert.strictEqual(typeof props.submitMessage, 'function', error_5);
+		assert.strictEqual(typeof props.submitNewMessage, 'function', error_5);
 		testResults[5].status = true;
 	} catch (err) {
 		console.log(err);
