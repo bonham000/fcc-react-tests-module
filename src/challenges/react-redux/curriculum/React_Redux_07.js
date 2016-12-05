@@ -58,6 +58,16 @@ const mapDispatchToProps = (dispatch) => {
   }
 };
 
+
+const mapDispatchToProps = (dispatch) => {
+  return { 
+    submitMessage:
+    	(newMessage) => {
+        dispatch(addMessage(newMessage))
+      }
+  }
+};
+
 class Presentational extends React.Component {
 	constructor(props) {
 		super(props);
