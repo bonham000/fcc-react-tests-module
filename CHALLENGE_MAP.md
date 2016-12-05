@@ -63,11 +63,11 @@
 - **Advanced Rendering**
 
   - :pencil2: 38: Write JavaScript in `render` & `return` of React Component (Peter)
-  - :pencil2: 39: Conditional rendering: `if/else` in `render` method
-  - :pencil2: 40: Conditional rendering: `&&`
-  - :pencil2: 41: Conditional rendering: ternary condition (Peter)
-  - :pencil2: 42: Conditional rendering based on `props`(Peter)
-  - :pencil2: 43: Prevent a component from rendering with `null`
+  - :pencil: 39: Conditional rendering: `if/else` in `render` method
+  - :pencil: 40: Conditional rendering: `&&`
+  - :pencil: 41: Prevent a component from rendering with `null`
+  - :pencil2: 42: Conditional rendering: ternary condition (Peter)
+  - :pencil2: 43: Conditional rendering based on `props`(Peter)
   - :pencil2: 44: Use `map` to dynamically render an array of data (Peter)
   - :pencil2: 45: Use `filter` to dynamically filter an array of data
   - :pencil2: 46: Use `reduce` dynamically on an array of data
