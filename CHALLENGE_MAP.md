@@ -9,6 +9,7 @@
 ###React Challenges:###
 
 - **JSX and simple rendering**
+
   - :pencil: 1: Create a simple JSX element
   - :pencil: 2: Render more complex JSX (explain that several elements must be enclosed)
   - :pencil: 3: Add Comments in JSX (*may need to revise test for comment*)
@@ -17,6 +18,7 @@
   - :pencil: 6: Learn about self-closing JSX tags
 
 - **Introducing React/Components**
+
   - :pencil: 7: Create a simple functional component that renders HTML (also intro => syntax for this?)
   - :pencil: 8: Create a component with ES6 class syntax
   - :pencil: 9: Create a new element with composition
@@ -26,6 +28,7 @@
   - :pencil: 13: Pulling it all together: Write a React Component from scratch and render it to the DOM
 
 - **Props & Conditional Rendering**
+
   - :pencil: 14: Pass a string to a component using JSX functional component (Peter)
   - :pencil2: 15: Access props using `this.props`, passing a string to a React Component (Peter)
   - :pencil2: 16: Pass an array to a component using JSX (Peter)
@@ -35,6 +38,7 @@
   - :pencil: 20: Functional Stateless React Components *(regex `.includes` test for `propTypes`)*
 
 - **State**
+
   - :pencil2: 21: Define the initial state within the component's constructor (Jason)
   - :pencil: 22: Display state with `this.state`
   - :pencil: 23: Another way to display state with `this.state` in render
@@ -49,6 +53,7 @@
   - :pencil: 32: Passing methods as callbacks to children: child is stateless
 
 - **Component Lifecycle Hooks**
+
   - :pencil: 33: `componentWillMount`
   - :pencil: 34: Ajax data with `componentDidMount`
   - :pencil: 35: Add event listeners in `componentDidMount` *(is the explanation correct?)*
@@ -56,26 +61,27 @@
   - :pencil: 37: Prevent re-render with `shouldComponentUpdate` — *(note on Virtual DOM?)*
 
 - **Advanced Rendering**
-  - :pencil2: Conditional rendering based on `props`(Peter)
-  - :pencil2: Conditional rendering: `&&` for `if/else` condition 
-  - :pencil2: Conditional rendering: ternary condition (Peter)
-  - :pencil2: Write JavaScript in `render` & `return` of React Component (Peter)
-  - :pencil2: Use `map` to dynamically render an array of data (Peter)
-  - :pencil2: Use `filter` to dynamically filter an array of data
-  - :pencil2: Use `reduce` for something cool
-  - :pencil2: Prevent a component from rendering with `null`
-  - :pencil: Inline CSS 1
-  - :pencil: Inline CSS 2
-  - :pencil: JSX Gotchas: Key difference in attribute names, etc.
 
-- **Rendering, node style**
-  - :pencil2: Server side rendering with `renderToString`
+  - :pencil2: 38: Write JavaScript in `render` & `return` of React Component (Peter)
+  - :pencil2: 39: Conditional rendering: `if/else` in `render` method
+  - :pencil2: 40: Conditional rendering: `&&`
+  - :pencil2: 41: Conditional rendering: ternary condition (Peter)
+  - :pencil2: 42: Conditional rendering based on `props`(Peter)
+  - :pencil2: 43: Prevent a component from rendering with `null`
+  - :pencil2: 44: Use `map` to dynamically render an array of data (Peter)
+  - :pencil2: 45: Use `filter` to dynamically filter an array of data
+  - :pencil2: 46: Use `reduce` dynamically on an array of data
+  - :pencil: 47: Inline CSS 1
+  - :pencil: 48: Inline CSS 2
+  - :pencil2: 49: JSX Gotchas: Key difference in attribute names, etc.
+  - :pencil2: 50: Server side rendering with `renderToString`
 
 ---
 
 ###Redux Challenges:###
 
 - **Basic Redux: Store, Actions, & Reducers**
+
   - :pencil: 1: Create a Redux Store
   - :pencil: 2: Access state with `getState()`
   - :pencil: 3: Define an `action`
@@ -91,6 +97,7 @@
   - :pencil: 13: Pulling it all together: write a counter with Redux
 
 - **Enforcing State Immutability**
+
   - :pencil: 14: Never mutate state
   - :pencil: 15: Using the spread operator on arrays
   - :pencil: 16: Remove an object from an array
