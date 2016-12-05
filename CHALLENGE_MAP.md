@@ -27,7 +27,7 @@
   - :pencil: 13: Pulling it all together: Write a React Component from scratch and render it to the DOM
 
 - **Props & Conditional Rendering**
-  - :pencil2: 14: Pass a string to a component using JSX functional component (Peter)
+  - :pencil: 14: Pass a string to a component using JSX functional component (Peter)
   - :pencil2: 15: Access props using `this.props`, passing a string to a React Component (Peter)
   - :pencil2: 16: Pass an array to a component using JSX (Peter)
   - :pencil: 17: Set the default props using the defaultProps static component property
@@ -102,6 +102,7 @@
 ###React-Redux Challenges:###
 
 - **Use `react-redux` to Manage a List of Messages**
+
   - :pencil: 1: Getting started with React-Redux
   - :pencil: 2: Create a controlled input and a submit button on a form which updates an array in local `state`
   - :pencil: 3: Create a Redux store and actions that can lift this `state` out of the React component
@@ -112,8 +113,5 @@
   - :pencil: 8: Use `connect` to connect `state` and `dispatch` to React
   - :pencil: 9: Refactor local state out of our React Component and replace with Redux
   - :pencil: 10: Review and Moving Forward
-
-**Do we want to add react-router challenges?** ***Not now***
-
 
 
