@@ -112,7 +112,7 @@ export default class Component extends React.Component {
     const renderChallenges = this.props.challenges.map( (challenge, idx) => {
       return (
       	<option value={challenge.id} key = {idx} selected = {challenge.id === this.props.selectedChallenge}>
-      		Current Challenge: {challenge.id}
+      		Challenge: {challenge.id.replace(/_/g, ' ')}
       	</option>
       );
     });

@@ -24,7 +24,7 @@ import * as React_10 from './challenges/react/curriculum/React_10'
 import * as React_11 from './challenges/react/curriculum/React_11'
 import * as React_12 from './challenges/react/curriculum/React_12'
 import * as React_13 from './challenges/react/curriculum/React_13'
-//import * as React_14 from './challenges/react/curriculum/React_14'
+import * as React_14 from './challenges/react/curriculum/React_14'
 //import * as React_15 from './challenges/react/curriculum/React_15'
 //import * as React_16 from './challenges/react/curriculum/React_16'
 import * as React_17 from './challenges/react/curriculum/React_17'
@@ -65,20 +65,21 @@ import * as Redux_12 from './challenges/redux/curriculum/Redux_12'
 import * as Redux_13 from './challenges/redux/curriculum/Redux_13'
 
 // import React-Redux Challenges
-// import * as React_Redux_01 from './challenges/react-redux/curriculum/React_Redux_01'
-// import * as React_Redux_02 from './challenges/react-redux/curriculum/React_Redux_02'
-// import * as React_Redux_03 from './challenges/react-redux/curriculum/React_Redux_03'
-// import * as React_Redux_04 from './challenges/react-redux/curriculum/React_Redux_04'
-// import * as React_Redux_05 from './challenges/react-redux/curriculum/React_Redux_05'
-// import * as React_Redux_06 from './challenges/react-redux/curriculum/React_Redux_06'
-// import * as React_Redux_07 from './challenges/react-redux/curriculum/React_Redux_07'
-// import * as React_Redux_08 from './challenges/react-redux/curriculum/React_Redux_08'
-// import * as React_Redux_09 from './challenges/react-redux/curriculum/React_Redux_09'
-// import * as React_Redux_10 from './challenges/react-redux/curriculum/React_Redux_10'
+import * as React_Redux_01 from './challenges/react-redux/curriculum/React_Redux_01'
+import * as React_Redux_02 from './challenges/react-redux/curriculum/React_Redux_02'
+import * as React_Redux_03 from './challenges/react-redux/curriculum/React_Redux_03'
+import * as React_Redux_04 from './challenges/react-redux/curriculum/React_Redux_04'
+import * as React_Redux_05 from './challenges/react-redux/curriculum/React_Redux_05'
+import * as React_Redux_06 from './challenges/react-redux/curriculum/React_Redux_06'
+import * as React_Redux_07 from './challenges/react-redux/curriculum/React_Redux_07'
+import * as React_Redux_08 from './challenges/react-redux/curriculum/React_Redux_08'
+import * as React_Redux_09 from './challenges/react-redux/curriculum/React_Redux_09'
+import * as React_Redux_10 from './challenges/react-redux/curriculum/React_Redux_10'
 
 // add a new challenge to this array:
 const challenges = [
-  // start React challenges:
+
+  // React challenges:
   { type: 'React', id: 'React_01'},
   { type: 'React', id: 'React_02'},
   { type: 'React', id: 'React_03'},
@@ -92,7 +93,7 @@ const challenges = [
   { type: 'React', id: 'React_11'},
   { type: 'React', id: 'React_12'},
   { type: 'React', id: 'React_13'},
-  //{ type: 'React', id: 'React_14'},
+  { type: 'React', id: 'React_14'},
   //{ type: 'React', id: 'React_15'},
   //{ type: 'React', id: 'React_16'},
   { type: 'React', id: 'React_17'},
@@ -114,7 +115,8 @@ const challenges = [
   { type: 'React', id: 'React_33'},
   { type: 'React', id: 'React_34'},
   { type: 'React', id: 'React_35'},
-  // start Redux challenges:
+
+  // Redux challenges:
   { type: 'Redux', id: 'Redux_01'},
   { type: 'Redux', id: 'Redux_02'},
   { type: 'Redux', id: 'Redux_03'},
@@ -127,7 +129,19 @@ const challenges = [
   { type: 'Redux', id: 'Redux_10'},
   { type: 'Redux', id: 'Redux_11'},
   { type: 'Redux', id: 'Redux_12'},
-  { type: 'Redux', id: 'Redux_13'}
+  { type: 'Redux', id: 'Redux_13'},
+
+  // React-Redux challenges:
+  { type: 'React', id: 'React_Redux_01'},
+  { type: 'React', id: 'React_Redux_02'},
+  { type: 'Redux', id: 'React_Redux_03'},
+  { type: 'React', id: 'React_Redux_04'},
+  { type: 'Redux', id: 'React_Redux_05'},
+  { type: 'Redux', id: 'React_Redux_06'},
+  { type: 'React', id: 'React_Redux_07'},
+  { type: 'React', id: 'React_Redux_08'},
+  { type: 'React', id: 'React_Redux_09'},
+  { type: 'Redux', id: 'React_Redux_10'}
 ];
 
 // Change the nested component to React or Redux for which you are testing

@@ -103,7 +103,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return { 
-    submitMessage: (newMessage) => {
+    submitNewMessage: (newMessage) => {
        dispatch(addMessage(newMessage))
     }
   }
@@ -198,7 +198,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return { 
-    submitMessage: (newMessage) => {
+    submitNewMessage: (newMessage) => {
        dispatch(addMessage(newMessage))
     }
   }

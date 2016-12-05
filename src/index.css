@@ -222,3 +222,10 @@ a, a:visited {
 a:hover {
 	color: #3FB2FD;
 }
+
+#CRA {
+	color: black;
+}
+#CRA:hover {
+	color: #3FB2FD;
+}

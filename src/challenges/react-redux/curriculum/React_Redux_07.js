@@ -58,16 +58,6 @@ const mapDispatchToProps = (dispatch) => {
   }
 };
 
-
-const mapDispatchToProps = (dispatch) => {
-  return { 
-    submitMessage:
-    	(newMessage) => {
-        dispatch(addMessage(newMessage))
-      }
-  }
-};
-
 class Presentational extends React.Component {
 	constructor(props) {
 		super(props);
@@ -97,7 +87,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-  	submitNewMessage: function(message) {
+  	submitNewMessage: (message) => {
   		dispatch(addMessage(message));
   	}
   }
