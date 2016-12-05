@@ -111,6 +111,7 @@
   - :pencil: 7: Introduce `connect`
   - :pencil: 8: Use `connect` to connect `state` and `dispatch` to React
   - :pencil2: 9: Refactor local state out of our React Component and replace with Redux
+  - :pencil2: 10: Review
 
 **Do we want to add react-router challenges?** 
 
