@@ -95,7 +95,7 @@
   - :pencil: 15: Using the spread operator on arrays
   - :pencil: 16: Remove an object from an array
   - :pencil: 17: Using `Object.assign` for objects
-  - :pencil2: 18: ES6 spread operator for objects
+  - :pencil: 18: ES6 spread operator for objects
 
 ---
 

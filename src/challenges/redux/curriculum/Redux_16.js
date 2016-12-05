@@ -15,7 +15,7 @@ export const challengeText = `<span class = 'default'>Intro: </span>Now let's ge
 Other useful JavaScript methods include <code>slice</code> and <code>concat</code>.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've modified out reducer and action creator to now remove an item from an array based on 
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've modified our reducer and action creator to now remove an item from an array based on 
 the index of the item. Finish writing the reducer so a new state array is returned with the item at the specific index removed.`
 
 // ---------------------------- define challenge seed code ----------------------------

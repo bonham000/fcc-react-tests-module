@@ -79,7 +79,8 @@ import * as Redux_13 from './challenges/redux/curriculum/Redux_13'
 import * as Redux_14 from './challenges/redux/curriculum/Redux_14'
 import * as Redux_15 from './challenges/redux/curriculum/Redux_15'
 import * as Redux_16 from './challenges/redux/curriculum/Redux_16'
-// import * as Redux_17 from './challenges/redux/curriculum/Redux_17'
+import * as Redux_17 from './challenges/redux/curriculum/Redux_17'
+import * as Redux_18 from './challenges/redux/curriculum/Redux_18'
 
 // import React-Redux Challenges
 import * as React_Redux_01 from './challenges/react-redux/curriculum/React_Redux_01'
@@ -165,7 +166,8 @@ const challenges = [
   { type: 'Redux', id: 'Redux_14'},
   { type: 'Redux', id: 'Redux_15'},
   { type: 'Redux', id: 'Redux_16'},
-  // { type: 'Redux', id: 'Redux_17'},
+  { type: 'Redux', id: 'Redux_17'},
+  { type: 'Redux', id: 'Redux_18'},
 
   // React-Redux challenges:
   { type: 'React', id: 'React_Redux_01'},
