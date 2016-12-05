@@ -11,7 +11,7 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Create a Redux Store`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>Challenge Text`
+export const challengeText = `<span class = 'default'>Intro: </span>_CHALLENGE_TEXT_`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>Create a redux store with the Redux method

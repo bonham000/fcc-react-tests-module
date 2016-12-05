@@ -73,7 +73,7 @@
   - :pencil2: 46: Use `reduce` dynamically on an array of data
   - :pencil: 47: Inline CSS 1
   - :pencil: 48: Inline CSS 2
-  - :pencil2: 49: JSX Gotchas: Key difference in attribute names, etc.
+  - :pencil2: 49: JSX Gotchas: Key difference in attribute names, etc (Peter)
   - :pencil2: 50: Server side rendering with `renderToString`
 
 ---
