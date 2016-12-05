@@ -19,9 +19,9 @@ export default class Component extends React.Component {
 		document.addEventListener('keydown', this.handleKeyPress);
 	}
 	handleKeyPress = (event) => {
-		if (event.keyCode === 39 && event.metaKey) {
+		if (event.keyCode === 39 && event.shiftKey) {
       setTimeout( () => { this.seedCode() }, 25);
-    } else if (event.keyCode === 37 && event.metaKey) {
+    } else if (event.keyCode === 37 && event.shiftKey) {
       setTimeout( () => { this.seedCode() }, 25);
 		} else if (event.keyCode === 13 && event.metaKey) {
 			this.testCode();
