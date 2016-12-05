@@ -108,9 +108,9 @@
   - :pencil: 4: Use `Provider` to wrap our React Component so it can connect to Redux
   - :pencil: 5: Write `mapStateToProps`
   - :pencil: 6: Write `mapDispatchToProps`
-  - :pencil2: 7 Review `mapStateToProps` and `mapDispatchToProps`
-  - :pencil2: 8: Use `connect` to connect `state` and `dispatch` to React and refactor out local `state`
-  - :pencil2: 9: Connect it all together and dispatch actions from our React Component
+  - :pencil: 7: Introduce `connect`
+  - :pencil2: 8: Use `connect` to connect `state` and `dispatch` to React
+  - :pencil2: 9: Refactor out local state from our React Component
 
 **Do we want to add react-router challenges?** 
 
