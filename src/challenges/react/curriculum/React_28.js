@@ -12,16 +12,16 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Write a
 
 export const challengeText = `<span class = 'default'>Intro: </span>Now that you've learned the basics of state,
 writing methods that can set state, and assigning click handlers that can trigger these methods, lets try to design
-a more complex component.`
+a more complex stateful component.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've provided a basic component
-for you called Counter. This component simply keeps track of a count value. We've defined two buttons which call
-methods <code>increment</code> and <code>decrement</code>. Write these methods so that the counter value is incremented
+for you called <code>Counter</code>. This component simply keeps track of a <code>count</code> value in state. We've defined two buttons which call
+methods <code>increment()</code> and <code>decrement()</code>. Write these methods so that the counter value is incremented
 or decremented by 1 when the appropriate button is clicked. There is also a button that can reset the count back to 0.
-Implement this <code>reset</code> method as well.<br><br>
+Implement this <code>reset()</code> method as well.<br><br>
 
-Note: Be sure not to modify the classNames of the buttons!`
+Note: Be sure not to modify the <code>classNames</code> of the buttons!`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
@@ -138,7 +138,6 @@ export const executeTests = (code) => {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[0].status = false;
 	}
@@ -147,7 +146,6 @@ export const executeTests = (code) => {
 	try {
 		mockedComponent = mount(React.createElement(eval(es5)));
 	} catch (err) {
-		console.log(err);
 		passed = false;
 	}
 
@@ -168,7 +166,6 @@ export const executeTests = (code) => {
 
 		testResults[1].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[1].status = false;
 	}
@@ -178,7 +175,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(mockedComponent.state('count'), 0, error_2);
 		testResults[2].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[2].status = false;
 	}
@@ -195,7 +191,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(before === 0 && after === 1, true, error_3);
 		testResults[3].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[3].status = false;
 	}
@@ -212,7 +207,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(before === 0 && after === -1, true, error_4);
 		testResults[4].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[4].status = false;
 	}
@@ -235,7 +229,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(before === 0 && after === 2 && retest === 1 && reset === 0, true, error_5);
 		testResults[5].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[5].status = false;
 	}
@@ -258,7 +251,7 @@ export const liveRender = (code) => {
 		const renderedComponent = React.createElement(eval(es5));
 		return renderedComponent;
 	} catch (err) {
-		console.log(err);
+		console.log('Live rendering failed', err);
 	}
 
 }

@@ -12,7 +12,7 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Bind 't
 
 export const challengeText = `<span class = 'default'>Intro: </span>Let's look at one more way that we can bind
 <code>this</code> when writing methods in React component classes. A useful, concise way to bind <code>this</code>
-is to use an ES6 fat arrow function, which does not assign its own value for <code>this</code> but rather adopts
+is to use an ES6 arrow function, which does not assign its own value for <code>this</code> but rather adopts
 the value of <code>this</code> from the context surrounding the function when it is written. In other words, an
 arrow function binds <code>this</code> automatically from its surrounding context.<br><br>
 
@@ -23,9 +23,10 @@ methods on React classes.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've provided a React Component
-that renders a <code>button</code> which triggers a <code>setMessage</code> function when clicked. Define this
-method with a fat arrow function on the MyComponent class. Let's also initialize the state of MyComponent to have
-a property <code>message</code> with text 'Hello!'.`
+that renders a <code>&lt;button&gt;</code> which triggers a <code>setMessage()</code> function when clicked. Define this
+method with an ES6 arrow function on the <code>MyComponent</code> class to change the <code>state</code> of <code>message</code>
+to <code>Goodbye!</code>. Let's also initialize this <code>message</code> in the state of <code>MyComponent</code> to have
+a value of <code>Hello!</code>.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
@@ -121,7 +122,6 @@ export const executeTests = (code) => {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[0].status = false;
 	}
@@ -130,7 +130,6 @@ export const executeTests = (code) => {
 	try {
 		mockedComponent = mount(React.createElement(eval(es5)));
 	} catch (err) {
-		console.log(err);
 		passed = false;
 	}
 
@@ -144,7 +143,6 @@ export const executeTests = (code) => {
 		);
 		testResults[1].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[1].status = false;
 	}
@@ -154,7 +152,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(mockedComponent.state('message'), 'Hello!', error_2);
 		testResults[2].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[2].status = false;
 	}
@@ -168,7 +165,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(before === 'InitialState!' && after === 'Goodbye!', true, error_3);
 		testResults[3].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[3].status = false;
 	}
@@ -179,7 +175,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(noWhiteSpace.includes('setMessage=()=>{this.setState({message:\'Goodbye!\'});}'), true, error_4);
 		testResults[4].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[4].status = false;
 	}	
@@ -202,7 +197,7 @@ export const liveRender = (code) => {
 		const renderedComponent = React.createElement(eval(es5));
 		return renderedComponent;
 	} catch (err) {
-		console.log(err);
+		console.log('Live rendering failed', err);
 	}
 
 }

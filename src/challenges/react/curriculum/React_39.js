@@ -10,25 +10,18 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Use the Lifecycle Method componentDidMount`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Render with an If/Else Condition`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>You will inevitablely encounter the need to call
-some API endpoint to retrieve data and if you're working with React you'll need to know where to perform this action.
-
-The best practice with React is to place API calls or any calls to your server in the lifecycle method <code>componentDidMount()</code>.
-This method is called after a component is mounted and any calls to <code>setState()</code> here will trigger a re-rendering of
-your component. Calling an API here and setting your state with the data that returns will automatically trigger the update
-once you receive the data.`
+export const challengeText = `<span class = 'default'>Intro: </span>One application of using JavaScript to control our rendered view is to create a simple condition
+and only render some elements when this condition is true. Here we will do this with a standard <code>if/else</code> statement in the <code>render()</code> method
+of a React component.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've created a mock API call in
-<code>componentDidMount()</code>. It just sets state after 2.5 seconds to simulate calling a server to retrieve the current
-total active users for a site (or whatever data you might need). In the render method, render the value of <code>activeUsers</code>
-in the <code>&lt;h1/&gt;</code>. Watch what happens in the preview. Play around with changing the timeout.<br><br>
-
-Note that because we wrote the timeout function as an ES6 arrow function, it is <code>this</code> aware and therefore has
-access to <code>this.setState</code>.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've created a component that contains a <code>boolean</code> in its state
+which represents a condition which tracks if we want to display some element in the UI or not. We've wired up a <code>&lt;button/&gt;</code> to toggle the state of this value. Currently,
+we render the same UI everytime. Rewrite the <code>render()</code> method with an <code>if/else</code> statement so that if <code>display</code> is <code>true</code> we return the current
+markup, otherwise, let's just return the <code>&lt;button/&gt;</code> without the <code>&lt;h1/&gt;</code> element.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
@@ -36,21 +29,21 @@ export const seedCode =
 	constructor(props) {
 		super(props);
 		this.state = {
-			activeUsers: null
-		};
+			display: true
+		}
 	}
-	componentDidMount() {
-		setTimeout( () => {
-			this.setState({
-				activeUsers: 1273
-			});
-		}, 2500);
+	toggleDisplay = () => {
+		this.setState({
+			display: !this.state.display
+		});
 	}
   render() {
+  	// change code below this line
     return (
-			<div>
-				<h1>Active Users: { /* change code here */ }</h1>
-			</div>
+	   	<div>
+	   		<button onClick={this.toggleDisplay}>Toggle Display</button>
+	   		<h1>Displayed!</h1>
+	   	</div>
     );
   }
 };`
@@ -61,34 +54,42 @@ export const solutionCode =
 	constructor(props) {
 		super(props);
 		this.state = {
-			activeUsers: null
-		};
+			display: true
+		}
 	}
-	componentDidMount() {
-		setTimeout( () => {
-			this.setState({
-				activeUsers: 1273
-			});
-		}, 2500);
+	toggleDisplay = () => {
+		this.setState({
+			display: !this.state.display
+		});
 	}
   render() {
-    return (
-			<div>
-				<h1>Active Users: {this.state.activeUsers}</h1>
-			</div>
-    );
+  	// change code below this line
+  	if (this.state.display) {
+	    return (
+		   	<div>
+		   		<button onClick={this.toggleDisplay}>Toggle Display</button>
+		   		<h1>Displayed!</h1>
+		   	</div>
+	    );
+	  } else {
+	  	return (
+	  		<div>
+		   		<button onClick={this.toggleDisplay}>Toggle Display</button>
+		   	</div>
+	  	);
+	  }
   }
 };`
-
 
 // ---------------------------- define challenge tests ----------------------------
 
 export const executeTests = (code) => {
 
 	const error_0 = 'Your JSX code was transpiled successfully.';
-	const error_1 = 'MyComponent renders a div element which wraps an h1 tag.';
-	const error_2 = 'Component state is updated with a timeout function in componentDidMount().';
-	const error_3 = 'The h1 tag renders out the activeUsers value from state and updates after the timeout function completes.';
+	const error_1 = 'MyComponent exists and is rendered.';
+	const error_2 = 'When display is set to true, a div, button, and h1 are rendered.';
+	const error_3 = 'When display is set to false, only a div and button are rendered.';
+	const error_4 = 'The render method uses and if/else statement to check the condition of this.state.display.';
 
 	let testResults = [
 		{
@@ -110,6 +111,11 @@ export const executeTests = (code) => {
 			test: 3,
 			status: false,
 			condition: error_3
+		},
+		{
+			test: 4,
+			status: false,
+			condition: error_4
 		}
 	];
 
@@ -143,11 +149,7 @@ export const executeTests = (code) => {
 
 	// test 1:
 	try {
-		assert(
-			mockedComponent.find('div').length === 1 &&
-			mockedComponent.find('h1').length === 1,
-			error_1
-		);
+		assert.strictEqual(mockedComponent.find('MyComponent').length, 1, error_1);
 		testResults[1].status = true;
 	} catch (err) {
 		passed = false;
@@ -156,10 +158,12 @@ export const executeTests = (code) => {
 
 	// test 2:
 	try {
-		const lifecycle = React.createElement(eval(es5)).type.prototype.componentDidMount.toString().replace(/\s/g,'');
+		mockedComponent.setState({display: true});
 		assert(
-			lifecycle.includes('setTimeout') === true &&
-			lifecycle.includes('setState({activeUsers:') === true,
+			mockedComponent.find('div').length === 1 &&
+			mockedComponent.find('div').children().length === 2 &&
+			mockedComponent.find('button').length === 1 &&
+			mockedComponent.find('h1').length === 1,
 			error_2
 		);
 		testResults[2].status = true;
@@ -170,15 +174,32 @@ export const executeTests = (code) => {
 
 	// test 3:
 	try {
-		const before = mockedComponent.find('h1').node.innerText;
-		mockedComponent.setState({ activeUsers: 1000 });
-		const after = mockedComponent.find('h1').node.innerText;
-		assert.notStrictEqual(before, after, error_3);
+		mockedComponent.setState({display: false});
+		assert(
+			mockedComponent.find('div').length === 1 &&
+			mockedComponent.find('div').children().length === 1 &&
+			mockedComponent.find('button').length === 1 &&
+			mockedComponent.find('h1').length === 0,
+			error_3
+		);
 		testResults[3].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[3].status = false;		
-	}	
+		testResults[3].status = false;
+	}
+
+	// test 4:
+	try {
+		assert(
+			code.includes('if') === true &&
+			code.includes('else') === true,
+			error_4
+		);
+		testResults[4].status = true;
+	} catch (err) {
+		passed = false;
+		testResults[4].status = false;
+	}
 
 	return {
 		passed,
@@ -198,7 +219,7 @@ export const liveRender = (code) => {
 		const renderedComponent = React.createElement(eval(es5));
 		return renderedComponent;
 	} catch (err) {
-		console.log('Live rendering failed', err);
+		console.log(err);
 	}
 
 }

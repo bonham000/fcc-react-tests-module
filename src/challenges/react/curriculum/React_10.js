@@ -10,7 +10,7 @@ export const QA = false;
 // -------------- define challenge title and challenge instructions --------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Use React to Render Nested Components`
 
-export const challengeText = `<span class = 'default'>Intro: </span><br>
+export const challengeText = `<span class = 'default'>Intro: </span>
 Now that we've seen how to compose two components together, let's look at composition a little further. 
 You can compose components in many different ways with React. Component composition is one of React's
 powerful and endearing features.<br><br>
@@ -20,7 +20,7 @@ important to begin to see a UI in terms of components like this when working wit
 bit more complex.`
 
 export const challengeInstructions = `
-<span class = 'default'>Instructions: </span><br>
+<span class = 'default'>Instructions: </span>
 Here we've defined two functional components for you, <code>TypesOfFruit</code> and <code>Fruits</code>.
 Take the <code>TypesOfFruit</code> component and compose it, or <em>nest</em> it, within the <code>Fruits</code> component, then take the <code>Fruits</code> component and
 nest it within the <code>TypesOfFood</code> component. The result should be a child component, nested within a parent component, which is 
@@ -159,7 +159,6 @@ export const executeTests = (code) => {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[0].status = false;
 	}
@@ -168,7 +167,6 @@ export const executeTests = (code) => {
 	try {
 		mockRender = mount(React.createElement(eval(es5)));
 	} catch (err) {
-		console.log(err);
 		passed = false;
 	}
 
@@ -178,19 +176,15 @@ export const executeTests = (code) => {
 		assert.strictEqual(shallowRender.type(), 'div', error_1);
 		testResults[1].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[1].status = false;
 	}
-
-		console.log(shallowRender, mockRender)
 
 	//test 2:
 	try {
 		assert.strictEqual(shallowRender.nodes[0].props.children[1].type.name, 'Fruits', error_2);
 		testResults[2].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[2].status = false;
 	}
@@ -200,7 +194,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(mockRender.find('h2').node.innerHTML, 'Fruits:', error_3);
 		testResults[3].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[3].status = false;		
 	}
@@ -210,7 +203,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(mockRender.find('ul').node.innerText, 'ApplesBlueberriesStrawberriesBananas', error_4);
 		testResults[4].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[4].status = false;		
 	}
@@ -233,7 +225,7 @@ export const liveRender = (code) => {
 		const renderedComponent = React.createElement(eval(es5));
 		return renderedComponent;
 	} catch (err) {
-		console.log(err);
+		console.log('Live rendering failed', err);
 	}
 
 }

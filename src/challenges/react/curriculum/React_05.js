@@ -15,13 +15,13 @@ export const challengeText = `<span class = 'default'>Intro: </span>
 Now that you're getting comfortable writing JSX you may be wondering if it has any differences from HTML.
 So far it seems like you can just write normal HTML, right?<br><br>
 
-One key difference is that you can no longer use the word 'class' to define HTML classes, because 'class' is a
-reserved word in JavaScript. In its place we will use 'className' in JSX.`
+One key difference is that you can no longer use the word <code>class</code> to define HTML classes, because <code>class</code> is a
+reserved word in JavaScript. In its place we will use <code>className</code> in JSX.`
 
 // class and className should perhaps be wrapped in code tags rather than quotes for consistency?
 
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>
-Apply a class of 'myDiv' to the div provided in the JSX code.`
+Apply a class of <code>myDiv</code> to the <code>&lt;div&gt;</code> provided in the JSX code.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
@@ -70,7 +70,6 @@ export const executeTests = (code) => {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[0].status = false;
 	}
@@ -79,7 +78,6 @@ export const executeTests = (code) => {
 	try {
 		jsx = eval(es5);
 	} catch (err) {
-		console.log(err);
 		passed = false;
 	}
 
@@ -88,7 +86,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(jsx.type, 'div', 'The constant JSX returns an <div> element.');
 		testResults[1].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[1].status = false;
 	}
@@ -98,7 +95,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(jsx.props.className, 'myDiv', 'The div has a class of \'myDiv\'.');
 		testResults[2].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[2].status = false;
 	}
@@ -119,7 +115,7 @@ export const liveRender = (code) => {
 		const renderedComponent = React.createElement(eval(es5));
 		return renderedComponent;
 	} catch (err) {
-		console.log(err);
+		console.log('Live rendering failed', err);
 	}
 
 }

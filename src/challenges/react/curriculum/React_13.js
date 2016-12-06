@@ -14,20 +14,20 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Write a
 
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>Now that you've learned the basics of JSX and
-React Components, let's try to write one from scratch. React components are the core building blocks of React Apps
+React Components, let's try to write one from scratch. React components are the core building blocks of React apps
 so it's important to become very familiar with writing them. Remember, a typical React component is an ES6
-<code>class</code> which extends <code>React.Component</code> and contains a <code>render</code> method which
-returns HTML in the form of JSX. This is the basic form of a React component. Once you understand this well, you will
+<code>class</code> which extends <code>React.Component</code> and contains a <code>render()</code> method which
+returns HTML in the form of JSX. This is the basic form of a React component. Once you understand this well you will
 be prepared to start building more complex React projects.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>Define a class <code>MyComponent</code>
 that extends <code>React.Component</code>. This should return a <code>&lt;div&gt;&lt;/div&gt;</code> which is wrapped around an
-<code>&lth1&gt;</code> tag which includes the text: 'My First React Component!'. Be sure to include this exact text and don't
+<code>&lth1&gt;</code> tag which includes the text: <code>My First React Component!</code>. Be sure to include this exact text and don't
 forget to call your component's constructor.<br><br>
 
 Then, render this component to the DOM using <code>ReactDOM.render()</code>, passing in your component and the target DOM node
-just like before. We've provided a <code>&lt;div /&gt;</code> with id <code>challenge-node</code> again for you to render to.<br><br>
+just like before. We've provided a <code>&lt;div /&gt;</code> with <code>id='challenge-node'</code> again for you to render to.<br><br>
 
 Good luck!`
 
@@ -99,7 +99,6 @@ export const executeTests = (code) => {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[0].status = false;
 	}
@@ -110,7 +109,6 @@ export const executeTests = (code) => {
 	try {
 		mockedComponent = shallow(React.createElement(eval(es5)));
 	} catch (err) {
-		console.log(err);
 		passed = false;
 	}
 
@@ -122,7 +120,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(mockedComponent.find('div').length, 1, error_1);
 		testResults[1].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[1].status = false;
 	}
@@ -132,7 +129,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(mockedComponent.contains(<h1>My First React Component!</h1>), true, error_2);
 		testResults[2].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[2].status = false;		
 	}
@@ -142,7 +138,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(document.getElementById('challenge-node').childNodes.length, 1, error_3);
 		testResults[3].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[3].status = false;
 	}
@@ -165,7 +160,7 @@ export const liveRender = (code) => {
 		const renderedComponent = React.createElement(eval(es5));
 		return renderedComponent;
 	} catch (err) {
-		console.log(err);
+		console.log('Live rendering failed', err);
 	}
 
 }

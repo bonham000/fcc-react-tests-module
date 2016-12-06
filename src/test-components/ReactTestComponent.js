@@ -5,43 +5,63 @@ import CodeMirror from 'react-codemirror'
 
 import 'codemirror/mode/jsx/jsx';
 
-export default class Component extends React.Component {
+export default class ReactTestComponent extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			code: this.props.seedCode,
 			testResults: []
 		}
-		this.updateCode=this.updateCode.bind(this);
-		this.liveRender=this.liveRender.bind(this);
-		this.testCode=this.testCode.bind(this);
-		this.seedCode=this.seedCode.bind(this);
-		this.solutionCode=this.solutionCode.bind(this);
 	}
-  updateCode(newCode) {
+	componentDidMount() {
+		this.testCode();
+		this.liveRender();
+		document.addEventListener('keydown', this.handleKeyPress);
+	}
+	componentWillUnmount() {
+		document.removeEventListener('keydown', this.handleKeyPress);
+	}
+	handleKeyPress = (event) => {
+		if (event.keyCode === 39 && event.ctrlKey && event.metaKey && event.altKey) {
+      setTimeout( () => { this.seedCode(true) }, 25);
+    } else if (event.keyCode === 37 && event.ctrlKey && event.metaKey && event.altKey) {
+      setTimeout( () => { this.seedCode(true) }, 25);
+		} else if (event.keyCode === 13 && event.metaKey) {
+			this.testCode();
+		} else if (event.keyCode === 83 && event.shiftKey) {
+			this.solutionCode();
+		} else if (event.keyCode === 82 && event.shiftKey) {
+			this.seedCode();
+		}
+	}
+  updateCode = (newCode) => {
     this.setState({
         code: newCode
     });
     this.liveRender();
 	}
-	liveRender() {
+	liveRender = (condition) =>{
 
-		const { code }=this.state;
-		const renderComponent=this.props.liveRender(code);
+		const { code } = this.state;
+		const renderComponent = this.props.liveRender(code);
 
 		// try to live render the component
 		// some renders may fail so this has to be wrapped in a try/catch
 		try {
 			ReactDOM.render(renderComponent, document.getElementById('liveOutput'));
 		} catch (err) {
+			// this will clear the preview box on initial load if live-rendering fails
+			if (condition) {
+				document.getElementById('liveOutput').innerHTML = '';
+			}
 			console.log('Live rendering error:', err);
 		}
 
 	}
-	testCode() {
+	testCode = () => {
 
-		const { code }=this.state;
-		const results=this.props.executeTests(code);
+		const { code } = this.state;
+		const results = this.props.executeTests(code);
 
 		this.setState({
 			passed: results.passed,
@@ -49,35 +69,38 @@ export default class Component extends React.Component {
 		});
 
 	}
-	seedCode() {
+	seedCode = (condition) => {
 		this.setState({
 			code: this.props.seedCode
 		});
 		setTimeout( () => { 
-			this.liveRender(); 
+			this.liveRender(condition); 
 			this.testCode();
-		}, 50);
+		}, 35);
 	}
-	solutionCode() {
+	solutionCode = () => {
 		this.setState({
 			code: this.props.solutionCode
 		});
 		setTimeout( () => { 
 			this.liveRender();
 			this.testCode(); 
-			}, 50);
+		}, 35);
 	}
-	componentDidMount() {
-		this.testCode();
-		this.liveRender();
-	}
-	selectChallenge(event) {
-		setTimeout( () => { this.seedCode() }, 50);
-		setTimeout( () => { this.testCode() }, 50);
-		setTimeout( () => { this.liveRender() }, 50);
+	select = (event) => {
+		setTimeout( () => { this.seedCode(true) }, 25);
 		this.props.select(event.target.value);
 	}
+	nextChallenge = () => {
+		setTimeout( () => { this.seedCode(true) }, 25);
+		this.props.advanceOneChallenge();
+	}
+	previousChallenge = () => {
+		setTimeout( () => { this.seedCode(true) }, 25);
+		this.props.previousChallenge();
+	}
 	render() {
+
     const options = {
     	mode: 'jsx',
       lineNumbers: true,
@@ -90,12 +113,15 @@ export default class Component extends React.Component {
 	    	}
 	    }
     };
+
     const renderTitle = () => { return { __html: this.props.challengeTitle }}
     const renderText = () => { return { __html: this.props.challengeText }}
     const renderInstructions = () => { return { __html: this.props.challengeInstructions }}
+
     const { testResults } = this.state;
     
-    let passingTests, totalTests
+    let passingTests, totalTests;
+
     if (testResults.length > 0) {
 	    passingTests = testResults.filter( (test) => test.status === true ).length;
 	    totalTests = testResults.length;
@@ -103,8 +129,8 @@ export default class Component extends React.Component {
 
     const renderChallenges = this.props.challenges.map( (challenge, idx) => {
       return (
-      	<option value={challenge.id} key = {idx} selected = {challenge.id === this.props.selectedChallenge}>
-      		Current Challenge: {challenge.id}
+      	<option value={challenge.id} key={idx}>
+      		Challenge: {challenge.id.replace(/_/g, ' ')}
       	</option>
       );
     });
@@ -114,7 +140,7 @@ export default class Component extends React.Component {
 
     		<h1 className='title mainTitle'>Free Code Camp React Challenge Demo:
 
-	        <select onChange={this.selectChallenge.bind(this)}>
+	        <select value={this.props.selectedChallenge} onChange={this.select}>
 	          {renderChallenges}
 	        </select>
 
@@ -142,9 +168,11 @@ export default class Component extends React.Component {
 				    <h1 className='title'>Tests</h1>
 			    	
 			    	<div className='testControls'>
+			    		<button onClick={this.seedCode} className='seedBtn'>Reload Seed</button>
+			    		<button onClick={this.solutionCode} className='solnBtn'>Solution Code</button>
+			    		<button onClick={this.previousChallenge.bind(this)} className='travelBtn'>Previous Challenge</button>
+			    		<button onClick={this.nextChallenge.bind(this)} className='travelBtn'>Next Challenge</button>
 			    		<button onClick={this.testCode} className='testBtn'>Test Code</button>
-			    		<button onClick={this.seedCode}>Reload Seed</button>
-			    		<button onClick={this.solutionCode}>Solution Code</button>
 				    </div>
 
 				    <div className='testResults'>
@@ -191,7 +219,7 @@ export default class Component extends React.Component {
 		    <hr />
 
 		    <div>
-		    	<p className='referenceLink'>- This project is using <a target="_blank" href="http://airbnb.io/enzyme/index.html">Enzyme</a> to test React Components live in a browser | <a target = "_blank" href="https://github.com/bonham000/fcc-react-tests-module">View the code on GitHub</a></p>
+		    	<p className='referenceLink'>- This project tests React code with <a target="_blank" href="http://airbnb.io/enzyme/index.html">Enzyme</a> live in a browser | <a target = "_blank" href="https://github.com/bonham000/fcc-react-tests-module">View on GitHub</a></p>
 		    </div>
 
 		    <div id='challenge-node' style={{ display: 'none' }}></div>

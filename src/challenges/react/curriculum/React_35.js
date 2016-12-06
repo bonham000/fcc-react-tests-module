@@ -10,28 +10,28 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Working with Event Listeners`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Add Event Listeners`
 
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span><code>componentDidMount()</code> is also the best place
-to attach any event listeners you need to add for specific functionality. React uses a special event system which we will
-describe here as we discuss event listeners. React provides a synthetic event system which wraps the native event system
-present in browsers. This means that the synthetic event system behaves exactly the same regardless of the browser React is
-being rendered in even if the native events may behave differently between different browsers. That's great news!<br><br>
+to attach any event listeners you need to add for specific functionality. React provides a synthetic event system which wraps
+the native event system present in browsers. This means that the synthetic event system behaves exactly the same regardless
+of the browser React is being rendered in even if the native events may behave differently between different browsers.
+That's great news!<br><br>
 
-You've already been using some of these synthetic event handlers such as <code>onClick</code>. React's synthetic event system
+You've already been using some of these synthetic event handlers such as <code>onClick()</code>. React's synthetic event system
 is great to use for most interactions you will be managing on DOM elements. However, if you want to attach an event handler
 to the document or window, you will have to do this directly. That's what we'll do here.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>Attach an event listener in the
 <code>componentDidMount()</code> method for <code>keydown</code> events and have these events trigger the callback
-<code>handleKeyPress</code>. You can use <code>document.addEventListener()</code> which takes the event as the first argument
+<code>handleKeyPress()</code>. You can use <code>document.addEventListener()</code> which takes the event as the first argument
 and the callback as the second argument.<br><br>
 
-Then, in <code>componentWillUnmount()</code> remove this same event listener. You can pass the same arguments to
+Then, in <code>componentWillUnmount()</code>, remove this same event listener. You can pass the same arguments to
 <code>documet.removeEventListener()</code>. It's a good idea to utilize this lifecycle method to do any clean up on React
-components before they are unmounted and destroyed, removing event listeners is a perfect example of one such clean up action.`
+components before they are unmounted and destroyed. Removing event listeners is a perfect example of one such clean up action.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
@@ -160,7 +160,6 @@ export const executeTests = (code) => {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[0].status = false;
 	}
@@ -171,7 +170,6 @@ export const executeTests = (code) => {
 	try {
 		mockedComponent = mount(React.createElement(eval(es5)));
 	} catch (err) {
-		console.log(err);
 		passed = false;
 	}
 
@@ -187,7 +185,6 @@ export const executeTests = (code) => {
 		);
 		testResults[1].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[1].status = false;
 	}
@@ -203,7 +200,6 @@ export const executeTests = (code) => {
 		);
 		testResults[2].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[2].status = false;		
 	}
@@ -219,7 +215,6 @@ export const executeTests = (code) => {
 		);
 		testResults[3].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[3].status = false;		
 	}
@@ -248,7 +243,6 @@ export const executeTests = (code) => {
 
 		testResults[4].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[4].status = false;		
 	}	
@@ -271,7 +265,7 @@ export const liveRender = (code) => {
 		const renderedComponent = React.createElement(eval(es5));
 		return renderedComponent;
 	} catch (err) {
-		console.log(err);
+		console.log('Live rendering failed', err);
 	}
 
 }

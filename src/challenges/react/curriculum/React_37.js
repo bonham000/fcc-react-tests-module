@@ -10,14 +10,14 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Optimization with shouldComponentUpdate`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Optimize Re-Renders with shouldComponentUpdate`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>So far, if any of our components recieve new
-<code>state</code> or new <code>props</code> our entire component tree will re-render. But React provides a lifecycle
-hook which we can call when child components receive new <code>state</code> or <code>props</code> and declare specifically
-if they should update or not. It's called <code>shouldComponentUpdate()</code> and we can pass it <code>nextProps</code>
-and <code>nextState</code>.<br><br>
+export const challengeText = `<span class = 'default'>Intro: </span>So far, if any component recieves new
+<code>state</code> or new <code>props</code> it will re-render itself and all its children. This is usually okay. But React
+provides a lifecycle hook which we can call when child components receive new <code>state</code> or <code>props</code> and
+declare specifically if they should update or not. It's called <code>shouldComponentUpdate()</code> and we can pass it
+<code>nextProps</code> and <code>nextState</code>.<br><br>
 
 This method is a useful way to perform some performance optimizations. For instance, the default behavior is that your
 component will re-render when it receives new <code>props</code> even if the <code>props</code> haven't changed.
@@ -28,9 +28,9 @@ that are not equal the current <code>props</code>.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've modified the previous components slightly
-and added the <code>shouldComponentUpdate()</code> method in a component called OnlyEvens. Currently this method returns <code>true</code>
-so OnlyEvens will re-render every time it receives new <code>props</code>. Lets modify this method so that OnlyEvens updates only
-if the new value of <code>this.props.value</code> is even.
+and added the <code>shouldComponentUpdate()</code> method in a component called <code>OnlyEvens</code>. Currently this method returns <code>true</code>
+so <code>OnlyEvens</code> will re-render every time it receives new <code>props</code>. Lets modify this method so that <code>OnlyEvens</code> updates only
+if the new value of it's props is even.
 
 Press the add button and watch the order of events in the console as the other lifecycle hooks are triggered!`
 
@@ -175,7 +175,6 @@ export const executeTests = (code) => {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[0].status = false;
 	}
@@ -186,7 +185,6 @@ export const executeTests = (code) => {
 	try {
 		mockedComponent = mount(React.createElement(eval(es5)));
 	} catch (err) {
-		console.log(err);
 		passed = false;
 	}
 
@@ -202,7 +200,6 @@ export const executeTests = (code) => {
 		);
 		testResults[1].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[1].status = false;
 	}
@@ -219,7 +216,6 @@ export const executeTests = (code) => {
 		es5Child = transform(modifiedCodeChild, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[0].status = false;
 	}
@@ -230,7 +226,6 @@ export const executeTests = (code) => {
 		assert.notStrictEqual(lifecycleChild, 'undefined', error_2);
 		testResults[2].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[2].status = false;		
 	}
@@ -246,7 +241,6 @@ export const executeTests = (code) => {
 
 		testResults[3].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[3].status = false;		
 	}	
@@ -269,7 +263,6 @@ export const executeTests = (code) => {
 
 		testResults[4].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[4].status = false;		
 	}	
@@ -292,7 +285,7 @@ export const liveRender = (code) => {
 		const renderedComponent = React.createElement(eval(es5));
 		return renderedComponent;
 	} catch (err) {
-		console.log(err);
+		console.log('Live rendering failed', err);
 	}
 
 }

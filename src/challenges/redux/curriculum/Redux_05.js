@@ -15,17 +15,21 @@ export const challengeText = `<span class = 'default'>Intro: </span>Now we can c
 see how we can dispatch these actions so the Redux store can respond to them. Remember when we introducted <code>store.getState()</code>
 as a method provided on the Redux <code>store</code> object and mentioned that there are other methods provided as well? The method
 <code>store.dispatch()</code> is one of these and this is what we will use to dispatch actions to the Redux store. Doing this is
-very straightforward. We call <code>store.dispatch()</code> and pass in one of our action creators. This dispatches an action
-object to the Redux store.`
+very straightforward. We call <code>store.dispatch()</code> and pass the value returned from an action creator, which is just an 
+object with a type property specifying the action that has occurred. This dispatches an action object to the Redux store. Based
+on the previous example, the following lines are equivalent and both dispatch the action of type <code>LOGIN</code>:<br><br>
+
+<code>
+store.dispatch(actionCreator());<br>
+&nbsp;store.dispatch({ type: 'LOGIN' });
+</code>`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>Here we've created a Redux store and initialized
 its state with an object containing a <code>login</code> property currently set to <code>false</code>. We've also defined an action
-creator called <code>loginAction</code> which returns an action of type 'LOGIN'. Dispatch the 'LOGIN' action to the Redux store by
-calling the <code>dispatch</code> method on the store object and passing in <code>loginAction</code>.<br><br>
-
-Note: You must call <code>loginAction</code> when you pass it to <code>store.dispatch()</code> so that you return the actual
-action object. This action is what is dispatched to the store.`
+creator called <code>loginAction()</code> which returns an action of type <code>LOGIN</code>. Dispatch the <code>LOGIN</code>
+action to the Redux store by calling the <code>dispatch</code> method on the store object and passing in the action 
+created by <code>loginAction()</code>.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
@@ -63,7 +67,7 @@ export const executeTests = (code) => {
 	const error_0 = 'Your JSX code was transpiled successfully.';
 	const error_1 = 'Calling the function loginAction returns an object with type property set to the string \'LOGIN\'.';
 	const error_2 = 'The store is initialized with an object with property login set to false.';
-	const error_3 = 'The loginAction is called in the dispatch to the Redux store.';
+	const error_3 = 'The store.dispatch() method is used to dispatch an action of type \'LOGIN\'.';
 
 	let testResults = [
 		{
@@ -102,7 +106,6 @@ export const executeTests = (code) => {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[0].status = false;
 	}
@@ -114,7 +117,6 @@ export const executeTests = (code) => {
 		store = reduxCode.store;
 		loginAction = reduxCode.loginAction;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 	}
 
@@ -123,7 +125,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(loginAction().type, 'LOGIN', error_1);
 		testResults[1].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[1].status = false;
 	}		
@@ -133,7 +134,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(store.getState().login, false, error_2);
 		testResults[2].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[2].status = false;
 	}
@@ -141,19 +141,16 @@ export const executeTests = (code) => {
 	// test 3:
 	try {
 
-		let called = false;
-		store.subscribe( () => called = true );
-		store.dispatch(loginAction());
+		let noWhiteSpace = code.replace(/\s/g,'');
 
 		assert(
-			called === true &&
-			code.toString().includes('store.dispatch(loginAction())'),
+			noWhiteSpace.includes('store.dispatch(loginAction())') ||
+			noWhiteSpace.includes('store.dispatch({type:\'LOGIN\'})') === true,
 			error_3
 		);
 
 		testResults[3].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[3].status = false;		
 	}
@@ -176,7 +173,7 @@ export const liveRender = (code) => {
 		let log = []
 		const message = (msg) => log.push(msg);
 	`
-	const apend = `; return log })();`
+	const apend = `;\n return log })();`
 	const consoleReplaced = code.replace(/console.log/g, 'message');
 	const hijackedCode = prepend.concat(consoleReplaced).concat(apend);
 	

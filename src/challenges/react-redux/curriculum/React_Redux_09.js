@@ -10,26 +10,27 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Connect Redux to Our Messages App`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Extract Local State into Redux`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>Now that we've learned how to use <code>connect</code> to
-connect React to Redux let's apply what we've learned to our React component that handles messages. Here we will connect
-Redux to this component.
-
-In the last lesson we called the component we were connecting <code>Presentational</code> and this wasn't arbitrary. This term
-<i>generally</i> refers to React components which are not directly connected to Redux. They are simply responsible
-for the presentation of UI and do this as a function of the props they receive. By contrast, container components are
-connected to Redux. These are typically responsible for dispatching actions to the store and will often pass store
-state to child components as props.`
+export const challengeText = `<span class = 'default'>Intro: </span>Great work! We're almost done here. Let's recall that
+we wrote all this Redux code so that Redux could takeover the state management of our React messages app. Now that we have
+Redux connected we need to extract our state management out of the <code>Presentational</code> component and into Redux. Currently, 
+although we have Redux connected, we are still handling our state locally within the <code>Presentational</code> component. Let's
+extract this state into Redux now.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>Here we've provided all the code we've
-been working on so far. The only change is that we've renamed our React component to <code>Presentational</code>. Create a new
-component called <code>Container</code> using <code>connect</code> to connect the <code>Presentational</code> component to Redux.
-Then, in the <code>AppWrapper</code>, render the React Redux <code>Provider</code> component, passing in our Redux
-<code>store</code> as a prop and <code>Container</code> as a child. Once everything is setup you will see our messages app
-rendered to the page again, awesome!`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>Let's inspect the <code>Presentational</code> component.
+First, let's get rid of the <code>messages</code> property in the local <code>state</code>. These messages will now be
+managed by Redux. Next, modify the <code>submitMessage()</code> method so that we dispatch <code>submitNewMessage()</code>
+from <code>this.props</code>, passing in the current message input from local <code>state</code>. Because we've removed
+<code>messages</code> from local state, we can remove it from the call to <code>this.setState()</code> here as well. Finally,
+we just have to modify our <code>render()</code> method so that we map over the messages received from <code>props</code>
+rather than <code>state</code>.<br><br>
+
+Once these changes are made the app will continue to function just the same except Redux is now managing our state for us.
+This example also illustrates how a component may have local <code>state</code>: our component is still tracking user input
+locally in its own <code>state</code>, while still maintaining app state globally with Redux.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = 
@@ -55,6 +56,10 @@ const messageReducer = (state = [], action) => {
 const store = Redux.createStore(messageReducer);
 
 // React:
+const Provider = ReactRedux.Provider;
+const connect = ReactRedux.connect;
+
+// Change code below this line
 class Presentational extends React.Component {
 	constructor(props) {
 		super(props);
@@ -69,10 +74,9 @@ class Presentational extends React.Component {
     });
   }
 	submitMessage = () => {
-		const currentMessage = this.state.input;
     this.setState({
       input: '',
-      messages: this.state.messages.concat(currentMessage)
+      messages: this.state.messages.concat(this.state.input)
     });
   }
   render() {
@@ -95,33 +99,28 @@ class Presentational extends React.Component {
     );
   }
 };
+// Change code above this line
 
-// React-Redux: 
 const mapStateToProps = (state) => {
-  return { messages: state }
+  return {messages: state}
 };
 
 const mapDispatchToProps = (dispatch) => {
   return { 
-    submitNewMessage: (newMessage) => {
-       dispatch(addMessage(newMessage))
+    submitNewMessage: (message) => {
+      dispatch(addMessage(message))
     }
   }
 };
 
-const Provider = ReactRedux.Provider;
-const connect = ReactRedux.connect;
-
-// define the Container component here:
+const Container = connect(mapStateToProps, mapDispatchToProps)(Presentational);
 
 class AppWrapper extends React.Component {
-	constructor(props) {
-		super(props);
-	}
 	render() {
-		// complete the return statement:
 		return (
-
+			<Provider store={store}>
+				<Container/>
+			</Provider>
 		);
 	}
 };`
@@ -150,12 +149,15 @@ const messageReducer = (state = [], action) => {
 const store = Redux.createStore(messageReducer);
 
 // React:
+const Provider = ReactRedux.Provider;
+const connect = ReactRedux.connect;
+
+// Change code below this line
 class Presentational extends React.Component {
 	constructor(props) {
 		super(props);
     this.state = {
-      input: '',
-      messages: []
+      input: ''
     }
 	}
   handleChange = (event) => {
@@ -164,10 +166,9 @@ class Presentational extends React.Component {
     });
   }
 	submitMessage = () => {
-		const currentMessage = this.state.input;
+    this.props.submitNewMessage(this.state.input);
     this.setState({
-      input: '',
-      messages: this.state.messages.concat(currentMessage)
+      input: ''
     });
   }
   render() {
@@ -179,7 +180,7 @@ class Presentational extends React.Component {
           onChange={this.handleChange}/><br/>
     		<button onClick={this.submitMessage}>Submit</button>
     		<ul>
-		    	{this.state.messages.map( (message, idx) => {
+		    	{this.props.messages.map( (message, idx) => {
 		    			return (
 		    			 	<li key={idx}>{message}</li>
 		    			)
@@ -190,32 +191,24 @@ class Presentational extends React.Component {
     );
   }
 };
+// Change code above this line
 
-// React-Redux: 
 const mapStateToProps = (state) => {
-  return { messages: state }
+  return {messages: state}
 };
 
 const mapDispatchToProps = (dispatch) => {
   return { 
-    submitNewMessage: (newMessage) => {
-       dispatch(addMessage(newMessage))
+    submitNewMessage: (message) => {
+      dispatch(addMessage(message))
     }
   }
 };
 
-const Provider = ReactRedux.Provider;
-const connect = ReactRedux.connect;
-
-// define the Container component here:
 const Container = connect(mapStateToProps, mapDispatchToProps)(Presentational);
 
 class AppWrapper extends React.Component {
-	constructor(props) {
-		super(props);
-	}
 	render() {
-		// complete the return statement:
 		return (
 			<Provider store={store}>
 				<Container/>
@@ -234,6 +227,10 @@ export const executeTests = (code) => {
 	const error_3 = 'The Presentational component renders an h2, input, button, and ul elements.';
 	const error_4 = 'The Presentational component receives messages from the Redux store as a prop.';
 	const error_5 = 'The Presentational component receives the submitMessage() action creator as a prop.';
+	const error_6 = 'The Presentational component\' state contains one property, \'input\', which is initialized to an empty string.';
+	const error_7 = 'Typing in the input element updates the state of the Presentational component.';
+	const error_8 = 'Dispatching the submitMessage() on the Presentational component updates Redux store and clears the input in local state.';
+	const error_9 = 'The Presentational component renders the messages from the Redux store.';
 
 	let testResults = [
 		{
@@ -265,6 +262,26 @@ export const executeTests = (code) => {
 			test: 5,
 			status: false,
 			condition: error_5
+		},
+		{
+			test: 6,
+			status: false,
+			condition: error_6
+		},
+		{
+			test: 7,
+			status: false,
+			condition: error_7
+		},
+		{
+			test: 8,
+			status: false,
+			condition: error_8
+		},
+		{
+			test: 9,
+			status: false,
+			condition: error_9
 		}
 	];
 
@@ -273,7 +290,7 @@ export const executeTests = (code) => {
 	// this applies an export to the user's code so
 	// we can access their component here for tests
 	
-	const exportScript = '\n export default AppWrapper'
+	const exportScript = '\n export default AppWrapper;'
 	const modifiedCode = code.concat(exportScript);
 	
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
@@ -354,6 +371,80 @@ export const executeTests = (code) => {
 		testResults[5].status = false;
 	}
 
+	// test 6:
+	try {
+		let PresentationalState = mockedComponent.find('Presentational').node.state;
+		assert(
+				typeof PresentationalState.input === 'string' &&
+				Object.keys(PresentationalState).length === 1,
+				error_6
+		);
+		testResults[6].status = true;
+	} catch (err) {
+		passed = false;
+		testResults[6].status = false;
+	}
+
+	// test 7:
+	try {
+		let initialState = mockedComponent.find('Presentational').node.state;
+		mockedComponent.find('input').simulate('change', {target: {value: '__MOCK__INPUT__'}});
+		let updatedState = mockedComponent.find('Presentational').node.state;
+		assert(
+			initialState.input === '' &&
+			updatedState.input === '__MOCK__INPUT__',
+			error_7
+		);
+		testResults[7].status = true;
+	} catch (err) {
+		passed = false;
+		testResults[7].status = false;
+	}
+
+	// test 8:
+	try {
+
+		let beforeProps = mockedComponent.find('Presentational').node.props;
+		mockedComponent.find('input').simulate('change', {target: {value: '__TEST__MESSAGE__'}});
+		mockedComponent.find('Presentational').node.submitMessage();
+		let afterProps = mockedComponent.find('Presentational').node.props;
+		let afterState = mockedComponent.find('Presentational').node.state;
+
+		assert(
+			beforeProps.messages[0] !== afterProps.messages[0] &&
+			afterProps.messages[0] === '__TEST__MESSAGE__' &&
+			afterState.input === '',
+			error_8
+		);
+		
+		testResults[8].status = true;
+	} catch (err) {
+		passed = false;
+		testResults[8].status = false;
+	}
+
+	// test 9:
+	try {
+
+		let ulBefore = mockedComponent.find('ul').children();
+		mockedComponent.find('input').simulate('change', {target: {value: '__TEST__MESSAGE__2__'}});
+		mockedComponent.find('Presentational').node.submitMessage();
+		let ulAfter = mockedComponent.find('ul').children();
+
+		assert(
+			code.replace(/\s/g,'').includes('this.props.messages.map') === true &&
+			ulAfter.length === ulBefore.length + 1 &&
+			ulBefore.node.innerText === '__TEST__MESSAGE__' &&
+			ulAfter.nodes[1].innerText === '__TEST__MESSAGE__2__',
+			error_9
+		);
+
+		testResults[9].status = true;
+	} catch (err) {
+		passed = false;
+		testResults[9].status = false;
+	}
+
 	return {
 		passed,
 		testResults
@@ -366,7 +457,7 @@ export const executeTests = (code) => {
 export const liveRender = (code) => {
 
 	try {
-		const exportScript = '\n export default AppWrapper'
+		const exportScript = '\n export default AppWrapper;'
 		const modifiedCode = code.concat(exportScript);
 		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
 		const renderedComponent = React.createElement(eval(es5));

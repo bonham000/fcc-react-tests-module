@@ -11,11 +11,11 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Use a Switch Statement to Handle Multiple Actions`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>Now lets see how we can handle multiple action types.
-Lets say we are managing user authentication in our Redux store. Minimally, we want to have a state representation for when
+export const challengeText = `<span class = 'default'>Intro: </span>Now let's see how we can handle multiple action types.
+Let's say we are managing user authentication in our Redux store. Minimally, we want to have a state representation for when
 users are logged in and when they are logged out. We can represent this with a single state object with property
 <code>authenticated</code>. We will also need action creators that can create actions corresponding to user login and
-user logout, along with the actions themselves.`
+user logout, along with the action objects themselves.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've written a store, actions, action creators, and
@@ -161,7 +161,6 @@ export const executeTests = (code) => {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[0].status = false;
 	}
@@ -174,7 +173,6 @@ export const executeTests = (code) => {
 		loginUser = reduxCode.loginUser;
 		logoutUser = reduxCode.logoutUser;		
 	} catch (err) {
-		console.log(err);
 		passed = false;
 	}
 
@@ -183,7 +181,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(loginUser().type, 'LOGIN', error_1);
 		testResults[1].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[1].status = false;
 	}	
@@ -193,7 +190,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(logoutUser().type, 'LOGOUT', error_2);
 		testResults[2].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[2].status = false;
 	}	
@@ -203,7 +199,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(store.getState().authenticated, false, error_3);
 		testResults[3].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[3].status = false;
 	}
@@ -223,7 +218,6 @@ export const executeTests = (code) => {
 
 		testResults[4].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[4].status = false;		
 	}
@@ -244,7 +238,6 @@ export const executeTests = (code) => {
 
 		testResults[5].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[5].status = false;		
 	}
@@ -258,7 +251,6 @@ export const executeTests = (code) => {
 			error_6);
 		testResults[6].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[6].status = false;
 	}	
@@ -281,7 +273,7 @@ export const liveRender = (code) => {
 		let log = []
 		const message = (msg) => log.push(msg);
 	`
-	const apend = `; return log })();`
+	const apend = `;\n return log })();`
 	const consoleReplaced = code.replace(/console.log/g, 'message');
 	const hijackedCode = prepend.concat(consoleReplaced).concat(apend);
 	

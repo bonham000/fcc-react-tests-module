@@ -11,14 +11,14 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Render State in the UI Another Way`
 
 export const challengeText = `<span class = 'default'>Intro: </span>Now we will see one more way to access <code>state</code>
-before moving on. In the <code>render</code> method, before the <code>return</code> you can write JavaScript directly. For
+before moving on. In the <code>render()</code> method, before the <code>return</code> you can write JavaScript directly. For
 example you could declare functions, access data from <code>state</code> or <code>props</code>, perform computations on this
 data and so on. Then, you can assign any data to variables that you will then have access to in the <code>return</code>. As a
-simple example of this powerful feature, lets see a different way to access <code>this.state</code>.`
+simple example of this powerful feature, lets see a different way to access <code>state</code>.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>This component is just like the one before.
-Now, let's define a <code>const</code> in the <code>render</code> method called 'name' and set it equal to the name value in the
+Now, let's define a <code>const</code> in the <code>render</code> method called <code>name</code> and set it equal to the name value in the
 component's <code>state</code>. Because we are just writing JavaScript now, you don't have to enclose this reference in curly braces.
 Next, to render this value, you can just reference it directly in the <code>return</code>, but of course now that we are back in 
 JSX you will have to enclose it in curly braces.`
@@ -117,7 +117,6 @@ export const executeTests = (code) => {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[0].status = false;
 	}
@@ -126,7 +125,6 @@ export const executeTests = (code) => {
 	try {
 		mockedComponent = mount(React.createElement(eval(es5)));
 	} catch (err) {
-		console.log(err);
 		passed = false;
 	}
 
@@ -135,7 +133,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(mockedComponent.state('name'), 'Free Code Camp', error_1);
 		testResults[1].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[1].status = false;
 	}
@@ -145,7 +142,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(mockedComponent.children().type(), 'h1', error_2);
 		testResults[2].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[2].status = false;		
 	}
@@ -155,7 +151,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(modifiedCode.includes('<h1>{name}</h1>'), true, error_3);
 		testResults[3].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[3].status = false;		
 	}	
@@ -166,7 +161,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(mockedComponent.contains(<h1>TestName</h1>), true, error_4);
 		testResults[4].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[4].status = false;
 	}
@@ -189,7 +183,7 @@ export const liveRender = (code) => {
 		const renderedComponent = React.createElement(eval(es5));
 		return renderedComponent;
 	} catch (err) {
-		console.log(err);
+		console.log('Live rendering failed', err);
 	}
 
 }

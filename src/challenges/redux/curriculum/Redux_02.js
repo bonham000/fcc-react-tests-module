@@ -13,14 +13,14 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Get the
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>Now that we've created our first Redux store 
 let's learn how we can retrieve the <code>state</code> of this store object. The Redux store object comes with several
-methods that allow us to interact with it. One of these is <code>getState()</code> which simply returns the current state
-held in the Redux store.`
+methods that allow us to interact with it. One of these is <code>getState()</code> which simply returns the current
+<code>state</code> held in the Redux store.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've re-written the previous example
 more concisely. Take a look at the code and see if it makes sense. Once you're comfortable with it, add a new line which
 retrieves the <code>state</code> from our <code>store</code> using <code>store.getState()</code>and logs this value
-to the console. Try modifying the store's initial state and observe the result.`
+to the console. Try modifying the store's initial <code>state</code> and observe the result.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
@@ -28,7 +28,7 @@ export const seedCode =
 	(state = 5) => state
 );
 
-// Define the store here:`
+// change code below this line`
 
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode =
@@ -36,6 +36,7 @@ export const solutionCode =
 	(state = 5) => state
 );
 
+// change code below this line
 console.log(store.getState());`
 
 // ---------------------------- define challenge tests ----------------------------
@@ -78,7 +79,6 @@ export const executeTests = (code) => {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[0].status = false;
 	}
@@ -88,7 +88,6 @@ export const executeTests = (code) => {
 	try {
 		store = eval(es5)
 	} catch (err) {
-		console.log(err);
 		passed = false;
 	}
 	
@@ -97,7 +96,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(store.getState(), 5, 'The redux store has a value of 5 for the state.');
 		testResults[1].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[1].status = false;
 	}
@@ -125,7 +123,6 @@ export const executeTests = (code) => {
 
 		testResults[2].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[2].status = false;
 	}	
@@ -148,7 +145,7 @@ export const liveRender = (code) => {
 		let log = []
 		const message = (msg) => log.push(msg);
 	`
-	const apend = `; return log })();`
+	const apend = `;\n return log })();`
 	const consoleReplaced = code.replace(/console.log/g, 'message');
 	const hijackedCode = prepend.concat(consoleReplaced).concat(apend);
 	

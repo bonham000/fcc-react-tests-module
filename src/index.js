@@ -9,4 +9,4 @@ import 'codemirror/lib/codemirror.css'
 import 'codemirror/theme/monokai.css' 	
 import './index.css'
 
-ReactDOM.render(<DevApp />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));

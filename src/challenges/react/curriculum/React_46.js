@@ -10,12 +10,14 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Add Inline Styles in React`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Introducing Inline Styles`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span><br>
-Knowing what we know so far, one thing you might be wondering is: how do we style JSX elements in React? We already know it can't be
-exactly the same as working with HTML because of the way we apply classes to JSX elements. But how else might it be different?<br><br>
+export const challengeText = `<span class = 'default'>Intro: </span>Now that we've describe several more advanced rendering 
+techniques, we are reaching the end of the React lessons. Before we finish we'll cover a few more topics, the first of which is CSS.
+Knowing what we know so far, one thing you might be wondering is: how do we style these JSX elements we're creating with React?
+We already know it can't be exactly the same as working with HTML because of the way we apply classes to JSX elements. But how
+else might it be different?<br><br>
 
 Well, if you are importing styles from a stylesheet, it doesn't have to be much different at all. Simply apply a class to your JSX elememt
 using the <code>className</code> attribute, and apply styles accordingly in your stylesheet. Applying <strong><em>inline</em></strong> styles, however, is very common
@@ -95,7 +97,6 @@ export const executeTests = (code) => {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[0].status = false;
 	}
@@ -106,7 +107,6 @@ export const executeTests = (code) => {
 	try {
 		testRender = shallow(React.createElement(eval(es5)));
 	} catch (err) {
-		console.log(err);
 		passed = false;
 	}
 
@@ -118,7 +118,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(testRender.type(), 'div', error_1);
 		testResults[1].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[1].status = false;
 	}
@@ -128,7 +127,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(testRender.nodes[0].props.style.color, "red", error_2);
 		testResults[2].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[2].status = false;		
 	}
@@ -138,7 +136,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(testRender.nodes[0].props.style.fontSize, 72, error_3);
 		testResults[3].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[3].status = false;		
 	}
@@ -162,7 +159,7 @@ export const liveRender = (code) => {
 		const renderedComponent = React.createElement(eval(es5));
 		return renderedComponent;
 	} catch (err) {
-		console.log(err);
+		console.log('Live rendering failed', err);
 	}
 
 }

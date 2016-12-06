@@ -10,119 +10,111 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>_ADD_YOUR_TITLE_HERE_`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Connect Redux to React`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>_CHALLENGE_TEXT_`
+export const challengeText = `<span class = 'default'>Intro: </span>Now that we've written <code>mapStateToProps()</code>
+and <code>mapDispatchToProps()</code> all that's left is to use these functions to map <code>state</code> and
+<code>dispatch</code> to the <code>props</code> of one of our React components. To do this we will use the
+<code>connect</code> method from React Redux that we mentioned earlier. This method takes two optional arguments,
+<code>mapStateToProps()</code> and <code>mapDispatchToProps()</code>. They are optional because you may have a component
+which only needs access to <code>state</code> but doesn't need to dispatch any actions, or vice versa. Note: to omit one
+of these arguments you can simply pass <code>null</code> in its place.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>_ADD_YOUR_INSTRUCTIONS_HERE_`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've provided the
+<code>mapStateToProps()</code> and <code>mapDispatchToProps()</code> functions we've just written and created a React
+component called Presentational. Let's connect this component to Redux. We've provided the <code>connect</code>
+method for you from the <code>ReactRedux</code> global object. To use this method you pass in the functions that map 
+<code>state</code> and <code>props</code> as arguments and immediately call the result with your component. This
+syntax is a little unusal and looks like:<br><br>
+
+<code>connect(mapStateToProps, mapDispatchToProps)(MyComponent)</code><br><br>
+
+We can assign the result of this to a new variable which represents our connected component. Call <code>connect</code> on
+the Presentational component and assign it to a new <code>const</code> called <code>ConnectedComponent</code>. That's it, now we're
+connected to Redux! Try changing either of <code>connect</code>'s arguments to <code>null</code> and observe the test results.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = 
-`// Redux:
-const ADD = 'ADD';
-
-const addMessage = (message) => {
+`const addMessage = (message) => {
 	return {
-    type: ADD,
+    type: 'ADD',
     message: message
   }
 };
 
-const reducer = (state = [], action) => {
-  switch (action.type) {
-    case ADD:
-      return state.concat(action.message);
-    default:
-      return state;
+const mapStateToProps = (state) => {
+  return {
+  	messages: state
   }
 };
 
-const store = Redux.createStore(reducer);
-
-// React:
-const Provider = ReactRedux.Provider;
-const connect = ReactRedux.connect;
+const mapDispatchToProps = (dispatch) => {
+  return {
+  	submitNewMessage: (message) => {
+  		dispatch(addMessage(message));
+  	}
+  }
+};
 
 class Presentational extends React.Component {
 	constructor(props) {
 		super(props);
-    this.state = {
-      input: ''
-    }
 	}
-  handleChange = (event) => {
-    this.setState({
-      input: event.target.value
-    });
-  }
-	submitMessage = () => {
-    this.props.submitMessage(this.state.input);
-    this.setState({
-      input: ''
-    });
-  }
-  render() {
-    return (
-    	<div>
-        <h2>Type in a new Message:</h2>
-        <input
-          value={this.state.input}
-          onChange={this.handleChange}/><br/>
-    		<button onClick={this.submitMessage}>Submit</button>
-    		<ul>
-		    	{this.props.messages.map( (message, idx) => {
-		    			return (
-		    			 	<li key={idx}>{message}</li>
-		    			)
-		    		})
-	    		}
-	    	</ul>
-    	</div>
-    );
+	render() {
+		return <div/>
+	}
+};
+
+const connect = ReactRedux.connect;
+// change code below this line`
+
+// ---------------------------- define challenge solution code ----------------------------
+export const solutionCode =
+`const addMessage = (message) => {
+	return {
+    type: 'ADD',
+    message: message
   }
 };
 
 const mapStateToProps = (state) => {
-  return {messages: state}
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return { 
-    submitMessage:
-    	(newMessage) => {
-        dispatch(addMessage(newMessage))
-      }
+  return {
+  	messages: state
   }
 };
 
-const Container = connect(mapStateToProps, mapDispatchToProps)(Presentational);
+const mapDispatchToProps = (dispatch) => {
+  return {
+  	submitNewMessage: (message) => {
+  		dispatch(addMessage(message));
+  	}
+  }
+};
 
-class AppWrapper extends React.Component {
+class Presentational extends React.Component {
+	constructor(props) {
+		super(props);
+	}
 	render() {
-		return (
-			<Provider store = {store}>
-				<Container/>
-			</Provider>
-		);
+		return <h3>This is a Presentational Component</h3>
 	}
 };
 
-export default AppWrapper;`
+const connect = ReactRedux.connect;
+// change code below this line
 
-// ---------------------------- define challenge solution code ----------------------------
-export const solutionCode =
-``
+const ConnectedComponent = connect(mapStateToProps, mapDispatchToProps)(Presentational)`
 
 // ---------------------------- define challenge tests ----------------------------
 
 export const executeTests = (code) => {
 
 	const error_0 = 'Your JSX code was transpiled successfully.';
-	const error_1 = '';
-	const error_2 = '';
-	const error_3 = '';
+	const error_1 = 'The Presentational component is rendered.';
+	const error_2 = 'Component receives a prop \'messages\' via connect.';
+	const error_3 = 'Component receives a prop \'submitNewMessage\' via connect.';
 
 	let testResults = [
 		{
@@ -152,15 +144,27 @@ export const executeTests = (code) => {
 	// this applies an export to the user's code so
 	// we can access their component here for tests
 	
-	// const exportScript = '\n export default MyComponent'
-	// const modifiedCode = code.concat(exportScript);
+	const exportScript = `\n
+		const store = Redux.createStore(
+			(state = '__INITIAL__STATE__', action) => state
+		);
+
+		class AppWrapper extends React.Component {
+			render() {
+				return (
+					<ReactRedux.Provider store = {store}>
+						<ConnectedComponent/>
+					</ReactRedux.Provider>
+				);
+			}
+		}; export default AppWrapper;`
+	const modifiedCode = code.concat(exportScript);
 	
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
-		es5 = transform(code, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
+		es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[0].status = false;
 	}
@@ -171,7 +175,6 @@ export const executeTests = (code) => {
 	try {
 		mockedComponent = mount(React.createElement(eval(es5)));
 	} catch (err) {
-		console.log(err);
 		passed = false;
 	}
 
@@ -180,33 +183,33 @@ export const executeTests = (code) => {
 
 	// test 1:
 	try {
-
+		assert.strictEqual(mockedComponent.find('Presentational').length, 1, error_1);
 		testResults[1].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[1].status = false;
 	}
 
+	let props;
+
 	// test 2:
 	try {
-
+		props = mockedComponent.find('Presentational').node.props;
+		assert.strictEqual(props.messages, '__INITIAL__STATE__', error_2);
 		testResults[2].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[2].status = false;		
 	}
 
 	// test 3:
 	try {
-
+		assert.strictEqual(typeof props.submitNewMessage, 'function', error_3);
 		testResults[3].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
-		testResults[3].status = false;
-	}
+		testResults[3].status = false;		
+	}	
 
 	return {
 		passed,
@@ -220,9 +223,22 @@ export const executeTests = (code) => {
 export const liveRender = (code) => {
 
 	try {
-		// const exportScript = '\n export default MyComponent'
-		// const modifiedCode = code.concat(exportScript);
-		const es5 = transform(code, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
+	const exportScript = `\n
+		const store = Redux.createStore(
+			(state = '__INITIAL__STATE__', action) => state
+		);
+
+		class AppWrapper extends React.Component {
+			render() {
+				return (
+					<ReactRedux.Provider store = {store}>
+						<ConnectedComponent/>
+					</ReactRedux.Provider>
+				);
+			}
+		}; export default AppWrapper;`
+		const modifiedCode = code.concat(exportScript);
+		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
 		const renderedComponent = React.createElement(eval(es5));
 		return renderedComponent;
 	} catch (err) {

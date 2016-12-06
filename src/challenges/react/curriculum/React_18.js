@@ -18,10 +18,10 @@ get some practice overriding default props by explicitly setting prop values.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've modified the previous components so that
-now the ShoppingCart renders a child Items components. This Items component has a default prop of <code>quantity</code> set to the integer 0.
-Let's pass in a value of 10 instead for the prop <code>quantity</code>. Note: to pass an integer value as a prop you must enclose it in curly
-braces, for instance like this: <code>{100}</code>. This is the syntax so JSX knows to interpret the value within the braces directly
-as JavaScript. We will learn more about the uses of curly braces like this in later lessons.`
+now the <code>ShoppingCart</code> renders a child components <code>Items</code>. This <code>Items</code> component has a default prop of <code>quantity</code>
+set to the integer <code>0</code>. Let's pass in a value of <code>10</code> instead for the prop <code>quantity</code>. Note: to pass an integer value as a
+prop you must enclose it in curly braces, for instance like this: <code>{100}</code>. This is the syntax so JSX knows to interpret
+the value within the braces directly as JavaScript. We will learn more about the uses of curly braces like this in later lessons.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
@@ -116,7 +116,6 @@ export const executeTests = (code) => {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[0].status = false;
 	}
@@ -127,7 +126,6 @@ export const executeTests = (code) => {
 	try {
 		mockedComponent = mount(React.createElement(eval(es5)));
 	} catch (err) {
-		console.log(err);
 		passed = false;
 	}
 
@@ -139,7 +137,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(mockedComponent.find('ShoppingCart').length, 1, error_1);
 		testResults[1].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[1].status = false;
 	}
@@ -149,7 +146,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(mockedComponent.find('Items').length, 1, error_2);
 		testResults[2].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[2].status = false;
 	}
@@ -159,7 +155,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(mockedComponent.find('Items').props().quantity, 10, error_3);
 		testResults[3].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[3].status = false;
 	}	
@@ -183,7 +178,7 @@ export const liveRender = (code) => {
 		const renderedComponent = React.createElement(eval(es5));
 		return renderedComponent;
 	} catch (err) {
-		console.log(err);
+		console.log('Live rendering failed', err);
 	}
 
 }

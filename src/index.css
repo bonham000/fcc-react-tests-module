@@ -115,7 +115,7 @@ select:focus {
 	color: rgb(225,225,225);
 }
 button {
-	width: 185px;
+	width: 240px;
 	margin: 5px;
 	font-size: 22px;
 	padding: 8px 12px;
@@ -133,6 +133,21 @@ button:hover {
 }
 .testBtn:hover {
 	background: #25F56B;
+}
+.testBtn {
+	width: 490px;
+}
+.seedBtn:hover {
+	background: #F65A39;
+}
+.solnBtn:hover {
+	background: #25F56B;
+}
+.travelBtn {
+	background: #FFCB4D;
+}
+.travelBtn:hover {
+	background: #FFEE3F;
 }
 button:focus {
 	outline: none;
@@ -205,5 +220,26 @@ a, a:visited {
 	text-decoration: undeline;
 }
 a:hover {
+	color: #3FB2FD;
+}
+
+#Babel {
+	color: black;
+}
+#Babel:hover {
+	color: #3FB2FD;
+}
+
+#Challenge_Link {
+	color: black;
+}
+#Challenge_Link:hover {
+	color: #3FB2FD;
+}
+
+#CRA {
+	color: black;
+}
+#CRA:hover {
 	color: #3FB2FD;
 }

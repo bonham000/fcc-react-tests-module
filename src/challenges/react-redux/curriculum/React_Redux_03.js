@@ -1,36 +1,44 @@
 /* eslint-disable */
-import React from 'react'
 import assert from 'assert'
-import { mount } from 'enzyme'
 import { transform } from 'babel-standalone'
 
-// snippet for defining HTML: <code>&lt;div /&gt;</code>
+// snippet for defining HTML: <code>&#60;div /&#62</code>
 
 // SET TO TRUE WHEN QA IS COMPLETE:
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>_ADD_YOUR_TITLE_HERE_`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Extract State Logic to Redux`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>_CHALLENGE_TEXT_`
+export const challengeText = `<span class = 'default'>Intro: </span>Now that our React component is finished we will extract the logic
+we are performing locally in its <code>state</code> into Redux. This is the first step we will make to connect our simple React app to
+Redux. We are keeping things simple here so our app will only have the functionality to add new messages the user inputs in order to
+demonstrate how React and Redux work together.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>_ADD_YOUR_INSTRUCTIONS_HERE_`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>Start by defining an action type 'ADD' and set it to a
+const <code>ADD</code>. Then define an action creator <code>addMessage()</code> which creates this action to add a message. You will need
+to pass in a <code>message</code> to this action creator and include this message in the returned <code>action</code>. Then create a reducer
+called <code>messageReducer()</code> that handles the state for our messages. This reducer can just add a message to the array of messages held
+in state or return the current state. Finally, create your Redux store, initialize its state to equal an empty array, and pass it the reducer.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = 
-`// Redux:
-const ADD = 'ADD';
+`// define ADD, addMessage(), reducer(), and store here:`
+
+// ---------------------------- define challenge solution code ----------------------------
+export const solutionCode =
+`const ADD = 'ADD';
 
 const addMessage = (message) => {
 	return {
     type: ADD,
-    message: message
+    message
   }
 };
 
-const reducer = (state = [], action) => {
+const messageReducer = (state = [], action) => {
   switch (action.type) {
     case ADD:
       return state.concat(action.message);
@@ -39,90 +47,19 @@ const reducer = (state = [], action) => {
   }
 };
 
-const store = Redux.createStore(reducer);
-
-// React:
-const Provider = ReactRedux.Provider;
-const connect = ReactRedux.connect;
-
-class Presentational extends React.Component {
-	constructor(props) {
-		super(props);
-    this.state = {
-      input: ''
-    }
-	}
-  handleChange = (event) => {
-    this.setState({
-      input: event.target.value
-    });
-  }
-	submitMessage = () => {
-    this.props.submitMessage(this.state.input);
-    this.setState({
-      input: ''
-    });
-  }
-  render() {
-    return (
-    	<div>
-        <h2>Type in a new Message:</h2>
-        <input
-          value={this.state.input}
-          onChange={this.handleChange}/><br/>
-    		<button onClick={this.submitMessage}>Submit</button>
-    		<ul>
-		    	{this.props.messages.map( (message, idx) => {
-		    			return (
-		    			 	<li key={idx}>{message}</li>
-		    			)
-		    		})
-	    		}
-	    	</ul>
-    	</div>
-    );
-  }
-};
-
-const mapStateToProps = (state) => {
-  return {messages: state}
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return { 
-    submitMessage:
-    	(newMessage) => {
-        dispatch(addMessage(newMessage))
-      }
-  }
-};
-
-const Container = connect(mapStateToProps, mapDispatchToProps)(Presentational);
-
-class AppWrapper extends React.Component {
-	render() {
-		return (
-			<Provider store = {store}>
-				<Container/>
-			</Provider>
-		);
-	}
-};
-
-export default AppWrapper;`
-
-// ---------------------------- define challenge solution code ----------------------------
-export const solutionCode =
-``
+const store = Redux.createStore(messageReducer);`
 
 // ---------------------------- define challenge tests ----------------------------
 
 export const executeTests = (code) => {
 
 	const error_0 = 'Your JSX code was transpiled successfully.';
-	const error_1 = '';
-	const error_2 = '';
-	const error_3 = '';
+	const error_1 = 'The const ADD exists and holds a value equal to the string \'ADD\'';
+	const error_2 = 'The action creator addMessage returns an object with type equal to ADD and message equal to the message that is passed in.';
+	const error_3 = 'messageReducer is a function.';
+	const error_4 = 'The store exists and has an initial state set to an empty array.';
+	const error_5 = 'Dispatching addMessage against the store adds a new message to the array of messages held in state.';
+	const error_6 = 'The messageReducer returns the current state if called with any other actions.';
 
 	let testResults = [
 		{
@@ -144,46 +81,63 @@ export const executeTests = (code) => {
 			test: 3,
 			status: false,
 			condition: error_3
+		},
+		{
+			test: 4,
+			status: false,
+			condition: error_4
+		},
+		{
+			test: 5,
+			status: false,
+			condition: error_5
+		},
+		{
+			test: 6,
+			status: false,
+			condition: error_6
 		}
 	];
 
-	let es5, mockedComponent, passed = true;
+	let es5, reduxCode, passed = true;
+	let ADD, addMessage, messageReducer, store;
 
-	// this applies an export to the user's code so
-	// we can access their component here for tests
-	
-	// const exportScript = '\n export default MyComponent'
-	// const modifiedCode = code.concat(exportScript);
-	
+	// this code hijacks the user input to create an IIFE 
+	// which returns the store from Redux as an object
+	// or whatever you need from the client code
+	const prepend = `(function() {`
+	const apend = `;\n return { ADD, addMessage, messageReducer, store } })()`
+	const modifiedCode = prepend.concat(code).concat(apend);
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
-		es5 = transform(code, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
+		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[0].status = false;
 	}
-	
-	// now we will try to shallow render the component with Enzyme's shallow method
-	// you can also use mount to perform a full render to the DOM environment
-	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
+
+	// save the store from redux to test here
+	// now you can access the redux store methods
 	try {
-		mockedComponent = mount(React.createElement(eval(es5)));
+		reduxCode = eval(es5);
+
+		ADD = reduxCode.ADD;
+		addMessage = reduxCode.addMessage;
+		messageReducer = reduxCode.messageReducer;
+		store = reduxCode.store;
+
 	} catch (err) {
-		console.log(err);
 		passed = false;
 	}
 
-	// run specific tests to verify the functionality
-	// that the challenge is trying to assess:
-
+	
 	// test 1:
 	try {
-
+		assert.strictEqual(ADD, 'ADD', error_1);
 		testResults[1].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[1].status = false;
 	}
@@ -191,22 +145,72 @@ export const executeTests = (code) => {
 	// test 2:
 	try {
 
+		const addAction = addMessage('__TEST__MESSAGE');
+		assert(
+			addAction.type === ADD &&
+			addAction.message === '__TEST__MESSAGE',
+			error_2
+		);
+
 		testResults[2].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[2].status = false;		
 	}
 
 	// test 3:
 	try {
-
+		assert.strictEqual(typeof messageReducer, 'function', error_3);
 		testResults[3].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[3].status = false;
 	}
+
+	let initialState, addState, testState;
+
+	// test 4:
+	try {
+
+		initialState = store.getState();
+
+		assert(
+			typeof store === 'object' &&
+			initialState.length === 0,
+			error_4
+		);
+
+		testResults[4].status = true;
+	} catch (err) {
+		passed = false;
+		testResults[4].status = false;
+	}
+
+	// test 5:
+	try {
+
+		store.dispatch(addMessage('__A__TEST__MESSAGE'));
+		addState = store.getState();
+		assert.strictEqual(addState[0], '__A__TEST__MESSAGE', error_5);
+
+		testResults[5].status = true;
+	} catch (err) {
+		passed = false;
+		testResults[5].status = false;		
+	}
+
+	// test 6:
+	try {
+
+		store.dispatch({type: 'FAKE_ACTION'});
+		testState = store.getState();
+		assert.strictEqual(addState, testState, error_6);
+
+		testResults[6].status = true;
+	} catch (err) {
+		passed = false;
+		testResults[6].status = false;
+	}	
 
 	return {
 		passed,
@@ -215,18 +219,28 @@ export const executeTests = (code) => {
 	
 }
 
-// ---------------------------- define live render function ----------------------------
-
+// liveRender modifies console.log in user input and returns message data -----------------------
 export const liveRender = (code) => {
 
+	// this code modifies the user input to return all
+	// console.log statements as a message array to be
+	// displayed on the client UI
+	const prepend = `
+	(function() { 
+		let __Custom__Log = []
+		const message = (msg) => __Custom__Log.push(msg);
+	`
+	const apend = `; return __Custom__Log })();`
+	const consoleReplaced = code.replace(/console.log/g, 'message');
+	const hijackedCode = prepend.concat(consoleReplaced).concat(apend);
+	
+	let evaluatedCode;
 	try {
-		// const exportScript = '\n export default MyComponent'
-		// const modifiedCode = code.concat(exportScript);
-		const es5 = transform(code, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
-		const renderedComponent = React.createElement(eval(es5));
-		return renderedComponent;
+		evaluatedCode = eval(hijackedCode);
 	} catch (err) {
 		console.log(err);
 	}
+
+	return evaluatedCode;
 
 }

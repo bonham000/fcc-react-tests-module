@@ -35,7 +35,7 @@ correctly makes the design of complex, stateful apps much easier to manage.`
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've provided a <code>MyApp</code>
 component which renders a <code>Navbar</code> components as a child. The parent component is stateful. Pass the
-<code>name</code> property in its state down to the child component and then render it in the <code>h1</code> tag.`
+<code>name</code> property in its state down to the child component and then render it in the <code>&lt;h1/&gt;</code> tag.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
@@ -148,7 +148,6 @@ export const executeTests = (code) => {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[0].status = false;
 	}
@@ -159,7 +158,6 @@ export const executeTests = (code) => {
 	try {
 		mockedComponent = mount(React.createElement(eval(es5)));
 	} catch (err) {
-		console.log(err);
 		passed = false;
 	}
 
@@ -171,7 +169,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(mockedComponent.find('MyApp').length, 1, error_1);
 		testResults[1].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[1].status = false;
 	}
@@ -181,7 +178,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(mockedComponent.find('Navbar').length, 1, error_2);
 		testResults[2].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[2].status = false;		
 	}
@@ -193,7 +189,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(inspectProps, 'TestName', error_3);
 		testResults[3].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[3].status = false;
 	}
@@ -204,7 +199,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(mockedComponent.find('h1').node.innerText.includes('TestName'), true, error_4);
 		testResults[4].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[4].status = false;		
 	}	
@@ -227,7 +221,7 @@ export const liveRender = (code) => {
 		const renderedComponent = React.createElement(eval(es5));
 		return renderedComponent;
 	} catch (err) {
-		console.log(err);
+		console.log('Live rendering failed', err);
 	}
 
 }

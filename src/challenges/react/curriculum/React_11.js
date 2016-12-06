@@ -10,12 +10,12 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Composition with React Components`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Compose React Components`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span><br>
+export const challengeText = `<span class = 'default'>Intro: </span>
 As we continue to explore more complex compositions with React components and JSX, there is one other order of business that we must address:
-As logic would follow, if we can render simple JSX elements and stateless functional components within other components, as we saw in 
+As logic would allow, if we can render simple JSX elements and stateless functional components within other components, as we saw in 
 the last challnege, we should definitely be able to render ES6 class components within other components too... right? Yes!<br><br>
 
 Rendering ES6 style class components within other components is no different at all from what we have been doing in the last few challenges!<br><br>
@@ -23,7 +23,7 @@ Rendering ES6 style class components within other components is no different at 
 So knowing that, let's go ahead and render our most complex component composition yet.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span><br>
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>
 You'll notice that the <code>TypesOfFood</code> component is already rendering a component called <code>Vegetables</code>.
 Let's go ahead and mix it up a bit by adding some fruit to the mix! We've hung on to the <code>Fruits</code> component that we created in the last challenge, but this time, let's 
 nest 2 components inside of that &mdash; first <code>NonCitrus</code>, and then <code>Citrus</code>, both of which are components that we have provided for you.
@@ -39,9 +39,10 @@ export const seedCode =
 	render() {
 		return (
 			<div>
-					{ /* change code below this line */ }
+				<h2>Fruits:</h2>
+				{ /* change code below this line */ }
 
-		    	{ /* change code above this line */ }
+		   	{ /* change code above this line */ }
 			</div>
 		)
 	}
@@ -77,7 +78,7 @@ export const solutionCode =
 				{ /* change code below this line */ }
 				<NonCitrus />
 				<Citrus />
-		    	{ /* change code above this line */ }
+		    { /* change code above this line */ }
 			</div>
 		)
 	}
@@ -94,7 +95,7 @@ class TypesOfFood extends React.Component {
 		    	{ /* change code below this line */ }
 					<Fruits />
 		    	{ /* change code above this line */ }
-		    		<Vegetables />
+		    	<Vegetables />
 	    	</div>
     	);
   	}
@@ -194,7 +195,6 @@ export const executeTests = (code) => {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[0].status = false;
 	}
@@ -206,7 +206,6 @@ export const executeTests = (code) => {
 		mockRender = shallow(React.createElement(eval(es5)));
 		mockedComponent = mount(React.createElement(eval(es5)));
 	} catch (err) {
-		console.log(err);
 		passed = false;
 	}
 
@@ -218,7 +217,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(mockRender.node.type, 'div', error_1);
 		testResults[1].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[1].status = false;
 	}
@@ -228,7 +226,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(mockRender.nodes[0].props.children[1].type.name, 'Fruits', error_2);
 		testResults[2].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[2].status = false;		
 	}
@@ -239,7 +236,6 @@ export const executeTests = (code) => {
 		mockedComponent.childAt(1).childAt(2).name() === 'Citrus', error_3)
 		testResults[3].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[3].status = false;
 	}
@@ -249,7 +245,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(mockRender.nodes[0].props.children[2].type.name, 'Vegetables', error_4);
 		testResults[4].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[4].status = false;
 	}
@@ -273,7 +268,7 @@ export const liveRender = (code) => {
 		const renderedComponent = React.createElement(eval(es5));
 		return renderedComponent;
 	} catch (err) {
-		console.log(err);
+		console.log('Live rendering failed', err);
 	}
 
 }

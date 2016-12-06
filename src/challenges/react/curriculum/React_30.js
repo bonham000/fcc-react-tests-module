@@ -14,15 +14,15 @@ export const challengeText = `<span class = 'default'>Intro: </span>Here we will
 of controlled inputs.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've provided a MyForm component
-which is already setup to handle changes on an input element. Define this input element in the <code>return</code>
-of the MyForm component, setting its <code>value</code> and <code>onChange</code> attributes like before. Then,
-define a <code>button</code> that you can use to submit the input value. Of course, we're not really submitting the
-form anywhere, this is just serving as a simulation. The <code>button</code> should have an onClick handler which runs a
-method called <code>handleSubmit</code> which you can define on the MyForm class. This method should take whatever value
-is currently in the input and set it to the <code>submit</code> property in MyForm's <code>state</code>.<br><br>
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've provided a <code>MyForm</code> component
+which is already prepared to handle changes on an <code>&lt;input/&gt;</code> element. Define this <code>&lt;input/&gt;</code>
+element in the <code>return</code> of the <code>MyForm</code> component, setting its <code>value</code> and <code>onChange()</code> attributes
+like before. Then, define a <code>&lt;button/&gt;</code> that you can use to submit the input value. Of course, we're not really
+submitting the form anywhere, this is just serving as a simulation. The <code>&lt;button/&gt;</code> should have an <code>onClick()</code> handler which
+runs a method called <code>handleSubmit()</code> which you can define on the <code>MyForm</code> class. This method should take whatever value
+is currently in the input and set it to the <code>submit</code> property in local <code>state</code>.<br><br>
 
-Finally, create an <code>h1</code> tag below the <code>button</code> which renders out the <code>submit</code> value
+Finally, create an <code>&lt;h1/&gt;</code> tag below the <code>&lt;button/&gt;</code> which renders out the <code>submit</code> value
 from the component's <code>state</code>. Once you're finished and you type in the form and click the button, you should
 see your input rendered to the page!`
 
@@ -136,7 +136,6 @@ export const executeTests = (code) => {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[0].status = false;
 	}
@@ -145,7 +144,6 @@ export const executeTests = (code) => {
 	try {
 		mockedComponent = mount(React.createElement(eval(es5)));
 	} catch (err) {
-		console.log(err);
 		passed = false;
 	}
 
@@ -159,7 +157,6 @@ export const executeTests = (code) => {
 		);
 		testResults[1].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[1].status = false;
 	}
@@ -173,7 +170,6 @@ export const executeTests = (code) => {
 		);
 		testResults[2].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[2].status = false;
 	}
@@ -189,7 +185,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(before === '' && after === 'TestInput', true, error_3);
 		testResults[3].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[3].status = false;
 	}
@@ -207,7 +202,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(submitBefore === '' && submitAfter === 'SubmitInput', true, error_4);
 		testResults[4].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[4].status = false;
 	}	
@@ -230,7 +224,7 @@ export const liveRender = (code) => {
 		const renderedComponent = React.createElement(eval(es5));
 		return renderedComponent;
 	} catch (err) {
-		console.log(err);
+		console.log('Live rendering failed', err);
 	}
 
 }

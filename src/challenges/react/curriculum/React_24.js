@@ -19,11 +19,11 @@ directly but always use <code>this.setState()</code> to do so.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>In this example we've provided
-a <code>button</code> element which has an <code>onClick()</code> handler. This handler is triggered when the
-<code>button</code> recieves a click event in the browser, which in this case will run the <code>click</code>
-method we have defined on the MyComponent class. Within this <code>click</code> method we want to update the
-component <code>state</code> with <code>this.setState</code>. Update the <code>click</code> method to set the
-'name' property in the MyComponent <code>state</code> to equal the string 'React Rocks!'.<br><br>
+a <code>&lt;button&gt;</code> element which has an <code>onClick()</code> handler. This handler is triggered when the
+<code>&lt;button&gt;</code> recieves a click event in the browser, which in this case will run the <code>click</code>
+method we have defined on <code>MyComponent</code>. Within this <code>click</code> method we want to update the
+component <code>state</code> with <code>this.setState()</code>. Update the <code>click</code> method to set the
+<code>name</code> property in <code>state</code> to equal the string <code>React Rocks!</code>.<br><br>
 
 Try it out! Click the button and watch the rendered state update. Don't worry about understanding how we our
 definining the <code>click</code> method or assigning the click handler at this point, we will continue to
@@ -129,7 +129,6 @@ export const executeTests = (code) => {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[0].status = false;
 	}
@@ -138,7 +137,6 @@ export const executeTests = (code) => {
 	try {
 		mockedComponent = mount(React.createElement(eval(es5)));
 	} catch (err) {
-		console.log(err);
 		passed = false;
 	}
 
@@ -147,7 +145,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(mockedComponent.state('name'), 'Initial State', error_1);
 		testResults[1].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[1].status = false;
 	}
@@ -157,7 +154,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(mockedComponent.find('h1').length, 1, error_2);
 		testResults[2].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[2].status = false;		
 	}
@@ -168,7 +164,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(mockedComponent.contains(<h1>TestName</h1>), true, error_3);
 		testResults[3].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[3].status = false;
 	}
@@ -183,7 +178,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(before === 'Before' && after === 'React Rocks!', true, error_4);
 		testResults[4].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[4].status = false;
 	}	
@@ -206,7 +200,7 @@ export const liveRender = (code) => {
 		const renderedComponent = React.createElement(eval(es5));
 		return renderedComponent;
 	} catch (err) {
-		console.log(err);
+		console.log('Live rendering failed', err);
 	}
 
 }

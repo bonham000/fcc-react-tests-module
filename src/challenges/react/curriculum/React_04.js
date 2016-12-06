@@ -12,22 +12,20 @@ export const QA = false;
 // -------------- define challenge title and challenge instructions --------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Render HTML Elements to the DOM` 
 export const challengeText = `<span class = 'default'>Intro: </span>
-Now that we've learned how to compose HTML with JSX, let's learn how React allows us to render this JSX as HTML to the DOM.<br><br>
+Now that we've learned how to compose HTML with JSX, let's learn how React allows us to render this JSX as HTML to the DOM.
+For this we will use React's rendering API known as ReactDOM.<br><br>
 
-While React gives us the syntax and ability to write complex UIs based on the compositions of simple, reusable JSX
-components, it does not actually give us the ability to render those comonents to the DOM. 
-For that, we need React's rendering API known as ReactDOM.<br><br>
-
-ReactDOM is not complex, it allows us a very simple sytax for rendering React elements 
+ReactDOM is not complex, it allows us a very simple syntax for rendering React elements 
 to the DOM which looks like this: <code>ReactDOM.render(componentToRender, targetNode)</code>, where the
 first argument is the React element or component that we want to render, and the second argument is the DOM 
-node that we would like to render that component within. As logic would follow, ReactDOM.render() must be challed 
+node that we would like to render that component within. As logic would follow, ReactDOM.render() must be called 
 below where the element has been declared.`
 
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>
 We've defined a simple JSX component for you. Use the <code>ReactDOM.render()</code> method to render this component to the page. 
-You can pass defined JSX elements directly in as the first argument and select the target DOM node with the getElementById method on the document object. 
-We've provided a <code>div</code> with ID 'challenge-node' for you to use. Be sure not to modify the JSX constant at all.`
+You can pass defined JSX elements directly in as the first argument and select the target DOM node with the <code>getElementById()</code>
+method on the document object. We've provided a <code>div</code> with <code>id='challenge-node'</code> for you to use.
+Be sure not to modify the JSX constant at all.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = 
@@ -96,7 +94,6 @@ export const executeTests = (code) => {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[0].status = false;
 	}
@@ -105,7 +102,6 @@ export const executeTests = (code) => {
 	try {
 		jsx = eval(es5);
 	} catch (err) {
-		console.log(err);
 		passed = false;
 	}
 
@@ -114,7 +110,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(jsx.type, 'div', 'The constant JSX returns an <div> element.');
 		testResults[1].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[1].status = false;
 	}
@@ -124,7 +119,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(jsx.props.children[0].type, 'h1', 'The div contains an h1 tag as the first element.');
 		testResults[2].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[2].status = false;
 	}
@@ -134,7 +128,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(jsx.props.children[1].type, 'p', 'The div contains an p tag as the second element.');
 		testResults[3].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[3].status = false;
 	}
@@ -144,7 +137,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(document.getElementById('challenge-node').childNodes[0].innerHTML, '<h1>Hello World</h1><p>Lets render this to the DOM</p>', 'The provided JSX element is rendered to the DOM node with id \'challenge-node\'.');
 		testResults[4].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[4].status = false;
 	}	
@@ -165,7 +157,7 @@ export const liveRender = (code) => {
 		const renderedComponent = React.createElement(eval(es5));
 		return renderedComponent;
 	} catch (err) {
-		console.log(err);
+		console.log('Live rendering failed', err);
 	}
 
 }

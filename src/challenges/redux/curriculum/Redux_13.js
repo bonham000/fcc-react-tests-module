@@ -22,7 +22,7 @@ so far.`
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>In this lesson, we'll try to implement
 a simple counter with Redux from scratch. We've defined the basics but you'll have to fill in the details! Use the names we've
-provided and define <code>incAction</code> and <code>decAction</code> action creators, the <code>counterReducer</code>,
+provided and define <code>incAction</code> and <code>decAction</code> action creators, the <code>counterReducer()</code>,
 <code>INCREMENT</code> and <code>DECREMENT</code> action types, and finally the Redux <code>store</code>. Once you're
 finished you should be able to dispatch <code>INCREMENT</code> or <code>DECREMENT</code> actions to increment or
 decrement the state held in the <code>store</code>. Good luck building your first Redux app!`
@@ -135,7 +135,6 @@ export const executeTests = (code) => {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[0].status = false;
 	}
@@ -153,7 +152,6 @@ export const executeTests = (code) => {
 		store = reduxCode.store;
 
 	} catch (err) {
-		console.log(err);
 		passed = false;
 	}
 
@@ -162,7 +160,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(incAction().type, INCREMENT, error_1);
 		testResults[1].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[1].status = false;
 	}
@@ -172,7 +169,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(decAction().type, DECREMENT, error_2);
 		testResults[2].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[2].status = false;
 	}
@@ -182,7 +178,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(store.getState(), 0, error_3);
 		testResults[3].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[3].status = false;
 	}
@@ -196,7 +191,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(initialState + 1, incState, error_4);
 		testResults[4].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[4].status = false;
 	}
@@ -210,7 +204,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(initialState - 1, decState, error_5);
 		testResults[5].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[5].status = false;
 	}
@@ -220,7 +213,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(typeof counterReducer, 'function', error_6);
 		testResults[6].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[6].status = false;
 	}	
@@ -243,7 +235,7 @@ export const liveRender = (code) => {
 		let __Custom__Log = []
 		const message = (msg) => __Custom__Log.push(msg);
 	`
-	const apend = `; return __Custom__Log })();`
+	const apend = `;\n return __Custom__Log })();`
 	const consoleReplaced = code.replace(/console.log/g, 'message');
 	const hijackedCode = prepend.concat(consoleReplaced).concat(apend);
 	

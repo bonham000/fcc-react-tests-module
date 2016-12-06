@@ -12,21 +12,27 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Render 
 
 export const challengeText = `<span class = 'default'>Intro: </span>Now that we have learned how to define a component's initial
 state let's see how this state can be displayed in the UI that we render. If a component is stateful, it will always have access
-to the data in <code>state</code> in the <code>render</code> method. You can access this data with <code>this.state</code>.
+to the data in <code>state</code> in its <code>render()</code> method. You can access this data with <code>this.state</code>.
 If you want to access this state value within the <code>return</code> of the return method, you have to enclose the value in
-curly braces. This instructs the enclosed code to be evaluated directly as JavaScript. We will see more examples of this later on.<br><br>
+curly braces.<br><br>
 
 <code>State</code> is one of the most powerful features of components in React. It allows you to track important data in your app and
-render a UI in response to this data. If your data changes, your UI will change. It is important to note that if you make a component
-stateful, no other components are aware of its <code>state</code>. Its <code>state</code> is completely encapsulated or local to
-that component, unless it decides to pass down some peice of its state to a child component as <code>props</code>. We will soon
-see an example of this. This notion of encapsulated <code>state</code> is very useful because it allows us to write certain logic
-and have that logic be contained and isolated within a single component.`
+render a UI in response to this data. If your data changes, your UI will change. React abstracts away the DOM manipulation required 
+for this process with a virtual DOM which tracks changes behind the scenes and provides a very performant way to update the
+UI in response to changes. This means we don't have to worry about changing the DOM. We just declare what the UI should look like.<br><br>
+
+We should note here that if you make a component stateful no other components are aware of its <code>state</code>. Its
+<code>state</code> is completely encapsulated or local to that component, unless it decides to pass down some piece of its
+state to a child component as <code>props</code>. We will soon see an example of this. This notion of encapsulated
+<code>state</code> is very important because it allows us to write certain logic and have that logic be contained and isolated
+in one place in our code.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>This component is already stateful.
 Define an <code>&lt;h1&gt;</code> tag in the component's render method which renders out the value of <code>this.state.name</code>
-from the component's state. Note: the <code>&lt;h1&gt;</code> should only render the value from <code>state</code> and nothing else.`
+from the component's state. Note: the <code>&lt;h1&gt;</code> should only render the value from <code>state</code> and nothing else.
+In JSX, any code you write with curly braces <code>{ }</code> will be treated as JavaScript. So to access the value from
+<code>state</code> just enclose the reference in curly braces.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
@@ -110,7 +116,6 @@ export const executeTests = (code) => {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[0].status = false;
 	}
@@ -119,7 +124,6 @@ export const executeTests = (code) => {
 	try {
 		mockedComponent = mount(React.createElement(eval(es5)));
 	} catch (err) {
-		console.log(err);
 		passed = false;
 	}
 
@@ -128,7 +132,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(mockedComponent.state('name'), 'Free Code Camp', error_1);
 		testResults[1].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[1].status = false;
 	}
@@ -138,7 +141,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(mockedComponent.children().type(), 'h1', error_2);
 		testResults[2].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[2].status = false;		
 	}
@@ -149,7 +151,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(mockedComponent.contains(<h1>TestName</h1>), true, error_3);
 		testResults[3].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[3].status = false;
 	}
@@ -172,7 +173,7 @@ export const liveRender = (code) => {
 		const renderedComponent = React.createElement(eval(es5));
 		return renderedComponent;
 	} catch (err) {
-		console.log(err);
+		console.log('Live rendering failed', err);
 	}
 
 }

@@ -10,7 +10,7 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Lifecycle Methods: componentWillMount`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Use the Lifecycle Method componentWillMount`
 
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>React components have several special methods
@@ -31,8 +31,8 @@ some action with one of these methods.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span><code>componentWillMount()</code> is called
-before the <code>render</code> method when a component is being mounted. We've provided a simple component with that renders a
-<code>div</code>. Log something to the console within <code>componentWillMount()</code>.`
+before the <code>render()</code> method when a component is being mounted to the DOM. We've provided a simple component with that renders a
+<code>&lt;div/&gt;</code>. Log something to the console within <code>componentWillMount()</code>.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
@@ -104,7 +104,6 @@ export const executeTests = (code) => {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[0].status = false;
 	}
@@ -115,7 +114,6 @@ export const executeTests = (code) => {
 	try {
 		mockedComponent = mount(React.createElement(eval(es5)));
 	} catch (err) {
-		console.log(err);
 		passed = false;
 	}
 
@@ -127,7 +125,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(mockedComponent.find('div').length, 1, error_1);
 		testResults[1].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[1].status = false;
 	}
@@ -138,7 +135,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(lifecycle.includes('console.log('), true, error_2);
 		testResults[2].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[2].status = false;		
 	}
@@ -161,7 +157,7 @@ export const liveRender = (code) => {
 		const renderedComponent = React.createElement(eval(es5));
 		return renderedComponent;
 	} catch (err) {
-		console.log(err);
+		console.log('Live rendering failed', err);
 	}
 
 }

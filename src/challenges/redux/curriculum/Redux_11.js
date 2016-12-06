@@ -18,14 +18,14 @@ usually actions are originating from some user interaction and tend to carry som
 need to know about this data.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've defined a basic <code>notesReducer</code>
-here and an <code>addNoteText</code> action creator. Finish the body of the <code>addNoteText</code> function so that it returns
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've defined a basic <code>notesReducer()</code>
+here and an <code>addNoteText()</code> action creator. Finish the body of the <code>addNoteText()</code> function so that it returns
 an <code>action</code> object which includes a <code>type</code> like we're used to, but let's also pass in a property of
 <code>text</code> set to the <code>note</code> data we pass into the action creator. When we call the action creator, we'll
 pass in specific note information that we can access like this.<br><br>
 
-Next, finish writing the <code>switch</code> statement in the <code>notesReducer</code>. We need to add a case that handles
-our <code>addNoteText</code> actions. This case should be triggered whenever there is an action of type <code>ADD_NOTE</code>
+Next, finish writing the <code>switch</code> statement in the <code>notesReducer()</code>. We need to add a case that handles
+our <code>addNoteText()</code> actions. This case should be triggered whenever there is an action of type <code>ADD_NOTE</code>
 and it should just return the text property on the incoming <code>action</code> as the new <code>state</code>.<br><br>
 
 We've dispatched the action at the bottom of the code. Once you're finished run the code and watch the console. That's it!
@@ -128,7 +128,6 @@ export const executeTests = (code) => {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[0].status = false;
 	}
@@ -144,7 +143,6 @@ export const executeTests = (code) => {
 		ADD_NOTE = reduxCode.ADD_NOTE;
 
 	} catch (err) {
-		console.log(err);
 		passed = false;
 	}
 
@@ -161,7 +159,6 @@ export const executeTests = (code) => {
 
 		testResults[1].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[1].status = false;
 	}
@@ -180,7 +177,6 @@ export const executeTests = (code) => {
 
 		testResults[2].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[2].status = false;
 	}
@@ -203,7 +199,7 @@ export const liveRender = (code) => {
 		let __Custom__Log = []
 		const message = (msg) => __Custom__Log.push(msg);
 	`
-	const apend = `; return __Custom__Log })();`
+	const apend = `;\n return __Custom__Log })();`
 	const consoleReplaced = code.replace(/console.log/g, 'message');
 	const hijackedCode = prepend.concat(consoleReplaced).concat(apend);
 	

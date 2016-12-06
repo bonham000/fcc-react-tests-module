@@ -15,9 +15,12 @@ export const challengeText = `<span class = 'default'>Intro: </span>
 That was pretty simple. But JSX can include complex nested HTML as well. Now let's try to use JSX in this way.`
 
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>
-Define a new constant 'JSX' which renders a <code>div</code> which contains, in this order, an <code>h1</code> tag followed by
-a <code>p</code> tag followed by an unordered list with three <code>li</code> items. You can include whatever text you want within
-each element. When rendering multiple elements like this, you can wrap them all in parathenses but it's not strictly required.`
+Define a new constant <code>JSX</code> which renders a <code>&lt;div&gt;</code> which contains, in this order, an <code>&lt;h1&gt;</code> tag followed by
+a <code>&lt;p&gt;</code> tag followed by an unordered list with three <code>&lt;li&gt;</code> items. You can include whatever text you want within
+each element. When rendering multiple elements like this, you can wrap them all in parathenses but it's not strictly required. You should
+note that it is required that multiple child elements all be wrapped in a single element. For instance, if you remove the
+<code>&lt;div&gt;</code> that is wrapping the elements here, the JSX will no longer transpile. Keep this in mind later
+because it will also apply when we are returning JSX elements in React components.`
 
 // Maybe here ^^ would be a good place to mention that all nested JSX needs to have only one outer level?
 
@@ -85,7 +88,6 @@ export const executeTests = (code) => {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[0].status = false;
 	}
@@ -94,7 +96,6 @@ export const executeTests = (code) => {
 	try {
 		jsx = eval(es5);
 	} catch (err) {
-		console.log(err);
 		passed = false;
 	}
 
@@ -103,7 +104,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(jsx.type, 'div', 'The constant JSX returns an <div> element.');
 		testResults[1].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[1].status = false;
 	}
@@ -113,7 +113,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(jsx.props.children[0].type, 'h1', 'The div contains an h1 tag as the first element.');
 		testResults[2].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[2].status = false;
 	}
@@ -123,7 +122,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(jsx.props.children[1].type, 'p', 'The div contains an p tag as the second element.');
 		testResults[3].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[3].status = false;
 	}
@@ -133,7 +131,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(jsx.props.children[2].type, 'ul', 'The div contains an h1 tag as the third element.');
 		testResults[4].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[4].status = false;
 	}
@@ -143,7 +140,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(jsx.props.children[2].props.children.length, 3, 'The ul contains three li elements.');
 		testResults[5].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[5].status = false;
 	}	
@@ -164,7 +160,7 @@ export const liveRender = (code) => {
 		const renderedComponent = React.createElement(eval(es5));
 		return renderedComponent;
 	} catch (err) {
-		console.log(err);
+		console.log('Live rendering failed', err);
 	}
 
 }

@@ -13,9 +13,10 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Render a Class Component to the DOM`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span><br>
-One thing you may remenber from a <a href="link to render html Elements tot he dom - challnege 4">previous challenge</a> is
-that, while we are writing React code with React, we need a separate API to actually render that code to the DOM &mdash; the ReactDOM API.<br><br>
+export const challengeText = `<span class = 'default'>Intro: </span>One thing you may remenber from a
+<a id="Challenge_Link" target="_blank" href="link to render html Elements tot he dom - challnege 4">previous challenge</a>
+is that, while we are writing React code with React, we need a separate API to actually render that code to the DOM &mdash;
+the ReactDOM API.<br><br>
 
 For the past few challenges, we wanted to focus on introducing components themselves, so we have been rendering them 
 for you behind the scenes. However, it is important to know that none of the React code that we write can actually be rendered without 
@@ -26,15 +27,14 @@ first argument is the React component that we want to render, and the second arg
 component within.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span><br>
-React components must be passed in to <code>ReactDOM.render()</code> slightly differently than JSX elements. 
-For JSX elements, we simply pass in the name of the elmemt that we want to render, but when we pass React components to <code>ReactDOM.render()</code>,
-we must use the same syntax which we would use to render a component within another component. Note that while here we are rendering an ES6 Class Component, 
-the syntax for rendering a functional component would be the same.<br><br>
+export const challengeInstructions = `<span class = 'default'>Instructions: </span> React components must be passed in to
+<code>ReactDOM.render()</code> slightly differently than JSX elements. For JSX elements, we simply pass in the name of the elmemt
+that we want to render, but when we pass React components to <code>ReactDOM.render()</code>, we must use the same syntax which we
+would use to render a component within another component. Note that while here we are rendering an ES6 class Component, the syntax 
+for rendering a functional component would be the same.<br><br>
 
 We have already defined components named <code>Fruits</code> and <code>Vegetables</code> in our last challenge. Render both components as children of the <code>TypesOfFood</code> component
-and render <code>TypesOfFood</code> to the <code>div</code> we have provided that has 
-an ID of <code>challenge-node</code>.`
+and render <code>TypesOfFood</code> to the <code>&lt;div&gt;</code> we have provided with <code>id='challenge-node'</code>.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = `
@@ -167,7 +167,6 @@ export const executeTests = (code) => {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[0].status = false;
 	}
@@ -178,7 +177,6 @@ export const executeTests = (code) => {
 	try {
 		mockedComponent = shallow(React.createElement(eval(es5)));
 	} catch (err) {
-		console.log(err);
 		passed = false;
 	}
 
@@ -190,7 +188,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(mockedComponent.type(), 'div', error_1)
 		testResults[1].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[1].status = false;
 	}
@@ -200,7 +197,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(mockedComponent.nodes[0].props.children[1].type.name,'Fruits', error_2)
 		testResults[2].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[2].status = false;		
 	}
@@ -210,7 +206,6 @@ export const executeTests = (code) => {
 		assert.strictEqual(mockedComponent.nodes[0].props.children[2].type.name, 'Vegetables', error_3)
 		testResults[3].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[3].status = false;
 	}
@@ -223,7 +218,6 @@ export const executeTests = (code) => {
 		error_4)
 		testResults[4].status = true;
 	} catch (err) {
-		console.log(err);
 		passed = false;
 		testResults[4].status = false;
 	}
@@ -246,7 +240,7 @@ export const liveRender = (code) => {
 		const renderedComponent = React.createElement(eval(es5));
 		return renderedComponent;
 	} catch (err) {
-		console.log(err);
+		console.log('Live rendering failed', err);
 	}
 
 }
