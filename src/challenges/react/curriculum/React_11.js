@@ -13,7 +13,7 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Compose React Components`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span><br>
+export const challengeText = `<span class = 'default'>Intro: </span>
 As we continue to explore more complex compositions with React components and JSX, there is one other order of business that we must address:
 As logic would allow, if we can render simple JSX elements and stateless functional components within other components, as we saw in 
 the last challnege, we should definitely be able to render ES6 class components within other components too... right? Yes!<br><br>
@@ -23,7 +23,7 @@ Rendering ES6 style class components within other components is no different at 
 So knowing that, let's go ahead and render our most complex component composition yet.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span><br>
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>
 You'll notice that the <code>TypesOfFood</code> component is already rendering a component called <code>Vegetables</code>.
 Let's go ahead and mix it up a bit by adding some fruit to the mix! We've hung on to the <code>Fruits</code> component that we created in the last challenge, but this time, let's 
 nest 2 components inside of that &mdash; first <code>NonCitrus</code>, and then <code>Citrus</code>, both of which are components that we have provided for you.

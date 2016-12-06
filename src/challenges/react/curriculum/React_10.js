@@ -10,7 +10,7 @@ export const QA = false;
 // -------------- define challenge title and challenge instructions --------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Use React to Render Nested Components`
 
-export const challengeText = `<span class = 'default'>Intro: </span><br>
+export const challengeText = `<span class = 'default'>Intro: </span>
 Now that we've seen how to compose two components together, let's look at composition a little further. 
 You can compose components in many different ways with React. Component composition is one of React's
 powerful and endearing features.<br><br>
@@ -20,7 +20,7 @@ important to begin to see a UI in terms of components like this when working wit
 bit more complex.`
 
 export const challengeInstructions = `
-<span class = 'default'>Instructions: </span><br>
+<span class = 'default'>Instructions: </span>
 Here we've defined two functional components for you, <code>TypesOfFruit</code> and <code>Fruits</code>.
 Take the <code>TypesOfFruit</code> component and compose it, or <em>nest</em> it, within the <code>Fruits</code> component, then take the <code>Fruits</code> component and
 nest it within the <code>TypesOfFood</code> component. The result should be a child component, nested within a parent component, which is 

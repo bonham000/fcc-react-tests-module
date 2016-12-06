@@ -11,7 +11,7 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Learn About Self-Closing JSX Tags`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span><br>
+export const challengeText = `<span class = 'default'>Intro: </span>
 So far, we’ve seen how JSX differs from HTML in a key way with the use of <code>className</code> vs. <code>class</code> for defining HTML classes. 
 Another very important way in which JSX differs from HTML is in the idea of the self closing tag.<br><br>
 
@@ -26,7 +26,7 @@ that first syntax there is no way to include anything in the <code>&lt;div&gt;</
 We will see later that this syntax also comes in handy when rendering React components.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span><br>
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>
 Fix the errors in the code below so that it is valid JSX that can be successfully transpiled and render it to the DOM using the <code>ReactDOM.render()</code> method.
 We've provided a <code>&lt;div&gt;</code> with <code>id='challenge-node'</code> for you to render to. Be sure not to change any of the content but only to add self-closing tags where
 they are needed.`

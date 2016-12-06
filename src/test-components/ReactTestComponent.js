@@ -219,7 +219,7 @@ export default class ReactTestComponent extends React.Component {
 		    <hr />
 
 		    <div>
-		    	<p className='referenceLink'>- This project is using <a target="_blank" href="http://airbnb.io/enzyme/index.html">Enzyme</a> to test React Components live in a browser | <a target = "_blank" href="https://github.com/bonham000/fcc-react-tests-module">View the code on GitHub</a></p>
+		    	<p className='referenceLink'>- This project tests React code with <a target="_blank" href="http://airbnb.io/enzyme/index.html">Enzyme</a> live in a browser | <a target = "_blank" href="https://github.com/bonham000/fcc-react-tests-module">View on GitHub</a></p>
 		    </div>
 
 		    <div id='challenge-node' style={{ display: 'none' }}></div>
