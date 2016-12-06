@@ -28,7 +28,7 @@ in the JS script tags, and code there as well. Congratulations on making it this
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>Log the message 
-'Now I know React and Redux!' to the console somewhere in the code. Nice work!`
+<code>'Now I know React and Redux!'</code> to the console somewhere in the code. Nice work!`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
@@ -82,7 +82,7 @@ console.log('Now I know React and Redux!');`
 
 export const executeTests = (code) => {
 
-	const error_0 = '\'Now I know React and Redux is logged to the console.\'';
+	const error_0 = 'The message \'Now I know React and Redux!\' is logged to the console.';
 
 	let testResults = [
 		{

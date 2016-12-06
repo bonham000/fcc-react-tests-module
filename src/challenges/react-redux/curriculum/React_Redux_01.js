@@ -23,16 +23,16 @@ their role. Then, we can dispatch actions directly from our React components whi
 Although React components can manage their own state locally, in a complex app it is better to keep the app state in a single location
 with Redux. Individual components may still have local state specific only to them, however. Finally, because Redux is not designed
 to work with React out of the box, we will have to use the <code>react-redux</code> package which provides a way for us to pass
-Redux <code>state</code> and <code>dispatch</code> methods to our React components so they can access them as <code>props</code>.<br><br>
+Redux <code>state</code> and <code>dispatch</code> to our React components as <code>props</code>.<br><br>
 
 Now let's see all of this in action. In this series of challenges, we are going to first create a simple React component which allows you
 to input new text messages and have them added to an array which is displayed in the view. This should be a nice review of what you learned
-in the React lessons. Next, we are going to create a Redux store and actions which can manage the state of this array. Finally, we will use
-<code>react-redux</code> to connect our Redux store with our component thereby extracting our local state into the Redux store. Let's
-get started!`
+in the React lessons. Next, we are going to create a Redux store and actions which can manage the state of this messags array. Finally, we
+will use <code>react-redux</code> to connect our Redux store with our component, thereby extracting our local state into the Redux store.
+Let's get started!`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>We will start with a DisplayMessages component. Add a
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>We will start with a <code>DisplayMessages</code> component. Add a
 constructor to this component and initialize it with a state of two properties, <code>input</code> which is equal to an empty string
 and <code>messages</code> which is equal to an empty array.`
 

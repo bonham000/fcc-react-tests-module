@@ -22,9 +22,9 @@ export default class ReactTestComponent extends React.Component {
 		document.removeEventListener('keydown', this.handleKeyPress);
 	}
 	handleKeyPress = (event) => {
-		if (event.keyCode === 190 && event.shiftKey) {
+		if (event.keyCode === 39 && event.ctrlKey && event.metaKey && event.altKey) {
       setTimeout( () => { this.seedCode(true) }, 25);
-    } else if (event.keyCode === 188 && event.shiftKey) {
+    } else if (event.keyCode === 37 && event.ctrlKey && event.metaKey && event.altKey) {
       setTimeout( () => { this.seedCode(true) }, 25);
 		} else if (event.keyCode === 13 && event.metaKey) {
 			this.testCode();

@@ -32,7 +32,7 @@ syntax is a little unusal and looks like:<br><br>
 <code>connect(mapStateToProps, mapDispatchToProps)(MyComponent)</code><br><br>
 
 We can assign the result of this to a new variable which represents our connected component. Call <code>connect</code> on
-the Presentational component and assign it to a new <code>const</code> called ConnectedComponent. That's it, now we're
+the Presentational component and assign it to a new <code>const</code> called <code>ConnectedComponent</code>. That's it, now we're
 connected to Redux! Try changing either of <code>connect</code>'s arguments to <code>null</code> and observe the test results.`
 
 // ---------------------------- define challenge seed code ----------------------------

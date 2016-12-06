@@ -17,11 +17,11 @@ export const challengeText = `<span class = 'default'>Intro: </span>Now that we'
 connect React to Redux let's apply what we've learned to our React component that handles messages. Here we will connect
 Redux to this component.
 
-In the last lesson we called the component we were connecting Presentational and this wasn't arbitrary. This term
+In the last lesson we called the component we were connecting <code>Presentational</code> and this wasn't arbitrary. This term
 <i>generally</i> refers to React components which are not directly connected to Redux. They are simply responsible
 for the presentation of UI and do this as a function of the props they receive. By contrast, container components are
 connected to Redux. These are typically responsible for dispatching actions to the store and will often pass store
-<code>state</code> to child components as props.`
+state to child components as props.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>Here we've provided all the code we've

@@ -16,13 +16,13 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Manage 
 export const challengeText = `<span class = 'default'>Intro: </span>Here we will finish creating our DisplayMessages component.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>First, in the <code>render</code> method, have the
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>First, in the <code>render()</code> method, have the
 component return an <code>input</code> element, <code>button</code> element, and <code>ul</code> element. The <code>input</code> element
-should update changes to a <code>handleChange</code> method and render the value of <code>input</code> in the component's state.
+should update changes to a <code>handleChange()</code> method and render the value of <code>input</code> in the component's state.
 The button should trigger a <code>submitMessage()</code> method when clicked.<br><br>
 
 Second, write these two methods. The <code>handleChange()</code> method simply needs to update the <code>input</code> with what the user is
-typing and the <code>submitMessage()</code> method should concatenate the current message stored in <code>this.state.input</code>
+typing and the <code>submitMessage()</code> method should concatenate the current message stored in <code>state</code>
 to the <code>messages</code> array in local state, and clear the value of the <code>input</code>.<br><br>
 
 Finally, use the <code>ul</code> to map over the array of <code>messages</code> and render it to the screen as a list of <code>li</code> elements.`
@@ -37,14 +37,14 @@ export const seedCode =
       messages: []
     }
 	}
-  // change code below this line
+  // add handleChange() and submitMessage() methods here
 
   // change code above this line
   render() {
     return (
     	<div>
         <h2>Type in a new Message:</h2>
-        { /* change code below this line */ }
+        { /* render an input, button, and ul here */ }
 
         { /* change code above this line */ }
     	</div>

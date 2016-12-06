@@ -15,21 +15,21 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Extract
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>Great work! We're almost done here. Let's recall that
 we wrote all this Redux code so that Redux could takeover the state management of our React messages app. Now that we have
-Redux connected we need to extract our state management out of the Presentational component and into Redux. Currently, 
-although we have Redux connected, we are still handling our state locally within the Presentational component. Let's
+Redux connected we need to extract our state management out of the <code>Presentational</code> component and into Redux. Currently, 
+although we have Redux connected, we are still handling our state locally within the <code>Presentational</code> component. Let's
 extract this state into Redux now.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>Let's inspect the Presentational component.
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>Let's inspect the <code>Presentational</code> component.
 First, let's get rid of the <code>messages</code> property in the local <code>state</code>. These messages will now be
 managed by Redux. Next, modify the <code>submitMessage()</code> method so that we dispatch <code>submitNewMessage()</code>
-from <code>this.props</code>, passing in the current value of <code>this.state.input</code>. Because we've removed
+from <code>this.props</code>, passing in the current message input from local <code>state</code>. Because we've removed
 <code>messages</code> from local state, we can remove it from the call to <code>this.setState()</code> here as well. Finally,
-we just have to modify our <code>render</code> method so that we map over the messages received from <code>this.props</code>
-rather than <code>this.state</code>.<br><br>
+we just have to modify our <code>render()</code> method so that we map over the messages received from <code>props</code>
+rather than <code>state</code>.<br><br>
 
 Once these changes are made the app will continue to function just the same except Redux is now managing our state for us.
-This example also illustrates how a component may have local <code>state</code>, our component is still tracking user input
+This example also illustrates how a component may have local <code>state</code>: our component is still tracking user input
 locally in its own <code>state</code>, while still maintaining app state globally with Redux.`
 
 // ---------------------------- define challenge seed code ----------------------------
@@ -74,10 +74,9 @@ class Presentational extends React.Component {
     });
   }
 	submitMessage = () => {
-		const currentMessage = this.state.input;
     this.setState({
       input: '',
-      messages: this.state.messages.concat(currentMessage)
+      messages: this.state.messages.concat(this.state.input)
     });
   }
   render() {

@@ -37,7 +37,7 @@ something like:<br><br>
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>To use <code>mapDispatchToProps()</code>
 we will need to have our action creator <code>addMessage()</code>. We've provided it here. Write a function
 <code>mapDispatchToProps()</code> which takes <code>dispatch</code> as an argument and returns an object where you assign
-the dispatch function to a property <code>submitNewMessage</code>. Note: We can call this property, which will become
+the dispatch function to a property <code>submitNewMessage</code>. Note: We can call this property which will become
 <code>props</code> whatever we want, but let's called it <code>submitNewMessage</code> here.`
 
 // ---------------------------- define challenge seed code ----------------------------

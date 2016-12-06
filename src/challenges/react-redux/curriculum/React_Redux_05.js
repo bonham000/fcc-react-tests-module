@@ -12,22 +12,20 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Map Sta
 
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>The <code>Provider</code> component allows us to
-provide <code>state</code> and <code>dispatch</code> to our React components, but we have to specify explicitly what
-state and actions we want to pass to our components. In this way we can ensure that each component only has access
+provide <code>state</code> and <code>dispatch</code> to our React components, but we must specify explicitly what
+state and actions we want. In this way we can ensure that each component only has access
 to the state it needs. We will accomplish this by creating two functions <code>mapStateToProps()</code> and
 <code>mapDispatchToProps()</code>. In these functions we will declare exactly what pieces of state we want to have
-access to and which dispatch functions we need to be able to call.<br><br> After writing these functions we will see
-how to use the React Redux <code>connect</code> method to connect them to our components.<br><br>
-
-Note: Behind the scenes React-Redux is using the <code>store.subscribe()</code> method to implement
-<code>mapStateToProps()</code>.`
+access to and which action creators we need to be able to dispatch. After writing these functions we will see
+how to use the React Redux <code>connect</code> method to connect them to our components. Note: Behind the scenes
+React-Redux is using the <code>store.subscribe()</code> method to implement <code>mapStateToProps()</code>.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>Create a function
 <code>mapStateToProps()</code>. This function should take <code>state</code> as an argument and return an object
 which maps that state to specific property names. These properties will then become accessible to our component via
 <code>props</code>. Here, we are using a simple example where our entire state is a single array so we can pass that
-entire state into to our component. Do this by mapping <code>state</code> to the property <code>messages</code> in the
+entire state to our component. Do this by mapping <code>state</code> to the property <code>messages</code> in the
 object return from <code>mapStateToProps()</code>.`
 
 // ---------------------------- define challenge seed code ----------------------------

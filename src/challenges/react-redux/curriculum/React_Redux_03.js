@@ -20,7 +20,7 @@ demonstrate how React and Redux work together.`
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>Start by defining an action type 'ADD' and set it to a
 const <code>ADD</code>. Then define an action creator <code>addMessage()</code> which creates this action to add a message. You will need
 to pass in a <code>message</code> to this action creator and include this message in the returned <code>action</code>. Then create a reducer
-called <code>messageReducer</code> that handles the state for our messages. This reducer can just add a message to the array of messages held
+called <code>messageReducer()</code> that handles the state for our messages. This reducer can just add a message to the array of messages held
 in state or return the current state. Finally, create your Redux store, initialize its state to equal an empty array, and pass it the reducer.`
 
 // ---------------------------- define challenge seed code ----------------------------

@@ -15,26 +15,26 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Use Pro
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>Now that we've created a Redux store to handle our messages array
 and created actions for adding new messages we will learn how we can provide React access to the Redux store and the actions it will need
-to dispatch updates. Here we will begin to use the <code>react-redux</code> package. React-Redux provides a small API with two key features:
+to dispatch updates. Here we will begin to use the <code>react-redux</code> package. React Redux provides a small API with two key features:
 <code>Provider</code> and <code>connect</code>. We will learn about the <code>Provider</code> here. The <code>Provider</code> is a wrapper
-component from React-Redux which we will wrap our React app with. This wrapper then allows us to access the Redux <code>store</code> and
+component from React Redux which we will wrap our React app with. This wrapper then allows us to access the Redux <code>store</code> and
 <code>dispatch</code> functions throughout our component tree. <code>Provider</code> takes two props, the Redux store and the child components
 of your app. Defining the <code>Provider</code> for an App component might look like this:<br><br>
 <code>
 	&lt;Provider store={store}&gt;<br>
 		&nbsp;&nbsp;&nbsp; &lt;App/&gt;<br>
-	&lt;Provider /&gt;
+	&lt;Provider/&gt;
 </code>`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>There's a lot of code in the editor now but don't worry
-you've written it all already! We've include our Redux store, actions, and our DisplayMessages component from earlier. The only thing new
+you've written it all already! We've included our Redux store, actions, and our <code>DisplayMessages</code> component from earlier. The only thing new
 is the <code>AppWrapper</code> component at the bottom. We will use this top level component to render the <code>Provider</code>
-from React-Redux. Do this, passing the Redux store as a prop, and then render the DisplayMessages component as a child. Once you are
-finished you should see your React component DisplayMessages rendered to the page. Nice!<br><br>
+from <code>ReactRedux</code>. Do this, passing the Redux store as a prop, and then render the <code>DisplayMessages</code> component as a child. Once you are
+finished you should see your React component rendered to the page. Nice!<br><br>
 
-Note: Because we are providing React-Redux as a global variable here, we can access the Provider with dot notation. We do this and set it to
-a const <code>Provider</code> for you to use.`
+Note: Because we are providing React Redux as a global variable here, we can access the Provider with dot notation. We do this and set it to
+a constant <code>Provider</code> for you to use.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = 
@@ -60,6 +60,7 @@ const messageReducer = (state = [], action) => {
 const store = Redux.createStore(messageReducer);
 
 // React Code:
+
 class DisplayMessages extends React.Component {
 	constructor(props) {
 		super(props);
@@ -104,7 +105,7 @@ class DisplayMessages extends React.Component {
 const Provider = ReactRedux.Provider;
 
 class AppWrapper extends React.Component {
-	// change code below this line
+	// render the Provider here
 
 	// change code above this line
 };`
@@ -234,6 +235,8 @@ export const executeTests = (code) => {
 	
 	const exportScript = '\n export default AppWrapper'
 	const modifiedCode = code.concat(exportScript);
+
+	console.log(modifiedCode);
 	
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
@@ -252,6 +255,8 @@ export const executeTests = (code) => {
 	} catch (err) {
 		passed = false;
 	}
+
+	console.log(mockedComponent);
 
 	// run specific tests to verify the functionality
 	// that the challenge is trying to assess:
