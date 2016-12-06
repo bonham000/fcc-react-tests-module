@@ -118,7 +118,7 @@
   - :blue_book: 6: Write `mapDispatchToProps`
   - :blue_book: 7: Introduce `connect`
   - :blue_book: 8: Use `connect` to connect `state` and `dispatch` to React
-  - :pencil: 9: Refactor local state out of our React Component and replace with Redux
-  - :pencil: 10: Review and Moving Forward
+  - :blue_book: 9: Refactor local state out of our React Component and replace with Redux
+  - :blue_book: 10: Review and Moving Forward
 
 
