@@ -1,7 +1,8 @@
 #Challenge Map:#
 
 - :white_check_mark: Challenge is fully written and QA'd 
-- :pencil: Challenge is written but needs QA 
+- :blue_book: Challenge has been proofread and is ready for QA
+- :pencil: Challenge is fully written
 - :pencil2: Challenge needs to be written
 
 ---
@@ -81,27 +82,27 @@
 
 - **Basic Redux: Store, Actions, & Reducers**
 
-  - :pencil: 1: Create a Redux Store
-  - :pencil: 2: Access state with `getState()`
-  - :pencil: 3: Define an `action`
-  - :pencil: 4: Define an `action creator`
-  - :pencil: 5: Dispatch an action with `store.dispatch(action)`
-  - :pencil: 6: Update store in response to dispatched action
-  - :pencil: 7: Use a `switch` statement to handle multiple actions
-  - :pencil: 8: Refactor to use `const` for action types
-  - :pencil: 9: Register a store listener with `store.subscribe(listener)`
-  - :pencil: 10: Combine various reducers with `combineReducer()`
-  - :pencil: 11: Passing action data to the store
-  - :pencil: 12: Dispatching async actions in action creators *(Async testing... hacked with regex of course)*
-  - :pencil: 13: Pulling it all together: write a counter with Redux
+  - :blue_book: 1: Create a Redux Store
+  - :blue_book: 2: Access state with `getState()`
+  - :blue_book: 3: Define an `action`
+  - :blue_book: 4: Define an `action creator`
+  - :blue_book: 5: Dispatch an action with `store.dispatch(action)`
+  - :blue_book: 6: Update store in response to dispatched action
+  - :blue_book: 7: Use a `switch` statement to handle multiple actions
+  - :blue_book: 8: Refactor to use `const` for action types
+  - :blue_book: 9: Register a store listener with `store.subscribe(listener)`
+  - :blue_book: 10: Combine various reducers with `combineReducer()`
+  - :blue_book: 11: Passing action data to the store
+  - :blue_book: 12: Dispatching async actions in action creators *(Async testing... hacked with regex of course)*
+  - :blue_book: 13: Pulling it all together: write a counter with Redux
 
 - **Enforcing State Immutability**
 
-  - :pencil: 14: Never mutate state
-  - :pencil: 15: Using the spread operator on arrays
-  - :pencil: 16: Remove an object from an array
-  - :pencil: 17: Using `Object.assign` for objects
-  - :pencil: 18: ES6 spread operator for objects
+  - :blue_book: 14: Never mutate state
+  - :blue_book: 15: Using the spread operator on arrays
+  - :blue_book: 16: Remove an object from an array
+  - :blue_book: 17: Using `Object.assign` for objects
+  - :blue_book: 18: ES6 spread operator for objects
 
 ---
 
@@ -109,14 +110,14 @@
 
 - **Use `react-redux` to Manage a List of Messages**
 
-  - :pencil: 1: Getting started with React-Redux
-  - :pencil: 2: Create a controlled input and a submit button on a form which updates an array in local `state`
-  - :pencil: 3: Create a Redux store and actions that can lift this `state` out of the React component
-  - :pencil: 4: Use `Provider` to wrap our React Component so it can connect to Redux
-  - :pencil: 5: Write `mapStateToProps`
-  - :pencil: 6: Write `mapDispatchToProps`
-  - :pencil: 7: Introduce `connect`
-  - :pencil: 8: Use `connect` to connect `state` and `dispatch` to React
+  - :blue_book: 1: Getting started with React-Redux
+  - :blue_book: 2: Create a controlled input and a submit button on a form which updates an array in local `state`
+  - :blue_book: 3: Create a Redux store and actions that can lift this `state` out of the React component
+  - :blue_book: 4: Use `Provider` to wrap our React Component so it can connect to Redux
+  - :blue_book: 5: Write `mapStateToProps`
+  - :blue_book: 6: Write `mapDispatchToProps`
+  - :blue_book: 7: Introduce `connect`
+  - :blue_book: 8: Use `connect` to connect `state` and `dispatch` to React
   - :pencil: 9: Refactor local state out of our React Component and replace with Redux
   - :pencil: 10: Review and Moving Forward
 

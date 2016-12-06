@@ -24,7 +24,7 @@ assert.strictEqual(shallowRender.type(), 'div', 'The component renders a div ele
 ##Instructions for QA:##
 
 View [`CHALLENGE_MAP.md`](https://github.com/bonham000/fcc-react-tests-module/blob/master/CHALLENGE_MAP.md) to see the current
-progress of all the challenges. Challenges that are completely written will be marked with a :pencil2: and these need to be reviewed to ensure the following:
+progress of all the challenges. Challenges that are completely written and have been proofread will be marked with a :blue_book: and these need to be reviewed to ensure the following:
 
 * The challenge content explains the information relevant to the challenge
 * The instructions are clear 
