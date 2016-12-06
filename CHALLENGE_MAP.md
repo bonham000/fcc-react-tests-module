@@ -1,15 +1,15 @@
 #Challenge Map:#
 
-- :white_check_mark: Challenge is QA'd and ready to ship
+- :white_check_mark: Challenge is fully QA'd and ready to ship
 - :blue_book: Challenge has been proofread and is ready for QA
 - :pencil: Challenge is fully written
-- :pencil2: Challenge needs to be written
+- :pencil2: Challenge is being written
 
 ---
 
 ###React Challenges:###
 
-- **JSX and simple rendering**
+- **Introducing JSX Elements**
 
   - :blue_book: 1: Create a Simple JSX element
   - :blue_book: 2: Create a Complex JSX Element
@@ -40,7 +40,7 @@
 
 - **State**
 
-  - :pencil2: 21: Create a Stateful Component
+  - :blue_book: 21: Create a Stateful Component
   - :blue_book: 22: Render State in the UI
   - :blue_book: 23: Render State in the UI Another Way
   - :blue_book: 24: Set State with this.setState

@@ -24,7 +24,7 @@ import * as React_17 from './challenges/react/curriculum/React_17'
 import * as React_18 from './challenges/react/curriculum/React_18'
 import * as React_19 from './challenges/react/curriculum/React_19'
 import * as React_20 from './challenges/react/curriculum/React_20'
-//import * as React_21 from './challenges/react/curriculum/React_21'
+import * as React_21 from './challenges/react/curriculum/React_21'
 import * as React_22 from './challenges/react/curriculum/React_22'
 import * as React_23 from './challenges/react/curriculum/React_23'
 import * as React_24 from './challenges/react/curriculum/React_24'
@@ -110,7 +110,7 @@ const challenges = [
   { type: 'React', id: 'React_18'},
   { type: 'React', id: 'React_19'},
   { type: 'React', id: 'React_20'},
-  // { type: 'React', id: 'React_21'},
+  { type: 'React', id: 'React_21'},
   { type: 'React', id: 'React_22'},
   { type: 'React', id: 'React_23'},
   { type: 'React', id: 'React_24'},
