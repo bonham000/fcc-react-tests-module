@@ -18,10 +18,10 @@ get some practice overriding default props by explicitly setting prop values.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've modified the previous components so that
-now the ShoppingCart renders a child Items components. This Items component has a default prop of <code>quantity</code> set to the integer 0.
-Let's pass in a value of 10 instead for the prop <code>quantity</code>. Note: to pass an integer value as a prop you must enclose it in curly
-braces, for instance like this: <code>{100}</code>. This is the syntax so JSX knows to interpret the value within the braces directly
-as JavaScript. We will learn more about the uses of curly braces like this in later lessons.`
+now the <code>ShoppingCart</code> renders a child components <code>Items</code>. This <code>Items</code> component has a default prop of <code>quantity</code>
+set to the integer <code>0</code>. Let's pass in a value of <code>10</code> instead for the prop <code>quantity</code>. Note: to pass an integer value as a
+prop you must enclose it in curly braces, for instance like this: <code>{100}</code>. This is the syntax so JSX knows to interpret
+the value within the braces directly as JavaScript. We will learn more about the uses of curly braces like this in later lessons.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =

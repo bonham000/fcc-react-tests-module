@@ -12,7 +12,7 @@ export const QA = false;
 // -------------- define challenge title and challenge instructions --------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Add Comments in JSX`
 export const challengeText = `<span class = 'default'>Intro: </span>
-JSX is a syntax, that gets compiled to JS. But it is a syntax nonetheless.
+JSX is a syntax that gets compiled to JavaScript. But it is a syntax nonetheless.
 Sometimes, for readability, we might need to add comments to our code.<br><br>
 
 We can put comments inside JSX using the syntax <code>{/* */}</code> to wrap around the comment text.`

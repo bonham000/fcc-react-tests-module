@@ -10,11 +10,11 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Pass A Change Handler as Props`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Pass A Callback as Props`
 
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>Now we can pass state as props to child
-components, but that's we're not limited to passing just data. We can also pass handler functions
+components, but we're not limited to passing just data. We can also pass handler functions
 or any method we define on a React component to a child. This is how we can allow child components to
 interact with their parent components.<br><br>
 
@@ -30,11 +30,11 @@ In <code>GetInput</code> pass as props the <code>inputValue</code> from state an
 Also pass the input handler <code>handleChange</code>. Assign it to a prop called <code>handleInput</code>.<br><br>
 
 Now, pass the the <code>inputValue</code> from state to the <code>RenderInput</code> component. Once you are finished
-you will be able to type in the <code>input</code> element in the <code>GetInput</code> component which calls the handler
+you will be able to type in the <code>&lt;input/&gt;</code> element in the <code>GetInput</code> component which calls the handler
 in its parent via props. This updates the input in the <code>state</code> of the parent, which is passed as props to both
 children. Observe how the data flows between the components and how the single source of truth remains the <code>state</code>
-of the parent component. Admittedly, this example is a little contrived, but should serve to illustrate how data is passed
-between React components.`
+of the parent component. Admittedly, this example is a little contrived, but should serve to illustrate how data and
+callbacks can be passed between React components.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =

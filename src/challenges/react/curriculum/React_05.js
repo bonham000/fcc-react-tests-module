@@ -15,13 +15,13 @@ export const challengeText = `<span class = 'default'>Intro: </span>
 Now that you're getting comfortable writing JSX you may be wondering if it has any differences from HTML.
 So far it seems like you can just write normal HTML, right?<br><br>
 
-One key difference is that you can no longer use the word 'class' to define HTML classes, because 'class' is a
-reserved word in JavaScript. In its place we will use 'className' in JSX.`
+One key difference is that you can no longer use the word <code>class</code> to define HTML classes, because <code>class</code> is a
+reserved word in JavaScript. In its place we will use <code>className</code> in JSX.`
 
 // class and className should perhaps be wrapped in code tags rather than quotes for consistency?
 
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>
-Apply a class of 'myDiv' to the div provided in the JSX code.`
+Apply a class of <code>myDiv</code> to the <code>&lt;div&gt;</code> provided in the JSX code.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =

@@ -10,22 +10,22 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Lifecycle Methods: componentDidMount`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Use the Lifecycle Method componentDidMount`
 
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>You will inevitablely encounter the need to call
-some API endpoint to retrieve data and if you're working with React you'll need to do where to perform this action.
+some API endpoint to retrieve data and if you're working with React you'll need to know where to perform this action.
 
 The best practice with React is to place API calls or any calls to your server in the lifecycle method <code>componentDidMount()</code>.
-This method is called after a component is mounted and any calls to <code>setState</code> here will trigger a re-rendering of
+This method is called after a component is mounted and any calls to <code>setState()</code> here will trigger a re-rendering of
 your component. Calling an API here and setting your state with the data that returns will automatically trigger the update
 once you receive the data.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've created a mock API call in
 <code>componentDidMount()</code>. It just sets state after 2.5 seconds to simulate calling a server to retrieve the current
-total active users for a site (or whatever data you might need). In the render method, render the value of <code>activeUsers</code> in the <code>h1</code>.
-Watch what happens in the preview. Play around with changing the timeout.<br><br>
+total active users for a site (or whatever data you might need). In the render method, render the value of <code>activeUsers</code>
+in the <code>&lt;h1/&gt;</code>. Watch what happens in the preview. Play around with changing the timeout.<br><br>
 
 Note that because we wrote the timeout function as an ES6 arrow function, it is <code>this</code> aware and therefore has
 access to <code>this.setState</code>.`
@@ -49,7 +49,7 @@ export const seedCode =
   render() {
     return (
 			<div>
-				<h1>Data: { /* change code here */ }</h1>
+				<h1>Active Users: { /* change code here */ }</h1>
 			</div>
     );
   }
@@ -74,7 +74,7 @@ export const solutionCode =
   render() {
     return (
 			<div>
-				<h1>Data: {this.state.activeUsers}</h1>
+				<h1>Active Users: {this.state.activeUsers}</h1>
 			</div>
     );
   }

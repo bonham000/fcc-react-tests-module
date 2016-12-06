@@ -12,7 +12,7 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Bind 't
 
 export const challengeText = `<span class = 'default'>Intro: </span>Let's look at one more way that we can bind
 <code>this</code> when writing methods in React component classes. A useful, concise way to bind <code>this</code>
-is to use an ES6 fat arrow function, which does not assign its own value for <code>this</code> but rather adopts
+is to use an ES6 arrow function, which does not assign its own value for <code>this</code> but rather adopts
 the value of <code>this</code> from the context surrounding the function when it is written. In other words, an
 arrow function binds <code>this</code> automatically from its surrounding context.<br><br>
 
@@ -23,9 +23,10 @@ methods on React classes.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've provided a React Component
-that renders a <code>button</code> which triggers a <code>setMessage</code> function when clicked. Define this
-method with a fat arrow function on the MyComponent class. Let's also initialize the state of MyComponent to have
-a property <code>message</code> with text 'Hello!'.`
+that renders a <code>&lt;button&gt;</code> which triggers a <code>setMessage()</code> function when clicked. Define this
+method with an ES6 arrow function on the <code>MyComponent</code> class to change the <code>state</code> of <code>message</code>
+to <code>Goodbye!</code>. Let's also initialize this <code>message</code> in the state of <code>MyComponent</code> to have
+a value of <code>Hello!</code>.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =

@@ -10,7 +10,7 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Lifecycle Methods: componentWillMount`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Use the Lifecycle Method componentWillMount`
 
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>React components have several special methods
@@ -31,8 +31,8 @@ some action with one of these methods.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span><code>componentWillMount()</code> is called
-before the <code>render</code> method when a component is being mounted. We've provided a simple component with that renders a
-<code>div</code>. Log something to the console within <code>componentWillMount()</code>.`
+before the <code>render()</code> method when a component is being mounted to the DOM. We've provided a simple component with that renders a
+<code>&lt;div/&gt;</code>. Log something to the console within <code>componentWillMount()</code>.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =

@@ -11,14 +11,14 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Render State in the UI Another Way`
 
 export const challengeText = `<span class = 'default'>Intro: </span>Now we will see one more way to access <code>state</code>
-before moving on. In the <code>render</code> method, before the <code>return</code> you can write JavaScript directly. For
+before moving on. In the <code>render()</code> method, before the <code>return</code> you can write JavaScript directly. For
 example you could declare functions, access data from <code>state</code> or <code>props</code>, perform computations on this
 data and so on. Then, you can assign any data to variables that you will then have access to in the <code>return</code>. As a
-simple example of this powerful feature, lets see a different way to access <code>this.state</code>.`
+simple example of this powerful feature, lets see a different way to access <code>state</code>.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>This component is just like the one before.
-Now, let's define a <code>const</code> in the <code>render</code> method called 'name' and set it equal to the name value in the
+Now, let's define a <code>const</code> in the <code>render</code> method called <code>name</code> and set it equal to the name value in the
 component's <code>state</code>. Because we are just writing JavaScript now, you don't have to enclose this reference in curly braces.
 Next, to render this value, you can just reference it directly in the <code>return</code>, but of course now that we are back in 
 JSX you will have to enclose it in curly braces.`

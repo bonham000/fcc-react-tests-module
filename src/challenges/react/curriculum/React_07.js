@@ -15,14 +15,14 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Create 
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>Components are the core of React. Everything in React is a component,
 and as we will see creating a React Component provides us with several useful benefits. However, creating a component that React understands
-is a simple as writing as function that returns a JSX element.<br><br>
+is as simple as writing as function that returns a JSX element.<br><br>
 
 Because a JSX component like this represents HTML, you could easily stitch together a more complex HTML page with several JSX components. This
 is one of the key advantages of the component architecture React provides: it allows you to compose your UI from many separate, isolated components.
-This makes it easier to build and maintain complex user interfaces.`
+This makes it easier to build and maintain complex user interfaces. We will see a lot move of this principle moving forward.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've provided a function called <code>myComponent</code> for you.
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've provided a function called <code>myComponent()</code> for you.
 Complete this function so that it returns a JSX element with a single <code>&#60;div /&#62</code> element which contains some string of text. Note: the text
 is considered a child of this element, so you will not be able to use a self-closing tag.`
 

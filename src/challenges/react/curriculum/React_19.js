@@ -10,7 +10,7 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Use PropTypes to Define Component Props`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Use PropTypes to Define The Props You Expect`
 
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>React provides useful typechecking features
@@ -18,19 +18,19 @@ to verify that components are receiving props of the correct type. For instance,
 and expect to receive data back as an array which you will then pass to a component as a prop. You can set a <code>propType</code> that
 requires this data to be of type <code>array</code>. This will throw a useful warning in the event the data is of any other type. Setting
 <code>propTypes</code> when you know the type of a prop ahead of time is a best practice. You can define a <code>propTypes</code> property of a component
-in the same way you defined <code>defaultProps</code>. Defining a required <code>function</code> prop would look like this:
+in the same way you defined <code>defaultProps</code>. Defining a required <code>function</code> prop would look like this:<br><br>
 
 <code>MyComponent.propTypes = { handleClick: React.PropTypes.func.isRequired }</code><br><br>
 
 You may notice <code>func</code> representing <code>function</code>. Among the seven JavaScript primitive types, this is the only unusual
-spelling with the exception of <code>booleans</code> which are written as <code>bool</code>.
+spelling with the exception of <code>boolean</code> which is written as <code>bool</code>.
 
 In addition to the primitive types, there are also other types available, for example you can check that a prop is a React element.
 Please refer to the documentation for an exhaustive list.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>Here is our ShoppingCart example again. Let's define
-propTypes for the Items component which declare that <code>quantity</code> is a required prop of type <code>number.</code>`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>Here is our <code>ShoppingCart</code> example again. Let's define
+<code>propTypes</code> for the <code>Items</code> component which declare that <code>quantity</code> is a required prop of type <code>number.</code>`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =

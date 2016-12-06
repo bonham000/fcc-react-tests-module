@@ -12,16 +12,16 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Write a
 
 export const challengeText = `<span class = 'default'>Intro: </span>Now that you've learned the basics of state,
 writing methods that can set state, and assigning click handlers that can trigger these methods, lets try to design
-a more complex component.`
+a more complex stateful component.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've provided a basic component
-for you called Counter. This component simply keeps track of a count value. We've defined two buttons which call
-methods <code>increment</code> and <code>decrement</code>. Write these methods so that the counter value is incremented
+for you called <code>Counter</code>. This component simply keeps track of a <code>count</code> value in state. We've defined two buttons which call
+methods <code>increment()</code> and <code>decrement()</code>. Write these methods so that the counter value is incremented
 or decremented by 1 when the appropriate button is clicked. There is also a button that can reset the count back to 0.
-Implement this <code>reset</code> method as well.<br><br>
+Implement this <code>reset()</code> method as well.<br><br>
 
-Note: Be sure not to modify the classNames of the buttons!`
+Note: Be sure not to modify the <code>classNames</code> of the buttons!`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =

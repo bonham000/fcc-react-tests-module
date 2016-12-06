@@ -16,15 +16,13 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Use Def
 export const challengeText = `<span class = 'default'>Intro: </span>Now that you understand how props work let's
 learn about default props. You can assign default props to a component as a property on the component class itself.
 This allows you to specify what a prop value should be if no value is explicitly provided. For example, by declaring
-<code>MyComponent.defaultProps = { location: 'San Francisco' }</code>
-you have defined a location prop which will be set to the string 'San Francisco' unless you specify otherwise.
-
-Default props will be assigned if props are undefined, but if you pass <code>null</code> as the value for a prop, it
-will remain null.`
+<code>MyComponent.defaultProps = { location: 'San Francisco' }</code> you have defined a location prop which will
+be set to the string <code>San Francisco</code> unless you specify otherwise. Default props will be assigned if
+props are undefined, but if you pass <code>null</code> as the value for a prop, it will remain <code>null</code>.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>We have defined a <code>ShoppingCart</code>
-component for you. Define default props on this component which specify a prop 'items' with a value of 0.`
+component for you. Define default props on this component which specify a prop <code>items</code> with a value of <code>0</code>.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =

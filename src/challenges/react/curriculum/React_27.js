@@ -12,19 +12,18 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Use Sta
 
 export const challengeText = `<span class = 'default'>Intro: </span>Lets look at a more complex usage of state.
 We can use state to monitor the status of some value and render our UI conditionally based on this value.
-There are many different ways to accomplish this, here we will look at a simple example.`
+There are many different ways to accomplish this, here we'll take a simple example.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've defined MyComponent again
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've defined <code>MyComponent</code> again
 and this time we have a <code>visibility</code> property which is initialized to be <code>false</code>. Take a look
 at the render method. Here we are returning one thing if the value of <code>visibility</code> is true and something
-else if it is not. It's just a normal JavaScript <code>if/else</code> statement. Applying JavaScript in this way
-is one of the most useful features of React. This gives us a lot of control over how we render our UI based on the
-current state in our application. We'll see more examples of this as we move forward.<br><br>
+else if it is not. It's just a normal JavaScript <code>if/else</code> statement. We'll get a lot of practice with this
+type of code later on.<br><br>
 
 At the moment, however, we have no way of updating the <code>visibility</code> property in the component's state. We want
 to be able to toggle this value back and forth. We have defined a click handler on our button which should trigger a class
-method called <code>toggleVisibility</code> but we haven't defined this method yet. Define this method in a way that will
+method called <code>toggleVisibility()</code> but we haven't defined this method yet. Define this method in a way that will
 toggle the state of <code>visibility</code> when the method is called. If <code>visibility</code> is <code>false</code>
 it will be set to <code>true</code>, and vice versa. There are a few ways this method can be written, see what you can
 come up with!<br><br>

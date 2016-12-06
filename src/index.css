@@ -223,6 +223,20 @@ a:hover {
 	color: #3FB2FD;
 }
 
+#Babel {
+	color: black;
+}
+#Babel:hover {
+	color: #3FB2FD;
+}
+
+#Challenge_Link {
+	color: black;
+}
+#Challenge_Link:hover {
+	color: #3FB2FD;
+}
+
 #CRA {
 	color: black;
 }

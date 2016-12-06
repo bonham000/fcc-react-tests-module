@@ -10,13 +10,13 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Managing Updates with Lifecycle Methods`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Manage Updates with Lifecycle Methods`
 
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>Another lifecycle method is 
 <code>componentWillReceiveProps()</code> which is called whenever a component is receiving new props. This method will receive
 the new props as a <code>nextProps</code> argument which you can use and compare with <code>this.props</code>. You can perform
-actions before the component updates, for instance you may call <code>setState</code> locally before the update is processed.<br><br>
+actions before the component updates, for instance you may call <code>setState()</code> locally before the update is processed.<br><br>
 
 Another method we will use here is <code>componentDidUpdate()</code>. This method is called immediately after a component re-renders.
 Note that rendering and mounting are considered different things in the component lifecycle. When a page first loads all components
@@ -25,11 +25,11 @@ After this, however, as state changes components will just re-render themselves.
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've create two components for you. The
-child Dialog component is receiving <code>message</code> props from its parent Controller component. Lets write the
-<code>componentWillReceiveProps()</code> method in the Dialog component and have it log <code>this.props</code> and
-<code>nextProps</code> to the console.<br><br>
+child component <code>Dialog</code> is receiving <code>message</code> props from its parent <code>Controller</code> component.
+Let's write the <code>componentWillReceiveProps()</code> method in the <code>Dialog</code> component and have it log <code>this.props</code>
+and <code>nextProps</code> to the console (don't forget to pass <code>nextProps</code> as an argument to this method).<br><br>
 
-Once you have added this method add <code>componentDidUpdate()</code> as well in the Dialog component, and here log a statement
+Once you have added this method add <code>componentDidUpdate()</code> as well in the <code>Dialog</code> component, and here log a statement
 that says that the component has updated. This method works much like <code>componentWillUpdate()</code>, which we've provided
 for you. Now click the button to change the message and watch your console. Observe the order the statements are logged out in.`
 

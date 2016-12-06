@@ -35,7 +35,7 @@ correctly makes the design of complex, stateful apps much easier to manage.`
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've provided a <code>MyApp</code>
 component which renders a <code>Navbar</code> components as a child. The parent component is stateful. Pass the
-<code>name</code> property in its state down to the child component and then render it in the <code>h1</code> tag.`
+<code>name</code> property in its state down to the child component and then render it in the <code>&lt;h1/&gt;</code> tag.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =

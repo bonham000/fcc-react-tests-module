@@ -12,30 +12,30 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Create 
 
 export const challengeText = `<span class = 'default'>Intro: </span>Let's take a look at a more complex
 interaction between <code>state</code> and our rendered UI. Here we are going to create a controlled input
-with React. Noramlly, a text input element such as <code>input</code> and <code>textarea</code> maintain
+with React. Normally, text input elements such as <code>&lt;input/&gt;</code> and <code>&lt;textarea/&gt;</code> maintain
 their own state in the DOM as the user types. With React, we can move this mutatable state into a React component's
 <code>state</code>.<br><br>
 
-This will allow our user's input to become part of the state of our application which can provide several advantages.
-Typically, if you are creating any input the user can type in with React it will be a controlled input form.`
+This will allow our user's input to become part of application <code>state</code>.
+Typically, if you are creating any input the user can type in with React, it will be a controlled input form.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've given you the skeleton of a
-component called ControlledInput in which we want to create a controlled <code>input</code> element. We've already
-initialized it with an <code>input</code> property in the state set to an empty string. This value will represent
+component called <code>ControlledInput</code> in which we want to create a controlled <code>&lt;input/&gt;</code> element. We've already
+initialized it with an <code>&lt;input/&gt;</code> property in the state set to an empty string. This value will represent
 our input text. Now, we need to create a method to handle changes to our input element and create the element itself.
 
-We'll call the our method <code>handleInput</code>. It will receive an <code>event</code> object which will contain
+We'll call the our method <code>handleInput()</code>. It will receive an <code>event</code> object which will contain
 a string of text from the input element you can access through <code>event.target.value</code>. When you define the 
 method you will need to pass this <code>event</code> object in.<br><br>
 
-Next, we have to define our actual <code>input</code> element. In the render method, above the <code>p</code> tag,
-create a normal HTML <code>input</code> element. We need to set some attributes on this input so it is connected to React.
-Set a <code>value</code> attribute which is equal to the <code>input</code> property of the component's <code>state</code>,
-and also assign an <code>onChange</code> handler which is set to the <code>handleInput</code> method you just wrote.<br><br>
+Next, we have to define our actual <code>&lt;input/&gt;</code> element. In the render method, above the <code>&lt;p/&gt;</code> tag,
+create a normal HTML <code>&lt;input/&gt;</code> element. We need to set some attributes on this input so it is connected to React.
+Set a <code>value</code> attribute which is equal to the <code>&lt;input/&gt;</code> property of the component's <code>state</code>,
+and also assign an <code>onChange()</code> handler which is set to the <code>handleInput()</code> method you just wrote.<br><br>
 
-Now, when you type in the input box the text you are typing will be processed by the <code>handleInput</code> method, set
-as the <code>input</code> property in the comonents <code>state</code>, which is then rendered as the value in the
+Now, when you type in the input box the text you are typing will be processed by the <code>handleInput()</code> method, set
+as the <code>&lt;input/&gt;</code> property in the local <code>state</code>, and then rendered as the value in the
 <code>input</code> box and on the page. This leaves component <code>state</code> as the single source of truth regarding
 the input data, and you've just created your first controlled input element with React!`
 

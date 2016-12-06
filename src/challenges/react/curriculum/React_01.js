@@ -17,15 +17,16 @@ modern web applications.<br><br>
 
 React uses a syntax extension of JavaScript called JSX that allows you to write HTML directly within JavaScript. This is very useful because
 it allows you to leverage the full programmatic power of JavaScript within HTML. For the most part, JSX is similar to the HTML that you have
-already learned, however there are a few key differences, which we will learn about as we progress through these challenges.<br><br>
+already learned, however there are a few key differences which we will learn about as we progress through these challenges.<br><br>
 
-Of course, JSX is not valid JavaScript, so JSX code must be compiled down to JavaScript. Babel is the tool of choice for this process, but for 
-your convenience it's all happenings behind the scenes here. However, if you happen to write syntactically invalid JSX, you will see the first test
+Of course, JSX is not valid JavaScript, so JSX code must be compiled down to JavaScript. The transpiler <a target='_blank' id='Babel' href='https://babeljs.io/'>Babel</a>
+is the tool of choice for this process, but for 
+your convenience it's all happening behind the scenes here. However, if you happen to write syntactically invalid JSX, you will see the first test
 in these challenges fail.`
 
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>
-The current code uses JSX to assign a <code>div</code> element to the constant JSX. Replace the <code>div</code> with an <code>h1</code> element
-and add then text 'Hello JSX!' inside it.`
+The current code uses JSX to assign a <code>&lt;div&gt;</code> element to the constant <code>JSX</code>. Replace the <code>&lt;div&gt;</code> with an <code>&lt;h1&gt;</code> element
+and add the text <code>Hello JSX!</code> inside it.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = `const JSX = <div></div>;`

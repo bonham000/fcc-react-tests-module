@@ -16,12 +16,8 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Introdu
 export const challengeText = `<span class = 'default'>Intro: </span><br>
 Now that we've learned quite a bit about creating and composing JSX elements, functional components and ES6 style class
 components in React, it's time to start diving in to some of the other feautures and capabilities of React that make it 
-such a powerful tool for creating complex, reactive UIs. A good place to start is Props.<br><br>
-
-In React, we use props, short for properties, to <em>pass</em> information from a parent component to a child. Typically,
-this information is immutable, or does not change over time. The concept of props is not necessarily unique to React,
-however, React has a unique and simple way of handling props that makes them extremely powerful and exceptionally 
-easy to use. Let's take a look at one basic application below.<br><br>
+such a powerful tool for creating complex, reactive UIs. A good place to start is with props. In React, we use props,
+short for properties, to <em>pass</em> information from a parent component to a child.<br><br>
 
 The first thing you'll notice is that we have defined a functional component called <code>ReturnUsername</code> that accepts an argument called <code>props</code>.
 We can access props from within the component using dot notation, so if we were passing in a prop called <code>birthday</code>, we would access it by 

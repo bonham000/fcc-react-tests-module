@@ -24,11 +24,11 @@ to the class methods when the component is initialized. In the last lesson we ac
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've provided a similar example
 for you here. In this example, we have a component with a state that can keep track of an item count and a method
 which allows you to increment this item count. However, right now the method is not <code>this</code> aware. Fix this
-by explicitly binding <code>this</code> to the <code>addItem</code> method in the component's constructor.<br><br>
+by explicitly binding <code>this</code> to the <code>addItem()</code> method in the component's constructor.<br><br>
 
 You will also see that our button has no click handler anymore. We need to add a click handler which triggers our
-<code>addItem</code> method when the button receives a click event. Let's add this click handler as well,
-remembering that the method we pass to the <code>onClick</code> handler should be enclosed with curly braces
+<code>addItem()</code> method when the button receives a click event. Let's add this click handler as well,
+remembering that the method we pass to the <code>onClick()</code> handler should be enclosed with curly braces
 because we want it to be interpreted directly as JavaScript.<br><br>
 
 Go ahead and try it out! Once you complete the above steps you should be able to click the button and see the item
