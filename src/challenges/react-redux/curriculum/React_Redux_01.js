@@ -10,7 +10,7 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Getting Started with React-Redux`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Getting Started with React Redux`
 
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>In these series of challenges we will introduce how we can

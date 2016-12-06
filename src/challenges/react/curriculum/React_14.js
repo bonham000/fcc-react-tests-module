@@ -10,18 +10,19 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Introduction to Props: Passing a String to a Functional Component`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Pass a String to a Functional Component`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span><br>
-Now that we've learned quite a bit about creating and composing JSX elements, functional components and ES6 style class
-components in React, it's time to start diving in to some of the other feautures and capabilities of React that make it 
-such a powerful tool for creating complex, reactive UIs. A good place to start is with props. In React, we use props,
-short for properties, to <em>pass</em> information from a parent component to a child.<br><br>
+export const challengeText = `<span class = 'default'>Intro: </span>Now that we've learned quite a bit about creating and
+composing JSX elements, functional components and ES6 style class components in React, it's time to start diving in to some
+of the other feautures and capabilities of React that make it such a powerful tool for creating complex, reactive UIs. A
+good place to start is with props. In React, we use props, short for properties, to <em>pass</em> information from a parent
+component to a child.<br><br>
 
-The first thing you'll notice is that we have defined a functional component called <code>ReturnUsername</code> that accepts an argument called <code>props</code>.
-We can access props from within the component using dot notation, so if we were passing in a prop called <code>birthday</code>, we would access it by 
-writing <code>props.birthday</code>. To do this in JSX you would write <code>{props.birthday}</code>.<br><br>
+The first thing you'll notice is that we have defined a functional component called <code>ReturnUsername</code> that accepts an
+argument called <code>props</code>. We can access props from within the component using dot notation, so if we were passing in
+a prop called <code>birthday</code>, we would access it by writing <code>props.birthday</code>. To do this in JSX you would
+write <code>{props.birthday}</code>.<br><br>
 
 In order to define a props name and value, React uses <strong>custom HTML attributes</strong>, where the attribute name is the prop name,
 and the attribute value is the prop's value. For example, to pass a child component a prop called <code>birthday</code>, 
@@ -29,8 +30,8 @@ when we compose the child component within the parent, we could write something 
 `
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span><br>
-We have already composed the <code>ReturnUsername</code> component for you within the parent, <code>ForgotUsername</code>. Pass the <code>ReturnUsername</code> 
+export const challengeInstructions = `<span class = 'default'>Instructions: </span> We have already composed the
+<code>ReturnUsername</code> component for you within the parent, <code>ForgotUsername</code>. Pass the <code>ReturnUsername</code> 
 component a prop of <code>username</code> and give it a value of your freeCodeCamp username (don't forget to wrap it in quotes)!
 Before rendering though, let's be sure we can access this prop within the child. In the <code>ReturnUsername</code> component, 
 use dot notation to access the <code>username</code> prop inside the curly braces. Run the tests and see what happens!`
