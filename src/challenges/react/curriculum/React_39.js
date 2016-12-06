@@ -18,10 +18,10 @@ and only render some elements when this condition is true. Here we will do this 
 of a React component.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've created a component that contains a <code>boolean</code> in its <code>state</code>
-which represents a condition which tracks if we want to display some element or not  in the UI. We've wired up a <code>button</code> to toggle the state of this value. Currently,
-we render the same UI everytime. Rewrite the <code>render()</code> method with an <code>if/else</code> statement so that if <code>display</code> is true we return the current
-markup, otherwise, let's just return the <code>button</code> without the <code>h1</code> element.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've created a component that contains a <code>boolean</code> in its state
+which represents a condition which tracks if we want to display some element in the UI or not. We've wired up a <code>&lt;button/&gt;</code> to toggle the state of this value. Currently,
+we render the same UI everytime. Rewrite the <code>render()</code> method with an <code>if/else</code> statement so that if <code>display</code> is <code>true</code> we return the current
+markup, otherwise, let's just return the <code>&lt;button/&gt;</code> without the <code>&lt;h1/&gt;</code> element.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =

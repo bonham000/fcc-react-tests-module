@@ -21,8 +21,7 @@ short for properties, to <em>pass</em> information from a parent component to a 
 
 The first thing you'll notice is that we have defined a functional component called <code>ReturnUsername</code> that accepts an argument called <code>props</code>.
 We can access props from within the component using dot notation, so if we were passing in a prop called <code>birthday</code>, we would access it by 
-writing <code>props.birthday</code>. You will also notice a set of curly braces <code>{ }</code> &mdash; this is very important, as all props must
-be accessed within them (this is how we inject javascript into JSX, a concept which we will learn more about later).<br><br>
+writing <code>props.birthday</code>. To do this in JSX you would write <code>{props.birthday}</code>.<br><br>
 
 In order to define a props name and value, React uses <strong>custom HTML attributes</strong>, where the attribute name is the prop name,
 and the attribute value is the prop's value. For example, to pass a child component a prop called <code>birthday</code>, 

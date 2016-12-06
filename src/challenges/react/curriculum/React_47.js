@@ -14,37 +14,33 @@ export const QA = false;
 // applying same 3 styles in-line.
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Add Inline Styles in React 2`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Add Inline Styles in React`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span><br>
-Do you notice anything else that is different about the way this is written? Beyond the fact that we are setting the style 
-attribute equal to a javascript object, there are other some important differences that we must note. <br><br>
+export const challengeText = `<span class = 'default'>Intro: </span>Do you notice anything else that is different about the
+way this is written? Beyond the fact that we are setting the style attribute equal to a javaScript object, there are other some
+important differences that we must note. The first thing to note is that we are creating the style <code>object</code> within a 
+set a curly braces, <code>{ }</code> — it really is just a JavaScript object. The other important piece of information here
+is the syntax of the style properties. For example, you might have noticed that to control the size of the font we used
+<code>fontSize</code> rather than <code>font-size</code>. Because the style object is just a JavaScript <code>object</code>,
+and <code>font-size</code> is invalid syntax for an object property, we write it as <code>fontSize</code>. As a rule any
+hyphenated style properties become camel-cased when written inline in JSX.<br><br>
 
-The first and most obvious is that the object itself seems to be placed between another set of curly braces <code>{ }</code>. If this looks familiar,
-it is becuase you have already seen it before in a previous lesson! JSX comments are also placed in between curly braces. The reason
-for this is the way that JSX code is being transpiled &mdash; in order for the transpiler to interpret literal javascript within JSX code, it must
-be placed within curly braces. Knowing this, the way we apply inline styles in React seems to make a lot more sense. <br><br>
+Finally, all propery value units (for things like <code>height</code>, <code>width</code>, and <code>fontSize</code>) are assumed to 
+be in <code>px</code> unless otherwise specified (you might have noticed we did not include a unit desigation). If you want to use
+<code>em</code> for example, you must specify and wrap the value declaration in quotes. Aside from numbers assumed to be in
+<code>px</code> all other property values should also be wrapped in quotes.<br><br>
 
-In this sense, we are <strong><em>injecting</em></strong> javascript into our JSX code. This is a very important concept in React, so don't worry, we
-will cover it in greater depth in later challenges. <br><br>
-
-The other important piece of information here, is the sytactical difference in which we write style properties. For example, you
-might have noticed that to control the size of the font, we used <code>fontSize</code>, rather than <code>font-size</code>. Again,this boils down
-to transpilation, so the most important thing to know about this, is that any style properties which you would normally hyphenate, would be applied in React 
-by using camel-case instead. Lastly, all propery value units (for things like <code>height</code>, <code>width</code>, and <code>fontSize</code>) are assumed to 
-be in <code>px</code> unless otherwise specified (you might have noticed we did not include a unit desigation). If you want to use <code>em</code> for example, you must
-specify and wrap the value declaration in quotes. Aside from numbers assumed to be in <code>px</code> all other property values should also be wrapped in quotes.<br><br>
-
-Before we move on, let's cover an additional way that we can represent the application of inline styles.
+Before we move on, let's cover an additional way we can apply inline styles in React.
 `
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span><br>
-If we are dealing with a larger set of styles, our code could get a bit messy if we write it right into the JSX element's tag. So instead,
-let's assign that style <code>object</code> to the <code>styles</code> constant that we have provided above the React component. Uncomment the variable, and declare an <code>object</code>
-which represents 3 style properties and their values. Give the <code>div</code> a color of <code>"purple"</code>, a font size of <code>40</code> and a border of <code>"2px solid purple"</code>.
-When you are finshed defining your styles, set the <code>style</code> attribute equal to the <code>styles</code> constant.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>If we are dealing with a larger set of
+styles, our code could get a bit messy if we write it right into the JSX element's tag. So instead, let's assign that style
+<code>object</code> to the <code>styles</code> constant that we have provided above the React component. Uncomment the constant
+and declare an <code>object</code> which represents 3 style properties and their values. Give the <code>&lt;div/&gt;</code> a color of
+<code>"purple"</code>, a font size of <code>40px</code> and a border of <code>"2px solid purple"</code>. When you are finshed
+defining your styles, set the <code>style</code> attribute equal to the <code>styles</code> constant.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = `

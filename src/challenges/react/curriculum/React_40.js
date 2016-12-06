@@ -15,10 +15,15 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Use && 
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>Nice job! Now we will demonstrate a more concise way to achieve the same result. Imagine that we are
 tracking several conditions in our component and we want to respond differently to each of these conditions. We don't want to keep writing <code>else if</code> conditions to
-just return slightly tweaked UIs. Instead, we can use the <code>&&</code> logical operator to perform conditional logic. This is possible because we want to check if a condition
-is true, and if it is return some markup. So if we write: <code>{condition && &lt;p&gt;markup&lt;/p&gt;}</code>, if the <code>condition</code> is true the markup will be returned, otherwise
-if it is false the operation will immediately return false after evaluating <code>condition</code> and return nothing. We can include these statments directly in our JSX
-and even string multiple conditions together by continuing to write <code>&&</code> after each check we make.`
+just return slightly tweaked UIs. Instead, we can use the <code>&&</code> logical operator to perform conditional logic in a more concise way. This
+is possible because we want to check if a condition is <code>true</code>, and if it is return some markup. So if we write:<br><br>
+
+<code>{condition && &lt;p&gt;markup&lt;/p&gt;}</code><br><br>
+
+If the <code>condition</code> is <code>true</code> the markup will be returned, otherwise if it is <code>false</code> the operation will immediately
+return <code>false</code> after evaluating the <code>condition</code> and return nothing. We can include these statments directly in our JSX
+and even string multiple conditions together by continuing to write <code>&&</code> after each check we make. This allows us to 
+handle more complex conditional logic in our <code>render()</code> method.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>Solve the previous example again, this time using the <code>&&</code> logical operator.`

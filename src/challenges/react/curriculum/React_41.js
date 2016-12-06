@@ -14,15 +14,15 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Return 
 
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>In some cases we may not want to render a child element under certain conditions. In React you can avoid
-rendering a component by simply returning <code>null</code> in its <code>render()</code> method. This can be used in cases where you have a child component which receives
-<code>props</code> which you don't want to render under some conditions.`
+rendering a component by simply returning <code>null</code> in its <code>render()</code> method. This can be used in some cases for example where you have a child
+component that just doesn't need to render under some conditions.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've provided the example we've been working with again here. This time, we will render
 our <code>h1</code> element in the <code>Child</code> component rather than in one top-level component. We will pass our <code>display</code> condition as <code>props</code>
-to thie child component. We can check the condition of <code>display</code> in the child component and if it is <code>false</code> we can return <code>null</code>. Try it out!
+to this child component. We can check the condition of <code>display</code> in the child component and if it is <code>false</code> we can return <code>null</code>. Try it out!
 Now we've accomplished the same behavior in three different ways. This should begin to show you the versatility of using JavaScript to write our UIs. React provides us a lot
-of control over what and how we render our views based on state.`
+of control over what and how we render our views.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =

@@ -16,11 +16,11 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Render 
 export const challengeText = `<span class = 'default'>Intro: </span>So far we have been rendering React components on the client.
 Normally, this is what you will always be doing. However, there are some use cases were it makes sense to render a React
 component on the server. Since React is just a JavaScript view library and we can run JavaScript on the server with Node,
-this shouldn't be too hard to do. React even provides us with a <code>renderToString()</code> method we can use just for this
+this shouldn't be too hard to do. In fact, React provides us with a <code>renderToString()</code> method we can use just for this
 purpose which we will apply here.<br><br>
 
-There are two key reasons why rendering on the server may be used in a real world app. The first is that without doing this,
-our React apps would consist of a relatively empty HTML file and a large bundle of JavaScript when initially load to the browser.
+There are two key reasons why rendering on the server may be used in a real world app. The first is that without doing this
+our React apps would consist of a relatively empty HTML file and a large bundle of JavaScript when initially loaded to the browser.
 This may not be ideal for search engines that are trying to index the content of our pages so people can find us. So if we
 render our initial HTML markup on the server and send this to the client, the initial page load will contain all of our page's
 markup which can be crawled by search engines. Additionally, this creates a faster initial page load experience because our

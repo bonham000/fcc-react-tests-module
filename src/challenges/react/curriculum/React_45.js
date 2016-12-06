@@ -19,10 +19,10 @@ take an array and filter its contents based on some condition, returning a new a
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>Here we are initializing our component's
-state with an array of users. Some are online, some aren't. Let's filter this array so we can see just the users who are
+<code>state</code> with an array of users. Some are online, some aren't. Let's filter this array so we can see just the users who are
 online. To do this first use <code>filter</code> to return a new array containing only the users whose <code>online</code>
-property is <code>true</code>. Then map over this filtered array, returning a <code>&lt;p&gt;</code> element for each user
-which contains the text in of their <code>username</code>.`
+property is <code>true</code>. Then map over this filtered array, returning a <code>&lt;p/&gt;</code> element for each user
+which contains the text of their <code>username</code>.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = `

@@ -20,8 +20,6 @@
 
 - **Introducing React/Components**
 
-  introduce JavaScript syntax in React/JSX here
-
   - :blue_book: 7: Create a simple functional component that renders HTML (also intro => syntax for this?)
   - :blue_book: 8: Create a component with ES6 class syntax
   - :blue_book: 9: Create a new element with composition
@@ -32,7 +30,7 @@
 
 - **Props & Conditional Rendering**
 
-  - :blue_book: 14: Pass a string to a component using JSX functional component (Peter)
+  - :blue_book: 14: Pass a string to a component using JSX functional component (Sean)
   - :pencil2: 15: Access props using `this.props`, passing a string to a React Component (Peter)
   - :pencil2: 16: Pass an array to a component using JSX (Peter)
   - :blue_book: 17: Set the default props using the defaultProps static component property
@@ -66,17 +64,17 @@
 - **Advanced Rendering**
 
   - :pencil2: 38: Advanced JavaScript in `render` & `return` of React Component (Peter)
-  - :pencil: 39: Conditional rendering: `if/else` in `render` method
-  - :pencil: 40: Conditional rendering: `&&`
-  - :pencil: 41: Prevent a component from rendering with `null`
+  - :blue_book: 39: Conditional rendering: `if/else` in `render` method
+  - :blue_book: 40: Conditional rendering: `&&`
+  - :blue_book: 41: Prevent a component from rendering with `null`
   - :pencil2: 42: Conditional rendering: ternary condition (Peter)
   - :pencil2: 43: Conditional rendering based on `props`(Peter)
   - :pencil2: 44: Use `map` to dynamically render an array of data (Peter)
-  - :pencil: 45: Use `filter` to dynamically filter an array of data
-  - :pencil: 46: Inline CSS 1
-  - :pencil: 47: Inline CSS 2
+  - :blue_book: 45: Use `filter` to dynamically filter an array of data
+  - :blue_book: 46: Inline CSS 1
+  - :blue_book: 47: Inline CSS 2
   - :pencil2: 48: JSX Gotchas: Key difference in attribute names, etc (Peter)
-  - :pencil: 49: Server side rendering with `renderToString`
+  - :blue_book: 49: Server side rendering with `renderToString`
 
 ---
 
