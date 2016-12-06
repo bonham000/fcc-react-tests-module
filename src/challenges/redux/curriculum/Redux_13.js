@@ -22,7 +22,7 @@ so far.`
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>In this lesson, we'll try to implement
 a simple counter with Redux from scratch. We've defined the basics but you'll have to fill in the details! Use the names we've
-provided and define <code>incAction</code> and <code>decAction</code> action creators, the <code>counterReducer</code>,
+provided and define <code>incAction</code> and <code>decAction</code> action creators, the <code>counterReducer()</code>,
 <code>INCREMENT</code> and <code>DECREMENT</code> action types, and finally the Redux <code>store</code>. Once you're
 finished you should be able to dispatch <code>INCREMENT</code> or <code>DECREMENT</code> actions to increment or
 decrement the state held in the <code>store</code>. Good luck building your first Redux app!`

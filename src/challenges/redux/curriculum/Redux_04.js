@@ -14,25 +14,25 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Define 
 export const challengeText = `<span class = 'default'>Intro: </span>Now that we can create actions lets learn how we can
 send these actions to the Redux store so it can update its state. In Redux we define action creators to accomplish this.
 An action creator is simply a JavaScript function which returns an action. In other words, action creators create objects
-that represent actions events.`
+that represent action events.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've defined our <code>action</code> from
-the previous lesson. Now, define a function called <code>actionCreator</code> which returns this action object when called.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've provided the <code>action</code> from
+the previous lesson. Now, define a function called <code>actionCreator()</code> which returns this action object when called.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
 `const action = {
 	type: 'LOGIN'
 }
-// Define an actionCreator here:`
+// Define an action creator here:`
 
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode =
 `const action = {
 	type: 'LOGIN'
 }
-// Define an actionCreator here:
+// Define an action creator here:
 const actionCreator = () => {
 	return action;
 };`
@@ -42,9 +42,9 @@ const actionCreator = () => {
 export const executeTests = (code) => {
 
 	const error_0 = 'Your JSX code was transpiled successfully.';
-	const error_1 = 'actionCreators is a function.';
-	const error_2 = 'Running the actionCreator function returns an action object.';
-	const error_3 = 'The action has a key property \'type\' with value \'LOGIN\'.';
+	const error_1 = 'The function actionCreator exists.';
+	const error_2 = 'Running the actionCreator function returns the action object.';
+	const error_3 = 'The returned action has a key property \'type\' with value \'LOGIN\'.';
 
 	let testResults = [
 		{

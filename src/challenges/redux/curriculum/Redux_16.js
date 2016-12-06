@@ -12,7 +12,7 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Remove 
 
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>Now let's get some practice removing items from an array. The spread operator can be used here as well.
-Other useful JavaScript methods include <code>slice</code> and <code>concat</code>.`
+Other useful JavaScript methods include <code>slice()</code> and <code>concat()</code>.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've modified our reducer and action creator to now remove an item from an array based on 

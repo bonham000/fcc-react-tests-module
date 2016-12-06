@@ -12,18 +12,18 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Define 
 
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>Now lets learn how to update state in Redux. In Redux, all
-state updates are triggered by dispatching actions. An <code>action</code> is simply a JavaScript object which contains information
-about what action happened. The Redux store will receive these action objects and then update its state accordingly. Sometimes a Redux
-<code>action</code> will also carry a payload of data, for example a username after a user logs in, but they don't have to. What they
-must carry however is a <code>type</code> property which specifies the 'type' of action that occurred.<br><br>
+state updates are triggered by dispatching actions. An action is simply a JavaScript object which contains information
+about an action event that has occurred. The Redux store will receive these action objects and then update its state accordingly.
+Sometimes a Redux action will also carry a payload of data, for example a username after a user logs in, but they
+don't have to. What they must carry however is a <code>type</code> property which specifies the 'type' of action that occurred.<br><br>
 
 Think of Redux actions as messengers that deliver information about events in your app to the Redux store. The store will then
 conduct the business of updating state according to the nature of these actions.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>Here we will write our first Redux <code>action</code>.
-Its as simple as declaring an object with a type property. Declare an object named 'action' and give it a type property set to the
-string 'LOGIN'.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>Here we will write our first Redux action.
+Its as simple as declaring an object with a type property. Declare an object <code>action</code> and give it a property
+<code>type</code> set to the string <code>'LOGIN'</code>.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =`// Define an action here:`

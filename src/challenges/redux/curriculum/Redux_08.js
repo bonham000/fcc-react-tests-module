@@ -16,10 +16,11 @@ to assign action types as read-only constants and then to reference these consta
 refactor the code we are working with and write our action types as <code>const</code> declarations.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>Declare LOGIN and LOGOUT as <code>const</code>
-values and assign them to the strings 'LOGIN' and 'LOGOUT', respectively. Then, let's change our <code>authReducer</code>
-and our action creators to reference these constants rather than just writing string values. Note: It's generally a
-convention that constants are written in all uppercase, and this is standard practice here in Redux as well.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>Declare <code>LOGIN</code> and
+<code>LOGOUT</code> as <code>const</code> values and assign them to the strings <code>'LOGIN'</code> and <code>'LOGOUT'</code>,
+respectively. Then, let's change our <code>authReducer()</code> and our action creators to reference these constants rather than
+just writing string values. Note: It's generally a convention that constants are written in all uppercase, and this is
+standard practice here in Redux as well.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =

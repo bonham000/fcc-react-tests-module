@@ -11,11 +11,11 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Use a Switch Statement to Handle Multiple Actions`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>Now lets see how we can handle multiple action types.
-Lets say we are managing user authentication in our Redux store. Minimally, we want to have a state representation for when
+export const challengeText = `<span class = 'default'>Intro: </span>Now let's see how we can handle multiple action types.
+Let's say we are managing user authentication in our Redux store. Minimally, we want to have a state representation for when
 users are logged in and when they are logged out. We can represent this with a single state object with property
 <code>authenticated</code>. We will also need action creators that can create actions corresponding to user login and
-user logout, along with the actions themselves.`
+user logout, along with the action objects themselves.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've written a store, actions, action creators, and

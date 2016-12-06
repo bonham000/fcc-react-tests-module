@@ -188,9 +188,10 @@ export default class App extends React.Component {
     document.addEventListener('keydown', this.handleKeyPress);
   }
   handleKeyPress = (event) => {
-    if (event.keyCode === 39 && event.shiftKey) {
+    console.log(event.keyCode)
+    if (event.keyCode === 190 && event.shiftKey) {
       this.advanceOneChallenge();
-    } else if (event.keyCode === 37 && event.shiftKey) {
+    } else if (event.keyCode === 188 && event.shiftKey) {
       this.previousChallenge();
     }
   }

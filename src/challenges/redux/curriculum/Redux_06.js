@@ -20,17 +20,15 @@ pure function that takes state and action and returns new state.<br><br>
 
 Another key principle in Redux is that <code>state</code> is read-only. In other words, your <code>reducer</code> must
 <strong>always</strong> return a new copy of <code>state</code> and never modify state directly. Redux does not enforce state
-immutability, however, we must enforce it in the code of our reducer functions. We will see a few techniques to do this as we
-move forward.`
+immutability, however, we must enforce it in the code of our reducer functions. We will get some practice with this later
+in these lessons.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've modified the previous example and provided
-the scaffold of a <code>reducer</code> funciton for you. Remember that when we introduced the <code>createStore()</code> method we mentioned
-that it takes a <code>reducer</code>. Here we will write that reducer so it can actually respond to actions and doesn't just return
-<code>state</code> everytime like before. Fill in the body of the <code>reducer</code> function so that if it receives an action of
-type 'LOGIN' it returns a state object with login set to true, and otherwise it returns the current state. Note that we are passing
-in the current <code>state</code> and the dispatched <code>action</code> to the reducer so you can access the action's type directly
-like this: <code>action.type</code>.`
+the scaffold of a <code>reducer</code> function for you. Fill in the body of the <code>reducer</code> function so that if it receives an
+action of type <code>'LOGIN'</code> it returns a state object with <code>login</code> set to <code>true</code>, and otherwise it
+returns the current <code>state</code>. Note that we are passing in the current <code>state</code> and the dispatched <code>action</code> to
+the reducer so you can access the action's type directly like this: <code>action.type</code>.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
@@ -86,6 +84,7 @@ export const executeTests = (code) => {
 	const error_1 = 'Calling the function loginAction returns an object with type property set to the string \'LOGIN\'.';
 	const error_2 = 'The store is initialized with an object with property login set to false.';
 	const error_3 = 'Dispatching loginAction updates the login property in the store\'s state to true.';
+	const error_4 = 'If the action is not of type \'LOGIIN\', the store returns the current state.'
 
 	let testResults = [
 		{
@@ -107,6 +106,11 @@ export const executeTests = (code) => {
 			test: 3,
 			status: false,
 			condition: error_3
+		},
+		{
+			test: 4,
+			status: false,
+			condition: error_4
 		}
 	];
 
@@ -173,6 +177,24 @@ export const executeTests = (code) => {
 	} catch (err) {
 		passed = false;
 		testResults[3].status = false;		
+	}
+
+	// test 4:
+	try {
+
+		store.dispatch({type: '__TEST__ACTION__'});
+		let afterTest = store.getState();
+
+		assert(
+			typeof afterTest === 'object' &&
+			afterTest.hasOwnProperty('login'),
+			error_4
+		);
+
+		testResults[4].status = true;
+	} catch (err) {
+		passed = false;
+		testResults[4].status = false;		
 	}
 
 	return {

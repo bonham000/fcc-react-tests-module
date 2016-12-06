@@ -11,7 +11,7 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Never Mutate State`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>In the next few challenges we will describe several methods of enforcing the key
+export const challengeText = `<span class = 'default'>Intro: </span>In these final challenges we will describe several methods of enforcing the key
 principle of state immutability in Redux. Immutable state means that we never modify state directly, instead, we always return a new copy of state.
 If you took a snapshot of the state of a Redux app over time you would see something like <code>state 1</code>, <code>state 2</code>, <code>state 3</code>
 ,<code>state 4</code>, <code>...</code> and so on where each state may be similar to the last but each is a distinct piece of data. This immutability, in fact,
@@ -26,14 +26,16 @@ data structures for representing many types of information.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've created a <code>store</code> and <code>reducer</code> here for managing
-some to-do items. Lets finish writing the <code>'ADD_TO_DO'</code> case in the reducer to append a new to-do to our state. We can think of a few ways to accomplish
+some to-do items. Lets finish writing the <code>ADD_TO_DO</code> case in the reducer to append a new to-do to our state. We can think of a few ways to accomplish
 this with standard JavaScript or ES6. See if you can find a way to return a new array with the item from <code>action.todo</code> appended to the end.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
-`const immutableReducer = (state = ['Do not mutate state!'], action) => {
+`const ADD_TO_DO = 'ADD_TO_DO';
+
+const immutableReducer = (state = ['Do not mutate state!'], action) => {
 	switch(action.type) {
-		case 'ADD_TO_DO':
+		case ADD_TO_DO:
 			return // don't mutate state here
 		default:
 			return state;
@@ -42,7 +44,7 @@ export const seedCode =
 
 const addToDo = (todo) => {
 	return {
-		type: 'ADD_TO_DO',
+		type: ADD_TO_DO,
 		todo
 	}
 }
@@ -51,9 +53,11 @@ const store = Redux.createStore(immutableReducer);`
 
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode =
-`const immutableReducer = (state = ['Do not mutate state!'], action) => {
+`const ADD_TO_DO = 'ADD_TO_DO';
+
+const immutableReducer = (state = ['Do not mutate state!'], action) => {
 	switch(action.type) {
-		case 'ADD_TO_DO':
+		case ADD_TO_DO:
 			return state.concat(action.todo);
 		default:
 			return state;
@@ -62,7 +66,7 @@ export const solutionCode =
 
 const addToDo = (todo) => {
 	return {
-		type: 'ADD_TO_DO',
+		type: ADD_TO_DO,
 		todo
 	}
 }

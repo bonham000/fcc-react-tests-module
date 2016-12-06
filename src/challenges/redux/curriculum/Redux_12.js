@@ -11,16 +11,15 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Use Middleware to Handle Asynchronous Actions`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>There is one more important point to cover. So far
-we've avoided discussing asynchronous actions but they are an unavoidable part of web development. Of course we will have
-to call asynchronous endpoints in our Redux app, how do we handle these types of requests? Redux provides some middleware
-designed specifically for this purpose, Redux Thunk middleware, to be exact. Let's briefly describe how to use this with
-Redux.<br><br>
+export const challengeText = `<span class = 'default'>Intro: </span>So far we've avoided discussing asynchronous actions
+but they are an unavoidable part of web development. Of course we will have to call asynchronous endpoints in our Redux app,
+how do we handle these types of requests? Redux provides some middleware designed specifically for this purpose, Redux Thunk
+middleware, to be exact. Let's briefly describe how to use this with Redux.<br><br>
 
 To include Redux Thunk middleware, we pass it as an argument to <code>Redux.applyMiddleware()</code>, which we provide as a
-second parameter to our <code>creatStore()</code> function. Take a look at the code in the editor to see this. Then, to create
-an asynchronous action, we return a function in our action creator that takes <code>dispatch</code> as an argument. Within this
-function we can dispatch actions and perform asynchronous requests.<br><br>
+second optional parameter to our <code>creatStore()</code> function. Take a look at the code in the editor to see this. Then,
+to create an asynchronous action, we return a function in our action creator that takes <code>dispatch</code> as an argument.
+Within this function we can dispatch actions and perform asynchronous requests.<br><br>
 
 For instance, in this example we are going to make a pretend asynchronous request with a <code>setTimeout()</code> call.
 It's common to dispatch an action before initiating any asynchronous behavior so that your application state knows that
@@ -32,9 +31,9 @@ use to dispatch our actions, we simply pass our action directly to dispatch and 
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>So in this example we just have to write both
-dispatches in the <code>handleAsync</code> action creator. Let's dispatch <code>requestingData</code> before our
+dispatches in the <code>handleAsync()</code> action creator. Let's dispatch <code>requestingData()</code> before our
 <code>setTimeout()</code> (pretend API call) and then, after we receive our (pretend) data, let's dispatch our
-<code>receivedData</code> action, passing in this data. And that's it! Now you know how to handle asynchronous actions
+<code>receivedData()</code> action, passing in this data. And that's it! Now you know how to handle asynchronous actions
 in Redux. Everything else continues to behave as before.`
 
 // ---------------------------- define challenge seed code ----------------------------

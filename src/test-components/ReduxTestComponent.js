@@ -20,9 +20,9 @@ export default class ReduxTestComponent extends React.Component {
 		document.removeEventListener('keydown', this.handleKeyPress);
 	}
 	handleKeyPress = (event) => {
-		if (event.keyCode === 39 && event.shiftKey) {
+		if (event.keyCode === 190 && event.shiftKey) {
       setTimeout( () => { this.seedCode(true) }, 25);
-    } else if (event.keyCode === 37 && event.shiftKey) {
+    } else if (event.keyCode === 188 && event.shiftKey) {
       setTimeout( () => { this.seedCode(true) }, 25);
     } else if (event.keyCode === 13 && event.metaKey) {
 			this.testCode();
@@ -125,7 +125,7 @@ export default class ReduxTestComponent extends React.Component {
 
     		<h1 className='title mainTitle'>Free Code Camp Redux Challenge Demo:
 
-	        <select value={this.props.selectedChallenge} onChange={this.select.bind(this)}>
+	        <select value={this.props.selectedChallenge} onChange={this.select}>
 	          {renderChallenges}
 	        </select>
 	        

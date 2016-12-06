@@ -12,16 +12,16 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Use the
 
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>One solution from ES6 which finds many applications in enforcing state immutability in Redux
-is the spread operator <code>...</code>. The spread operator has a variety of applications, one of which is suited well to our previous challenge of producing
+is the spread operator: <code>...</code>. The spread operator has a variety of applications, one of which is well suited to our previous challenge of producing
 a new array from an existing array. Since this is relatively new but commonly used syntax, let's take a look at how it works here. If we have an array <code>myArray</code>
 and we write:<br><br>
 
-<code>let newArray = [...myArray]</code><br><br>
+<code>let newArray = [...myArray];</code><br><br>
 
 <code>newArray</code> is now a clone of <code>myArray</code>. Both still exist separately in memory. If we perform a mutation like <code>newArray.push(5)</code>,
-<code>myArray</code> will not be effectively. The <code>...</code> effectively <i>spreads</i> out the values in <code>myArray</code> into a new array. To clone
-an array but add additional values in new array you could write <code>[...myArray, 'new value']</code> which would return a new array composed of the values in
-<code>myArray</code> and the string <code>'new value'</code>. The spread syntax can be use multiple times in array composition like this, but it's important to note
+<code>myArray</code> will not be effected. The <code>...</code> effectively <i>spreads</i> out the values in <code>myArray</code> into a new array. To clone
+an array but add additional values in the new array you could write <code>[...myArray, 'new value']</code> which would return a new array composed of the values in
+<code>myArray</code> and the string <code>'new value'</code> as the last value. The spread syntax can be use multiple times in array composition like this, but it's important to note
 that it only makes a shallow copy of the array. That is to say, it only provides immutable array operations for one-dimensional arrays.`
 
 // ---------------------------- challenge instructions ----------------------------

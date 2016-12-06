@@ -12,21 +12,21 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Combine
 
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>Lets see what happens when the state of our app
-begins to grow more complex. Instead of trying to divide our state into multiple piece, we remember the first
-principles of Redux: all app state is held in a single state object in the store. Therefore, Redux provides the solution
+begins to grow more complex. Instead of trying to divide our state into multiple pieces, we remember the first
+principle of Redux: all app state is held in a single state object in the store. Therefore, Redux provides the solution
 of reducer composition to deal with a complex state model. We define multiple reducers to handle different slices of
 our application's state and then we compose these reducers together into one root reducer which we feed into the Redux
-<code>createStore</code> method.<br><br>
+<code>createStore()</code> method.<br><br>
 
-Redux provides the method <code>combineReducers</code> just for this purpose. Typically, it is a good practice to create
+Redux provides the method <code>combineReducers()</code> just for this purpose. Typically, it is a good practice to create
 a reducer for each piece of application state which is distinct or unique in some way. For instance, in a note-taking app
-with user authentication, one reducer could handle authentication while another handles text and notes that the user is
+with user authentication, one reducer could handle authentication while another handles the text and notes that the user is
 submitting.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>Here we've provided a <code>counterReducer</code>
-and an <code>authReducer</code>, along with a Redux store. We've started the <code>rootReducer</code> for you, it's your job
-to finish it! The <code>combineReducers</code> method, available on the Redux object, requires an object as an argument in which you
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>Here we've provided a <code>counterReducer()</code>
+and an <code>authReducer()</code>, along with a Redux store. We've started the <code>rootReducer()</code> for you, it's your job
+to finish it! The <code>combineReducers()</code> method, available on the Redux object, requires an object as an argument in which you
 pass reducers mapped to property names. The names of these properties will become the names of the keys in the <code>state</code>
 object for the state managed by that reducer. Lets assign our <code>counterReducer</code> to a key called <code>count</code>
 and our <code>authReducer</code> to a key called <code>auth</code>.`

@@ -14,7 +14,7 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Copy an
 export const challengeText = `<span class = 'default'>Intro: </span>Now that we've had some practice with arrays let's take a look at how we can handle state as an
 <code>object</code>. A useful tool for handling objects is the <code>Object.assign()</code> utility. <code>Object.assign()</code> takes a target object and source objects
 and maps properties in the source object to the target objects. Matching properties will be overwritten by properities in the source objects. If we write this method
-and pass and empty object <code>{}</code> as the first argument, this will be our target so we will be assigning and returning a new object. Just what we need!<br><br>
+and pass an empty object <code>{}</code> as the first argument, this will be our target so we will be assigning and returning a new object. Just what we need!<br><br>
 
 <code>const newObject = Object.assign({}, obj1, obj2);</code><br><br>
 
@@ -23,11 +23,13 @@ This will create <code>newObject</code> as a new <code>object</code> which will 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've modified our Redux state and actions to handle an <code>object</code> now for the
 <code>state</code>. Take a look at the code. Now, lets return a new <code>state</code> object for actions with type <code>ONLINE</code> which sets the <code>status</code>
-property to the string 'online'. Try to use <code>Object.assign()</code> for this.`
+property to the string <code>online</code>. Try to use <code>Object.assign()</code> for this.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
-`const defaultState = {
+`const ONLINE = 'ONLINE';
+
+const defaultState = {
 	user: 'CamperBot',
   status: 'offline',
   friends: '732,982',
@@ -36,7 +38,7 @@ export const seedCode =
 
 const immutableReducer = (state = defaultState, action) => {
 	switch(action.type) {
-		case 'ONLINE':
+		case ONLINE:
 			return // don't mutate state here
 		default:
 			return state;
@@ -45,7 +47,7 @@ const immutableReducer = (state = defaultState, action) => {
 
 const wakeUp = () => {
 	return {
-		type: 'ONLINE',
+		type: ONLINE,
 	}
 };
 
@@ -53,7 +55,9 @@ const store = Redux.createStore(immutableReducer);`
 
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode =
-`const defaultState = {
+`const ONLINE = 'ONLINE';
+
+const defaultState = {
 	user: 'CamperBot',
   status: 'offline',
   friends: '732,982',
@@ -62,7 +66,7 @@ export const solutionCode =
 
 const immutableReducer = (state = defaultState, action) => {
 	switch(action.type) {
-		case 'ONLINE':
+		case ONLINE:
 			return Object.assign(
 				{}, 
 				state,
@@ -75,7 +79,7 @@ const immutableReducer = (state = defaultState, action) => {
 
 const wakeUp = () => {
 	return {
-		type: 'ONLINE',
+		type: ONLINE,
 	}
 };
 

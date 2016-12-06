@@ -46,8 +46,9 @@ Our <code>updatedUser</code> object will be equal to the following:<br><br>
 
 We've 'spread' the <code>user</code> object properties into a new object and then added our new properties. Similarly to <code>Object.assign()</code>, properities with
 matching names will be overwritten. The proposed object spread syntax provides a very conise way to return new objects from existing objects, especially if
-we are interested in just modifying a few keys. Note that the ordering of keys in the examples above is not important.
-`
+we are interested in just modifying a few keys. Note that the ordering of keys in the examples above is not important because
+JavaScript objects are unordered collections of properties. This syntax is encounted quite often, so it's good to be familiar with
+even if you don't use it yourself.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've provided the same example from the last lesson. Use the object spread operator to
