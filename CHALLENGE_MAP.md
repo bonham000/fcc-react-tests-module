@@ -1,7 +1,7 @@
 #Challenge Map:#
 
 - :white_check_mark: Challenge is fully QA'd and ready to ship
-- :blue_book: Challenge has been proofread and is ready for QA
+- :blue_book: Challenge has been reviewed and is ready for QA
 - :pencil: Challenge is fully written
 - :pencil2: Challenge is being written
 
