@@ -201,7 +201,7 @@ export default class App extends React.Component {
     });
   }
   findIndex = (identifier) => {
-    const { challenges, selectedChallenge } = this.state;
+    const { challenges } = this.state;
     let currentIndex;
     for (let i = 0; i < challenges.length; i++) {
       if (identifier === challenges[i].id) {

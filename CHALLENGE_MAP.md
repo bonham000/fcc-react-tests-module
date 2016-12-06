@@ -30,8 +30,8 @@
 - **Props & Conditional Rendering**
 
   - :pencil: 14: Pass a string to a component using JSX functional component (Peter)
-  - :pencil2: 15: Access props using `this.props`, passing a string to a React Component (Peter)
-  - :pencil2: 16: Pass an array to a component using JSX (Peter)
+  - :pencil2: 15: Access props using `this.props`, passing a string to a React Component (Peter - needs instructions)
+  - :pencil2: 16: Pass an array to a component using JSX (Peter - needs instructions)
   - :pencil: 17: Set the default props using the defaultProps static component property
   - :pencil: 18: Override defaultProps *(cannot check `defaultProps` on child)*
   - :pencil: 19: Define Component propTypes *(regex `.includes` test for `propTypes`)*
@@ -68,7 +68,7 @@
   - :pencil: 41: Prevent a component from rendering with `null`
   - :pencil2: 42: Conditional rendering: ternary condition (Peter)
   - :pencil2: 43: Conditional rendering based on `props`(Peter)
-  - :pencil2: 44: Use `map` to dynamically render an array of data (Peter)
+  - :pencil2: 44: Use `map` to dynamically render an array of data (Peter - needs instructions)
   - :pencil: 45: Use `filter` to dynamically filter an array of data
   - :pencil: 46: Inline CSS 1
   - :pencil: 47: Inline CSS 2
