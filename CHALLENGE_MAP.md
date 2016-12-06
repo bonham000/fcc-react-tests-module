@@ -28,7 +28,7 @@
   - :blue_book: 12: Render a Class Component to the DOM
   - :blue_book: 13: Write a React Component from Scratch
 
-- **Props & Conditional Rendering**
+- **Props**
 
   - :blue_book: 14: Pass a String to a Functional Component
   - :pencil2: 15: Access props using `this.props`, passing a string to a React Component (Peter)
@@ -53,7 +53,7 @@
   - :blue_book: 31: Pass State as Props to Child Components
   - :blue_book: 32: Pass A Callback as Props
 
-- **Component Lifecycle Hooks**
+- **Component Lifecycle**
 
   - :blue_book: 33: Use the Lifecycle Method componentWillMount
   - :blue_book: 34: Use the Lifecycle Method componentDidMount
