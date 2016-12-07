@@ -185,8 +185,6 @@ export const executeTests = (code) => {
 		passed = false;
 	}
 
-	console.log(mockedComponent.props().children);
-
 	// run specific tests to verify the functionality
 	// that the challenge is trying to assess:
 
@@ -219,14 +217,14 @@ export const executeTests = (code) => {
 
 	// test 4:
 	try {
-		assert(typeof mockedComponent.props().children[2].props.attire === 'object' &&
-			typeof mockedComponent.props().children[2].props.pants === 'object' &&
-			typeof mockedComponent.props().children[2].props.shirts === 'object' &&
-			typeof mockedComponent.props().children[2].props.shoes === 'object' &&
-			typeof mockedComponent.props().children[4].props.attire === 'object' &&
-			typeof mockedComponent.props().children[4].props.pants === 'object' &&
-			typeof mockedComponent.props().children[4].props.shirts === 'object' &&
-			typeof mockedComponent.props().children[4].props.shoes === 'object', error_4)
+		assert(Array.isArray(mockedComponent.props().children[2].props.attire) === true &&
+			Array.isArray(mockedComponent.props().children[2].props.pants) === true &&
+			Array.isArray(mockedComponent.props().children[2].props.shirts) === true &&
+			Array.isArray(mockedComponent.props().children[2].props.shoes) === true &&
+			Array.isArray(mockedComponent.props().children[4].props.attire) === true &&
+			Array.isArray(mockedComponent.props().children[4].props.pants) === true &&
+			Array.isArray(mockedComponent.props().children[4].props.shirts) === true &&
+			Array.isArray(mockedComponent.props().children[4].props.shoes) === true, error_4)
 		testResults[4].status = true;
 	} catch (err) {
 		passed = false;
