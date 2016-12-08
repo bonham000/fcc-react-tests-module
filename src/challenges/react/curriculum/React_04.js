@@ -125,7 +125,7 @@ export const executeTests = (code) => {
 
 	// test 3:
 	try {
-		assert.strictEqual(jsx.props.children[1].type, 'p', 'The div contains an p tag as the second element.');
+		assert.strictEqual(jsx.props.children[1].type, 'p', 'The div contains a p tag as the second element.');
 		testResults[3].status = true;
 	} catch (err) {
 		passed = false;

@@ -12,14 +12,14 @@ export const QA = false;
 // -------------- define challenge title and challenge instructions --------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Create a Simple JSX Element`
 export const challengeText = `<span class = 'default'>Intro: </span>
-React is an open-source view library created and maintained by Facebook. It's a great tool for rendering out the UI of 
+React is an Open Source view library created and maintained by Facebook. It's a great tool for rendering out the UI of 
 modern web applications.<br><br>
 
 React uses a syntax extension of JavaScript called JSX that allows you to write HTML directly within JavaScript. This is very useful because
 it allows you to leverage the full programmatic power of JavaScript within HTML. For the most part, JSX is similar to the HTML that you have
 already learned, however there are a few key differences which we will learn about as we progress through these challenges.<br><br>
 
-Of course, JSX is not valid JavaScript, so JSX code must be compiled down to JavaScript. The transpiler <a target='_blank' id='Babel' href='https://babeljs.io/'>Babel</a>
+Because JSX is not valid JavaScript, JSX code must be compiled down to JavaScript. The transpiler <a target='_blank' id='Babel' href='https://babeljs.io/'>Babel</a>
 is the tool of choice for this process, but for 
 your convenience it's all happening behind the scenes here. However, if you happen to write syntactically invalid JSX, you will see the first test
 in these challenges fail.<br><br>

@@ -13,15 +13,15 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Learn A
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>
 So far, we’ve seen how JSX differs from HTML in a key way with the use of <code>className</code> vs. <code>class</code> for defining HTML classes. 
-Another very important way in which JSX differs from HTML is in the idea of the self closing tag.<br><br>
+Another important way in which JSX differs from HTML is in the idea of the self closing tag.<br><br>
 
 In HTML, almost all tags have both an opening and closing tag: <code>&lt;div&gt;&lt;/div&gt;</code>; the closing tag always has a forward slash before the tag name that we are closing. 
-However, there are special instances in HTML where we have “self closing tags”, or tags that don’t require both an opening and closing tag before another tag can start, 
-for example the line-break tag can be written as <code>&lt;br&gt;</code> or as <code>&lt;br /&gt;</code>, but should never be written as <code>&lt;br&gt;&lt;/br&gt;</code>, as it does not contain any content.<br><br> 
+However, there are special instances in HTML where we have “self closing tags”, or tags that don’t require both an opening and closing tag before another tag can start. 
+For example the line-break tag can be written as <code>&lt;br&gt;</code> or as <code>&lt;br /&gt;</code>, but should never be written as <code>&lt;br&gt;&lt;/br&gt;</code>, as it does not contain any content.<br><br> 
 
 In JSX though, the rules are a little different. Any JSX element can be written with a self-closing tag, and every element must be closed.
 So the line-break tag, for example, must always be written as <code>&lt;br /&gt;</code> in order to be valid JSX than can be transpiled. 
-A <code>&lt;div&gt;</code>, on the other hand, can be written as <code>&lt;div/&gt;</code> or <code>&lt;div&gt;&lt;div/&gt;</code>. With
+A <code>&lt;div&gt;</code>, on the other hand, can be written as <code>&lt;div /&gt;</code> or <code>&lt;div&gt;&lt;/div&gt;</code>. With
 that first syntax there is no way to include anything in the <code>&lt;div&gt;</code>, of course.
 We will see later that this syntax also comes in handy when rendering React components.`
 

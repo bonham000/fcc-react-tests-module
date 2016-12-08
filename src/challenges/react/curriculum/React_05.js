@@ -52,7 +52,7 @@ export const executeTests = (code) => {
 		{
 			test: 1,
 			status: false,
-			condition: 'The constant JSX returns an <div> element'
+			condition: 'The constant JSX returns a <div> element.'
 		},
 		{
 			test: 2,
