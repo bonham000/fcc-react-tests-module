@@ -86,7 +86,7 @@ class MagicEightBall extends React.Component {
 		super(props);
 		this.state = {
 			userInput: '',
-			randomIndex: null
+			randomIndex: ''
 		} 
 		this.ask = this.ask.bind(this);
 		this.handleChange = this.handleChange.bind(this);
@@ -139,10 +139,9 @@ export const executeTests = (code) => {
 	const error_1 = 'The MagicEightBall component exists and is rendered to the page.';
 	const error_2 = 'MagicEightBall\'s first child should be an <input> element.';
 	const error_3 = 'MagicEightBall\'s third child should be a <button> element.';
-	const error_4 = 'MagicEightBall\'s state is initialized with a property of userInput set to a value of an empty string.'
-	const error_5 = 'MagicEightBall\'s state is initialized with a property of randomIndex set to a value of null.'
-	const error_6 = 'When MagicEightBall is first mounted to the DOM it should return an empty <p> element.'
-	const error_7 = 'When text is entered into the <input> element and the button is clicked, the MagicEightBall component should return a <p> element that contains a random element from the possibleAnswers array.';
+	const error_4 = 'MagicEightBall\'s state is initialized with a property of userInput and a property of randomIndex both set to a value of an empty string.'
+	const error_5 = 'When MagicEightBall is first mounted to the DOM it should return an empty <p> element.'
+	const error_6 = 'When text is entered into the <input> element and the button is clicked, the MagicEightBall component should return a <p> element that contains a random element from the possibleAnswers array.';
 
 	let testResults = [
 		{
@@ -180,11 +179,6 @@ export const executeTests = (code) => {
 			status: false,
 			condition: error_6
 		},
-		{
-			test: 7,
-			status: false,
-			condition: error_7
-		}
 	];
 
 	let es5, mockedComponent, shallowRender, passed = true;
@@ -249,7 +243,7 @@ export const executeTests = (code) => {
 	// test 3:
 	try {
 		initialState = mockedComponent.state()
-		assert(typeof initialState.userInput === 'string' && initialState.userInput.length === 0, error_4)
+		assert(initialState.userInput === '' && initialState.randomIndex === '', error_4)
 		testResults[4].status = true;
 	} catch (err) {
 		passed = false;
@@ -258,20 +252,11 @@ export const executeTests = (code) => {
 
 	// test 3:
 	try {
-		assert.strictEqual(initialState.randomIndex, null, error_5)
+		assert(mockedComponent.find('p').length === 1 && mockedComponent.find('p').nodes[0].innerHTML === '', error_6)
 		testResults[5].status = true;
 	} catch (err) {
 		passed = false;
 		testResults[5].status = false;
-	}
-
-	// test 3:
-	try {
-		assert(mockedComponent.find('p').length === 1 && mockedComponent.find('p').nodes[0].innerHTML === '', error_6)
-		testResults[6].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[6].status = false;
 	}
 
 	// test 3:
@@ -318,11 +303,11 @@ export const executeTests = (code) => {
 		const hasIndex = statesArray.filter((state, i) => answersArray.indexOf(state) !== -1);
 		const notAllEqual = statesArray.filter((state, i, arr) => arr[i] === arr[0]); 
 		console.log(statesArray, hasIndex, notAllEqual)
-		assert(hasIndex.length === 10 && notAllEqual.length !== 10, error_7);
-		testResults[7].status = true;
+		assert(hasIndex.length === 10 && notAllEqual.length !== 10, error_6);
+		testResults[6].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[7].status = false;
+		testResults[6].status = false;
 	}
 
 	return {

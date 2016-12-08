@@ -1,79 +1,80 @@
 #Challenge Map:#
 
-- :white_check_mark: Challenge is fully written and QA'd 
-- :pencil: Challenge is written but needs QA 
-- :pencil2: Challenge needs to be written
+- :white_check_mark: Challenge is fully QA'd and ready to ship
+- :blue_book: Challenge has been reviewed and is ready for QA
+- :pencil: Challenge is fully written
+- :pencil2: Challenge is being written
 
 ---
 
 ###React Challenges:###
 
-- **JSX and simple rendering**
+- **Introducing JSX Elements**
 
-  - :pencil: 1: Create a simple JSX element
-  - :pencil: 2: Render more complex JSX (explain that several elements must be enclosed)
-  - :pencil: 3: Add Comments in JSX (*may need to revise test for comment*)
-  - :pencil: 4: Render an HTML element to the DOM from JSX
-  - :pencil: 5: Add HTML classes to JSX elements with className
-  - :pencil: 6: Learn about self-closing JSX tags
+  - :blue_book: 1: Create a Simple JSX element
+  - :blue_book: 2: Create a Complex JSX Element
+  - :blue_book: 3: Add Comments in JSX (*may need to revise test for comment*)
+  - :blue_book: 4: Render HTML elements to the DOM
+  - :blue_book: 5: Define an HTML Class in JSX
+  - :blue_book: 6: Learn About Self-Closing JSX Tags
 
 - **Introducing React/Components**
 
-  - :pencil: 7: Create a simple functional component that renders HTML (also intro => syntax for this?)
-  - :pencil: 8: Create a component with ES6 class syntax
-  - :pencil: 9: Create a new element with composition
-  - :pencil: 10: Render nested components with composition
-  - :pencil: 11: Compose React Components
-  - :pencil: 12: Render a class component to the DOM
-  - :pencil: 13: Pulling it all together: Write a React Component from scratch and render it to the DOM
+  - :blue_book: 7: Create a Functional Component *(introduce ES6 arrow syntax here?)*
+  - :blue_book: 8: Create a Component with React
+  - :blue_book: 9: Create a Component with Composition
+  - :blue_book: 10: Use React to Render Nested Components
+  - :blue_book: 11: Compose React Components
+  - :blue_book: 12: Render a Class Component to the DOM
+  - :blue_book: 13: Write a React Component from Scratch
 
-- **Props & Conditional Rendering**
+- **Props**
 
-  - :pencil: 14: Pass a string to a component using JSX functional component (Peter)
-  - :pencil2: 15: Access props using `this.props`, passing a string to a React Component (Peter - needs instructions)
-  - :pencil2: 16: Pass an array to a component using JSX (Peter - needs instructions)
-  - :pencil: 17: Set the default props using the defaultProps static component property
-  - :pencil: 18: Override defaultProps *(cannot check `defaultProps` on child)*
-  - :pencil: 19: Define Component propTypes *(regex `.includes` test for `propTypes`)*
-  - :pencil: 20: Functional Stateless React Components *(regex `.includes` test for `propTypes`)*
+  - :blue_book: 14: Pass a String to a Functional Component
+  - :pencil2: 15: Access props using `this.props`, passing a string to a React Component (Peter)
+  - :pencil2: 16: Pass an array to a component using JSX (Peter)
+  - :blue_book: 17: Use Default Props
+  - :blue_book: 18: Override Default Props *(cannot check `defaultProps` on child)*
+  - :blue_book: 19: Use PropTypes to Define The Props You Expect *(regex `.includes` test for `propTypes`)*
+  - :blue_book: 20: Functional Stateless Components *(regex `.includes` test for `propTypes`)*
 
 - **State**
 
-  - :pencil2: 21: Define the initial state within the component's constructor (Jason)
-  - :pencil: 22: Display state with `this.state`
-  - :pencil: 23: Another way to display state with `this.state` in render
-  - :pencil: 24: Use `this.setState` on a button click & `bind(this)`
-  - :pencil: 25: Use `bind` to bind `this` to a class method
-  - :pencil: 26: Use `this.setState` with a fat arrow function
-  - :pencil: 27: Write a method that toggles a state value 'on' and 'off'
-  - :pencil: 28: Write a simple counter using `this.setState`
-  - :pencil: 29: `OnChange` handlers: create a controlled input box
-  - :pencil: 30: More complex example: Controlled form with submit button
-  - :pencil: 31: Pass `state` to child as props: Unidirectional data flow
-  - :pencil: 32: Passing methods as callbacks to children: child is stateless
+  - :blue_book: 21: Create a Stateful Component
+  - :blue_book: 22: Render State in the UI
+  - :blue_book: 23: Render State in the UI Another Way
+  - :blue_book: 24: Set State with this.setState
+  - :blue_book: 25: Bind 'this' to a Class Method
+  - :blue_book: 26: Bind 'this' with an ES6 Arrow Function
+  - :blue_book: 27: Use State to Toggle an Element
+  - :blue_book: 28: Write a Simple Counter
+  - :blue_book: 29: Create a Controlled Input
+  - :blue_book: 30: Create a Controlled Form
+  - :blue_book: 31: Pass State as Props to Child Components
+  - :blue_book: 32: Pass A Callback as Props
 
-- **Component Lifecycle Hooks**
+- **Component Lifecycle**
 
-  - :pencil: 33: `componentWillMount`
-  - :pencil: 34: Ajax data with `componentDidMount`
-  - :pencil: 35: Add event listeners in `componentDidMount` *(is the explanation correct?)*
-  - :pencil: 36: Managing updates with `componentWillReceiveProps` and `componentDidUpdate`
-  - :pencil: 37: Prevent re-render with `shouldComponentUpdate` — *(note on Virtual DOM?)*
+  - :blue_book: 33: Use the Lifecycle Method componentWillMount
+  - :blue_book: 34: Use the Lifecycle Method componentDidMount
+  - :blue_book: 35: Add Event Listeners *(is the explanation correct?)*
+  - :blue_book: 36: Manage Updates with Lifecycle Methods
+  - :blue_book: 37: Optimize Re-Renders with shouldComponentUpdate
 
 - **Advanced Rendering**
 
-  - :pencil2: 38: Write JavaScript in `render` & `return` of React Component (Peter)
-  - :pencil: 39: Conditional rendering: `if/else` in `render` method
-  - :pencil: 40: Conditional rendering: `&&`
-  - :pencil: 41: Prevent a component from rendering with `null`
+  - :pencil2: 38: Advanced JavaScript in `render` & `return` of React Component (Peter)
+  - :blue_book: 39: Render with an If/Else Condition
+  - :blue_book: 40: Use && for a More Concise Conditional
+  - :blue_book: 41: Return null to Prevent Rendering
   - :pencil2: 42: Conditional rendering: ternary condition (Peter)
   - :pencil2: 43: Conditional rendering based on `props`(Peter)
-  - :pencil2: 44: Use `map` to dynamically render an array of data (Peter - needs instructions)
-  - :pencil: 45: Use `filter` to dynamically filter an array of data
-  - :pencil: 46: Inline CSS 1
-  - :pencil: 47: Inline CSS 2
+  - :pencil2: 44: Use `map` to dynamically render an array of data (Peter)
+  - :blue_book: 45: Use Filter to Dynamically Filter an Array
+  - :blue_book: 46: Introducing Inline Styles
+  - :blue_book: 47: Add Inline Styles in React
   - :pencil2: 48: JSX Gotchas: Key difference in attribute names, etc (Peter)
-  - :pencil: 49: Server side rendering with `renderToString`
+  - :blue_book: 49: Render React on the Server with renderToString
 
 ---
 
@@ -81,27 +82,27 @@
 
 - **Basic Redux: Store, Actions, & Reducers**
 
-  - :pencil: 1: Create a Redux Store
-  - :pencil: 2: Access state with `getState()`
-  - :pencil: 3: Define an `action`
-  - :pencil: 4: Define an `action creator`
-  - :pencil: 5: Dispatch an action with `store.dispatch(action)`
-  - :pencil: 6: Update store in response to dispatched action
-  - :pencil: 7: Use a `switch` statement to handle multiple actions
-  - :pencil: 8: Refactor to use `const` for action types
-  - :pencil: 9: Register a store listener with `store.subscribe(listener)`
-  - :pencil: 10: Combine various reducers with `combineReducer()`
-  - :pencil: 11: Passing action data to the store
-  - :pencil: 12: Dispatching async actions in action creators *(Async testing... hacked with regex of course)*
-  - :pencil: 13: Pulling it all together: write a counter with Redux
+  - :blue_book: 1: Create a Redux Store
+  - :blue_book: 2: Get the State of the Redux Store
+  - :blue_book: 3: Define a Redux Action
+  - :blue_book: 4: Define an Action Creator
+  - :blue_book: 5: Dispatch an Action Event
+  - :blue_book: 6: Handle an Action in the Store
+  - :blue_book: 7: Use a Switch Statement to Handle Multiple Actions
+  - :blue_book: 8: Use Const for Action Types
+  - :blue_book: 9: Register a Store Listener
+  - :blue_book: 10: Combine Multiple Reducers
+  - :blue_book: 11: Send Action Data to the Store
+  - :blue_book: 12: Use Middleware to Handle Asynchronous Actions *(Async testing... hacked with regex of course)*
+  - :blue_book: 13: Write a Counter with Redux
 
 - **Enforcing State Immutability**
 
-  - :pencil: 14: Never mutate state
-  - :pencil: 15: Using the spread operator on arrays
-  - :pencil: 16: Remove an object from an array
-  - :pencil: 17: Using `Object.assign` for objects
-  - :pencil: 18: ES6 spread operator for objects
+  - :blue_book: 14: Never Mutate State
+  - :blue_book: 15: Use the Spread Operator on Arrays
+  - :blue_book: 16: Remove an Item from an Array
+  - :blue_book: 17: Copy an Object with Object.assign
+  - :blue_book: 18: Use the ES6 Spread Operator with Objects
 
 ---
 
@@ -109,14 +110,14 @@
 
 - **Use `react-redux` to Manage a List of Messages**
 
-  - :pencil: 1: Getting started with React-Redux
-  - :pencil: 2: Create a controlled input and a submit button on a form which updates an array in local `state`
-  - :pencil: 3: Create a Redux store and actions that can lift this `state` out of the React component
-  - :pencil: 4: Use `Provider` to wrap our React Component so it can connect to Redux
-  - :pencil: 5: Write `mapStateToProps`
-  - :pencil: 6: Write `mapDispatchToProps`
-  - :pencil: 7: Introduce `connect`
-  - :pencil: 8: Use `connect` to connect `state` and `dispatch` to React
-  - :pencil: 9: Refactor local state out of our React Component and replace with Redux
-  - :pencil: 10: Review and Moving Forward
+  - :blue_book: 1: Getting started with React Redux
+  - :blue_book: 2: Manage State Locally First
+  - :blue_book: 3: Extract State Logic to Redux
+  - :blue_book: 4: Use Provider to Connect Redux to React
+  - :blue_book: 5: Map State to Props
+  - :blue_book: 6: Map Dispatch to Props
+  - :blue_book: 7: Connect Redux to React
+  - :blue_book: 8: Connect Redux to Our Messages App
+  - :blue_book: 9: Extract Local State into Redux
+  - :blue_book: 10: Review
 
