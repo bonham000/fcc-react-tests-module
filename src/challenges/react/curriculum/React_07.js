@@ -13,9 +13,22 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Create a Functional Component`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>Components are the core of React. Everything in React is a component,
-and as we will see creating a React Component provides us with several useful benefits. However, creating a component that React understands
-is as simple as writing as function that returns a JSX element.<br><br>
+export const challengeText = `<span class = 'default'>Intro: </span>Components are the core of React. Everything in React is a component.
+Creating a React component provides us with several useful benefits. The easiest way to create a React component is using a function.
+The function must return JSX. React requires your function name to begin with a capital letter. For example:
+<br><br>
+<code>
+function DemoComponent() {
+	<br />
+	return(
+		<br />
+		&lt;div&gt;&lt;/div&gt;
+		<br />
+	);
+	<br />
+}
+</code>
+<br><br>
 
 Because a JSX component like this represents HTML, you could easily stitch together a more complex HTML page with several JSX components. This
 is one of the key advantages of the component architecture React provides: it allows you to compose your UI from many separate, isolated components.
