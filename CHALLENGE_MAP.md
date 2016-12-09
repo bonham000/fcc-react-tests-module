@@ -65,15 +65,15 @@
 
   - :blue_book: 38: Introducing Inline Styles
   - :blue_book: 39: Add Inline Styles in React
-  - :pencil2: 40: Use Advanced JavaScript in React Render Method
+  - :blue_book: 40: Use Advanced JavaScript in React Render Method
   - :blue_book: 41: Render with an If/Else Condition
   - :blue_book: 42: Use && for a More Concise Conditional
   - :blue_book: 43: Return null to Prevent Rendering
   - :pencil2: 44: Conditional rendering: ternary condition (Peter)
-  - :pencil2: 45: Rendering Conditionally from Props
-  - :pencil2: 46: Use .map to Dynamically Render an Array
+  - :blue_book: 45: Rendering Conditionally from Props
+  - :blue_book: 46: Use .map to Dynamically Render an Array
   - :blue_book: 47: Use Filter to Dynamically Filter an Array
-  - :pencil2: 48: JSX Gotchas: Key difference in attribute names, etc (Peter)
+  - :pencil2: 48: JSX Gotchas: Key difference in attribute names, etc
   - :blue_book: 49: Render React on the Server with renderToString
 
 ---
