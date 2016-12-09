@@ -8,14 +8,27 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // -------------- define challenge title and challenge instructions --------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Create a Component with React`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Create a React component with extends`
 
-export const challengeText = `<span class = 'default'>Intro: </span>Now let's use React to create a component. With ES6 we define
-a component in React with the class syntax, where our component extends <code>React.Component</code>, for example
-<code>class MyComponent extends React.Component</code>.<br><br>
+export const challengeText = `<span class = 'default'>Intro: </span>The other way to define a React component is with
+the ES6 <code>class</code> syntax. In the following example, <code>Kitten</code> extends <code>React.Component</code>:
 
-Creating a React Component like this gives our component access to React's <code>state</code> and lifecycle hooks. As we will see
-these tools provide special advantages when working with React. For now, let's just try to render our first React Component.<br><br>
+<pre><code>
+class Kitten extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return(&lt;h1&gt;Hi&lt;/h1&gt;);
+  }
+}
+</code></pre>
+
+Creating a React component this way allows us to keep local state and use lifecycle hooks.
+Both state and lifecycle hooks are covered in later challenges.
+
+<br><br>
 
 You will see that our component class now has a <code>constructor</code> defined within it that calls <code>super()</code>. The constructor is a
 special method used during the initialization of objects created with the <code>class</code> keyword. Calling super then calls the constructor of the parent
@@ -25,7 +38,7 @@ the constructor as well as <code>props</code>.`
 
 export const challengeInstructions = `
 	<span class = 'default'>Instructions: </span>This React Component has a <code>render</code> method which is returning nothing at the moment.
-	Modify it to return a <code>&lt;div&gt;</code> element which includes the text <code>Hello React!</code> within a <code>&lt;h1&gt;</code> tag.'
+	Modify it to return a <code>&lt;div&gt;</code> element containing a <code>&lt;h1&gt;</code> element wrapping the text: <code>Hello React!</code>.'
 `
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = `
@@ -86,7 +99,7 @@ export const executeTests = (code) => {
 		{
 			test: 3,
 			status: false,
-			condition: 'The <h1> tag includes the text \'Hello React!\''
+			condition: 'The <h1> tag includes the string \'Hello React!\''
 		}
 	];
 
@@ -129,7 +142,7 @@ export const executeTests = (code) => {
 
 	// test 3:
 	try {
-		assert.strictEqual(shallowRender.contains(<h1>Hello React!</h1>), true, 'The <h1> tag includes the text \'Hello React!\'');
+		assert.strictEqual(shallowRender.contains(<h1>Hello React!</h1>), true, 'The <h1> tag includes the string \'Hello React!\'');
 		testResults[3].status = true;
 	} catch (err) {
 		passed = false;
