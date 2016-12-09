@@ -41,6 +41,7 @@ body {
 	padding: 15px 50px 15px 15px;
 	font-family: 'Cabin', sans-serif;
 }
+
 .default {
 	color: black;
 	font-weight: bold;
@@ -218,6 +219,9 @@ hr {
 a, a:visited {
 	color: white;
 	text-decoration: undeline;
+}
+.instructionsContainer a {
+	color: grey;
 }
 a:hover {
 	color: #3FB2FD;
