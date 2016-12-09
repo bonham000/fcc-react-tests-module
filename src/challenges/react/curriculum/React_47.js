@@ -1,96 +1,142 @@
 /* eslint-disable */
 import React from 'react'
 import assert from 'assert'
-import { shallow } from 'enzyme'
+import { mount } from 'enzyme'
 import { transform } from 'babel-standalone'
 
-// snippet for defining HTML: <code>&#60;div /&#62</code>
+// snippet for defining HTML: <code>&lt;div /&gt;</code>
 
 // SET TO TRUE WHEN QA IS COMPLETE:
 export const QA = false;
 
-// NOTES: For this one (besides re-doing the intro since we will likely have covered most of this already
-// by the time we get to this challenge) - still need a way to make sure they've used the styles const rather than 
-// applying same 3 styles in-line.
-
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Add Inline Styles in React`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Use Filter to Dynamically Filter an Array`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>Do you notice anything else that is different about the
-way this is written? Beyond the fact that we are setting the style attribute equal to a javaScript object, there are other some
-important differences that we must note. The first thing to note is that we are creating the style <code>object</code> within a 
-set a curly braces, <code>{ }</code> — it really is just a JavaScript object. The other important piece of information here
-is the syntax of the style properties. For example, you might have noticed that to control the size of the font we used
-<code>fontSize</code> rather than <code>font-size</code>. Because the style object is just a JavaScript <code>object</code>,
-and <code>font-size</code> is invalid syntax for an object property, we write it as <code>fontSize</code>. As a rule any
-hyphenated style properties become camel-cased when written inline in JSX.<br><br>
-
-Finally, all propery value units (for things like <code>height</code>, <code>width</code>, and <code>fontSize</code>) are assumed to 
-be in <code>px</code> unless otherwise specified (you might have noticed we did not include a unit desigation). If you want to use
-<code>em</code> for example, you must specify and wrap the value declaration in quotes. Aside from numbers assumed to be in
-<code>px</code> all other property values should also be wrapped in quotes.<br><br>
-
-Before we move on, let's cover an additional way we can apply inline styles in React.
-`
+export const challengeText = `<span class = 'default'>Intro: </span>The <code>map</code> array method is a powerful tool
+that you will use often when working with React. Related to <code>map</code> is <code>filter</code>, which also lets us
+take an array and filter its contents based on some condition, returning a new array.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>If we are dealing with a larger set of
-styles, our code could get a bit messy if we write it right into the JSX element's tag. So instead, let's assign that style
-<code>object</code> to the <code>styles</code> constant that we have provided above the React component. Uncomment the constant
-and declare an <code>object</code> which represents 3 style properties and their values. Give the <code>&lt;div/&gt;</code> a color of
-<code>"purple"</code>, a font size of <code>40px</code> and a border of <code>"2px solid purple"</code>. When you are finshed
-defining your styles, set the <code>style</code> attribute equal to the <code>styles</code> constant.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>Here we are initializing our component's
+<code>state</code> with an array of users. Some are online, some aren't. Let's filter this array so we can see just the users who are
+online. To do this first use <code>filter</code> to return a new array containing only the users whose <code>online</code>
+property is <code>true</code>. Then map over this filtered array, returning a <code>&lt;p/&gt;</code> element for each user
+which contains the text of their <code>username</code>.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = `
-// const styles = 
-// change code above this line
-class Colorful extends React.Component {
+class MyComponent extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			users: [
+				{
+					username: 'Jeff',
+					online: true
+				},
+				{
+					username: 'Alan',
+					online: false
+				},
+				{
+					username: 'Mary',
+					online: true
+				},
+				{
+					username: 'Jim',
+					online: false
+				},
+				{
+					username: 'Sara',
+					online: true
+				},
+				{
+					username: 'Laura',
+					online: true
+				}
+			]
+		}
+	}
   render() {
-  	// change code below this line
+  	const filterUsers = // change code here
+  	const renderOnline = // change code here
     return (
-	    <div style={{color: "yellow", fontSize: 24}}>Style Me!</div>
+	   	<div>
+	   		<h1>Current Online Users:</h1>
+	   		{renderOnline}
+	   	</div>
     );
-    // change code above this line
   }
-};
-`
+};`
 
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode = `
-const styles = {
-	color: "purple",
-	fontSize: 40,
-	border: "2px solid purple"
-};
-// change code above this line
-class Colorful extends React.Component {
+class MyComponent extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			users: [
+				{
+					username: 'Jeff',
+					online: true
+				},
+				{
+					username: 'Alan',
+					online: false
+				},
+				{
+					username: 'Mary',
+					online: true
+				},
+				{
+					username: 'Jim',
+					online: false
+				},
+				{
+					username: 'Sara',
+					online: true
+				},
+				{
+					username: 'Laura',
+					online: true
+				}
+			]
+		}
+	}
   render() {
-  	// change code below this line
+  	const filterUsers = this.state.users.filter( (user) => {
+  		return user.online;
+  	});
+  	const renderOnlineUsers = filterUsers.map( (user) => {
+  		return (
+  			<p>{user.username}</p>
+  		);
+  	});
     return (
-	    <div style={styles}>Style Me!</div>
-	// change code above this line
+	   	<div>
+	   		<h1>Current Online Users:</h1>
+				{renderOnlineUsers}
+	   	</div>
     );
   }
-};
-`
+};`
+
 // ---------------------------- define challenge tests ----------------------------
 
 export const executeTests = (code) => {
 
-	const error_1 = 'The const variable styles is an object with 3 properties.';
-	const error_2 = 'styles has a color property set to a value of "purple".';
-	const error_3 = 'styles has a fontSize property set to a value of 40.';
-	const error_4 = 'styles has a border property set to a value of "2px solid purple".';
-	const error_5 = 'The component renders a <div> elememt.';
-	const error_6 = 'The <div> element has the styles defined by the styles object applied to it.';
+	const error_0 = 'Your JSX code was transpiled successfully.';
+	const error_1 = 'MyComponent exists and is rendered to the page.';
+	const error_2 = 'MyComponent\' state is initialized to an array of 6 users.';
+	const error_3 = 'MyComponent returns a div, h1, and a p tag for every user whose online status is set to true.';
+	const error_4 = 'MyComponent renders p elements that contain the username of each online user.';
 
 	let testResults = [
 		{
 			test: 0,
 			status: false,
-			condition: 'Your JSX code was transpiled successfully.'
+			condition: error_0
 		},
 		{
 			test: 1,
@@ -111,32 +157,19 @@ export const executeTests = (code) => {
 			test: 4,
 			status: false,
 			condition: error_4
-		},
-		{
-			test: 5,
-			status: false,
-			condition: error_5
-		},
-		{
-			test: 6,
-			status: false,
-			condition: error_6
 		}
 	];
 
-	let es5, mockedComponent, stylesConst, stylesObj, testRender, passed = true;
-	const exportScript = '\n export default Colorful;'
-	const modifiedCode =  code.concat(exportScript);
-	
-	// for analyzing just the styles const
-	const prepend = `(function() {`
-	const apend = `; return styles })()`
-	const partialCode = prepend.concat(code).concat(apend);
+	let es5, mockedComponent, passed = true;
 
+	// this applies an export to the user's code so
+	// we can access their component here for tests
+	const exportScript = '\n export default MyComponent'
+	const modifiedCode = code.concat(exportScript);
+	
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
-		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
-		stylesConst = transform(partialCode, { presets: [ 'es2015', 'react' ] }).code;
+		es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
 		passed = false;
@@ -147,64 +180,129 @@ export const executeTests = (code) => {
 	// you can also use mount to perform a full render to the DOM environment
 	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
 	try {
-		testRender = shallow(React.createElement(eval(es5)));
-		stylesConst = eval(stylesConst);
+		mockedComponent = mount(React.createElement(eval(es5)));
 	} catch (err) {
 		passed = false;
 	}
-	
+
 	// run specific tests to verify the functionality
 	// that the challenge is trying to assess:
 
+	// test 1:
 	try {
-		assert.strictEqual(Object.keys(stylesConst).length, 3, error_1);
+		assert.strictEqual(mockedComponent.find('MyComponent').length, 1, error_1);
 		testResults[1].status = true;
 	} catch (err) {
 		passed = false;
 		testResults[1].status = false;
 	}
 
+	let initialState, state_1, state_2, state_3, state_4;
+
+	// test 2:
 	try {
-		assert.strictEqual(stylesConst.color, 'purple', error_2);
+		initialState = mockedComponent.state();
+		assert(
+			Array.isArray(initialState.users) === true &&
+			initialState.users.length === 6,
+			error_2
+		);
 		testResults[2].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[2].status = false;
+		testResults[2].status = false;		
 	}
 
+	// test 3:
 	try {
-		assert.strictEqual(stylesConst.fontSize, 40, error_3);
+		state_1 = mockedComponent.find('p');
+		mockedComponent.setState({
+			users:[
+				{
+					username: 'Jeff',
+					online: true
+				},
+				{
+					username: 'Alan',
+					online: true
+				},
+				{
+					username: 'Mary',
+					online: true
+				},
+				{
+					username: 'Jim',
+					online: true
+        },
+				{
+					username: 'Laura',
+					online: true
+				}
+			]
+		});
+		state_2 = mockedComponent.find('p');
+		mockedComponent.setState({
+			users:[
+				{
+					username: 'Jeff',
+					online: false
+				},
+				{
+					username: 'Alan',
+					online: false
+				},
+				{
+					username: 'Mary',
+					online: false
+				},
+				{
+					username: 'Jim',
+					online: false
+        },
+				{
+					username: 'Laura',
+					online: false
+				}
+			]
+		});
+		state_3 = mockedComponent.find('p');
+		mockedComponent.setState({users: []});
+		state_4 = mockedComponent.find('p');
+		console.log(state_1.length, state_2.length, state_3.length, state_4.length);
+		//
+		assert(
+			mockedComponent.find('div').length === 1 &&
+			mockedComponent.find('h1').length === 1 &&
+			state_1.length === 4 &&
+			state_2.length === 5 &&
+			state_3.length === 0 &&
+			typeof state_3.node === 'undefined' &&
+			state_4.length === 0 &&
+			typeof state_4.node === 'undefined',
+			error_3
+		);
 		testResults[3].status = true;
 	} catch (err) {
 		passed = false;
 		testResults[3].status = false;
 	}
 
+	// test 4:
 	try {
-		assert.strictEqual(stylesConst.border, "2px solid purple", error_4);
+		let elements = state_2.nodes;
+		assert(
+			elements[0].innerText === 'Jeff' &&
+			elements[1].innerText === 'Alan' &&
+			elements[2].innerText === 'Mary' &&
+			elements[3].innerText === 'Jim' &&
+			elements[4].innerText === 'Laura',
+			error_4
+		);
 		testResults[4].status = true;
 	} catch (err) {
 		passed = false;
 		testResults[4].status = false;		
-	}
-
-	try {
-		assert.strictEqual(testRender.type(), 'div', error_5);
-		testResults[5].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[5].status = false;
-	}
-
-	try {
-		assert(testRender.nodes[0].props.style.color === "purple" && 
-			testRender.nodes[0].props.style.fontSize === 40 && 
-			testRender.nodes[0].props.style.border === "2px solid purple", error_6);
-		testResults[6].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[6].status = false;
-	}
+	}	
 
 	return {
 		passed,
@@ -218,13 +316,13 @@ export const executeTests = (code) => {
 export const liveRender = (code) => {
 
 	try {
-		const exportScript = '\n export default Colorful;'
+		const exportScript = '\n export default MyComponent'
 		const modifiedCode = code.concat(exportScript);
-		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
+		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
 		const renderedComponent = React.createElement(eval(es5));
 		return renderedComponent;
 	} catch (err) {
-		console.log('Live rendering failed', err);
+		console.log(err);
 	}
 
 }

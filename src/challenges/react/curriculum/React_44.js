@@ -10,7 +10,7 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Test`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Conditional Rendering with the Ternary Operator`
 
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>_CHALLENGE_TEXT_`
@@ -20,46 +20,43 @@ export const challengeInstructions = `<span class = 'default'>Instructions: </sp
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = `
-const textAreaStyles = {
+const inputStyle = {
 	width: 235,
 	margin: 5
-};
+}
 
-class MyToDoList extends React.Component {
+class CheckUserAge extends React.Component {
 	constructor(props) {
 		super(props);
-		// change code below this line
-
+		// change code below this line 
 
 		// change code above this line
-		this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+		this.submit = this.submit.bind(this);
+		this.handleChange = this.handleChange.bind(this);
 	}
-	handleSubmit() {
-		const itemsArray = this.state.userInput.split(',');
+	handleChange(e) {
 		this.setState({
-			toDoList: itemsArray
+			input: e.target.value,
+			userAge: ''
 		});
 	}
-  handleChange(e) {
-    this.setState({
-      userInput: e.target.value
-    });
-  }
+	submit() {
+		this.setState({
+			userAge: this.state.input
+		});
+	}
 	render() {
-		const items = // change code here
+		const buttonText = ["Submit", "You May Enter", "You Shall Not Pass"];
+		const button = // change code here
 		return (
 			<div>
-				<textarea 
-          onChange={this.handleChange}
-          value={this.state.userInput}
-					style={textAreaStyles} 
-					placeholder="Separate Items With Commas" /><br />
-				<button onClick={this.handleSubmit}>Create List</button>
-				<h1>My "To Do" List:</h1>
-				<ul>
-					{items}
-				</ul>
+				<h3>Enter Your Age to Continue</h3>
+				<input 
+					style={inputStyle}
+					type="number"
+					value={this.state.input}
+					onChange={this.handleChange} /><br />
+				{button}
 			</div>
 		);
 	}
@@ -67,48 +64,46 @@ class MyToDoList extends React.Component {
 
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode = `
-const textAreaStyles = {
+const inputStyle = {
 	width: 235,
 	margin: 5
-};
+}
 
-class MyToDoList extends React.Component {
+class CheckUserAge extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			toDoList: [],
-      userInput: ''
+			userAge: '',
+			input: '',
 		}
-		this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+		this.submit = this.submit.bind(this);
+		this.handleChange = this.handleChange.bind(this);
 	}
-	handleSubmit() {
-		const itemsArray = this.state.userInput.split(',');
+	handleChange(e) {
 		this.setState({
-			toDoList: itemsArray
+			input: e.target.value,
+			userAge: ''
 		});
 	}
-  handleChange(e) {
-    this.setState({
-      userInput: e.target.value
-    });
-  }
-	render() {
-		const items = this.state.toDoList.map( (item, i) => {
-			return <li key={i}>{item}</li>
+	submit() {
+		this.setState({
+			userAge: this.state.input
 		});
+	}
+	render() {
+		const buttonText = ["Submit", "You May Enter", "You Shall Not Pass"];
+		const button = this.state.userAge === '' ? <button onClick={this.submit}>{buttonText[0]}</button> :
+			this.state.userAge >= 18 ? <button>{buttonText[1]}</button> : 
+			<button>{buttonText[2]}</button>;
 		return (
 			<div>
-				<textarea 
-          onChange={this.handleChange}
-          value={this.state.userInput}
-					style={textAreaStyles} 
-					placeholder="Separate Items With Commas" /><br />
-				<button onClick={this.handleSubmit}>Create List</button>
-				<h1>My "To Do" List:</h1>
-				<ul>
-					{items}
-				</ul>
+				<h3>Enter Your Age to Continue</h3>
+				<input 
+					style={inputStyle}
+					type="number"
+					value={this.state.input}
+					onChange={this.handleChange} /><br />
+				{button}
 			</div>
 		);
 	}
@@ -119,12 +114,15 @@ class MyToDoList extends React.Component {
 export const executeTests = (code) => {
 
 	const error_0 = 'Your JSX code was transpiled successfully.';
-	const error_1 = 'The MyToDoList component exists and is rendered to the page.';
-	const error_2 = 'MyToDoList\'s first child should be a <textarea> element.';
-	const error_3 = 'MyToDoList\'s third child should be a <button> element.';
-	const error_4 = 'MyToDoList\'s state is initialized with toDoList as an empty array.';
-	const error_5 = 'MyToDoList\'s state is initialized with userInput as a string with a length of 0.';
-	const error_6 = 'When the "Create List" button is clicked, the MyToDoList component should dynamically return a <ul> that contains an <li> element for every item of a comma separated list entered into the <textarea> element.';
+	const error_1 = 'The CheckUserAge component exists and is rendered to the page.';
+	const error_2 = 'The CheckUserAge component returns a single <input> element.';
+	const error_3 = 'The CheckUserAge component returns a single <button> element.';
+	const error_4 = 'The CheckUserAge component\'s state is initialized with a property of userAge and a property of input, both set to a value of an empty string.';
+	const error_5 = 'When the CheckUserAge component is first rendered to the DOM, the button\'s inner text should read "Submit".';
+	const error_6 = 'When a number of less than 18 is entered into the <input> element and the button is clicked, the button\'s inner text should read "You Shall Not Pass".';
+	const error_7 = 'When a number greater than or equal to 18 is entered into the <input> element and the button is clicked, the button\'s inner text should read "You May Enter".';
+	const error_8 = 'Once a number has been submited, and the value of the input is once again changed, the button should return to reading "Submit".'
+
 
 	let testResults = [
 		{
@@ -162,13 +160,23 @@ export const executeTests = (code) => {
 			status: false,
 			condition: error_6
 		},
+		{
+			test: 3,
+			status: false,
+			condition: error_7
+		},
+		{
+			test: 3,
+			status: false,
+			condition: error_8
+		}
 	];
 
-	let es5, mockedComponent, shallowRender, passed = true;
+	let es5, mockedComponent, passed = true;
 
 	// this applies an export to the user's code so
 	// we can access their component here for tests
-	const exportScript = '\n export default MyToDoList'
+	const exportScript = '\n export default CheckUserAge'
 	const modifiedCode = code.concat(exportScript);
 	
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
@@ -185,18 +193,20 @@ export const executeTests = (code) => {
 	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
 	try {
 		mockedComponent = mount(React.createElement(eval(es5)));
-		shallowRender = shallow(React.createElement(eval(es5)));
 	} catch (err) {
 		passed = false;
 	}
 
-	//console.log(shallowRender.nodes[0].props.children);
+	console.log(mockedComponent);
 
-	let initialState, state_1, state_2, state_3;
+	let initialState, state_1, state_2, state_3, state_4;
+
+	// run specific tests to verify the functionality
+	// that the challenge is trying to assess:
 
 	// test 1:
 	try {
-		assert.strictEqual(mockedComponent.find('MyToDoList').length, 1, error_1);
+		assert.strictEqual(mockedComponent.find('CheckUserAge').length, 1, error_1);
 		testResults[1].status = true;
 	} catch (err) {
 		passed = false;
@@ -205,16 +215,16 @@ export const executeTests = (code) => {
 
 	// test 2:
 	try {
-		assert.strictEqual(shallowRender.nodes[0].props.children[0].type, "textarea", error_2);
+		assert.strictEqual(mockedComponent.find('input').length, 1, error_2);
 		testResults[2].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[2].status = false;
+		testResults[2].status = false;		
 	}
 
 	// test 3:
 	try {
-		assert.strictEqual(shallowRender.nodes[0].props.children[2].type, "button", error_3);
+		assert.strictEqual(mockedComponent.find('button').length, 1, error_3);
 		testResults[3].status = true;
 	} catch (err) {
 		passed = false;
@@ -224,37 +234,91 @@ export const executeTests = (code) => {
 	// test 4:
 	try {
 		initialState = mockedComponent.state();
-		assert(Array.isArray(initialState.toDoList) === true && initialState.toDoList.length === 0, error_4);
+		assert(initialState.userAge === '' && initialState.input === '', error_4);
 		testResults[4].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[4].status = false;		
+		testResults[4].status = false;
 	}
 
 	// test 5:
 	try {
-		initialState = mockedComponent.state();
-		assert(typeof initialState.userInput === 'string' && initialState.userInput.length === 0, error_5);
+		assert.strictEqual(mockedComponent.find('button').nodes[0].innerText, "Submit", error_5);
 		testResults[5].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[5].status = false;		
+		testResults[5].status = false;
 	}
 
-	// test 6: 
+	// test 6:
 	try {
-		state_1 = mockedComponent.find('ul').find('li');
-		mockedComponent.find('textarea').simulate('change', {target: {value: "test, test, test"}});
+		mockedComponent.find('input').simulate('change', {target: { value: 0 }});
 		mockedComponent.find('button').simulate('click');
-		state_2 = mockedComponent.find('ul').find('li');
-		mockedComponent.find('textarea').simulate('change', {target: {value: "test, test, test, test, test, test"}});
+		state_1 = mockedComponent.find('button').nodes[0].innerText;
+		mockedComponent.find('input').simulate('change', {target: { value: 10 }});
 		mockedComponent.find('button').simulate('click');
-		state_3 = mockedComponent.find('ul').find('li');
-		assert(state_1.length === 0 && state_2.length === 3 && state_3.length === 6, error_6)
+		state_2 = mockedComponent.find('button').nodes[0].innerText;
+		mockedComponent.find('input').simulate('change', {target: { value: 17 }});
+		mockedComponent.find('button').simulate('click');
+		state_3 = mockedComponent.find('button').nodes[0].innerText;
+		assert(
+			state_1 === 'You Shall Not Pass' &&
+			state_2 === 'You Shall Not Pass' &&
+			state_3 === 'You Shall Not Pass',
+			error_6
+		);
 		testResults[6].status = true;
 	} catch (err) {
 		passed = false;
 		testResults[6].status = false;
+	}
+
+	// test 7:
+	try {
+		mockedComponent.find('input').simulate('change', {target: { value: 18 }});
+		mockedComponent.find('button').simulate('click');
+		state_1 = mockedComponent.find('button').nodes[0].innerText;
+		mockedComponent.find('input').simulate('change', {target: { value: 25 }});
+		mockedComponent.find('button').simulate('click');
+		state_2 = mockedComponent.find('button').nodes[0].innerText;
+		mockedComponent.find('input').simulate('change', {target: { value: 35 }});
+		mockedComponent.find('button').simulate('click');
+		state_3 = mockedComponent.find('button').nodes[0].innerText;
+		assert(
+			state_1 === 'You May Enter' &&
+			state_2 === 'You May Enter' &&
+			state_3 === 'You May Enter',
+			error_7
+		);
+		testResults[7].status = true;
+	} catch (err) {
+		passed = false;
+		testResults[7].status = false;
+	}
+
+	// test 8:
+	try {
+		mockedComponent.find('input').simulate('change', {target: { value: 18 }});
+		mockedComponent.find('button').simulate('click');
+		state_1 = mockedComponent.find('button').nodes[0].innerText;
+		mockedComponent.find('input').simulate('change', {target: { value: 1 }});
+		state_2 = mockedComponent.find('button').nodes[0].innerText;
+		mockedComponent.find('input').simulate('change', {target: { value: 10 }});
+		mockedComponent.find('button').simulate('click');
+		state_3 = mockedComponent.find('button').nodes[0].innerText;
+		mockedComponent.find('input').simulate('change', {target: { value: 1 }});
+		state_4 = mockedComponent.find('button').nodes[0].innerText;
+		assert(
+			state_1 === 'You May Enter' &&
+			state_2 === 'Submit' &&
+			state_3 === 'You Shall Not Pass' &&
+			state_4 === 'Submit',
+			error_8
+		);
+		testResults[8].status = true;
+	} catch (err) {
+		passed = false;
+		testResults[8].status = false;
 	}
 
 	return {
@@ -269,7 +333,7 @@ export const executeTests = (code) => {
 export const liveRender = (code) => {
 
 	try {
-		const exportScript = '\n export default MyToDoList'
+		const exportScript = '\n export default CheckUserAge'
 		const modifiedCode = code.concat(exportScript);
 		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		const renderedComponent = React.createElement(eval(es5));
