@@ -10,7 +10,7 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Connect Redux to Our Messages App`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Connect Redux to our Messages App`
 
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>Now that we've learned how to use <code>connect</code> to

@@ -8,7 +8,7 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Use Const for Action Types`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Use const for Action Types`
 
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>It's a common practice when working with Redux

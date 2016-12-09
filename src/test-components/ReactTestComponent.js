@@ -6,6 +6,21 @@ import CodeMirror from 'react-codemirror'
 import 'codemirror/mode/jsx/jsx';
 
 export default class ReactTestComponent extends React.Component {
+	static propTypes = {
+		challengeTitle: React.PropTypes.string.isRequired,
+		challengeText: React.PropTypes.string.isRequired,
+		challengeInstructions: React.PropTypes.string.isRequired,
+		seedCode: React.PropTypes.string.isRequired,
+		solutionCode: React.PropTypes.string.isRequired,
+		executeTests: React.PropTypes.func.isRequired,
+		liveRender: React.PropTypes.func.isRequired,
+		QA: React.PropTypes.bool.isRequired,
+		selectedChallenge: React.PropTypes.string.isRequired,
+		challenges: React.PropTypes.array.isRequired,
+		select: React.PropTypes.func.isRequired,
+		advanceOneChallenge: React.PropTypes.func.isRequired,
+		previousChallenge: React.PropTypes.func.isRequired
+	}
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -130,7 +145,7 @@ export default class ReactTestComponent extends React.Component {
     const renderChallenges = this.props.challenges.map( (challenge, idx) => {
       return (
       	<option value={challenge.id} key={idx}>
-      		Challenge: {challenge.id.replace(/_/g, ' ')}
+      		{challenge.id.replace(/_/g, ' ') + ': ' + challenge.title}
       	</option>
       );
     });
@@ -206,7 +221,6 @@ export default class ReactTestComponent extends React.Component {
 
 					<div className='codeWrapper'>
 		    		<h1 className='title'>Code <span className='keyShortcut'>(press Cmd-Enter to run)</span></h1>
-
 			    	<CodeMirror
 			    		className='editor'
 			    		value={this.state.code}
@@ -219,7 +233,10 @@ export default class ReactTestComponent extends React.Component {
 		    <hr />
 
 		    <div>
-		    	<p className='referenceLink'>- This project tests React code with <a target="_blank" href="http://airbnb.io/enzyme/index.html">Enzyme</a> live in a browser | <a target = "_blank" href="https://github.com/bonham000/fcc-react-tests-module">View on GitHub</a></p>
+		    	<p className='referenceLink'>- This project tests React code with &nbsp;
+		    		<a target="_blank" href="http://airbnb.io/enzyme/index.html">Enzyme</a> live in a browser | &nbsp;
+		    		<a target = "_blank" href="https://github.com/bonham000/fcc-react-tests-module">View on GitHub</a>
+		    	</p>
 		    </div>
 
 		    <div id='challenge-node' style={{ display: 'none' }}></div>

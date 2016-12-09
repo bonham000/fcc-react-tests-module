@@ -14,7 +14,7 @@
   - :blue_book: 1: Create a Simple JSX element
   - :blue_book: 2: Create a Complex JSX Element
   - :blue_book: 3: Add Comments in JSX (*may need to revise test for comment*)
-  - :blue_book: 4: Render HTML elements to the DOM
+  - :blue_book: 4: Render HTML Elements to the DOM
   - :blue_book: 5: Define an HTML Class in JSX
   - :blue_book: 6: Learn About Self-Closing JSX Tags
 
@@ -35,7 +35,7 @@
   - :pencil2: 16: Pass an array to a component using JSX (Peter)
   - :blue_book: 17: Use Default Props
   - :blue_book: 18: Override Default Props *(cannot check `defaultProps` on child)*
-  - :blue_book: 19: Use PropTypes to Define The Props You Expect *(regex `.includes` test for `propTypes`)*
+  - :blue_book: 19: Use PropTypes to Define the Props You Expect *(regex `.includes` test for `propTypes`)*
   - :blue_book: 20: Functional Stateless Components *(regex `.includes` test for `propTypes`)*
 
 - **State**
@@ -51,7 +51,7 @@
   - :blue_book: 29: Create a Controlled Input
   - :blue_book: 30: Create a Controlled Form
   - :blue_book: 31: Pass State as Props to Child Components
-  - :blue_book: 32: Pass A Callback as Props
+  - :blue_book: 32: Pass a Callback as Props
 
 - **Component Lifecycle**
 
@@ -89,7 +89,7 @@
   - :blue_book: 5: Dispatch an Action Event
   - :blue_book: 6: Handle an Action in the Store
   - :blue_book: 7: Use a Switch Statement to Handle Multiple Actions
-  - :blue_book: 8: Use Const for Action Types
+  - :blue_book: 8: Use const for Action Types
   - :blue_book: 9: Register a Store Listener
   - :blue_book: 10: Combine Multiple Reducers
   - :blue_book: 11: Send Action Data to the Store
@@ -110,14 +110,14 @@
 
 - **Use `react-redux` to Manage a List of Messages**
 
-  - :blue_book: 1: Getting started with React Redux
+  - :blue_book: 1: Getting Started with React Redux
   - :blue_book: 2: Manage State Locally First
   - :blue_book: 3: Extract State Logic to Redux
   - :blue_book: 4: Use Provider to Connect Redux to React
   - :blue_book: 5: Map State to Props
   - :blue_book: 6: Map Dispatch to Props
   - :blue_book: 7: Connect Redux to React
-  - :blue_book: 8: Connect Redux to Our Messages App
+  - :blue_book: 8: Connect Redux to our Messages App
   - :blue_book: 9: Extract Local State into Redux
   - :blue_book: 10: Review
 

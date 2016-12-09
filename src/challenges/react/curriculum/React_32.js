@@ -10,7 +10,7 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Pass A Callback as Props`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Pass a Callback as Props`
 
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>Now we can pass state as props to child

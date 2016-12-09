@@ -10,7 +10,7 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Use PropTypes to Define The Props You Expect`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Use PropTypes to Define the Props You Expect`
 
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>React provides useful typechecking features

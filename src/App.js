@@ -86,91 +86,90 @@ import * as React_Redux_08 from './challenges/react-redux/curriculum/React_Redux
 import * as React_Redux_09 from './challenges/react-redux/curriculum/React_Redux_09'
 import * as React_Redux_10 from './challenges/react-redux/curriculum/React_Redux_10'
 
-// add a new challenge to this array:
+// create an array of challenge data to load into the page
 const challenges = [
-
   // React challenges:
-  { type: 'React', id: 'React_01'},
-  { type: 'React', id: 'React_02'},
-  { type: 'React', id: 'React_03'},
-  { type: 'React', id: 'React_04'},
-  { type: 'React', id: 'React_05'},
-  { type: 'React', id: 'React_06'},
-  { type: 'React', id: 'React_07'},
-  { type: 'React', id: 'React_08'},
-  { type: 'React', id: 'React_09'},
-  { type: 'React', id: 'React_10'},
-  { type: 'React', id: 'React_11'},
-  { type: 'React', id: 'React_12'},
-  { type: 'React', id: 'React_13'},
-  { type: 'React', id: 'React_14'},
-  // { type: 'React', id: 'React_15'},
-  // { type: 'React', id: 'React_16'},
-  { type: 'React', id: 'React_17'},
-  { type: 'React', id: 'React_18'},
-  { type: 'React', id: 'React_19'},
-  { type: 'React', id: 'React_20'},
-  { type: 'React', id: 'React_21'},
-  { type: 'React', id: 'React_22'},
-  { type: 'React', id: 'React_23'},
-  { type: 'React', id: 'React_24'},
-  { type: 'React', id: 'React_25'},
-  { type: 'React', id: 'React_26'},
-  { type: 'React', id: 'React_27'},
-  { type: 'React', id: 'React_28'},
-  { type: 'React', id: 'React_29'},
-  { type: 'React', id: 'React_30'},
-  { type: 'React', id: 'React_31'},
-  { type: 'React', id: 'React_32'},
-  { type: 'React', id: 'React_33'},
-  { type: 'React', id: 'React_34'},
-  { type: 'React', id: 'React_35'},
-  { type: 'React', id: 'React_36'},
-  { type: 'React', id: 'React_37'},
-  // { type: 'React', id: 'React_38'},
-  { type: 'React', id: 'React_39'},
-  { type: 'React', id: 'React_40'},
-  { type: 'React', id: 'React_41'},
-  // { type: 'React', id: 'React_42'},
-  // { type: 'React', id: 'React_43'},
-  // { type: 'React', id: 'React_44'},
-  { type: 'React', id: 'React_45'},
-  { type: 'React', id: 'React_46'},
-  { type: 'React', id: 'React_47'},
-  // { type: 'React', id: 'React_48'},
-  { type: 'React', id: 'React_49'},
+  { type: 'React', id: 'React_01', title: 'Create a Simple JSX Element'},
+  { type: 'React', id: 'React_02', title: 'Create a Complex JSX Element'},
+  { type: 'React', id: 'React_03', title: 'Add Comments in JSX'},
+  { type: 'React', id: 'React_04', title: 'Render HTML Elements to the DOM'},
+  { type: 'React', id: 'React_05', title: 'Define an HTML Class in JSX'},
+  { type: 'React', id: 'React_06', title: 'Learn About Self-Closing JSX Tags'},
+  { type: 'React', id: 'React_07', title: 'Create a Functional Component'},
+  { type: 'React', id: 'React_08', title: 'Create a Component with React'},
+  { type: 'React', id: 'React_09', title: 'Create a Component with Composition'},
+  { type: 'React', id: 'React_10', title: 'Use React to Render Nested Components'},
+  { type: 'React', id: 'React_11', title: 'Compose React Components'},
+  { type: 'React', id: 'React_12', title: 'Render a Class Component to the DOM'},
+  { type: 'React', id: 'React_13', title: 'Write a React Component from Scratch'},
+  { type: 'React', id: 'React_14', title: 'Pass a String to a Functional Component'},
+  // { type: 'React', id: 'React_15', title: ''},
+  // { type: 'React', id: 'React_16', title: ''},
+  { type: 'React', id: 'React_17', title: 'Use Default Props'},
+  { type: 'React', id: 'React_18', title: 'Override Default Props'},
+  { type: 'React', id: 'React_19', title: 'Use PropTypes to Define the Props You Expect'},
+  { type: 'React', id: 'React_20', title: 'Functional Stateless Components'},
+  { type: 'React', id: 'React_21', title: 'Create a Stateful Component'},
+  { type: 'React', id: 'React_22', title: 'Render State in the UI'},
+  { type: 'React', id: 'React_23', title: 'Render State in the UI Another Way'},
+  { type: 'React', id: 'React_24', title: 'Set State with this.setState'},
+  { type: 'React', id: 'React_25', title: 'Bind \'this\' to a Class Method'},
+  { type: 'React', id: 'React_26', title: 'Bind \'this\' with an ES6 Arrow Function'},
+  { type: 'React', id: 'React_27', title: 'Use State to Toggle an Element'},
+  { type: 'React', id: 'React_28', title: 'Write a Simple Counter'},
+  { type: 'React', id: 'React_29', title: 'Create a Controlled Input'},
+  { type: 'React', id: 'React_30', title: 'Create a Controlled Form'},
+  { type: 'React', id: 'React_31', title: 'Pass State as Props to Child Components'},
+  { type: 'React', id: 'React_32', title: 'Pass a Callback as Props'},
+  { type: 'React', id: 'React_33', title: 'Use the Lifecycle Method componentWillMount'},
+  { type: 'React', id: 'React_34', title: 'Use the Lifecycle Method componentDidMount'},
+  { type: 'React', id: 'React_35', title: 'Add Event Listeners'},
+  { type: 'React', id: 'React_36', title: 'Manage Updates with Lifecycle Methods'},
+  { type: 'React', id: 'React_37', title: 'Optimize Re-Renders with shouldComponentUpdate'},
+  // { type: 'React', id: 'React_38', title: ''},
+  { type: 'React', id: 'React_39', title: 'Render with an If/Else Condition'},
+  { type: 'React', id: 'React_40', title: 'Use && for a More Concise Conditional'},
+  { type: 'React', id: 'React_41', title: 'Return null to Prevent Rendering'},
+  // { type: 'React', id: 'React_42', title: ''},
+  // { type: 'React', id: 'React_43', title: ''},
+  // { type: 'React', id: 'React_44', title: ''},
+  { type: 'React', id: 'React_45', title: 'Use Filter to Dynamically Filter an Array'},
+  { type: 'React', id: 'React_46', title: 'Introducing Inline Styles'},
+  { type: 'React', id: 'React_47', title: 'Add Inline Styles in React'},
+  // { type: 'React', id: 'React_48', title: ''},
+  { type: 'React', id: 'React_49', title: 'Render React on the Server with renderToString'},
 
   // Redux challenges:
-  { type: 'Redux', id: 'Redux_01'},
-  { type: 'Redux', id: 'Redux_02'},
-  { type: 'Redux', id: 'Redux_03'},
-  { type: 'Redux', id: 'Redux_04'},
-  { type: 'Redux', id: 'Redux_05'},
-  { type: 'Redux', id: 'Redux_06'},
-  { type: 'Redux', id: 'Redux_07'},
-  { type: 'Redux', id: 'Redux_08'},
-  { type: 'Redux', id: 'Redux_09'},
-  { type: 'Redux', id: 'Redux_10'},
-  { type: 'Redux', id: 'Redux_11'},
-  { type: 'Redux', id: 'Redux_12'},
-  { type: 'Redux', id: 'Redux_13'},
-  { type: 'Redux', id: 'Redux_14'},
-  { type: 'Redux', id: 'Redux_15'},
-  { type: 'Redux', id: 'Redux_16'},
-  { type: 'Redux', id: 'Redux_17'},
-  { type: 'Redux', id: 'Redux_18'},
+  { type: 'Redux', id: 'Redux_01', title: 'Create a Redux Store'},
+  { type: 'Redux', id: 'Redux_02', title: 'Get the State of the Redux Store'},
+  { type: 'Redux', id: 'Redux_03', title: 'Define a Redux Action'},
+  { type: 'Redux', id: 'Redux_04', title: 'Define an Action Creator'},
+  { type: 'Redux', id: 'Redux_05', title: 'Dispatch an Action Event'},
+  { type: 'Redux', id: 'Redux_06', title: 'Handle an Action in the Store'},
+  { type: 'Redux', id: 'Redux_07', title: 'Use a Switch Statement to Handle Multiple Actions'},
+  { type: 'Redux', id: 'Redux_08', title: 'Use const for Action Types'},
+  { type: 'Redux', id: 'Redux_09', title: 'Register a Store Listener'},
+  { type: 'Redux', id: 'Redux_10', title: 'Combine Multiple Reducers'},
+  { type: 'Redux', id: 'Redux_11', title: 'Send Action Data to the Store'},
+  { type: 'Redux', id: 'Redux_12', title: 'Use Middleware to Handle Asynchronous Actions'},
+  { type: 'Redux', id: 'Redux_13', title: 'Write a Counter in Redux'},
+  { type: 'Redux', id: 'Redux_14', title: 'Never Mutate State'},
+  { type: 'Redux', id: 'Redux_15', title: 'Use the Spread Operator on Arrays'},
+  { type: 'Redux', id: 'Redux_16', title: 'Remove an Item from an Array'},
+  { type: 'Redux', id: 'Redux_17', title: 'Copy an Object with Object.assign'},
+  { type: 'Redux', id: 'Redux_18', title: 'Use the ES6 Spread Operator with Objects'},
 
   // React-Redux challenges:
-  { type: 'React', id: 'React_Redux_01'},
-  { type: 'React', id: 'React_Redux_02'},
-  { type: 'Redux', id: 'React_Redux_03'},
-  { type: 'React', id: 'React_Redux_04'},
-  { type: 'Redux', id: 'React_Redux_05'},
-  { type: 'Redux', id: 'React_Redux_06'},
-  { type: 'React', id: 'React_Redux_07'},
-  { type: 'React', id: 'React_Redux_08'},
-  { type: 'React', id: 'React_Redux_09'},
-  { type: 'Redux', id: 'React_Redux_10'}
+  { type: 'React', id: 'React_Redux_01', title: 'Getting Started with React Redux'},
+  { type: 'React', id: 'React_Redux_02', title: 'Manage State Locally First'},
+  { type: 'Redux', id: 'React_Redux_03', title: 'Extract State Logic to Redux'},
+  { type: 'React', id: 'React_Redux_04', title: 'Use Provider to Connect Redux to React'},
+  { type: 'Redux', id: 'React_Redux_05', title: 'Map State to Props'},
+  { type: 'Redux', id: 'React_Redux_06', title: 'Map Dispatch to Props'},
+  { type: 'React', id: 'React_Redux_07', title: 'Connect Redux to React'},
+  { type: 'React', id: 'React_Redux_08', title: 'Connect Redux to our Messages App'},
+  { type: 'React', id: 'React_Redux_09', title: 'Extract Local State into Redux'},
+  { type: 'Redux', id: 'React_Redux_10', title: 'Review'}
 ];
 
 export default class App extends React.Component {
@@ -185,6 +184,7 @@ export default class App extends React.Component {
     }
 	}
   componentDidMount() {
+    console.log(this.props)
     document.addEventListener('keydown', this.handleKeyPress);
   }
   handleKeyPress = (event) => {
@@ -201,14 +201,9 @@ export default class App extends React.Component {
     });
   }
   findIndex = (identifier) => {
-    const { challenges } = this.state;
-    let currentIndex;
-    for (let i = 0; i < challenges.length; i++) {
-      if (identifier === challenges[i].id) {
-        currentIndex = i;
-      }
-    }
-    return currentIndex;
+    return this.state.challenges.reduce((index, challenge, idx) => {
+      return challenge.id === identifier ? idx : index;
+    }, null);
   }
   advanceOneChallenge = () => {
     const { challenges, selectedChallenge } = this.state;

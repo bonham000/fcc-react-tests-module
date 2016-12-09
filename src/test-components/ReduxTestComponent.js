@@ -5,6 +5,21 @@ import CodeMirror from 'react-codemirror'
 import 'codemirror/mode/jsx/jsx';
 
 export default class ReduxTestComponent extends React.Component {
+	static propTypes = {
+		challengeTitle: React.PropTypes.string.isRequired,
+		challengeText: React.PropTypes.string.isRequired,
+		challengeInstructions: React.PropTypes.string.isRequired,
+		seedCode: React.PropTypes.string.isRequired,
+		solutionCode: React.PropTypes.string.isRequired,
+		executeTests: React.PropTypes.func.isRequired,
+		liveRender: React.PropTypes.func.isRequired,
+		QA: React.PropTypes.bool.isRequired,
+		selectedChallenge: React.PropTypes.string.isRequired,
+		challenges: React.PropTypes.array.isRequired,
+		select: React.PropTypes.func.isRequired,
+		advanceOneChallenge: React.PropTypes.func.isRequired,
+		previousChallenge: React.PropTypes.func.isRequired
+	}
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -115,7 +130,7 @@ export default class ReduxTestComponent extends React.Component {
     const renderChallenges=this.props.challenges.map( (challenge, idx) => {
       return (
       	<option value={challenge.id} key={idx}>
-      		Challenge: {challenge.id.replace(/_/g, ' ')}
+      		{challenge.id.replace(/_/g, ' ') + ': ' + challenge.title}
       	</option>
       );
     });
@@ -191,7 +206,6 @@ export default class ReduxTestComponent extends React.Component {
 
 					<div className='codeWrapper'>
 		    		<h1 className='title'>Code <span className='keyShortcut'>press (Cmd-Enter) to run</span></h1>
-
 			    	<CodeMirror
 			    		className='editor'
 			    		value={this.state.code}
@@ -204,7 +218,9 @@ export default class ReduxTestComponent extends React.Component {
 		    <hr />
 
 		    <div>
-		    	<p className='referenceLink'>- This project is testing Redux live on the client with JavaScript | <a target="_blank" href="https://github.com/bonham000/fcc-react-tests-module">View the code on GitHub</a></p>
+		    	<p className='referenceLink'>- This project is testing Redux live in a browser with JavaScript | &nbsp;
+		    		<a target="_blank" href="https://github.com/bonham000/fcc-react-tests-module">View the code on GitHub</a>
+		    	</p>
 		    </div>
 
     	</div>
