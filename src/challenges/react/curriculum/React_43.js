@@ -10,27 +10,23 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Use && for a More Concise Conditional`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Return null to Prevent Rendering`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>Nice job! Now we will demonstrate a more concise way to achieve the same result. Imagine that we are
-tracking several conditions in our component and we want to respond differently to each of these conditions. We don't want to keep writing <code>else if</code> conditions to
-just return slightly tweaked UIs. Instead, we can use the <code>&&</code> logical operator to perform conditional logic in a more concise way. This
-is possible because we want to check if a condition is <code>true</code>, and if it is return some markup. So if we write:<br><br>
-
-<code>{condition && &lt;p&gt;markup&lt;/p&gt;}</code><br><br>
-
-If the <code>condition</code> is <code>true</code> the markup will be returned, otherwise if it is <code>false</code> the operation will immediately
-return <code>false</code> after evaluating the <code>condition</code> and return nothing. We can include these statments directly in our JSX
-and even string multiple conditions together by continuing to write <code>&&</code> after each check we make. This allows us to 
-handle more complex conditional logic in our <code>render()</code> method.`
+export const challengeText = `<span class = 'default'>Intro: </span>In some cases we may not want to render a child element under certain conditions. In React you can avoid
+rendering a component by simply returning <code>null</code> in its <code>render()</code> method. This can be used in some cases for example where you have a child
+component that just doesn't need to render under some conditions.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>Solve the previous example again, this time using the <code>&&</code> logical operator.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've provided the example we've been working with again here. This time, we will render
+our <code>h1</code> element in the <code>Child</code> component rather than in one top-level component. We will pass our <code>display</code> condition as <code>props</code>
+to this child component. We can check the condition of <code>display</code> in the child component and if it is <code>false</code> we can return <code>null</code>. Try it out!
+Now we've accomplished the same behavior in three different ways. This should begin to show you the versatility of using JavaScript to write our UIs. React provides us a lot
+of control over what and how we render our views.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
-`class MyComponent extends React.Component {
+`class Parent extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -47,15 +43,23 @@ export const seedCode =
     return (
 	   	<div>
 	   		<button onClick={this.toggleDisplay}>Toggle Display</button>
-	   		<h1>Displayed!</h1>
+	   		<Child display={this.state.display}/>
 	   	</div>
     );
   }
-};`
+};
+
+class Child extends React.Component {
+	constructor(props) {
+		super(props);
+	}
+	render() {
+		// change code below this line
+}`
 
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode =
-`class MyComponent extends React.Component {
+`class Parent extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -72,21 +76,36 @@ export const solutionCode =
     return (
 	   	<div>
 	   		<button onClick={this.toggleDisplay}>Toggle Display</button>
-	   		{this.state.display && <h1>Displayed!</h1>}
+	   		<Child display={this.state.display}/>
 	   	</div>
     );
   }
-};`
+};
+
+class Child extends React.Component {
+	constructor(props) {
+		super(props);
+	}
+	render() {
+		// change code below this line
+		if (this.props.display) {
+			return <h1>Display!</h1>
+		} else {
+			return null;
+		}
+	}
+}`
 
 // ---------------------------- define challenge tests ----------------------------
 
 export const executeTests = (code) => {
 
 	const error_0 = 'Your JSX code was transpiled successfully.';
-	const error_1 = 'MyComponent exists and is rendered.';
-	const error_2 = 'When display is set to true, a div, button, and h1 are rendered.';
-	const error_3 = 'When display is set to false, only a div and button are rendered.';
-	const error_4 = 'The render method uses the && logical operator to check the condition of this.state.display.';
+	const error_1 = 'The Parent component exists and is rendered.';
+	const error_2 = 'The Child component exists and is rendered.';
+	const error_3 = 'When display is set to true, a div, button, and h1 are rendered.';
+	const error_4 = 'When display is set to false, only a div and button are rendered.';
+	const error_5 = 'The Child component returns null when passed a falsy value for the display prop, otherwise it returns an h1 element.';
 
 	let testResults = [
 		{
@@ -113,6 +132,11 @@ export const executeTests = (code) => {
 			test: 4,
 			status: false,
 			condition: error_4
+		},
+		{
+			test: 5,
+			status: false,
+			condition: error_5
 		}
 	];
 
@@ -120,7 +144,7 @@ export const executeTests = (code) => {
 
 	// this applies an export to the user's code so
 	// we can access their component here for tests
-	const exportScript = '\n export default MyComponent'
+	const exportScript = '\n export default Parent'
 	const modifiedCode = code.concat(exportScript);
 	
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
@@ -146,7 +170,7 @@ export const executeTests = (code) => {
 
 	// test 1:
 	try {
-		assert.strictEqual(mockedComponent.find('MyComponent').length, 1, error_1);
+		assert.strictEqual(mockedComponent.find('Parent').length, 1, error_1);
 		testResults[1].status = true;
 	} catch (err) {
 		passed = false;
@@ -155,43 +179,61 @@ export const executeTests = (code) => {
 
 	// test 2:
 	try {
-		mockedComponent.setState({display: true});
-		assert(
-			mockedComponent.find('div').length === 1 &&
-			mockedComponent.find('div').children().length === 2 &&
-			mockedComponent.find('button').length === 1 &&
-			mockedComponent.find('h1').length === 1,
-			error_2
-		);
+		assert.strictEqual(mockedComponent.find('Child').length, 1, error_2);
 		testResults[2].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[2].status = false;		
-	}
+		testResults[2].status = false;
+	}	
 
 	// test 3:
 	try {
-		mockedComponent.setState({display: false});
+		mockedComponent.setState({display: true});
 		assert(
 			mockedComponent.find('div').length === 1 &&
-			mockedComponent.find('div').children().length === 1 &&
 			mockedComponent.find('button').length === 1 &&
-			mockedComponent.find('h1').length === 0,
+			mockedComponent.find('h1').length === 1,
 			error_3
 		);
 		testResults[3].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[3].status = false;
+		testResults[3].status = false;		
 	}
+
+	let displayFalse, displayTrue;
 
 	// test 4:
 	try {
-		assert.strictEqual(code.includes('&&'), true, error_4);
+		mockedComponent.setState({display: false});
+		assert(
+			mockedComponent.find('div').length === 1 &&
+			mockedComponent.find('button').length === 1 &&
+			mockedComponent.find('h1').length === 0,
+			error_4
+		);
 		testResults[4].status = true;
 	} catch (err) {
 		passed = false;
 		testResults[4].status = false;
+	}
+
+	// test 5:
+	try {
+		mockedComponent.setState({display: true});
+		displayTrue = mockedComponent.find('Child').find('h1');
+		mockedComponent.setState({display: false});
+		displayFalse = mockedComponent.find('Child').find('h1');
+		assert(
+			code.includes('null') === true &&
+			displayTrue.length === 1 &&
+			displayFalse.length === 0,
+			error_5
+		);
+		testResults[5].status = true;
+	} catch (err) {
+		passed = false;
+		testResults[5].status = false;
 	}
 
 	return {
@@ -206,7 +248,7 @@ export const executeTests = (code) => {
 export const liveRender = (code) => {
 
 	try {
-		const exportScript = '\n export default MyComponent'
+		const exportScript = '\n export default Parent'
 		const modifiedCode = code.concat(exportScript);
 		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
 		const renderedComponent = React.createElement(eval(es5));

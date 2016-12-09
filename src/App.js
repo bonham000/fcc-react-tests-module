@@ -41,13 +41,13 @@ import * as React_34 from './challenges/react/curriculum/React_34'
 import * as React_35 from './challenges/react/curriculum/React_35'
 import * as React_36 from './challenges/react/curriculum/React_36'
 import * as React_37 from './challenges/react/curriculum/React_37'
-// import * as React_38 from './challenges/react/curriculum/React_38'
+import * as React_38 from './challenges/react/curriculum/React_38'
 import * as React_39 from './challenges/react/curriculum/React_39'
 import * as React_40 from './challenges/react/curriculum/React_40'
 import * as React_41 from './challenges/react/curriculum/React_41'
-// import * as React_42 from './challenges/react/curriculum/React_42'
-// import * as React_43 from './challenges/react/curriculum/React_43'
-// import * as React_44 from './challenges/react/curriculum/React_44'
+import * as React_42 from './challenges/react/curriculum/React_42'
+import * as React_43 from './challenges/react/curriculum/React_43'
+//import * as React_44 from './challenges/react/curriculum/React_44'
 import * as React_45 from './challenges/react/curriculum/React_45'
 import * as React_46 from './challenges/react/curriculum/React_46'
 import * as React_47 from './challenges/react/curriculum/React_47'
@@ -126,16 +126,16 @@ const challenges = [
   { type: 'React', id: 'React_35', title: 'Add Event Listeners'},
   { type: 'React', id: 'React_36', title: 'Manage Updates with Lifecycle Methods'},
   { type: 'React', id: 'React_37', title: 'Optimize Re-Renders with shouldComponentUpdate'},
-  // { type: 'React', id: 'React_38', title: ''},
-  { type: 'React', id: 'React_39', title: 'Render with an If/Else Condition'},
-  { type: 'React', id: 'React_40', title: 'Use && for a More Concise Conditional'},
-  { type: 'React', id: 'React_41', title: 'Return null to Prevent Rendering'},
-  // { type: 'React', id: 'React_42', title: ''},
-  // { type: 'React', id: 'React_43', title: ''},
+  { type: 'React', id: 'React_38', title: 'Introducing Inline Styles'},
+  { type: 'React', id: 'React_39', title: 'Add Inline Styles in React'},
+  { type: 'React', id: 'React_40', title: 'Use Advanced JavaScript in React Render Method'},
+  { type: 'React', id: 'React_41', title: 'Render with an If/Else Condition'},
+  { type: 'React', id: 'React_42', title: 'Use && for a More Concise Conditional'},
+  { type: 'React', id: 'React_43', title: 'Return null to Prevent Rendering'},
   // { type: 'React', id: 'React_44', title: ''},
-  { type: 'React', id: 'React_45', title: 'Use Filter to Dynamically Filter an Array'},
-  { type: 'React', id: 'React_46', title: 'Introducing Inline Styles'},
-  { type: 'React', id: 'React_47', title: 'Add Inline Styles in React'},
+  { type: 'React', id: 'React_45', title: 'Render Conditionally from Props'},
+  { type: 'React', id: 'React_46', title: 'Use .map to Dynamically Render an Array'},
+  { type: 'React', id: 'React_47', title: 'Use .filter to Dynamically Filter an Array'},
   // { type: 'React', id: 'React_48', title: ''},
   { type: 'React', id: 'React_49', title: 'Render React on the Server with renderToString'},
 
