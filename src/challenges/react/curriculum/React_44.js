@@ -10,13 +10,26 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Conditional Rendering with the Ternary Operator`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Conditional Rendering with Ternary Expressions`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>_CHALLENGE_TEXT_`
+export const challengeText = `<span class = 'default'>Intro: </span>Before moving on to dynamic rendering techniques, lets cover one last way in which we can use built in JavaScript conditionals in order
+to render what we want, when we want it: the <em><strong>ternary operator</strong></em>. The <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator">ternary operator</a> is 
+often utilized as a shortcut for <code>if/else</code> statements in javascript, and, while not quite as robust as traditional <code>if/else</code> statements, they are very popular among React developers.
+One of the reasons for this is becuase, due to the way it is compiled, <code>if/else</code> statements cannot be inserted directly into JSX code. You might have noticed this a couple of challenges 
+back &mdash; any time we used <code>if/else</code>, it was always <em>outside</em> the context of the <code>return</code> statement. That said, ternary expressions can be an excellent alternative if you want to 
+implement conditional logic within your JSX. `
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>_ADD_YOUR_INSTRUCTIONS_HERE_`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>Take a look at the code below to make sure you understand what's going on so far. You'll see that we have defined three constants within the <code>CheckUserAge</code> component's
+<code>render()</code> method called <code>buttonOne</code>, <code>buttonTwo</code>, and <code>buttonThree</code>. Each of these is assigned a simple JSX expression representing a button element. Before we get started in setting
+up our ternary expression though, let's get the component rendering some information to the page. Go ahead and initialize <code>CheckUserAge</code>'s state with <code>input</code> and <code>userAge</code> both set to 
+values of an empty string.<br><br>
+
+Great! Now that our component is rendering some information to the page, let's give our users a way to interact with it a bit more. Within our component's <code>return</code>, in the space
+indicated, set up a ternary expression that implements the following logic: when the page first loads render the submit button, <code>buttonOne</code>, to the page. 
+Then, once a user enters their age and clicks the button, a different button should be rendered. If a user enters a number less 
+than <code>18</code>, render <code>buttonThree</code>. If a user enters a number greater than or equal to <code>18</code>, render <code>buttonTwo</code>.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = `
@@ -46,8 +59,9 @@ class CheckUserAge extends React.Component {
 		});
 	}
 	render() {
-		const buttonText = ["Submit", "You May Enter", "You Shall Not Pass"];
-		const button = // change code here
+		const buttonOne = <button onClick={this.submit}>Submit</button>;
+		const buttonTwo = <button>You May Enter</button>;
+		const buttonThree = <button>You Shall Not Pass</button>;
 		return (
 			<div>
 				<h3>Enter Your Age to Continue</h3>
@@ -56,7 +70,9 @@ class CheckUserAge extends React.Component {
 					type="number"
 					value={this.state.input}
 					onChange={this.handleChange} /><br />
-				{button}
+				{
+					/* change code here */
+				}
 			</div>
 		);
 	}
@@ -91,10 +107,9 @@ class CheckUserAge extends React.Component {
 		});
 	}
 	render() {
-		const buttonText = ["Submit", "You May Enter", "You Shall Not Pass"];
-		const button = this.state.userAge === '' ? <button onClick={this.submit}>{buttonText[0]}</button> :
-			this.state.userAge >= 18 ? <button>{buttonText[1]}</button> : 
-			<button>{buttonText[2]}</button>;
+		const buttonOne = <button onClick={this.submit}>Submit</button>;
+		const buttonTwo = <button>You May Enter</button>;
+		const buttonThree = <button>You Shall Not Pass</button>;
 		return (
 			<div>
 				<h3>Enter Your Age to Continue</h3>
@@ -103,7 +118,13 @@ class CheckUserAge extends React.Component {
 					type="number"
 					value={this.state.input}
 					onChange={this.handleChange} /><br />
-				{button}
+					{
+						this.state.userAge === '' ? 
+						buttonOne :
+						this.state.userAge >= 18 ? 
+						buttonTwo :
+						buttonThree
+					}
 			</div>
 		);
 	}
@@ -121,7 +142,8 @@ export const executeTests = (code) => {
 	const error_5 = 'When the CheckUserAge component is first rendered to the DOM, the button\'s inner text should read "Submit".';
 	const error_6 = 'When a number of less than 18 is entered into the <input> element and the button is clicked, the button\'s inner text should read "You Shall Not Pass".';
 	const error_7 = 'When a number greater than or equal to 18 is entered into the <input> element and the button is clicked, the button\'s inner text should read "You May Enter".';
-	const error_8 = 'Once a number has been submited, and the value of the input is once again changed, the button should return to reading "Submit".'
+	const error_8 = 'Once a number has been submited, and the value of the input is once again changed, the button should return to reading "Submit".';
+	const error_9 = 'Code does not contain any if/else statements.';
 
 
 	let testResults = [
@@ -146,29 +168,34 @@ export const executeTests = (code) => {
 			condition: error_3
 		},
 		{
-			test: 3,
+			test: 4,
 			status: false,
 			condition: error_4
 		},
 		{
-			test: 3,
+			test: 5,
 			status: false,
 			condition: error_5
 		},
 		{
-			test: 3,
+			test: 6,
 			status: false,
 			condition: error_6
 		},
 		{
-			test: 3,
+			test: 7,
 			status: false,
 			condition: error_7
 		},
 		{
-			test: 3,
+			test: 8,
 			status: false,
 			condition: error_8
+		},
+		{
+			test: 9,
+			status: false,
+			condition: error_9
 		}
 	];
 
@@ -197,7 +224,7 @@ export const executeTests = (code) => {
 		passed = false;
 	}
 
-	console.log(mockedComponent);
+	//console.log(modifiedCode.search(/if/g) === -1, modifiedCode.search(/else/g) === -1);
 
 	let initialState, state_1, state_2, state_3, state_4;
 
@@ -319,6 +346,19 @@ export const executeTests = (code) => {
 	} catch (err) {
 		passed = false;
 		testResults[8].status = false;
+	}
+
+	// test 9:
+	try {
+		assert(
+			modifiedCode.includes('if') === false &&
+			modifiedCode.includes('else') === false,
+			error_9
+		);
+		testResults[9].status = true;
+	} catch (err) {
+		passed = false;
+		testResults[9].status = false;
 	}
 
 	return {

@@ -52,7 +52,6 @@ import * as React_45 from './challenges/react/curriculum/React_45'
 import * as React_46 from './challenges/react/curriculum/React_46'
 import * as React_47 from './challenges/react/curriculum/React_47'
 // import * as React_48 from './challenges/react/curriculum/React_48'
-import * as React_49 from './challenges/react/curriculum/React_49'
 
 // import Redux Challenges:
 import * as Redux_01 from './challenges/redux/curriculum/Redux_01'
@@ -136,8 +135,7 @@ const challenges = [
   { type: 'React', id: 'React_45', title: 'Render Conditionally from Props'},
   { type: 'React', id: 'React_46', title: 'Use .map to Dynamically Render an Array'},
   { type: 'React', id: 'React_47', title: 'Use .filter to Dynamically Filter an Array'},
-  // { type: 'React', id: 'React_48', title: ''},
-  { type: 'React', id: 'React_49', title: 'Render React on the Server with renderToString'},
+  // { type: 'React', id: 'React_48', title: 'Render React on the Server with renderToString'},
 
   // Redux challenges:
   { type: 'Redux', id: 'Redux_01', title: 'Create a Redux Store'},

@@ -111,6 +111,7 @@ select:focus {
 .testControls {
 	margin-top: 22px;
 	margin-bottom: 22px;
+	width: 510px;
 }
 .keyShortcut {
 	color: rgb(225,225,225);
