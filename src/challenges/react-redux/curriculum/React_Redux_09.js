@@ -30,7 +30,10 @@ rather than <code>state</code>.<br><br>
 
 Once these changes are made the app will continue to function just the same except Redux is now managing our state for us.
 This example also illustrates how a component may have local <code>state</code>: our component is still tracking user input
-locally in its own <code>state</code>, while still maintaining app state globally with Redux.`
+locally in its own <code>state</code>, while still maintaining app state globally with Redux. Moreover, you can now see how
+Redux provides a useful state management framework on top of React. We achieved the same result using only React's local state at first
+and this is usually possible with simple apps. However, as your apps become larger and more complex so does your state management and this
+is exactly the problem Redux solves for us.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = 
