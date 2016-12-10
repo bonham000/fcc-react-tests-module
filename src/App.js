@@ -18,8 +18,8 @@ import * as React_11 from './challenges/react/curriculum/React_11'
 import * as React_12 from './challenges/react/curriculum/React_12'
 import * as React_13 from './challenges/react/curriculum/React_13'
 import * as React_14 from './challenges/react/curriculum/React_14'
-//import * as React_15 from './challenges/react/curriculum/React_15'
-//import * as React_16 from './challenges/react/curriculum/React_16'
+import * as React_15 from './challenges/react/curriculum/React_15'
+import * as React_16 from './challenges/react/curriculum/React_16'
 import * as React_17 from './challenges/react/curriculum/React_17'
 import * as React_18 from './challenges/react/curriculum/React_18'
 import * as React_19 from './challenges/react/curriculum/React_19'
@@ -47,11 +47,11 @@ import * as React_40 from './challenges/react/curriculum/React_40'
 import * as React_41 from './challenges/react/curriculum/React_41'
 import * as React_42 from './challenges/react/curriculum/React_42'
 import * as React_43 from './challenges/react/curriculum/React_43'
-//import * as React_44 from './challenges/react/curriculum/React_44'
+import * as React_44 from './challenges/react/curriculum/React_44'
 import * as React_45 from './challenges/react/curriculum/React_45'
 import * as React_46 from './challenges/react/curriculum/React_46'
 import * as React_47 from './challenges/react/curriculum/React_47'
-// import * as React_48 from './challenges/react/curriculum/React_48'
+import * as React_48 from './challenges/react/curriculum/React_48'
 
 // import Redux Challenges:
 import * as Redux_01 from './challenges/redux/curriculum/Redux_01'
@@ -102,8 +102,8 @@ const challenges = [
   { type: 'React', id: 'React_12', title: 'Render a Class Component to the DOM'},
   { type: 'React', id: 'React_13', title: 'Write a React Component from Scratch'},
   { type: 'React', id: 'React_14', title: 'Pass a String to a Functional Component'},
-  // { type: 'React', id: 'React_15', title: ''},
-  // { type: 'React', id: 'React_16', title: ''},
+  { type: 'React', id: 'React_15', title: 'Access Props Using this.props'},
+  { type: 'React', id: 'React_16', title: 'Pass an Array as Props'},
   { type: 'React', id: 'React_17', title: 'Use Default Props'},
   { type: 'React', id: 'React_18', title: 'Override Default Props'},
   { type: 'React', id: 'React_19', title: 'Use PropTypes to Define the Props You Expect'},
@@ -131,7 +131,7 @@ const challenges = [
   { type: 'React', id: 'React_41', title: 'Render with an If/Else Condition'},
   { type: 'React', id: 'React_42', title: 'Use && for a More Concise Conditional'},
   { type: 'React', id: 'React_43', title: 'Return null to Prevent Rendering'},
-  // { type: 'React', id: 'React_44', title: ''},
+  { type: 'React', id: 'React_44', title: 'Use a Ternary Expression to Render Conditionally'},
   { type: 'React', id: 'React_45', title: 'Render Conditionally from Props'},
   { type: 'React', id: 'React_46', title: 'Use Array.map() to Dynamically Render Elements'},
   { type: 'React', id: 'React_47', title: 'Use Array.filter() to Dynamically Filter an Array'},

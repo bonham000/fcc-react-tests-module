@@ -31,8 +31,8 @@
 - **Props**
 
   - :blue_book: 14: Pass a String to a Functional Component
-  - :pencil2: 15: Access props using `this.props`, passing a string to a React Component (Peter)
-  - :pencil2: 16: Pass an array to a component using JSX (Peter)
+  - :blue_book: 15: Access Props Using this.props
+  - :blue_book: 16: Pass an Array as Props
   - :blue_book: 17: Use Default Props
   - :blue_book: 18: Override Default Props *(cannot check `defaultProps` on child)*
   - :blue_book: 19: Use PropTypes to Define the Props You Expect *(regex `.includes` test for `propTypes`)*
@@ -69,11 +69,10 @@
   - :blue_book: 41: Render with an If/Else Condition
   - :blue_book: 42: Use && for a More Concise Conditional
   - :blue_book: 43: Return null to Prevent Rendering
-  - :pencil2: 44: Conditional rendering: ternary condition (Peter)
+  - :blue_book: 44: Use a Ternary Expression to Render Conditionally
   - :blue_book: 45: Render Conditionally from Props
   - :blue_book: 46: Use Array.map() to Dynamically Render Elements
   - :blue_book: 47: Use Array.filter() to Dynamically Filter an Array
-  - :pencil2: 48: JSX Gotchas: Key difference in attribute names, etc
   - :blue_book: 49: Render React on the Server with renderToString
 
 ---

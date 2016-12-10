@@ -10,10 +10,10 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Passing Arrays as Props`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Pass an Array as Props`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span><br>
+export const challengeText = `<span class = 'default'>Intro: </span>
 So far in this section, we've seen that we can pass information down to children through their parent components as props. In the past 2 challenges 
 we've passed strings as props &mdash; but what about other data types? In this challnege, we'll explore passing arrays as props.
 
@@ -22,7 +22,7 @@ would expect to see assigned to an HTML-like attribute), we must pass our data i
 by curly braces.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span><br>
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>
 Take a look at the different props we are passing to the <code>Selections</code> component. We have <code>attire</code>, <code>shirts</code>, <code>pants</code>, and <code>shoes</code>. Since you are probably just sitting at 
 home coding right now, let's go with a super-casual outfit. Within the <code>Selections</code> component, use bracket notation to access the arrays we are passing as props so 
 that the first instance of the <code>Selections</code> component renders the text: "A super-casual day. I'm going to wear a sweatshirt, pajama pants, and slippers.".<br><br>
