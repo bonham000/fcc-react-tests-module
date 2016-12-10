@@ -222,29 +222,9 @@ a, a:visited {
 	text-decoration: undeline;
 }
 .instructionsContainer a {
-	color: grey;
+	color: black;
 }
 a:hover {
 	color: #3FB2FD;
-}
-
-#Babel {
-	color: black;
-}
-#Babel:hover {
-	color: #3FB2FD;
-}
-
-#Challenge_Link {
-	color: black;
-}
-#Challenge_Link:hover {
-	color: #3FB2FD;
-}
-
-#CRA {
-	color: black;
-}
-#CRA:hover {
-	color: #3FB2FD;
+	cursor: pointer;
 }

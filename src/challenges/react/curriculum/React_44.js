@@ -15,7 +15,7 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Use a T
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>Before moving on to dynamic rendering techniques, lets cover one last way in which we can use built in JavaScript conditionals in order
 to render what we want, when we want it: the <em><strong>ternary operator</strong></em>. The <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator">ternary operator</a> is 
-often utilized as a shortcut for <code>if/else</code> statements in javascript, and, while not quite as robust as traditional <code>if/else</code> statements, they are very popular among React developers.
+often utilized as a shortcut for <code>if/else</code> statements in JavaScript, and, while not quite as robust as traditional <code>if/else</code> statements, they are very popular among React developers.
 One of the reasons for this is becuase, due to the way it is compiled, <code>if/else</code> statements cannot be inserted directly into JSX code. You might have noticed this a couple of challenges 
 back &mdash; any time we used <code>if/else</code>, it was always <em>outside</em> the context of the <code>return</code> statement. That said, ternary expressions can be an excellent alternative if you want to 
 implement conditional logic within your JSX. `
@@ -90,7 +90,7 @@ class CheckUserAge extends React.Component {
 		super(props);
 		this.state = {
 			userAge: '',
-			input: '',
+			input: ''
 		}
 		this.submit = this.submit.bind(this);
 		this.handleChange = this.handleChange.bind(this);

@@ -26,7 +26,7 @@ Easy, right?`
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>
 In the parent component <code>ResetPassword</code>, render an instance of the <code>ReturnTempPassword</code> component in the indicated space. Give this component 
-a prop of <code>tempPassword</code> and assign it a value of a string that is at least 8 characters long. Within the child, <code>ReturnTempPassword</code>,lets make sure the 
+a prop of <code>tempPassword</code> and assign it a value of a string that is at least 8 characters long. Within the child, <code>ReturnTempPassword</code>, lets make sure the 
 user sees the temporary password by accessing the <code>tempPassword</code> prop within the <code>&lt;strong&gt;</code> tags.`
 
 // ---------------------------- define challenge seed code ----------------------------
@@ -39,7 +39,7 @@ export const seedCode =
   render() {
     return (
         <div>
-            <p>Your temporary password is: <strong> </strong></p>
+            <p>Your temporary password is: <strong></strong></p>
         </div>
     );
   }

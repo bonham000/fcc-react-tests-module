@@ -241,10 +241,6 @@ export const executeTests = (code) => {
 			]
 		});
 		state_2 = mockedComponent.find('p');
-		console.log(state_2);
-		setTimeout(() => {
-			console.log(state_2);
-		}, 1000);
 		mockedComponent.setState({
 			users:[
 				{
