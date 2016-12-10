@@ -168,17 +168,17 @@ export const executeTests = (code) => {
 			condition: error_3
 		},
 		{
-			test: 3,
+			test: 4,
 			status: false,
 			condition: error_4
 		},
 		{
-			test: 3,
+			test: 5,
 			status: false,
 			condition: error_5
 		},
 		{
-			test: 3,
+			test: 6,
 			status: false,
 			condition: error_6
 		},

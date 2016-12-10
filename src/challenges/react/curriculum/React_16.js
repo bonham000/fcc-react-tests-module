@@ -10,13 +10,26 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>_ADD_YOUR_TITLE_HERE_`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Passing Arrays as Props`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>Challenge Text`
+export const challengeText = `<span class = 'default'>Intro: </span><br>
+So far in this section, we've seen that we can pass information down to children through their parent components as props. In the past 2 challenges 
+we've passed strings as props &mdash; but what about other data types? In this challnege, we'll explore passing arrays as props.
+
+The concept of passing props here is really only slightly different than in our last challenge. The main difference is that since the data we are passing is not just simple text (as you 
+would expect to see assigned to an HTML-like attribute), we must pass our data in as JavaScript. And, of course, since we are composing this code within a JSX element, it must be wrapped 
+by curly braces.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>_ADD_YOUR_INSTRUCTIONS_HERE_`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span><br>
+Take a look at the different props we are passing to the <code>Selections</code> component. We have <code>attire</code>, <code>shirts</code>, <code>pants</code>, and <code>shoes</code>. Since you are probably just sitting at 
+home coding right now, let's go with a super-casual outfit. Within the <code>Selections</code> component, use bracket notation to access the arrays we are passing as props so 
+that the first instance of the <code>Selections</code> component renders the text: "A super-casual day. I'm going to wear a sweatshirt, pajama pants, and slippers.".<br><br>
+
+Tomorrow you have work, BUT, you work as a programmer at a super hip start up, so dressing casual is totally cool. In the space indicated in the <code>OutfitSelector</code> component, render a 
+second instance of the <code>Selections</code> component. Pass the same arrays as props, but this time, reorder the elements a bit so that the rendered text reads:
+"A casual day. I'm going to wear a t-shirt, blue jeans, and sneakers."`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = 
@@ -46,7 +59,7 @@ class OutfitSelector extends React.Component {
         	<h1>What to wear?!</h1>
         	<h3>Today is:</h3>
         	<Selections 
-            attire={['casusal', 'formal', 'super-casusal']}
+            attire={['casual', 'formal', 'super-casual']}
             shirts={['t-shirt', 'sweatshirt', 'collared shirt']}
             pants={['slacks', 'blue jeans', 'khakis', 'shorts', 'pajama pants']}
             shoes={['dress shoes', 'slippers', 'sneakers']}
@@ -89,7 +102,7 @@ class OutfitSelector extends React.Component {
         	<h3>Today is:</h3>
         	{ /* change code below this line */ }
         	<Selections 
-            attire={['casusal', 'formal', 'super-casusal']}
+            attire={['casual', 'formal', 'super-casual']}
             shirts={['t-shirt', 'sweatshirt', 'collared shirt']}
             pants={['slacks', 'blue jeans', 'khakis', 'shorts', 'pajama pants']}
             shoes={['dress shoes', 'slippers', 'sneakers']}
@@ -98,7 +111,7 @@ class OutfitSelector extends React.Component {
         	<h3>Tomorrow is:</h3>
         	{ /* change code below this line */ }
           <Selections 
-            attire={['formal', 'super-casusal', 'casusal']}
+            attire={['formal', 'super-casual', 'casual']}
             shirts={['collared shirt', 't-shirt', 'sweatshirt']}
             pants={['slacks', 'khakis', 'shorts', 'pajama pants', 'blue jeans']}
             shoes={['dress shoes', 'sneakers', 'slippers']}
@@ -118,8 +131,8 @@ export const executeTests = (code) => {
 	const error_2 = 'The OutfitSelector component\'s third child should be an instance of the Selections component.';
 	const error_3 = 'The OutfitSelector component\'s fifth child should be an instance of the Selections component.';
 	const error_4 = 'Both instances of the Selections component should have props called attire, shirts, pants, and shoes, and the value of each of these props should be an array.';
-	const error_5 = 'The first instance of the Selections component should return the text "A super-casusal day. I\'m going to wear a sweatshirt, pajama pants, and slippers."';
-	const error_6 = 'The second instance of the Selections component should return the text "A casusal day. I\'m going to wear a t-shirt, blue jeans, and sneakers."';
+	const error_5 = 'The first instance of the Selections component should return the text "A super-casual day. I\'m going to wear a sweatshirt, pajama pants, and slippers."';
+	const error_6 = 'The second instance of the Selections component should return the text "A casual day. I\'m going to wear a t-shirt, blue jeans, and sneakers."';
 
 	let testResults = [
 		{
@@ -233,7 +246,7 @@ export const executeTests = (code) => {
 
 	// test 5:
 	try {
-		assert.strictEqual(mockRender.find('div').nodes[1].innerText, "A super-casusal day. I\'m going to wear a sweatshirt, pajama pants, and slippers.", error_4)
+		assert.strictEqual(mockRender.find('div').nodes[1].innerText, "A super-casual day. I\'m going to wear a sweatshirt, pajama pants, and slippers.", error_4)
 		testResults[5].status = true;
 	} catch (err) {
 		passed = false;
@@ -242,7 +255,7 @@ export const executeTests = (code) => {
 
 	// test 6:
 	try {
-		assert.strictEqual(mockRender.find('div').nodes[2].innerText, "A casusal day. I\'m going to wear a t-shirt, blue jeans, and sneakers.", error_4)
+		assert.strictEqual(mockRender.find('div').nodes[2].innerText, "A casual day. I\'m going to wear a t-shirt, blue jeans, and sneakers.", error_4)
 		testResults[6].status = true;
 	} catch (err) {
 		passed = false;

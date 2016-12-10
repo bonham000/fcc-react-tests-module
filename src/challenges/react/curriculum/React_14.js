@@ -39,28 +39,27 @@ use dot notation to access the <code>username</code> prop inside the curly brace
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = `
 const ReturnUsername = (props) => {
-    return (
-        <div>
-            <p>Your username is: { }!</p>
-        </div>
-    );
+	return (
+		<div>
+			<p>Your username is: { }!</p>
+		</div>
+	);
 };
 
 class ForgotUsername extends React.Component {
-  constructor(props) {
-  	super(props);
-
-  }
-  render() {
-    return (
-        <div>
-        	<h3>Whoops! See below...</h3>
-        	{ /* change code below this line */ }
-          <ReturnUsername />
-        	{ /* change code above this line */ }
-        </div>
-    );
-  }
+	constructor(props) {
+		super(props);
+	}
+	render() {
+		return (
+			<div>
+				<h3>Whoops! See below...</h3>
+				{ /* change code below this line */ }
+				<ReturnUsername />
+				{ /* change code above this line */ }
+			</div>
+		);
+	}
 };`
 
 // ---------------------------- define challenge solution code ----------------------------

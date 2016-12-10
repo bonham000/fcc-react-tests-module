@@ -233,7 +233,7 @@ export const executeTests = (code) => {
 				{
 					username: 'Jim',
 					online: true
-        },
+        		},
 				{
 					username: 'Laura',
 					online: true
@@ -241,6 +241,10 @@ export const executeTests = (code) => {
 			]
 		});
 		state_2 = mockedComponent.find('p');
+		console.log(state_2);
+		setTimeout(() => {
+			console.log(state_2);
+		}, 1000);
 		mockedComponent.setState({
 			users:[
 				{
@@ -258,7 +262,7 @@ export const executeTests = (code) => {
 				{
 					username: 'Jim',
 					online: false
-        },
+        		},
 				{
 					username: 'Laura',
 					online: false
@@ -268,8 +272,6 @@ export const executeTests = (code) => {
 		state_3 = mockedComponent.find('p');
 		mockedComponent.setState({users: []});
 		state_4 = mockedComponent.find('p');
-		console.log(state_1.length, state_2.length, state_3.length, state_4.length);
-		//
 		assert(
 			mockedComponent.find('div').length === 1 &&
 			mockedComponent.find('h1').length === 1 &&
