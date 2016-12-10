@@ -13,7 +13,7 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Render with an If/Else Condition`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>One application of using JavaScript to control our rendered view is to create a simple condition
+export const challengeText = `<span class = 'default'>Intro: </span>Another application of using JavaScript to control our rendered view is to create a simple condition
 and only render some elements when this condition is true. Here we will do this with a standard <code>if/else</code> statement in the <code>render()</code> method
 of a React component.`
 

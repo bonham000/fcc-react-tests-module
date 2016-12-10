@@ -10,13 +10,24 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>_ADD_YOUR_TITLE_HERE_`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Access Props Using this.props`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>Challenge Text`
+export const challengeText = `<span class = 'default'>Intro: </span><br>
+Ok, so we've got the basics down of passing props down to child components. But what if the child component that we're 
+passing a prop to is an ES6 style comonent, rather than a fucntional component? To account for this, we need to change 
+the convention through which we access props slightly.<br><br>
+
+Whenever we refer to a class component within itself, we always use the <code>this</code> keyword. So to access props within a class component, 
+we simply need to preface the code that we use to access it with <code>this</code>. For example, in our last challnege, we accessed the prop <code>username</code> 
+in our JSX code using <code>{props.username}</code>, but if the <code>ReturnUsername</code> component had been an ES6 class component instead, we would have written <code>{this.props.username}</code>. That's it!
+Easy, right?`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>_ADD_YOUR_INSTRUCTIONS_HERE_`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span><br>
+In the parent component <code>ResetPassword</code>, render an instance of the <code>ReturnTempPassword</code> component in the indicated space. Give this component 
+a prop of <code>tempPassword</code> and assign it a value of a string that is at least 8 characters long. Within the child, <code>ReturnTempPassword</code>,lets make sure the 
+user sees the temporary password by accessing the <code>tempPassword</code> prop within the <code>&lt;strong&gt;</code> tags.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = 
