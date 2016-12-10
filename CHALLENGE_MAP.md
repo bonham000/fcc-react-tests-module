@@ -73,7 +73,7 @@
   - :blue_book: 45: Render Conditionally from Props
   - :blue_book: 46: Use Array.map() to Dynamically Render Elements
   - :blue_book: 47: Use Array.filter() to Dynamically Filter an Array
-  - :blue_book: 49: Render React on the Server with renderToString
+  - :blue_book: 48: Render React on the Server with renderToString
 
 ---
 
@@ -118,5 +118,5 @@
   - :blue_book: 7: Connect Redux to React
   - :blue_book: 8: Connect Redux to our Messages App
   - :blue_book: 9: Extract Local State into Redux
-  - :blue_book: 10: Review
+  - :blue_book: 10: Moving Forward From Here
 

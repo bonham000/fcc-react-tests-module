@@ -8,7 +8,7 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Review`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Moving Forward From Here`
 
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>Congratulations! You've finished the lessons on

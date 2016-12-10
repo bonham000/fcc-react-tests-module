@@ -167,7 +167,7 @@ const challenges = [
   { type: 'React', id: 'React_Redux_07', title: 'Connect Redux to React'},
   { type: 'React', id: 'React_Redux_08', title: 'Connect Redux to our Messages App'},
   { type: 'React', id: 'React_Redux_09', title: 'Extract Local State into Redux'},
-  { type: 'Redux', id: 'React_Redux_10', title: 'Review'}
+  { type: 'Redux', id: 'React_Redux_10', title: 'Moving Forward From Here'}
 ];
 
 export default class App extends React.Component {
