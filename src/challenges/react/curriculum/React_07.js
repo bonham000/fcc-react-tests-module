@@ -10,25 +10,33 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Create a Functional Component`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Create a Stateless Functional Component`
 
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>Components are the core of React. Everything in React is a component.
-Creating a React component provides us with several useful benefits. The easiest way to create a React component is using a function.
-The function must return JSX. React requires your function name to begin with a capital letter. For example:
-<br><br>
-<code>
-function DemoComponent() {
-	<br />
-	return(
-		<br />
-		&lt;div&gt;&lt;/div&gt;
-		<br />
-	);
-	<br />
-}
-</code>
-<br><br>
+<br /><br />
+
+There are 2 ways to create a React component.
+The easiest way to create a React component is with a function. This method of definining a component is commonly referred to
+as a Stateless Functional Component. The other method is the topic of the next challenge.
+<br /><br />
+
+The function is passed an object containing properties by React. The function must return either JSX or null.
+React requires your function name to begin with a capital letter.
+<br /><br />
+
+Below is an example of a stateless functional component. It receives properties from React in the variable <code>props</code>
+and returns JSX.
+
+<pre><code>
+const DemoComponent = function(props) {
+  // Using ES6 object destructuring to assign myClassName to props.myClassName
+  const myClassName = {props};
+  return (
+    &lt;div className={myClassName}&gt;&lt;/div&gt;
+  );
+};
+</code></pre>
 
 Because a JSX component like this represents HTML, you could easily stitch together a more complex HTML page with several JSX components. This
 is one of the key advantages of the component architecture React provides: it allows you to compose your UI from many separate, isolated components.
@@ -41,7 +49,7 @@ is considered a child of this element, so you will not be able to use a self-clo
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = 
-`function myComponent() {
+`const myComponent = function(props) {
 	// change code below this line
 
 
@@ -51,7 +59,7 @@ export const seedCode =
 
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode = `
-function myComponent() {
+const myComponent = function(props) {
 	// change code below this line
 	return (
 		<div>
@@ -89,7 +97,7 @@ export const executeTests = (code) => {
 		{
 			test: 4,
 			status: false,
-			condition: 'The div element contains a string of text.'
+			condition: 'The div element contains a string value.'
 		}
 	];
 
