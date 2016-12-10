@@ -10,10 +10,10 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Writing JavaScript in render() & return of React Components`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Use Advanced JavaScript in React Render Method`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span><br>
+export const challengeText = `<span class = 'default'>Intro: </span>
 In previous lessons, we've learned how to inject JavaScript code into JSX code using curly braces, <code>{ }</code> &mdash; accessing props, passing props, accessing state, 
 inserting comments into our code, and most recently, styling our components &mdash; these are all common use cases for JavaScript injection into JSX. 
 But this is not the only way that we can utilize vanilla JavaScript code in our react components.<br><br>
@@ -23,7 +23,7 @@ our JSX code), and then use that variable later in our JSX code <em>inside</em> 
 this concept in a simple way, rememebr, like with many of these challenges, this simple illustration can be expanded upon significantly, in order to achieve exponentially more complex results.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span><br>
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>
 First, look closely at the code that we have already provided to make sure you understand what is going on so far. In our <code>render</code> method, you'll notice
 an array that contains 20 phrases that represent the answers found in the classic 1980's Magic Eight Ball toy. In the <code>ask</code> method that is bound to the button click event, notice 
 that each time the button is clicked, we are storing a random number between <code>1</code> & <code>20</code> in the component's state object. On line 38, delete the string <code>"change me!"</code> 

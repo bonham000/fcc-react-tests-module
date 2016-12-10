@@ -10,20 +10,20 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Conditional Rendering with Props`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Render Conditionally from Props`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span><br>
+export const challengeText = `<span class = 'default'>Intro: </span>
 So far, we've seen how to use <code>if/else</code>, <code>&&,</code> <code>null</code> and the ternary operator (<code>condition ? expr1 : expr2</code>) to make conditional decisions about what to render and when. However, there's one 
-important topic left to discuss that lets us combine any or all of these concepts with another powerfull React feature that we have already learned 
-quite a bit about: Props. Props are another very common way that React developers employ the concept of conditional rendering in their code &mdash; that is, automatically making
+important topic left to discuss that lets us combine any or all of these concepts with another powerful React feature that we have already learned 
+quite a bit about: props. Props are another very common way that React developers employ the concept of conditional rendering in their code &mdash; that is, automatically making
 decisions about what to render based on the value of a given prop.<br><br>
 
 In this challenge, let's set up our child component to make some decisions based on props. To help us along, we'll also utilize the ternary operator, but you can 
 easily see how several of the other concepts we've covered in the last few challenges might be just as useful in this context.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span><br>
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>
 Below you'll find two components that we've partially defined for you: a parent called <code>GameOfChance</code>, and a child called <code>Results</code>. The concept of this challenge is to create a 
 very simple game. The rules? Press a button, and find out if you win or lose. That's it!<br><br>
 
@@ -35,7 +35,7 @@ to complete the variable declaration.<br><br>
 
 Great! Now we have an expression that we can use to make a randomized decision in our code! But how do we implement this? Well, since we have a <code>Results</code> component, let's display
 the game results there. Render the <code>Results</code> component as a child of <code>GameOfChance</code>, passing in <code>expression</code> as a prop called <code>fiftyFifty</code>. Now in the <code>Results</code> component, write a ternary expression in the 
-indicated space to render the text <code>"You win!"</code> or <code>"You lose!"</code> based on the <code>fiftyFifty</code> prop that's being passed in from <code>GameOfChance</code>. For good measure, make sure the <code>handleClick</code> method is 
+indicated space to render the text <code>"You win!"</code> or <code>"You lose!"</code> based on the <code>fiftyFifty</code> prop that's being passed in from <code>GameOfChance</code>. For good measure, make sure the <code>handleClick()</code> method is 
 correctly counting each turn so the user knows how many times they've played! Hint: this also serves to let the user know the component has actually updated in case they win or lose twice in a row.`
 
 // ---------------------------- define challenge seed code ----------------------------

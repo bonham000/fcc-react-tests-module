@@ -20,7 +20,7 @@
 
 - **Introducing React/Components**
 
-  - :blue_book: 7: Create a Functional Component *(introduce ES6 arrow syntax here?)*
+  - :blue_book: 7: Create a Stateless Functional Component *(introduce ES6 arrow syntax here?)*
   - :blue_book: 8: Create a Component with React
   - :blue_book: 9: Create a Component with Composition
   - :blue_book: 10: Use React to Render Nested Components
@@ -70,9 +70,9 @@
   - :blue_book: 42: Use && for a More Concise Conditional
   - :blue_book: 43: Return null to Prevent Rendering
   - :pencil2: 44: Conditional rendering: ternary condition (Peter)
-  - :blue_book: 45: Rendering Conditionally from Props
-  - :blue_book: 46: Use .map to Dynamically Render an Array
-  - :blue_book: 47: Use Filter to Dynamically Filter an Array
+  - :blue_book: 45: Render Conditionally from Props
+  - :blue_book: 46: Use Array.map() to Dynamically Render Elements
+  - :blue_book: 47: Use Array.filter() to Dynamically Filter an Array
   - :pencil2: 48: JSX Gotchas: Key difference in attribute names, etc
   - :blue_book: 49: Render React on the Server with renderToString
 

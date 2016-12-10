@@ -10,7 +10,7 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Use Filter to Dynamically Filter an Array`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Use Array.filter() to Dynamically Filter an Array`
 
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>The <code>map</code> array method is a powerful tool

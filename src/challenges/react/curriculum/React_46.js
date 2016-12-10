@@ -13,8 +13,8 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Use Array.map() to Dynamically Render Elements`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span><br>
-Ok, so conditional rendering is pretty cool, right? But what happens when you need your components to render an unknown numnber of elements? Oftentimes in 
+export const challengeText = `<span class = 'default'>Intro: </span>
+Ok, so conditional rendering is pretty cool, right? But what happens when you need your components to render an unknown number of elements? Oftentimes in 
 reactive programming, a programmer has no way to know what the state of an application will be until runtime, becuase so much depends on a user's interaction with 
 that program. In cases like this, programmers need to write their code to correctly handle that unknown state ahead of time, and in React, we can use <code>Array.map()</code> to powerfully illustrate 
 this concept.<br><br>
@@ -23,7 +23,7 @@ Let's let our example, in this case, be a simple "To Do List" app. As the progra
 to set up our component to <em><strong>dynamically render</strong></em> the correct number of list elements long before someone using our program decides that today is laundry day. `
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span><br> 
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>
 We've set up most of the <code>MyToDoList</code> component for you, but you are going to have to fill in some blanks to get this working properly! 
 Take a close look at the code to make sure you understand what's going on so far. Some of this code should look familiar if you've already completed
 the controlled form challenge in the previous section. You'll notice a <code>&lt;textarea&gt;</code> and a <code>&lt;button&gt;</code>, along with a couple of methods that track their states, but nothing 
@@ -31,7 +31,7 @@ being rendered to the page.<br><br>
 
 If you haven't already guessed, this is at least partly because we haven't initialized the component's state yet.
 To fix this, inside the <code>constructor</code>, create a <code>this.state</code> object and define the 2 states that we see being used throughout the rest of the component's code: <code>userInput</code> should be initialized as an empty string,
-and <code>toDoList</code> should be initialized as an empty array. Now, when the user enters a comma separated list into the <code>&lt;textarea&gt;</code>, a button click and our <code>handleSubmit</code> method will take that
+and <code>toDoList</code> should be initialized as an empty array. Now, when the user enters a comma separated list into the <code>&lt;textarea&gt;</code>, a button click and our <code>handleSubmit()</code> method will take that
 list, split it at the commas, and store it as an array within <code>MyToDoList</code>'s state object.<br><br>
 
 With that done, we should have some information rendered to the page, right? Well, no. Becuase <code>MyToDoList</code> is still trying to render some JSX that has 

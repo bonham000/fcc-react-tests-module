@@ -19,14 +19,13 @@ React uses a syntax extension of JavaScript called JSX that allows you to write 
 it allows you to leverage the full programmatic power of JavaScript within HTML. For the most part, JSX is similar to the HTML that you have
 already learned, however there are a few key differences which we will learn about as we progress through these challenges.<br><br>
 
-Because JSX is not valid JavaScript, JSX code must be compiled down to JavaScript. The transpiler <a target='_blank' id='Babel' href='https://babeljs.io/'>Babel</a>
-is the tool of choice for this process, but for 
-your convenience it's all happening behind the scenes here. However, if you happen to write syntactically invalid JSX, you will see the first test
-in these challenges fail.<br><br>
+For instance, because JSX is a syntatic extension of JavaScript we can actually write JavaScript directly within JSX. To do this we simply
+include whatever we what to be treated as JavaScript within curly braces, <code>{ 'this is treated as JavaScript code' }</code>. We will encounter
+this in several places as we move along, so keep it in mind.<br><br>
 
-Because JSX is a syntatic extension of JavaScript we can actually write JavaScript directly within JSX. To do this we simply include whatever
-we what to be treated as JavaScript within curly braces, <code>{ 'this is treated as JavaScript code' }</code>. We will encounter
-this in several places as we move along, so keep it in mind.`
+However, because JSX is not valid JavaScript, JSX code must be compiled down to JavaScript. The transpiler <a target='_blank' id='Babel' href='https://babeljs.io/'>Babel</a>
+is the tool of choice for this process, but for your convenience it's all happening behind the scenes here. However, if you happen to write syntactically invalid JSX,
+you will see the first test in these challenges fail.`
 
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>
 The current code uses JSX to assign a <code>&lt;div&gt;</code> element to the constant <code>JSX</code>. Replace the <code>&lt;div&gt;</code> with an <code>&lt;h1&gt;</code> element

@@ -8,7 +8,7 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // -------------- define challenge title and challenge instructions --------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Create a React component with extends`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Create a React Component`
 
 export const challengeText = `<span class = 'default'>Intro: </span>The other way to define a React component is with
 the ES6 <code>class</code> syntax. In the following example, <code>Kitten</code> extends <code>React.Component</code>:
@@ -25,8 +25,8 @@ class Kitten extends React.Component {
 }
 </code></pre>
 
-Creating a React component this way allows us to keep local state and use lifecycle hooks.
-Both state and lifecycle hooks are covered in later challenges.
+Creating a React component in this way allows gives us access to key React features, for example letting create local state and use React's lifecycle hooks.
+Both of these topics will be covered in later challenges.
 
 <br><br>
 

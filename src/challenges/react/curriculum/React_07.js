@@ -13,16 +13,18 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Create a Stateless Functional Component`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>Components are the core of React. Everything in React is a component.
+export const challengeText = `<span class = 'default'>Intro: </span>Components are the core of React. Everything in React is a component and here we
+will learn how to create components.
 <br /><br />
 
 There are 2 ways to create a React component.
-The easiest way to create a React component is with a function. This method of definining a component is commonly referred to
-as a Stateless Functional Component. The other method is the topic of the next challenge.
+The easiest way to create a React component is with a JavaScript function. Defining a component in this way creates what is called a stateless
+functional component. The other method is the topic of the next challenge.
 <br /><br />
 
-The function is passed an object containing properties by React. The function must return either JSX or null.
-React requires your function name to begin with a capital letter.
+To create a component with a function you simply write a JavaScript function which returns either JSX or <code>null</code>.
+One important thing to note is that React requires your function name to begin with a capital letter. You can optionally pass in <code>props</code>
+as an argument to this function which can then be returned in your JSX.
 <br /><br />
 
 Below is an example of a stateless functional component. It receives properties from React in the variable <code>props</code>
