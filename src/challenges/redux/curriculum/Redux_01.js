@@ -25,7 +25,7 @@ export const challengeInstructions = `<span class = 'default'>Instructions: </sp
 which holds and manages application <code>state</code>. Redux provides a method, <code>createStore()</code>, which we can use to
 create the Redux <code>store</code>. This method takes a <code>reducer</code> function as a required argument. We'll learn
 more about these <code>reducer</code> functions later. Here we have defined this <code>reducer</code> for you.
-It simply takes <code>state</code> as an arugment and returns <code>state</code>.
+It simply takes <code>state</code> as an argument and returns <code>state</code>.
 Note: We are using ES6 default argument syntax to initialize this state to hold a value of <code>5</code>.<br><br>
 
 Now, declare a <code>store</code> variable and assign it to the <code>createStore()</code> method, passing in the <code>reducer</code>
