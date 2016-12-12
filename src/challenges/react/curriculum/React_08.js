@@ -20,20 +20,21 @@ class Kitten extends React.Component {
   }
 
   render() {
-    return(&lt;h1&gt;Hi&lt;/h1&gt;);
+    return (
+    	&lt;h1&gt;Hi&lt;/h1&gt;
+    );
   }
 }
 </code></pre>
 
-Creating a React component in this way allows gives us access to key React features, for example letting create local state and use React's lifecycle hooks.
-Both of these topics will be covered in later challenges.
+This creates an ES6 class <code>Kitten</code> which extends the <code>React.Component</code> class. What this means is that our <code>Kitten</code> class now has
+access to many useful React features, such as local state and lifecycle hooks. Don't worry if you aren't familiar with these terms yet, we will cover them in much
+greater detail in later challenges.<br><br>
 
-<br><br>
-
-You will see that our component class now has a <code>constructor</code> defined within it that calls <code>super()</code>. The constructor is a
-special method used during the initialization of objects created with the <code>class</code> keyword. Calling super then calls the constructor of the parent
-class, in this case <code>React.Component</code>. It is best practice to always call a component's constructor with super and pass in <code>props</code> to each so
-the component can be initialized properly. For now, just know that it is standard for this code to be included. We will soon see other uses for
+You will also see that our component class now has a <code>constructor</code> defined within it that calls <code>super()</code>. Calling <code>super()</code>
+will then call the constructor of the parent class, in this case <code>React.Component</code>. The constructor is a special method used during the initialization
+of objects created with the <code>class</code> keyword. It is best practice to always call a component's constructor with super and pass in <code>props</code>
+to each so the component can be initialized properly. For now, just know that it is standard for this code to be included. We will soon see other uses for
 the constructor as well as <code>props</code>.`
 
 export const challengeInstructions = `
