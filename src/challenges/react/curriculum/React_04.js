@@ -71,7 +71,7 @@ export const executeTests = (code) => {
 		{
 			test: 2,
 			status: false,
-			condition: 'The div contains an h1 tag as the second element.'
+			condition: 'The div contains an h1 tag as the first element.'
 		},
 		{
 			test: 3,
