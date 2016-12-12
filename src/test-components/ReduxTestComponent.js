@@ -41,6 +41,8 @@ export default class ReduxTestComponent extends React.Component {
       setTimeout( () => { this.seedCode(true) }, 25);
     } else if (event.keyCode === 13 && event.metaKey) {
 			this.testCode();
+		} else if (event.keyCode === 13 && event.ctrlKey) {
+			this.testCode();
 		} else if (event.keyCode === 83 && event.shiftKey) {
 			this.solutionCode();
 		} else if (event.keyCode === 82 && event.shiftKey) {
@@ -109,6 +111,10 @@ export default class ReduxTestComponent extends React.Component {
       tabSize: 2,
       extraKeys: {
       	'Cmd-Enter': () => { 
+	    		this.testCode();
+	    		return false;
+	    	},
+	    	'Ctrl-Enter': () => {
 	    		this.testCode();
 	    		return false;
 	    	}

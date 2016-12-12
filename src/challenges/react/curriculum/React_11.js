@@ -14,9 +14,9 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Compose
 
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>
-As we continue to explore more complex compositions with React components and JSX, there is one other order of business that we must address:
-As logic would allow, if we can render simple JSX elements and stateless functional components within other components, as we saw in 
-the last challnege, we should definitely be able to render ES6 class components within other components too... right? Yes!<br><br>
+As we continue to explore more complex compositions with React components and JSX, there is one other order of business that we must address.
+Since are able to render simple JSX elements and stateless functional components within other components, it follows logically that we are
+also able to render ES6 class component from other components!<br><br>
 
 Rendering ES6 style class components within other components is no different at all from what we have been doing in the last few challenges!<br><br>
 
