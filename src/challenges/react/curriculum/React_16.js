@@ -15,7 +15,7 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Pass an
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>
 So far in this section, we've seen that we can pass information down to children through their parent components as props. In the past 2 challenges 
-we've passed strings as props &mdash; but what about other data types? In this challnege, we'll explore passing arrays as props.
+we've passed strings as props &mdash; but what about other data types? In this challenge, we'll explore passing arrays as props.
 
 The concept of passing props here is really only slightly different than in our last challenge. The main difference is that since the data we are passing is not just simple text (as you 
 would expect to see assigned to an HTML-like attribute), we must pass our data in as JavaScript. And, of course, since we are composing this code within a JSX element, it must be wrapped 

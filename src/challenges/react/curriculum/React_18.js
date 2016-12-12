@@ -81,7 +81,7 @@ export const executeTests = (code) => {
 
 	const error_1 = 'The component ShoppingCart is rendered.';
 	const error_2 = 'The component Items is rendered.';
-	const error_3 = 'The Items component has a prop of { quantity: 10 }';
+	const error_3 = 'The Items component is passed a prop of { quantity: 10 } from the ShoppingCart component.';
 
 	let testResults = [
 		{
@@ -152,7 +152,11 @@ export const executeTests = (code) => {
 
 	// test 3:
 	try {
-		assert.strictEqual(mockedComponent.find('Items').props().quantity, 10, error_3);
+		assert(
+			mockedComponent.find('Items').props().quantity == 10 &&
+			code.replace(/\s/g,'').includes('<Itemsquantity={10}/>'),
+			error_3
+		);
 		testResults[3].status = true;
 	} catch (err) {
 		passed = false;

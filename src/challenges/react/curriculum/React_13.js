@@ -17,7 +17,7 @@ export const challengeText = `<span class = 'default'>Intro: </span>Now that you
 React Components, let's try to write one from scratch. React components are the core building blocks of React apps
 so it's important to become very familiar with writing them. Remember, a typical React component is an ES6
 <code>class</code> which extends <code>React.Component</code> and contains a <code>render()</code> method which
-returns HTML in the form of JSX. This is the basic form of a React component. Once you understand this well you will
+returns HTML in the form of JSX. This is the basic form of a React component. Once you understand this well, you will
 be prepared to start building more complex React projects.`
 
 // ---------------------------- challenge instructions ----------------------------

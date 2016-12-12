@@ -15,7 +15,7 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Access 
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>
 Ok, so we've got the basics down of passing props down to child components. But what if the child component that we're 
-passing a prop to is an ES6 style comonent, rather than a fucntional component? To account for this, we need to change 
+passing a prop to is an ES6 style comonent, rather than a functional component? To account for this, we need to change 
 the convention through which we access props slightly.<br><br>
 
 Whenever we refer to a class component within itself, we always use the <code>this</code> keyword. So to access props within a class component, 
