@@ -23,7 +23,7 @@ For instance, because JSX is a syntatic extension of JavaScript we can actually 
 include whatever we what to be treated as JavaScript within curly braces, <code>{ 'this is treated as JavaScript code' }</code>. We will encounter
 this in several places as we move along, so keep it in mind.<br><br>
 
-However, because JSX is not valid JavaScript, JSX code must be compiled down to JavaScript. The transpiler <a target='_blank' id='Babel' href='https://babeljs.io/'>Babel</a>
+However, because JSX is not valid JavaScript, JSX code must be compiled down to JavaScript. The transpiler Babel
 is the tool of choice for this process, but for your convenience it's all happening behind the scenes here. However, if you happen to write syntactically invalid JSX,
 you will see the first test in these challenges fail.`
 
