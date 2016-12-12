@@ -153,8 +153,10 @@ export const executeTests = (code) => {
 export const liveRender = (code) => {
 
 	try {
-		const es5 = transform(code, { presets: [ 'es2015', 'react' ] }).code;
-		const renderedComponent = React.createElement(eval(es5));
+		const exportScript = `;\n export default JSX`
+		const modifiedCode = code.concat(exportScript);
+		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
+		const renderedComponent = eval(es5);
 		return renderedComponent;
 	} catch (err) {
 		console.log('Live rendering failed', err);

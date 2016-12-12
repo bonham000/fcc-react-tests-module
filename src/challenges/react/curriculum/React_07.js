@@ -179,7 +179,9 @@ export const executeTests = (code) => {
 export const liveRender = (code) => {
 
 	try {
-		const es5 = transform(code, { presets: [ 'es2015', 'react' ] }).code;
+		const exportScript = `;\n export default myComponent`
+		const modifiedCode = code.concat(exportScript);
+		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		const renderedComponent = React.createElement(eval(es5));
 		return renderedComponent;
 	} catch (err) {
