@@ -53,7 +53,7 @@ is considered a child of this element, so you will not be able to use a self-clo
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = 
-`const myComponent = function(props) {
+`const MyComponent = function(props) {
 	// change code below this line
 
 
@@ -63,7 +63,7 @@ export const seedCode =
 
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode = `
-const myComponent = function(props) {
+const MyComponent = function(props) {
 	// change code below this line
 	return (
 		<div>
@@ -86,17 +86,17 @@ export const executeTests = (code) => {
 		{
 			test: 1,
 			status: false,
-			condition: 'myComponent is a function.'
+			condition: 'MyComponent is a function.'
 		},
 		{
 			test: 2,
 			status: false,
-			condition: 'myComponent returns a React Element.'
+			condition: 'MyComponent returns a React Element.'
 		},
 		{
 			test: 3,
 			status: false,
-			condition: 'myComponent returns a div element.'
+			condition: 'MyComponent returns a div element.'
 		},
 		{
 			test: 4,
@@ -108,7 +108,7 @@ export const executeTests = (code) => {
 	let es5, mockedComponent, jsx, testRender, passed = true;
 
 	const prepend = `(function() {`
-	const apend = `; return myComponent })()`
+	const apend = `; return MyComponent })()`
 	const modifiedCode = prepend.concat(code).concat(apend);
 	
 	// test 0: try to transpile JSX, ES6 code to ES5
@@ -134,7 +134,7 @@ export const executeTests = (code) => {
 
 	// test 1:
 	try {
-		assert.strictEqual(typeof jsx, 'function', 'myComponent is a function.');
+		assert.strictEqual(typeof jsx, 'function', 'MyComponent is a function.');
 		testResults[1].status = true;
 	} catch (err) {
 		passed = false;
@@ -144,7 +144,7 @@ export const executeTests = (code) => {
 	// test 2:
 	try {
 		testRender = jsx();
-		assert.strictEqual(typeof testRender, 'object', 'myComponent returns a React Element.');
+		assert.strictEqual(typeof testRender, 'object', 'MyComponent returns a React Element.');
 		testResults[2].status = true;
 	} catch (err) {
 		passed = false;
@@ -153,7 +153,7 @@ export const executeTests = (code) => {
 
 	// test 3:
 	try {
-		assert.strictEqual(testRender.type, 'div', 'myComponent returns a div element.');
+		assert.strictEqual(testRender.type, 'div', 'MyComponent returns a div element.');
 		testResults[3].status = true;
 	} catch (err) {
 		passed = false;
@@ -181,7 +181,7 @@ export const executeTests = (code) => {
 export const liveRender = (code) => {
 
 	try {
-		const exportScript = `;\n export default myComponent`
+		const exportScript = `;\n export default MyComponent`
 		const modifiedCode = code.concat(exportScript);
 		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		const renderedComponent = React.createElement(eval(es5));

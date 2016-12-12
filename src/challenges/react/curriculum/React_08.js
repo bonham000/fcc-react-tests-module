@@ -33,9 +33,9 @@ greater detail in later challenges.<br><br>
 
 You will also see that our component class now has a <code>constructor</code> defined within it that calls <code>super()</code>. Calling <code>super()</code>
 will then call the constructor of the parent class, in this case <code>React.Component</code>. The constructor is a special method used during the initialization
-of objects created with the <code>class</code> keyword. It is best practice to always call a component's constructor with super and pass in <code>props</code>
-to each so the component can be initialized properly. For now, just know that it is standard for this code to be included. We will soon see other uses for
-the constructor as well as <code>props</code>.`
+of objects created with the <code>class</code> keyword. It is best practice to always call a component's <code>constructor</code> with <code>super</code>,
+passing <code>props</code> to both so the component can be initialized properly, just as we did in the above example. For now, just know that it is standard for this code to be included. We will
+soon see other uses for the constructor as well as <code>props</code>.`
 
 export const challengeInstructions = `
 	<span class = 'default'>Instructions: </span>This React Component has a <code>render</code> method which is returning nothing at the moment.

@@ -28,7 +28,7 @@ component within.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span> React components must be passed in to
-<code>ReactDOM.render()</code> slightly differently than JSX elements. For JSX elements, we simply pass in the name of the elmemt
+<code>ReactDOM.render()</code> slightly differently than JSX elements. For JSX elements, we simply pass in the name of the element
 that we want to render, but when we pass React components to <code>ReactDOM.render()</code>, we must use the same syntax which we
 would use to render a component within another component. Note that while here we are rendering an ES6 class Component, the syntax 
 for rendering a functional component would be the same.<br><br>

@@ -14,7 +14,10 @@ export const challengeText = `<span class = 'default'>Intro: </span>
 Now that we've seen how to compose two components together, let's look at composition a little further. 
 You can compose components in many different ways with React.<br><br>
 
-Component composition is one of React's powerful and endearing features. It is important to start thinking about a UI in terms of components when working with React. The use of compositions allow us to decompose a UI into separate components, allowing us to separate our code from our logic. This makes writing and maintaining a project much easier. Now let's practice with some compositions that are a bit more complex.`
+Component composition is one of React's powerful and endearing features. It is important to start thinking about a UI in terms of components when working with React.
+The use of composition allows us to decompose a UI into separate components, which helps to separate the code responsible for the UI from the code responsible
+for handling our application logic. This can greatly simplify the development and maintenance of complex projects. Now let's practice with some compositions that are a bit
+more complex.`
 
 export const challengeInstructions = `
 <span class = 'default'>Instructions: </span>
