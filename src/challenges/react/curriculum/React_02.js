@@ -15,12 +15,11 @@ export const challengeText = `<span class = 'default'>Intro: </span>
 That was pretty simple. But JSX can include complex nested HTML as well. Now let's try to use JSX in this way.`
 
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>
-Define a new constant <code>JSX</code> which renders a <code>&lt;div&gt;</code> which contains, in this order, an <code>&lt;h1&gt;</code> tag followed by
-a <code>&lt;p&gt;</code> tag followed by an unordered list with three <code>&lt;li&gt;</code> items. You can include whatever text you want within
-each element. When rendering multiple elements like this, you can wrap them all in parathenses but it's not strictly required. You should
-note that it is required that multiple child elements all be wrapped in a single element. For instance, if you remove the
-<code>&lt;div&gt;</code> that is wrapping the elements here, the JSX will no longer transpile. Keep this in mind later
-because it will also apply when we are returning JSX elements in React components.`
+Define a new constant <code>JSX</code> that renders a <code>&lt;div&gt;</code> which contains the following elements in order:
+a <code>&lt;h1&gt;</code>, a <code>&lt;p&gt;</code>, and an unordered list containing three <code>&lt;li&gt;</code> items. When rendering multiple elements like this, you can wrap them all in parathenses, but it's not strictly required. You should also note that all child elements must be wrapped within a single element. For instance, if you remove the
+<code>&lt;div&gt;</code> that is wrapping all of the elements here, the JSX will no longer transpile. Keep this in mind for later, 
+because it will also apply when we are returning JSX elements in React components. Feel free to include whatever text you want within
+each element.`
 
 // Maybe here ^^ would be a good place to mention that all nested JSX needs to have only one outer level?
 
