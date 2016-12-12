@@ -16,9 +16,9 @@ Now that we've learned how to compose HTML with JSX, let's learn how React allow
 For this we will use React's rendering API known as ReactDOM.<br><br>
 
 ReactDOM is not complex, it allows us a very simple syntax for rendering React elements 
-to the DOM which looks like this: <code>ReactDOM.render(componentToRender, targetNode)</code>, where the
-first argument is the React element or component that we want to render, and the second argument is the DOM 
-node that we would like to render that component within. As logic would follow, ReactDOM.render() must be called 
+to the DOM which looks like this: <code>ReactDOM.render(componentToRender, targetNode)</code>. The
+first argument is the React element or component that we want to render. The second argument is the DOM 
+node that we would like to render the component within. As logic would follow, ReactDOM.render() must be called 
 below where the element has been declared.`
 
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>
