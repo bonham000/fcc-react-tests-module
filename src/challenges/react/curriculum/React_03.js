@@ -18,7 +18,8 @@ Sometimes, for readability, we might need to add comments to our code.<br><br>
 We can put comments inside JSX using the syntax <code>{/* */}</code> to wrap around the comment text.`
 
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>
-We've provided a JSX element similiar to what you just wrote. Add a comment somewhere within the <code>&#60;div /&#62</code> element.`
+We've provided a JSX element similar to what you just wrote. Add a comment somewhere within the provided <code>&#60;div/&#62</code> element, without
+modifying the existing <code>&lt;h1&gt;</code> or <code>&lt;p&gt;</code> elements.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = 
