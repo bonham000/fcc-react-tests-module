@@ -235,7 +235,8 @@ export default class ReactTestComponent extends React.Component {
 		    <div>
 		    	<p className='referenceLink'>- This project tests React code with &nbsp;
 		    		<a target="_blank" href="http://airbnb.io/enzyme/index.html">Enzyme</a> live in a browser | &nbsp;
-		    		<a target = "_blank" href="https://github.com/bonham000/fcc-react-tests-module">View on GitHub</a>
+		    		<a target = "_blank" href="https://github.com/bonham000/fcc-react-tests-module">View on GitHub</a>&nbsp;|&nbsp;
+		    		<a target = "_blank" href="https://github.com/bonham000/fcc-react-tests-module/blob/master/CONTRIBUTING.md">Contribute</a>
 		    	</p>
 		    </div>
 

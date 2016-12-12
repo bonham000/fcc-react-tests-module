@@ -219,7 +219,8 @@ export default class ReduxTestComponent extends React.Component {
 
 		    <div>
 		    	<p className='referenceLink'>- This project is testing Redux live in a browser with JavaScript | &nbsp;
-		    		<a target="_blank" href="https://github.com/bonham000/fcc-react-tests-module">View the code on GitHub</a>
+		    		<a target="_blank" href="https://github.com/bonham000/fcc-react-tests-module">View the code on GitHub</a>&nbsp;|&nbsp;
+		    		<a target = "_blank" href="https://github.com/bonham000/fcc-react-tests-module/blob/master/CONTRIBUTING.md">Contribute</a>
 		    	</p>
 		    </div>
 
