@@ -20,7 +20,7 @@ it allows you to leverage the full programmatic power of JavaScript within HTML.
 already learned, however there are a few key differences which we will learn about as we progress through these challenges.<br><br>
 
 For instance, because JSX is a syntatic extension of JavaScript we can actually write JavaScript directly within JSX. To do this we simply
-include whatever we what to be treated as JavaScript within curly braces, <code>{ 'this is treated as JavaScript code' }</code>. We will encounter
+include whatever we want to be treated as JavaScript within curly braces, <code>{ 'this is treated as JavaScript code' }</code>. We will encounter
 this in several places as we move along, so keep it in mind.<br><br>
 
 However, because JSX is not valid JavaScript, JSX code must be compiled down to JavaScript. The transpiler Babel
