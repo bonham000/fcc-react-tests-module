@@ -211,7 +211,7 @@ export default class ReduxTestComponent extends React.Component {
 					</div>
 
 					<div className='codeWrapper'>
-		    		<h1 className='title'>Code <span className='keyShortcut'>press (Cmd-Enter) to run</span></h1>
+		    		<h1 className='title'>Code <span className='keyShortcut'>(press Cmd/Ctrl + Enter to run)</span></h1>
 			    	<CodeMirror
 			    		className='editor'
 			    		value={this.state.code}
