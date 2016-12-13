@@ -41,7 +41,7 @@ export const seedCode =
 	{/* change code above this line */}
 </div>
 );
-// change code below this line
+
 ReactDOM.render(JSX, document.getElementById('challenge-node'));`
 
 // ---------------------------- define challenge solution code ----------------------------
@@ -54,7 +54,7 @@ export const solutionCode =
 	{/* change code above this line */}
 </div>
 );
-// change code below this line
+
 ReactDOM.render(JSX, document.getElementById('challenge-node'));`
 
 // ---------------------------- define challenge tests ----------------------------

@@ -17,15 +17,15 @@ export const challengeText = `<span class = 'default'>Intro: </span>One more thi
 beginning of this section when we defined a functional stateless JSX element? We can do the same thing with React Components. When
 defining a child component we can pass props to it and the component itself can simply render these props as UI. The component is stateless
 in the sense that it does not possess state itself but receives all of its 'state' information from its parent via props. It is also
-functional in the sense that when given props it simply returns a UI and it should return that same UI everytime it receives the same
+functional in the sense that when given props it simply returns a UI and it should return that same UI every time it receives the same
 props.<br><br>
 
-This is a useful feature of React and reiterates one of React's important design principle: React is declarative. React takes data, and
-returns a view. It does this in a predicatable way, and functional stateless components are one way it achieves this.`
+This is a useful feature of React and reiterates one of React's important design principles: React is declarative. React takes data, and
+returns a view. It does this in a predictable way, and functional stateless components are one way it achieves this.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've defined a <code>Campsite</code> component
-for you which is currently rendering a <code>Camper</code> component as a child, however this <code>Camper</code> component has not
+for you which is currently rendering a <code>Camper</code> component as a child. However, this <code>Camper</code> component has not
 been defined. Define <code>Camper</code> and assign it default props of <code>{ name: 'CamperBot' }</code>. You can render whatever
 you want within the <code>Camper</code> component, but don't forget to call its <code>constructor</code> and pass in props.`
 
