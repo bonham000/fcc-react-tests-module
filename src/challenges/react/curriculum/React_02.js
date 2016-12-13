@@ -12,22 +12,25 @@ export const QA = false;
 // -------------- define challenge title and challenge instructions --------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Create a Complex JSX Element`
 export const challengeText = `<span class = 'default'>Intro: </span>
-That was pretty simple. But JSX can include complex nested HTML as well. Now let's try to use JSX in this way.`
+The last challenge was a simple example of JSX, but it can include complex nested HTML as well.
+
+One important thing to know about nested JSX is that it ultimately needs to return only one outer element. This single parent element would wrap all of the other levels of nested elements. The JSX will not transpile if, for example, your code has several elements that are siblings, but no parent element wrapping all of them. Here's an example:
+<code><blockquote>const JSXValid = (<br>&lt;section&gt;<br>&nbsp;&nbsp;&lt;article&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;First article&lt;/p&gt;<br>&nbsp;&nbsp;&lt;/article&gt;<br>&nbsp;&nbsp;&lt;article&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Second article&lt;/p&gt;<br>&nbsp;&nbsp;&lt;/article&gt;<br>&lt;/section&gt;);<br><br>const JSXNotValid = (<br>&lt;article&gt;<br>&nbsp;&nbsp;&lt;p&gt;First article&lt;/p&gt;<br>&lt;/article&gt;<br>&lt;article&gt;<br>&nbsp;&nbsp;&lt;p&gt;Second article&lt;/p&gt;<br>&lt;/article&gt;);</blockquote></code>`
+
+// ^^Multi-line code example follows current FCC formatting once the code tags (wrapping the blockquote) are removed
 
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>
-Define a new constant <code>JSX</code> that renders a <code>&lt;div&gt;</code> which contains the following elements in order:
-a <code>&lt;h1&gt;</code>, a <code>&lt;p&gt;</code>, and an unordered list containing three <code>&lt;li&gt;</code> items. When rendering multiple elements like this, you can wrap them all in parathenses, but it's not strictly required. You should also note that all child elements must be wrapped within a single element. For instance, if you remove the
-<code>&lt;div&gt;</code> that is wrapping all of the elements here, the JSX will no longer transpile. Keep this in mind for later, 
-because it will also apply when we are returning JSX elements in React components. Feel free to include whatever text you want within
-each element.`
+Define a new constant <code>JSX</code> that renders a <code>div</code> which contains the following elements in order:
+An <code>h1</code>, a <code>p</code>, and an unordered list that contains three <code>li</code> items. You can include any text you want within each element.<br><br>
 
-// Maybe here ^^ would be a good place to mention that all nested JSX needs to have only one outer level?
+<strong>Note</strong><br>When rendering multiple elements like this, you can wrap them all in parentheses, but it's not strictly required. Also notice this challenge uses a <code>div</code> tag to wrap all the child elements within a single parent element. If you remove the <code>div</code>, the JSX will no longer transpile. Keep this in mind, since it will also apply when you return JSX elements in React components.`
+
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = `// write your code here`
 
 // ---------------------------- define challenge solution code ----------------------------
-export const solutionCode = 
+export const solutionCode =
 `const JSX = (
 <div>
 	<h1>Hello JSX!</h1>
@@ -49,39 +52,39 @@ export const executeTests = (code) => {
 		{
 			test: 0,
 			status: false,
-			condition: 'Your JSX code was transpiled successfully.'
+			condition: 'Your JSX code should transpile successfully.'
 		},
 		{
 			test: 1,
 			status: false,
-			condition: 'The constant JSX returns an <div> element.'
+			condition: 'The constant JSX should return a div element.'
 		},
 		{
 			test: 2,
 			status: false,
-			condition: 'The div contains an h1 tag as the second element.'
+			condition: 'The div should contain an h1 tag as the first element.'
 		},
 		{
 			test: 3,
 			status: false,
-			condition: 'The div contains an p tag as the second element.'
+			condition: 'The div should contain a p tag as the second element.'
 		},
 		{
 			test: 4,
 			status: false,
-			condition: 'The div contains a ul tag as the third element.'
+			condition: 'The div should contain a ul tag as the third element.'
 		},
 		{
 			test: 5,
 			status: false,
-			condition: 'The ul contains three li elements.'
+			condition: 'The ul should contain three li elements.'
 		}
 	];
 
 	const prepend = `(function() {`
 	const apend = `; return JSX })()`
 	const modifiedCode = prepend.concat(code).concat(apend);
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
@@ -90,7 +93,7 @@ export const executeTests = (code) => {
 		passed = false;
 		testResults[0].status = false;
 	}
-	
+
 	// shallow render the component with Enzyme
 	try {
 		jsx = eval(es5);
@@ -100,7 +103,7 @@ export const executeTests = (code) => {
 
 	// test 1:
 	try {
-		assert.strictEqual(jsx.type, 'div', 'The constant JSX returns an <div> element.');
+		assert.strictEqual(jsx.type, 'div', 'The constant JSX should return a div element.');
 		testResults[1].status = true;
 	} catch (err) {
 		passed = false;
@@ -109,7 +112,7 @@ export const executeTests = (code) => {
 
 	// test 2:
 	try {
-		assert.strictEqual(jsx.props.children[0].type, 'h1', 'The div contains an h1 tag as the first element.');
+		assert.strictEqual(jsx.props.children[0].type, 'h1', 'The div should contain an h1 tag as the first element.');
 		testResults[2].status = true;
 	} catch (err) {
 		passed = false;
@@ -118,7 +121,7 @@ export const executeTests = (code) => {
 
 	// test 3:
 	try {
-		assert.strictEqual(jsx.props.children[1].type, 'p', 'The div contains an p tag as the second element.');
+		assert.strictEqual(jsx.props.children[1].type, 'p', 'The div should contain a p tag as the second element.');
 		testResults[3].status = true;
 	} catch (err) {
 		passed = false;
@@ -127,7 +130,7 @@ export const executeTests = (code) => {
 
 	// test 4:
 	try {
-		assert.strictEqual(jsx.props.children[2].type, 'ul', 'The div contains an h1 tag as the third element.');
+		assert.strictEqual(jsx.props.children[2].type, 'ul', 'The div should contain a ul tag as the third element.');
 		testResults[4].status = true;
 	} catch (err) {
 		passed = false;
@@ -136,18 +139,18 @@ export const executeTests = (code) => {
 
 	// test 5:
 	try {
-		assert.strictEqual(jsx.props.children[2].props.children.length, 3, 'The ul contains three li elements.');
+		assert.strictEqual(jsx.props.children[2].props.children.length, 3, 'The ul should contain three li elements.');
 		testResults[5].status = true;
 	} catch (err) {
 		passed = false;
 		testResults[5].status = false;
-	}	
+	}
 
 	return {
 		passed,
 		testResults,
 	}
-	
+
 }
 
 // ---------------------------- define live render function ----------------------------

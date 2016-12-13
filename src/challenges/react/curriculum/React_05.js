@@ -13,17 +13,14 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Define an HTML Class in JSX`
 export const challengeText = `<span class = 'default'>Intro: </span>
 Now that you're getting comfortable writing JSX you may be wondering how it differs from HTML.
-So far it seems as though you can use HTML and JSX interchangeably, right?<br><br>
+So far it may seem that HTML and JSX are exactly the same.<br><br>
 
-One key difference in JSX is that you can no longer use the word <code>class</code> to define HTML classes, because <code>class</code> is a
-reserved word in JavaScript. In its place we will use <code>className</code> in JSX.<br><br>
+One key difference in JSX is that you can no longer use the word <code>class</code> to define HTML classes. This is because <code>class</code> is a reserved word in JavaScript. Instead, JSX uses <code>className</code>.<br><br>
 
-In fact, we will see in later challenges, that the naming convention for all HTML attributes and event references in JSX become camelCase. For example,
-we would refer to a click event as <code>onClick</code> in JSX, rather than <code>onclick</code>. Likewise, <code>onchange</code> becomes <code>onChange</code>, and so on. While this is a subtle 
-difference, it is an important one that we must bear in mind as we move forward.`
+In fact, the naming convention for all HTML attributes and event references in JSX become camelCase. For example, a click event in JSX is <code>onClick</code>, instead of <code>onclick</code>. Likewise, <code>onchange</code> becomes <code>onChange</code>. While this is a subtle difference, it is an important one to keep in mind moving forward.`
 
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>
-Apply a class of <code>myDiv</code> to the <code>&lt;div&gt;</code> provided in the JSX code.`
+Apply a class of <code>myDiv</code> to the <code>div</code> provided in the JSX code.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
@@ -33,7 +30,7 @@ export const seedCode =
 </div>);`
 
 // ---------------------------- define challenge solution code ----------------------------
-export const solutionCode = 
+export const solutionCode =
 `const JSX = (
 <div className = 'myDiv'>
 	<h1>Add a class to this div</h1>
@@ -49,12 +46,12 @@ export const executeTests = (code) => {
 		{
 			test: 0,
 			status: false,
-			condition: 'Your JSX code was transpiled successfully.'
+			condition: 'Your JSX code should transpile successfully.'
 		},
 		{
 			test: 1,
 			status: false,
-			condition: 'The constant JSX returns a <div> element.'
+			condition: 'The constant JSX should return a div element.'
 		},
 		{
 			test: 2,
@@ -75,7 +72,7 @@ export const executeTests = (code) => {
 		passed = false;
 		testResults[0].status = false;
 	}
-	
+
 	// shallow render the component with Enzyme
 	try {
 		jsx = eval(es5);
@@ -85,7 +82,7 @@ export const executeTests = (code) => {
 
 	// test 1:
 	try {
-		assert.strictEqual(jsx.type, 'div', 'The constant JSX returns an <div> element.');
+		assert.strictEqual(jsx.type, 'div', 'The constant JSX should return a div element.');
 		testResults[1].status = true;
 	} catch (err) {
 		passed = false;
@@ -105,7 +102,7 @@ export const executeTests = (code) => {
 		passed,
 		testResults,
 	}
-	
+
 }
 
 // ---------------------------- define live render function ----------------------------
