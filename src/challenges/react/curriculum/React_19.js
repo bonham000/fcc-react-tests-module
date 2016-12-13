@@ -15,8 +15,8 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Use Pro
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>React provides useful typechecking features
 to verify that components are receiving props of the correct type. For instance, let's say you perform some API call
-and expect to receive data back as an array which you will then pass to a component as a prop. You can set a <code>propType</code> that
-requires this data to be of type <code>array</code>. This will throw a useful warning in the event the data is of any other type. Setting
+and expect to receive data back as an array which you will then pass to a component as a prop. You can set <code>propTypes</code> on your component such that
+this data is required to be of type <code>array</code>. This will throw a useful warning in the event the data is of any other type. Setting
 <code>propTypes</code> when you know the type of a prop ahead of time is a best practice. You can define a <code>propTypes</code> property of a component
 in the same way you defined <code>defaultProps</code>. Defining a required <code>function</code> prop would look like this:<br><br>
 
@@ -43,7 +43,7 @@ export const seedCode =
 	}
 }
 
-{ /* change code be1low this line */ }
+{ /* change code below this line */ }
 
 { /* change code above this line */ }
 

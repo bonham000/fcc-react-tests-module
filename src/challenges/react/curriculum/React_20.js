@@ -13,7 +13,7 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Functional Stateless Components`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>One more thing about props before we move on. Remeber at the
+export const challengeText = `<span class = 'default'>Intro: </span>One more thing about props before we move on. Remember at the
 beginning of this section when we defined a functional stateless JSX element? We can do the same thing with React Components. When
 defining a child component we can pass props to it and the component itself can simply render these props as UI. The component is stateless
 in the sense that it does not possess state itself but receives all of its 'state' information from its parent via props. It is also

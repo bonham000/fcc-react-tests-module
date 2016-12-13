@@ -41,7 +41,9 @@ export const seedCode = `
 const ReturnUsername = (props) => {
 	return (
 		<div>
+			{ /* change code below this line */ }
 			<p>Your username is: { }!</p>
+			{ /* change code above this line */ }
 		</div>
 	);
 };
