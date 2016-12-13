@@ -13,9 +13,8 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Render a Class Component to the DOM`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>One thing you may remenber from a
-<a id="Challenge_Link" target="_blank" href="link to render html Elements tot he dom - challnege 4">previous challenge</a>
-is that, while we are writing React code with React, we need a separate API to actually render that code to the DOM &mdash;
+export const challengeText = `<span class = 'default'>Intro: </span>One thing you may remenber from a previous challenge
+is that while we are writing React code with React we need a separate API to actually render that code to the DOM &mdash;
 the ReactDOM API.<br><br>
 
 For the past few challenges, we wanted to focus on introducing components themselves, so we have been rendering them 
