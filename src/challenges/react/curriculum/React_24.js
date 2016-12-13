@@ -25,7 +25,7 @@ method we have defined on <code>MyComponent</code>. Within this <code>click</cod
 component <code>state</code> with <code>this.setState()</code>. Update the <code>click</code> method to set the
 <code>name</code> property in <code>state</code> to equal the string <code>React Rocks!</code>.<br><br>
 
-Try it out! Click the button and watch the rendered state update. Don't worry about understanding how we our
+Try it out! Click the button and watch the rendered state update. Don't worry about understanding how we are
 definining the <code>click</code> method or assigning the click handler at this point, we will continue to
 elaborate on these details in the subsequent lessons.`
 
