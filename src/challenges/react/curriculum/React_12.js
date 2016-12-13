@@ -13,23 +13,16 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Render a Class Component to the DOM`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>One thing you may remenber from a previous challenge
-is that while we are writing React code with React we need a separate API to actually render that code to the DOM &mdash;
-the ReactDOM API.<br><br>
+export const challengeText = `<span class = 'default'>Intro: </span>You may remember from a previous challenge that, while we are writing React code with React, we need a separate API to actually render that code to the DOM — the ReactDOM API.<br><br>
 
 For the past few challenges, we wanted to focus on introducing components themselves, so we have been rendering them 
-for you behind the scenes. However, it is important to know that none of the React code that we write can actually be rendered without 
-making a call to the ReactDOM API. 
+for you behind the scenes. However, it is important to know that none of the React code that we write can actually be rendered without making a call to the ReactDOM API. 
 
-To refresh, the syntax for rendering React elements to the DOM looks like this: <code>ReactDOM.render(componentToRender, targetNode)</code>, where the
-first argument is the React component that we want to render, and the second argument is the DOM node that we would like to render that
-component within.`
+To review, the syntax for rendering React elements to the DOM looks like this: <code>ReactDOM.render(componentToRender, targetNode)</code>. The first argument is the React component that we want to render. The second argument is the DOM node that we would like to render that component within.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span> React components must be passed in to
-<code>ReactDOM.render()</code> slightly differently than JSX elements. For JSX elements, we simply pass in the name of the element
-that we want to render, but when we pass React components to <code>ReactDOM.render()</code>, we must use the same syntax which we
-would use to render a component within another component. Note that while here we are rendering an ES6 class Component, the syntax 
+export const challengeInstructions = `<span class = 'default'>Instructions: </span> React components must be passed into
+<code>ReactDOM.render()</code> slightly differently than JSX elements. When rendering JSX elements, we simply pass in the name of the element that we want to render. However, when we render React components, we must use the same syntax we used to render nested components, that is <code>ReactDOM.render(<componentToRender />, targetNode)</code>. Note that while here we are rendering an ES6 class Component, the syntax 
 for rendering a functional component would be the same.<br><br>
 
 We have already defined components named <code>Fruits</code> and <code>Vegetables</code> in our last challenge. Render both components as children of the <code>TypesOfFood</code> component
@@ -124,7 +117,7 @@ export const executeTests = (code) => {
 	const error_1 = 'The TypesOfFood component returns a single <div> element.';
 	const error_2 = 'The TypesOfFood component renders the Fruits component after the h1 element.';
 	const error_3 = 'The TypesOfFood component renders the Vegetables component after Fruits.';
-	const error_4 = 'The TypesOfFood componenet is rendered to the DOM within the "challenge-node" div.';
+	const error_4 = 'The TypesOfFood component is rendered to the DOM within the "challenge-node" div.';
 
 	let testResults = [
 		{
