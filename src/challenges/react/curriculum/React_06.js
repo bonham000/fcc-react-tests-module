@@ -12,27 +12,21 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Learn A
 
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>
-So far, we’ve seen how JSX differs from HTML in a key way with the use of <code>className</code> vs. <code>class</code> for defining HTML classes. 
-Another important way in which JSX differs from HTML is in the idea of the self closing tag.<br><br>
+So far, you’ve seen how JSX differs from HTML in a key way with the use of <code>className</code> vs. <code>class</code> for defining HTML classes.
+Another important way in which JSX differs from HTML is in the idea of the self-closing tag.<br><br>
 
-In HTML, almost all tags have both an opening and closing tag: <code>&lt;div&gt;&lt;/div&gt;</code>; the closing tag always has a forward slash before the tag name that we are closing. 
-However, there are special instances in HTML where we have “self closing tags”, or tags that don’t require both an opening and closing tag before another tag can start. 
-For example the line-break tag can be written as <code>&lt;br&gt;</code> or as <code>&lt;br /&gt;</code>, but should never be written as <code>&lt;br&gt;&lt;/br&gt;</code>, as it does not contain any content.<br><br> 
+In HTML, almost all tags have both an opening and closing tag: <code>&lt;div&gt;&lt;/div&gt;</code>; the closing tag always has a forward slash before the tag name that you are closing. However, there are special instances in HTML called “self-closing tags”, or tags that don’t require both an opening and closing tag before another tag can start.
+For example the line-break tag can be written as <code>&lt;br&gt;</code> or as <code>&lt;br /&gt;</code>, but should never be written as <code>&lt;br&gt;&lt;/br&gt;</code>, since it doesn't contain any content.<br><br>
 
-In JSX though, the rules are a little different. Any JSX element can be written with a self-closing tag, and every element must be closed.
-So the line-break tag, for example, must always be written as <code>&lt;br /&gt;</code> in order to be valid JSX than can be transpiled. 
-A <code>&lt;div&gt;</code>, on the other hand, can be written as <code>&lt;div /&gt;</code> or <code>&lt;div&gt;&lt;/div&gt;</code>. With
-that first syntax there is no way to include anything in the <code>&lt;div&gt;</code>, of course.
-We will see later that this syntax also comes in handy when rendering React components.`
+In JSX, the rules are a little different. Any JSX element can be written with a self-closing tag, and every element must be closed. The line-break tag, for example, must always be written as <code>&lt;br /&gt;</code> in order to be valid JSX than can be transpiled. A <code>&lt;div&gt;</code>, on the other hand, can be written as <code>&lt;div /&gt;</code> or <code>&lt;div&gt;&lt;/div&gt;</code>. The difference is that in the first syntax version there is no way to include anything in the <code>&lt;div /&gt;</code>. You will see in later challenges that this syntax is useful when rendering React components.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>
-Fix the errors in the code below so that it is valid JSX that can be successfully transpiled and render it to the DOM using the <code>ReactDOM.render()</code> method.
-We've provided a <code>&lt;div&gt;</code> with <code>id='challenge-node'</code> for you to render to. Be sure not to change any of the content but only to add self-closing tags where
+Fix the errors in the code editor so that it is valid JSX and successfully transpiles. Make sure you don't change any of the content - you only need to close tags where
 they are needed.`
 
 // ---------------------------- define challenge seed code ----------------------------
-export const seedCode = 
+export const seedCode =
 `const JSX = (
 <div>
 	{/* change code below this line */}
@@ -45,7 +39,7 @@ export const seedCode =
 ReactDOM.render(JSX, document.getElementById('challenge-node'));`
 
 // ---------------------------- define challenge solution code ----------------------------
-export const solutionCode = 
+export const solutionCode =
 `const JSX = (
 <div>
 	{/* change code below this line */}
@@ -67,34 +61,34 @@ export const executeTests = (code) => {
 		{
 			test: 0,
 			status: false,
-			condition: 'Your JSX code was transpiled successfully.'
+			condition: 'Your JSX code should transpile successfully.'
 		},
 		{
 			test: 1,
 			status: false,
-			condition: 'The constant JSX returns an <div> element.'
+			condition: 'The constant JSX should return a div element.'
 		},
 		{
 			test: 2,
 			status: false,
-			condition: 'The div contains a br tag.'
+			condition: 'The div should contain a br tag.'
 		},
 		{
 			test: 3,
 			status: false,
-			condition: 'The div contains an img tag.'
+			condition: 'The div should contain an img tag.'
 		},
 		{
 			test: 4,
 			status: false,
-			condition: 'The provided JSX element is rendered to the DOM node with id \'challenge-node\'.'
+			condition: 'The provided JSX element should render to the DOM node with id \'challenge-node\'.'
 		}
 	];
 
 	const prepend = `(function() {`
 	const apend = `; return JSX })()`
 	const modifiedCode = prepend.concat(code).concat(apend);
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
@@ -103,7 +97,7 @@ export const executeTests = (code) => {
 		passed = false;
 		testResults[0].status = false;
 	}
-	
+
 	// shallow render the component with Enzyme
 	try {
 		jsx = eval(es5);
@@ -113,8 +107,8 @@ export const executeTests = (code) => {
 
 	// test 1:
 	try {
-		
-		assert.strictEqual(jsx.type, 'div', 'The constant JSX returns an <div> element.');
+
+		assert.strictEqual(jsx.type, 'div', 'The constant JSX should return a div element.');
 		testResults[1].status = true;
 	} catch (err) {
 		passed = false;
@@ -123,7 +117,7 @@ export const executeTests = (code) => {
 
 	// test 2:
 	try {
-		assert.strictEqual(jsx.props.children[2].type, 'br', 'The div contains a br tag.');
+		assert.strictEqual(jsx.props.children[2].type, 'br', 'The div should contain a br tag.');
 		testResults[2].status = true;
 	} catch (err) {
 		passed = false;
@@ -132,7 +126,7 @@ export const executeTests = (code) => {
 
 	// test 3:
 	try {
-		assert.strictEqual(jsx.props.children[3].type, 'img', 'The div contains an img tag.');
+		assert.strictEqual(jsx.props.children[3].type, 'img', 'The div should contain an img tag.');
 		testResults[3].status = true;
 	} catch (err) {
 		passed = false;
@@ -145,19 +139,19 @@ export const executeTests = (code) => {
 		assert(
 			testDiv.includes('<p>WelcometoReact!</p>') &&
 			testDiv.includes('<br><imgsrc="https://goo.gl/ErGBQs"alt="ReactLogo">'),
-			'The provided JSX element is rendered as is to the DOM node with id \'challenge-node\'.'
+			'The provided JSX element should render as is to the DOM node with id \'challenge-node\'.'
 		);
 		testResults[4].status = true;
 	} catch (err) {
 		passed = false;
 		testResults[4].status = false;
-	}	
+	}
 
 	return {
 		passed,
 		testResults,
 	}
-	
+
 }
 
 // ---------------------------- define live render function ----------------------------

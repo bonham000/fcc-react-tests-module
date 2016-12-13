@@ -12,17 +12,16 @@ export const QA = false;
 // -------------- define challenge title and challenge instructions --------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Add Comments in JSX`
 export const challengeText = `<span class = 'default'>Intro: </span>
-JSX is a syntax that gets compiled to JavaScript. But it is a syntax nonetheless.
-Sometimes, for readability, we might need to add comments to our code.<br><br>
+JSX is a syntax that gets compiled into valid JavaScript. Sometimes, for readability, you might need to add comments to your code. Like most programming languages, JSX has its own way to do this.<br><br>
 
-We can put comments inside JSX using the syntax <code>{/* */}</code> to wrap around the comment text.`
+To put comments inside JSX, you use the syntax <code>{/* */}</code> to wrap around the comment text.`
 
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>
-We've provided a JSX element similar to what you just wrote. Add a comment somewhere within the provided <code>&#60;div/&#62</code> element, without
-modifying the existing <code>&lt;h1&gt;</code> or <code>&lt;p&gt;</code> elements.`
+The code editor has a JSX element similar to what you created in the last challenge. Add a comment somewhere within the provided <code>div</code> element, without
+modifying the existing <code>h1</code> or <code>p</code> elements.`
 
 // ---------------------------- define challenge seed code ----------------------------
-export const seedCode = 
+export const seedCode =
 `const JSX = (
 <div>
 	<h1>This is a block of JSX</h1>
@@ -48,27 +47,27 @@ export const executeTests = (code) => {
 		{
 			test: 0,
 			status: false,
-			condition: 'Your JSX code was transpiled successfully.'
+			condition: 'Your JSX code should transpile successfully.'
 		},
 		{
 			test: 1,
 			status: false,
-			condition: 'The constant JSX returns an <div> element.'
+			condition: 'The constant JSX should return a div element.'
 		},
 		{
 			test: 2,
 			status: false,
-			condition: 'The div contains an h1 tag as the first element.'
+			condition: 'The div should contain an h1 tag as the first element.'
 		},
 		{
 			test: 3,
 			status: false,
-			condition: 'The div contains an p tag as the second element.'
+			condition: 'The div should contain a p tag as the second element.'
 		},
 		{
 			test: 4,
 			status: false,
-			condition: 'The JSX includes a comment.'
+			condition: 'The JSX should include a comment.'
 		}
 	];
 
@@ -84,7 +83,7 @@ export const executeTests = (code) => {
 		passed = false;
 		testResults[0].status = false;
 	}
-	
+
 	// shallow render the component with Enzyme
 	try {
 		jsx = eval(es5);
@@ -94,7 +93,7 @@ export const executeTests = (code) => {
 
 	// test 1:
 	try {
-		assert.strictEqual(jsx.type, 'div', 'The constant JSX returns an <div> element.');
+		assert.strictEqual(jsx.type, 'div', 'The constant JSX should return a div element.');
 		testResults[1].status = true;
 	} catch (err) {
 		passed = false;
@@ -103,7 +102,7 @@ export const executeTests = (code) => {
 
 	// test 2:
 	try {
-		assert.strictEqual(jsx.props.children[0].type, 'h1', 'The div contains an h1 tag as the first element.');
+		assert.strictEqual(jsx.props.children[0].type, 'h1', 'The div should contain an h1 tag as the first element.');
 		testResults[2].status = true;
 	} catch (err) {
 		passed = false;
@@ -112,7 +111,7 @@ export const executeTests = (code) => {
 
 	// test 3:
 	try {
-		assert.strictEqual(jsx.props.children[1].type, 'p', 'The div contains an p tag as the second element.');
+		assert.strictEqual(jsx.props.children[1].type, 'p', 'The div should contain a p tag as the second element.');
 		testResults[3].status = true;
 	} catch (err) {
 		passed = false;
@@ -121,18 +120,18 @@ export const executeTests = (code) => {
 
 	// test 4:
 	try {
-		assert.strictEqual(modifiedCode.includes('/*'), true, 'The JSX includes a comment.');
+		assert.strictEqual(modifiedCode.includes('/*'), true, 'The JSX should include a comment.');
 		testResults[4].status = true;
 	} catch (err) {
 		passed = false;
 		testResults[4].status = false;
-	}	
+	}
 
 	return {
 		passed,
 		testResults,
 	}
-	
+
 }
 
 // ---------------------------- define live render function ----------------------------
