@@ -182,7 +182,6 @@ export default class App extends React.Component {
     }
 	}
   componentDidMount() {
-    console.log(this.props)
     document.addEventListener('keydown', this.handleKeyPress);
   }
   handleKeyPress = (event) => {

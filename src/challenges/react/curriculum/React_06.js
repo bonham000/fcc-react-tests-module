@@ -36,7 +36,7 @@ export const seedCode =
 `const JSX = (
 <div>
 	{/* change code below this line */}
-	Welcome to React! <br >
+	<p>Welcome to React!<p> <br >
 	<img src="https://goo.gl/ErGBQs" alt="React Logo">
 	{/* change code above this line */}
 </div>
@@ -49,7 +49,7 @@ export const solutionCode =
 `const JSX = (
 <div>
 	{/* change code below this line */}
-	Welcome to React! <br />
+	<p>Welcome to React!</p> <br />
 	<img src="https://goo.gl/ErGBQs" alt="React Logo" />
 	{/* change code above this line */}
 </div>
@@ -123,7 +123,7 @@ export const executeTests = (code) => {
 
 	// test 2:
 	try {
-		assert.strictEqual(jsx.props.children[1].type, 'br', 'The div contains a br tag.');
+		assert.strictEqual(jsx.props.children[2].type, 'br', 'The div contains a br tag.');
 		testResults[2].status = true;
 	} catch (err) {
 		passed = false;
@@ -132,7 +132,7 @@ export const executeTests = (code) => {
 
 	// test 3:
 	try {
-		assert.strictEqual(jsx.props.children[2].type, 'img', 'The div contains an img tag.');
+		assert.strictEqual(jsx.props.children[3].type, 'img', 'The div contains an img tag.');
 		testResults[3].status = true;
 	} catch (err) {
 		passed = false;
@@ -141,7 +141,12 @@ export const executeTests = (code) => {
 
 	// test 4:
 	try {
-		assert.strictEqual(document.getElementById('challenge-node').childNodes[0].innerHTML, '<!-- react-text: 2 -->Welcome to React! <!-- /react-text --><br><img src="https://goo.gl/ErGBQs" alt="React Logo">', 'The provided JSX element is rendered to the DOM node with id \'challenge-node\'.');
+		let testDiv = document.getElementById('challenge-node').childNodes[0].innerHTML.replace(/\s/g,'');
+		assert(
+			testDiv.includes('<p>WelcometoReact!</p>') &&
+			testDiv.includes('<br><imgsrc="https://goo.gl/ErGBQs"alt="ReactLogo">'),
+			'The provided JSX element is rendered as is to the DOM node with id \'challenge-node\'.'
+		);
 		testResults[4].status = true;
 	} catch (err) {
 		passed = false;
