@@ -24,7 +24,7 @@ will be mounted and this is where methods like <code>componentWillMount()</code>
 After this, however, as state changes components will just re-render themselves. We'll discuss this a little more in the next lesson.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've create two components for you. The
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've created two components for you. The
 child component <code>Dialog</code> is receiving <code>message</code> props from its parent <code>Controller</code> component.
 Let's write the <code>componentWillReceiveProps()</code> method in the <code>Dialog</code> component and have it log <code>this.props</code>
 and <code>nextProps</code> to the console (don't forget to pass <code>nextProps</code> as an argument to this method).<br><br>

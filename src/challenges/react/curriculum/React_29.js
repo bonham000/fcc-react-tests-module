@@ -25,7 +25,7 @@ component called <code>ControlledInput</code> in which we want to create a contr
 initialized it with an <code>&lt;input/&gt;</code> property in the state set to an empty string. This value will represent
 our input text. Now, we need to create a method to handle changes to our input element and create the element itself.
 
-We'll call the our method <code>handleInput()</code>. It will receive an <code>event</code> object which will contain
+We'll call our method <code>handleInput()</code>. It will receive an <code>event</code> object which will contain
 a string of text from the input element you can access through <code>event.target.value</code>. When you define the 
 method you will need to pass this <code>event</code> object in.<br><br>
 

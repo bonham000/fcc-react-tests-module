@@ -12,7 +12,7 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Use Sta
 
 export const challengeText = `<span class = 'default'>Intro: </span>Lets look at a more complex usage of state.
 We can use state to monitor the status of some value and render our UI conditionally based on this value.
-There are many different ways to accomplish this, here we'll take a simple example.`
+There are many different ways to accomplish this. Here we'll take a simple example.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've defined <code>MyComponent</code> again

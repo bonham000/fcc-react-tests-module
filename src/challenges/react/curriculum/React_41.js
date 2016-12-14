@@ -20,8 +20,8 @@ of a React component.`
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've created a component that contains a <code>boolean</code> in its state
 which represents a condition which tracks if we want to display some element in the UI or not. We've wired up a <code>&lt;button/&gt;</code> to toggle the state of this value. Currently,
-we render the same UI everytime. Rewrite the <code>render()</code> method with an <code>if/else</code> statement so that if <code>display</code> is <code>true</code> we return the current
-markup, otherwise, let's just return the <code>&lt;button/&gt;</code> without the <code>&lt;h1/&gt;</code> element.`
+we render the same UI every time. Rewrite the <code>render()</code> method with an <code>if/else</code> statement so that if <code>display</code> is <code>true</code> we return the current
+markup. Otherwise, let's just return the <code>&lt;button/&gt;</code> without the <code>&lt;h1/&gt;</code> element.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
@@ -89,7 +89,7 @@ export const executeTests = (code) => {
 	const error_1 = 'MyComponent exists and is rendered.';
 	const error_2 = 'When display is set to true, a div, button, and h1 are rendered.';
 	const error_3 = 'When display is set to false, only a div and button are rendered.';
-	const error_4 = 'The render method uses and if/else statement to check the condition of this.state.display.';
+	const error_4 = 'The render method uses an if/else statement to check the condition of this.state.display.';
 
 	let testResults = [
 		{

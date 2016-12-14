@@ -13,9 +13,9 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Return null to Prevent Rendering`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>In some cases we may not want to render a child element under certain conditions. In React you can avoid
-rendering a component by simply returning <code>null</code> in its <code>render()</code> method. This can be used in some cases for example where you have a child
-component that just doesn't need to render under some conditions.`
+export const challengeText = `<span class = 'default'>Intro: </span>There are some situations where we may not want to render a child element. In React you can avoid
+rendering a component by simply returning <code>null</code> in its <code>render()</code> method. This is useful in situations where you want
+to avoid rendering components based on conditional logic.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've provided the example we've been working with again here. This time, we will render

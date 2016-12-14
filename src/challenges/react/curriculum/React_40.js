@@ -20,7 +20,7 @@ But this is not the only way that we can utilize vanilla JavaScript code in our 
 
 We can also write JavaScript directly into our <code>render</code> methods, before the <code>return</code>, <strong><em>without</em></strong> inserting it inside of curly braces (since this is not within 
 our JSX code), and then use that variable later in our JSX code <em>inside</em> the <code>return</code>, by once again placing it inside of curly braces. While this challenge illustrates
-this concept in a simple way, rememebr, like with many of these challenges, this simple illustration can be expanded upon significantly, in order to achieve exponentially more complex results.`
+this concept in a simple way, remember, like with many of these challenges, this simple illustration can be expanded upon significantly, in order to achieve exponentially more complex results.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>

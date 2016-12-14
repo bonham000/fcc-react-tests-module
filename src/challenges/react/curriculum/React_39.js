@@ -18,7 +18,7 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Add Inl
 
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>Do you notice anything else that is different about the
-way this is written? Beyond the fact that we are setting the style attribute equal to a javaScript object, there are other some
+way this is written? Beyond the fact that we are setting the style attribute equal to a javaScript object, there are some other
 important differences that we must note. The first thing to note is that we are creating the style <code>object</code> within a 
 set a curly braces, <code>{ }</code> — it really is just a JavaScript object. The other important piece of information here
 is the syntax of the style properties. For example, you might have noticed that to control the size of the font we used
@@ -32,7 +32,7 @@ be in <code>px</code> unless otherwise specified (you might have noticed we did 
 <code>px</code> all other property values should also be wrapped in quotes.<br><br>
 
 Before we move on, let's cover an additional way we can apply inline styles in React. And remember, this is just the tip of the iceberg when 
-it comes to adding styles in React. These concepts can be expanded upon significantly to bring your components to life an rich and exciting ways!
+it comes to adding styles in React. These concepts can be expanded upon significantly to bring your components to life in rich and exciting ways!
 `
 
 // ---------------------------- challenge instructions ----------------------------
