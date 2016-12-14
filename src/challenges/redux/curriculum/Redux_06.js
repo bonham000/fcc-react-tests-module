@@ -15,13 +15,13 @@ export const challengeText = `<span class = 'default'>Intro: </span>Now we will 
 to actions. To do this we will have to write a <code>reducer</code> function. Reducers in Redux are responsible for the state
 modifications that take place in response to actions. A <code>reducer</code> will take <code>state</code> and <code>action</code>
 as arguments and it will always return a new <code>state</code>. It is important to see that this is the <strong>only</strong>
-role of the reducer. It has no side effects, it never calls an API endpoint, it never has any hidden surprises, it is simply a
+role of the reducer. It has no side effects, it never calls an API endpoint, it never has any hidden surprises; it's simply a
 pure function that takes state and action and returns new state.<br><br>
 
 Another key principle in Redux is that <code>state</code> is read-only. In other words, your <code>reducer</code> must
 <strong>always</strong> return a new copy of <code>state</code> and never modify state directly. Redux does not enforce state
 immutability, however, we must enforce it in the code of our reducer functions. We will get some practice with this later
-in these lessons.`
+on in these lessons.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've modified the previous example and provided
@@ -80,7 +80,7 @@ const loginAction = () => {
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
+	const error_0 = 'Your code was transpiled successfully.';
 	const error_1 = 'Calling the function loginAction returns an object with type property set to the string \'LOGIN\'.';
 	const error_2 = 'The store is initialized with an object with property login set to false.';
 	const error_3 = 'Dispatching loginAction updates the login property in the store\'s state to true.';

@@ -89,7 +89,7 @@ const store = Redux.createStore(immutableReducer);`
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
+	const error_0 = 'Your code was transpiled successfully.';
 	const error_1 = 'The Redux store exists and is initialized with a state an object with keys \'user\', \'status\', \'friends\', and \'community\'';
 	const error_2 = 'wakeUp and immutableReducer are both functions.';
 	const error_3 = 'Dispatching an action of type \'ONLINE\' updates the property \'status\' in state to \'online\' and returns a new state object.';

@@ -101,7 +101,7 @@ const logoutUser = () => {
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
+	const error_0 = 'Your code was transpiled successfully.';
 	const error_1 = 'Calling the function loginUser returns an object with type property set to the string \'LOGIN\'.';
 	const error_2 = 'Calling the function logoutUser returns an object with type property set to the string \'LOGOUT\'.';
 	const error_3 = 'The store is initialized with an object with property login set to false.';

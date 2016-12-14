@@ -134,7 +134,7 @@ const store = Redux.createStore(
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
+	const error_0 = 'Your code was transpiled successfully.';
 	const error_1 = 'The requestingData action creator returns an object of type equal to the value of REQUESTING_DATA.';
 	const error_2 = 'The receivedData action creator returns an object of type equal to the value of RECEIVED_DATA.';
 	const error_3 = 'asyncDataReducer is a function.';

@@ -38,7 +38,7 @@ export const solutionCode =
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
+	const error_0 = 'Your code was transpiled successfully.';
 	const error_1 = 'An action object exists.';
 	const error_2 = 'The action has a key property \'type\' with value \'LOGIN\'.';
 

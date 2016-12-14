@@ -74,7 +74,7 @@ const store = Redux.createStore(counterReducer);`
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
+	const error_0 = 'Your code was transpiled successfully.';
 	const error_1 = 'The action creator incAction returns an action object with type equal to the value of INCREMENT';
 	const error_2 = 'The action creator decAction returns an action object with type equal to the value of DECREMENT';
 	const error_3 = 'The Redux store is initialized with a state of 0.';
