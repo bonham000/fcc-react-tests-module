@@ -10,24 +10,23 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Functional Stateless Components`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Using Props with Stateless Functional Components`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>One more thing about props before we move on. Remember at the
-beginning of this section when we defined a functional stateless JSX element? We can do the same thing with React Components. When
-defining a child component we can pass props to it and the component itself can simply render these props as UI. The component is stateless
-in the sense that it does not possess state itself but receives all of its 'state' information from its parent via props. It is also
-functional in the sense that when given props it simply returns a UI and it should return that same UI every time it receives the same
-props.<br><br>
-
-This is a useful feature of React and reiterates one of React's important design principles: React is declarative. React takes data, and
-returns a view. It does this in a predictable way, and functional stateless components are one way it achieves this.`
+export const challengeText = `<span class = 'default'>Intro: </span>So far, all the components you've been working with have rendered
+a view based on some props data that we pass to them. They are, in fact, stateless functional components, just like the stateless
+functional JSX elements we introduced earlier in this series. These components accept props as input, and, like pure functions, predictably
+return the same view every time they are passed the same props. This behavior is very useful when we have applications with complex state
+management. Now, you may be wondering what all the talk of state is about. Don't worry, we'll take a deep dive into state in the next challenge.
+Before that, however, let's practice by reviewing everything we've learned about props.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've defined a <code>Campsite</code> component
 for you which is currently rendering a <code>Camper</code> component as a child. However, this <code>Camper</code> component has not
-been defined. Define <code>Camper</code> and assign it default props of <code>{ name: 'CamperBot' }</code>. You can render whatever
-you want within the <code>Camper</code> component, but don't forget to call its <code>constructor</code> and pass in props.`
+been defined. Define <code>Camper</code> and assign it default props of <code>{ name: 'CamperBot' }</code>. Inside the <code>Camper</code>
+component render whatever you want, but be sure to include a <code>p</code> element which includes only the <code>name</code> value passed
+in as a <code>prop</code>. Finally, also define <code>propTypes</code> on the <code>Camper</code> component that expect <code>name</code>
+to be a required <code>string</code>.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
@@ -59,6 +58,7 @@ export const solutionCode =
     );
   }
 };
+// change code below this line
 
 class Camper extends React.Component {
   constructor(props) {
@@ -67,15 +67,20 @@ class Camper extends React.Component {
   render() {
    return (
      <div>
-       <h1>Hi, I am: {this.props.name}</h1>
+       <p>{this.props.name}</p>
      </div>
    )
   }
 };
-// change code below this line
+
+Camper.propTypes = {
+	name: React.PropTypes.string.isRequired
+};
+
 Camper.defaultProps = {
   name: 'CamperBot'
-}`
+};
+`
 
 // ---------------------------- define challenge tests ----------------------------
 
@@ -85,6 +90,8 @@ export const executeTests = (code) => {
 	const error_1 = 'The component CampSite is rendered.';
 	const error_2 = 'The component Camper is rendered.';
 	const error_3 = 'The Camper component includes default props which assign the string \'Camperbot\' to the key name.';
+	const error_4 = 'The Camper component includes prop types which require the name prop to be of type string.';
+	const error_5 = 'The Camper component contains a p element with just the text from the name prop.';
 
 	let testResults = [
 		{
@@ -106,6 +113,16 @@ export const executeTests = (code) => {
 			test: 3,
 			status: false,
 			condition: error_3
+		},
+		{
+			test: 4,
+			status: false,
+			condition: error_4
+		},
+		{
+			test: 5,
+			status: false,
+			condition: error_5
 		}
 	];
 
@@ -164,6 +181,26 @@ export const executeTests = (code) => {
 	} catch (err) {
 		passed = false;
 		testResults[3].status = false;
+	}	
+
+		// test 4:
+	try {
+		const noWhiteSpace = modifiedCode.replace(/\s/g, '');
+		const verifyDefaultProps = 'Camper.propTypes={name:React.PropTypes.string.isRequired';
+		assert.strictEqual(noWhiteSpace.includes(verifyDefaultProps), true, error_4);
+		testResults[4].status = true;
+	} catch (err) {
+		passed = false;
+		testResults[4].status = false;
+	}
+
+	// test 5:
+	try {
+		assert.strictEqual(mockedComponent.contains(<p>CamperBot</p>), true, error_5);
+		testResults[5].status = true;
+	} catch (err) {
+		passed = false;
+		testResults[5].status = false;
 	}	
 
 

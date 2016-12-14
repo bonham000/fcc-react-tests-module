@@ -107,7 +107,7 @@ const challenges = [
   { type: 'React', id: 'React_17', title: 'Use Default Props'},
   { type: 'React', id: 'React_18', title: 'Override Default Props'},
   { type: 'React', id: 'React_19', title: 'Use PropTypes to Define the Props You Expect'},
-  { type: 'React', id: 'React_20', title: 'Functional Stateless Components'},
+  { type: 'React', id: 'React_20', title: 'Using Props with Stateless Functional Components'},
   { type: 'React', id: 'React_21', title: 'Create a Stateful Component'},
   { type: 'React', id: 'React_22', title: 'Render State in the UI'},
   { type: 'React', id: 'React_23', title: 'Render State in the UI Another Way'},

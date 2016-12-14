@@ -36,7 +36,7 @@
   - :blue_book: 17: Use Default Props
   - :blue_book: 18: Override Default Props *(cannot check `defaultProps` on child)*
   - :blue_book: 19: Use PropTypes to Define the Props You Expect *(regex `.includes` test for `propTypes`)*
-  - :blue_book: 20: Functional Stateless Components *(regex `.includes` test for `propTypes`)*
+  - :blue_book: 20: Using Props with Stateless Functional Components *(regex `.includes` test for `propTypes`)*
 
 - **State**
 
