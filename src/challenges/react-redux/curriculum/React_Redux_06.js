@@ -74,7 +74,7 @@ const mapDispatchToProps = (dispatch) => {
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
+	const error_0 = 'Your code was transpiled successfully.';
 	const error_1 = 'addMessage returns an object with keys \'type\' and \'message\'.';
 	const error_2 = 'mapDispatchToProps is a function.';
 	const error_3 = 'mapDispatchToProps returns an object.';

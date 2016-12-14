@@ -50,7 +50,7 @@ const mapStateToProps = (state) => {
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
+	const error_0 = 'Your code was transpiled successfully.';
 	const error_1 = 'The const state is an empty array.';
 	const error_2 = 'mapStateToProps is a function.';
 	const error_3 = 'mapStateToProps returns an object.';

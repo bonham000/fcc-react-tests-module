@@ -53,7 +53,7 @@ const store = Redux.createStore(messageReducer);`
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
+	const error_0 = 'Your code was transpiled successfully.';
 	const error_1 = 'The const ADD exists and holds a value equal to the string \'ADD\'';
 	const error_2 = 'The action creator addMessage returns an object with type equal to ADD and message equal to the message that is passed in.';
 	const error_3 = 'messageReducer is a function.';
