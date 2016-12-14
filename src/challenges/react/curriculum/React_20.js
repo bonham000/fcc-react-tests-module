@@ -13,12 +13,18 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Using Props with Stateless Functional Components`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>So far, all the components you've been working with have rendered
-a view based on some props data that we pass to them. They are, in fact, stateless functional components, just like the stateless
-functional JSX elements we introduced earlier in this series. These components accept props as input, and, like pure functions, predictably
-return the same view every time they are passed the same props. This behavior is very useful when we have applications with complex state
-management. Now, you may be wondering what all the talk of state is about. Don't worry, we'll take a deep dive into state in the next challenge.
-Before that, however, let's practice by reviewing everything we've learned about props.`
+export const challengeText = `<span class = 'default'>Intro: </span>So far, except for the last challenge we've been passing props to
+stateless functional components. These components accept props as input, and, like pure functions, predictably
+return the same view every time they are passed the same props. Now, you may be wondering what all the talk of state is about. 
+Don't worry, we'll take a deep dive into state in the next challenge. Before we do that, however, let's take a moment to review
+this terminology about components.<br><br>
+
+Any function you write which accepts props and returns UI is referred to as a functional stateless component. A class, on the other hand, that
+extends <code>React.Component</code>, if it does not use intenal state (what we'll learn about next), is called a stateless component. Finally, a component
+that does maintain its own internal state is a stateful component, but may just be called a component or a React component. The tendency is to
+try and minimize statefulness and to create stateless functional components wherever possible. This pattern encapsulates your state management
+within a specific area of your app, which improves development and maintenance by making it easier to reason about how state updates affect
+your app's behavior. Now, before we move on to cover state let's do a quick review of everything we've learned about props.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've defined a <code>Campsite</code> component
@@ -60,17 +66,12 @@ export const solutionCode =
 };
 // change code below this line
 
-class Camper extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
+const Camper = (props) => {
    return (
      <div>
-       <p>{this.props.name}</p>
+       <p>{props.name}</p>
      </div>
-   )
-  }
+   );
 };
 
 Camper.propTypes = {

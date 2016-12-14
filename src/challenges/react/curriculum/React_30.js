@@ -93,8 +93,8 @@ export const solutionCode =
 export const executeTests = (code) => {
 
 	const error_0 = 'Your JSX code was transpiled successfully.';
-	const error_1 = 'MyComponent returns a div element which contains an input, a p tag, and an h1 tag.';
-	const error_2 = 'The state of MyComponent is initialized with input and submit properties set to an empty strings.';
+	const error_1 = 'MyForm returns a div element which contains an input, a button, and an h1 tag.';
+	const error_2 = 'The state of MyForm is initialized with input and submit properties set to an empty strings.';
 	const error_3 = 'Typing in the input element updates the input property in the state.';
 	const error_4 = 'Clicking the button runs handleSubmit which sets the submit property in state equal to the current input.';
 

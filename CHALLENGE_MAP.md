@@ -31,11 +31,11 @@
 - **Props**
 
   - :blue_book: 14: Pass a String to a Functional Component
-  - :blue_book: 15: Access Props Using this.props
-  - :blue_book: 16: Pass an Array as Props
-  - :blue_book: 17: Use Default Props
-  - :blue_book: 18: Override Default Props *(cannot check `defaultProps` on child)*
-  - :blue_book: 19: Use PropTypes to Define the Props You Expect *(regex `.includes` test for `propTypes`)*
+  - :blue_book: 15: Pass an Array as Props
+  - :blue_book: 16: Use Default Props
+  - :blue_book: 17: Override Default Props *(cannot check `defaultProps` on child)*
+  - :blue_book: 18: Use PropTypes to Define the Props You Expect *(regex `.includes` test for `propTypes`)*
+  - :blue_book: 19: Access Props Using this.props
   - :blue_book: 20: Using Props with Stateless Functional Components *(regex `.includes` test for `propTypes`)*
 
 - **State**

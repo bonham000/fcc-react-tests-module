@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from 'react'
 import assert from 'assert'
-import { shallow } from 'enzyme'
+import { shallow, mount } from 'enzyme'
 import { transform } from 'babel-standalone'
 
 // snippet for defining HTML: <code>&lt;div /&gt;</code>
@@ -10,42 +10,39 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Access Props Using this.props`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Pass an Array as Props`
 
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>
-Ok, so we've got the basics down of passing props down to child components. But what if the child component that we're 
-passing a prop to is an ES6 style comonent, rather than a functional component? To account for this, we need to change 
-the convention through which we access props slightly.<br><br>
+So far in this section, we've seen that we can pass information down to children through their parent components as props. In the past 2 challenges 
+we've passed strings as props &mdash; but what about other data types? In this challenge, we'll explore passing arrays as props.
 
-Whenever we refer to a class component within itself, we always use the <code>this</code> keyword. So to access props within a class component, 
-we simply need to preface the code that we use to access it with <code>this</code>. For example, in our last challenge, we accessed the prop <code>username</code> 
-in our JSX code using <code>{props.username}</code>, but if the <code>ReturnUsername</code> component had been an ES6 class component instead, we would have written <code>{this.props.username}</code>. That's it!
-Easy, right?`
+The concept of passing props here is really only slightly different than in our last challenge. The main difference is that since the data we are passing is not just simple text (as you 
+would expect to see assigned to an HTML-like attribute), we must pass our data in as JavaScript. And, of course, since we are composing this code within a JSX element, it must be wrapped 
+by curly braces.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>
-In the parent component <code>ResetPassword</code>, render an instance of the <code>ReturnTempPassword</code> component in the indicated space. Give this component 
-a prop of <code>tempPassword</code> and assign it a value of a string that is at least 8 characters long. Within the child, <code>ReturnTempPassword</code>, lets make sure the 
-user sees the temporary password by accessing the <code>tempPassword</code> prop within the <code>&lt;strong&gt;</code> tags.`
+Take a look at the different props we are passing to the <code>Selections</code> component. We have <code>attire</code>, <code>shirts</code>, <code>pants</code>, and <code>shoes</code>. Since you are probably just sitting at 
+home coding right now, let's go with a super-casual outfit. Within the <code>Selections</code> component, use bracket notation to access the arrays we are passing as props so 
+that the first instance of the <code>Selections</code> component renders the text: "A super-casual day. I'm going to wear a sweatshirt, pajama pants, and slippers.".<br><br>
+
+Tomorrow you have work, BUT, you work as a programmer at a super hip start up, so dressing casual is totally cool. In the space indicated in the <code>OutfitSelector</code> component, render a 
+second instance of the <code>Selections</code> component. Pass the same arrays as props, but this time, reorder the elements a bit so that the rendered text reads:
+"A casual day. I'm going to wear a t-shirt, blue jeans, and sneakers."`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = 
-`class ReturnTempPassword extends React.Component {
-  constructor(props) {
-  	super(props);
-
-  }
-  render() {
-    return (
-        <div>
-            <p>Your temporary password is: <strong></strong></p>
-        </div>
-    );
-  }
+`const Selections = (props) => {
+  return (
+      <div>
+          A { /* change code here */ } day. 
+          I'm going to wear a { /* change code here */ }, { /* change code here */ }, and { /* change code here */ }.
+      </div>
+  );
 };
 
-class ResetPassword extends React.Component {
+class OutfitSelector extends React.Component {
   constructor(props) {
   	super(props);
 
@@ -53,9 +50,15 @@ class ResetPassword extends React.Component {
   render() {
     return (
         <div>
-        	<h2>Reset Password</h2>
-        	<h3>We've generated a new temporary password for you.</h3>
-        	<h3>Please reset this password from your account settings ASAP.</h3>
+        	<h1>What to wear?!</h1>
+        	<h3>Today is:</h3>
+        	<Selections 
+            attire={['casual', 'formal', 'super-casual']}
+            shirts={['t-shirt', 'sweatshirt', 'collared shirt']}
+            pants={['slacks', 'blue jeans', 'khakis', 'shorts', 'pajama pants']}
+            shoes={['dress shoes', 'slippers', 'sneakers']}
+            />
+        	<h3>Tomorrow is:</h3>
         	{ /* change code below this line */ }
           
         	{ /* change code above this line */ }
@@ -66,21 +69,16 @@ class ResetPassword extends React.Component {
 
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode = 
-`class ReturnTempPassword extends React.Component {
-  constructor(props) {
-  	super(props);
-
-  }
-  render() {
-    return (
-        <div>
-            <p>Your temporary password is: <strong>{this.props.tempPassword}</strong></p>
-        </div>
-    );
-  }
+`const Selections = (props) => {
+  return (
+      <div>
+        A {props.attire[2]} day. 
+        I'm going to wear a {props.shirts[1]}, {props.pants[4]}, and {props.shoes[1]}.
+      </div>
+  );
 };
 
-class ResetPassword extends React.Component {
+class OutfitSelector extends React.Component {
   constructor(props) {
   	super(props);
 
@@ -88,11 +86,24 @@ class ResetPassword extends React.Component {
   render() {
     return (
         <div>
-        	<h2>Reset Password</h2>
-        	<h3>We've generated a new temporary password for you.</h3>
-        	<h3>Please reset this password from your account settings ASAP.</h3>
+        	<h1>What to wear?!</h1>
+        	<h3>Today is:</h3>
         	{ /* change code below this line */ }
-          <ReturnTempPassword tempPassword="serrPbqrPnzc" />
+        	<Selections 
+            attire={['casual', 'formal', 'super-casual']}
+            shirts={['t-shirt', 'sweatshirt', 'collared shirt']}
+            pants={['slacks', 'blue jeans', 'khakis', 'shorts', 'pajama pants']}
+            shoes={['dress shoes', 'slippers', 'sneakers']}
+            />
+        	{ /* change code above this line */ }
+        	<h3>Tomorrow is:</h3>
+        	{ /* change code below this line */ }
+          <Selections 
+            attire={['formal', 'super-casual', 'casual']}
+            shirts={['collared shirt', 't-shirt', 'sweatshirt']}
+            pants={['slacks', 'khakis', 'shorts', 'pajama pants', 'blue jeans']}
+            shoes={['dress shoes', 'sneakers', 'slippers']}
+            />
         	{ /* change code above this line */ }
         </div>
     );
@@ -104,10 +115,12 @@ class ResetPassword extends React.Component {
 export const executeTests = (code) => {
 
 	const error_0 = 'Your JSX code was transpiled successfully.';
-	const error_1 = 'The ResetPassword component returns a single <div> element.';
-	const error_2 = 'The ResetPassword component\'s fourth child is the ReturnTempPassword component.';
-	const error_3 = 'The ReturnTempPassword component has a prop called tempPassword.';
-	const error_4 = 'The ReturnTempPassword component\'s tempPassword prop is equal to a string of at least 8 characters.';
+	const error_1 = 'The OutfitSelector component should return a single outer <div>.';
+	const error_2 = 'The OutfitSelector component\'s third child should be an instance of the Selections component.';
+	const error_3 = 'The OutfitSelector component\'s fifth child should be an instance of the Selections component.';
+	const error_4 = 'Both instances of the Selections component should have props called attire, shirts, pants, and shoes, and the value of each of these props should be an array.';
+	const error_5 = 'The first instance of the Selections component should return the text "A super-casual day. I\'m going to wear a sweatshirt, pajama pants, and slippers."';
+	const error_6 = 'The second instance of the Selections component should return the text "A casual day. I\'m going to wear a t-shirt, blue jeans, and sneakers."';
 
 	let testResults = [
 		{
@@ -131,17 +144,27 @@ export const executeTests = (code) => {
 			condition: error_3
 		},
 		{
-			test: 3,
+			test: 4,
 			status: false,
 			condition: error_4
+		},
+		{
+			test: 5,
+			status: false,
+			condition: error_5
+		},
+		{
+			test: 6,
+			status: false,
+			condition: error_6
 		}
 	];
 
-	let es5, mockedComponent, passed = true;
+	let es5, mockedComponent, mockRender, propsObj, passed = true;
 
 	// this applies an export to the user's code so
 	// we can access their component here for tests
-	const exportScript = '\n export default ResetPassword'
+	const exportScript = '\n export default OutfitSelector'
 	const modifiedCode = code.concat(exportScript);
 	
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
@@ -158,18 +181,17 @@ export const executeTests = (code) => {
 	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
 	try {
 		mockedComponent = shallow(React.createElement(eval(es5)));
+		mockRender = mount(React.createElement(eval(es5)));
 	} catch (err) {
 		passed = false;
 	}
-
-	console.log(mockedComponent.props());
 
 	// run specific tests to verify the functionality
 	// that the challenge is trying to assess:
 
 	// test 1:
 	try {
-		assert.strictEqual(mockedComponent.type(), 'div', error_1);
+		assert.strictEqual(mockedComponent.type(), 'div', error_1)
 		testResults[1].status = true;
 	} catch (err) {
 		passed = false;
@@ -178,7 +200,7 @@ export const executeTests = (code) => {
 
 	// test 2:
 	try {
-		assert.strictEqual(mockedComponent.nodes[0].props.children[3].type.name, 'ReturnTempPassword', error_2)
+		assert.strictEqual(mockedComponent.nodes[0].props.children[2].type.name, 'Selections', error_2)
 		testResults[2].status = true;
 	} catch (err) {
 		passed = false;
@@ -187,21 +209,45 @@ export const executeTests = (code) => {
 
 	// test 3:
 	try {
-		assert(mockedComponent.props().children[3].props.hasOwnProperty('tempPassword'), error_3)
+		assert.strictEqual(mockedComponent.nodes[0].props.children[4].type.name, 'Selections', error_2)
 		testResults[3].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[3].status = false;
+		testResults[3].status = false;		
 	}
 
 	// test 4:
 	try {
-		assert(typeof mockedComponent.props().children[3].props.tempPassword === 'string' &&
-			mockedComponent.props().children[3].props.tempPassword.length >= 8, error_4)
+		assert(Array.isArray(mockedComponent.props().children[2].props.attire) === true &&
+			Array.isArray(mockedComponent.props().children[2].props.pants) === true &&
+			Array.isArray(mockedComponent.props().children[2].props.shirts) === true &&
+			Array.isArray(mockedComponent.props().children[2].props.shoes) === true &&
+			Array.isArray(mockedComponent.props().children[4].props.attire) === true &&
+			Array.isArray(mockedComponent.props().children[4].props.pants) === true &&
+			Array.isArray(mockedComponent.props().children[4].props.shirts) === true &&
+			Array.isArray(mockedComponent.props().children[4].props.shoes) === true, error_4)
 		testResults[4].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[4].status = false;
+		testResults[4].status = false;		
+	}
+
+	// test 5:
+	try {
+		assert.strictEqual(mockRender.find('div').nodes[1].innerText, "A super-casual day. I\'m going to wear a sweatshirt, pajama pants, and slippers.", error_4)
+		testResults[5].status = true;
+	} catch (err) {
+		passed = false;
+		testResults[5].status = false;
+	}
+
+	// test 6:
+	try {
+		assert.strictEqual(mockRender.find('div').nodes[2].innerText, "A casual day. I\'m going to wear a t-shirt, blue jeans, and sneakers.", error_4)
+		testResults[6].status = true;
+	} catch (err) {
+		passed = false;
+		testResults[6].status = false;
 	}
 
 	return {
@@ -216,7 +262,7 @@ export const executeTests = (code) => {
 export const liveRender = (code) => {
 
 	try {
-		const exportScript = '\n export default ResetPassword'
+		const exportScript = '\n export default OutfitSelector'
 		const modifiedCode = code.concat(exportScript);
 		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		const renderedComponent = React.createElement(eval(es5));

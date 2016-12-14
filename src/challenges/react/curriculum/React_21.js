@@ -28,7 +28,8 @@ property must be set to a JavaScript <code>object</code>. Declaring it looks lik
 </code>
 
 We will then have access to this <code>state</code> throughout the life of our component. We can update it, render it in our UI,
-and pass it as props to child components. The <code>state</code> object can be as complex or as simple as you need it to be.`
+and pass it as props to child components. The <code>state</code> object can be as complex or as simple as you need it to be. Note
+that you must create a class component by extending <code>React.Component</code> in order to create <code>state</code> like this.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've defined a component for you that is

@@ -54,9 +54,9 @@ export const seedCode =
 	render() {
   	return (
 	    <div>
-	    	// change code below this line
+	    	{ /* change code below this line */ }
         <button>Click Me</button>
-        // change code above this line
+        { /* change code above this line */ }
         <h1>Current Item Count: {this.state.itemCount}</h1>
 	    </div>
     );

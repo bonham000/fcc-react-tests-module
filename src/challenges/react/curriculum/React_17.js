@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from 'react'
 import assert from 'assert'
-import { shallow, mount } from 'enzyme'
+import { mount } from 'enzyme'
 import { transform } from 'babel-standalone'
 
 // snippet for defining HTML: <code>&lt;div /&gt;</code>
@@ -10,62 +10,68 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Use Default Props`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Override Default Props`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>Now that you understand how props work let's
-learn about default props. You can assign default props to a component as a property on the component class itself.
-This allows you to specify what a prop value should be if no value is explicitly provided. For example, by declaring
-<code>MyComponent.defaultProps = { location: 'San Francisco' }</code> you have defined a location prop which will
-be set to the string <code>San Francisco</code> unless you specify otherwise. Default props will be assigned if
-props are undefined, but if you pass <code>null</code> as the value for a prop, it will remain <code>null</code>.`
+export const challengeText = `<span class = 'default'>Intro: </span>Now that you have learned how to set default props let's
+get some practice overriding default props by explicitly setting prop values.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>We have defined a <code>ShoppingCart</code>
-component for you. Define default props on this component which specify a prop <code>items</code> with a value of <code>0</code>.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've modified the previous components so that
+now the <code>ShoppingCart</code> renders a child component <code>Items</code>. This <code>Items</code> component has a default prop of <code>quantity</code>
+set to the integer <code>0</code>. Let's pass in a value of <code>10</code> instead for the prop <code>quantity</code>. Note: to pass an integer value as a
+prop you must enclose it in curly braces, for instance like this: <code>{100}</code>. This is the syntax so JSX knows to interpret
+the value within the braces directly as JavaScript. We will learn more about the uses of curly braces like this in later lessons.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
-`class ShoppingCart extends React.Component {
+`const Items = (props) => {
+	return <h1>Current Quantity of Items in Cart: {props.quantity}</h1>
+}
+
+Items.defaultProps = {
+	quantity: 0
+}
+
+class ShoppingCart extends React.Component {
 	constructor(props) {
 		super(props);
 	}
   render() {
-    return (
-			<div>
-				<h1>Shopping Cart Component</h1>
-			</div>
-    )
+    { /* change code above this line */ }
+    return <Items />
+    { /* change code below this line */ }
   }
-};
-// change code below this line`
+};`
 
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode =
-`class ShoppingCart extends React.Component {
+`const Items = (props) => {
+	return <h1>Current Quantity of Items in Cart: {props.quantity}</h1>
+}
+
+Items.defaultProps = {
+	quantity: 0
+}
+
+class ShoppingCart extends React.Component {
 	constructor(props) {
 		super(props);
 	}
   render() {
-    return (
-			<div>
-				<h1>Shopping Cart Component</h1>
-			</div>
-    )
+  	{ /* change code above this line */ }
+    return <Items quantity = {10} />
+    { /* change code below this line */ }
   }
-};
-
-// change code below this line
-ShoppingCart.defaultProps = {
-	items: 0
-}`
+};`
 
 // ---------------------------- define challenge tests ----------------------------
 
 export const executeTests = (code) => {
 
 	const error_1 = 'The component ShoppingCart is rendered.';
-	const error_2 = 'The ShoppingCart component has a default prop of { items: 0 }';
+	const error_2 = 'The component Items is rendered.';
+	const error_3 = 'The Items component is passed a prop of { quantity: 10 } from the ShoppingCart component.';
 
 	let testResults = [
 		{
@@ -82,10 +88,15 @@ export const executeTests = (code) => {
 			test: 2,
 			status: false,
 			condition: error_2
+		},
+		{
+			test: 3,
+			status: false,
+			condition: error_3
 		}
 	];
 
-	let es5, mockedComponent, shallowRender, passed = true;
+	let es5, mockedComponent, passed = true;
 
 	const exportScript = '\n export default ShoppingCart'
 	const modifiedCode = code.concat(exportScript);
@@ -122,12 +133,24 @@ export const executeTests = (code) => {
 
 	// test 2:
 	try {
-		mockedComponent.setProps({items: undefined});
-		assert.strictEqual(mockedComponent.find('ShoppingCart').props().items, 0, error_2);
+		assert.strictEqual(mockedComponent.find('Items').length, 1, error_2);
 		testResults[2].status = true;
 	} catch (err) {
 		passed = false;
 		testResults[2].status = false;
+	}
+
+	// test 3:
+	try {
+		assert(
+			mockedComponent.find('Items').props().quantity == 10 &&
+			code.replace(/\s/g,'').includes('<Itemsquantity={10}/>'),
+			error_3
+		);
+		testResults[3].status = true;
+	} catch (err) {
+		passed = false;
+		testResults[3].status = false;
 	}	
 
 

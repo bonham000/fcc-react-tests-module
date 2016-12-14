@@ -10,68 +10,73 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Override Default Props`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Use PropTypes to Define the Props You Expect`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>Now that you have learned how to set default props let's
-get some practice overriding default props by explicitly setting prop values.`
+export const challengeText = `<span class = 'default'>Intro: </span>React provides useful typechecking features
+to verify that components are receiving props of the correct type. For instance, let's say you perform some API call
+and expect to receive data back as an array which you will then pass to a component as a prop. You can set <code>propTypes</code> on your component such that
+this data is required to be of type <code>array</code>. This will throw a useful warning in the event the data is of any other type. Setting
+<code>propTypes</code> when you know the type of a prop ahead of time is a best practice. You can define a <code>propTypes</code> property of a component
+in the same way you defined <code>defaultProps</code>. Defining a required <code>function</code> prop would look like this:<br><br>
+
+<code>MyComponent.propTypes = { handleClick: React.PropTypes.func.isRequired }</code><br><br>
+
+You may notice <code>func</code> representing <code>function</code>. Among the seven JavaScript primitive types, this is the only unusual
+spelling with the exception of <code>boolean</code> which is written as <code>bool</code>.
+
+In addition to the primitive types, there are also other types available, for example you can check that a prop is a React element.
+Please refer to the documentation for an exhaustive list.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've modified the previous components so that
-now the <code>ShoppingCart</code> renders a child components <code>Items</code>. This <code>Items</code> component has a default prop of <code>quantity</code>
-set to the integer <code>0</code>. Let's pass in a value of <code>10</code> instead for the prop <code>quantity</code>. Note: to pass an integer value as a
-prop you must enclose it in curly braces, for instance like this: <code>{100}</code>. This is the syntax so JSX knows to interpret
-the value within the braces directly as JavaScript. We will learn more about the uses of curly braces like this in later lessons.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>Here is our <code>ShoppingCart</code> example again. Let's define
+<code>propTypes</code> for the <code>Items</code> component which declare that <code>quantity</code> is a required prop of type <code>number.</code>`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
-`class Items extends React.Component {
-	constructor(props) {
-		super(props);
-	}
-	render() {
-		return <h1>Current Quantity of Items in Cart: {this.props.quantity}</h1>
-	}
-}
+`const Items = (props) => {
+	return <h1>Current Quantity of Items in Cart: {props.quantity}</h1>
+};
+
+{ /* change code below this line */ }
+
+{ /* change code above this line */ }
 
 Items.defaultProps = {
 	quantity: 0
-}
+};
 
 class ShoppingCart extends React.Component {
 	constructor(props) {
 		super(props);
 	}
   render() {
-    { /* change code above this line */ }
     return <Items />
-    { /* change code below this line */ }
   }
 };`
 
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode =
-`class Items extends React.Component {
-	constructor(props) {
-		super(props);
-	}
-	render() {
-		return <h1>Current Quantity of Items in Cart: {this.props.quantity}</h1>
-	}
-}
+`const Items = (props) => {
+	return <h1>Current Quantity of Items in Cart: {props.quantity}</h1>
+};
+
+{ /* change code below this line */ }
+Items.propTypes = {
+	quantity: React.PropTypes.number.isRequired
+};
+{ /* change code above this line */ }
 
 Items.defaultProps = {
 	quantity: 0
-}
+};
 
 class ShoppingCart extends React.Component {
 	constructor(props) {
 		super(props);
 	}
   render() {
-  	{ /* change code above this line */ }
-    return <Items quantity = {10} />
-    { /* change code below this line */ }
+    return <Items />
   }
 };`
 
@@ -79,15 +84,16 @@ class ShoppingCart extends React.Component {
 
 export const executeTests = (code) => {
 
+	const error_0 = 'Your JSX code was transpiled successfully.';
 	const error_1 = 'The component ShoppingCart is rendered.';
 	const error_2 = 'The component Items is rendered.';
-	const error_3 = 'The Items component is passed a prop of { quantity: 10 } from the ShoppingCart component.';
+	const error_3 = 'The Items component includes a propTypes check for quantity as a required number.';
 
 	let testResults = [
 		{
 			test: 0,
 			status: false,
-			condition: 'Your JSX code was transpiled successfully.'
+			condition: error_0
 		},
 		{
 			test: 1,
@@ -152,11 +158,11 @@ export const executeTests = (code) => {
 
 	// test 3:
 	try {
-		assert(
-			mockedComponent.find('Items').props().quantity == 10 &&
-			code.replace(/\s/g,'').includes('<Itemsquantity={10}/>'),
-			error_3
-		);
+		// propTypes unavailable in production and throw warnings anyway
+		// this was the only way I could devise to check that propTypes are included
+		const noWhiteSpace = modifiedCode.replace(/\s/g, '');
+		const verifyPropTypes = 'Items.propTypes={quantity:React.PropTypes.number.isRequired}';
+		assert.strictEqual(noWhiteSpace.includes(verifyPropTypes), true, error_3);
 		testResults[3].status = true;
 	} catch (err) {
 		passed = false;

@@ -11,9 +11,9 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Render State in the UI`
 
 export const challengeText = `<span class = 'default'>Intro: </span>Now that we have learned how to define a component's initial
-state let's see how this state can be displayed in the UI that we render. If a component is stateful, it will always have access
+state, let's see how this state can be displayed in the UI that we render. If a component is stateful, it will always have access
 to the data in <code>state</code> in its <code>render()</code> method. You can access this data with <code>this.state</code>.
-If you want to access this state value within the <code>return</code> of the return method, you have to enclose the value in
+If you want to access this state value within the <code>return</code> of the render method, you have to enclose the value in
 curly braces.<br><br>
 
 <code>State</code> is one of the most powerful features of components in React. It allows you to track important data in your app and
