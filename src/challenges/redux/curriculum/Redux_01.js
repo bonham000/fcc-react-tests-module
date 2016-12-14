@@ -9,10 +9,10 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Create a Redux Store`
 
 export const challengeText = `<span class = 'default'>Intro: </span>Redux is a state management framework which can be used
-with React, but it was not designed for use with React. It can be used with other frameworks as well.
+with React, but it was not designed only for use with React. It can be used with other frameworks as well.
 
 In Redux, there is a single state object responsible for the entire state of your application. This means if you had a React app
-with ten components and all of these had their own local state the entire state of your app would still be defined only
+with ten components and all of these had their own local state, the entire state of your app would still be defined only
 by a single state object housed in the Redux <code>store</code>. This is the first important principle to understand when learning
 Redux: the Redux store is the single source of truth when it comes to application state.<br><br>
 

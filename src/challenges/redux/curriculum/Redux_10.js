@@ -114,7 +114,7 @@ const store = Redux.createStore(rootReducer);`
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
+	const error_0 = 'Your code was transpiled successfully.';
 	const error_1 = 'The counterReducer can increment and decrement the state.';
 	const error_2 = 'The authReducer can toggle the state of authenticated between true and false.';
 	const error_3 = 'The store state has two keys: count which holds a number and auth which holds an object with a property of authenticated which holds a boolean.';

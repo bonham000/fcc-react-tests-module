@@ -41,7 +41,7 @@ const actionCreator = () => {
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
+	const error_0 = 'Your code was transpiled successfully.';
 	const error_1 = 'The function actionCreator exists.';
 	const error_2 = 'Running the actionCreator function returns the action object.';
 	const error_3 = 'The returned action has a key property \'type\' with value \'LOGIN\'.';

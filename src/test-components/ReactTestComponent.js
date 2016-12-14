@@ -191,9 +191,9 @@ export default class ReactTestComponent extends React.Component {
 			    	<div className='testControls'>
 			    		<button onClick={this.seedCode} className='seedBtn'>Reload Seed</button>
 			    		<button onClick={this.solutionCode} className='solnBtn'>Solution Code</button>
-			    		<button onClick={this.previousChallenge} className='travelBtn'>Previous Challenge</button>
-			    		<button onClick={this.nextChallenge} className='travelBtn'>Next Challenge</button>
-			    		<button onClick={this.testCode} className='testBtn'>Test Code</button>
+			    		<button title="CMD + CTR + ALT + ←" onClick={this.previousChallenge} className='travelBtn'>Previous Challenge</button>
+			    		<button title="CMD + CTR + ALT + →" onClick={this.nextChallenge} className='travelBtn'>Next Challenge</button>
+			    		<button title="CMD + CTRL + ↳" onClick={this.testCode} className='testBtn'>Test Code</button>
 				    </div>
 
 				    <div className='testResults'>

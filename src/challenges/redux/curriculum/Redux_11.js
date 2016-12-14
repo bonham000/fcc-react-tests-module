@@ -91,7 +91,7 @@ console.log(store.getState());`
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
+	const error_0 = 'Your code was transpiled successfully.';
 	const error_1 = 'The action creator addNoteText returns an object with keys \'type\' and \'text\'.';
 	const error_2 = 'Dispatching an action of type \'ADD_NOTE\' with the addNoteText action creator updates the state to the string passed to the action creator.';
 

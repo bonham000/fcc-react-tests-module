@@ -14,7 +14,7 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Dispatc
 export const challengeText = `<span class = 'default'>Intro: </span>Now we can create actions and action creators. Here we will
 see how we can dispatch these actions so the Redux store can respond to them. Remember when we introducted <code>store.getState()</code>
 as a method provided on the Redux <code>store</code> object and mentioned that there are other methods provided as well? The method
-<code>store.dispatch()</code> is one of these and this is what we will use to dispatch actions to the Redux store. Doing this is
+<code>store.dispatch()</code> is one of these, and this is what we will use to dispatch actions to the Redux store. Doing this is
 very straightforward. We call <code>store.dispatch()</code> and pass the value returned from an action creator, which is just an 
 object with a type property specifying the action that has occurred. This dispatches an action object to the Redux store. Based
 on the previous example, the following lines are equivalent and both dispatch the action of type <code>LOGIN</code>:<br><br>
@@ -64,7 +64,7 @@ store.dispatch(loginAction());`
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
+	const error_0 = 'Your code was transpiled successfully.';
 	const error_1 = 'Calling the function loginAction returns an object with type property set to the string \'LOGIN\'.';
 	const error_2 = 'The store is initialized with an object with property login set to false.';
 	const error_3 = 'The store.dispatch() method is used to dispatch an action of type \'LOGIN\'.';

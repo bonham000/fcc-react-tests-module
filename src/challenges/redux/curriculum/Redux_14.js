@@ -77,7 +77,7 @@ const store = Redux.createStore(immutableReducer);`
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
+	const error_0 = 'Your code was transpiled successfully.';
 	const error_1 = 'The Redux store exists and is initialized with a state equal to [\'Don\'t mutate state!\']';
 	const error_2 = 'addToDo and immutableReducer are both functions.';
 	const error_3 = 'Dispatching an action of type \'ADD_TO_DO\' on the Redux store adds a todo and returns a new copy of state.';

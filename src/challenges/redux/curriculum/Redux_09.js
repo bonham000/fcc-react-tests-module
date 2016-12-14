@@ -77,7 +77,7 @@ store.dispatch({type: ADD});`
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
+	const error_0 = 'Your code was transpiled successfully.';
 	const error_1 = 'Dispatching the ADD action on the store increments the state by 1.';
 	const error_2 = 'There is a listener function subscribed to the store using store.subscribe().';
 	const error_3 = 'An action of type ADD is dispatched three times and a message is logged to the console on each dispatch';

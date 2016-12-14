@@ -43,7 +43,7 @@ console.log(store.getState());`
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
+	const error_0 = 'Your code was transpiled successfully.';
 	const error_1 = 'The redux store has a value of 5 for the initial state.';
 	const error_2 = 'The console logs a message of the store\'s state using store.getState().';
 
