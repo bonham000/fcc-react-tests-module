@@ -19,18 +19,20 @@ return the same view every time they are passed the same props. Now, you may be 
 Don't worry, we'll take a deep dive into state in the next challenge. Before we do that, however, let's take a moment to review
 this terminology about components.<br><br>
 
-Any function you write which accepts props and returns UI is referred to as a functional stateless component. A class, on the other hand, that
-extends <code>React.Component</code>, if it does not use intenal state (what we'll learn about next), is called a stateless component. Finally, a component
-that does maintain its own internal state is a stateful component, but may just be called a component or a React component. The tendency is to
-try and minimize statefulness and to create stateless functional components wherever possible. This pattern encapsulates your state management
-within a specific area of your app, which improves development and maintenance by making it easier to reason about how state updates affect
-your app's behavior. Now, before we move on to cover state let's do a quick review of everything we've learned about props.`
+A <i>functional stateless component</i> is any function you write which accepts props and returns JSX. A <i>stateless component</i>, on the other hand,
+is a class that extends <code>React.Component</code> so long as it does not use intenal state (what we'll learn about next). Finally, a
+<i>stateful component</i> is any component that does maintain its own internal state. Stateful components may also be referred to simply as components or
+React components.<br><br>
+
+The tendency is to try and minimize statefulness and to create stateless functional components wherever possible. This pattern
+encapsulates your state management within a specific area of your app, which improves development and maintenance by making it easier to reason
+about how state updates affect your app's behavior. Now, before we move on to cover state let's do a quick review of everything we've learned about props.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've defined a <code>Campsite</code> component
 for you which is currently rendering a <code>Camper</code> component as a child. However, this <code>Camper</code> component has not
 been defined. Define <code>Camper</code> and assign it default props of <code>{ name: 'CamperBot' }</code>. Inside the <code>Camper</code>
-component render whatever you want, but be sure to include a <code>p</code> element which includes only the <code>name</code> value passed
+component render whatever you want, but be sure to include a <code>p</code> tag which includes only the <code>name</code> value passed
 in as a <code>prop</code>. Finally, also define <code>propTypes</code> on the <code>Camper</code> component that expect <code>name</code>
 to be a required <code>string</code>.`
 

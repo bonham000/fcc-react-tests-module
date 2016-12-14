@@ -21,7 +21,7 @@ export const challengeInstructions = `<span class = 'default'>Instructions: </sp
 Now, let's define a <code>const</code> in the <code>render</code> method called <code>name</code> and set it equal to the name value in the
 component's <code>state</code>. Because we are just writing JavaScript now, you don't have to enclose this reference in curly braces.
 Next, to render this value, you can just reference it directly in the <code>return</code>, but of course now that we are back in 
-JSX you will have to enclose it in curly braces.`
+JSX you will have to enclose it in curly braces. Do this and render it within an <code>h1</code> tag.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =

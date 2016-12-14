@@ -15,7 +15,7 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Use Arr
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>
 Ok, so conditional rendering is pretty cool, right? But what happens when you need your components to render an unknown number of elements? Oftentimes in 
-reactive programming, a programmer has no way to know what the state of an application will be until runtime, becuase so much depends on a user's interaction with 
+reactive programming, a programmer has no way to know what the state of an application will be until runtime, because so much depends on a user's interaction with 
 that program. In cases like this, programmers need to write their code to correctly handle that unknown state ahead of time, and in React, we can use <code>Array.map()</code> to powerfully illustrate 
 this concept.<br><br>
 
