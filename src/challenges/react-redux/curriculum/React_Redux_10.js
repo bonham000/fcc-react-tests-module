@@ -23,8 +23,8 @@ you are interested in experimenting on your own machine, we recommend
 
 <a id='CRA' target ='_blank' href='https://github.com/facebookincubator/create-react-app'>Create React App</a>
 
-which comes configured and ready to go out of the box. You can also enable Babel in CodePen, include React and ReactDOM
-in the JS script tags, and code there as well. Congratulations on making it this far, you've learned a lot!`
+which comes configured and ready to go out of the box. You can also enable Babel as a JavaScript Preprocessor in CodePen, add
+React and ReactDOM as external JavaScript resources, and work there as well. Congratulations on making it this far, you've learned a lot!`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>Log the message 

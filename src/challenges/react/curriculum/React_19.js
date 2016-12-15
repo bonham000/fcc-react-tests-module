@@ -19,9 +19,9 @@ passing a prop to is an ES6 style React component, rather than a stateless funct
 the convention through which we access props slightly.<br><br>
 
 Whenever we refer to a class component within itself, we always use the <code>this</code> keyword. So to access props within a class component, 
-we simply need to preface the code that we use to access it with <code>this</code>. For example, in our last challenge, we accessed the prop <code>username</code> 
-in our JSX code using <code>{props.username}</code>, but if the <code>ReturnUsername</code> component had been an ES6 class component instead, we would have written <code>{this.props.username}</code>. That's it!
-Easy, right? We'll see many more uses for <code>this</code> as we continue forward.`
+we simply need to preface the code that we use to access it with <code>this</code>. For example, if we had a prop <code>data</code> we wanted
+to access within an ES6 class component, we would write <code>{this.props.data}</code> in JSX. Easy, right? We'll see many more uses for
+<code>this</code> as we continue forward.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>

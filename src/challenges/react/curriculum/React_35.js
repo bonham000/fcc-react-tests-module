@@ -28,9 +28,9 @@ export const challengeInstructions = `<span class = 'default'>Instructions: </sp
 <code>componentDidMount()</code> method for <code>keydown</code> events and have these events trigger the callback
 <code>handleKeyPress()</code>. You can use <code>document.addEventListener()</code> which takes the event as the first argument
 and the callback as the second argument.<br><br>
-
+	
 Then, in <code>componentWillUnmount()</code>, remove this same event listener. You can pass the same arguments to
-<code>documet.removeEventListener()</code>. It's a good idea to utilize this lifecycle method to do any clean up on React
+<code>document.removeEventListener()</code>. It's a good idea to utilize this lifecycle method to do any clean up on React
 components before they are unmounted and destroyed. Removing event listeners is a perfect example of one such clean up action.`
 
 // ---------------------------- define challenge seed code ----------------------------

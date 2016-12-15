@@ -15,7 +15,7 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Use the
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>React components have several special methods
 that provide opportunities to perform certain actions at specific points in the lifecycle of a component. These are
-called lifecycle methods and allow us to catch componets are certain points in time, for instance before they are rendered,
+called lifecycle methods and allow us to catch components at certain points in time, for instance, before they are rendered,
 before they update, before they receive props, before they unmount, and so on. Here is a list of some of the main
 lifecycle methods:
 <code>componentWillMount()</code>,
@@ -31,7 +31,7 @@ some action with one of these methods.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span><code>componentWillMount()</code> is called
-before the <code>render()</code> method when a component is being mounted to the DOM. We've provided a simple component with that renders a
+before the <code>render()</code> method when a component is being mounted to the DOM. We've provided a simple component that renders a
 <code>&lt;div/&gt;</code>. Log something to the console within <code>componentWillMount()</code>.`
 
 // ---------------------------- define challenge seed code ----------------------------
