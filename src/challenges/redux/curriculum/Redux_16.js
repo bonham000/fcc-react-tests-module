@@ -65,7 +65,7 @@ export const executeTests = (code) => {
 
 	const error_0 = 'Your code was transpiled successfully.';
 	const error_1 = 'The Redux store exists and is initialized with a state equal to [0,1,2,3,4,5]';
-	const error_2 = 'removeToDo and immutableReducer are both functions.';
+	const error_2 = 'removeItem and immutableReducer are both functions.';
 	const error_3 = 'Dispatching the removeItem action creator removes items from the state and returns a new copy of state.';
 
 	let testResults = [
