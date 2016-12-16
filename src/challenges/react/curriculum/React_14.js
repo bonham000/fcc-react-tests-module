@@ -13,28 +13,15 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Pass a String to a Functional Component`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>Now that we've learned quite a bit about creating and
-composing JSX elements, functional components and ES6 style class components in React, it's time to start diving in to some
-of the other feautures and capabilities of React that make it such a powerful tool for creating complex, reactive UIs. A
-good place to start is with props. In React, we use props, short for properties, to <em>pass</em> information from a parent
-component to a child.<br><br>
+export const challengeText = `<span class = 'default'>Intro: </span>The previous challenges covered a lot about creating and composing JSX elements, functional components, and ES6 style class components in React. It's time to start looking at some of the other features and capabilities of React that make it such a powerful tool to create complex, reactive user interfaces. A good place to start is with props, which is short for properties. You use props in React to <em>pass</em> information from a parent component to a child.<br><br>
 
-The first thing you'll notice is that we have defined a functional component called <code>ReturnUsername</code> that accepts an
-argument called <code>props</code>. We can access props from within the component using dot notation, so if we were passing in
-a prop called <code>birthday</code>, we would access it by writing <code>props.birthday</code>. To do this in JSX you would
-write <code>{props.birthday}</code>.<br><br>
+The code editor shows a functional component called <code>ReturnUsername</code> that accepts an argument called <code>props</code>. You can access props from within the component using dot notation. For example, if you passed in a prop called <code>birthday</code>, you would access its value by writing <code>props.birthday</code>. In JSX, that value is JavaScript, so you write it as <code>{props.birthday}</code>.<br><br>
 
-In order to define a props name and value, React uses <strong>custom HTML attributes</strong>, where the attribute name is the prop name,
-and the attribute value is the prop's value. For example, to pass a child component a prop called <code>birthday</code>, 
-when we compose the child component within the parent, we could write something like this: <code>&lt;Child birthday="Jul 6th, 1986" /&gt;</code>.
+In order to define a props name and value, React uses <strong>custom HTML attributes</strong>. The attribute name is the prop name, and the attribute value is the prop's value. For example, to pass a child component a prop called <code>birthday</code>, when you compose the child component within the parent, it could look like this: <code>&lt;Child birthday="Jul 6th, 1986" /&gt;</code>.
 `
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span> We have already composed the
-<code>ReturnUsername</code> component for you within the parent, <code>ForgotUsername</code>. Pass the <code>ReturnUsername</code> 
-component a prop of <code>username</code> and give it a value of your freeCodeCamp username (don't forget to wrap it in quotes)!
-Before rendering though, let's be sure we can access this prop within the child. In the <code>ReturnUsername</code> component, 
-use dot notation to access the <code>username</code> prop inside the curly braces. Run the tests and see what happens!`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span> The <code>ReturnUsername</code> component in the code editor is composed within the parent component, <code>ForgotUsername</code>. Pass the <code>ReturnUsername</code> component a prop of <code>username</code> and give it a value of your Free Code Camp username. Don't forget to wrap it in quotes. In the <code>ReturnUsername</code> component, use dot notation to access the <code>username</code> prop inside the curly braces.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = `
@@ -95,11 +82,11 @@ class ForgotUsername extends React.Component {
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
-	const error_1 = 'The ForgotUsername component returns a single <div> element.';
-	const error_2 = 'The ForgotUsername component\'s second child is the ReturnUsername component.';
-	const error_3 = 'The ReturnUsername component has a prop called username.';
-	const error_4 = 'The ReturnUsername component\'s username prop is equal to some text.';
+	const error_0 = 'Your JSX code should transpile successfully.';
+	const error_1 = 'The ForgotUsername component should return a single div element.';
+	const error_2 = 'The ForgotUsername component\'s second child should be the ReturnUsername component.';
+	const error_3 = 'The ReturnUsername component should have a prop called username.';
+	const error_4 = 'The ReturnUsername component\'s username prop should contain some text.';
 
 	let testResults = [
 		{
@@ -135,7 +122,7 @@ export const executeTests = (code) => {
 	// we can access their component here for tests
 	const exportScript = '\n export default ForgotUsername'
 	const modifiedCode = code.concat(exportScript);
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
@@ -144,7 +131,7 @@ export const executeTests = (code) => {
 		passed = false;
 		testResults[0].status = false;
 	}
-	
+
 	// now we will try to shallow render the component with Enzyme's shallow method
 	// you can also use mount to perform a full render to the DOM environment
 	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
@@ -172,7 +159,7 @@ export const executeTests = (code) => {
 		testResults[2].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[2].status = false;		
+		testResults[2].status = false;
 	}
 
 	// test 3:
@@ -198,7 +185,7 @@ export const executeTests = (code) => {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // ---------------------------- define live render function ----------------------------

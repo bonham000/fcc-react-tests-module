@@ -13,17 +13,11 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Use Default Props`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>Now that you understand how props work let's
-learn about default props. You can assign default props to a component as a property on the component itself and React
-will take care of the rest.
-This allows you to specify what a prop value should be if no value is explicitly provided. For example, by declaring
-<code>MyComponent.defaultProps = { location: 'San Francisco' }</code> you have defined a location prop which will
-be set to the string <code>San Francisco</code> unless you specify otherwise. Default props will be assigned if
+export const challengeText = `<span class = 'default'>Intro: </span>React also has an option to set default props. You can assign default props to a component as a property on the component itself and React assigns the default prop if necessary. This allows you to specify what a prop value should be if no value is explicitly provided. For example, if you declare <code>MyComponent.defaultProps = { location: 'San Francisco' }</code>, you have defined a location prop that's set to the string <code>San Francisco</code>, unless you specify otherwise. React assigns default props if
 props are undefined, but if you pass <code>null</code> as the value for a prop, it will remain <code>null</code>.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>We have defined a <code>ShoppingCart</code>
-component for you. Define default props on this component which specify a prop <code>items</code> with a value of <code>0</code>.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>The code editor shows a <code>ShoppingCart</code> component. Define default props on this component which specify a prop <code>items</code> with a value of <code>0</code>.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
@@ -55,14 +49,14 @@ ShoppingCart.defaultProps = {
 
 export const executeTests = (code) => {
 
-	const error_1 = 'The component ShoppingCart is rendered.';
-	const error_2 = 'The ShoppingCart component has a default prop of { items: 0 }';
+	const error_1 = 'The ShoppingCart component should render.';
+	const error_2 = 'The ShoppingCart component should have a default prop of { items: 0 }';
 
 	let testResults = [
 		{
 			test: 0,
 			status: false,
-			condition: 'Your JSX code was transpiled successfully.'
+			condition: 'Your JSX code should transpile successfully.'
 		},
 		{
 			test: 1,
@@ -80,7 +74,7 @@ export const executeTests = (code) => {
 
 	const exportScript = '\n export default ShoppingCart'
 	const modifiedCode = code.concat(exportScript);
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
@@ -119,14 +113,14 @@ export const executeTests = (code) => {
 	} catch (err) {
 		passed = false;
 		testResults[2].status = false;
-	}	
+	}
 
 
 	return {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // ---------------------------- define live render function ----------------------------

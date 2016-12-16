@@ -13,20 +13,12 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Write a React Component from Scratch`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>Now that you've learned the basics of JSX and
-React Components, let's try to write one from scratch. React components are the core building blocks of React apps
-so it's important to become very familiar with writing them. Remember, a typical React component is an ES6
-<code>class</code> which extends <code>React.Component</code> and returns HTML after rendering JSX. This is the basic form of a React component. Once you understand this well, you will be prepared to start building more complex React projects.`
+export const challengeText = `<span class = 'default'>Intro: </span>Now that you've learned the basics of JSX and React components, it's time to write a component on your own. React components are the core building blocks of React applications so it's important to become very familiar with writing them. Remember, a typical React component is an ES6 <code>class</code> which extends <code>React.Component</code>. It has a render method that returns HTML (from JSX) or <code>null</code>. This is the basic form of a React component. Once you understand this well, you will be prepared to start building more complex React projects.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>Define a class <code>MyComponent</code>
-that extends <code>React.Component</code>. This should return a <code>&lt;div&gt;&lt;/div&gt;</code> which is wrapped around an <code>&lth1&gt;</code> tag which includes the text: <code>My First React Component!</code>. Be sure to include this exact text and don't
-forget to call your component's constructor.<br><br>
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>Define a class <code>MyComponent</code> that extends <code>React.Component</code>. Its render method should return a <code>div</code> that contains an <code>h1</code> tag with the text: <code>My First React Component!</code> in it. Use this text exactly, the case and punctuation matter. Make sure to call the constructor for your component, too.<br><br>
 
-Then, render this component to the DOM using <code>ReactDOM.render()</code>, passing in your component and the target DOM node
-just like before. We've provided a <code>&lt;div /&gt;</code> with <code>id='challenge-node'</code> again for you to render to.<br><br>
-
-Good luck!`
+Render this component to the DOM using <code>ReactDOM.render()</code>. There is a <code>div</code> with <code>id='challenge-node'</code> available for you to use.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = `// change code below this line`
@@ -56,10 +48,10 @@ export const executeTests = (code) => {
 	// this will clear the target DOM node before the challenge code
 	document.getElementById('challenge-node').innerHTML = '';
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
-	const error_1 = 'There is a React component called \'MyComponent\'';
-	const error_2 = 'MyComponent contains an h1 tag with text \'My First React Component!\'';
-	const error_3 = 'MyComponent is rendered to the DOM.';
+	const error_0 = 'Your JSX code should transpile successfully.';
+	const error_1 = 'There should be a React component called MyComponent';
+	const error_2 = 'MyComponent should contain an h1 tag with text \'My First React Component!\' Case and punctuation matter.';
+	const error_3 = 'MyComponent should render to the DOM.';
 
 	let testResults = [
 		{
@@ -90,7 +82,7 @@ export const executeTests = (code) => {
 	// we can access their component here for tests
 	const exportScript = '\n export default MyComponent'
 	const modifiedCode = code.concat(exportScript);
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
@@ -99,7 +91,7 @@ export const executeTests = (code) => {
 		passed = false;
 		testResults[0].status = false;
 	}
-	
+
 	// now we will try to shallow render the component with Enzyme's shallow method
 	// you can also use mount to perform a full render to the DOM environment
 	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
@@ -127,7 +119,7 @@ export const executeTests = (code) => {
 		testResults[2].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[2].status = false;		
+		testResults[2].status = false;
 	}
 
 	// test 3:
@@ -143,7 +135,7 @@ export const executeTests = (code) => {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // ---------------------------- define live render function ----------------------------

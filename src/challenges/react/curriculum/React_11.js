@@ -14,54 +14,46 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Compose
 
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>
-As we continue to explore more complex compositions with React components and JSX, there is one other order of business that we must address.
-Since we are able to render simple JSX elements and stateless functional components within other components, it follows logically that we are
-also able to render ES6 class component from other components. Rendering ES6 style class components within other components is no different at
-all from what we have been doing in the last few challenges!<br><br>
-
-So knowing that, let's go ahead and render our most complex component composition yet.`
+As the challenges continue to use more complex compositions with React components and JSX, there is one important point to note. Rendering ES6 style class components within other components is no different than rendering the simple components you used in the last few challenges. You can render JSX elements, stateless functional components, and ES6 class components within other components.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>
-You'll notice that the <code>TypesOfFood</code> component is already rendering a component called <code>Vegetables</code>.
-Let's go ahead and mix it up a bit by adding some fruit to the mix! We've hung on to the <code>Fruits</code> component that we created in the last challenge, but this time, let's 
-nest 2 components inside of that &mdash; first <code>NonCitrus</code>, and then <code>Citrus</code>, both of which are components that we have provided for you.
-Once you've got that down, nest the <code>Fruits</code> class component into the the <code>TypesOfFood</code> compenent, below the <code>h1</code> header and above <code>Vegetables</code>. The result 
-should be a well composed and deeply nested component made up of 2 different component types!`
+In the code editor, the <code>TypesOfFood</code> component is already rendering a component called <code>Vegetables</code>. Also, there is the <code>Fruits</code> component from the last challenge.
+Nest two components inside of <code>Fruits</code> &mdash; first <code>NonCitrus</code>, and then <code>Citrus</code>. Both of these components are provided for you in the background. Next, nest the <code>Fruits</code> class component into the the <code>TypesOfFood</code> component, below the <code>h1</code> header and above <code>Vegetables</code>. The result should be a series of nested components, which uses two different component types.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
 `class Fruits extends React.Component {
 	constructor(props) {
-		super(props);
-	}
-	render() {
-		return (
-			<div>
-				<h2>Fruits:</h2>
-				{ /* change code below this line */ }
+	  super(props);
+  }
+  render() {
+    return (
+      <div>
+        <h2>Fruits:</h2>
+		    { /* change code below this line */ }
 
-		   	{ /* change code above this line */ }
-			</div>
-		)
+	   	  { /* change code above this line */ }
+      </div>
+		);
 	}
-}
+};
 
 class TypesOfFood extends React.Component {
 	constructor(props) {
 	 	super(props);
 	}
-  	render() {
-    	return (
-	    	<div>
-				<h1>Types of Food:</h1>
-					{ /* change code below this line */ }
+  render() {
+  	return (
+    	<div>
+			  <h1>Types of Food:</h1>
+		    { /* change code below this line */ }
 
-		    	{ /* change code above this line */ }
-		    	<Vegetables />
-	    	</div>
-    	);
-  	}
+		    { /* change code above this line */ }
+		    <Vegetables />
+    	</div>
+  	);
+	}
 };`
 
 // ---------------------------- define challenge solution code ----------------------------
@@ -101,7 +93,7 @@ class TypesOfFood extends React.Component {
 };`
 
 // ---------------------------- define challenge tests ----------------------------
-// 
+//
 const prependCode = `
 class NonCitrus extends React.Component {
 	render() {
@@ -150,16 +142,16 @@ class Vegetables extends React.Component {
 
 export const executeTests = (code) => {
 
-	const error_1 = 'The TypesOfFood component returns a single <div> element.';
-	const error_2 = 'The TypesOfFood component returns the Fruits component.';
-	const error_3 = 'The Fruits component returns the NonCitrus component, followed by the Citrus component.';
-	const error_4 = 'The TypesOfFood component returns the Vegetables component below Fruits.';
+	const error_1 = 'The TypesOfFood component should return a single div element.';
+	const error_2 = 'The TypesOfFood component should return the Fruits component.';
+	const error_3 = 'The Fruits component should return the NonCitrus component, followed by the Citrus component.';
+	const error_4 = 'The TypesOfFood component should return the Vegetables component below the Fruits component.';
 
 	let testResults = [
 		{
 			test: 0,
 			status: false,
-			condition: 'Your JSX code was transpiled successfully.'
+			condition: 'Your JSX code should transpile successfully.'
 		},
 		{
 			test: 1,
@@ -188,7 +180,7 @@ export const executeTests = (code) => {
 
 	const exportScript = '\n export default TypesOfFood'
 	const modifiedCode = prependCode.concat(code).concat(exportScript);
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
@@ -197,7 +189,7 @@ export const executeTests = (code) => {
 		passed = false;
 		testResults[0].status = false;
 	}
-	
+
 	// now we will try to shallow render the component with Enzyme's shallow method
 	// you can also use mount to perform a full render to the DOM environment
 	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
@@ -226,7 +218,7 @@ export const executeTests = (code) => {
 		testResults[2].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[2].status = false;		
+		testResults[2].status = false;
 	}
 
 	// test 3:
@@ -253,7 +245,7 @@ export const executeTests = (code) => {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // ---------------------------- define live render function ----------------------------
