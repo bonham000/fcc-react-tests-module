@@ -11,19 +11,13 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Use React to Render Nested Components`
 
 export const challengeText = `<span class = 'default'>Intro: </span>
-Now that we've seen how to compose two components together, let's look at composition a little further. 
-You can compose components in many different ways with React.<br><br>
+The last challenge showed a simple way to compose two components, but there are many different ways you can compose components with React.<br><br>
 
-Component composition is one of React's powerful and endearing features. It is important to start thinking about a UI in terms of components when working with React.
-The use of composition allows us to decompose a UI into separate components, which helps to separate the code responsible for the UI from the code responsible
-for handling our application logic. This can greatly simplify the development and maintenance of complex projects. Now let's practice with some compositions that are a bit
-more complex.`
+Component composition is one of React's powerful features. When you work with React, it is important to start thinking about your user interface in terms of components. You break down your UI into its basic building blocks, and those pieces become the components. This helps to separate the code responsible for the UI from the code responsible for handling your application logic. It can greatly simplify the development and maintenance of complex projects.`
 
 export const challengeInstructions = `
 <span class = 'default'>Instructions: </span>
-Here we've defined two functional components for you, <code>TypesOfFruit</code> and <code>Fruits</code>.
-Take the <code>TypesOfFruit</code> component and compose it, or <em>nest</em> it, within the <code>Fruits</code> component, then take the <code>Fruits</code> component and
-nest it within the <code>TypesOfFood</code> component. The result should be a child component, nested within a parent component, which is 
+There are two functional components defined in the code editor, called <code>TypesOfFruit</code> and <code>Fruits</code>. Take the <code>TypesOfFruit</code> component and compose it, or <em>nest</em> it, within the <code>Fruits</code> component. Then take the <code>Fruits</code> component and nest it within the <code>TypesOfFood</code> component. The result should be a child component, nested within a parent component, which is
 nested within a parent component of its own!`
 
 // ---------------------------- define challenge seed code ----------------------------
@@ -55,14 +49,14 @@ const Fruits = () => {
 class TypesOfFood extends React.Component {
   constructor(props) {
   	super(props);
-
   }
+
   render() {
     return (
 	    <div>
 	    	<h1>Types of Food:</h1>
 		    { /* change code below this line */ }
-		
+
 		    { /* change code above this line */ }
 	    </div>
     );
@@ -70,7 +64,7 @@ class TypesOfFood extends React.Component {
 };`
 
 // ---------------------------- define challenge solution code ----------------------------
-export const solutionCode = 
+export const solutionCode =
 `const TypesOfFruit = () => {
 	return (
 		<div>
@@ -98,8 +92,8 @@ const Fruits = () => {
 class TypesOfFood extends React.Component {
   constructor(props) {
   	super(props);
-
   }
+
   render() {
     return (
 	    <div>
@@ -118,16 +112,16 @@ export const executeTests = (code) => {
 
 	let es5, mockedComponent, mockRender, shallowRender, passed = true;
 
-	const error_1 = 'The TypesOfFood component returns a single <div> element.';
-	const error_2 = 'TypesOfFood returns the Fruits Component.';
-	const error_3 = 'The Fruits Component returns the TypesOfFruit Component.';
-	const error_4 = 'The TypesOfFruit component returns the h2 and ul elements.';
+	const error_1 = 'The TypesOfFood component should return a single div element.';
+	const error_2 = 'The TypesOfFood component should return the Fruits component.';
+	const error_3 = 'The Fruits component should return the TypesOfFruit component.';
+	const error_4 = 'The TypesOfFruit component should return the h2 and ul elements.';
 
 	let testResults = [
 		{
 			test: 0,
 			status: false,
-			condition: 'Your JSX code was transpiled successfully.'
+			condition: 'Your JSX code should transpile successfully.'
 		},
 		{
 			test: 1,
@@ -162,7 +156,7 @@ export const executeTests = (code) => {
 		passed = false;
 		testResults[0].status = false;
 	}
-	
+
 	// shallow render the component with Enzyme
 	try {
 		mockRender = mount(React.createElement(eval(es5)));
@@ -195,7 +189,7 @@ export const executeTests = (code) => {
 		testResults[3].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[3].status = false;		
+		testResults[3].status = false;
 	}
 
 	// test 4:
@@ -204,14 +198,14 @@ export const executeTests = (code) => {
 		testResults[4].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[4].status = false;		
+		testResults[4].status = false;
 	}
 
 	return {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // ---------------------------- define live render function ----------------------------

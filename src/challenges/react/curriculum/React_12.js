@@ -13,35 +13,31 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Render a Class Component to the DOM`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>You may remember from a previous challenge that, while we are writing React code with React, we need a separate API to actually render that code to the DOM — the ReactDOM API.<br><br>
+export const challengeText = `<span class = 'default'>Intro: </span>You may remember from a previous challenge that you are writing React code with the React API, but you need a separate API to render that code to the DOM — the ReactDOM API.<br><br>
 
-For the past few challenges, we wanted to focus on introducing components themselves, so we have been rendering them 
-for you behind the scenes. However, it is important to know that none of the React code that we write can actually be rendered without making a call to the ReactDOM API. 
+The past few challenges focused on components and composition, so the rendering was done for you behind the scenes. However, none of the React code you write will render to the DOM without making a call to the ReactDOM API.<br><br>
 
-To review, the syntax for rendering React elements to the DOM looks like this: <code>ReactDOM.render(componentToRender, targetNode)</code>. The first argument is the React component that we want to render. The second argument is the DOM node that we would like to render that component within.`
+Here's an example of the syntax: <code>ReactDOM.render(componentToRender, targetNode)</code>. The first argument is the React component that you want to render. The second argument is the DOM node that you want to render that component within.<br><br>
+
+React components are passed into <code>ReactDOM.render()</code> differently than JSX elements. For JSX elements, you pass in the name of the element that you want to render. However, for React components, you need to use the same syntax as if you were rendering a nested component, for example <code>ReactDOM.render(&lt;ComponentToRender /&gt;, targetNode)</code>. You use this syntax for both ES6 class components and functional components.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span> React components must be passed into
-<code>ReactDOM.render()</code> slightly differently than JSX elements. When rendering JSX elements, we simply pass in the name of the element that we want to render. However, when we render React components, we must use the same syntax we used to render nested components, that is <code>ReactDOM.render(<componentToRender />, targetNode)</code>. Note that while here we are rendering an ES6 class Component, the syntax 
-for rendering a functional component would be the same.<br><br>
-
-We have already defined components named <code>Fruits</code> and <code>Vegetables</code> in our last challenge. Render both components as children of the <code>TypesOfFood</code> component
-and render <code>TypesOfFood</code> to the <code>&lt;div&gt;</code> we have provided with <code>id='challenge-node'</code>.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>Both the <code>Fruits</code> and <code>Vegetables</code> components are defined for you behind the scenes. Render both components as children of the <code>TypesOfFood</code> component,
+then render <code>TypesOfFood</code> to the DOM. There is a <code>div</code> with <code>id='challenge-node'</code> available for you to use.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = `
 class TypesOfFood extends React.Component {
   constructor(props) {
   	super(props);
-
   }
   render() {
     return (
 	    <div>
-			<h1>Types of Food:</h1>
-			{/* change code below this line */} 
-			
-			{/* change code above this line */} 
+		    <h1>Types of Food:</h1>
+        {/* change code below this line */}
+
+		    {/* change code above this line */}
 	    </div>
     );
   }
@@ -54,16 +50,15 @@ export const solutionCode = `
 class TypesOfFood extends React.Component {
   constructor(props) {
   	super(props);
-
   }
   render() {
     return (
 	    <div>
 	    	<h1>Types of Food:</h1>
-	    	{/* change code below this line */} 
+	    	{/* change code below this line */}
 	    		<Fruits />
 		   		<Vegetables />
-		   	{/* change code above this line */} 
+		   	{/* change code above this line */}
 	    </div>
     );
   }
@@ -113,11 +108,11 @@ export const executeTests = (code) => {
 	// clear the target DOM node before running the tests
 	document.getElementById('challenge-node').innerHTML = '';
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
-	const error_1 = 'The TypesOfFood component returns a single <div> element.';
-	const error_2 = 'The TypesOfFood component renders the Fruits component after the h1 element.';
-	const error_3 = 'The TypesOfFood component renders the Vegetables component after Fruits.';
-	const error_4 = 'The TypesOfFood component is rendered to the DOM within the "challenge-node" div.';
+	const error_0 = 'Your JSX code should transpile successfully.';
+	const error_1 = 'The TypesOfFood component should return a single div element.';
+	const error_2 = 'The TypesOfFood component should render the Fruits component after the h1 element.';
+	const error_3 = 'The TypesOfFood component should render the Vegetables component after Fruits.';
+	const error_4 = 'The TypesOfFood component should render to the DOM within the div with the id \'challenge-node\'.';
 
 	let testResults = [
 		{
@@ -153,7 +148,7 @@ export const executeTests = (code) => {
 	// we can access their component here for tests
 	const exportScript = '\n export default TypesOfFood'
 	const modifiedCode = prependCode.concat(code).concat(exportScript);
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
@@ -162,7 +157,7 @@ export const executeTests = (code) => {
 		passed = false;
 		testResults[0].status = false;
 	}
-	
+
 	// now we will try to shallow render the component with Enzyme's shallow method
 	// you can also use mount to perform a full render to the DOM environment
 	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
@@ -190,7 +185,7 @@ export const executeTests = (code) => {
 		testResults[2].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[2].status = false;		
+		testResults[2].status = false;
 	}
 
 	// test 3:
@@ -218,7 +213,7 @@ export const executeTests = (code) => {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // ---------------------------- define live render function ----------------------------

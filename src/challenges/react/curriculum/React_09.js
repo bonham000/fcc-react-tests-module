@@ -10,16 +10,13 @@ export const QA = false;
 // -------------- define challenge title and challenge instructions --------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Create a Component with Composition`
 
-export const challengeText = `<span class = 'default'>Intro: </span>Now that you have created a simple React Component let's
-learn about another important principle in React: composition. In React, everything is a component and multiple components
-can be composed together to create more complex components. Let's see how this works.`
+export const challengeText = `<span class = 'default'>Intro: </span>The last two challenges showed how to create a simple React component with two different methods. An important principle in React for using components together is called composition. You can use one or more components in the <code>render()</code> method of another one. In React, everything is a component and multiple components can be composed together to create more complex components.
+<br /><br />
+
+You use React components the same way as an HTML element in JSX. The component can be self-closing (<code>&lt;MyComponent /&gt;</code>) or have opening and closing tags (<code>&lt;MyComponent&gt;&lt;/MyComponent&gt;</code>). Remember that React components are always capitalized.`
 
 export const challengeInstructions = `
-<span class = 'default'>Instructions: </span>In this example we've provided a simple functional component called
-<code>ChildComponent</code> and a React component called <code>ParentComponent</code>. Compose the two together by rendering
-the <code>ChildComponent</code> within the <code>ParentComponent</code>. You can enclose the <code>ChildComponent</code> in
-a single set of HTML opening and closing braces, <code>&lt; &gt;</code>, just as if it was a self-closing HTML element.
-Don't forget to close the tag with a forward slash.
+<span class = 'default'>Instructions: </span>In the code editor, there is a simple functional component called <code>ChildComponent</code> and a React component called <code>ParentComponent</code>. Compose the two together by rendering the <code>ChildComponent</code> within the <code>ParentComponent</code>. Make sure to close the <code>ChildComponent</code> tag with a forward slash.
 `
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
@@ -32,21 +29,24 @@ export const seedCode =
 };
 
 class ParentComponent extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
 	    <div>
-	    <h1>I am the parent</h1>
-	    { /* change code below this line */ }
-	    
-	
-	    { /* change code above this line */ }
+	      <h1>I am the parent</h1>
+	      { /* change code below this line */ }
+
+
+	      { /* change code above this line */ }
 	    </div>
     );
   }
 };`
 
 // ---------------------------- define challenge solution code ----------------------------
-export const solutionCode = 
+export const solutionCode =
 `const ChildComponent = () => {
 	return (
 		<div>
@@ -56,6 +56,9 @@ export const solutionCode =
 };
 
 class ParentComponent extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
 	    <div>
@@ -74,15 +77,15 @@ export const executeTests = (code) => {
 
 	let es5, mockedComponent, shallowRender, passed = true;
 
-	const error_1 = 'The React component returns a single <div> element.';
-	const error_2 = 'The component returns two nested elements.';
-	const error_3 = 'The component returns the ChildComponent as its second child';
+	const error_1 = 'The React component should return a single div element.';
+	const error_2 = 'The component should return two nested elements.';
+	const error_3 = 'The component should return the ChildComponent as its second child';
 
 	let testResults = [
 		{
 			test: 0,
 			status: false,
-			condition: 'Your JSX code was transpiled successfully.'
+			condition: 'Your JSX code should transpile successfully.'
 		},
 		{
 			test: 1,
@@ -112,7 +115,7 @@ export const executeTests = (code) => {
 		passed = false;
 		testResults[0].status = false;
 	}
-	
+
 	// shallow render the component with Enzyme
 	try {
 		shallowRender = shallow(React.createElement(eval(es5)));
@@ -144,14 +147,14 @@ export const executeTests = (code) => {
 		testResults[3].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[3].status = false;		
+		testResults[3].status = false;
 	}
 
 	return {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // ---------------------------- define live render function ----------------------------

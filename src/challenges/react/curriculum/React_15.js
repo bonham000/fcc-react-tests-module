@@ -14,65 +14,57 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Pass an
 
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>
-So far in this section, we've seen that we can pass information down to children through their parent components as props. In the past 2 challenges 
-we've passed strings as props &mdash; but what about other data types? In this challenge, we'll explore passing arrays as props.
+The last challenge demonstrated how to pass information from a parent component to a child component as props. It passed a string value as a property, but React allows other data types as well, such as arrays.<br><br>
 
-The concept of passing props here is really only slightly different than in our last challenge. The main difference is that since the data we are passing is not just simple text (as you 
-would expect to see assigned to an HTML-like attribute), we must pass our data in as JavaScript. And, of course, since we are composing this code within a JSX element, it must be wrapped 
-by curly braces.`
+The way to pass an array to a child component is a little different than the process for passing a string. Both data types use the HTML-like attribute syntax, but you wrap a string value in quotes (<code>&lt;ChildComponent myProp="stringData" /&gt;</code>), and you treat an array value as JavaScript. Since you are composing this code within a JSX element, it must be wrapped by curly braces (<code>&lt;ChildComponent myProp={arrayData} /&gt;</code>).`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>
-Take a look at the different props we are passing to the <code>Selections</code> component. We have <code>attire</code>, <code>shirts</code>, <code>pants</code>, and <code>shoes</code>. Since you are probably just sitting at 
-home coding right now, let's go with a super-casual outfit. Within the <code>Selections</code> component, use bracket notation to access the arrays we are passing as props so 
-that the first instance of the <code>Selections</code> component renders the text: "A super-casual day. I'm going to wear a sweatshirt, pajama pants, and slippers.".<br><br>
+Take a look at the different props passed to the <code>Selections</code> component. There are props for <code>attire</code>, <code>shirts</code>, <code>pants</code>, and <code>shoes</code>. Edit the <code>Selections</code> component so it returns a type of outfit and the shirt, pants, and shoes to create it. Assume that today you are at home coding, and are wearing a super-casual outfit. Within the <code>Selections</code> component, use bracket notation to access the arrays that are passed as props. The first instance of the <code>Selections</code> component should render the text: "A super-casual day. I'm going to wear a sweatshirt, pajama pants, and slippers.".<br><br>
 
-Tomorrow you have work, BUT, you work as a programmer at a super hip start up, so dressing casual is totally cool. In the space indicated in the <code>OutfitSelector</code> component, render a 
-second instance of the <code>Selections</code> component. Pass the same arrays as props, but this time, reorder the elements a bit so that the rendered text reads:
-"A casual day. I'm going to wear a t-shirt, blue jeans, and sneakers."`
+Tomorrow you have work, but you work as a programmer at a start up and your outfit can be casual. In the space indicated in the <code>OutfitSelector</code> component, render a second instance of the <code>Selections</code> component. Pass the same arrays as props, but this time, reorder the elements so that the rendered text reads: "A casual day. I'm going to wear a t-shirt, blue jeans, and sneakers."`
 
 // ---------------------------- define challenge seed code ----------------------------
-export const seedCode = 
-`const Selections = (props) => {
+export const seedCode = `
+const Selections = (props) => {
   return (
-      <div>
-          A { /* change code here */ } day. 
-          I'm going to wear a { /* change code here */ }, { /* change code here */ }, and { /* change code here */ }.
-      </div>
+    <div>
+      A { /* change code here */ } day.
+      I'm going to wear a { /* change code here */ }, { /* change code here */ }, and { /* change code here */ }.
+    </div>
   );
 };
 
 class OutfitSelector extends React.Component {
   constructor(props) {
   	super(props);
-
   }
   render() {
     return (
-        <div>
-        	<h1>What to wear?!</h1>
-        	<h3>Today is:</h3>
-        	<Selections 
-            attire={['casual', 'formal', 'super-casual']}
-            shirts={['t-shirt', 'sweatshirt', 'collared shirt']}
-            pants={['slacks', 'blue jeans', 'khakis', 'shorts', 'pajama pants']}
-            shoes={['dress shoes', 'slippers', 'sneakers']}
-            />
-        	<h3>Tomorrow is:</h3>
-        	{ /* change code below this line */ }
-          
-        	{ /* change code above this line */ }
-        </div>
+      <div>
+        <h1>What to wear?!</h1>
+        <h3>Today is:</h3>
+        <Selections
+          attire={['casual', 'formal', 'super-casual']}
+          shirts={['t-shirt', 'sweatshirt', 'collared shirt']}
+          pants={['slacks', 'blue jeans', 'khakis', 'shorts', 'pajama pants']}
+          shoes={['dress shoes', 'slippers', 'sneakers']}
+        />
+        <h3>Tomorrow is:</h3>
+        { /* change code below this line */ }
+
+        { /* change code above this line */ }
+      </div>
     );
   }
 };`
 
 // ---------------------------- define challenge solution code ----------------------------
-export const solutionCode = 
+export const solutionCode =
 `const Selections = (props) => {
   return (
       <div>
-        A {props.attire[2]} day. 
+        A {props.attire[2]} day.
         I'm going to wear a {props.shirts[1]}, {props.pants[4]}, and {props.shoes[1]}.
       </div>
   );
@@ -89,7 +81,7 @@ class OutfitSelector extends React.Component {
         	<h1>What to wear?!</h1>
         	<h3>Today is:</h3>
         	{ /* change code below this line */ }
-        	<Selections 
+        	<Selections
             attire={['casual', 'formal', 'super-casual']}
             shirts={['t-shirt', 'sweatshirt', 'collared shirt']}
             pants={['slacks', 'blue jeans', 'khakis', 'shorts', 'pajama pants']}
@@ -98,7 +90,7 @@ class OutfitSelector extends React.Component {
         	{ /* change code above this line */ }
         	<h3>Tomorrow is:</h3>
         	{ /* change code below this line */ }
-          <Selections 
+          <Selections
             attire={['formal', 'super-casual', 'casual']}
             shirts={['collared shirt', 't-shirt', 'sweatshirt']}
             pants={['slacks', 'khakis', 'shorts', 'pajama pants', 'blue jeans']}
@@ -114,8 +106,8 @@ class OutfitSelector extends React.Component {
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
-	const error_1 = 'The OutfitSelector component should return a single outer <div>.';
+	const error_0 = 'Your JSX code should transpile successfully.';
+	const error_1 = 'The OutfitSelector component should return a single outer div.';
 	const error_2 = 'The OutfitSelector component\'s third child should be an instance of the Selections component.';
 	const error_3 = 'The OutfitSelector component\'s fifth child should be an instance of the Selections component.';
 	const error_4 = 'Both instances of the Selections component should have props called attire, shirts, pants, and shoes, and the value of each of these props should be an array.';
@@ -166,7 +158,7 @@ export const executeTests = (code) => {
 	// we can access their component here for tests
 	const exportScript = '\n export default OutfitSelector'
 	const modifiedCode = code.concat(exportScript);
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
@@ -175,7 +167,7 @@ export const executeTests = (code) => {
 		passed = false;
 		testResults[0].status = false;
 	}
-	
+
 	// now we will try to shallow render the component with Enzyme's shallow method
 	// you can also use mount to perform a full render to the DOM environment
 	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
@@ -204,7 +196,7 @@ export const executeTests = (code) => {
 		testResults[2].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[2].status = false;		
+		testResults[2].status = false;
 	}
 
 	// test 3:
@@ -213,7 +205,7 @@ export const executeTests = (code) => {
 		testResults[3].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[3].status = false;		
+		testResults[3].status = false;
 	}
 
 	// test 4:
@@ -229,7 +221,7 @@ export const executeTests = (code) => {
 		testResults[4].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[4].status = false;		
+		testResults[4].status = false;
 	}
 
 	// test 5:
@@ -254,7 +246,7 @@ export const executeTests = (code) => {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // ---------------------------- define live render function ----------------------------
