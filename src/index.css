@@ -5,7 +5,7 @@ body {
   color: white;
   font-family: sans-serif;
 	font-family: 'Montserrat', sans-serif;
-	min-width: 1300px;
+	min-width: 1150px;
 }
 
 .mainContainer {
@@ -31,6 +31,7 @@ body {
 .CodeMirror {
 	height: auto;
 	padding: 12px 3px;
+	word-wrap: break-word;
 }
 
 .instructionsContainer {
@@ -133,8 +134,8 @@ button:hover {
 .testBtn {
 	background: #3FB2FD;
 }
-.testBtn:hover {
-	background: #25F56B;
+.testBtn:hover{
+	background: #327AFF;
 }
 .testBtn {
 	width: 490px;
