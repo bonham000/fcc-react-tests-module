@@ -28,7 +28,7 @@ export const challengeInstructions = `<span class = 'default'>Instructions: </sp
 and an <code>authReducer()</code>, along with a Redux store. We've started the <code>rootReducer()</code> for you, it's your job
 to finish it! The <code>combineReducers()</code> method, available on the Redux object, requires an object as an argument in which you
 pass reducers mapped to property names. The names of these properties will become the names of the keys in the <code>state</code>
-object for the state managed by that reducer. Lets assign our <code>counterReducer</code> to a key called <code>count</code>
+object for the state managed by that reducer. Let's assign our <code>counterReducer</code> to a key called <code>count</code>
 and our <code>authReducer</code> to a key called <code>auth</code>.`
 
 // ---------------------------- define challenge seed code ----------------------------
