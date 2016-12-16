@@ -84,7 +84,7 @@ export const executeTests = (code) => {
 	const error_1 = 'Calling the function loginAction returns an object with type property set to the string \'LOGIN\'.';
 	const error_2 = 'The store is initialized with an object with property login set to false.';
 	const error_3 = 'Dispatching loginAction updates the login property in the store\'s state to true.';
-	const error_4 = 'If the action is not of type \'LOGIIN\', the store returns the current state.'
+	const error_4 = 'If the action is not of type \'LOGIN\', the store returns the current state.'
 
 	let testResults = [
 		{
