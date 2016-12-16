@@ -17,7 +17,7 @@ how do we handle these types of requests? Redux provides some middleware designe
 middleware, to be exact. Let's briefly describe how to use this with Redux.<br><br>
 
 To include Redux Thunk middleware, we pass it as an argument to <code>Redux.applyMiddleware()</code>, which we provide as a
-second optional parameter to our <code>creatStore()</code> function. Take a look at the code in the editor to see this. Then,
+second optional parameter to our <code>createStore()</code> function. Take a look at the code in the editor to see this. Then,
 to create an asynchronous action, we return a function in our action creator that takes <code>dispatch</code> as an argument.
 Within this function we can dispatch actions and perform asynchronous requests.<br><br>
 
