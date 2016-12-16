@@ -12,7 +12,7 @@ We need campers to provide feedback specifically in these areas:
 - The tests are clear and function properly
 - Each individual challenge functions correctly without any bugs :sweat_smile:
 
-In addition, we tried to create a nice flow to the overall narrative of the challenges. If you work through several in sequence, try to reflect on how well the challenges perform consequetively.
+In addition, we tried to create a nice flow to the overall narrative of the challenges. If you work through several in sequence, try to reflect on how well the challenges perform consecutively.
 
 ##To Submit Your Feedback:##
 
