@@ -21,7 +21,7 @@ else might it be different?<br><br>
 
 Well, if you are importing styles from a stylesheet, it doesn't have to be much different at all. Simply apply a class to your JSX elememt
 using the <code>className</code> attribute, and apply styles accordingly in your stylesheet. Applying <strong><em>inline</em></strong> styles, however, is very common
-in ReactJS development, and is a bit differnt that what we are used to.<br><br>
+in ReactJS development, and is a bit different than what we are used to.<br><br>
 
 The way that we apply inline styles to JSX elements is similar to how we would would apply inline styles in HTML, but like with many cases in JSX, 
 there are a few key differences. We will still be using the <code>style</code> attribute, but the value that we set that attribute to is where you will notice

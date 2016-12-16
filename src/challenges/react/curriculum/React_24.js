@@ -86,7 +86,7 @@ export const solutionCode =
 export const executeTests = (code) => {
 
 	const error_0 = 'Your JSX code was transpiled successfully.';
-	const error_1 = 'The state of MyComponent is initialized with the key value pair { message: \'Initial State\'';
+	const error_1 = 'The state of MyComponent is initialized with the key value pair { name: \'Initial State\' }';
 	const error_2 = 'The component renders an h1 tag';
 	const error_3 = 'The rendered h1 tag contains text rendered from the component\'s state';
 	const error_4 = 'Calling the click method on MyComponent sets the name property in state to equal \'React Rocks!\'';
