@@ -20,13 +20,13 @@ Don't worry, we'll take a deep dive into state in the next challenge. Before we 
 this terminology about components.<br><br>
 
 A <i>functional stateless component</i> is any function you write which accepts props and returns JSX. A <i>stateless component</i>, on the other hand,
-is a class that extends <code>React.Component</code> so long as it does not use intenal state (what we'll learn about next). Finally, a
+is a class that extends <code>React.Component</code> so long as it does not use internal state (what we'll learn about next). Finally, a
 <i>stateful component</i> is any component that does maintain its own internal state. Stateful components may also be referred to simply as components or
 React components.<br><br>
 
-The tendency is to try and minimize statefulness and to create stateless functional components wherever possible. This pattern
+The tendency is to try to minimize statefulness and to create stateless functional components wherever possible. This pattern
 encapsulates your state management within a specific area of your app, which improves development and maintenance by making it easier to reason
-about how state updates affect your app's behavior. Now, before we move on to cover state let's do a quick review of everything we've learned about props.`
+about how state updates affect your app's behavior. Now, before we move on to cover state, let's do a quick review of everything we've learned about props.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've defined a <code>Campsite</code> component
