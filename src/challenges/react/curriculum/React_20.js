@@ -92,7 +92,7 @@ export const executeTests = (code) => {
 	const error_0 = 'Your JSX code was transpiled successfully.';
 	const error_1 = 'The component CampSite is rendered.';
 	const error_2 = 'The component Camper is rendered.';
-	const error_3 = 'The Camper component includes default props which assign the string \'Camperbot\' to the key name.';
+	const error_3 = 'The Camper component includes default props which assign the string \'CamperBot\' to the key name.';
 	const error_4 = 'The Camper component includes prop types which require the name prop to be of type string.';
 	const error_5 = 'The Camper component contains a p element with just the text from the name prop.';
 
