@@ -27,7 +27,7 @@ Redux <code>state</code> and <code>dispatch</code> to our React components as <c
 
 Now let's see all of this in action. In this series of challenges, we are going to first create a simple React component which allows you
 to input new text messages and have them added to an array which is displayed in the view. This should be a nice review of what you learned
-in the React lessons. Next, we are going to create a Redux store and actions which can manage the state of this messags array. Finally, we
+in the React lessons. Next, we are going to create a Redux store and actions which can manage the state of this messages array. Finally, we
 will use <code>react-redux</code> to connect our Redux store with our component, thereby extracting our local state into the Redux store.
 Let's get started!`
 
