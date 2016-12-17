@@ -10,7 +10,7 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Pass a String to a Functional Component`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Pass a String to a Stateless Functional Component`
 
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>The previous challenges covered a lot about creating and composing JSX elements, functional components, and ES6 style class components in React. It's time to start looking at some of the other features and capabilities of React that make it such a powerful tool to create complex, reactive user interfaces. A good place to start is with props, which is short for properties. You use props in React to <em>pass</em> information from a parent component to a child.<br><br>

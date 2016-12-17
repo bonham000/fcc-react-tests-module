@@ -14,23 +14,16 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Access 
 
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>
-Ok, so we've got the basics down of passing props down to child components. But what if the child component that we're 
-passing a prop to is an ES6 style React component, rather than a stateless functional component? To account for this, we need to change 
-the convention through which we access props slightly.<br><br>
+The last several challenges covered the basic ways to pass props to child components. But what if the child component that you're passing a prop to is an ES6 class component, rather than a stateless functional component? The ES6 class component uses a slightly different convention to access props.<br><br>
 
-Whenever we refer to a class component within itself, we always use the <code>this</code> keyword. So to access props within a class component, 
-we simply need to preface the code that we use to access it with <code>this</code>. For example, if we had a prop <code>data</code> we wanted
-to access within an ES6 class component, we would write <code>{this.props.data}</code> in JSX. Easy, right? We'll see many more uses for
-<code>this</code> as we continue forward.`
+Anytime you refer to a class component within itself, you use the <code>this</code> keyword. To access props within a class component, you preface the code that you use to access it with <code>this</code>. For example, if an ES6 class component has a prop called <code>data</code>, you write <code>{this.props.data}</code> in JSX.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>
-In the parent component <code>ResetPassword</code>, render an instance of the <code>ReturnTempPassword</code> component in the indicated space. Give this component 
-a prop of <code>tempPassword</code> and assign it a value of a string that is at least 8 characters long. Within the child, <code>ReturnTempPassword</code>, lets make sure the 
-user sees the temporary password by accessing the <code>tempPassword</code> prop within the <code>&lt;strong&gt;</code> tags.`
+Render an instance of the <code>ReturnTempPassword</code> component in the parent component <code>ResetPassword</code>. Give this component a prop of <code>tempPassword</code> and assign it a value of a string that is at least 8 characters long. Within the child, <code>ReturnTempPassword</code>, access the <code>tempPassword</code> prop within the <code>strong</code> tags to make sure the user sees the temporary password.`
 
 // ---------------------------- define challenge seed code ----------------------------
-export const seedCode = 
+export const seedCode =
 `class ReturnTempPassword extends React.Component {
   constructor(props) {
   	super(props);
@@ -59,7 +52,7 @@ class ResetPassword extends React.Component {
         	<h3>We've generated a new temporary password for you.</h3>
         	<h3>Please reset this password from your account settings ASAP.</h3>
         	{ /* change code below this line */ }
-          
+
         	{ /* change code above this line */ }
         </div>
     );
@@ -67,7 +60,7 @@ class ResetPassword extends React.Component {
 };`
 
 // ---------------------------- define challenge solution code ----------------------------
-export const solutionCode = 
+export const solutionCode =
 `class ReturnTempPassword extends React.Component {
   constructor(props) {
   	super(props);
@@ -105,11 +98,11 @@ class ResetPassword extends React.Component {
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
-	const error_1 = 'The ResetPassword component returns a single <div> element.';
-	const error_2 = 'The ResetPassword component\'s fourth child is the ReturnTempPassword component.';
-	const error_3 = 'The ReturnTempPassword component has a prop called tempPassword.';
-	const error_4 = 'The ReturnTempPassword component\'s tempPassword prop is equal to a string of at least 8 characters.';
+	const error_0 = 'Your JSX code should transpile successfully.';
+	const error_1 = 'The ResetPassword component should return a single div element.';
+	const error_2 = 'The ResetPassword component\'s fourth child should be the ReturnTempPassword component.';
+	const error_3 = 'The ReturnTempPassword component should have a prop called tempPassword.';
+	const error_4 = 'The ReturnTempPassword component\'s tempPassword prop should be equal to a string of at least 8 characters.';
 
 	let testResults = [
 		{
@@ -145,7 +138,7 @@ export const executeTests = (code) => {
 	// we can access their component here for tests
 	const exportScript = '\n export default ResetPassword'
 	const modifiedCode = code.concat(exportScript);
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
@@ -154,7 +147,7 @@ export const executeTests = (code) => {
 		passed = false;
 		testResults[0].status = false;
 	}
-	
+
 	// now we will try to shallow render the component with Enzyme's shallow method
 	// you can also use mount to perform a full render to the DOM environment
 	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
@@ -184,7 +177,7 @@ export const executeTests = (code) => {
 		testResults[2].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[2].status = false;		
+		testResults[2].status = false;
 	}
 
 	// test 3:
@@ -210,7 +203,7 @@ export const executeTests = (code) => {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // ---------------------------- define live render function ----------------------------

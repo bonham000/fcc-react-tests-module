@@ -13,24 +13,18 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Use PropTypes to Define the Props You Expect`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>React provides useful typechecking features
-to verify that components are receiving props of the correct type. For instance, let's say you perform some API call
-and expect to receive data back as an array which you will then pass to a component as a prop. You can set <code>propTypes</code> on your component such that
-this data is required to be of type <code>array</code>. This will throw a useful warning in the event the data is of any other type. Setting
-<code>propTypes</code> when you know the type of a prop ahead of time is a best practice. You can define a <code>propTypes</code> property of a component
-in the same way you defined <code>defaultProps</code>. Defining a required <code>function</code> prop would look like this:<br><br>
+export const challengeText = `<span class = 'default'>Intro: </span>React provides useful type-checking features to verify that components receive props of the correct type. For example, your application makes an API call to retrieve data that you expect to be in an array, which is then passed to a component as a prop. You can set <code>propTypes</code> on your component to require the data to be of type <code>array</code>. This will throw a useful warning when the data is of any other type.<br><br>
+
+It's considered a best practice to set <code>propTypes</code> when you know the type of a prop ahead of time. You can define a <code>propTypes</code> property for a component in the same way you defined <code>defaultProps</code>. Here's an example to require the type <code>function</code> for a prop:<br><br>
 
 <code>MyComponent.propTypes = { handleClick: React.PropTypes.func.isRequired }</code><br><br>
 
-You may notice <code>func</code> representing <code>function</code>. Among the seven JavaScript primitive types, this is the only unusual
-spelling with the exception of <code>boolean</code> which is written as <code>bool</code>.
+Notice that <code>func</code> represents <code>function</code>. Among the seven JavaScript primitive types, <code>function</code> and <code>boolean</code> (written as <code>bool</code>) are the only two that use unusual spelling.<br><br>
 
-In addition to the primitive types, there are also other types available, for example you can check that a prop is a React element.
-Please refer to the documentation for an exhaustive list.`
+In addition to the primitive types, there are other types available. For example, you can check that a prop is a React element. Please refer to the documentation for all of the options.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>Here is our <code>ShoppingCart</code> example again. Let's define
-<code>propTypes</code> for the <code>Items</code> component which declare that <code>quantity</code> is a required prop of type <code>number.</code>`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>Define <code>propTypes</code> for the <code>Items</code> component to check that the <code>quantity</code> prop is of type <code>number</code>.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
@@ -84,10 +78,10 @@ class ShoppingCart extends React.Component {
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
-	const error_1 = 'The component ShoppingCart is rendered.';
-	const error_2 = 'The component Items is rendered.';
-	const error_3 = 'The Items component includes a propTypes check for quantity as a required number.';
+	const error_0 = 'Your JSX code should transpile successfully.';
+	const error_1 = 'The ShoppingCart component should render.';
+	const error_2 = 'The Items component should render.';
+	const error_3 = 'The Items component should include a propTypes check that requires quantity to be a number.';
 
 	let testResults = [
 		{
@@ -116,7 +110,7 @@ export const executeTests = (code) => {
 
 	const exportScript = '\n export default ShoppingCart'
 	const modifiedCode = code.concat(exportScript);
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
@@ -167,14 +161,14 @@ export const executeTests = (code) => {
 	} catch (err) {
 		passed = false;
 		testResults[3].status = false;
-	}	
+	}
 
 
 	return {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // ---------------------------- define live render function ----------------------------
