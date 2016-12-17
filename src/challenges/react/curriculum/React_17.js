@@ -13,15 +13,12 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Override Default Props`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>Now that you have learned how to set default props let's
-get some practice overriding default props by explicitly setting prop values.`
+export const challengeText = `<span class = 'default'>Intro: </span>The ability to set default props is a useful feature in React. The way to override the default props is to explicitly set the prop values for a component.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've modified the previous components so that
-now the <code>ShoppingCart</code> renders a child component <code>Items</code>. This <code>Items</code> component has a default prop of <code>quantity</code>
-set to the integer <code>0</code>. Let's pass in a value of <code>10</code> instead for the prop <code>quantity</code>. Note: to pass an integer value as a
-prop you must enclose it in curly braces, for instance like this: <code>{100}</code>. This is the syntax so JSX knows to interpret
-the value within the braces directly as JavaScript. We will learn more about the uses of curly braces like this in later lessons.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>The <code>ShoppingCart</code> component now renders a child component <code>Items</code>. This <code>Items</code> component has a default prop <code>quantity</code> set to the integer <code>0</code>. Override the default prop by passing in a value of <code>10</code> for <code>quantity</code>.<br><br>
+
+<strong>Note</strong><br>Remember that the syntax to add a prop to a component looks similar to how you add HTML attributes. However, since the value for <code>quantity</code> is an integer, it won't go in quotes but it should be wrapped in curly braces. For example, <code>{100}</code>. This syntax tells JSX to interpret the value within the braces directly as JavaScript.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
@@ -69,15 +66,15 @@ class ShoppingCart extends React.Component {
 
 export const executeTests = (code) => {
 
-	const error_1 = 'The component ShoppingCart is rendered.';
-	const error_2 = 'The component Items is rendered.';
-	const error_3 = 'The Items component is passed a prop of { quantity: 10 } from the ShoppingCart component.';
+	const error_1 = 'The component ShoppingCart should render.';
+	const error_2 = 'The component Items should render.';
+	const error_3 = 'The Items component should have a prop of { quantity: 10 } passed from the ShoppingCart component.';
 
 	let testResults = [
 		{
 			test: 0,
 			status: false,
-			condition: 'Your JSX code was transpiled successfully.'
+			condition: 'Your JSX code should transpile successfully.'
 		},
 		{
 			test: 1,
@@ -100,7 +97,7 @@ export const executeTests = (code) => {
 
 	const exportScript = '\n export default ShoppingCart'
 	const modifiedCode = code.concat(exportScript);
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
@@ -151,14 +148,14 @@ export const executeTests = (code) => {
 	} catch (err) {
 		passed = false;
 		testResults[3].status = false;
-	}	
+	}
 
 
 	return {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // ---------------------------- define live render function ----------------------------
