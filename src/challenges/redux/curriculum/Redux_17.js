@@ -13,7 +13,7 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Copy an
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>Now that we've had some practice with arrays let's take a look at how we can handle state as an
 <code>object</code>. A useful tool for handling objects is the <code>Object.assign()</code> utility. <code>Object.assign()</code> takes a target object and source objects
-and maps properties in the source object to the target objects. Matching properties will be overwritten by properities in the source objects. If we write this method
+and maps properties from the source objects to the target object. Matching properties will be overwritten by properities in the source objects. If we write this method
 and pass an empty object <code>{}</code> as the first argument, this will be our target so we will be assigning and returning a new object. Just what we need!<br><br>
 
 <code>const newObject = Object.assign({}, obj1, obj2);</code><br><br>
