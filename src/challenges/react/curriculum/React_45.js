@@ -30,7 +30,7 @@ very simple game. The rules? Press a button, and find out if you win or lose. Th
 So, how do we achieve this? The first thing we need is a simple expression that will randomly return a different value every time it is run. 
 Sounds like a job for <code>Math.random()</code>! 
 This standard built in method will return a value between <code>0</code> (inclusive) and <code>1</code> (exclusive) each time it is called. So for 50/50 odds, let's let our expression be 
-<code>Math.random() > .5</code>. Statistically speaking, this expression will return <code>true</code> 50% of the time, and <code>false</code> the other 50%. On line 31, replace the comment with this expression
+<code>Math.random() > .5</code>. Statistically speaking, this expression will return <code>true</code> 50% of the time, and <code>false</code> the other 50%. On line 30, replace the comment with this expression
 to complete the variable declaration.<br><br>
 
 Great! Now we have an expression that we can use to make a randomized decision in our code! But how do we implement this? Well, since we have a <code>Results</code> component, let's display

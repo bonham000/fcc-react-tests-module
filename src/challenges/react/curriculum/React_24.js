@@ -14,8 +14,8 @@ export const challengeText = `<span class = 'default'>Intro: </span>You have lea
 and how to initialize state in the <code>constructor</code>. Now let's see how we can change the component's
 <code>state</code>. React provides a method for updating component <code>state</code> called <code>setState</code>.
 You can call this method within your component class like this: <code>this.setState()</code>, passing in an object
-which defines the <code>state</code> values you wish to update. It is important to never modify <code>state</code>
-directly but always use <code>this.setState()</code> to do so.`
+with key-value pairs: keys for your state properties and values for whatever state data you have.
+It is important to never modify <code>state</code> directly but always use <code>this.setState()</code> to do so.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>In this example we've provided
@@ -26,7 +26,7 @@ component <code>state</code> with <code>this.setState()</code>. Update the <code
 <code>name</code> property in <code>state</code> to equal the string <code>React Rocks!</code>.<br><br>
 
 Try it out! Click the button and watch the rendered state update. Don't worry about understanding how we are
-definining the <code>click</code> method or assigning the click handler at this point, we will continue to
+defining the <code>click</code> method or assigning the click handler at this point, we will continue to
 elaborate on these details in the subsequent lessons.`
 
 // ---------------------------- define challenge seed code ----------------------------

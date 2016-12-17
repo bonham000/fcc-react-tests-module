@@ -12,8 +12,8 @@ export const QA = false;
 // -------------- define challenge title and challenge instructions --------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Define an HTML Class in JSX`
 export const challengeText = `<span class = 'default'>Intro: </span>
-Now that you're getting comfortable writing JSX you may be wondering how it differs from HTML.
-So far it may seem that HTML and JSX are exactly the same.<br><br>
+Now that you're getting comfortable writing JSX, you may be wondering how it differs from HTML.
+So far, it may seem that HTML and JSX are exactly the same.<br><br>
 
 One key difference in JSX is that you can no longer use the word <code>class</code> to define HTML classes. This is because <code>class</code> is a reserved word in JavaScript. Instead, JSX uses <code>className</code>.<br><br>
 
