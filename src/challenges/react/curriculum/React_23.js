@@ -8,20 +8,14 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Render State in the UI Another Way`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Render State in the User Interface Another Way`
 
-export const challengeText = `<span class = 'default'>Intro: </span>Now we will see one more way to access <code>state</code>
-before moving on. In the <code>render()</code> method, before the <code>return</code> you can write JavaScript directly. For
-example you could declare functions, access data from <code>state</code> or <code>props</code>, perform computations on this
-data and so on. Then, you can assign any data to variables that you will then have access to in the <code>return</code>. As a
-simple example of this powerful feature, lets see a different way to access <code>state</code>.`
+export const challengeText = `<span class = 'default'>Intro: </span>There is another way to access <code>state</code> in a component. In the <code>render()</code> method, before the <code>return</code> statement, you can write JavaScript directly. For example, you could declare functions, access data from <code>state</code> or <code>props</code>, perform computations on this
+data, and so on. Then, you can assign any data to variables, which you have access to in the <code>return</code> statement.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>This component is just like the one before.
-Now, let's define a <code>const</code> in the <code>render</code> method called <code>name</code> and set it equal to the name value in the
-component's <code>state</code>. Because we are just writing JavaScript now, you don't have to enclose this reference in curly braces.
-Next, to render this value, you can just reference it directly in the <code>return</code>, but of course now that we are back in 
-JSX you will have to enclose it in curly braces. Do this and render it within an <code>h1</code> tag.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>In the <code>MyComponent</code> render method, define a <code>const</code> called <code>name</code> and set it equal to the name value in the component's <code>state</code>. Because you can write JavaScript directly in this part of the code, you don't have to enclose this reference in curly braces.
+Next, in the return statement, render this value in an <code>h1</code> tag using the variable <code>name</code>. Remember, you need to use the JSX syntax (curly braces for JavaScript) in the return statement.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
@@ -34,7 +28,7 @@ export const seedCode =
 	}
 	render() {
 		// change code below this line
-				
+
 	  // change code above this line
   	return (
 	    <div>
@@ -73,11 +67,11 @@ export const solutionCode =
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
-	const error_1 = 'The component has a key "name" with value "Free Code Camp" stored in its state';
-	const error_2 = 'The component renders an h1 tag';
-	const error_3 = 'The rendered h1 tag includes a reference to {name}';
-	const error_4 = 'The rendered h1 tag contains text rendered from the component\'s state';
+	const error_0 = 'Your JSX code should transpile successfully.';
+	const error_1 = 'MyComponent should have a key \'name\' with value \'Free Code Camp\' stored in its state.';
+	const error_2 = 'MyComponent should render an h1 tag.';
+	const error_3 = 'The rendered h1 tag should include a reference to {name}.';
+	const error_4 = 'The rendered h1 tag should contain text rendered from the component\'s state.';
 
 	let testResults = [
 		{
@@ -111,7 +105,7 @@ export const executeTests = (code) => {
 
 	const exportScript = '\n export default MyComponent'
 	const modifiedCode = code.concat(exportScript);
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
@@ -120,7 +114,7 @@ export const executeTests = (code) => {
 		passed = false;
 		testResults[0].status = false;
 	}
-	
+
 	// try to shallow render the component with Enzyme
 	try {
 		mockedComponent = mount(React.createElement(eval(es5)));
@@ -143,7 +137,7 @@ export const executeTests = (code) => {
 		testResults[2].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[2].status = false;		
+		testResults[2].status = false;
 	}
 
 	// test 3:
@@ -152,8 +146,8 @@ export const executeTests = (code) => {
 		testResults[3].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[3].status = false;		
-	}	
+		testResults[3].status = false;
+	}
 
 	// test 4:
 	try {
@@ -169,7 +163,7 @@ export const executeTests = (code) => {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // ---------------------------- define live render function ----------------------------

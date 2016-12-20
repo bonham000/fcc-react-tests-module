@@ -13,28 +13,20 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Create a Stateful Component`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>Here we introduce one of the most important topics in React:
-<code>state</code>. State consists of any data that can change over time that your app needs to know about. We want our apps to be able to
-respond to changing state and present a new UI when state changes. React presents us with a very nice solution for the state management
-of modern web applications. Let's see how it works here.<br><br>
+export const challengeText = `<span class = 'default'>Intro: </span>One of the most important topics in React is <code>state</code>. State consists of any data your application needs to know about, that can change over time. You want your apps to respond to state changes and present an updated UI when necessary. React offers a nice solution for the state management of modern web applications.
+<br><br>
 
-We can create state in a React component by declaring a <code>state</code> property on the component class in its
-<code>constructor</code>. This will initialize the component with <code>state</code> when it is created. This <code>state</code>
-property must be set to a JavaScript <code>object</code>. Declaring it looks like this:<br><br>
+You create state in a React component by declaring a <code>state</code> property on the component class in its <code>constructor</code>. This initializes the component with <code>state</code> when it is created. The <code>state</code> property must be set to a JavaScript <code>object</code>. Declaring it looks like this:<br><br>
 
 <code>this.state = {<br>
 &nbsp;&nbsp;&nbsp;// describe your state here<br>
-}<br><br>
-</code>
+}</code>
+<br><br>
 
-We will then have access to this <code>state</code> throughout the life of our component. We can update it, render it in our UI,
-and pass it as props to child components. The <code>state</code> object can be as complex or as simple as you need it to be. Note
-that you must create a class component by extending <code>React.Component</code> in order to create <code>state</code> like this.`
+You have access to the <code>state</code> object throughout the life of your component. You can update it, render it in your UI, and pass it as props to child components. The <code>state</code> object can be as complex or as simple as you need it to be. Note that you must create a class component by extending <code>React.Component</code> in order to create <code>state</code> like this.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've defined a component for you that is
-trying to render a <code>name</code> property from its <code>state</code> but currently no <code>state</code> exists.
-Initialize the component with <code>state</code> in the <code>constructor</code> and assign your name to a property of 
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>There is a component in the code editor that is trying to render a <code>name</code> property from its <code>state</code>. However, there is no <code>state</code> defined. Initialize the component with <code>state</code> in the <code>constructor</code> and assign your name to a property of
 <code>name</code>.`
 
 // ---------------------------- define challenge seed code ----------------------------
@@ -75,11 +67,11 @@ class StatefulComponent extends React.Component {
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
-	const error_1 = 'StatefulComponent exists and is rendered.';
-	const error_2 = 'StatefulComponent renders a div and h1 element.';
-	const error_3 = 'StatefulComponent\' state is initalized with a property \'name\' set to a string.';
-	const error_4 = 'The property \'name\' in the state of StatefulComponent is rendered in the h1 element.';
+	const error_0 = 'Your JSX code should transpile successfully.';
+	const error_1 = 'StatefulComponent should exist and render.';
+	const error_2 = 'StatefulComponent should render a div and an h1 element.';
+	const error_3 = 'StatefulComponent\'s state should be initalized with a property \'name\' set to a string.';
+	const error_4 = 'The property \'name\' in the state of StatefulComponent should render in the h1 element.';
 
 	let testResults = [
 		{
@@ -115,7 +107,7 @@ export const executeTests = (code) => {
 	// we can access their component here for tests
 	const exportScript = '\n export default StatefulComponent'
 	const modifiedCode = code.concat(exportScript);
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
@@ -124,7 +116,7 @@ export const executeTests = (code) => {
 		passed = false;
 		testResults[0].status = false;
 	}
-	
+
 	// now we will try to shallow render the component with Enzyme's shallow method
 	// you can also use mount to perform a full render to the DOM environment
 	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
@@ -156,7 +148,7 @@ export const executeTests = (code) => {
 		testResults[2].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[2].status = false;		
+		testResults[2].status = false;
 	}
 
 	let initialState;
@@ -182,13 +174,13 @@ export const executeTests = (code) => {
 	} catch (err) {
 		passed = false;
 		testResults[4].status = false;
-	}	
+	}
 
 	return {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // ---------------------------- define live render function ----------------------------

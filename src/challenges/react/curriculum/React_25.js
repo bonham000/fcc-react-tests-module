@@ -10,29 +10,19 @@ export const QA = false;
 // ---------------------------- define challenge title ----------------------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Bind 'this' to a Class Method`
 
-export const challengeText = `<span class = 'default'>Intro: </span>Now you've learned how to set the state of a
-component, let's learn a little more about defining methods on your component class. A class method typically needs
-to be <code>this</code> aware so that it can access properties on the class, such as <code>state</code> and
-<code>props</code>. There are a few ways to allow your class methods to access <code>this</code>.<br><br>
+export const challengeText = `<span class = 'default'>Intro: </span>In addition to setting and updating state, you can also define methods on your component class. A class method typically needs to use the <code>this</code> keyword so it can access properties on the class (such as <code>state</code> and <code>props</code>) inside the scope of the method. There are a few ways to allow your class methods to access <code>this</code>.
+<br><br>
 
-One common way is to explicitly bind <code>this</code> in the constructor so <code>this</code> becomes bound
-to the class methods when the component is initialized. In the last lesson we accomplished this by writing
-<code>this.click = this.click.bind(this)</code> in the constructor. Then, when you call a function like
-<code>this.setState()</code> within your class method, <code>this</code> will not be <code>undefined</code>.`
+One common way is to explicitly bind <code>this</code> in the constructor so <code>this</code> becomes bound to the class methods when the component is initialized. You may have noticed the last challenge used <code>this.click = this.click.bind(this)</code> for its <code>click</code> method in the constructor. Then, when you call a function like <code>this.setState()</code> within your class method, <code>this</code> refers to the class and will not be <code>undefined</code>.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've provided a similar example
-for you here. In this example, we have a component with a state that can keep track of an item count and a method
-which allows you to increment this item count. However, right now the method is not <code>this</code> aware. Fix this
-by explicitly binding <code>this</code> to the <code>addItem()</code> method in the component's constructor.<br><br>
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>The code editor has a component with a state that keeps track of an item count. It also has a method which allows you to increment this item count. However, the method doesn't work because it's using the <code>this</code> keyword that is undefined. Fix it by explicitly binding <code>this</code> to the <code>addItem()</code> method in the component's constructor.
+<br><br>
 
-You will also see that our button has no click handler anymore. We need to add a click handler which triggers our
-<code>addItem()</code> method when the button receives a click event. Let's add this click handler as well,
-remembering that the method we pass to the <code>onClick()</code> handler should be enclosed with curly braces
-because we want it to be interpreted directly as JavaScript.<br><br>
+Next, add a click handler to the <code>button</code> element in the render method. It should trigger the <code>addItem()</code> method when the button receives a click event. Remember that the method you pass to the <code>onClick()</code> handler needs curly braces because it should be interpreted directly as JavaScript.
+<br><br>
 
-Go ahead and try it out! Once you complete the above steps you should be able to click the button and see the item
-count increment in the HTML! Pretty cool!`
+Once you complete the above steps you should be able to click the button and see the item count increment in the HTML.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
@@ -92,10 +82,10 @@ export const solutionCode =
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
-	const error_1 = 'MyComponent returns a div element which wraps 2 elements, a button and h1 element, in that order.'
-	const error_2 = 'The state of MyComponent is initialized with the key value pair { itemCount: 0}';
-	const error_3 = 'Clicking the button element runs the addItem method and increments the state itemCount by 1.';
+	const error_0 = 'Your JSX code should transpile successfully.';
+	const error_1 = 'MyComponent should return a div element which wraps two elements, a button and an h1 element, in that order.'
+	const error_2 = 'The state of MyComponent should initialize with the key value pair { itemCount: 0}.';
+	const error_3 = 'Clicking the button element should run the addItem method and increment the state itemCount by 1.';
 
 	let testResults = [
 		{
@@ -124,7 +114,7 @@ export const executeTests = (code) => {
 
 	const exportScript = '\n export default MyComponent'
 	const modifiedCode = code.concat(exportScript);
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
@@ -133,7 +123,7 @@ export const executeTests = (code) => {
 		passed = false;
 		testResults[0].status = false;
 	}
-	
+
 	// try to shallow render the component with Enzyme
 	try {
 		mockedComponent = mount(React.createElement(eval(es5)));
@@ -181,7 +171,7 @@ export const executeTests = (code) => {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // ---------------------------- define live render function ----------------------------
