@@ -30,8 +30,9 @@ export const seedCode =
 `const JSX = (
 <div>
 	{/* change code below this line */}
-	<p>Welcome to React!<p> <br >
-	<img src="https://goo.gl/ErGBQs" alt="React Logo">
+	<h2>Welcome to React!</h2> <br >
+	<p>Be sure to close all tags!</p>
+	<hr >
 	{/* change code above this line */}
 </div>
 );
@@ -43,8 +44,9 @@ export const solutionCode =
 `const JSX = (
 <div>
 	{/* change code below this line */}
-	<p>Welcome to React!</p> <br />
-	<img src="https://goo.gl/ErGBQs" alt="React Logo" />
+	<h2>Welcome to React!</h2> <br />
+	<p>Be sure to close all tags!</p>
+	<hr />
 	{/* change code above this line */}
 </div>
 );
@@ -54,6 +56,8 @@ ReactDOM.render(JSX, document.getElementById('challenge-node'));`
 // ---------------------------- define challenge tests ----------------------------
 
 export const executeTests = (code) => {
+
+	document.getElementById('challenge-node').innerHTML = '';
 
 	let es5, mockedComponent, jsx, passed = true;
 
@@ -76,7 +80,7 @@ export const executeTests = (code) => {
 		{
 			test: 3,
 			status: false,
-			condition: 'The div should contain an img tag.'
+			condition: 'The div should contain an hr tag.'
 		},
 		{
 			test: 4,
@@ -126,7 +130,7 @@ export const executeTests = (code) => {
 
 	// test 3:
 	try {
-		assert.strictEqual(jsx.props.children[3].type, 'img', 'The div should contain an img tag.');
+		assert.strictEqual(jsx.props.children[4].type, 'hr', 'The div should contain an hr tag.');
 		testResults[3].status = true;
 	} catch (err) {
 		passed = false;
@@ -137,8 +141,8 @@ export const executeTests = (code) => {
 	try {
 		let testDiv = document.getElementById('challenge-node').childNodes[0].innerHTML.replace(/\s/g,'');
 		assert(
-			testDiv.includes('<p>WelcometoReact!</p>') &&
-			testDiv.includes('<br><imgsrc="https://goo.gl/ErGBQs"alt="ReactLogo">'),
+			testDiv.includes('<h2>WelcometoReact!</h2>') &&
+			testDiv.includes('<p>Besuretoclosealltags!</p>'),
 			'The provided JSX element should render as is to the DOM node with id \'challenge-node\'.'
 		);
 		testResults[4].status = true;
