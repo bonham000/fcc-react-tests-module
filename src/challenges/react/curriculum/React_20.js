@@ -10,31 +10,19 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Using Props with Stateless Functional Components`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Review Using Props with Stateless Functional Components`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>So far, except for the last challenge we've been passing props to
-stateless functional components. These components accept props as input, and, like pure functions, predictably
-return the same view every time they are passed the same props. Now, you may be wondering what all the talk of state is about. 
-Don't worry, we'll take a deep dive into state in the next challenge. Before we do that, however, let's take a moment to review
-this terminology about components.<br><br>
+export const challengeText = `<span class = 'default'>Intro: </span>Except for the last challenge, you've been passing props to stateless functional components. These components act like pure functions. They accept props as input and return the same view every time they are passed the same props. You may be wondering what state is, and the next challenge will cover it in more detail. Before that, here's a review of the terminology for components.
+<br><br>
 
-A <i>functional stateless component</i> is any function you write which accepts props and returns JSX. A <i>stateless component</i>, on the other hand,
-is a class that extends <code>React.Component</code> so long as it does not use internal state (what we'll learn about next). Finally, a
-<i>stateful component</i> is any component that does maintain its own internal state. Stateful components may also be referred to simply as components or
-React components.<br><br>
+A <em>stateless functional component</em> is any function you write which accepts props and returns JSX. A <em>stateless component</em>, on the other hand, is a class that extends <code>React.Component</code>, but does not use internal state (covered in the next challenge). Finally, a <em>stateful component</em> is any component that does maintain its own internal state. You may see stateful components referred to simply as components or React components.
+<br><br>
 
-The tendency is to try to minimize statefulness and to create stateless functional components wherever possible. This pattern
-encapsulates your state management within a specific area of your app, which improves development and maintenance by making it easier to reason
-about how state updates affect your app's behavior. Now, before we move on to cover state, let's do a quick review of everything we've learned about props.`
+A common pattern is to try to minimize statefulness and to create stateless functional components wherever possible. This helps contain your state management to a specific area of your application. In turn, this improves development and maintenance of your app by making it easier to follow how changes to state affect its behavior.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've defined a <code>Campsite</code> component
-for you which is currently rendering a <code>Camper</code> component as a child. However, this <code>Camper</code> component has not
-been defined. Define <code>Camper</code> and assign it default props of <code>{ name: 'CamperBot' }</code>. Inside the <code>Camper</code>
-component render whatever you want, but be sure to include a <code>p</code> tag which includes only the <code>name</code> value passed
-in as a <code>prop</code>. Finally, also define <code>propTypes</code> on the <code>Camper</code> component that expect <code>name</code>
-to be a required <code>string</code>.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>The code editor has a <code>Campsite</code> component that renders a <code>Camper</code> component as a child. Define the <code>Camper</code> component and assign it default props of <code>{ name: 'CamperBot' }</code>. Inside the <code>Camper</code> component, render any code that you want, but make sure to have one <code>p</code> element that includes only the <code>name</code> value that is passed in as a <code>prop</code>. Finally, define <code>propTypes</code> on the <code>Camper</code> component that require the <code>name</code> to be a <code>string</code>.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
@@ -89,12 +77,12 @@ Camper.defaultProps = {
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
-	const error_1 = 'The component CampSite is rendered.';
-	const error_2 = 'The component Camper is rendered.';
-	const error_3 = 'The Camper component includes default props which assign the string \'CamperBot\' to the key name.';
-	const error_4 = 'The Camper component includes prop types which require the name prop to be of type string.';
-	const error_5 = 'The Camper component contains a p element with just the text from the name prop.';
+	const error_0 = 'Your JSX code should transpile successfully.';
+	const error_1 = 'The CampSite component should render.';
+	const error_2 = 'The Camper component should render.';
+	const error_3 = 'The Camper component should include default props which assign the string \'CamperBot\' to the key name.';
+	const error_4 = 'The Camper component should include prop types which require the name prop to be of type string.';
+	const error_5 = 'The Camper component should contain a p element with only the text from the name prop.';
 
 	let testResults = [
 		{
@@ -133,7 +121,7 @@ export const executeTests = (code) => {
 
 	const exportScript = '\n export default CampSite'
 	const modifiedCode = code.concat(exportScript);
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
@@ -184,7 +172,7 @@ export const executeTests = (code) => {
 	} catch (err) {
 		passed = false;
 		testResults[3].status = false;
-	}	
+	}
 
 		// test 4:
 	try {
@@ -204,14 +192,14 @@ export const executeTests = (code) => {
 	} catch (err) {
 		passed = false;
 		testResults[5].status = false;
-	}	
+	}
 
 
 	return {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // ---------------------------- define live render function ----------------------------

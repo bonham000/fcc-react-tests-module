@@ -10,23 +10,13 @@ export const QA = false;
 // ---------------------------- define challenge title ----------------------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Bind 'this' with an ES6 Arrow Function`
 
-export const challengeText = `<span class = 'default'>Intro: </span>Let's look at one more way that we can bind
-<code>this</code> when writing methods in React component classes. A useful, concise way to bind <code>this</code>
-is to use an ES6 arrow function, which does not assign its own value for <code>this</code> but rather adopts
-the value of <code>this</code> from the context surrounding the function when it is written. In other words, an
-arrow function binds <code>this</code> automatically from its surrounding context.<br><br>
+export const challengeText = `<span class = 'default'>Intro: </span>There is another way to bind <code>this</code> when writing methods in React component classes. A useful, concise way is to use an ES6 arrow function. It does not assign its own value for <code>this</code>, but instead adopts the value of <code>this</code> from the context surrounding the function when it is written. In other words, an arrow function binds <code>this</code> automatically from its surrounding context.
+<br><br>
 
-This means we can simply define a class method as an arrow function and we don't have to worry about explicitly
-binding <code>this</code> in the constructor. Nice! However, the arrow function is ES6 syntax so it will need to
-be transpiled in order to work correctly in most browsers. Because of this, it's useful to be aware of both options when writing
-methods on React classes.`
+This means you can define a class method as an arrow function and not have to explicitly bind <code>this</code> in the constructor. However, the arrow function is ES6 syntax, which may not work fully in the browser. You may need to transpile your code to make sure it works correctly in most browsers. It's useful to be aware of both options when writing methods on React classes.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've provided a React Component
-that renders a <code>&lt;button&gt;</code> which triggers a <code>setMessage()</code> function when clicked. Define this
-method with an ES6 arrow function on the <code>MyComponent</code> class to change the <code>state</code> of <code>message</code>
-to <code>Goodbye!</code>. Let's also initialize this <code>message</code> in the state of <code>MyComponent</code> to have
-a value of <code>Hello!</code>.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>Initialize the state of <code>MyComponent</code> so there is a <code>message</code> key with a value of <code>Hello!</code>. The component renders a <code>button</code> that, when clicked, triggers a <code>setMessage()</code> method. Define this method with an ES6 arrow function. It should change the <code>state</code> of <code>message</code> to <code>Goodbye!</code>.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
@@ -78,11 +68,11 @@ export const solutionCode =
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
-	const error_1 = 'MyComponent returns a div element which wraps 2 elements, a button and h1 element, in that order.'
-	const error_2 = 'The state of MyComponent is initialized with a message containing the string \'Hello!\'';
-	const error_3 = 'Clicking the button element runs the setMessage method and upates the message property in the state to say \'Goodbye!\'';
-	const error_4 = 'The setMessage method is defined with a fat arrow function.'
+	const error_0 = 'Your JSX code should transpile successfully.';
+	const error_1 = 'MyComponent should return a div element which wraps two elements, a button and an h1 element, in that order.'
+	const error_2 = 'The state of MyComponent should initialize with a message containing the string \'Hello!\'';
+	const error_3 = 'Clicking the button element should run the setMessage method and upate the message property in the state to say \'Goodbye!\'';
+	const error_4 = 'The setMessage method should be defined with a fat arrow function.'
 
 	let testResults = [
 		{
@@ -116,7 +106,7 @@ export const executeTests = (code) => {
 
 	const exportScript = '\n export default MyComponent'
 	const modifiedCode = code.concat(exportScript);
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
@@ -125,7 +115,7 @@ export const executeTests = (code) => {
 		passed = false;
 		testResults[0].status = false;
 	}
-	
+
 	// try to shallow render the component with Enzyme
 	try {
 		mockedComponent = mount(React.createElement(eval(es5)));
@@ -177,13 +167,13 @@ export const executeTests = (code) => {
 	} catch (err) {
 		passed = false;
 		testResults[4].status = false;
-	}	
+	}
 
 	return {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // ---------------------------- define live render function ----------------------------

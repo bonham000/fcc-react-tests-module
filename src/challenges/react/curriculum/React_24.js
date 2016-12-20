@@ -10,24 +10,17 @@ export const QA = false;
 // ---------------------------- define challenge title ----------------------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Set State with this.setState`
 
-export const challengeText = `<span class = 'default'>Intro: </span>You have learned about component <code>state</code>
-and how to initialize state in the <code>constructor</code>. Now let's see how we can change the component's
-<code>state</code>. React provides a method for updating component <code>state</code> called <code>setState</code>.
-You can call this method within your component class like this: <code>this.setState()</code>, passing in an object
-with key-value pairs: keys for your state properties and values for whatever state data you have.
-It is important to never modify <code>state</code> directly but always use <code>this.setState()</code> to do so.`
+export const challengeText = `<span class = 'default'>Intro: </span>The previous challenges covered component <code>state</code> and how to initialize state in the <code>constructor</code>. There is also a way to change the component's <code>state</code>. React provides a method for updating component <code>state</code> called <code>setState</code>.
+<br><br>
+
+You call this method within your component class like this: <code>this.setState()</code>, passing in an object with key-value pairs. The keys are your state properties and the values are the updated state data. It is important that you never modify <code>state</code> directly, but use <code>this.setState()</code> to do so.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>In this example we've provided
-a <code>&lt;button&gt;</code> element which has an <code>onClick()</code> handler. This handler is triggered when the
-<code>&lt;button&gt;</code> recieves a click event in the browser, which in this case will run the <code>click</code>
-method we have defined on <code>MyComponent</code>. Within this <code>click</code> method we want to update the
-component <code>state</code> with <code>this.setState()</code>. Update the <code>click</code> method to set the
-<code>name</code> property in <code>state</code> to equal the string <code>React Rocks!</code>.<br><br>
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>There is a <code>button</code> element in the code editor which has an <code>onClick()</code> handler. This handler is triggered when the <code>button</code> receives a click event in the browser, and runs the <code>click</code> method defined on <code>MyComponent</code>. Within the <code>click</code> method, update the component <code>state</code> using <code>this.setState()</code>. Set the
+<code>name</code> property in <code>state</code> to equal the string <code>React Rocks!</code>.
+<br><br>
 
-Try it out! Click the button and watch the rendered state update. Don't worry about understanding how we are
-defining the <code>click</code> method or assigning the click handler at this point, we will continue to
-elaborate on these details in the subsequent lessons.`
+Click the button and watch the rendered state update. Don't worry if you don't fully understand how the click handler code works at this point. It's covered in upcoming challenges.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
@@ -40,7 +33,7 @@ export const seedCode =
 		this.click = this.click.bind(this);
 	}
 	click() {
-		 // change code below this line
+		// change code below this line
 
 	  // change code above this line
 	}
@@ -85,11 +78,11 @@ export const solutionCode =
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
-	const error_1 = 'The state of MyComponent is initialized with the key value pair { name: \'Initial State\' }';
-	const error_2 = 'The component renders an h1 tag';
-	const error_3 = 'The rendered h1 tag contains text rendered from the component\'s state';
-	const error_4 = 'Calling the click method on MyComponent sets the name property in state to equal \'React Rocks!\'';
+	const error_0 = 'Your JSX code should transpile successfully.';
+	const error_1 = 'The state of MyComponent should initialize with the key value pair { name: \'Initial State\' }.';
+	const error_2 = 'MyComponent should render an h1 tag.';
+	const error_3 = 'The rendered h1 tag should contain text rendered from the component\'s state.';
+	const error_4 = 'Calling the click method on MyComponent should set the name property in state to equal \'React Rocks!\'.';
 
 	let testResults = [
 		{
@@ -123,7 +116,7 @@ export const executeTests = (code) => {
 
 	const exportScript = '\n export default MyComponent'
 	const modifiedCode = code.concat(exportScript);
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
@@ -132,7 +125,7 @@ export const executeTests = (code) => {
 		passed = false;
 		testResults[0].status = false;
 	}
-	
+
 	// try to shallow render the component with Enzyme
 	try {
 		mockedComponent = mount(React.createElement(eval(es5)));
@@ -155,7 +148,7 @@ export const executeTests = (code) => {
 		testResults[2].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[2].status = false;		
+		testResults[2].status = false;
 	}
 
 	// test 3:
@@ -180,13 +173,13 @@ export const executeTests = (code) => {
 	} catch (err) {
 		passed = false;
 		testResults[4].status = false;
-	}	
+	}
 
 	return {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // ---------------------------- define live render function ----------------------------
