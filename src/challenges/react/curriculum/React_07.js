@@ -40,7 +40,7 @@ const DemoComponent = function(props) {
 Because a JSX component represents HTML, you could put several components together to create a more complex HTML page. This is one of the key advantages of the component architecture React provides. It allows you to compose your UI from many separate, isolated components. This makes it easier to build and maintain complex user interfaces.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>The code editor has a function called <code>myComponent</code>. Complete this function so it returns a single <code>div</code> element which contains some string of text.
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>The code editor has a function called <code>MyComponent</code>. Complete this function so it returns a single <code>div</code> element which contains some string of text.
 <br /><br />
 <strong>Note</strong><br />The text is considered a child of the <code>div</code> element, so you will not be able to use a self-closing tag.`
 
