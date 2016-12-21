@@ -13,25 +13,17 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Manage Updates with Lifecycle Methods`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>Another lifecycle method is 
-<code>componentWillReceiveProps()</code> which is called whenever a component is receiving new props. This method will receive
-the new props as a <code>nextProps</code> argument which you can use and compare with <code>this.props</code>. You can perform
-actions before the component updates, for instance you may call <code>setState()</code> locally before the update is processed.<br><br>
+export const challengeText = `<span class = 'default'>Intro: </span>Another lifecycle method is
+<code>componentWillReceiveProps()</code> which is called whenever a component is receiving new props. This method receives the new props as a <code>nextProps</code> argument which you can use and compare with <code>this.props</code>. You can perform actions before the component updates. For example, you may call <code>setState()</code> locally before the update is processed.
+<br><br>
 
-Another method we will use here is <code>componentDidUpdate()</code>. This method is called immediately after a component re-renders.
-Note that rendering and mounting are considered different things in the component lifecycle. When a page first loads all components
-will be mounted and this is where methods like <code>componentWillMount()</code> and <code>componentDidMount()</code> will be called.
-After this, however, as state changes components will just re-render themselves. We'll discuss this a little more in the next lesson.`
+Another method is <code>componentDidUpdate()</code>, and is called immediately after a component re-renders. Note that rendering and mounting are considered different things in the component lifecycle. When a page first loads, all components are mounted and this is where methods like <code>componentWillMount()</code> and <code>componentDidMount()</code> are called. After this, as state changes, components re-render themselves. The next challenge covers this in more detail.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've created two components for you. The
-child component <code>Dialog</code> is receiving <code>message</code> props from its parent <code>Controller</code> component.
-Let's write the <code>componentWillReceiveProps()</code> method in the <code>Dialog</code> component and have it log <code>this.props</code>
-and <code>nextProps</code> to the console (don't forget to pass <code>nextProps</code> as an argument to this method).<br><br>
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>The child component <code>Dialog</code> receives <code>message</code> props from its parent, the <code>Controller</code> component. Write the <code>componentWillReceiveProps()</code> method in the <code>Dialog</code> component and have it log <code>this.props</code> and <code>nextProps</code> to the console. You'll need to pass <code>nextProps</code> as an argument to this method.
+<br><br>
 
-Once you have added this method add <code>componentDidUpdate()</code> as well in the <code>Dialog</code> component, and here log a statement
-that says that the component has updated. This method works much like <code>componentWillUpdate()</code>, which we've provided
-for you. Now click the button to change the message and watch your console. Observe the order the statements are logged out in.`
+Next, add <code>componentDidUpdate()</code> in the <code>Dialog</code> component, and log a statement that says the component has updated. This method works similar to <code>componentWillUpdate()</code>, which is provided for you. Now click the button to change the message and watch your browser console. The order of the console statements show the order the methods are called.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
@@ -119,12 +111,12 @@ class Controller extends React.Component {
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
-	const error_1 = 'The Controller components renders the Dialog component as a child';
-	const error_2 = 'The h1 rendered by the Dialog component updates when the parent state changes.';
-	const error_3 = 'The componentWillReceiveProps method in the Dialog component logs this.props to the console.';
-	const error_4 = 'The componentWillReceiveProps method in the Dialog component logs nextProps to the console.';
-	const error_5 = 'The Dialog component calls the componentDidUpdate method and logs a message to the console.';
+	const error_0 = 'Your JSX code should transpile successfully.';
+	const error_1 = 'The Controller component should render the Dialog component as a child.';
+	const error_2 = 'The h1 rendered by the Dialog component should update when the parent state changes.';
+	const error_3 = 'The componentWillReceiveProps method in the Dialog component should log this.props to the console.';
+	const error_4 = 'The componentWillReceiveProps method in the Dialog component should log nextProps to the console.';
+	const error_5 = 'The Dialog component should call the componentDidUpdate method and log a message to the console.';
 
 	let testResults = [
 		{
@@ -165,7 +157,7 @@ export const executeTests = (code) => {
 	// we can access their component here for tests
 	const exportScript = '\n export default Controller'
 	const modifiedCode = code.concat(exportScript);
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
@@ -174,7 +166,7 @@ export const executeTests = (code) => {
 		passed = false;
 		testResults[0].status = false;
 	}
-	
+
 	// now we will try to shallow render the component with Enzyme's shallow method
 	// you can also use mount to perform a full render to the DOM environment
 	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
@@ -212,8 +204,8 @@ export const executeTests = (code) => {
 		testResults[2].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[2].status = false;		
-	}	
+		testResults[2].status = false;
+	}
 
 
 	// specifically perform a separate export for the child component
@@ -222,7 +214,7 @@ export const executeTests = (code) => {
 
 	const exportScriptChild = '\n export default Dialog'
 	const modifiedCodeChild = code.concat(exportScriptChild);
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5Child = transform(modifiedCodeChild, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
@@ -243,7 +235,7 @@ export const executeTests = (code) => {
 		testResults[3].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[3].status = false;		
+		testResults[3].status = false;
 	}
 
 	// test 4:
@@ -257,7 +249,7 @@ export const executeTests = (code) => {
 		testResults[4].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[4].status = false;		
+		testResults[4].status = false;
 	}
 
 	// test 5:
@@ -271,14 +263,14 @@ export const executeTests = (code) => {
 		testResults[5].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[5].status = false;		
-	}	
+		testResults[5].status = false;
+	}
 
 	return {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // ---------------------------- define live render function ----------------------------

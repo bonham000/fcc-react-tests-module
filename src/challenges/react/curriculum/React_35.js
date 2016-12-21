@@ -13,25 +13,15 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Add Event Listeners`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span><code>componentDidMount()</code> is also the best place
-to attach any event listeners you need to add for specific functionality. React provides a synthetic event system which wraps
-the native event system present in browsers. This means that the synthetic event system behaves exactly the same regardless
-of the browser React is being rendered in even if the native events may behave differently between different browsers.
-That's great news!<br><br>
+export const challengeText = `<span class = 'default'>Intro: </span>The <code>componentDidMount()</code> method is also the best place to attach any event listeners you need to add for specific functionality. React provides a synthetic event system which wraps the native event system present in browsers. This means that the synthetic event system behaves exactly the same regardless of the user's browser - even if the native events may behave differently between different browsers.<br><br>
 
-You've already been using some of these synthetic event handlers such as <code>onClick()</code>. React's synthetic event system
-is great to use for most interactions you will be managing on DOM elements. However, if you want to attach an event handler
-to the document or window, you will have to do this directly. That's what we'll do here.`
+You've already been using some of these synthetic event handlers such as <code>onClick()</code>. React's synthetic event system is great to use for most interactions you'll manage on DOM elements. However, if you want to attach an event handler to the document or window objects, you have to do this directly.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>Attach an event listener in the
-<code>componentDidMount()</code> method for <code>keydown</code> events and have these events trigger the callback
-<code>handleKeyPress()</code>. You can use <code>document.addEventListener()</code> which takes the event as the first argument
-and the callback as the second argument.<br><br>
-	
-Then, in <code>componentWillUnmount()</code>, remove this same event listener. You can pass the same arguments to
-<code>document.removeEventListener()</code>. It's a good idea to utilize this lifecycle method to do any clean up on React
-components before they are unmounted and destroyed. Removing event listeners is a perfect example of one such clean up action.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>Attach an event listener in the <code>componentDidMount()</code> method for <code>keydown</code> events and have these events trigger the callback <code>handleKeyPress()</code>. You can use <code>document.addEventListener()</code> which takes the event (in quotes) as the first argument and the callback as the second argument.
+<br><br>
+
+Then, in <code>componentWillUnmount()</code>, remove this same event listener. You can pass the same arguments to <code>document.removeEventListener()</code>. It's good practice to use this lifecycle method to do any clean up on React components before they are unmounted and destroyed. Removing event listeners is an example of one such clean up action.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
@@ -86,7 +76,7 @@ export const solutionCode =
 	componentWillUnmount() {
 		// change code below this line
 		document.removeEventListener('keydown', this.handleKeyPress);
-		// change code above this line	
+		// change code above this line
 	}
 	handleEnter = () => {
 		this.setState({
@@ -112,11 +102,11 @@ export const solutionCode =
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
-	const error_1 = 'MyComponent renders a div element which wraps an h1 tag.';
-	const error_2 = 'A keydown listener is attached to the document in componentDidMount';
-	const error_3 = 'The keydown listener is removed from the document in componentWillUnmount';
-	const error_4 = 'Once the component has mounted pressing enter updates its state and the rendered h1 tag.';
+	const error_0 = 'Your JSX code should transpile successfully.';
+	const error_1 = 'MyComponent should render a div element which wraps an h1 tag.';
+	const error_2 = 'A keydown listener should be attached to the document in componentDidMount.';
+	const error_3 = 'The keydown listener should be removed from the document in componentWillUnmount.';
+	const error_4 = 'Once the component has mounted, pressing enter should update its state and the rendered h1 tag.';
 
 	let testResults = [
 		{
@@ -154,7 +144,7 @@ export const executeTests = (code) => {
 	// we can access their component here for tests
 	const exportScript = '\n export default MyComponent'
 	const modifiedCode = code.concat(exportScript);
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
@@ -163,7 +153,7 @@ export const executeTests = (code) => {
 		passed = false;
 		testResults[0].status = false;
 	}
-	
+
 	// now we will try to shallow render the component with Enzyme's shallow method
 	// you can also use mount to perform a full render to the DOM environment
 	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
@@ -201,7 +191,7 @@ export const executeTests = (code) => {
 		testResults[2].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[2].status = false;		
+		testResults[2].status = false;
 	}
 
 	// test 3:
@@ -216,7 +206,7 @@ export const executeTests = (code) => {
 		testResults[3].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[3].status = false;		
+		testResults[3].status = false;
 	}
 
 	// test 4:
@@ -226,7 +216,7 @@ export const executeTests = (code) => {
 
 		const beforeState = mockedComponent.state('message');
 		const beforeText = mockedComponent.find('h1').node.innerText;
-		
+
 		mockedComponent.instance().handleKeyPress({ keyCode: 13 });
 
 		const afterState = mockedComponent.state('message');
@@ -238,20 +228,20 @@ export const executeTests = (code) => {
 			lifecycle.includes('document.addEventListener') === true &&
 			lifecycle.includes('keydown') === true &&
 			lifecycle.includes('handleKeyPress') === true,
-			error_4			
+			error_4
 		);
 
 		testResults[4].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[4].status = false;		
-	}	
+		testResults[4].status = false;
+	}
 
 	return {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // ---------------------------- define live render function ----------------------------

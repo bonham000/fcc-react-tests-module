@@ -10,18 +10,13 @@ export const QA = false;
 // ---------------------------- define challenge title ----------------------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Write a Simple Counter`
 
-export const challengeText = `<span class = 'default'>Intro: </span>Now that you've learned the basics of state,
-writing methods that can set state, and assigning click handlers that can trigger these methods, lets try to design
-a more complex stateful component.`
+export const challengeText = `<span class = 'default'>Intro: </span>You can design a more complex stateful component by combining the concepts covered so far. These include initializing <code>state</code>, writing methods that set <code>state</code>, and assigning click handlers to trigger these methods.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've provided a basic component
-for you called <code>Counter</code>. This component simply keeps track of a <code>count</code> value in state. We've defined two buttons which call
-methods <code>increment()</code> and <code>decrement()</code>. Write these methods so that the counter value is incremented
-or decremented by 1 when the appropriate button is clicked. There is also a button that can reset the count back to 0.
-Implement this <code>reset()</code> method as well.<br><br>
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>The <code>Counter</code> component keeps track of a <code>count</code> value in <code>state</code>. There are two buttons which call methods <code>increment()</code> and <code>decrement()</code>. Write these methods so the counter value is incremented or decremented by 1 when the appropriate button is clicked. Also, create a <code>reset()</code> method so when the reset button is clicked, the count is set to 0.
+<br><br>
 
-Note: Be sure not to modify the <code>classNames</code> of the buttons!`
+<strong>Note</strong><br>Make sure you don't modify the <code>classNames</code> of the buttons.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
@@ -88,12 +83,12 @@ export const solutionCode =
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
-	const error_1 = 'MyComponent returns a div element which contains three buttons with text content in this order \'Increment!\', \'Decrement!\', \'Reset\'';
-	const error_2 = 'The state of MyComponent is initialized with a count property set to 0.';
-	const error_3 = 'Clicking the increment button increments the count by 1.';
-	const error_4 = 'Clicking the decrement button decrements the count by 1.';
-	const error_5 = 'Clicking the reset button resets the count to 0.';
+	const error_0 = 'Your JSX code should transpile successfully.';
+	const error_1 = 'MyComponent should return a div element which contains three buttons with text content in this order \'Increment!\', \'Decrement!\', \'Reset\'.';
+	const error_2 = 'The state of MyComponent should initialize with a count property set to 0.';
+	const error_3 = 'Clicking the increment button should increment the count by 1.';
+	const error_4 = 'Clicking the decrement button should decrement the count by 1.';
+	const error_5 = 'Clicking the reset button should reset the count to 0.';
 
 	let testResults = [
 		{
@@ -132,7 +127,7 @@ export const executeTests = (code) => {
 
 	const exportScript = '\n export default Counter'
 	const modifiedCode = code.concat(exportScript);
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
@@ -141,7 +136,7 @@ export const executeTests = (code) => {
 		passed = false;
 		testResults[0].status = false;
 	}
-	
+
 	// try to shallow render the component with Enzyme
 	try {
 		mockedComponent = mount(React.createElement(eval(es5)));
@@ -184,10 +179,10 @@ export const executeTests = (code) => {
 
 		mockedComponent.setState({count: 0});
 		const before = mockedComponent.state('count');
-		
+
 		mockedComponent.find('.inc').simulate('click');
 		const after = mockedComponent.state('count');
-		
+
 		assert.strictEqual(before === 0 && after === 1, true, error_3);
 		testResults[3].status = true;
 	} catch (err) {
@@ -200,10 +195,10 @@ export const executeTests = (code) => {
 
 		mockedComponent.setState({count: 0});
 		const before = mockedComponent.state('count');
-		
+
 		mockedComponent.find('.dec').simulate('click');
 		const after = mockedComponent.state('count');
-		
+
 		assert.strictEqual(before === 0 && after === -1, true, error_4);
 		testResults[4].status = true;
 	} catch (err) {
@@ -215,14 +210,14 @@ export const executeTests = (code) => {
 	try {
 		mockedComponent.setState({count: 0});
 		const before = mockedComponent.state('count');
-		
+
 		mockedComponent.find('.inc').simulate('click');
 		mockedComponent.find('.inc').simulate('click');
 		const after = mockedComponent.state('count');
-		
+
 		mockedComponent.find('.dec').simulate('click');
 		const retest = mockedComponent.state('count');
-		
+
 		mockedComponent.find('.reset').simulate('click');
 		const reset = mockedComponent.state('count');
 
@@ -237,7 +232,7 @@ export const executeTests = (code) => {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // ---------------------------- define live render function ----------------------------

@@ -10,25 +10,18 @@ export const QA = false;
 // ---------------------------- define challenge title ----------------------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Use State to Toggle an Element`
 
-export const challengeText = `<span class = 'default'>Intro: </span>Lets look at a more complex usage of state.
-We can use state to monitor the status of some value and render our UI conditionally based on this value.
-There are many different ways to accomplish this. Here we'll take a simple example.`
+export const challengeText = `<span class = 'default'>Intro: </span>You can use <code>state</code> in React applications in more complex ways than what you've seen so far. One example is to monitor the status of a value, then render the UI conditionally based on this value. There are several different ways to accomplish this, and the code editor shows one method.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've defined <code>MyComponent</code> again
-and this time we have a <code>visibility</code> property which is initialized to be <code>false</code>. Take a look
-at the render method. Here we are returning one thing if the value of <code>visibility</code> is true and something
-else if it is not. It's just a normal JavaScript <code>if/else</code> statement. We'll get a lot of practice with this
-type of code later on.<br><br>
+export const challengeInstructions = `<span class = 'default'>Instructions: </span><code>MyComponent</code> has a <code>visibility</code> property which is initialized to <code>false</code>. The render method returns one view if the value of <code>visibility</code> is true, and a different view if it is false.
+<br><br>
 
-At the moment, however, we have no way of updating the <code>visibility</code> property in the component's state. We want
-to be able to toggle this value back and forth. We have defined a click handler on our button which should trigger a class
-method called <code>toggleVisibility()</code> but we haven't defined this method yet. Define this method in a way that will
-toggle the state of <code>visibility</code> when the method is called. If <code>visibility</code> is <code>false</code>
-it will be set to <code>true</code>, and vice versa. There are a few ways this method can be written, see what you can
-come up with!<br><br>
+Currently, there is no way of updating the <code>visibility</code> property in the component's <code>state</code>. The value should toggle back and forth between true and false. There is a click handler on the button which triggers a class method called <code>toggleVisibility()</code>. Define this method so the <code>state</code> of <code>visibility</code> toggles to the opposite value when the method is called. If <code>visibility</code> is <code>false</code>, the method sets it to <code>true</code>, and vice versa.
+<br><br>
 
-Once you have a method you think works, click the button and see what happens!`
+Finally, click the button to see the conditional rendering of the component based on its <code>state</code>.<br><br>
+
+<strong>Hint</strong><br>Make sure to either explicitly bind the <code>this</code> keyword to the method, or use a fat arrow function.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
@@ -43,7 +36,7 @@ export const seedCode =
 
 	// change code above this line
 	render() {
-		if (this.state.visibility) {		
+		if (this.state.visibility) {
 	  	return (
 		    <div>
 	        <button onClick = {this.toggleVisibility}>Click Me</button>
@@ -55,7 +48,7 @@ export const seedCode =
 		    <div>
 	        <button onClick = {this.toggleVisibility}>Click Me</button>
 		    </div>
-	    );	
+	    );
   	}
   }
 };`
@@ -75,7 +68,7 @@ export const solutionCode =
 		});
 	}
 	render() {
-		if (this.state.visibility) {		
+		if (this.state.visibility) {
 	  	return (
 		    <div>
 	        <button onClick = {this.toggleVisibility}>Click Me</button>
@@ -87,7 +80,7 @@ export const solutionCode =
 		    <div>
 	        <button onClick = {this.toggleVisibility}>Click Me</button>
 		    </div>
-	    );	
+	    );
   	}
   }
 };`
@@ -96,10 +89,10 @@ export const solutionCode =
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
-	const error_1 = 'MyComponent returns a div element which contains a button.'
-	const error_2 = 'The state of MyComponent is initialized with a visibility property set to false.';
-	const error_3 = 'Clicking the button element toggles the visibility property in state between true and false.';
+	const error_0 = 'Your JSX code should transpile successfully.';
+	const error_1 = 'MyComponent should return a div element which contains a button.'
+	const error_2 = 'The state of MyComponent should initialize with a visibility property set to false.';
+	const error_3 = 'Clicking the button element should toggle the visibility property in state between true and false.';
 
 	let testResults = [
 		{
@@ -128,7 +121,7 @@ export const executeTests = (code) => {
 
 	const exportScript = '\n export default MyComponent'
 	const modifiedCode = code.concat(exportScript);
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
@@ -137,7 +130,7 @@ export const executeTests = (code) => {
 		passed = false;
 		testResults[0].status = false;
 	}
-	
+
 	// try to shallow render the component with Enzyme
 	try {
 		mockedComponent = mount(React.createElement(eval(es5)));
@@ -182,7 +175,7 @@ export const executeTests = (code) => {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // ---------------------------- define live render function ----------------------------

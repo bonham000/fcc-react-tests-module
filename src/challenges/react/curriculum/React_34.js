@@ -13,22 +13,13 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Use the Lifecycle Method componentDidMount`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>You will inevitablely encounter the need to call
-some API endpoint to retrieve data and if you're working with React you'll need to know where to perform this action.
+export const challengeText = `<span class = 'default'>Intro: </span>Most web developers, at some point, need to call an API endpoint to retrieve data. If you're working with React, it's important to know where to perform this action.
+<br><br>
 
-The best practice with React is to place API calls or any calls to your server in the lifecycle method <code>componentDidMount()</code>.
-This method is called after a component is mounted and any calls to <code>setState()</code> here will trigger a re-rendering of
-your component. Calling an API here and setting your state with the data that returns will automatically trigger the update
-once you receive the data.`
+The best practice with React is to place API calls or any calls to your server in the lifecycle method <code>componentDidMount()</code>. This method is called after a component is mounted to the DOM. Any calls to <code>setState()</code> here will trigger a re-rendering of your component. When you call an API in this method, and set your state with the data that the API returns, it will automatically trigger an update once you receive the data.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've created a mock API call in
-<code>componentDidMount()</code>. It just sets state after 2.5 seconds to simulate calling a server to retrieve the current
-total active users for a site (or whatever data you might need). In the render method, render the value of <code>activeUsers</code>
-in the <code>&lt;h1/&gt;</code>. Watch what happens in the preview. Play around with changing the timeout.<br><br>
-
-Note that because we wrote the timeout function as an ES6 arrow function, it is <code>this</code> aware and therefore has
-access to <code>this.setState</code>.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>There is a mock API call in <code>componentDidMount()</code>. It sets state after 2.5 seconds to simulate calling a server to retrieve data. This example requests the current total active users for a site. In the render method, render the value of <code>activeUsers</code> in the <code>h1</code>. Watch what happens in the preview, and feel free to change the timeout to see the different effects.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
@@ -85,10 +76,10 @@ export const solutionCode =
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
-	const error_1 = 'MyComponent renders a div element which wraps an h1 tag.';
-	const error_2 = 'Component state is updated with a timeout function in componentDidMount().';
-	const error_3 = 'The h1 tag renders out the activeUsers value from state and updates after the timeout function completes.';
+	const error_0 = 'Your JSX code should transpile successfully.';
+	const error_1 = 'MyComponent should render a div element which wraps an h1 tag.';
+	const error_2 = 'Component state should be updated with a timeout function in componentDidMount.';
+	const error_3 = 'The h1 tag should render the activeUsers value from state and update after the timeout function completes.';
 
 	let testResults = [
 		{
@@ -119,7 +110,7 @@ export const executeTests = (code) => {
 	// we can access their component here for tests
 	const exportScript = '\n export default MyComponent'
 	const modifiedCode = code.concat(exportScript);
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
@@ -128,7 +119,7 @@ export const executeTests = (code) => {
 		passed = false;
 		testResults[0].status = false;
 	}
-	
+
 	// now we will try to shallow render the component with Enzyme's shallow method
 	// you can also use mount to perform a full render to the DOM environment
 	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
@@ -165,7 +156,7 @@ export const executeTests = (code) => {
 		testResults[2].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[2].status = false;		
+		testResults[2].status = false;
 	}
 
 	// test 3:
@@ -177,14 +168,14 @@ export const executeTests = (code) => {
 		testResults[3].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[3].status = false;		
-	}	
+		testResults[3].status = false;
+	}
 
 	return {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // ---------------------------- define live render function ----------------------------

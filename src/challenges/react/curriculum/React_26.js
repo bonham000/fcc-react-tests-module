@@ -13,10 +13,10 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Bind 't
 export const challengeText = `<span class = 'default'>Intro: </span>There is another way to bind <code>this</code> when writing methods in React component classes. A useful, concise way is to use an ES6 arrow function. It does not assign its own value for <code>this</code>, but instead adopts the value of <code>this</code> from the context surrounding the function when it is written. In other words, an arrow function binds <code>this</code> automatically from its surrounding context.
 <br><br>
 
-This means you can define a class method as an arrow function and not have to explicitly bind <code>this</code> in the constructor. However, the arrow function is ES6 syntax, which may not work fully in the browser. You may need to transpile your code to make sure it works correctly in most browsers. It's useful to be aware of both options when writing methods on React classes.`
+This means you can define a class method as an arrow function and not have to explicitly bind <code>this</code> in the constructor. However, the arrow function is ES6 syntax, which might not work fully in the browser. You may need to transpile your code to make sure it works correctly in most browsers. It's useful to be aware of both options when writing methods on React classes.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>Initialize the state of <code>MyComponent</code> so there is a <code>message</code> key with a value of <code>Hello!</code>. The component renders a <code>button</code> that, when clicked, triggers a <code>setMessage()</code> method. Define this method with an ES6 arrow function. It should change the <code>state</code> of <code>message</code> to <code>Goodbye!</code>.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>Initialize the <code>state</code> of <code>MyComponent</code> so there is a <code>message</code> key with a value of <code>Hello!</code>. The component renders a <code>button</code> that, when clicked, triggers a <code>setMessage()</code> method. Define this method with an ES6 arrow function. It should change the <code>state</code> of <code>message</code> to <code>Goodbye!</code>.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =

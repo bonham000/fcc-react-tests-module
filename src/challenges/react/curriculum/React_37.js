@@ -13,26 +13,14 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Optimize Re-Renders with shouldComponentUpdate`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>So far, if any component recieves new
-<code>state</code> or new <code>props</code> it will re-render itself and all its children. This is usually okay. But React
-provides a lifecycle hook which we can call when child components receive new <code>state</code> or <code>props</code> and
-declare specifically if they should update or not. It's called <code>shouldComponentUpdate()</code> and we can pass it
-<code>nextProps</code> and <code>nextState</code>.<br><br>
+export const challengeText = `<span class = 'default'>Intro: </span>So far, if any component receives new <code>state</code> or new <code>props</code>, it re-renders itself and all its children. This is usually okay. But React provides a lifecycle method you can call when child components receive new <code>state</code> or <code>props</code>, and declare specifically if the components should update or not. The method is <code>shouldComponentUpdate()</code>, and it takes <code>nextProps</code> and <code>nextState</code> as parameters.<br><br>
 
-This method is a useful way to perform some performance optimizations. For instance, the default behavior is that your
-component will re-render when it receives new <code>props</code> even if the <code>props</code> haven't changed.
-You can use <code>shouldComponentUpdate()</code> to prevent this by checking explicitly. This method must return a
-<code>boolean</code> value which will dictate whether or not the component will update. So if you wrote
-<code>return nextProps !== this.props</code> the component would only update when it receives new <code>props</code>
-that are not equal the current <code>props</code>.`
+This method is a useful way to optimize performance. For example, the default behavior is that your
+component re-renders when it receives new <code>props</code>, even if the <code>props</code> haven't changed. You can use <code>shouldComponentUpdate()</code> to prevent this by comparing the <code>props</code>. The method must return a <code>boolean</code> value that tells React whether or not to update the component. If you wrote <code>return nextProps !== this.props</code> the component would only update when it receives new <code>props</code> that are not equal to the current <code>props</code>.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've modified the previous components slightly
-and added the <code>shouldComponentUpdate()</code> method in a component called <code>OnlyEvens</code>. Currently this method returns <code>true</code>
-so <code>OnlyEvens</code> will re-render every time it receives new <code>props</code>. Lets modify this method so that <code>OnlyEvens</code> updates only
-if the new value of it's props is even.
-
-Press the add button and watch the order of events in the console as the other lifecycle hooks are triggered!`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>The <code>shouldComponentUpdate()</code> method is added in a component called <code>OnlyEvens</code>. Currently, this method returns <code>true</code> so <code>OnlyEvens</code> re-renders every time it receives new <code>props</code>. Modify the method so <code>OnlyEvens</code> updates only
+if the <code>value</code> of its new props is even. Click the <code>Add</code> button and watch the order of events in your browser's console as the other lifecycle hooks are triggered.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
@@ -129,11 +117,11 @@ class Controller extends React.Component {
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
-	const error_1 = 'The Controller components renders the OnlyEvens component as a child';
-	const error_2 = 'The method shouldComponentUpdate() is defined on the OnlyEvens component.';
-	const error_3 = 'The OnlyEvens component returns an h1 tag which renders the value of this.props.value.';
-	const error_4 = 'OnlyEvens only re-renders when it receives props.value is even.';
+	const error_0 = 'Your JSX code should transpile successfully.';
+	const error_1 = 'The Controller component should render the OnlyEvens component as a child';
+	const error_2 = 'The shouldComponentUpdate method should be defined on the OnlyEvens component.';
+	const error_3 = 'The OnlyEvens component should return an h1 tag which renders the value of this.props.value.';
+	const error_4 = 'OnlyEvens should re-render only when nextProps.value is even.';
 
 	let testResults = [
 		{
@@ -169,7 +157,7 @@ export const executeTests = (code) => {
 	// we can access their component here for tests
 	const exportScript = '\n export default Controller'
 	const modifiedCode = code.concat(exportScript);
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
@@ -178,7 +166,7 @@ export const executeTests = (code) => {
 		passed = false;
 		testResults[0].status = false;
 	}
-	
+
 	// now we will try to shallow render the component with Enzyme's shallow method
 	// you can also use mount to perform a full render to the DOM environment
 	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
@@ -210,7 +198,7 @@ export const executeTests = (code) => {
 
 	const exportScriptChild = '\n export default OnlyEvens'
 	const modifiedCodeChild = code.concat(exportScriptChild);
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5Child = transform(modifiedCodeChild, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
@@ -227,7 +215,7 @@ export const executeTests = (code) => {
 		testResults[2].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[2].status = false;		
+		testResults[2].status = false;
 	}
 
 	// test 3:
@@ -242,8 +230,8 @@ export const executeTests = (code) => {
 		testResults[3].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[3].status = false;		
-	}	
+		testResults[3].status = false;
+	}
 
 	// test 4:
 	try {
@@ -264,14 +252,14 @@ export const executeTests = (code) => {
 		testResults[4].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[4].status = false;		
-	}	
+		testResults[4].status = false;
+	}
 
 	return {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // ---------------------------- define live render function ----------------------------
