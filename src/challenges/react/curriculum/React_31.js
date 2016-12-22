@@ -36,7 +36,7 @@ export const seedCode =
   render() {
     return (
 	   	<div>
-	   		<Navbar { /* your code here */ } />
+	   		<Navbar /* your code here */ />
 	   	</div>
     );
   }
