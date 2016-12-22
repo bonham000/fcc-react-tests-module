@@ -10,32 +10,19 @@ export const QA = false;
 // ---------------------------- define challenge title ----------------------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Create a Controlled Input`
 
-export const challengeText = `<span class = 'default'>Intro: </span>Let's take a look at a more complex
-interaction between <code>state</code> and our rendered UI. Here we are going to create a controlled input
-with React. Normally, text input elements such as <code>&lt;input/&gt;</code> and <code>&lt;textarea/&gt;</code> maintain
-their own state in the DOM as the user types. With React, we can move this mutatable state into a React component's
-<code>state</code>. This will allow our user's input to become part of application <code>state</code>.
-Typically, if you are creating any input the user can type in with React, it will be a controlled input form.`
+export const challengeText = `<span class = 'default'>Intro: </span>Your application may have more complex interactions between <code>state</code> and the rendered UI. For example, form control elements for text input, such as <code>input</code> and <code>textarea</code>, maintain their own state in the DOM as the user types. With React, you can move this mutatable state into a React component's <code>state</code>. The user's input becomes part of the application <code>state</code>, so React controls the value of that input field. Typically, if you have React components with input fields the user can type into, it will be a controlled input form.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've given you the skeleton of a
-component called <code>ControlledInput</code> in which we want to create a controlled <code>&lt;input/&gt;</code> element. We've already
-initialized it with an <code>input</code> property in the state set to an empty string. This value will represent
-our input text. Now, we need to create a method to handle changes to our input element and create the element itself.
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>The code editor has the skeleton of a component called <code>ControlledInput</code> to create a controlled <code>input</code> element. The component's <code>state</code> is already initialized with an <code>input</code> property that holds an empty string. This value represents the text a user types into the <code>input</code> field.
+<br><br>
 
-We'll call our method <code>handleInput()</code>. It will receive an <code>event</code> object which will contain
-a string of text from the <code>input</code> element you can access through <code>event.target.value</code>. When you define the 
-method you will need to pass this <code>event</code> object in.<br><br>
+First, create a method called <code>handleInput()</code> that has a parameter called <code>event</code>. When the method is called, it receives an <code>event</code> object that contains a string of text from the <code>input</code> element. You can access this string with <code>event.target.value</code> inside the method. Update the <code>input</code> property of the component's <code>state</code> with this new string.
+<br><br>
 
-Next, we have to define our actual <code>&lt;input/&gt;</code> element. In the render method, above the <code>p</code> tag,
-create a normal HTML <code>&lt;input/&gt;</code> element. We need to set some attributes on this input so it is connected to React.
-Set a <code>value</code> attribute which is equal to the <code>input</code> property of the component's <code>state</code>,
-and also assign an <code>onChange()</code> handler which is set to the <code>handleInput()</code> method you just wrote.<br><br>
+In the render method, create the <code>input</code> element above the <code>p</code> tag. Add a <code>value</code> attribute which is equal to the <code>input</code> property of the component's <code>state</code>. Then add an <code>onChange()</code> event handler set to the <code>handleInput()</code> method.
+<br><br>
 
-Now, when you type in the input box the text you are typing will be processed by the <code>handleInput()</code> method, set
-as the <code>&lt;input/&gt;</code> property in the local <code>state</code>, and then rendered as the value in the
-<code>input</code> box and on the page. This leaves component <code>state</code> as the single source of truth regarding
-the input data, and you've just created your first controlled input element with React!`
+When you type in the input box, that text is processed by the <code>handleInput()</code> method, set as the <code>input</code> property in the local <code>state</code>, and rendered as the value in the <code>input</code> box on the page. The component <code>state</code> is the single source of truth regarding the input data.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
@@ -92,10 +79,10 @@ export const solutionCode =
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
-	const error_1 = 'MyComponent returns a div element which contains an input and a p tag';
-	const error_2 = 'The state of MyComponent is initialized with an input property set to an empty string.';
-	const error_3 = 'Typing in the input element updates the state';
+	const error_0 = 'Your JSX code should transpile successfully.';
+	const error_1 = 'ControlledInput should return a div element which contains an input and a p tag.';
+	const error_2 = 'The state of ControlledInput should initialize with an input property set to an empty string.';
+	const error_3 = 'Typing in the input element should update the state.';
 
 	let testResults = [
 		{
@@ -124,7 +111,7 @@ export const executeTests = (code) => {
 
 	const exportScript = '\n export default ControlledInput'
 	const modifiedCode = code.concat(exportScript);
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
@@ -133,7 +120,7 @@ export const executeTests = (code) => {
 		passed = false;
 		testResults[0].status = false;
 	}
-	
+
 	// try to shallow render the component with Enzyme
 	try {
 		mockedComponent = mount(React.createElement(eval(es5)));
@@ -182,7 +169,7 @@ export const executeTests = (code) => {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // ---------------------------- define live render function ----------------------------

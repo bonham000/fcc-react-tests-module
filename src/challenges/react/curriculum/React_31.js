@@ -13,29 +13,16 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Pass State as Props to Child Components`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>You've seen previously plenty of examples
-of passing props to child JSX elements and child React components. That's great, but where are we getting the props
-from in the first place? Commonly, you will have a stateful component which contains <code>state</code> your app cares
-about and this component will render child components. You want these components to also have access to some
-pieces of that <code>state</code>.
+export const challengeText = `<span class = 'default'>Intro: </span>You saw a lot of examples that passed props to child JSX elements and child React components in previous challenges. You may be wondering where those props come from. A common pattern is to have a stateful component containing the <code>state</code> important to your app, that then renders child components. You want these components to have access to some pieces of that <code>state</code>, which are passed in as props.
+<br><br>
 
-For example, maybe we have an <code>App</code> component that renders a <code>Navbar</code>, among other components.
-In our App, we have <code>state</code> which contains a lot of user information, but in our navbar we just
-want to have access to our user's username so we can display it. We can simply pass down that piece of <code>state</code>
-to our <code>Navbar</code> component, which it will receive as a prop.<br><br>
+For example, maybe you have an <code>App</code> component that renders a <code>Navbar</code>, among other components. In your <code>App</code>, you have <code>state</code> that contains a lot of user information, but the <code>Navbar</code> only needs access to the user's username so it can display it. You pass that piece of <code>state</code> to the <code>Navbar</code> component as a prop.
+<br><br>
 
-This pattern illustrates some important paradigms in React. The first is unidirectional data flow. State flows down
-the tree of your app's components, and child components only receive the state data they need to know about. The second
-is that complex stateful apps can be broken down into just a few, or maybe even a single, stateful component. The rest
-of your components can simply receive state from the parent as props, and are responible for rendering a UI from
-that state. This begins to create a separation where state management is handled in one place and UI rendering in
-another. This principle of separating state logic from UI logic is one of React's key principles, and when used
-correctly makes the design of complex, stateful apps much easier to manage.`
+This pattern illustrates some important paradigms in React. The first is <em>unidirectional data flow</em>. State flows in one direction down the tree of your application's components, from the stateful parent component to child components. The child components only receive the state data they need. The second is that complex stateful apps can be broken down into just a few, or maybe a single, stateful component. The rest of your components simply receive state from the parent as props, and render a UI from that state. It begins to create a separation where state management is handled in one part of code and UI rendering in another. This principle of separating state logic from UI logic is one of React's key principles. When it's used correctly, it makes the design of complex, stateful applications much easier to manage.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've provided a <code>MyApp</code>
-component which renders a <code>Navbar</code> component as a child. The parent component is stateful. Pass the
-<code>name</code> property in its state down to the child component and then render it in the <code>&lt;h1/&gt;</code> tag.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>The <code>MyApp</code> component is stateful and renders a <code>Navbar</code> component as a child. Pass the <code>name</code> property in its <code>state</code> down to the child component, then show the <code>name</code> in the <code>h1</code> tag that's part of the <code>Navbar</code> render method.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
@@ -65,7 +52,7 @@ class Navbar extends React.Component {
 			<h1>Hello, my name is: { /* your code here */ }</h1>
 		</div>
 		);
-	}	
+	}
 };`
 
 // ---------------------------- define challenge solution code ----------------------------
@@ -95,18 +82,18 @@ class Navbar extends React.Component {
 			<h1>Hello, my name is: {this.props.name}</h1>
 		</div>
 		);
-	}	
+	}
 };`
 
 // ---------------------------- define challenge tests ----------------------------
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
-	const error_1 = 'The MyApp component is rendered.';
-	const error_2 = 'The Navbar component is rendered.';
-	const error_3 = 'The Navbar component receives the MyApp state property name as props.';
-	const error_4 = 'The h1 element in Navbar renders the name prop.';
+	const error_0 = 'Your JSX code should transpile successfully.';
+	const error_1 = 'The MyApp component should render.';
+	const error_2 = 'The Navbar component should render.';
+	const error_3 = 'The Navbar component should receive the MyApp state property name as props.';
+	const error_4 = 'The h1 element in Navbar should render the name prop.';
 
 	let testResults = [
 		{
@@ -142,7 +129,7 @@ export const executeTests = (code) => {
 	// we can access their component here for tests
 	const exportScript = '\n export default MyApp'
 	const modifiedCode = code.concat(exportScript);
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
@@ -151,7 +138,7 @@ export const executeTests = (code) => {
 		passed = false;
 		testResults[0].status = false;
 	}
-	
+
 	// now we will try to shallow render the component with Enzyme's shallow method
 	// you can also use mount to perform a full render to the DOM environment
 	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
@@ -179,7 +166,7 @@ export const executeTests = (code) => {
 		testResults[2].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[2].status = false;		
+		testResults[2].status = false;
 	}
 
 	// test 3:
@@ -200,14 +187,14 @@ export const executeTests = (code) => {
 		testResults[4].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[4].status = false;		
-	}	
+		testResults[4].status = false;
+	}
 
 	return {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // ---------------------------- define live render function ----------------------------
