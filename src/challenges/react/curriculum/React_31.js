@@ -49,7 +49,7 @@ class Navbar extends React.Component {
 	render() {
 		return (
 		<div>
-			<h1>Hello, my name is: { /* your code here */ }</h1>
+			<h1>Hello, my name is: /* your code here */ </h1>
 		</div>
 		);
 	}
