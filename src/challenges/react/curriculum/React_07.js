@@ -101,7 +101,7 @@ export const executeTests = (code) => {
 	let es5, mockedComponent, jsx, testRender, passed = true;
 
 	const prepend = `(function() {`
-	const apend = `; return MyComponent })()`
+	const apend = `;\n return MyComponent })()`
 	const modifiedCode = prepend.concat(code).concat(apend);
 
 	// test 0: try to transpile JSX, ES6 code to ES5
