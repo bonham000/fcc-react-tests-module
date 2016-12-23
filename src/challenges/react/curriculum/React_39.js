@@ -40,7 +40,7 @@ export const challengeInstructions = `<span class = 'default'>Instructions: </sp
 styles, our code could get a bit messy if we write it right into the JSX element's tag. So instead, let's assign that style
 <code>object</code> to the <code>styles</code> constant that we have provided above the React component. Uncomment the constant
 and declare an <code>object</code> which represents 3 style properties and their values. Give the <code>&lt;div/&gt;</code> a color of
-<code>"purple"</code>, a font size of <code>40px</code> and a border of <code>"2px solid purple"</code>. When you are finshed
+<code>"purple"</code>, a font size of <code>40</code> and a border of <code>"2px solid purple"</code>. When you are finshed
 defining your styles, set the <code>style</code> attribute equal to the <code>styles</code> constant.`
 
 // ---------------------------- define challenge seed code ----------------------------
