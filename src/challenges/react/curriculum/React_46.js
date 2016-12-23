@@ -35,7 +35,7 @@ and <code>toDoList</code> should be initialized as an empty array. Now, when the
 list, split it at the commas, and store it as an array within <code>MyToDoList</code>'s state object.<br><br>
 
 With that done, we should have some information rendered to the page, right? Well, no. Becuase <code>MyToDoList</code> is still trying to render some JSX that has 
-yet to be defined &mdash; <code>items</code>. To complete the challenge, delete the comment on line 28 and map over the <code>toDoList</code> array stored in the component's internal state to dynamically render 
+yet to be defined &mdash; <code>items</code>. To complete the challenge, delete the comment from the items variable and map over the <code>toDoList</code> array stored in the component's internal state to dynamically render 
 the correct number of <code>&lt;li&gt;</code> items. When you've figured it out, try entering the string <code>Eat, Code, Sleep, Repeat</code> into the <code>&lt;textarea&gt;</code>, then click the button and see what happens!`
 
 // ---------------------------- define challenge seed code ----------------------------
