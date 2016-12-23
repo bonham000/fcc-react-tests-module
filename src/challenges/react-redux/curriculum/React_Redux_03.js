@@ -25,7 +25,7 @@ in state or return the current state. Finally, create your Redux store, initiali
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = 
-`// define ADD, addMessage(), reducer(), and store here:`
+`// define ADD, addMessage(), messageReducer(), and store here:`
 
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode =
