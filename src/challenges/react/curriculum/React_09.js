@@ -10,14 +10,29 @@ export const QA = false;
 // -------------- define challenge title and challenge instructions --------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Create a Component with Composition`
 
-export const challengeText = `<span class = 'default'>Intro: </span>The last two challenges showed how to create a simple React component with two different methods. An important principle in React for using components together is called composition. You can use one or more components in the <code>render()</code> method of another one. In React, everything is a component and multiple components can be composed together to create more complex components.
+export const challengeText = `<span class = 'default'>Intro: </span>The last two challenges showed how to create a simple React component with two different methods. In React, everything is a component and multiple components can be composed together to create more complex components. Let's see how this works. Imagine we are building an App and we have created three components, a <code>Navbar</code>, <code>Dashboard</code>, and <code>Footer</code>.
 <br /><br />
 
-You use React components the same way as an HTML element in JSX. The component can be self-closing (<code>&lt;MyComponent /&gt;</code>) or have opening and closing tags (<code>&lt;MyComponent&gt;&lt;/MyComponent&gt;</code>). Remember that React components are always capitalized.`
+To compose these components together, we could create an <code>App</code> <i>parent</i> component which renders each of these three components as <i>children</i>. To render a component as a child in a React component, we include the component name written as a custom HTML tag in our JSX. For instance, in the <code>render</code> method we could write:
+
+<pre>
+<code>return (
+ &lt;App&gt;
+  &lt;Navbar /&gt;
+  &lt;Dashboard /&gt;
+  &lt;Footer /&gt;
+ &lt;/App&gt;
+)</code>
+</pre>
+
+When React encounters a custom HTML tag that references another component, it will render that component in the location of that tag. This should illustrate the parent/child relationship between the <code>App</code> component and the <code>Navbar</code>, <code>Dashboard</code>, and <code>Footer</code>.`
 
 export const challengeInstructions = `
 <span class = 'default'>Instructions: </span>In the code editor, there is a simple functional component called <code>ChildComponent</code> and a React component called <code>ParentComponent</code>. Compose the two together by rendering the <code>ChildComponent</code> within the <code>ParentComponent</code>. Make sure to close the <code>ChildComponent</code> tag with a forward slash.
-`
+
+<br /><br />
+
+<strong>Note</strong><br />We've used an ES6 arrow function to define the <code>ChildComponent</code> because this is very common. However, know that this is just a function. If you aren't familiar with the arrow function syntax, please refer to our JavaScript lessons on them.`
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
 `const ChildComponent = () => {

@@ -15,7 +15,13 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Use Arr
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>The <code>map</code> array method is a powerful tool
 that you will use often when working with React. Related to <code>map</code> is <code>filter</code>, which also lets us
-take an array and filter its contents based on some condition, returning a new array.`
+take an array and filter its contents based on some condition, returning a new array. For instance, if we have an array of users
+which all have a property <code>online</code> which can be set to <code>true</code> or <code>false</code>, to filter just those
+that are online we can very concisely write:
+
+<br><br>
+
+<code>let onlineUsers = users.filter(user => user.online);`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>Here we are initializing our component's

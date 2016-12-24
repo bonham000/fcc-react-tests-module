@@ -55,9 +55,9 @@ class MagicEightBall extends React.Component {
 			});
 		}
 	}	
-	handleChange(e) {
+	handleChange(event) {
 		this.setState({
-			userInput: e.target.value
+			userInput: event.target.value
 		});
 	}
 	render() {
@@ -114,9 +114,9 @@ class MagicEightBall extends React.Component {
 			});
 		}
 	}	
-	handleChange(e) {
+	handleChange(event) {
 		this.setState({
-			userInput: e.target.value
+			userInput: event.target.value
 		});
 	}
 	render() {

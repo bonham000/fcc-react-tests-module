@@ -19,7 +19,7 @@ reactive programming, a programmer has no way to know what the state of an appli
 that program. In cases like this, programmers need to write their code to correctly handle that unknown state ahead of time, and in React, we can use <code>Array.map()</code> to powerfully illustrate 
 this concept.<br><br>
 
-Let's let our example, in this case, be a simple "To Do List" app. As the programmer, we have no way of knowing how many items a user might have on their list. So we need
+For example, let's say we have a simple "To Do List" app. As the programmer, we have no way of knowing how many items a user might have on their list. So we need
 to set up our component to <em><strong>dynamically render</strong></em> the correct number of list elements long before someone using our program decides that today is laundry day. `
 
 // ---------------------------- challenge instructions ----------------------------

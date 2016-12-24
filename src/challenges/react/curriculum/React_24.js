@@ -10,10 +10,15 @@ export const QA = false;
 // ---------------------------- define challenge title ----------------------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Set State with this.setState`
 
-export const challengeText = `<span class = 'default'>Intro: </span>The previous challenges covered component <code>state</code> and how to initialize state in the <code>constructor</code>. There is also a way to change the component's <code>state</code>. React provides a method for updating component <code>state</code> called <code>setState</code>.
-<br><br>
+export const challengeText = `<span class = 'default'>Intro: </span>The previous challenges covered component <code>state</code> and how to initialize state in the <code>constructor</code>. There is also a way to change the component's <code>state</code>. React provides a method for updating component <code>state</code> called <code>setState</code>. You call the <code>setState</code> method within your component class like so: <code>this.setState()</code>, passing in an object with key-value pairs. The keys are your state properties and the values are the updated state data. For instance, if we were storing a <code>username</code> in state and wanted to update it, it would look like this:
 
-You call this method within your component class like this: <code>this.setState()</code>, passing in an object with key-value pairs. The keys are your state properties and the values are the updated state data. It is important that you never modify <code>state</code> directly, but use <code>this.setState()</code> to do so.`
+<pre>
+<code>this.setState({
+ username: 'Lewis'
+});</code>
+</pre>
+
+React expects you to never modify <code>state</code> directly, instead always using <code>this.setState()</code> when state changes occur.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>There is a <code>button</code> element in the code editor which has an <code>onClick()</code> handler. This handler is triggered when the <code>button</code> receives a click event in the browser, and runs the <code>click</code> method defined on <code>MyComponent</code>. Within the <code>click</code> method, update the component <code>state</code> using <code>this.setState()</code>. Set the

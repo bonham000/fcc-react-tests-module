@@ -19,8 +19,8 @@ first argument is the React element or component that you want to render. The se
 after the part in your code where you declared the element you want to render.`
 
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>
-The code editor has a simple JSX component. Use the <code>ReactDOM.render()</code> method to render this component to the page. You can pass defined JSX elements directly in as the first argument and select the target DOM node with the <code>getElementById()</code>
-method on the document object. There is a <code>div</code> with <code>id='challenge-node'</code> available for you to use. Make sure you don't change the <code>JSX</code> constant.`
+The code editor has a simple JSX component. Use the <code>ReactDOM.render()</code> method to render this component to the page. You can pass defined JSX elements directly in as the first argument and use <code>document.getElementById()</code>
+to select the DOM node to render them to. There is a <code>div</code> with <code>id='challenge-node'</code> available for you to use. Make sure you don't change the <code>JSX</code> constant.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =

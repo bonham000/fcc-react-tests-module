@@ -14,7 +14,7 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Render 
 
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>
-So far, we've seen how to use <code>if/else</code>, <code>&&,</code> <code>null</code> and the ternary operator (<code>condition ? expr1 : expr2</code>) to make conditional decisions about what to render and when. However, there's one 
+So far, we've seen how to use <code>if/else</code>, <code>&&,</code> <code>null</code> and the ternary operator to make conditional decisions about what to render and when. However, there's one 
 important topic left to discuss that lets us combine any or all of these concepts with another powerful React feature that we have already learned 
 quite a bit about: props. Props are another very common way that React developers employ the concept of conditional rendering in their code &mdash; that is, automatically making
 decisions about what to render based on the value of a given prop.<br><br>

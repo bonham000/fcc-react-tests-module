@@ -12,8 +12,8 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Create 
 
 export const challengeText = `<span class = 'default'>Intro: </span>The other way to define a React component is with the ES6 <code>class</code> syntax. In the following example, <code>Kitten</code> extends <code>React.Component</code>:
 
-<pre><code>
-class Kitten extends React.Component {
+<pre>
+<code>class Kitten extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -23,8 +23,8 @@ class Kitten extends React.Component {
     	&lt;h1&gt;Hi&lt;/h1&gt;
     );
   }
-}
-</code></pre>
+}</code>
+</pre>
 
 This creates an ES6 class <code>Kitten</code> which extends the <code>React.Component</code> class. So the <code>Kitten</code> class now has access to many useful React features, such as local state and lifecycle hooks. Don't worry if you aren't familiar with these terms yet, they will be covered in greater detail in later challenges.
 <br><br>

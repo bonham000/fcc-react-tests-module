@@ -1,10 +1,8 @@
 /* eslint-disable */
 import React from 'react'
 import assert from 'assert'
-import { shallow } from 'enzyme'
+import { shallow, mount } from 'enzyme'
 import { transform } from 'babel-standalone'
-
-// snippet for defining HTML: <code>&lt;div /&gt;</code>
 
 // SET TO TRUE WHEN QA IS COMPLETE:
 export const QA = false;
@@ -13,38 +11,48 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Pass a String to a Stateless Functional Component`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>The previous challenges covered a lot about creating and composing JSX elements, functional components, and ES6 style class components in React. It's time to start looking at some of the other features and capabilities of React that make it such a powerful tool to create complex, reactive user interfaces. A good place to start is with props, which is short for properties. You use props in React to <em>pass</em> information from a parent component to a child.<br><br>
+export const challengeText = `<span class = 'default'>Intro: </span>The previous challenges covered a lot about creating and composing JSX elements, functional components, and ES6 style class components in React. Now with this foundation, let's look at another feature very common in React: <b>props</b>. In React we can pass props, or properties, to child components. Let's say we have an <code>App</code> component which renders a child component called <code>Welcome</code>. We can write:
 
-The code editor shows a functional component called <code>ReturnUsername</code> that accepts an argument called <code>props</code>. You can access props from within the component using dot notation. For example, if you passed in a prop called <code>birthday</code>, you would access its value by writing <code>props.birthday</code>. In JSX, that value is JavaScript, so you write it as <code>{props.birthday}</code>.<br><br>
+<pre>
+<code>&lt;App&gt;
+  &lt;Welcome user='Mark' /&gt;
+ &lt;/App&gt;</code>
+</pre>
 
-In order to define a props name and value, React uses <strong>custom HTML attributes</strong>. The attribute name is the prop name, and the attribute value is the prop's value. For example, to pass a child component a prop called <code>birthday</code>, when you compose the child component within the parent, it could look like this: <code>&lt;Child birthday="Jul 6th, 1986" /&gt;</code>.
+We use <strong>custom HTML attributes</strong> that React provides support for to pass the property <code>user</code> to the component <code>Welcome</code>. Now, the <code>Welcome</code> component has access to this value like so:
+
+<pre>
+<code>const Welcome = (props) => &lt;h1&gt;Hello, {props.user}!&lt;/h1&gt;</code>
+</pre>
+
+It is standard to call this value <code>props</code> and when dealing with functional stateless components you basically consider it as an argument to the function which returns JSX. You can access the value of the argument in the function body. With class components, we will see this is a little different.
 `
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span> The <code>ReturnUsername</code> component in the code editor is composed within the parent component, <code>ForgotUsername</code>. Pass the <code>ReturnUsername</code> component a prop of <code>username</code> and give it a value of your Free Code Camp username. Don't forget to wrap it in quotes. In the <code>ReturnUsername</code> component, use dot notation to access the <code>username</code> prop inside the curly braces.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've created a <code>Calendar</code> and <code>CurrentDate</code> component. When rendering <code>CurrentDate</code> from the <code>Calendar</code> component, we want to pass in a property of <code>date</code> assigned to the current date from JavaScript's <code>Date</code> object. Do this and then access this <code>prop</code> in the <code>CurrentDate</code> component, printing out its value. Note that for <code>prop</code> values to be evaluated as JavaScript they must be enclosed in curly brackets, for instance <code>date={Date()}</code>.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = `
-const ReturnUsername = (props) => {
+const CurrentDate = (props) => {
 	return (
 		<div>
 			{ /* change code below this line */ }
-			<p>Your username is: { }!</p>
+			<p>The current date is: </p>
 			{ /* change code above this line */ }
 		</div>
 	);
 };
 
-class ForgotUsername extends React.Component {
+class Calendar extends React.Component {
 	constructor(props) {
 		super(props);
 	}
 	render() {
 		return (
 			<div>
-				<h3>Whoops! See below...</h3>
+				<h3>What date is it?</h3>
 				{ /* change code below this line */ }
-				<ReturnUsername />
+				<CurrentDate />
 				{ /* change code above this line */ }
 			</div>
 		);
@@ -53,29 +61,30 @@ class ForgotUsername extends React.Component {
 
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode = `
-const ReturnUsername = (props) => {
-    return (
-        <div>
-            <p>Your username is {props.username}!</p>
-        </div>
-    );
+const CurrentDate = (props) => {
+	return (
+		<div>
+			{ /* change code below this line */ }
+			<p>The current date is: {props.date}</p>
+			{ /* change code above this line */ }
+		</div>
+	);
 };
 
-class ForgotUsername extends React.Component {
-  constructor(props) {
-  	super(props);
-
-  }
-  render() {
-    return (
-        <div>
-        	<h3>Whoops! See below...</h3>
-        	{ /* change code below this line */ }
-          <ReturnUsername username="Best_Free_Code_Camper"/>
-        	{ /* change code above this line */ }
-        </div>
-    );
-  }
+class Calendar extends React.Component {
+	constructor(props) {
+		super(props);
+	}
+	render() {
+		return (
+			<div>
+				<h3>What date is it?</h3>
+				{ /* change code below this line */ }
+				<CurrentDate date={Date()} />
+				{ /* change code above this line */ }
+			</div>
+		);
+	}
 };`
 
 // ---------------------------- define challenge tests ----------------------------
@@ -83,10 +92,11 @@ class ForgotUsername extends React.Component {
 export const executeTests = (code) => {
 
 	const error_0 = 'Your JSX code should transpile successfully.';
-	const error_1 = 'The ForgotUsername component should return a single div element.';
-	const error_2 = 'The ForgotUsername component\'s second child should be the ReturnUsername component.';
-	const error_3 = 'The ReturnUsername component should have a prop called username.';
-	const error_4 = 'The ReturnUsername component\'s username prop should contain some text.';
+	const error_1 = 'The Calendar component should return a single div element.';
+	const error_2 = 'The Calendar component\'s second child should be the CurrentDate component.';
+	const error_3 = 'The CurrentDate component should have a prop called date.';
+	const error_4 = 'The CurrentDate component\'s date prop should contain a string of text.';
+	const error_5 = 'The CurrentDate component\'s renders out the value from the date prop in the p tag.';
 
 	let testResults = [
 		{
@@ -113,14 +123,19 @@ export const executeTests = (code) => {
 			test: 4,
 			status: false,
 			condition: error_4
+		},
+		{
+			test: 5,
+			status: false,
+			condition: error_5
 		}
 	];
 
-	let es5, mockedComponent, passed = true;
+	let es5, mockedComponent, mountedComponent, passed = true;
 
 	// this applies an export to the user's code so
 	// we can access their component here for tests
-	const exportScript = '\n export default ForgotUsername'
+	const exportScript = '\n export default Calendar'
 	const modifiedCode = code.concat(exportScript);
 
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
@@ -137,6 +152,7 @@ export const executeTests = (code) => {
 	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
 	try {
 		mockedComponent = shallow(React.createElement(eval(es5)));
+		mountedComponent = mount(React.createElement(eval(es5)));
 	} catch (err) {
 		passed = false;
 	}
@@ -155,7 +171,7 @@ export const executeTests = (code) => {
 
 	// test 2:
 	try {
-		assert.strictEqual(mockedComponent.nodes[0].props.children[1].type.name, 'ReturnUsername', error_2)
+		assert.strictEqual(mockedComponent.nodes[0].props.children[1].type.name, 'CurrentDate', error_2)
 		testResults[2].status = true;
 	} catch (err) {
 		passed = false;
@@ -164,7 +180,7 @@ export const executeTests = (code) => {
 
 	// test 3:
 	try {
-		assert(mockedComponent.props().children[1].props.hasOwnProperty('username'), error_3)
+		assert(mockedComponent.props().children[1].props.hasOwnProperty('date'), error_3)
 		testResults[3].status = true;
 	} catch (err) {
 		passed = false;
@@ -173,12 +189,21 @@ export const executeTests = (code) => {
 
 	// test 4:
 	try {
-		assert(typeof mockedComponent.props().children[1].props.username === 'string' &&
-			mockedComponent.props().children[1].props.username.length > 0, error_4)
+		assert(typeof mockedComponent.props().children[1].props.date === 'string' &&
+			mockedComponent.props().children[1].props.date.length > 0, error_4)
 		testResults[4].status = true;
 	} catch (err) {
 		passed = false;
 		testResults[4].status = false;
+	}
+
+// test 5:
+	try {
+		assert.strictEqual(mountedComponent.find('p').node.innerHTML.includes(Date().substr(3)), true, error_5);
+		testResults[5].status = true;
+	} catch (err) {
+		passed = false;
+		testResults[5].status = false;
 	}
 
 	return {
@@ -193,7 +218,7 @@ export const executeTests = (code) => {
 export const liveRender = (code) => {
 
 	try {
-		const exportScript = '\n export default ForgotUsername'
+		const exportScript = '\n export default Calendar'
 		const modifiedCode = code.concat(exportScript);
 		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		const renderedComponent = React.createElement(eval(es5));

@@ -25,8 +25,8 @@ to the function. This is an object containing data (also called properties), whi
 
 Here's an example of a stateless functional component:
 
-<pre><code>
-const DemoComponent = function(props) {
+<pre>
+<code>const DemoComponent = function(props) {
   // Using ES6 to destructure customClass from props
   // After being transpiled, the &lt;div&gt; will have a CSS class of 'wrapperClass'
   const { customClass } = props;
@@ -34,8 +34,8 @@ const DemoComponent = function(props) {
     &lt;div className={customClass} /&gt;
   );
 };
-&lt;DemoComponent customClass = 'wrapperClass' /&gt;
-</code></pre>
+&lt;DemoComponent customClass = 'wrapperClass' /&gt;</code>
+</pre>
 
 Because a JSX component represents HTML, you could put several components together to create a more complex HTML page. This is one of the key advantages of the component architecture React provides. It allows you to compose your UI from many separate, isolated components. This makes it easier to build and maintain complex user interfaces.`
 
