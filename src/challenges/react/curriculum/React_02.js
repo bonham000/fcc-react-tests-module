@@ -14,9 +14,29 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Create 
 export const challengeText = `<span class = 'default'>Intro: </span>
 The last challenge was a simple example of JSX, but it can include complex nested HTML as well.
 
-One important thing to know about nested JSX is that it ultimately needs to return only one outer element. This single parent element would wrap all of the other levels of nested elements. The JSX will not transpile if, for example, your code has several elements that are siblings, but no parent element wrapping all of them. Here's an example:
-<code><blockquote>const JSXValid = (<br>&lt;section&gt;<br>&nbsp;&nbsp;&lt;article&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;First article&lt;/p&gt;<br>&nbsp;&nbsp;&lt;/article&gt;<br>&nbsp;&nbsp;&lt;article&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Second article&lt;/p&gt;<br>&nbsp;&nbsp;&lt;/article&gt;<br>&lt;/section&gt;);<br><br>const JSXNotValid = (<br>&lt;article&gt;<br>&nbsp;&nbsp;&lt;p&gt;First article&lt;/p&gt;<br>&lt;/article&gt;<br>&lt;article&gt;<br>&nbsp;&nbsp;&lt;p&gt;Second article&lt;/p&gt;<br>&lt;/article&gt;);</blockquote></code>`
+One important thing to know about nested JSX is that it ultimately needs to return only one outer element. This single parent element would wrap all of the other levels of nested elements. For instance, several JSX elements written as siblings with no parent wrapper element will not transpilte. Here's an example:
 
+<br><br>
+
+<b>Valid JSX:</b>
+<pre>
+<code>&lt;div&gt;
+ &lt;p&gt;Paragraph One&lt;/p&gt;
+ &lt;p&gt;Paragraph Two&lt;/p&gt;
+ &lt;p&gt;Paragraph Three&lt;/p&gt;
+&lt;/div&gt;</code>
+</pre>
+
+<br>
+
+<b>Invalid JSX:</b>
+<pre>
+<code>&lt;p&gt;Paragraph One&lt;/p&gt;
+&lt;p&gt;Paragraph Two&lt;/p&gt;
+&lt;p&gt;Paragraph Three&lt;/p&gt;</code>
+</pre>`
+
+//<code><blockquote>const JSXValid = (<br>&lt;section&gt;<br>&nbsp;&nbsp;&lt;article&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;First article&lt;/p&gt;<br>&nbsp;&nbsp;&lt;/article&gt;<br>&nbsp;&nbsp;&lt;article&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Second article&lt;/p&gt;<br>&nbsp;&nbsp;&lt;/article&gt;<br>&lt;/section&gt;);const JSXNotValid = (<br>&lt;article&gt;<br>&nbsp;&nbsp;&lt;p&gt;First article&lt;/p&gt;<br>&lt;/article&gt;<br>&lt;article&gt;<br>&nbsp;&nbsp;&lt;p&gt;Second article&lt;/p&gt;<br>&lt;/article&gt;);</blockquote></code>
 // ^^Multi-line code example follows current FCC formatting once the code tags (wrapping the blockquote) are removed
 
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>
