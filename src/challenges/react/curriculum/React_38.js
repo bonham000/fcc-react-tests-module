@@ -19,7 +19,7 @@ up until this point, our React components have been fairly bland. So... How do w
 Well, we already know that it can't be exactly the same as working with HTML because of <a target="_blank" href="link to classes challenge"> the way we apply classes to JSX elements</a>. But how
 else might it be different?<br><br>
 
-Well, if you are importing styles from a stylesheet, it doesn't have to be much different at all. Simply apply a class to your JSX elememt
+Well, if you are importing styles from a stylesheet, it doesn't have to be much different at all. Simply apply a class to your JSX element
 using the <code>className</code> attribute, and apply styles accordingly in your stylesheet. Applying <strong><em>inline</em></strong> styles, however, is very common
 in ReactJS development, and is a bit different than what we are used to.<br><br>
 
