@@ -14,7 +14,7 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Create 
 export const challengeText = `<span class = 'default'>Intro: </span>
 The last challenge was a simple example of JSX, but it can include complex nested HTML as well.
 
-One important thing to know about nested JSX is that it ultimately needs to return only one outer element. This single parent element would wrap all of the other levels of nested elements. For instance, several JSX elements written as siblings with no parent wrapper element will not transpilte. Here's an example:
+One important thing to know about nested JSX is that it ultimately needs to return only one outer element. This single parent element would wrap all of the other levels of nested elements. For instance, several JSX elements written as siblings with no parent wrapper element will not transpile. Here's an example:
 
 <br><br>
 
