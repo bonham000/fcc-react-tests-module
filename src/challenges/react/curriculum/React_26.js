@@ -162,7 +162,7 @@ export const executeTests = (code) => {
 	// test 4:
 	try {
 		const noWhiteSpace = modifiedCode.replace(/\s/g,'');
-		assert.strictEqual(noWhiteSpace.includes('setMessage=()=>{this.setState({message:\'Goodbye!\'});}') || noWhiteSpace.includes('setMessage=()=>{this.setState({message:"Goodbye!"});}'), true, error_4);
+		assert.strictEqual(noWhiteSpace.includes('setMessage=()=>{this.setState({message:\'Goodbye!\'});}') || noWhiteSpace.includes('setMessage=()=>{this.setState({message:"Goodbye!"});}') || noWhiteSpace.includes('setMessage=()=>this.setState({message:"Goodbye!"});') || noWhiteSpace.includes('setMessage=()=>this.setState({message:"Goodbye!"})') || noWhiteSpace.includes('setMessage=()=>this.setState({message:\'Goodbye!\'});') || noWhiteSpace.includes('setMessage=()=>this.setState({message:\'Goodbye!\'})'), true, error_4);
 		testResults[4].status = true;
 	} catch (err) {
 		passed = false;

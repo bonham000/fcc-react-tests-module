@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from 'react'
 import assert from 'assert'
-import { shallow } from 'enzyme'
+import { shallow, mount } from 'enzyme'
 import { transform } from 'babel-standalone'
 
 // snippet for defining HTML: <code>&lt;div /&gt;</code>
@@ -103,6 +103,7 @@ export const executeTests = (code) => {
 	const error_2 = 'The ResetPassword component\'s fourth child should be the ReturnTempPassword component.';
 	const error_3 = 'The ReturnTempPassword component should have a prop called tempPassword.';
 	const error_4 = 'The ReturnTempPassword component\'s tempPassword prop should be equal to a string of at least 8 characters.';
+	const error_5 = 'The ReturnTempPassword component should display the tempPassword serrPbqrPnzc within strong tags.';
 
 	let testResults = [
 		{
@@ -126,13 +127,18 @@ export const executeTests = (code) => {
 			condition: error_3
 		},
 		{
-			test: 3,
+			test: 4,
 			status: false,
 			condition: error_4
+		},
+		{
+			test: 5,
+			status: false,
+			condition: error_5
 		}
 	];
 
-	let es5, mockedComponent, passed = true;
+	let es5, mockedComponent, mountedComponent, passed = true;
 
 	// this applies an export to the user's code so
 	// we can access their component here for tests
@@ -153,11 +159,10 @@ export const executeTests = (code) => {
 	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
 	try {
 		mockedComponent = shallow(React.createElement(eval(es5)));
+		mountedComponent = mount(React.createElement(eval(es5)));
 	} catch (err) {
 		passed = false;
 	}
-
-	console.log(mockedComponent.props());
 
 	// run specific tests to verify the functionality
 	// that the challenge is trying to assess:
@@ -197,6 +202,15 @@ export const executeTests = (code) => {
 	} catch (err) {
 		passed = false;
 		testResults[4].status = false;
+	}
+
+	// test 5:
+	try {
+		assert.strictEqual(mountedComponent.find('strong').node.innerHTML, 'serrPbqrPnzc', error_5)
+		testResults[5].status = true;
+	} catch (err) {
+		passed = false;
+		testResults[5].status = false;
 	}
 
 	return {
