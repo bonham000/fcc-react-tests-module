@@ -152,6 +152,7 @@ export const executeTests = (code) => {
 		assert(
 			typeof initialState === 'object' &&
 			initialState.input === '' &&
+			Array.isArray(initialState.messages) &&
 			initialState.messages.length === 0,
 			error_3
 		);

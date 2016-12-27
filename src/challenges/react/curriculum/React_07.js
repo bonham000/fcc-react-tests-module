@@ -20,18 +20,16 @@ There are two ways to create a React component. The first way is to use a JavaSc
 <br /><br />
 
 To create a component with a function, you simply write a JavaScript function that returns either JSX or <code>null</code>. One important thing to note is that React requires your function name to begin with a capital letter. You can optionally pass in an argument called <code>props</code>
-to the function. This is an object containing data (also called properties), which can be used and returned in your JSX.
+to the function. This is an object containing data (also called properties), which can be used and returned in your JSX. We'll learn more about <code>props</code> later.
 <br /><br />
 
-Here's an example of a stateless functional component:
+Here's an example of a stateless functional component that assigns an HTML class based on props passsed to it:
 
 <pre>
-<code class="codeBlock">const DemoComponent = function(props) {
-  // Using ES6 to destructure customClass from props
-  // After being transpiled, the &lt;div&gt; will have a CSS class of 'wrapperClass'
-  const { customClass } = props;
+<code class="codeBlock">// After being transpiled, the &lt;div&gt; will have a CSS class of 'wrapperClass'
+const DemoComponent = function(props) {
   return (
-    &lt;div className={customClass} /&gt;
+    &lt;div className={props.customClass} /&gt;
   );
 };
 &lt;DemoComponent customClass = 'wrapperClass' /&gt;</code>
@@ -46,7 +44,7 @@ export const challengeInstructions = `<span class = 'default'>Instructions: </sp
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
-`const MyComponent = function(props) {
+`const MyComponent = function() {
 	// change code below this line
 
 
@@ -56,7 +54,7 @@ export const seedCode =
 
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode = `
-const MyComponent = function(props) {
+const MyComponent = function() {
 	// change code below this line
 	return (
 		<div>

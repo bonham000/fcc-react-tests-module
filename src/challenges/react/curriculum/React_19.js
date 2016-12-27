@@ -103,7 +103,7 @@ export const executeTests = (code) => {
 	const error_2 = 'The ResetPassword component\'s fourth child should be the ReturnTempPassword component.';
 	const error_3 = 'The ReturnTempPassword component should have a prop called tempPassword.';
 	const error_4 = 'The ReturnTempPassword component\'s tempPassword prop should be equal to a string of at least 8 characters.';
-	const error_5 = 'The ReturnTempPassword component should display the tempPassword serrPbqrPnzc within strong tags.';
+	const error_5 = 'The ReturnTempPassword component should display the password you create as the tempPassword prop within strong tags.';
 
 	let testResults = [
 		{
@@ -206,7 +206,8 @@ export const executeTests = (code) => {
 
 	// test 5:
 	try {
-		assert.strictEqual(mountedComponent.find('strong').node.innerHTML, 'serrPbqrPnzc', error_5)
+		console.log(mountedComponent.find('ReturnTempPassword'))
+		assert.strictEqual(mountedComponent.find('strong').node.innerHTML, mountedComponent.find('ReturnTempPassword').node.props.tempPassword, error_5)
 		testResults[5].status = true;
 	} catch (err) {
 		passed = false;
