@@ -26,7 +26,7 @@ to the function. This is an object containing data (also called properties), whi
 Here's an example of a stateless functional component:
 
 <pre>
-<code>const DemoComponent = function(props) {
+<code class="codeBlock">const DemoComponent = function(props) {
   // Using ES6 to destructure customClass from props
   // After being transpiled, the &lt;div&gt; will have a CSS class of 'wrapperClass'
   const { customClass } = props;

@@ -17,32 +17,34 @@ JavaScript which we will introduce here. It is the spread operator applied to ob
 of it through transpilation with Babel. We've enabled it here for you to test out.<br><br>
 
 The object spread operator allows us to spread out object properties much like when we used the spread operator to spread out array values. So let's say we
-have the following object:<br><br>
+have the following object:<br>
 
-<code>
-const user = {<br>
-		&nbsp;&nbsp;authenticated: true<br>
-		&nbsp;&nbsp;username: Jeff<br>
-}<br><br>
-</code>
+<pre>
+<code class="codeBlock">
+const user = {
+ authenticated: true
+ username: Jeff
+}</code>
+</pre>
 
-Now if we write the following:<br><br>
+Now if we write the following:<br>
 
-<code>
-const updatedUser = {<br>
-		&nbsp;&nbsp;...user,<br>
-		&nbsp;&nbsp;authenticated: false<br>
-}<br><br>
-</code>
+<pre>
+<code class="codeBlock">
+const updatedUser = {
+ ...user,
+ authenticated: false
+}</code>
+</pre>
 
-Our <code>updatedUser</code> object will be equal to the following:<br><br>
+Our <code>updatedUser</code> object will be equal to the following:<br>
 
-<code>
-{<br>
-		&nbsp;&nbsp;username: Jeff<br>
-		&nbsp;&nbsp;authenticated: false<br>
-}<br><br>
-</code>
+<pre>
+<code class="codeBlock">{
+ username: Jeff
+ authenticated: false
+}</code>
+</pre>
 
 We've 'spread' the <code>user</code> object properties into a new object and then added our new properties. Similarly to <code>Object.assign()</code>, properities with
 matching names will be overwritten. The proposed object spread syntax provides a very concise way to return new objects from existing objects, especially if

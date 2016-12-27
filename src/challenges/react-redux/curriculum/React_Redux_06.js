@@ -24,14 +24,15 @@ just like it is using <code>store.subscribe()</code> for components that we have
 
 To give an example, let's say we have a <code>loginUser()</code> action creator which takes a <code>username</code>
 as an action payload. The object returned from <code>mapDispatchToProps()</code> for this action creator would look
-something like:<br><br>
-<code>
-{<br>
-	&nbsp; submitLoginUser: function(username) {<br>
-		&nbsp;&nbsp;&nbsp; dispatch(loginUser(username));<br>
-	&nbsp; }<br>
-}<br>
-</code>`
+something like:<br>
+
+<pre>
+<code class="codeBlock">{
+submitLoginUser: function(username) {
+ dispatch(loginUser(username));
+ }
+}</code>
+</pre>`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>To use <code>mapDispatchToProps()</code>

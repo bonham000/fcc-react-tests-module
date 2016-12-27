@@ -14,7 +14,7 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Pass a 
 export const challengeText = `<span class = 'default'>Intro: </span>The previous challenges covered a lot about creating and composing JSX elements, functional components, and ES6 style class components in React. Now with this foundation, let's look at another feature very common in React: <b>props</b>. In React we can pass props, or properties, to child components. Let's say we have an <code>App</code> component which renders a child component called <code>Welcome</code>. We can write:
 
 <pre>
-<code>&lt;App&gt;
+<code class="codeBlock">&lt;App&gt;
   &lt;Welcome user='Mark' /&gt;
  &lt;/App&gt;</code>
 </pre>

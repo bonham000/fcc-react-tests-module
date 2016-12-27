@@ -19,10 +19,7 @@ very straightforward. We call <code>store.dispatch()</code> and pass the value r
 object with a type property specifying the action that has occurred. This dispatches an action object to the Redux store. Based
 on the previous example, the following lines are equivalent and both dispatch the action of type <code>LOGIN</code>:<br><br>
 
-<code>
-store.dispatch(actionCreator());<br>
-&nbsp;store.dispatch({ type: 'LOGIN' });
-</code>`
+<code class="codeBlock">store.dispatch(actionCreator());<br>store.dispatch({ type: 'LOGIN' });</code>`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>Here we've created a Redux store and initialized

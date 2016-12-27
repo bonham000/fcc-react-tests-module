@@ -13,7 +13,7 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Create 
 export const challengeText = `<span class = 'default'>Intro: </span>The other way to define a React component is with the ES6 <code>class</code> syntax. In the following example, <code>Kitten</code> extends <code>React.Component</code>:
 
 <pre>
-<code>class Kitten extends React.Component {
+<code class="codeBlock">class Kitten extends React.Component {
   constructor(props) {
     super(props);
   }
