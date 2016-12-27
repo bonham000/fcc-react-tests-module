@@ -79,12 +79,15 @@ body {
 	line-height: 24px;
 	font-family: 'Muli', serif;
 }
+.codeBlock {
+	padding: 0px;
+}
 code {
 	padding: 1px 6px;
 	border-radius: 5px;
 	font-size: 18px;
 	color: #c7254e;
-  background-color: #f9f2f4;
+  	background-color: #f9f2f4;
 }
 
 .title {

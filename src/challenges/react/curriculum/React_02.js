@@ -20,10 +20,10 @@ One important thing to know about nested JSX is that it ultimately needs to retu
 
 <b>Valid JSX:</b>
 <pre>
-<code>&lt;div&gt;
-	&lt;p&gt;Paragraph One&lt;/p&gt;
-	&lt;p&gt;Paragraph Two&lt;/p&gt;
-	&lt;p&gt;Paragraph Three&lt;/p&gt;
+<code class="codeBlock">&lt;div&gt;
+  &lt;p&gt;Paragraph One&lt;/p&gt;
+  &lt;p&gt;Paragraph Two&lt;/p&gt;
+  &lt;p&gt;Paragraph Three&lt;/p&gt;
 &lt;/div&gt;</code>
 </pre>
 
@@ -31,10 +31,9 @@ One important thing to know about nested JSX is that it ultimately needs to retu
 
 <b>Invalid JSX:</b>
 <pre>
-<code>
-	&lt;p&gt;Paragraph One&lt;/p&gt;
-	&lt;p&gt;Paragraph Two&lt;/p&gt;
-	&lt;p&gt;Paragraph Three&lt;/p&gt;
+<code class="codeBlock">&lt;p&gt;Paragraph One&lt;/p&gt;
+&lt;p&gt;Paragraph Two&lt;/p&gt;
+&lt;p&gt;Paragraph Three&lt;/p&gt;
 </code>
 </pre>`
 
