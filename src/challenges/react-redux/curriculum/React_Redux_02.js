@@ -17,7 +17,7 @@ export const challengeText = `<span class = 'default'>Intro: </span>Here we will
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>First, in the <code>render()</code> method, have the
-component return an <code>input</code> element, <code>button</code> element, and <code>ul</code> element. The <code>input</code> element
+component render an <code>input</code> element, <code>button</code> element, and <code>ul</code> element. The <code>input</code> element
 should update changes to a <code>handleChange()</code> method and render the value of <code>input</code> in the component's state.
 The button should trigger a <code>submitMessage()</code> method when clicked.<br><br>
 
