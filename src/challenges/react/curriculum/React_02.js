@@ -20,10 +20,10 @@ One important thing to know about nested JSX is that it ultimately needs to retu
 
 <b>Valid JSX:</b>
 <pre>
-<code>&lt;div&gt;
- &lt;p&gt;Paragraph One&lt;/p&gt;
- &lt;p&gt;Paragraph Two&lt;/p&gt;
- &lt;p&gt;Paragraph Three&lt;/p&gt;
+<code class="codeBlock">&lt;div&gt;
+  &lt;p&gt;Paragraph One&lt;/p&gt;
+  &lt;p&gt;Paragraph Two&lt;/p&gt;
+  &lt;p&gt;Paragraph Three&lt;/p&gt;
 &lt;/div&gt;</code>
 </pre>
 
@@ -31,9 +31,10 @@ One important thing to know about nested JSX is that it ultimately needs to retu
 
 <b>Invalid JSX:</b>
 <pre>
-<code>&lt;p&gt;Paragraph One&lt;/p&gt;
+<code class="codeBlock">&lt;p&gt;Paragraph One&lt;/p&gt;
 &lt;p&gt;Paragraph Two&lt;/p&gt;
-&lt;p&gt;Paragraph Three&lt;/p&gt;</code>
+&lt;p&gt;Paragraph Three&lt;/p&gt;
+</code>
 </pre>`
 
 //<code><blockquote>const JSXValid = (<br>&lt;section&gt;<br>&nbsp;&nbsp;&lt;article&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;First article&lt;/p&gt;<br>&nbsp;&nbsp;&lt;/article&gt;<br>&nbsp;&nbsp;&lt;article&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Second article&lt;/p&gt;<br>&nbsp;&nbsp;&lt;/article&gt;<br>&lt;/section&gt;);const JSXNotValid = (<br>&lt;article&gt;<br>&nbsp;&nbsp;&lt;p&gt;First article&lt;/p&gt;<br>&lt;/article&gt;<br>&lt;article&gt;<br>&nbsp;&nbsp;&lt;p&gt;Second article&lt;/p&gt;<br>&lt;/article&gt;);</blockquote></code>
