@@ -6,13 +6,13 @@
 
 **We need help QA'ing these!** [See here to contribute](https://github.com/bonham000/fcc-react-tests-module/blob/master/CONTRIBUTING.md)
 
-*View [`CHALLENGE_MAP.md`](https://github.com/bonham000/fcc-react-tests-module/blob/master/CHALLENGE_MAP.md) to see an overview of the challenge curriculum*
-
 ###Curriculum Overview:###
 
 * **React: 48 Challenges**
 * **Redux: 18 Challenges**
 * **React-Redux: 10 Challenges**
+
+*View [`CHALLENGE_MAP.md`](https://github.com/bonham000/fcc-react-tests-module/blob/master/CHALLENGE_MAP.md) to see an overview of the challenge curriculum*
 
 ---
 
