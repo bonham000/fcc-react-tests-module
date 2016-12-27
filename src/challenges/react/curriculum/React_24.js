@@ -13,7 +13,7 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Set Sta
 export const challengeText = `<span class = 'default'>Intro: </span>The previous challenges covered component <code>state</code> and how to initialize state in the <code>constructor</code>. There is also a way to change the component's <code>state</code>. React provides a method for updating component <code>state</code> called <code>setState</code>. You call the <code>setState</code> method within your component class like so: <code>this.setState()</code>, passing in an object with key-value pairs. The keys are your state properties and the values are the updated state data. For instance, if we were storing a <code>username</code> in state and wanted to update it, it would look like this:
 
 <pre>
-<code>this.setState({
+<code class="codeBlock">this.setState({
  username: 'Lewis'
 });</code>
 </pre>

@@ -18,7 +18,7 @@ export const challengeText = `<span class = 'default'>Intro: </span>One of the m
 
 You create state in a React component by declaring a <code>state</code> property on the component class in its <code>constructor</code>. This initializes the component with <code>state</code> when it is created. The <code>state</code> property must be set to a JavaScript <code>object</code>. Declaring it looks like this:<br><br>
 
-<code>this.state = {<br>
+<code class="codeBlock">this.state = {<br>
 &nbsp;&nbsp;&nbsp;// describe your state here<br>
 }</code>
 <br><br>

@@ -19,12 +19,13 @@ to dispatch updates. Here we will begin to use the <code>react-redux</code> pack
 <code>Provider</code> and <code>connect</code>. We will learn about the <code>Provider</code> here. The <code>Provider</code> is a wrapper
 component from React Redux which we will wrap our React app with. This wrapper then allows us to access the Redux <code>store</code> and
 <code>dispatch</code> functions throughout our component tree. <code>Provider</code> takes two props, the Redux store and the child components
-of your app. Defining the <code>Provider</code> for an App component might look like this:<br><br>
-<code>
-	&lt;Provider store={store}&gt;<br>
-		&nbsp;&nbsp;&nbsp; &lt;App/&gt;<br>
-	&lt;Provider/&gt;
-</code>`
+of your app. Defining the <code>Provider</code> for an App component might look like this:<br>
+
+<pre>
+<code class="codeBlock">&lt;Provider store={store}&gt;
+ &lt;App/&gt;
+&lt;Provider/&gt;</code>
+</pre>`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>There's a lot of code in the editor now but don't worry

@@ -16,7 +16,7 @@ export const challengeText = `<span class = 'default'>Intro: </span>The last two
 To compose these components together, we could create an <code>App</code> <i>parent</i> component which renders each of these three components as <i>children</i>. To render a component as a child in a React component, we include the component name written as a custom HTML tag in our JSX. For instance, in the <code>render</code> method we could write:
 
 <pre>
-<code>return (
+<code class="codeBlock">return (
  &lt;App&gt;
   &lt;Navbar /&gt;
   &lt;Dashboard /&gt;
