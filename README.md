@@ -8,6 +8,12 @@
 
 *View [`CHALLENGE_MAP.md`](https://github.com/bonham000/fcc-react-tests-module/blob/master/CHALLENGE_MAP.md) to see an overview of the challenge curriculum*
 
+###Curriculum Overview:
+React: 48 Challenges
+Redux: 18 Challenges
+React-Redux: 10 Challenges
+
+
 ---
 
 To run this project locally clone the repository, install the dependencies, and run `npm start`. Now you can view all the finished challenges live in the browser.
