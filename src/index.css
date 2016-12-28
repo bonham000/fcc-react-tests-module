@@ -121,9 +121,9 @@ select:focus {
 	color: rgb(225,225,225);
 }
 button {
-	width: 240px;
+	width: 245px;
 	margin: 5px;
-	font-size: 22px;
+	font-size: 20px;
 	padding: 8px 12px;
 	border: none;
 	border-radius: 5px;
@@ -141,7 +141,7 @@ button:hover {
 	background: #327AFF;
 }
 .testBtn {
-	width: 490px;
+	width: 500px;
 }
 .seedBtn:hover {
 	background: #F65A39;

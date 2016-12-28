@@ -1,7 +1,5 @@
 {
   "name": "fcc-react-challenge-tests-prototype",
-  "contributors:" "Sean Smith, Peter Weinberg",
-  "organization:" "Free Code Camp",
   "version": "0.0.1",
   "private": true,
   "devDependencies": {
