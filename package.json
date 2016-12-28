@@ -1,5 +1,7 @@
 {
   "name": "fcc-react-challenge-tests-prototype",
+  "contributors:" "Sean Smith, Peter Weinberg",
+  "organization:" "Free Code Camp",
   "version": "0.0.1",
   "private": true,
   "devDependencies": {
@@ -29,7 +31,6 @@
     "filesize": "3.3.0",
     "find-cache-dir": "0.1.1",
     "fs-extra": "0.30.0",
-    "git-scripts": "^0.2.1",
     "gzip-size": "3.0.0",
     "html-webpack-plugin": "2.24.0",
     "http-proxy-middleware": "0.17.2",
@@ -45,7 +46,6 @@
     "rimraf": "2.5.4",
     "strip-ansi": "3.0.1",
     "style-loader": "0.13.1",
-    "surge": "^0.18.0",
     "url-loader": "0.5.7",
     "webpack": "1.13.2",
     "webpack-dev-server": "1.16.2",
@@ -59,14 +59,9 @@
     "react-codemirror": "^0.3.0",
     "react-dom": "^15.4.1"
   },
-  "git": {
-    "scripts": {
-      "pre-push": "surge ./build ./ --domain hysterical-amusement.surge.sh"
-    }
-  },
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
+    "build": "node scripts/build.js && surge ./build ./ --domain hysterical-amusement.surge.sh",
     "test": "node scripts/test.js --env=jsdom"
   },
   "jest": {
