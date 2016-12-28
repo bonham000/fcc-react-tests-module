@@ -61,7 +61,7 @@
   },
   "git": {
     "scripts": {
-      "pre-push": "surge /build ./ --domain hysterical-amusement.surge.sh"
+      "pre-push": "surge ./build ./ --domain hysterical-amusement.surge.sh"
     }
   },
   "scripts": {
