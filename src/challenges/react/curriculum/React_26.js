@@ -16,7 +16,7 @@ export const challengeText = `<span class = 'default'>Intro: </span>There is ano
 This means you can define a class method as an arrow function and not have to explicitly bind <code>this</code> in the constructor. However, the arrow function is ES6 syntax, which might not work fully in the browser. You may need to transpile your code to make sure it works correctly in most browsers. It's useful to be aware of both options when writing methods on React classes.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>Initialize the <code>state</code> of <code>MyComponent</code> so there is a <code>message</code> key with a value of <code>Hello!</code>. The component renders a <code>button</code> that, when clicked, triggers a <code>setMessage()</code> method. Define this method with an ES6 arrow function. It should change the <code>state</code> of <code>message</code> to <code>Goodbye!</code>.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>Initialize the <code>state</code> of <code>MyComponent</code> so there is a <code>message</code> key with a value of <code>Hello!</code>. The component renders a <code>button</code> that, when clicked, triggers a <code>setMessage()</code> method. Define this method with an ES6 arrow function. It should change the <code>state</code> of <code>message</code> to <code>Goodbye!</code>. Note that to pass the tests the arrow function must be written without any arguments.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
