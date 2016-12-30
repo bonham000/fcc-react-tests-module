@@ -14,13 +14,13 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Manage 
 
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>Another lifecycle method is
-<code>componentWillReceiveProps()</code> which is called whenever a component is receiving new props. This method receives the new props as a <code>nextProps</code> argument which you can use and compare with <code>this.props</code>. You can perform actions before the component updates. For example, you may call <code>setState()</code> locally before the update is processed.
+<code>componentWillReceiveProps()</code> which is called whenever a component is receiving new props. This method receives the new props as an argument, which is usually written as <code>nextProps</code>. You can use this argument and compare with <code>this.props</code> and perform actions before the component updates. For example, you may call <code>setState()</code> locally before the update is processed.
 <br><br>
 
 Another method is <code>componentDidUpdate()</code>, and is called immediately after a component re-renders. Note that rendering and mounting are considered different things in the component lifecycle. When a page first loads, all components are mounted and this is where methods like <code>componentWillMount()</code> and <code>componentDidMount()</code> are called. After this, as state changes, components re-render themselves. The next challenge covers this in more detail.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>The child component <code>Dialog</code> receives <code>message</code> props from its parent, the <code>Controller</code> component. Write the <code>componentWillReceiveProps()</code> method in the <code>Dialog</code> component and have it log <code>this.props</code> and <code>nextProps</code> to the console. You'll need to pass <code>nextProps</code> as an argument to this method.
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>The child component <code>Dialog</code> receives <code>message</code> props from its parent, the <code>Controller</code> component. Write the <code>componentWillReceiveProps()</code> method in the <code>Dialog</code> component and have it log <code>this.props</code> and <code>nextProps</code> to the console. You'll need to pass <code>nextProps</code> as an argument to this method and although it's possible to name it anything, name it <code>nextProps</code> here.
 <br><br>
 
 Next, add <code>componentDidUpdate()</code> in the <code>Dialog</code> component, and log a statement that says the component has updated. This method works similar to <code>componentWillUpdate()</code>, which is provided for you. Now click the button to change the message and watch your browser console. The order of the console statements show the order the methods are called.`
