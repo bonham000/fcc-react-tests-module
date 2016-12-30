@@ -18,16 +18,16 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Add Inl
 
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>Do you notice anything else that is different about the
-way this is written? Beyond the fact that we are setting the style attribute equal to a javaScript object, there are some other
+way this is written? Beyond the fact that we are setting the style attribute equal to a JavaScript object, there are some other
 important differences that we must note. The first thing to note is that we are creating the style <code>object</code> within a 
-set a curly braces, <code>{ }</code> — it really is just a JavaScript object. The other important piece of information here
+set of curly braces, <code>{ }</code> — it really is just a JavaScript object. The other important piece of information here
 is the syntax of the style properties. For example, you might have noticed that to control the size of the font we used
 <code>fontSize</code> rather than <code>font-size</code>. Because the style object is just a JavaScript <code>object</code>,
 and <code>font-size</code> is invalid syntax for an object property, we write it as <code>fontSize</code>. As a rule any
 hyphenated style properties become camel-cased when written inline in JSX.<br><br>
 
-Finally, all propery value units (for things like <code>height</code>, <code>width</code>, and <code>fontSize</code>) are assumed to 
-be in <code>px</code> unless otherwise specified (you might have noticed we did not include a unit desigation). If you want to use
+Finally, all property value units (for things like <code>height</code>, <code>width</code>, and <code>fontSize</code>) are assumed to 
+be in <code>px</code> unless otherwise specified (you might have noticed we did not include a unit designation). If you want to use
 <code>em</code> for example, you must specify and wrap the value declaration in quotes. Aside from numbers assumed to be in
 <code>px</code> all other property values should also be wrapped in quotes.<br><br>
 
@@ -40,7 +40,7 @@ export const challengeInstructions = `<span class = 'default'>Instructions: </sp
 styles, our code could get a bit messy if we write it right into the JSX element's tag. So instead, let's assign that style
 <code>object</code> to the <code>styles</code> constant that we have provided above the React component. Uncomment the constant
 and declare an <code>object</code> which represents 3 style properties and their values. Give the <code>&lt;div/&gt;</code> a color of
-<code>"purple"</code>, a font size of <code>40</code> and a border of <code>"2px solid purple"</code>. When you are finshed
+<code>"purple"</code>, a font size of <code>40</code> and a border of <code>"2px solid purple"</code>. When you are finished
 defining your styles, set the <code>style</code> attribute equal to the <code>styles</code> constant.`
 
 // ---------------------------- define challenge seed code ----------------------------
