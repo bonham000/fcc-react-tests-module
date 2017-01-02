@@ -1,9 +1,7 @@
 
 **We are currently trying to review these challenges to prepare them for addition to the Free Code Camp curriculum expansion. We need your help!**
 
-[View the challeges in the live app](http://hysterical-amusement.surge.sh/)
-
-[View the map of the curriculum](https://github.com/bonham000/fcc-react-tests-module/blob/master/CHALLENGE_MAP.md)
+[View the challeges in the live app](http://hysterical-amusement.surge.sh/) | [View the map of the curriculum](https://github.com/bonham000/fcc-react-tests-module/blob/master/CHALLENGE_MAP.md)
 
 **We need campers to provide feedback specifically in these areas:**
 
