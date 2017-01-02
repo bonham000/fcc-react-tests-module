@@ -187,7 +187,7 @@ export const executeTests = (code) => {
 
 	// test 5:
 	try {
-		assert.strictEqual(mockedComponent.contains(<p>CamperBot</p>), true, error_5);
+		assert.strictEqual(mockedComponent.contains(<p>{mockedComponent.find('Camper').props().name}</p>), true, error_5);
 		testResults[5].status = true;
 	} catch (err) {
 		passed = false;
