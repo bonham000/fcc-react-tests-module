@@ -12,7 +12,7 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Dispatc
 
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>Now we can create actions and action creators. Here we will
-see how we can dispatch these actions so the Redux store can respond to them. Remember when we introducted <code>store.getState()</code>
+see how we can dispatch these actions so the Redux store can respond to them. Remember when we introduced <code>store.getState()</code>
 as a method provided on the Redux <code>store</code> object and mentioned that there are other methods provided as well? The method
 <code>store.dispatch()</code> is one of these, and this is what we will use to dispatch actions to the Redux store. Doing this is
 very straightforward. We call <code>store.dispatch()</code> and pass the value returned from an action creator, which is just an 
