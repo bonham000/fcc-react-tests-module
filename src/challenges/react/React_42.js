@@ -13,20 +13,16 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Use && for a More Concise Conditional`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>Nice job! Now we will demonstrate a more concise way to achieve the same result. Imagine that we are
-tracking several conditions in our component and we want to respond differently to each of these conditions. We don't want to keep writing <code>else if</code> conditions to
-just return slightly tweaked UIs. Instead, we can use the <code>&&</code> logical operator to perform conditional logic in a more concise way. This
-is possible because we want to check if a condition is <code>true</code>, and if it is return some markup. So if we write:<br><br>
+export const challengeText = `<span class = 'default'>Intro: </span>The if/else statements worked in the last challenge, but there's a more concise way to achieve the same result. Imagine that you are tracking several conditions in a component and you want different elements to render depending on each of these conditions. If you write a lot of <code>else if</code> statements to return slightly different UIs, you may repeat code which leaves room for error. Instead, you can use the <code>&&</code> logical operator to perform conditional logic in a more concise way. This is possible because you want to check if a condition is <code>true</code>, and if it is, return some markup. Here's an example:
+<br><br>
 
-<code>{condition && &lt;p&gt;markup&lt;/p&gt;}</code><br><br>
+<code>{condition && &lt;p&gt;markup&lt;/p&gt;}</code>
+<br><br>
 
-If the <code>condition</code> is <code>true</code> the markup will be returned, otherwise if it is <code>false</code> the operation will immediately
-return <code>false</code> after evaluating the <code>condition</code> and return nothing. We can include these statments directly in our JSX
-and even string multiple conditions together by continuing to write <code>&&</code> after each check we make. This allows us to 
-handle more complex conditional logic in our <code>render()</code> method.`
+If the <code>condition</code> is <code>true</code>, the markup will be returned. If the condition is <code>false</code>, the operation will immediately return <code>false</code> after evaluating the <code>condition</code> and return nothing. You can include these statements directly in your JSX and string multiple conditions together by writing <code>&&</code> after each one. This allows you to handle more complex conditional logic in your <code>render()</code> method without repeating a lot of code.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>Solve the previous example again, this time using the <code>&&</code> logical operator.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>Solve the previous example again, so the <code>h1</code> only renders if <code>display</code> is <code>true</code>, but use the <code>&&</code> logical operator instead of an <code>if/else</code> statement.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
@@ -82,11 +78,11 @@ export const solutionCode =
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
-	const error_1 = 'MyComponent exists and is rendered.';
-	const error_2 = 'When display is set to true, a div, button, and h1 are rendered.';
-	const error_3 = 'When display is set to false, only a div and button are rendered.';
-	const error_4 = 'The render method uses the && logical operator to check the condition of this.state.display.';
+	const error_0 = 'Your JSX code should transpile successfully.';
+	const error_1 = 'MyComponent should exist and render.';
+	const error_2 = 'When display is set to true, a div, button, and h1 should render.';
+	const error_3 = 'When display is set to false, only a div and button should render.';
+	const error_4 = 'The render method should use the && logical operator to check the condition of this.state.display.';
 
 	let testResults = [
 		{
@@ -122,7 +118,7 @@ export const executeTests = (code) => {
 	// we can access their component here for tests
 	const exportScript = '\n export default MyComponent'
 	const modifiedCode = code.concat(exportScript);
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
@@ -131,7 +127,7 @@ export const executeTests = (code) => {
 		passed = false;
 		testResults[0].status = false;
 	}
-	
+
 	// now we will try to shallow render the component with Enzyme's shallow method
 	// you can also use mount to perform a full render to the DOM environment
 	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
@@ -166,7 +162,7 @@ export const executeTests = (code) => {
 		testResults[2].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[2].status = false;		
+		testResults[2].status = false;
 	}
 
 	// test 3:
@@ -198,7 +194,7 @@ export const executeTests = (code) => {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // ---------------------------- define live render function ----------------------------

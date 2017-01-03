@@ -10,42 +10,24 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // NOTES: For this one (besides re-doing the intro since we will likely have covered most of this already
-// by the time we get to this challenge) - still need a way to make sure they've used the styles const rather than 
+// by the time we get to this challenge) - still need a way to make sure they've used the styles const rather than
 // applying same 3 styles in-line.
 
 // ---------------------------- define challenge title ----------------------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Add Inline Styles in React`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>Do you notice anything else that is different about the
-way this is written? Beyond the fact that we are setting the style attribute equal to a JavaScript object, there are some other
-important differences that we must note. The first thing to note is that we are creating the style <code>object</code> within a 
-set of curly braces, <code>{ }</code> — it really is just a JavaScript object. The other important piece of information here
-is the syntax of the style properties. For example, you might have noticed that to control the size of the font we used
-<code>fontSize</code> rather than <code>font-size</code>. Because the style object is just a JavaScript <code>object</code>,
-and <code>font-size</code> is invalid syntax for an object property, we write it as <code>fontSize</code>. As a rule any
-hyphenated style properties become camel-cased when written inline in JSX.<br><br>
+export const challengeText = `<span class = 'default'>Intro: </span>You may have noticed in the last challenge that there were several other syntax differences from HTML inline styles in addition to the <code>style</code> attribute set to a JavaScript object. First, the names of certain CSS style properties use camel case. For example, the last challenge set the size of the font with <code>fontSize</code> instead of <code>font-size</code>. Hyphenated words like <code>font-size</code> are invalid syntax for JavaScript object properties, so React uses camel case. As a rule, any hyphenated style properties are written using camel case in JSX.
+<br><br>
 
-Finally, all property value units (for things like <code>height</code>, <code>width</code>, and <code>fontSize</code>) are assumed to 
-be in <code>px</code> unless otherwise specified (you might have noticed we did not include a unit designation). If you want to use
-<code>em</code> for example, you must specify and wrap the value declaration in quotes. Aside from numbers assumed to be in
-<code>px</code> all other property values should also be wrapped in quotes.<br><br>
-
-Before we move on, let's cover an additional way we can apply inline styles in React. And remember, this is just the tip of the iceberg when 
-it comes to adding styles in React. These concepts can be expanded upon significantly to bring your components to life in rich and exciting ways!
-`
+All property value length units (like <code>height</code>, <code>width</code>, and <code>fontSize</code>) are assumed to be in <code>px</code> unless otherwise specified. If you want to use <code>em</code>, for example, you wrap the value and the units in quotes, like <code>{fontSize: "4em"}</code>. Other than the length values that default to <code>px</code>, all other property values should be wrapped in quotes.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>If we are dealing with a larger set of
-styles, our code could get a bit messy if we write it right into the JSX element's tag. So instead, let's assign that style
-<code>object</code> to the <code>styles</code> constant that we have provided above the React component. Uncomment the constant
-and declare an <code>object</code> which represents 3 style properties and their values. Give the <code>&lt;div/&gt;</code> a color of
-<code>"purple"</code>, a font size of <code>40</code> and a border of <code>"2px solid purple"</code>. When you are finished
-defining your styles, set the <code>style</code> attribute equal to the <code>styles</code> constant.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>If you have a large set of styles, you can assign a style <code>object</code> to a constant to keep your code organized. Uncomment the <code>styles</code> constant and declare an <code>object</code> with three style properties and their values. Give the <code>div</code> a color of <code>"purple"</code>, a font-size of <code>40</code>, and a border of <code>"2px solid purple"</code>. Then set the <code>style</code> attribute equal to the <code>styles</code> constant.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = `
-// const styles = 
+// const styles =
 // change code above this line
 class Colorful extends React.Component {
   render() {
@@ -80,18 +62,18 @@ class Colorful extends React.Component {
 
 export const executeTests = (code) => {
 
-	const error_1 = 'The const variable styles is an object with 3 properties.';
-	const error_2 = 'styles has a color property set to a value of "purple".';
-	const error_3 = 'styles has a fontSize property set to a value of 40.';
-	const error_4 = 'styles has a border property set to a value of "2px solid purple".';
-	const error_5 = 'The component renders a <div> elememt.';
-	const error_6 = 'The <div> element has the styles defined by the styles object applied to it.';
+	const error_1 = 'The styles variable should be an object with three properties.';
+	const error_2 = 'The styles variable should have a color property set to a value of "purple".';
+	const error_3 = 'The styles variable should have a fontSize property set to a value of 40.';
+	const error_4 = 'The styles variable should have a border property set to a value of "2px solid purple".';
+	const error_5 = 'The component should render a div element.';
+	const error_6 = 'The div element should have its styles defined by the styles object.';
 
 	let testResults = [
 		{
 			test: 0,
 			status: false,
-			condition: 'Your JSX code was transpiled successfully.'
+			condition: 'Your JSX code should transpile successfully.'
 		},
 		{
 			test: 1,
@@ -128,7 +110,7 @@ export const executeTests = (code) => {
 	let es5, mockedComponent, stylesConst, stylesObj, testRender, passed = true;
 	const exportScript = '\n export default Colorful;'
 	const modifiedCode =  code.concat(exportScript);
-	
+
 	// for analyzing just the styles const
 	const prepend = `(function() {`
 	const apend = `;\n return styles })()`
@@ -143,7 +125,7 @@ export const executeTests = (code) => {
 		passed = false;
 		testResults[0].status = false;
 	}
-	
+
 	// now we will try to shallow render the component with Enzyme's shallow method
 	// you can also use mount to perform a full render to the DOM environment
 	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
@@ -153,7 +135,7 @@ export const executeTests = (code) => {
 	} catch (err) {
 		passed = false;
 	}
-	
+
 	// run specific tests to verify the functionality
 	// that the challenge is trying to assess:
 
@@ -186,7 +168,7 @@ export const executeTests = (code) => {
 		testResults[4].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[4].status = false;		
+		testResults[4].status = false;
 	}
 
 	try {
@@ -198,8 +180,8 @@ export const executeTests = (code) => {
 	}
 
 	try {
-		assert(testRender.nodes[0].props.style.color === "purple" && 
-			testRender.nodes[0].props.style.fontSize === 40 && 
+		assert(testRender.nodes[0].props.style.color === "purple" &&
+			testRender.nodes[0].props.style.fontSize === 40 &&
 			testRender.nodes[0].props.style.border === "2px solid purple", error_6);
 		testResults[6].status = true;
 	} catch (err) {
@@ -211,7 +193,7 @@ export const executeTests = (code) => {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // ---------------------------- define live render function ----------------------------

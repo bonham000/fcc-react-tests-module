@@ -13,27 +13,26 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Introducing Inline Styles`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>Now that we've learned the basics of React, let's get into some more complex concepts
-that can add even more powerful capabilities to our React code. But before we do that, let's cover something you might have been wondering for a while now, as
-up until this point, our React components have been fairly bland. So... How do we style these JSX elements that we've been creating in React? 
-Well, we already know that it can't be exactly the same as working with HTML because of <a target="_blank" href="link to classes challenge"> the way we apply classes to JSX elements</a>. But how
-else might it be different?<br><br>
+export const challengeText = `<span class = 'default'>Intro: </span>There are other complex concepts
+that add powerful capabilities to your React code. But you may be wondering about the more simple problem of how to style those JSX elements you create in React. You likely know that it won't be exactly the same as working with HTML because of <a target="_blank" href="link to classes challenge"> the way you apply classes to JSX elements</a>.
+<br><br>
 
-Well, if you are importing styles from a stylesheet, it doesn't have to be much different at all. Simply apply a class to your JSX element
-using the <code>className</code> attribute, and apply styles accordingly in your stylesheet. Applying <strong><em>inline</em></strong> styles, however, is very common
-in ReactJS development, and is a bit different than what we are used to.<br><br>
+If you import styles from a stylesheet, it isn't much different at all. You apply a class to your JSX element using the <code>className</code> attribute, and apply styles to the class in your stylesheet. Another option is to apply <strong><em>inline</em></strong> styles, which are very common in ReactJS development.
+<br><br>
 
-The way that we apply inline styles to JSX elements is similar to how we would would apply inline styles in HTML, but like with many cases in JSX, 
-there are a few key differences. We will still be using the <code>style</code> attribute, but the value that we set that attribute to is where you will notice
-the greatest difference. A simple example of an inline style in HTML might look something like this:<br><br>
+You apply inline styles to JSX elements similar to how you do it in HTML, but with a few JSX differences. Here's an example of an inline style in HTML:
+<br><br>
 
-<code>&lt;div style="color: yellow; font-size: 16px"&gt;Mellow Yellow&lt;/div&gt;</code><br><br>
+<code>&lt;div style="color: yellow; font-size: 16px"&gt;Mellow Yellow&lt;/div&gt;</code>
+<br><br>
 
-However, because of the way JSX is transpiled, we cannot simply set the value of the attribute style to a <code>string</code>. Instead, we must 
-set the style attribute's value equal to a javascript <code>object</code>, like so: <code>{color: "red", fontSize: 36}</code>.`
+JSX elements use the <code>style</code> attribute, but because of the way JSX is transpiled, you can't set the value to a <code>string</code>. Instead, you set it equal to a JavaScript <code>object</code>. Here's an example:
+<br><br>
+
+<code>&lt;div style={{color: "yellow", fontSize: 16}}&gt;Mellow Yellow&lt;/div&gt;</code>`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>Uncomment the JSX code below to see what happens!`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>Uncomment the JSX code in the editor to see the styles applied to the <code>Colorful</code> component.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = `
@@ -61,15 +60,15 @@ class Colorful extends React.Component {
 
 export const executeTests = (code) => {
 
-	const error_1 = 'The component renders a <div> elememt.';
-	const error_2 = 'The <div> elememt has a color of red.';
-	const error_3 = 'The <div> elememt has a font size of 72px.';
+	const error_1 = 'The component should render a div element.';
+	const error_2 = 'The div element should have a color of red.';
+	const error_3 = 'The div element should have a font size of 72px.';
 
 	let testResults = [
 		{
 			test: 0,
 			status: false,
-			condition: 'Your JSX code was transpiled successfully.'
+			condition: 'Your JSX code should transpile successfully.'
 		},
 		{
 			test: 1,
@@ -91,7 +90,7 @@ export const executeTests = (code) => {
 	let es5, mockedComponent, testRender, passed = true;
 	const exportScript = '\n export default Colorful;'
 	const modifiedCode = code.concat(exportScript);
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
@@ -100,7 +99,7 @@ export const executeTests = (code) => {
 		passed = false;
 		testResults[0].status = false;
 	}
-	
+
 	// now we will try to shallow render the component with Enzyme's shallow method
 	// you can also use mount to perform a full render to the DOM environment
 	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
@@ -128,7 +127,7 @@ export const executeTests = (code) => {
 		testResults[2].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[2].status = false;		
+		testResults[2].status = false;
 	}
 
 	// test 2:
@@ -137,7 +136,7 @@ export const executeTests = (code) => {
 		testResults[3].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[3].status = false;		
+		testResults[3].status = false;
 	}
 
 
@@ -145,7 +144,7 @@ export const executeTests = (code) => {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // ---------------------------- define live render function ----------------------------

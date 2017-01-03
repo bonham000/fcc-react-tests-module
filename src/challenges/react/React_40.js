@@ -14,24 +14,17 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Use Adv
 
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>
-In previous lessons, we've learned how to inject JavaScript code into JSX code using curly braces, <code>{ }</code> &mdash; accessing props, passing props, accessing state, 
-inserting comments into our code, and most recently, styling our components &mdash; these are all common use cases for JavaScript injection into JSX. 
-But this is not the only way that we can utilize vanilla JavaScript code in our react components.<br><br>
+In previous challenges, you learned how to inject JavaScript code into JSX code using curly braces, <code>{ }</code>, for tasks like accessing props, passing props, accessing state, inserting comments into your code, and most recently, styling your components. These are all common use cases to put JavaScript in JSX, but they aren't the only way that you can utilize JavaScript code in your React components.
+<br><br>
 
-We can also write JavaScript directly into our <code>render</code> methods, before the <code>return</code>, <strong><em>without</em></strong> inserting it inside of curly braces (since this is not within 
-our JSX code), and then use that variable later in our JSX code <em>inside</em> the <code>return</code>, by once again placing it inside of curly braces. While this challenge illustrates
-this concept in a simple way, remember, like with many of these challenges, this simple illustration can be expanded upon significantly, in order to achieve exponentially more complex results.`
+You can also write JavaScript directly in your <code>render</code> methods, before the <code>return</code> statement, <strong><em>without</em></strong> inserting it inside of curly braces. This is because it is not yet within the JSX code. When you want to use a variable later in the JSX code <em>inside</em> the <code>return</code> statement, you place the variable name inside curly braces.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>
-First, look closely at the code that we have already provided to make sure you understand what is going on so far. In our <code>render</code> method, you'll notice
-an array that contains 20 phrases that represent the answers found in the classic 1980's Magic Eight Ball toy. In the <code>ask</code> method that is bound to the button click event, notice 
-that each time the button is clicked, we are storing a random number between <code>1</code> & <code>20</code> in the component's state object. On line 38, delete the string <code>"change me!"</code> 
-and reassign the <code>answer</code> const in order to randomly access a different index of the <code>possibleAnswers</code> array each time the component updates. 
-Then, to complete the challenge, insert the <code>answer</code> const inside the <code>&lt;p&gt;</code> tags.`
+In the code provided, the <code>render</code> method has an array that contains 20 phrases to represent the answers found in the classic 1980's Magic Eight Ball toy. The button click event is bound to the <code>ask</code> method, so each time the button is clicked, a random number between <code>1</code> and <code>20</code> is stored in the component's state object. On line 38, delete the string <code>"change me!"</code> and reassign the <code>answer</code> const so your code randomly accesses a different index of the <code>possibleAnswers</code> array each time the component updates. Finally, insert the <code>answer</code> const inside the <code>p</code> tags.`
 
 // ---------------------------- define challenge seed code ----------------------------
-export const seedCode = 
+export const seedCode =
 `const inputStyle = {
 	width: 235,
 	margin: 5
@@ -43,7 +36,7 @@ class MagicEightBall extends React.Component {
 		this.state = {
 			userInput: '',
 			randomIndex: ''
-		} 
+		}
 		this.ask = this.ask.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 	}
@@ -54,7 +47,7 @@ class MagicEightBall extends React.Component {
 				userInput: ''
 			});
 		}
-	}	
+	}
 	handleChange(event) {
 		this.setState({
 			userInput: event.target.value
@@ -63,19 +56,19 @@ class MagicEightBall extends React.Component {
 	render() {
 		const possibleAnswers = [
 		"It is certain", "It is decidedly so", "Without a doubt",
-		"Yes, definitely", "You may rely on it", "As I see it, yes",  
-		"Outlook good", "Yes", "Signs point to yes", "Reply hazy try again", 
-		"Ask again later", "Better not tell you now", "Cannot predict now", 
-		"Concentrate and ask again", "Don't count on it", "My reply is no", 
+		"Yes, definitely", "You may rely on it", "As I see it, yes",
+		"Outlook good", "Yes", "Signs point to yes", "Reply hazy try again",
+		"Ask again later", "Better not tell you now", "Cannot predict now",
+		"Concentrate and ask again", "Don't count on it", "My reply is no",
 		"My sources say no", "Outlook not so good","Very doubtful", "Most likely"
 		];
 		const answer = "change me!" // << change code here
 		return (
 			<div>
-				<input 
+				<input
 					type="text"
 					value={this.state.userInput}
-					onChange={this.handleChange} 
+					onChange={this.handleChange}
 					style={inputStyle} /><br />
 				<button onClick={this.ask}>Ask the Magic Eight Ball!</button><br />
 				<h3>Answer:</h3>
@@ -102,7 +95,7 @@ class MagicEightBall extends React.Component {
 		this.state = {
 			userInput: '',
 			randomIndex: ''
-		} 
+		}
 		this.ask = this.ask.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 	}
@@ -113,7 +106,7 @@ class MagicEightBall extends React.Component {
 				userInput: ''
 			});
 		}
-	}	
+	}
 	handleChange(event) {
 		this.setState({
 			userInput: event.target.value
@@ -122,19 +115,19 @@ class MagicEightBall extends React.Component {
 	render() {
 		const possibleAnswers = [
 		"It is certain", "It is decidedly so", "Without a doubt",
-		"Yes, definitely", "You may rely on it", "As I see it, yes",  
-		"Outlook good", "Yes", "Signs point to yes", "Reply hazy try again", 
-		"Ask again later", "Better not tell you now", "Cannot predict now", 
-		"Concentrate and ask again", "Don't count on it", "My reply is no", 
+		"Yes, definitely", "You may rely on it", "As I see it, yes",
+		"Outlook good", "Yes", "Signs point to yes", "Reply hazy try again",
+		"Ask again later", "Better not tell you now", "Cannot predict now",
+		"Concentrate and ask again", "Don't count on it", "My reply is no",
 		"My sources say no", "Outlook not so good","Very doubtful", "Most likely"
 		];
 		const answer = possibleAnswers[this.state.randomIndex];
 		return (
 			<div>
-				<input 
+				<input
 					type="text"
 					value={this.state.userInput}
-					onChange={this.handleChange} 
+					onChange={this.handleChange}
 					style={inputStyle} /><br />
 				<button onClick={this.ask}>Ask the Magic Eight Ball!</button><br />
 				<h3>Answer:</h3>
@@ -150,13 +143,13 @@ class MagicEightBall extends React.Component {
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
-	const error_1 = 'The MagicEightBall component exists and is rendered to the page.';
-	const error_2 = 'MagicEightBall\'s first child should be an <input> element.';
-	const error_3 = 'MagicEightBall\'s third child should be a <button> element.';
-	const error_4 = 'MagicEightBall\'s state is initialized with a property of userInput and a property of randomIndex both set to a value of an empty string.'
-	const error_5 = 'When MagicEightBall is first mounted to the DOM it should return an empty <p> element.'
-	const error_6 = 'When text is entered into the <input> element and the button is clicked, the MagicEightBall component should return a <p> element that contains a random element from the possibleAnswers array.';
+	const error_0 = 'Your JSX code should transpile successfully.';
+	const error_1 = 'The MagicEightBall component should exist and should render to the page.';
+	const error_2 = 'MagicEightBall\'s first child should be an input element.';
+	const error_3 = 'MagicEightBall\'s third child should be a button element.';
+	const error_4 = 'MagicEightBall\'s state should be initialized with a property of userInput and a property of randomIndex both set to a value of an empty string.'
+	const error_5 = 'When MagicEightBall is first mounted to the DOM, it should return an empty p element.'
+	const error_6 = 'When text is entered into the input element and the button is clicked, the MagicEightBall component should return a p element that contains a random element from the possibleAnswers array.';
 
 	let testResults = [
 		{
@@ -202,7 +195,7 @@ export const executeTests = (code) => {
 	// we can access their component here for tests
 	const exportScript = '\n export default MagicEightBall'
 	const modifiedCode = code.concat(exportScript);
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
@@ -211,7 +204,7 @@ export const executeTests = (code) => {
 		passed = false;
 		testResults[0].status = false;
 	}
-	
+
 	// now we will try to shallow render the component with Enzyme's shallow method
 	// you can also use mount to perform a full render to the DOM environment
 	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
@@ -243,7 +236,7 @@ export const executeTests = (code) => {
 		testResults[2].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[2].status = false;		
+		testResults[2].status = false;
 	}
 
 	// test 3:
@@ -309,14 +302,14 @@ export const executeTests = (code) => {
 		statesArray.push(mockedComponent.find('p').nodes[0].innerText);
 		const answersArray = [
 		"It is certain", "It is decidedly so", "Without a doubt",
-		"Yes, definitely", "You may rely on it", "As I see it, yes",  
-		"Outlook good", "Yes", "Signs point to yes", "Reply hazy try again", 
-		"Ask again later", "Better not tell you now", "Cannot predict now", 
-		"Concentrate and ask again", "Don't count on it", "My reply is no", 
+		"Yes, definitely", "You may rely on it", "As I see it, yes",
+		"Outlook good", "Yes", "Signs point to yes", "Reply hazy try again",
+		"Ask again later", "Better not tell you now", "Cannot predict now",
+		"Concentrate and ask again", "Don't count on it", "My reply is no",
 		"My sources say no", "Outlook not so good","Very doubtful", "Most likely"
 		];
 		const hasIndex = statesArray.filter((state, i) => answersArray.indexOf(state) !== -1);
-		const notAllEqual = statesArray.filter((state, i, arr) => arr[i] === arr[0]); 
+		const notAllEqual = statesArray.filter((state, i, arr) => arr[i] === arr[0]);
 		console.log(statesArray, hasIndex, notAllEqual)
 		assert(hasIndex.length === 10 && notAllEqual.length !== 10, error_6);
 		testResults[6].status = true;
@@ -329,7 +322,7 @@ export const executeTests = (code) => {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // ---------------------------- define live render function ----------------------------

@@ -13,16 +13,13 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Return null to Prevent Rendering`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>There are some situations where we may not want to render a child element. In React you can avoid
-rendering a component by simply returning <code>null</code> in its <code>render()</code> method. This is useful in situations where you want
-to avoid rendering components based on conditional logic.`
+export const challengeText = `<span class = 'default'>Intro: </span>There are situations when you may not want to render a child element. React won't render a component if that component's <code>render()</code> method returns <code>null</code>. This is useful when you don't want to render components based on conditional logic.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've provided the example we've been working with again here. This time, we will render
-our <code>h1</code> element in the <code>Child</code> component rather than in one top-level component. We will pass our <code>display</code> condition as <code>props</code>
-to this child component. We can check the condition of <code>display</code> in the child component and if it is <code>false</code> we can return <code>null</code>. Try it out!
-Now we've accomplished the same behavior in three different ways. This should begin to show you the versatility of using JavaScript to write our UIs. React provides us a lot
-of control over what and how we render our views.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>The code editor has an example similar to the last two challenges. However, the <code>h1</code> element renders in the <code>Child</code> component instead of the top-level <code>Parent</code> component. The <code>display</code> condition is passed as <code>props</code> to the <code>Child</code> component. In the <code>Child</code> component's <code>render()</code> method, check the value of <code>display</code>. If it is <code>true</code>, render an <code>h1</code> element with any text in it, and if it is <code>false</code>, return <code>null</code>.
+<br><br>
+
+You have now accomplished the same behavior in three different ways. This should begin to show you the versatility of using JavaScript to write your UIs. React gives you a lot of control over what and how you render your views.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
@@ -54,7 +51,8 @@ class Child extends React.Component {
 	}
 	render() {
 		// change code below this line
-	}
+
+  }
 }`
 
 // ---------------------------- define challenge solution code ----------------------------
@@ -99,12 +97,12 @@ class Child extends React.Component {
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
-	const error_1 = 'The Parent component exists and is rendered.';
-	const error_2 = 'The Child component exists and is rendered.';
-	const error_3 = 'When display is set to true, a div, button, and h1 are rendered.';
-	const error_4 = 'When display is set to false, only a div and button are rendered.';
-	const error_5 = 'The Child component returns null when passed a falsy value for the display prop, otherwise it returns an h1 element.';
+	const error_0 = 'Your JSX code should transpile successfully.';
+	const error_1 = 'The Parent component should exist and render.';
+	const error_2 = 'The Child component should exist and render.';
+	const error_3 = 'When display is set to true, a div, button, and h1 should render.';
+	const error_4 = 'When display is set to false, only a div and button should render.';
+	const error_5 = 'The Child component should return null when passed a falsy value for the display prop, otherwise it should return an h1 element.';
 
 	let testResults = [
 		{
@@ -145,7 +143,7 @@ export const executeTests = (code) => {
 	// we can access their component here for tests
 	const exportScript = '\n export default Parent'
 	const modifiedCode = code.concat(exportScript);
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
@@ -154,7 +152,7 @@ export const executeTests = (code) => {
 		passed = false;
 		testResults[0].status = false;
 	}
-	
+
 	// now we will try to shallow render the component with Enzyme's shallow method
 	// you can also use mount to perform a full render to the DOM environment
 	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
@@ -183,7 +181,7 @@ export const executeTests = (code) => {
 	} catch (err) {
 		passed = false;
 		testResults[2].status = false;
-	}	
+	}
 
 	// test 3:
 	try {
@@ -197,7 +195,7 @@ export const executeTests = (code) => {
 		testResults[3].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[3].status = false;		
+		testResults[3].status = false;
 	}
 
 	let displayFalse, displayTrue;
@@ -239,7 +237,7 @@ export const executeTests = (code) => {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // ---------------------------- define live render function ----------------------------
