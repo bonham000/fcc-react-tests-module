@@ -8,10 +8,10 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Pass a String to a Stateless Functional Component`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Pass Props to a Stateless Functional Component`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>The previous challenges covered a lot about creating and composing JSX elements, functional components, and ES6 style class components in React. Now with this foundation, let's look at another feature very common in React: <b>props</b>. In React we can pass props, or properties, to child components. Let's say we have an <code>App</code> component which renders a child component called <code>Welcome</code>. We can write:
+export const challengeText = `<span class = 'default'>Intro: </span>The previous challenges covered a lot about creating and composing JSX elements, functional components, and ES6 style class components in React. With this foundation, it's time to look at another feature very common in React: <b>props</b>. In React, you can pass props, or properties, to child components. Say you have an <code>App</code> component which renders a child component called <code>Welcome</code> that is a stateless functional component. You can pass <code>Welcome</code> a <code>user</code> property by writing:
 
 <pre>
 <code class="codeBlock">&lt;App&gt;
@@ -19,17 +19,17 @@ export const challengeText = `<span class = 'default'>Intro: </span>The previous
  &lt;/App&gt;</code>
 </pre>
 
-We use <strong>custom HTML attributes</strong> that React provides support for to pass the property <code>user</code> to the component <code>Welcome</code>. Now, the <code>Welcome</code> component has access to this value like so:
+You use <strong>custom HTML attributes</strong> that React provides support for to pass the property <code>user</code> to the component <code>Welcome</code>. Since <code>Welcome</code> is a stateless functional component, it has access to this value like so:
 
 <pre>
 <code>const Welcome = (props) => &lt;h1&gt;Hello, {props.user}!&lt;/h1&gt;</code>
 </pre>
 
-It is standard to call this value <code>props</code> and when dealing with functional stateless components you basically consider it as an argument to the function which returns JSX. You can access the value of the argument in the function body. With class components, we will see this is a little different.
+It is standard to call this value <code>props</code> and when dealing with stateless functional components, you basically consider it as an argument to a function which returns JSX. You can access the value of the argument in the function body. With class components, you will see this is a little different.
 `
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've created a <code>Calendar</code> and <code>CurrentDate</code> component. When rendering <code>CurrentDate</code> from the <code>Calendar</code> component, we want to pass in a property of <code>date</code> assigned to the current date from JavaScript's <code>Date</code> object. Do this and then access this <code>prop</code> in the <code>CurrentDate</code> component, printing out its value. Note that for <code>prop</code> values to be evaluated as JavaScript they must be enclosed in curly brackets, for instance <code>date={Date()}</code>.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>There is a <code>Calendar</code> and <code>CurrentDate</code> component in the code editor. When rendering <code>CurrentDate</code> from the <code>Calendar</code> component, pass in a property of <code>date</code> assigned to the current date from JavaScript's <code>Date</code> object. Then access this <code>prop</code> in the <code>CurrentDate</code> component, showing its value within the <code>p</code> tags. Note that for <code>prop</code> values to be evaluated as JavaScript, they must be enclosed in curly brackets, for instance <code>date={Date()}</code>.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = `
@@ -96,7 +96,7 @@ export const executeTests = (code) => {
 	const error_2 = 'The Calendar component\'s second child should be the CurrentDate component.';
 	const error_3 = 'The CurrentDate component should have a prop called date.';
 	const error_4 = 'The CurrentDate component\'s date prop should contain a string of text.';
-	const error_5 = 'The CurrentDate component\'s renders out the value from the date prop in the p tag.';
+	const error_5 = 'The CurrentDate component should render the value from the date prop in the p tag.';
 
 	let testResults = [
 		{
