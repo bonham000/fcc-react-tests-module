@@ -30,7 +30,9 @@ export const seedCode =
 	<p>Lets render this to the DOM</p>
 </div>
 );
-// change code below this line`
+// change code below this line
+
+`
 
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode =
