@@ -13,16 +13,10 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Render with an If/Else Condition`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>Another application of using JavaScript to control our rendered view is to create a simple condition
-and only render some elements when this condition is true. Here we will do this with a standard <code>if/else</code> statement in the <code>render()</code> method
-of a React component.`
+export const challengeText = `<span class = 'default'>Intro: </span>Another application of using JavaScript to control your rendered view is to tie the elements that are rendered to a condition. When the condition is true, one view renders, when it's false, it's a different view. You can do this with a standard <code>if/else</code> statement in the <code>render()</code> method of a React component.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've created a component that contains a <code>boolean</code> in its state
-which represents a condition which tracks if we want to display some element in the UI or not. We've wired up a <code>&lt;button/&gt;</code> to toggle the state of this value. Currently,
-we render the same UI every time. Rewrite the <code>render()</code> method with an <code>if/else</code> statement so that if <code>display</code> is <code>true</code> we return the current
-markup. Otherwise, let's just return the <code>&lt;button/&gt;</code> without the <code>&lt;h1/&gt;</code> element.
-
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>MyComponent contains a <code>boolean</code> in its state which tracks whether you want to display some element in the UI or not. The <code>button</code> toggles the state of this value. Currently, it renders the same UI every time. Rewrite the <code>render()</code> method with an <code>if/else</code> statement so that if <code>display</code> is <code>true</code>, you return the current markup. Otherwise, return the markup without the <code>h1</code> element.
 <br><br>
 
 <strong>Note</strong><br>You must write an <code>if/else</code> to pass the tests, use of the ternary operator will not pass here.`
@@ -89,11 +83,11 @@ export const solutionCode =
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
-	const error_1 = 'MyComponent exists and is rendered.';
-	const error_2 = 'When display is set to true, a div, button, and h1 are rendered.';
-	const error_3 = 'When display is set to false, only a div and button are rendered.';
-	const error_4 = 'The render method uses an if/else statement to check the condition of this.state.display.';
+	const error_0 = 'Your JSX code should transpile successfully.';
+	const error_1 = 'MyComponent should exist and render.';
+	const error_2 = 'When display is set to true, a div, button, and h1 should render.';
+	const error_3 = 'When display is set to false, only a div and button should render.';
+	const error_4 = 'The render method should use an if/else statement to check the condition of this.state.display.';
 
 	let testResults = [
 		{
@@ -129,7 +123,7 @@ export const executeTests = (code) => {
 	// we can access their component here for tests
 	const exportScript = '\n export default MyComponent'
 	const modifiedCode = code.concat(exportScript);
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
@@ -138,7 +132,7 @@ export const executeTests = (code) => {
 		passed = false;
 		testResults[0].status = false;
 	}
-	
+
 	// now we will try to shallow render the component with Enzyme's shallow method
 	// you can also use mount to perform a full render to the DOM environment
 	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
@@ -173,7 +167,7 @@ export const executeTests = (code) => {
 		testResults[2].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[2].status = false;		
+		testResults[2].status = false;
 	}
 
 	// test 3:
@@ -209,7 +203,7 @@ export const executeTests = (code) => {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // ---------------------------- define live render function ----------------------------
