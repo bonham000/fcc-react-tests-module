@@ -71,7 +71,7 @@
   - :white_check_mark: :blue_book: 43: Return null to Prevent Rendering
   - :white_check_mark: :blue_book: 44: Use a Ternary Expression to Render Conditionally
   - :white_check_mark: :blue_book: 45: Render Conditionally from Props
-  - **???** 45: *Change Inline CSS Conditionally Based on State*
+  - **??? Proposed Addition: Change Inline CSS Conditionally Based on State ???**
   - :white_check_mark: :blue_book: 46: Use Array.map() to Dynamically Render Elements
   - :pencil2: 47: Give Sibling Elements a Unique Key Attribute
   - :white_check_mark: :blue_book: 48: Use Array.filter() to Dynamically Filter an Array
