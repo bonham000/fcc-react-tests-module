@@ -69,7 +69,7 @@
   - :white_check_mark: :blue_book: 41: Render with an If/Else Condition
   - :white_check_mark: :blue_book: 42: Use && for a More Concise Conditional
   - :white_check_mark: :blue_book: 43: Return null to Prevent Rendering
-  - :white_check_mark: :blue_book: 44: Use a Ternary Expression to Render Conditionally
+  - :white_check_mark: :blue_book: 44: Use a Ternary Expression for Conditional Rendering
   - :white_check_mark: :blue_book: 45: Render Conditionally from Props
   - **??? Proposed Addition: Change Inline CSS Conditionally Based on State ???**
   - :white_check_mark: :blue_book: 46: Use Array.map() to Dynamically Render Elements
