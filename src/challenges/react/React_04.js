@@ -4,10 +4,8 @@ import assert from 'assert'
 import { shallow } from 'enzyme'
 import { transform } from 'babel-standalone'
 
-// snippet for defining HTML: <code>&#60;div /&#62</code>
-
 // SET TO TRUE WHEN QA IS COMPLETE:
-export const QA = false;
+export const QA = true;
 
 // -------------- define challenge title and challenge instructions --------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Render HTML Elements to the DOM`

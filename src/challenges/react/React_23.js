@@ -5,7 +5,7 @@ import { shallow, mount } from 'enzyme'
 import { transform } from 'babel-standalone'
 
 // SET TO TRUE WHEN QA IS COMPLETE:
-export const QA = false;
+export const QA = true;
 
 // ---------------------------- define challenge title ----------------------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Render State in the User Interface Another Way`

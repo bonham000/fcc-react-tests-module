@@ -4,10 +4,8 @@ import assert from 'assert'
 import { shallow } from 'enzyme'
 import { transform } from 'babel-standalone'
 
-// snippet for defining HTML: <code>&#60;div /&#62</code>
-
 // SET TO TRUE WHEN QA IS COMPLETE:
-export const QA = false;
+export const QA = true;
 
 // NOTES: For this one (besides re-doing the intro since we will likely have covered most of this already
 // by the time we get to this challenge) - still need a way to make sure they've used the styles const rather than

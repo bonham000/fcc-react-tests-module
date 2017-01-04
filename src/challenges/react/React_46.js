@@ -11,10 +11,10 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Change Inline CSS Conditionally Based on Component State`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>`
+export const challengeText = `<span class = 'default'>Intro: </span>This is being developed at the moment!`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>`
+// export const challengeInstructions = `<span class = 'default'>Instructions: </span>`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = `
