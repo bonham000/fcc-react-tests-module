@@ -8,7 +8,7 @@
 
 ###Curriculum Overview:###
 
-* **React: 48 Challenges**
+* **React: 50 Challenges**
 * **Redux: 18 Challenges**
 * **React-Redux: 10 Challenges**
 

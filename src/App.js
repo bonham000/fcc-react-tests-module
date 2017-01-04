@@ -53,6 +53,7 @@ import * as React_46 from './challenges/react/React_46'
 import * as React_47 from './challenges/react/React_47'
 import * as React_48 from './challenges/react/React_48'
 import * as React_49 from './challenges/react/React_49'
+import * as React_50 from './challenges/react/React_50'
 
 // import Redux Challenges:
 import * as Redux_01 from './challenges/redux/Redux_01'
@@ -134,10 +135,11 @@ const challenges = [
   { type: 'React', id: 'React_43', title: 'Return null to Prevent Rendering'},
   { type: 'React', id: 'React_44', title: 'Use a Ternary Expression for Conditional Rendering'},
   { type: 'React', id: 'React_45', title: 'Render Conditionally from Props'},
-  { type: 'React', id: 'React_46', title: 'Use Array.map() to Dynamically Render Elements'},
-  { type: 'React', id: 'React_47', title: 'Give Sibling Elements a Unique Key Attribute'},
-  { type: 'React', id: 'React_48', title: 'Use Array.filter() to Dynamically Filter an Array'},
-  { type: 'React', id: 'React_49', title: 'Render React on the Server with renderToString'},
+  { type: 'React', id: 'React_46', title: 'Change Inline CSS Conditionally Based on Component State'},
+  { type: 'React', id: 'React_47', title: 'Use Array.map() to Dynamically Render Elements'},
+  { type: 'React', id: 'React_48', title: 'Give Sibling Elements a Unique Key Attribute'},
+  { type: 'React', id: 'React_49', title: 'Use Array.filter() to Dynamically Filter an Array'},
+  { type: 'React', id: 'React_50', title: 'Render React on the Server with renderToString'},
 
   // Redux challenges:
   { type: 'Redux', id: 'Redux_01', title: 'Create a Redux Store'},

@@ -10,17 +10,24 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Give Sibling Elements a Unique Key Attribute`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Use Array.map() to Dynamically Render Elements`
 
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>
-The last challenge showed how the <code>map</code> method is used to dynamically render a number of elements based on user input. However, there was an important piece missing from that example. When you create an array of elements, each one needs a <code>key</code> attribute set to a unique value. React uses these keys to keep track of which items are added, changed, or removed. This helps make the re-rendering process more efficient. Note that keys only need to be unique between sibling elements, they don't need to be globally unique in your application.
-`
+Conditional rendering is useful, but you may need your components to render an unknown number of elements. Often in reactive programming, a programmer has no way to know what the state of an application is until runtime, because so much depends on a user's interaction with that program. Programmers need to write their code to correctly handle that unknown state ahead of time. Using <code>Array.map()</code> in React illustrates this concept.
+<br><br>
+
+For example, you create a simple "To Do List" app. As the programmer, you have no way of knowing how many items a user might have on their list. You need to set up your component to <em><strong>dynamically render</strong></em> the correct number of list elements long before someone using the program decides that today is laundry day. `
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>
-The code editor has the same <code>MyToDoList</code> component as the last challenge. Finish writing the <code>map</code> callback to return an <code>li</code> element for each <code>item</code> in the array. This time, make sure to give each <code>li</code> a <code>key</code> attribute, set to a unique value. You can use the array index for this purpose.
-`
+The code editor has most of the <code>MyToDoList</code> component set up. Some of this code should look familiar if you completed the controlled form challenge. You'll notice a <code>textarea</code> and a <code>button</code>, along with a couple of methods that track their states, but nothing is rendered to the page yet.
+<br><br>
+
+Inside the <code>constructor</code>, create a <code>this.state</code> object and define two states: <code>userInput</code> should be initialized as an empty string, and <code>toDoList</code> should be initialized as an empty array. When the user enters a comma-separated list into the <code>textarea</code>, a button click and the <code>handleSubmit()</code> method take that list, split it at the commas, and store it as an array within <code>MyToDoList</code>'s state object.
+<br><br>
+
+Finally, delete the comment in the <code>render()</code> method next to the <code>items</code> variable. In its place, map over the <code>toDoList</code> array stored in the component's internal state and dynamically render a <code>li</code> for each item. Try entering the string <code>Eat, Code, Sleep, Repeat</code> into the <code>textarea</code>, then click the button and see what happens. Note: You may know that all sibling child elements created by a mapping operation like this do need to be supplied with a unique <code>key</code> attribute. Don't worry, this is the topic of the next challenge.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
@@ -32,10 +39,10 @@ export const seedCode =
 class MyToDoList extends React.Component {
 	constructor(props) {
 		super(props);
-    this.state = {
-			toDoList: [],
-			userInput: ''
-		}
+		// change code below this line
+
+
+		// change code above this line
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 	}
@@ -51,9 +58,7 @@ class MyToDoList extends React.Component {
 		});
 	}
 	render() {
-		const items = this.state.toDoList.map( (item, i) => {
-			return <li></li>
-		});
+		const items = // change code here
 		return (
 			<div>
 				<textarea
@@ -131,7 +136,6 @@ export const executeTests = (code) => {
 	const error_4 = 'MyToDoList\'s state should be initialized with toDoList as an empty array.';
 	const error_5 = 'MyToDoList\'s state should be initialized with userInput as an empty string.';
 	const error_6 = 'When the "Create List" button is clicked, the MyToDoList component should dynamically return an unordered list that contains a list item element for every item of a comma-separated list entered into the textarea element.';
-  const error_7 = 'Each list item element should have a key attribute.';
 
 	let testResults = [
 		{
@@ -169,11 +173,6 @@ export const executeTests = (code) => {
 			status: false,
 			condition: error_6
 		},
-    {
-			test: 7,
-			status: false,
-			condition: error_7
-		}
 	];
 
 	let es5, mockedComponent, shallowRender, passed = true;
@@ -267,15 +266,6 @@ export const executeTests = (code) => {
 	} catch (err) {
 		passed = false;
 		testResults[6].status = false;
-	}
-
-  // test 7:
-	try {
-    assert(code.replace(/\s/g, '').includes('<likey={'), error_7);
-		testResults[7].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[7].status = false;
 	}
 
 	return {
