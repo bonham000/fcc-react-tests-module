@@ -271,9 +271,7 @@ export const executeTests = (code) => {
 
   // test 7:
 	try {
-		let noWhiteSpace = code.replace(/\s/g, '');
-		console.log(noWhiteSpace);
-    assert(noWhiteSpace.includes('<likey={'), error_7);
+    assert(code.replace(/\s/g, '').includes('<likey={'), error_7);
 		testResults[7].status = true;
 	} catch (err) {
 		passed = false;
