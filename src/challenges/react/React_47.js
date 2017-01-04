@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from 'react'
 import assert from 'assert'
-import { mount } from 'enzyme'
+import { shallow, mount } from 'enzyme'
 import { transform } from 'babel-standalone'
 
 // snippet for defining HTML: <code>&lt;div /&gt;</code>
@@ -10,113 +10,116 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Use Array.filter() to Dynamically Filter an Array`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Give Sibling Elements a Unique Key Attribute`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>The <code>map</code> array method is a powerful tool that you will use often when working with React. Another method related to <code>map</code> is <code>filter</code>, which filters the contents of an array based on a condition, then returns a new array. For example, if you have an array of users that all have a property <code>online</code> which can be set to <code>true</code> or <code>false</code>, you can filter only those users that are online by writing:
-<br><br>
-
-<code>let onlineUsers = users.filter(user => user.online);`
+export const challengeText = `<span class = 'default'>Intro: </span>
+The last challenge showed how the <code>map</code> method is used to dynamically render a number of elements based on user input. However, there was an important piece missing from that example. When you create an array of elements, each one needs a <code>key</code> attribute set to a unique value. React uses these keys to keep track of which items are added, changed, or removed. This helps make the re-rendering process more efficient. Note that keys only need to be unique between sibling elements, they don't need to be globally unique in your application.
+`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>In the code editor, <code>MyComponent</code>'s <code>state</code> is initialized with an array of users. Some users are online and some aren't. Filter the array so you see only the users who are online. To do this, first use <code>filter</code> to return a new array containing only the users whose <code>online</code> property is <code>true</code>. Then, in the <code>renderOnline</code> variable, map over the filtered array, and return a <code>p</code> element for each user that contains the text of their <code>username</code>.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>
+The code editor has the same <code>MyToDoList</code> component as the last challenge. Finish writing the <code>map</code> callback to return an <code>li</code> element for each <code>item</code> in the array. This time, make sure to give each <code>li</code> a <code>key</code> attribute, set to a unique value. You can use the array index for this purpose.
+`
 
 // ---------------------------- define challenge seed code ----------------------------
-export const seedCode = `
-class MyComponent extends React.Component {
+export const seedCode =
+`const textAreaStyles = {
+	width: 235,
+	margin: 5
+};
+
+class MyToDoList extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			users: [
-				{
-					username: 'Jeff',
-					online: true
-				},
-				{
-					username: 'Alan',
-					online: false
-				},
-				{
-					username: 'Mary',
-					online: true
-				},
-				{
-					username: 'Jim',
-					online: false
-				},
-				{
-					username: 'Sara',
-					online: true
-				},
-				{
-					username: 'Laura',
-					online: true
-				}
-			]
+    this.state = {
+			toDoList: [],
+			userInput: ''
 		}
+		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleChange = this.handleChange.bind(this);
 	}
-  render() {
-  	const filterUsers = // change code here
-  	const renderOnline = // change code here
-    return (
-	   	<div>
-	   		<h1>Current Online Users:</h1>
-	   		{renderOnline}
-	   	</div>
-    );
-  }
+	handleSubmit() {
+		const itemsArray = this.state.userInput.split(',');
+		this.setState({
+			toDoList: itemsArray
+		});
+	}
+	handleChange(e) {
+		this.setState({
+			userInput: e.target.value
+		});
+	}
+	render() {
+    const items = this.state.toDoList.map( (item, i) => {
+      // change code below this line
+
+      // change code above this line
+		});
+		return (
+			<div>
+				<textarea
+					onChange={this.handleChange}
+					value={this.state.userInput}
+					style={textAreaStyles}
+					placeholder="Separate Items With Commas" /><br />
+				<button onClick={this.handleSubmit}>Create List</button>
+				<h1>My "To Do" List:</h1>
+				<ul>
+					{items}
+				</ul>
+			</div>
+		);
+	}
 };`
 
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode = `
-class MyComponent extends React.Component {
+const textAreaStyles = {
+	width: 235,
+	margin: 5
+};
+
+class MyToDoList extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			users: [
-				{
-					username: 'Jeff',
-					online: true
-				},
-				{
-					username: 'Alan',
-					online: false
-				},
-				{
-					username: 'Mary',
-					online: true
-				},
-				{
-					username: 'Jim',
-					online: false
-				},
-				{
-					username: 'Sara',
-					online: true
-				},
-				{
-					username: 'Laura',
-					online: true
-				}
-			]
+			toDoList: [],
+			userInput: ''
 		}
+		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleChange = this.handleChange.bind(this);
 	}
-  render() {
-  	const filterUsers = this.state.users.filter( (user) => {
-  		return user.online;
-  	});
-  	const renderOnlineUsers = filterUsers.map( (user) => {
-  		return (
-  			<p>{user.username}</p>
-  		);
-  	});
-    return (
-	   	<div>
-	   		<h1>Current Online Users:</h1>
-				{renderOnlineUsers}
-	   	</div>
-    );
-  }
+	handleSubmit() {
+		const itemsArray = this.state.userInput.split(',');
+		this.setState({
+			toDoList: itemsArray
+		});
+	}
+	handleChange(e) {
+		this.setState({
+			userInput: e.target.value
+		});
+	}
+	render() {
+		const items = this.state.toDoList.map( (item, i) => {
+			return <li key={i}>{item}</li>
+		});
+		return (
+			<div>
+				<textarea
+					onChange={this.handleChange}
+					value={this.state.userInput}
+					style={textAreaStyles}
+					placeholder="Separate Items With Commas" /><br />
+				<button onClick={this.handleSubmit}>Create List</button>
+				<h1>My "To Do" List:</h1>
+				<ul>
+					{items}
+				</ul>
+			</div>
+		);
+	}
 };`
 
 // ---------------------------- define challenge tests ----------------------------
@@ -124,10 +127,13 @@ class MyComponent extends React.Component {
 export const executeTests = (code) => {
 
 	const error_0 = 'Your JSX code should transpile successfully.';
-	const error_1 = 'MyComponent should exist and render to the page.';
-	const error_2 = 'MyComponent\'s state should be initialized to an array of six users.';
-	const error_3 = 'MyComponent should return a div, an h1, and then a p tag for every user whose online status is set to true.';
-	const error_4 = 'MyComponent should render p elements that contain the username of each online user.';
+	const error_1 = 'The MyToDoList component should exist and render to the page.';
+	const error_2 = 'MyToDoList\'s first child should be a textarea element.';
+	const error_3 = 'MyToDoList\'s third child should be a button element.';
+	const error_4 = 'MyToDoList\'s state should be initialized with toDoList as an empty array.';
+	const error_5 = 'MyToDoList\'s state should be initialized with userInput as an empty string.';
+	const error_6 = 'When the "Create List" button is clicked, the MyToDoList component should dynamically return an unordered list that contains a list item element for every item of a comma-separated list entered into the textarea element.';
+  const error_7 = 'Each list item element should have a key attribute.';
 
 	let testResults = [
 		{
@@ -154,19 +160,34 @@ export const executeTests = (code) => {
 			test: 4,
 			status: false,
 			condition: error_4
+		},
+		{
+			test: 5,
+			status: false,
+			condition: error_5
+		},
+		{
+			test: 6,
+			status: false,
+			condition: error_6
+		},
+    {
+			test: 7,
+			status: false,
+			condition: error_7
 		}
 	];
 
-	let es5, mockedComponent, passed = true;
+	let es5, mockedComponent, shallowRender, passed = true;
 
 	// this applies an export to the user's code so
 	// we can access their component here for tests
-	const exportScript = '\n export default MyComponent'
+	const exportScript = '\n export default MyToDoList'
 	const modifiedCode = code.concat(exportScript);
 
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
-		es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
+		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
 		passed = false;
@@ -178,32 +199,27 @@ export const executeTests = (code) => {
 	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
 	try {
 		mockedComponent = mount(React.createElement(eval(es5)));
+		shallowRender = shallow(React.createElement(eval(es5)));
 	} catch (err) {
 		passed = false;
 	}
 
-	// run specific tests to verify the functionality
-	// that the challenge is trying to assess:
+	//console.log(shallowRender.nodes[0].props.children);
+
+	let initialState, state_1, state_2, state_3;
 
 	// test 1:
 	try {
-		assert.strictEqual(mockedComponent.find('MyComponent').length, 1, error_1);
+		assert.strictEqual(mockedComponent.find('MyToDoList').length, 1, error_1);
 		testResults[1].status = true;
 	} catch (err) {
 		passed = false;
 		testResults[1].status = false;
 	}
 
-	let initialState, state_1, state_2, state_3, state_4;
-
 	// test 2:
 	try {
-		initialState = mockedComponent.state();
-		assert(
-			Array.isArray(initialState.users) === true &&
-			initialState.users.length === 6,
-			error_2
-		);
+		assert.strictEqual(shallowRender.nodes[0].props.children[0].type, "textarea", error_2);
 		testResults[2].status = true;
 	} catch (err) {
 		passed = false;
@@ -212,70 +228,7 @@ export const executeTests = (code) => {
 
 	// test 3:
 	try {
-		state_1 = mockedComponent.find('p');
-		mockedComponent.setState({
-			users:[
-				{
-					username: 'Jeff',
-					online: true
-				},
-				{
-					username: 'Alan',
-					online: true
-				},
-				{
-					username: 'Mary',
-					online: true
-				},
-				{
-					username: 'Jim',
-					online: true
-        		},
-				{
-					username: 'Laura',
-					online: true
-				}
-			]
-		});
-		state_2 = mockedComponent.find('p');
-		mockedComponent.setState({
-			users:[
-				{
-					username: 'Jeff',
-					online: false
-				},
-				{
-					username: 'Alan',
-					online: false
-				},
-				{
-					username: 'Mary',
-					online: false
-				},
-				{
-					username: 'Jim',
-					online: false
-        		},
-				{
-					username: 'Laura',
-					online: false
-				}
-			]
-		});
-		state_3 = mockedComponent.find('p');
-		mockedComponent.setState({users: []});
-		state_4 = mockedComponent.find('p');
-		assert(
-			mockedComponent.find('div').length === 1 &&
-			mockedComponent.find('h1').length === 1 &&
-			state_1.length === 4 &&
-			state_2.length === 5 &&
-			state_3.length === 0 &&
-			typeof state_3.node === 'undefined' &&
-			state_4.length === 0 &&
-			typeof state_4.node === 'undefined',
-			error_3
-		);
+		assert.strictEqual(shallowRender.nodes[0].props.children[2].type, "button", error_3);
 		testResults[3].status = true;
 	} catch (err) {
 		passed = false;
@@ -284,19 +237,47 @@ export const executeTests = (code) => {
 
 	// test 4:
 	try {
-		let elements = state_2.nodes;
-		assert(
-			elements[0].innerText === 'Jeff' &&
-			elements[1].innerText === 'Alan' &&
-			elements[2].innerText === 'Mary' &&
-			elements[3].innerText === 'Jim' &&
-			elements[4].innerText === 'Laura',
-			error_4
-		);
+		initialState = mockedComponent.state();
+		assert(Array.isArray(initialState.toDoList) === true && initialState.toDoList.length === 0, error_4);
 		testResults[4].status = true;
 	} catch (err) {
 		passed = false;
 		testResults[4].status = false;
+	}
+
+	// test 5:
+	try {
+		initialState = mockedComponent.state();
+		assert(typeof initialState.userInput === 'string' && initialState.userInput.length === 0, error_5);
+		testResults[5].status = true;
+	} catch (err) {
+		passed = false;
+		testResults[5].status = false;
+	}
+
+	// test 6:
+	try {
+		state_1 = mockedComponent.find('ul').find('li');
+		mockedComponent.find('textarea').simulate('change', {target: {value: "test, test, test"}});
+		mockedComponent.find('button').simulate('click');
+		state_2 = mockedComponent.find('ul').find('li');
+		mockedComponent.find('textarea').simulate('change', {target: {value: "test, test, test, test, test, test"}});
+		mockedComponent.find('button').simulate('click');
+		state_3 = mockedComponent.find('ul').find('li');
+		assert(state_1.length === 0 && state_2.length === 3 && state_3.length === 6, error_6)
+		testResults[6].status = true;
+	} catch (err) {
+		passed = false;
+		testResults[6].status = false;
+	}
+
+  // test 7:
+	try {
+    assert(true, error_7);
+		testResults[7].status = true;
+	} catch (err) {
+		passed = false;
+		testResults[7].status = false;
 	}
 
 	return {
@@ -311,9 +292,9 @@ export const executeTests = (code) => {
 export const liveRender = (code) => {
 
 	try {
-		const exportScript = '\n export default MyComponent'
+		const exportScript = '\n export default MyToDoList'
 		const modifiedCode = code.concat(exportScript);
-		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
+		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		const renderedComponent = React.createElement(eval(es5));
 		return renderedComponent;
 	} catch (err) {

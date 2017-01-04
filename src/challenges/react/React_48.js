@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from 'react'
 import assert from 'assert'
-import { shallow } from 'enzyme'
+import { mount } from 'enzyme'
 import { transform } from 'babel-standalone'
 
 // snippet for defining HTML: <code>&lt;div /&gt;</code>
@@ -10,68 +10,293 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Render React on the Server with renderToString`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Use Array.filter() to Dynamically Filter an Array`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>So far, you have been rendering React components on the client. Normally, this is what you will always do. However, there are some use cases where it makes sense to render a React component on the server. Since React is a JavaScript view library and you can run JavaScript on the server with Node, this is possible. In fact, React provides a <code>renderToString()</code> method you can use for this purpose.
+export const challengeText = `<span class = 'default'>Intro: </span>The <code>map</code> array method is a powerful tool that you will use often when working with React. Another method related to <code>map</code> is <code>filter</code>, which filters the contents of an array based on a condition, then returns a new array. For example, if you have an array of users that all have a property <code>online</code> which can be set to <code>true</code> or <code>false</code>, you can filter only those users that are online by writing:
 <br><br>
 
-There are two key reasons why rendering on the server may be used in a real world app. First, without doing this, your React apps would consist of a relatively empty HTML file and a large bundle of JavaScript when it's initially loaded to the browser. This may not be ideal for search engines that are trying to index the content of your pages so people can find you. If you render the initial HTML markup on the server and send this to the client, the initial page load contains all of the page's
-markup which can be crawled by search engines. Second, this creates a faster initial page load experience because the rendered HTML is smaller than the JavaScript code of the entire app. React will still be able to recognize your app and manage it after the initial load.`
+<code>let onlineUsers = users.filter(user => user.online);`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>Use the <code>renderToString()</code> method that's provided on the <code>ReactDOM</code> global object to render <code>App</code> to a string.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>In the code editor, <code>MyComponent</code>'s <code>state</code> is initialized with an array of users. Some users are online and some aren't. Filter the array so you see only the users who are online. To do this, first use <code>filter</code> to return a new array containing only the users whose <code>online</code> property is <code>true</code>. Then, in the <code>renderOnline</code> variable, map over the filtered array, and return a <code>p</code> element for each user that contains the text of their <code>username</code>.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = `
-class App extends React.Component {
+class MyComponent extends React.Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			users: [
+				{
+					username: 'Jeff',
+					online: true
+				},
+				{
+					username: 'Alan',
+					online: false
+				},
+				{
+					username: 'Mary',
+					online: true
+				},
+				{
+					username: 'Jim',
+					online: false
+				},
+				{
+					username: 'Sara',
+					online: true
+				},
+				{
+					username: 'Laura',
+					online: true
+				}
+			]
+		}
 	}
   render() {
-    return <div/>
+  	const filterUsers = // change code here
+  	const renderOnline = // change code here
+    return (
+	   	<div>
+	   		<h1>Current Online Users:</h1>
+	   		{renderOnline}
+	   	</div>
+    );
   }
-};
-
-// change code below this line`
+};`
 
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode = `
-class App extends React.Component {
+class MyComponent extends React.Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			users: [
+				{
+					username: 'Jeff',
+					online: true
+				},
+				{
+					username: 'Alan',
+					online: false
+				},
+				{
+					username: 'Mary',
+					online: true
+				},
+				{
+					username: 'Jim',
+					online: false
+				},
+				{
+					username: 'Sara',
+					online: true
+				},
+				{
+					username: 'Laura',
+					online: true
+				}
+			]
+		}
 	}
   render() {
-    return <div/>
+  	const filterUsers = this.state.users.filter( (user) => {
+  		return user.online;
+  	});
+  	const renderOnlineUsers = filterUsers.map( (user) => {
+  		return (
+  			<p>{user.username}</p>
+  		);
+  	});
+    return (
+	   	<div>
+	   		<h1>Current Online Users:</h1>
+				{renderOnlineUsers}
+	   	</div>
+    );
   }
-};
-
-// change code below this line
-ReactDOM.renderToString(<App/>);`
+};`
 
 // ---------------------------- define challenge tests ----------------------------
 
 export const executeTests = (code) => {
 
-	const error_0 = 'The App component should render to a string using ReactDOM.renderToString.';
+	const error_0 = 'Your JSX code should transpile successfully.';
+	const error_1 = 'MyComponent should exist and render to the page.';
+	const error_2 = 'MyComponent\'s state should be initialized to an array of six users.';
+	const error_3 = 'MyComponent should return a div, an h1, and then a p tag for every user whose online status is set to true.';
+	const error_4 = 'MyComponent should render p elements that contain the username of each online user.';
 
 	let testResults = [
 		{
 			test: 0,
 			status: false,
 			condition: error_0
+		},
+		{
+			test: 1,
+			status: false,
+			condition: error_1
+		},
+		{
+			test: 2,
+			status: false,
+			condition: error_2
+		},
+		{
+			test: 3,
+			status: false,
+			condition: error_3
+		},
+		{
+			test: 4,
+			status: false,
+			condition: error_4
 		}
 	];
 
-	let passed = true;
+	let es5, mockedComponent, passed = true;
 
-	// test 0:
+	// this applies an export to the user's code so
+	// we can access their component here for tests
+	const exportScript = '\n export default MyComponent'
+	const modifiedCode = code.concat(exportScript);
+
+	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
-		assert.strictEqual(code.replace(/\s/g,'').includes('ReactDOM.renderToString(<App/>)'), true, error_0);
+		es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
 		passed = false;
 		testResults[0].status = false;
+	}
+
+	// now we will try to shallow render the component with Enzyme's shallow method
+	// you can also use mount to perform a full render to the DOM environment
+	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
+	try {
+		mockedComponent = mount(React.createElement(eval(es5)));
+	} catch (err) {
+		passed = false;
+	}
+
+	// run specific tests to verify the functionality
+	// that the challenge is trying to assess:
+
+	// test 1:
+	try {
+		assert.strictEqual(mockedComponent.find('MyComponent').length, 1, error_1);
+		testResults[1].status = true;
+	} catch (err) {
+		passed = false;
+		testResults[1].status = false;
+	}
+
+	let initialState, state_1, state_2, state_3, state_4;
+
+	// test 2:
+	try {
+		initialState = mockedComponent.state();
+		assert(
+			Array.isArray(initialState.users) === true &&
+			initialState.users.length === 6,
+			error_2
+		);
+		testResults[2].status = true;
+	} catch (err) {
+		passed = false;
+		testResults[2].status = false;
+	}
+
+	// test 3:
+	try {
+		state_1 = mockedComponent.find('p');
+		mockedComponent.setState({
+			users:[
+				{
+					username: 'Jeff',
+					online: true
+				},
+				{
+					username: 'Alan',
+					online: true
+				},
+				{
+					username: 'Mary',
+					online: true
+				},
+				{
+					username: 'Jim',
+					online: true
+        		},
+				{
+					username: 'Laura',
+					online: true
+				}
+			]
+		});
+		state_2 = mockedComponent.find('p');
+		mockedComponent.setState({
+			users:[
+				{
+					username: 'Jeff',
+					online: false
+				},
+				{
+					username: 'Alan',
+					online: false
+				},
+				{
+					username: 'Mary',
+					online: false
+				},
+				{
+					username: 'Jim',
+					online: false
+        		},
+				{
+					username: 'Laura',
+					online: false
+				}
+			]
+		});
+		state_3 = mockedComponent.find('p');
+		mockedComponent.setState({users: []});
+		state_4 = mockedComponent.find('p');
+		assert(
+			mockedComponent.find('div').length === 1 &&
+			mockedComponent.find('h1').length === 1 &&
+			state_1.length === 4 &&
+			state_2.length === 5 &&
+			state_3.length === 0 &&
+			typeof state_3.node === 'undefined' &&
+			state_4.length === 0 &&
+			typeof state_4.node === 'undefined',
+			error_3
+		);
+		testResults[3].status = true;
+	} catch (err) {
+		passed = false;
+		testResults[3].status = false;
+	}
+
+	// test 4:
+	try {
+		let elements = state_2.nodes;
+		assert(
+			elements[0].innerText === 'Jeff' &&
+			elements[1].innerText === 'Alan' &&
+			elements[2].innerText === 'Mary' &&
+			elements[3].innerText === 'Jim' &&
+			elements[4].innerText === 'Laura',
+			error_4
+		);
+		testResults[4].status = true;
+	} catch (err) {
+		passed = false;
+		testResults[4].status = false;
 	}
 
 	return {
@@ -83,4 +308,16 @@ export const executeTests = (code) => {
 
 // ---------------------------- define live render function ----------------------------
 
-export const liveRender = (code) => undefined;
+export const liveRender = (code) => {
+
+	try {
+		const exportScript = '\n export default MyComponent'
+		const modifiedCode = code.concat(exportScript);
+		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
+		const renderedComponent = React.createElement(eval(es5));
+		return renderedComponent;
+	} catch (err) {
+		console.log(err);
+	}
+
+}
