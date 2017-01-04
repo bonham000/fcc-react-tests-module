@@ -52,6 +52,7 @@ import * as React_45 from './challenges/react/React_45'
 import * as React_46 from './challenges/react/React_46'
 import * as React_47 from './challenges/react/React_47'
 import * as React_48 from './challenges/react/React_48'
+import * as React_49 from './challenges/react/React_49'
 
 // import Redux Challenges:
 import * as Redux_01 from './challenges/redux/Redux_01'
@@ -101,7 +102,7 @@ const challenges = [
   { type: 'React', id: 'React_11', title: 'Compose React Components'},
   { type: 'React', id: 'React_12', title: 'Render a Class Component to the DOM'},
   { type: 'React', id: 'React_13', title: 'Write a React Component from Scratch'},
-  { type: 'React', id: 'React_14', title: 'Pass a String to a Functional Component'},
+  { type: 'React', id: 'React_14', title: 'Pass Props to a Stateless Functional Component'},
   { type: 'React', id: 'React_15', title: 'Pass an Array as Props'},
   { type: 'React', id: 'React_16', title: 'Use Default Props'},
   { type: 'React', id: 'React_17', title: 'Override Default Props'},
@@ -109,8 +110,8 @@ const challenges = [
   { type: 'React', id: 'React_19', title: 'Access Props Using this.props'},
   { type: 'React', id: 'React_20', title: 'Using Props with Stateless Functional Components'},
   { type: 'React', id: 'React_21', title: 'Create a Stateful Component'},
-  { type: 'React', id: 'React_22', title: 'Render State in the UI'},
-  { type: 'React', id: 'React_23', title: 'Render State in the UI Another Way'},
+  { type: 'React', id: 'React_22', title: 'Render State in the User Interface'},
+  { type: 'React', id: 'React_23', title: 'Render State in the User Interface Another Way'},
   { type: 'React', id: 'React_24', title: 'Set State with this.setState'},
   { type: 'React', id: 'React_25', title: 'Bind \'this\' to a Class Method'},
   { type: 'React', id: 'React_26', title: 'Bind \'this\' with an ES6 Arrow Function'},
@@ -131,11 +132,12 @@ const challenges = [
   { type: 'React', id: 'React_41', title: 'Render with an If/Else Condition'},
   { type: 'React', id: 'React_42', title: 'Use && for a More Concise Conditional'},
   { type: 'React', id: 'React_43', title: 'Return null to Prevent Rendering'},
-  { type: 'React', id: 'React_44', title: 'Use a Ternary Expression to Render Conditionally'},
+  { type: 'React', id: 'React_44', title: 'Use a Ternary Expression for Conditional Rendering'},
   { type: 'React', id: 'React_45', title: 'Render Conditionally from Props'},
   { type: 'React', id: 'React_46', title: 'Use Array.map() to Dynamically Render Elements'},
-  { type: 'React', id: 'React_47', title: 'Use Array.filter() to Dynamically Filter an Array'},
-  { type: 'React', id: 'React_48', title: 'Render React on the Server with renderToString'},
+  { type: 'React', id: 'React_47', title: 'Give Sibling Elements a Unique Key Attribute'},
+  { type: 'React', id: 'React_48', title: 'Use Array.filter() to Dynamically Filter an Array'},
+  { type: 'React', id: 'React_49', title: 'Render React on the Server with renderToString'},
 
   // Redux challenges:
   { type: 'Redux', id: 'Redux_01', title: 'Create a Redux Store'},
@@ -230,11 +232,11 @@ export default class App extends React.Component {
         {
 
           challengeType === 'React' ?
-        
-            <ReactTestComponent 
+
+            <ReactTestComponent
               challengeTitle={eval(challenge).challengeTitle}
               challengeText={eval(challenge).challengeText}
-              challengeInstructions={eval(challenge).challengeInstructions} 
+              challengeInstructions={eval(challenge).challengeInstructions}
               seedCode={eval(challenge).seedCode}
               solutionCode={eval(challenge).solutionCode}
               executeTests={eval(challenge).executeTests}
@@ -242,25 +244,25 @@ export default class App extends React.Component {
               QA={eval(challenge).QA}
               selectedChallenge={challenge}
               challenges={this.state.challenges}
-              select={this.select} 
+              select={this.select}
               advanceOneChallenge={this.advanceOneChallenge}
               previousChallenge={this.previousChallenge} />
 
           :
-          
-            <ReduxTestComponent 
+
+            <ReduxTestComponent
               challengeTitle={eval(challenge).challengeTitle}
               challengeText={eval(challenge).challengeText}
-              challengeInstructions={eval(challenge).challengeInstructions} 
+              challengeInstructions={eval(challenge).challengeInstructions}
               seedCode={eval(challenge).seedCode}
               solutionCode={eval(challenge).solutionCode}
               executeTests={eval(challenge).executeTests}
               liveRender={eval(challenge).liveRender}
               QA={eval(challenge).QA}
               selectedChallenge={challenge}
-              challenges={this.state.challenges} 
+              challenges={this.state.challenges}
               select={this.select}
-              advanceOneChallenge={this.advanceOneChallenge} 
+              advanceOneChallenge={this.advanceOneChallenge}
               previousChallenge={this.previousChallenge} />
 
         }
