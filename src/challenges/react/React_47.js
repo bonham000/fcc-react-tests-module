@@ -51,10 +51,8 @@ class MyToDoList extends React.Component {
 		});
 	}
 	render() {
-    const items = this.state.toDoList.map( (item, i) => {
-      // change code below this line
-
-      // change code above this line
+		const items = this.state.toDoList.map( (item, i) => {
+			return <li></li>
 		});
 		return (
 			<div>
@@ -273,7 +271,9 @@ export const executeTests = (code) => {
 
   // test 7:
 	try {
-    assert(true, error_7);
+		let noWhiteSpace = code.replace(/\s/g, '');
+		console.log(noWhiteSpace);
+    assert(noWhiteSpace.includes('<likey={'), error_7);
 		testResults[7].status = true;
 	} catch (err) {
 		passed = false;

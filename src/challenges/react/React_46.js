@@ -27,7 +27,7 @@ The code editor has most of the <code>MyToDoList</code> component set up. Some o
 Inside the <code>constructor</code>, create a <code>this.state</code> object and define two states: <code>userInput</code> should be initialized as an empty string, and <code>toDoList</code> should be initialized as an empty array. When the user enters a comma-separated list into the <code>textarea</code>, a button click and the <code>handleSubmit()</code> method take that list, split it at the commas, and store it as an array within <code>MyToDoList</code>'s state object.
 <br><br>
 
-Finally, delete the comment in the <code>render()</code> method next to the <code>items</code> variable. In its place, map over the <code>toDoList</code> array stored in the component's internal state and dynamically render a <code>li</code> for each item. Try entering the string <code>Eat, Code, Sleep, Repeat</code> into the <code>textarea</code>, then click the button and see what happens.`
+Finally, delete the comment in the <code>render()</code> method next to the <code>items</code> variable. In its place, map over the <code>toDoList</code> array stored in the component's internal state and dynamically render a <code>li</code> for each item. Try entering the string <code>Eat, Code, Sleep, Repeat</code> into the <code>textarea</code>, then click the button and see what happens. Note: You may know that all sibling child elements created by a mapping operation like this do need to be supplied with a unique <code>key</code> attribute. Don't worry, this is the topic of the next challenge.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
