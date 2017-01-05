@@ -14,7 +14,7 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Registe
 export const challengeText = `<span class = 'default'>Intro: </span>Another method you have access to on the Redux <code>store</code> object is <code>store.subscribe()</code>. This allows you to subscribe listener functions to the store, which are called whenever an action is dispatched against the store. One simple use for this method is to subscribe a function to your store that simply logs a message every time an action is received and the store is updated.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>Write the <code>store.subscribe()</code> method, and pass it a function which logs a message to the console. You'll see that <code>store.dispatch()</code> is called three times in a row, each time directly passing in an action object. Set up your listener function and watch the console as your code runs.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>Write a callback function that logs a message to the console every time the store receives an action, and pass this function in to the <code>store.subscribe()</code> method. You'll see that <code>store.dispatch()</code> is called three times in a row, each time directly passing in an action object. Set up your listener function and watch the console as your code runs.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
