@@ -18,25 +18,66 @@ export const challengeText = `<span class = 'default'>Intro: </span>This is bein
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = `
-class Colorful extends React.Component {
-  render() {
-    return (
-	    <div {/*style={{color: "red", fontSize: 72}} */}>Big Red</div>
-    );
-  }
-};
-`
+class GateKeeper extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			input: ''
+		};
+		this.handleInput = this.handleInput.bind(this);
+	}
+	handleInput(e) {
+		this.setState({ input: event.target.value })
+	}
+	render() {
+		let inputStyle = {
+			border: '1px solid black'
+		};
+		return (
+			<div>
+				<h3>Gates:</h3>
+				<input
+					type="text"
+					style={inputStyle}
+					value={this.state.input}
+					onChange={this.handleInput} />
+			</div>
+		);
+	}
+};`
 
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode = `
-class Colorful extends React.Component {
-  render() {
-    return (
-	    <div style={{color: "red", fontSize: 72}}>Big Red</div>
-    );
-  }
-};
-`
+class GateKeeper extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			input: ''
+		};
+		this.handleInput = this.handleInput.bind(this);
+	}
+	handleInput(e) {
+		this.setState({ input: event.target.value })
+	}
+	render() {
+		let inputStyle = {
+			border: '1px solid black'
+		};
+		if (this.state.input.length > 15) {
+			inputStyle.border = '5px solid red';
+		};
+		return (
+			<div>
+				<h3>Gates:</h3>
+				<input
+					type="text"
+					style={inputStyle}
+					value={this.state.input}
+					onChange={this.handleInput} />
+			</div>
+		);
+	}
+};`
 
 // ---------------------------- define challenge tests ----------------------------
 
@@ -70,7 +111,7 @@ export const executeTests = (code) => {
 	];
 
 	let es5, mockedComponent, testRender, passed = true;
-	const exportScript = '\n export default Colorful;'
+	const exportScript = '\n export default GateKeeper;'
 	const modifiedCode = code.concat(exportScript);
 
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
@@ -134,7 +175,7 @@ export const executeTests = (code) => {
 export const liveRender = (code) => {
 
 	try {
-		const exportScript = '\n export default Colorful;'
+		const exportScript = '\n export default GateKeeper;'
 		const modifiedCode = code.concat(exportScript);
 		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		const renderedComponent = React.createElement(eval(es5));
