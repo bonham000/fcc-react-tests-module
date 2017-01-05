@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from 'react'
 import assert from 'assert'
-import { shallow } from 'enzyme'
+import { mount } from 'enzyme'
 import { transform } from 'babel-standalone'
 
 // SET TO TRUE WHEN QA IS COMPLETE:
@@ -11,10 +11,22 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Change Inline CSS Conditionally Based on Component State`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>This is being developed at the moment!`
+export const challengeText = `<span class = 'default'>Intro: </span>Now that we've seen several applications of conditional
+rendering in addition to the use of inline styles, we'll cover one more example which combines both of these topics. We can
+also render CSS conditionally based on the state of our React component (or anything else you wish to evaluate programmatically).
+To do this, we can simply check for a condition and if that condition is met we will modify the styles object which is assigned
+to the JSX elements in our render method.<br><br>
+
+This paradigm is important to understand because it is a dramatic shift from the more traditional approach of applying styles by 
+modifying DOM elements directly (this is very common with jQuery, for example). In that approach, you must keep track of when elements change
+and also handle the actual manipulation directly. It can become difficult to keep track of changes and your UI can become
+unpredictable. In this approach, we simply describe how the UI should look as a function of the application's state. There is a clear flow
+of information which only moves in one direction. This is the preferred method when writing applications with React.`
 
 // ---------------------------- challenge instructions ----------------------------
-// export const challengeInstructions = `<span class = 'default'>Instructions: </span>`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>Here we've created a simple controlled input
+and styled its border. We want to style this border red if the user types too much text in the input box. Add a condition to check
+for this and if the condition is valid set the input border style to <code>3px solid red</code>. Try it out by entering text in the input!`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = `
@@ -26,16 +38,19 @@ class GateKeeper extends React.Component {
 		};
 		this.handleInput = this.handleInput.bind(this);
 	}
-	handleInput(e) {
+	handleInput(event) {
 		this.setState({ input: event.target.value })
 	}
 	render() {
 		let inputStyle = {
 			border: '1px solid black'
 		};
+		// change code below this line
+
+		// change code above this line
 		return (
 			<div>
-				<h3>Gates:</h3>
+				<h3>Don't Type Too Much:</h3>
 				<input
 					type="text"
 					style={inputStyle}
@@ -56,7 +71,7 @@ class GateKeeper extends React.Component {
 		};
 		this.handleInput = this.handleInput.bind(this);
 	}
-	handleInput(e) {
+	handleInput(event) {
 		this.setState({ input: event.target.value })
 	}
 	render() {
@@ -64,11 +79,11 @@ class GateKeeper extends React.Component {
 			border: '1px solid black'
 		};
 		if (this.state.input.length > 15) {
-			inputStyle.border = '5px solid red';
+			inputStyle.border = '3px solid red';
 		};
 		return (
 			<div>
-				<h3>Gates:</h3>
+				<h3>Don't Type Too Much:</h3>
 				<input
 					type="text"
 					style={inputStyle}
@@ -83,9 +98,11 @@ class GateKeeper extends React.Component {
 
 export const executeTests = (code) => {
 
-	const error_1 = 'The component should render a div element.';
-	const error_2 = 'The div element should have a color of red.';
-	const error_3 = 'The div element should have a font size of 72px.';
+	const error_1 = 'The GateKepper component should render a div element.';
+	const error_2 = 'The GateKeeper component should be initialized with a state key input set to an empty string.';
+	const error_3 = 'The GateKeeper component should render an h3 tag and an input tag.';
+	const error_4 = 'The input tag should initially have a style of \'1px solid black\' for the border property.';
+	const error_5 = 'The input tag should be styled with a border of \'3px solid red\' if the input value in state is longer than 15 characters';
 
 	let testResults = [
 		{
@@ -108,9 +125,19 @@ export const executeTests = (code) => {
 			status: false,
 			condition: error_3
 		},
+		{
+			test: 4,
+			status: false,
+			condition: error_4
+		},
+		{
+			test: 5,
+			status: false,
+			condition: error_5
+		}
 	];
 
-	let es5, mockedComponent, testRender, passed = true;
+	let es5, mockedComponent, passed = true;
 	const exportScript = '\n export default GateKeeper;'
 	const modifiedCode = code.concat(exportScript);
 
@@ -123,21 +150,15 @@ export const executeTests = (code) => {
 		testResults[0].status = false;
 	}
 
-	// now we will try to shallow render the component with Enzyme's shallow method
-	// you can also use mount to perform a full render to the DOM environment
-	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
 	try {
-		testRender = shallow(React.createElement(eval(es5)));
+		mockedComponent = mount(React.createElement(eval(es5)));
 	} catch (err) {
 		passed = false;
 	}
 
-	// run specific tests to verify the functionality
-	// that the challenge is trying to assess:
-
 	// test 1:
 	try {
-		assert.strictEqual(testRender.type(), 'div', error_1);
+		assert.strictEqual(mockedComponent.find('div').length, 1, error_1);
 		testResults[1].status = true;
 	} catch (err) {
 		passed = false;
@@ -146,22 +167,53 @@ export const executeTests = (code) => {
 
 	// test 2:
 	try {
-		assert.strictEqual(testRender.nodes[0].props.style.color, "red", error_2);
+		assert.strictEqual(mockedComponent.find('GateKeeper').node.state.input, '', error_2);
 		testResults[2].status = true;
 	} catch (err) {
 		passed = false;
 		testResults[2].status = false;
 	}
 
-	// test 2:
+	// test 3:
 	try {
-		assert.strictEqual(testRender.nodes[0].props.style.fontSize, 72, error_3);
+		assert(
+			mockedComponent.find('h3').length === 1 &&
+			mockedComponent.find('input').length === 1,
+			error_3
+		);
 		testResults[3].status = true;
 	} catch (err) {
 		passed = false;
 		testResults[3].status = false;
 	}
 
+	// test 4:
+	try {
+		assert.strictEqual(mockedComponent.find('input').node.style.border, '1px solid black', error_4);
+		testResults[4].status = true;
+	} catch (err) {
+		passed = false;
+		testResults[4].status = false;
+	}
+
+	// test 5:
+	try {
+		let initialStyle = mockedComponent.find('input').node.style.border;
+		mockedComponent.setState({input: 'this is 15 char' });
+		let testStyle = mockedComponent.find('input').node.style.border;
+		mockedComponent.setState({input: 'A very long string longer than 15 characters.' });
+		let afterStyle = mockedComponent.find('input').node.style.border;
+		assert(
+			initialStyle === '1px solid black' &&
+			testStyle === '1px solid black' &&
+			afterStyle === '3px solid red',
+			error_5
+		);
+		testResults[5].status = true;
+	} catch (err) {
+		passed = false;
+		testResults[5].status = false;
+	}
 
 	return {
 		passed,

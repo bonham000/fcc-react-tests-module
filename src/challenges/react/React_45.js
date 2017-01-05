@@ -268,7 +268,6 @@ export const executeTests = (code) => {
 		mockedComponent.find('button').simulate('click');
 		counter_5 = mockedComponent.state().counter;
 		p_5 = mockedComponent.find('p').nodes[0].innerText;
-		console.log(counter_1, counter_2, counter_3, counter_4, counter_5, p_1, p_2, p_3, p_4, p_5);
 		assert(
 			counter_1 === 2 && p_1 === 'Turn: 2' &&
 			counter_2 === 3 && p_2 === 'Turn: 3' &&
