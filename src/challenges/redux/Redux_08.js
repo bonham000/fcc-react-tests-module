@@ -11,20 +11,20 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Use const for Action Types`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>It's a common practice when working with Redux
-to assign action types as read-only constants and then to reference these constants wherever they are used. Let's
-refactor the code we are working with and write our action types as <code>const</code> declarations.`
+export const challengeText = `<span class = 'default'>Intro: </span>A common practice when working with Redux is to assign action types as read-only constants, then reference these constants wherever they are used. You can refactor the code you're working with to write the action types as <code>const</code> declarations.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>Declare <code>LOGIN</code> and
-<code>LOGOUT</code> as <code>const</code> values and assign them to the strings <code>'LOGIN'</code> and <code>'LOGOUT'</code>,
-respectively. Then, let's change our <code>authReducer()</code> and our action creators to reference these constants rather than
-just writing string values. Note: It's generally a convention that constants are written in all uppercase, and this is
-standard practice here in Redux as well.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>Declare <code>LOGIN</code> and <code>LOGOUT</code> as <code>const</code> values and assign them to the strings <code>'LOGIN'</code> and <code>'LOGOUT'</code>, respectively. Then, edit the <code>authReducer()</code> and the action creators to reference these constants instead of string values.
+<br><br>
+
+<strong>Note</strong><br>It's generally a convention to write constants in all uppercase, and this is
+standard practice in Redux as well.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
-`const defaultState = {
+`
+
+const defaultState = {
 	authenticated: false
 };
 
@@ -111,15 +111,15 @@ const logoutUser = () => {
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your code was transpiled successfully.';
-	const error_1 = 'Calling the function loginUser returns an object with type property set to the string \'LOGIN\'.';
-	const error_2 = 'Calling the function logoutUser returns an object with type property set to the string \'LOGOUT\'.';
-	const error_3 = 'The store is initialized with an object with property login set to false.';
-	const error_4 = 'Dispatching loginUser updates the login property in the store\'s state to true.';
-	const error_5 = 'Dispatching logoutUser updates the login property in the store\'s state to false.';
-	const error_6 = 'The authReducer function handles multiple action types with a switch statement.';
-	const error_7 = 'LOGIN and LOGOUT are declared as const values are assigned strings of \'LOGIN\' and \'LOGOUT\'.';
-	const error_8 = 'The action creators and the reducer reference the LOGIN and LOGOUT constants.';
+	const error_0 = 'Your code should transpile successfully.';
+	const error_1 = 'Calling the function loginUser should return an object with type property set to the string \'LOGIN\'.';
+	const error_2 = 'Calling the function logoutUser should return an object with type property set to the string \'LOGOUT\'.';
+	const error_3 = 'The store should be initialized with an object with property login set to false.';
+	const error_4 = 'Dispatching loginUser should update the login property in the store\'s state to true.';
+	const error_5 = 'Dispatching logoutUser should update the login property in the store\'s state to false.';
+	const error_6 = 'The authReducer function should handle multiple action types with a switch statement.';
+	const error_7 = 'LOGIN and LOGOUT should be declared as const values and should be assigned strings of \'LOGIN\' and \'LOGOUT\'.';
+	const error_8 = 'The action creators and the reducer should reference the LOGIN and LOGOUT constants.';
 
 	let testResults = [
 		{
@@ -171,13 +171,13 @@ export const executeTests = (code) => {
 
 	let es5, reduxCode, store, login, logout, loginUser, logoutUser, passed = true;
 
-	// this code hijacks the user input to create an IIFE 
+	// this code hijacks the user input to create an IIFE
 	// which returns the store from Redux as an object
 	// or whatever you need from the client code
 	const prepend = `(function() {`
 	const apend = `;\n return {store, LOGIN, LOGOUT, loginUser, logoutUser} })()`
 	const modifiedCode = prepend.concat(code).concat(apend);
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
@@ -197,7 +197,7 @@ export const executeTests = (code) => {
 		logout = reduxCode.LOGOUT;
 		loginUser = reduxCode.loginUser;
 		logoutUser = reduxCode.logoutUser;
-	
+
 	} catch (err) {
 		passed = false;
 	}
@@ -209,7 +209,7 @@ export const executeTests = (code) => {
 	} catch (err) {
 		passed = false;
 		testResults[1].status = false;
-	}	
+	}
 
 	// test 2:
 	try {
@@ -218,8 +218,8 @@ export const executeTests = (code) => {
 	} catch (err) {
 		passed = false;
 		testResults[2].status = false;
-	}	
-	
+	}
+
 	// test 3:
 	try {
 		assert.strictEqual(store.getState().authenticated, false, error_3);
@@ -245,7 +245,7 @@ export const executeTests = (code) => {
 		testResults[4].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[4].status = false;		
+		testResults[4].status = false;
 	}
 
 	// test 5:
@@ -265,7 +265,7 @@ export const executeTests = (code) => {
 		testResults[5].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[5].status = false;		
+		testResults[5].status = false;
 	}
 
 	// test 6:
@@ -308,13 +308,13 @@ export const executeTests = (code) => {
 	} catch (err) {
 		passed = false;
 		testResults[8].status = false;
-	}		
+	}
 
 	return {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // liveRender modifies console.log in user input and returns message data -----------------------
@@ -324,14 +324,14 @@ export const liveRender = (code) => {
 	// console.log statements as a message array to be
 	// displayed on the client UI
 	const prepend = `
-	(function() { 
+	(function() {
 		let log = []
 		const message = (msg) => log.push(msg);
 	`
 	const apend = `;\n return log })();`
 	const consoleReplaced = code.replace(/console.log/g, 'message');
 	const hijackedCode = prepend.concat(consoleReplaced).concat(apend);
-	
+
 	let evaluatedCode;
 	try {
 		evaluatedCode = eval(hijackedCode);
