@@ -11,22 +11,17 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Define a Redux Action`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>Now lets learn how to update state in Redux. In Redux, all
-state updates are triggered by dispatching actions. An action is simply a JavaScript object which contains information
-about an action event that has occurred. The Redux store will receive these action objects and then update its state accordingly.
-Sometimes a Redux action will also carry a payload of data, for example a username after a user logs in, but they
-don't have to. What they must carry however is a <code>type</code> property which specifies the 'type' of action that occurred.<br><br>
+export const challengeText = `<span class = 'default'>Intro: </span>Since Redux is a state management framework, updating state is one of its core tasks. In Redux, all state updates are triggered by dispatching actions. An action is simply a JavaScript object that contains information about an action event that has occurred. The Redux store receives these action objects, then updates its state accordingly. Sometimes a Redux action also carries some data. For example, the action carries a username after a user logs in. While the data is optional, actions must carry a <code>type</code> property that specifies the 'type' of action that occurred.
+<br><br>
 
-Think of Redux actions as messengers that deliver information about events in your app to the Redux store. The store will then
-conduct the business of updating state according to the nature of these actions.`
+Think of Redux actions as messengers that deliver information about events happening in your app to the Redux store. The store then conducts the business of updating state based on the action that occurred.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>Here we will write our first Redux action.
-Its as simple as declaring an object with a type property. Declare an object <code>action</code> and give it a property
-<code>type</code> set to the string <code>'LOGIN'</code>.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>Writing a Redux action is as simple as declaring an object with a type property. Declare an object <code>action</code> and give it a property <code>type</code> set to the string <code>'LOGIN'</code>.`
 
 // ---------------------------- define challenge seed code ----------------------------
-export const seedCode =`// Define an action here:`
+export const seedCode =`// Define an action here:
+`
 
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode =
@@ -38,9 +33,9 @@ export const solutionCode =
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your code was transpiled successfully.';
-	const error_1 = 'An action object exists.';
-	const error_2 = 'The action has a key property \'type\' with value \'LOGIN\'.';
+	const error_0 = 'Your code should transpile successfully.';
+	const error_1 = 'An action object should exist.';
+	const error_2 = 'The action should have a key property \'type\' with value \'LOGIN\'.';
 
 	let testResults = [
 		{
@@ -62,13 +57,13 @@ export const executeTests = (code) => {
 
 	let es5, action, passed = true;
 
-	// this code hijacks the user input to create an IIFE 
+	// this code hijacks the user input to create an IIFE
 	// which returns the store from Redux as an object
 	// or whatever you need from the client code
 	const prepend = `(function() {`
 	const apend = `;\n return action })()`
 	const modifiedCode = prepend.concat(code).concat(apend);
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
@@ -85,7 +80,7 @@ export const executeTests = (code) => {
 	} catch (err) {
 		passed = false;
 	}
-	
+
 	// test 1:
 	try {
 		assert.strictEqual(typeof action, 'object', error_1);
@@ -101,14 +96,14 @@ export const executeTests = (code) => {
 		testResults[2].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[2].status = false;		
+		testResults[2].status = false;
 	}
 
 	return {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // liveRender modifies console.log in user input and returns message data -----------------------
@@ -118,14 +113,14 @@ export const liveRender = (code) => {
 	// console.log statements as a message array to be
 	// displayed on the client UI
 	const prepend = `
-	(function() { 
+	(function() {
 		let log = []
 		const message = (msg) => log.push(msg);
 	`
 	const apend = `;\n return log })();`
 	const consoleReplaced = code.replace(/console.log/g, 'message');
 	const hijackedCode = prepend.concat(consoleReplaced).concat(apend);
-	
+
 	let evaluatedCode;
 	try {
 		evaluatedCode = eval(hijackedCode);
