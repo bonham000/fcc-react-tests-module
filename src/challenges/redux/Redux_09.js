@@ -11,17 +11,10 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Register a Store Listener`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>Another method we have access to on the Redux
-<code>store</code> object is <code>store.subscribe()</code>. This allows us to subscribe listener functions to the
-store which will be called whenever an action is dispatched against the store. One simple use for this method is
-to subscribe a function to your store which simply logs out a message everytime an action is received and the
-store is updated. Let's do that here.`
+export const challengeText = `<span class = 'default'>Intro: </span>Another method you have access to on the Redux <code>store</code> object is <code>store.subscribe()</code>. This allows you to subscribe listener functions to the store, which are called whenever an action is dispatched against the store. One simple use for this method is to subscribe a function to your store that simply logs a message every time an action is received and the store is updated.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>Write the <code>store.subscribe()</code>
-method, passing in a function which logs a message to the console everytime the store receives an action. You'll see that
-we are then calling <code>store.dispatch()</code> three times in a row, each time directly passing in an action object.
-Set up your listener function and then watch the console as your code runs.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>Write the <code>store.subscribe()</code> method, and pass it a function which logs a message to the console. You'll see that <code>store.dispatch()</code> is called three times in a row, each time directly passing in an action object. Set up your listener function and watch the console as your code runs.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
@@ -63,7 +56,7 @@ const store = Redux.createStore(reducer);
 
 // change code below this line
 
-store.subscribe( () => 
+store.subscribe( () =>
 	console.log('Received an action, state updated: ' + store.getState())
 );
 
@@ -77,10 +70,10 @@ store.dispatch({type: ADD});`
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your code was transpiled successfully.';
-	const error_1 = 'Dispatching the ADD action on the store increments the state by 1.';
-	const error_2 = 'There is a listener function subscribed to the store using store.subscribe().';
-	const error_3 = 'An action of type ADD is dispatched three times and a message is logged to the console on each dispatch';
+	const error_0 = 'Your code should transpile successfully.';
+	const error_1 = 'Dispatching the ADD action on the store should increment the state by 1.';
+	const error_2 = 'There should be a listener function subscribed to the store using store.subscribe().';
+	const error_3 = 'An action of type ADD should be dispatched three times and a message should be logged to the console on each dispatch.';
 
 	let testResults = [
 		{
@@ -107,13 +100,13 @@ export const executeTests = (code) => {
 
 	let es5, reduxCode, store, ADD, passed = true;
 
-	// this code hijacks the user input to create an IIFE 
+	// this code hijacks the user input to create an IIFE
 	// which returns the store from Redux as an object
 	// or whatever you need from the client code
 	const prepend = `(function() {`
 	const apend = `;\n return { store, ADD } })()`
 	const modifiedCode = prepend.concat(code).concat(apend);
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
@@ -165,7 +158,7 @@ export const executeTests = (code) => {
 	try {
 
 		const prepend = `
-			(function() { 
+			(function() {
 				let log = []
 				const message = (msg) => log.push(msg);
 			`
@@ -181,13 +174,13 @@ export const executeTests = (code) => {
 	} catch (err) {
 		passed = false;
 		testResults[3].status = false;
-	}	
+	}
 
 	return {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // liveRender modifies console.log in user input and returns message data -----------------------
@@ -197,14 +190,14 @@ export const liveRender = (code) => {
 	// console.log statements as a message array to be
 	// displayed on the client UI
 	const prepend = `
-	(function() { 
+	(function() {
 		let __Custom__Log = []
 		const message = (msg) => __Custom__Log.push(msg);
 	`
 	const apend = `;\n return __Custom__Log })();`
 	const consoleReplaced = code.replace(/console.log/g, 'message');
 	const hijackedCode = prepend.concat(consoleReplaced).concat(apend);
-	
+
 	let evaluatedCode;
 	try {
 		evaluatedCode = eval(hijackedCode);

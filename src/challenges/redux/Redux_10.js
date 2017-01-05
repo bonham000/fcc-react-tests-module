@@ -11,25 +11,16 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Combine Multiple Reducers`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>Lets see what happens when the state of our app
-begins to grow more complex. Instead of trying to divide our state into multiple pieces, we remember the first
-principle of Redux: all app state is held in a single state object in the store. Therefore, Redux provides the solution
-of reducer composition to deal with a complex state model. We define multiple reducers to handle different slices of
-our application's state and then we compose these reducers together into one root reducer which we feed into the Redux
-<code>createStore()</code> method.<br><br>
+export const challengeText = `<span class = 'default'>Intro: </span>When the state of your app begins to grow more complex, it may be tempting to divide state into multiple pieces. Instead, remember the first principle of Redux: all app state is held in a single state object in the store. Therefore, Redux provides reducer composition as a solution for a complex state model. You define multiple reducers to handle different pieces of your application's state, then compose these reducers together into one root reducer. The root reducer is then passed into the Redux <code>createStore()</code> method.
+<br><br>
 
-Redux provides the method <code>combineReducers()</code> just for this purpose. Typically, it is a good practice to create
-a reducer for each piece of application state which is distinct or unique in some way. For instance, in a note-taking app
-with user authentication, one reducer could handle authentication while another handles the text and notes that the user is
-submitting.`
+Redux provides the method <code>combineReducers()</code> for this purpose. The <code>combineReducers()</code> method is available on the Redux object. You pass the method an object as an argument, and in that object, reducers are mapped to property names. The names of these properties become the names of the keys in the <code>state</code> object for the state managed by that reducer.
+<br><br>
+
+Typically, it is a good practice to create a reducer for each piece of application state when they are distinct or unique in some way. For example, in a note-taking app with user authentication, one reducer could handle authentication while another handles the text and notes that the user is submitting.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>Here we've provided a <code>counterReducer()</code>
-and an <code>authReducer()</code>, along with a Redux store. We've started the <code>rootReducer()</code> for you, it's your job
-to finish it! The <code>combineReducers()</code> method, available on the Redux object, requires an object as an argument in which you
-pass reducers mapped to property names. The names of these properties will become the names of the keys in the <code>state</code>
-object for the state managed by that reducer. Let's assign our <code>counterReducer</code> to a key called <code>count</code>
-and our <code>authReducer</code> to a key called <code>auth</code>.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>There are <code>counterReducer()</code> and <code>authReducer()</code> functions provided in the code editor, along with a Redux store. Finish writing the <code>rootReducer()</code> function using the <code>Redux.combineReducers()</code> method. Assign <code>counterReducer</code> to a key called <code>count</code> and <code>authReducer</code> to a key called <code>auth</code>.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
@@ -114,11 +105,11 @@ const store = Redux.createStore(rootReducer);`
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your code was transpiled successfully.';
-	const error_1 = 'The counterReducer can increment and decrement the state.';
-	const error_2 = 'The authReducer can toggle the state of authenticated between true and false.';
-	const error_3 = 'The store state has two keys: count which holds a number and auth which holds an object with a property of authenticated which holds a boolean.';
-	const error_4 = 'The rootReducer is a function that combines the counterReducer and the authReducer.';
+	const error_0 = 'Your code should transpile successfully.';
+	const error_1 = 'The counterReducer should increment and decrement the state.';
+	const error_2 = 'The authReducer should toggle the state of authenticated between true and false.';
+	const error_3 = 'The store state should have two keys: count, which holds a number, and auth, which holds an object. The auth object should have a property of authenticated, which holds a boolean.';
+	const error_4 = 'The rootReducer should be a function that combines the counterReducer and the authReducer.';
 
 	let testResults = [
 		{
@@ -151,13 +142,13 @@ export const executeTests = (code) => {
 	let es5, reduxCode, passed = true;
 	let store, rootReducer, INCREMENT, DECREMENT, LOGIN, LOGOUT;
 
-	// this code hijacks the user input to create an IIFE 
+	// this code hijacks the user input to create an IIFE
 	// which returns the store from Redux as an object
 	// or whatever you need from the client code
 	const prepend = `(function() {`
 	const apend = `;\n return { store, rootReducer, INCREMENT, DECREMENT, LOGIN, LOGOUT } })()`
 	const modifiedCode = prepend.concat(code).concat(apend);
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
@@ -171,7 +162,7 @@ export const executeTests = (code) => {
 	// now you can access the redux store methods
 	try {
 		reduxCode = eval(es5);
-		
+
 		store = reduxCode.store;
 		rootReducer = reduxCode.rootReducer;
 		INCREMENT = reduxCode.INCREMENT;
@@ -263,7 +254,7 @@ export const executeTests = (code) => {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // liveRender modifies console.log in user input and returns message data -----------------------
@@ -273,14 +264,14 @@ export const liveRender = (code) => {
 	// console.log statements as a message array to be
 	// displayed on the client UI
 	const prepend = `
-	(function() { 
+	(function() {
 		let __Custom__Log = []
 		const message = (msg) => __Custom__Log.push(msg);
 	`
 	const apend = `;\n return __Custom__Log })();`
 	const consoleReplaced = code.replace(/console.log/g, 'message');
 	const hijackedCode = prepend.concat(consoleReplaced).concat(apend);
-	
+
 	let evaluatedCode;
 	try {
 		evaluatedCode = eval(hijackedCode);
