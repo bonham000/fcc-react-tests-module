@@ -18,7 +18,7 @@ There are two key reasons why rendering on the server may be used in a real worl
 markup which can be crawled by search engines. Second, this creates a faster initial page load experience because the rendered HTML is smaller than the JavaScript code of the entire app. React will still be able to recognize your app and manage it after the initial load.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>Use the <code>renderToString()</code> method that's provided on the <code>ReactDOM</code> global object to render <code>App</code> to a string.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>The <code>renderToString()</code> method is provided on <code>ReactDOMSever</code>, which is available here as a global object. Use this to render <code>App</code> to a string.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = `
@@ -45,13 +45,13 @@ class App extends React.Component {
 };
 
 // change code below this line
-ReactDOM.renderToString(<App/>);`
+ReactDOMServer.renderToString(<App/>);`
 
 // ---------------------------- define challenge tests ----------------------------
 
 export const executeTests = (code) => {
 
-	const error_0 = 'The App component should render to a string using ReactDOM.renderToString.';
+	const error_0 = 'The App component should render to a string using ReactDOMServer.renderToString.';
 
 	let testResults = [
 		{
@@ -65,7 +65,7 @@ export const executeTests = (code) => {
 
 	// test 0:
 	try {
-		assert.strictEqual(code.replace(/\s/g,'').includes('ReactDOM.renderToString(<App/>)'), true, error_0);
+		assert.strictEqual(code.replace(/\s/g,'').includes('ReactDOMServer.renderToString(<App/>)'), true, error_0);
 		testResults[0].status = true;
 	} catch (err) {
 		passed = false;

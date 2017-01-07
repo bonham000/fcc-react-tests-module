@@ -25,7 +25,7 @@ of information which only moves in one direction. This is the preferred method w
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>Here we've created a simple controlled input
-and styled its border. We want to style this border red if the user types too much text in the input box. Add a condition to check
+and styled its border. We want to style this border red if the user types more than 15 characters of text in the input box. Add a condition to check
 for this and if the condition is valid set the input border style to <code>3px solid red</code>. Try it out by entering text in the input!`
 
 // ---------------------------- define challenge seed code ----------------------------
