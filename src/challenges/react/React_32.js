@@ -39,8 +39,6 @@ export const seedCode =
 	   	<div>
 				{ /* change code below this line */ }
 
-
-
 				{ /* change code above this line */ }
 	   	</div>
     );

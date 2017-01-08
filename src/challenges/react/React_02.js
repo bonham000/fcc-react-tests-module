@@ -47,7 +47,6 @@ An <code>h1</code>, a <code>p</code>, and an unordered list that contains three 
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = `// write your code here
-
 `
 
 // ---------------------------- define challenge solution code ----------------------------

@@ -29,7 +29,6 @@ export const seedCode =
 	}
 	// change code below this line
 
-
 	// change code above this line
 	render() {
   	return (

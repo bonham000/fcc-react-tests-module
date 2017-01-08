@@ -19,7 +19,8 @@ export const challengeInstructions = `<span class = 'default'>Instructions: </sp
 Render this component to the DOM using <code>ReactDOM.render()</code>. There is a <code>div</code> with <code>id='challenge-node'</code> available for you to use.`
 
 // ---------------------------- define challenge seed code ----------------------------
-export const seedCode = `// change code below this line`
+export const seedCode = `// change code below this line
+`
 
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode =

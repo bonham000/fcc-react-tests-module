@@ -41,7 +41,6 @@ export const seedCode =
 	    <div>
         { /* change code below this line */}
 
-
       	{ /* change code above this line */}
         <p>Input: {this.state.input}</p>
 	    </div>
