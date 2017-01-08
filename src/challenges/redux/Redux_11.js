@@ -20,13 +20,13 @@ need to know about this data.`
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've defined a basic <code>notesReducer()</code>
 here and an <code>addNoteText()</code> action creator. Finish the body of the <code>addNoteText()</code> function so that it returns
-an <code>action</code> object which includes a <code>type</code> like we're used to, but let's also pass in a property of
+an <code>action</code> object which includes a <code>type</code> like we're used to with a value of <code>ADD_NOTE</code>, but let's also pass in a property of
 <code>text</code> set to the <code>note</code> data we pass into the action creator. When we call the action creator, we'll
 pass in specific note information that we can access like this.<br><br>
 
 Next, finish writing the <code>switch</code> statement in the <code>notesReducer()</code>. We need to add a case that handles
 our <code>addNoteText()</code> actions. This case should be triggered whenever there is an action of type <code>ADD_NOTE</code>
-and it should just return the text property on the incoming <code>action</code> as the new <code>state</code>.<br><br>
+and it should just return the <code>text</code> property on the incoming <code>action</code> as the new <code>state</code>.<br><br>
 
 We've dispatched the action at the bottom of the code. Once you're finished run the code and watch the console. That's it!
 That's all it takes to send action-specific data to the store and use it when you update store <code>state</code>.`
