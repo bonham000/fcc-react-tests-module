@@ -5,28 +5,18 @@ import { mount } from 'enzyme'
 import { transform } from 'babel-standalone'
 
 // SET TO TRUE WHEN QA IS COMPLETE:
-export const QA = false;
+export const QA = true;
 
 // ---------------------------- define challenge title ----------------------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Change Inline CSS Conditionally Based on Component State`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>Now that we've seen several applications of conditional
-rendering in addition to the use of inline styles, we'll cover one more example which combines both of these topics. We can
-also render CSS conditionally based on the state of our React component (or anything else you wish to evaluate programmatically).
-To do this, we can simply check for a condition and if that condition is met we will modify the styles object which is assigned
-to the JSX elements in our render method.<br><br>
+export const challengeText = `<span class = 'default'>Intro: </span>At this point, you've seen several applications of conditional rendering and the use of inline styles. Here's one more example that combines both of these topics. You can also render CSS conditionally based on the state of a React component. To do this, you check for a condition, and if that condition is met, you modify the styles object that's assigned to the JSX elements in the render method.<br><br>
 
-This paradigm is important to understand because it is a dramatic shift from the more traditional approach of applying styles by 
-modifying DOM elements directly (this is very common with jQuery, for example). In that approach, you must keep track of when elements change
-and also handle the actual manipulation directly. It can become difficult to keep track of changes and your UI can become
-unpredictable. In this approach, we simply describe how the UI should look as a function of the application's state. There is a clear flow
-of information which only moves in one direction. This is the preferred method when writing applications with React.`
+This paradigm is important to understand because it is a dramatic shift from the more traditional approach of applying styles by modifying DOM elements directly (which is very common with jQuery, for example). In that approach, you must keep track of when elements change and also handle the actual manipulation directly. It can become difficult to keep track of changes, potentially making your UI unpredictable. When you set a style object based on a condition, you describe how the UI should look as a function of the application's state. There is a clear flow of information that only moves in one direction. This is the preferred method when writing applications with React.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>Here we've created a simple controlled input
-and styled its border. We want to style this border red if the user types more than 15 characters of text in the input box. Add a condition to check
-for this and if the condition is valid set the input border style to <code>3px solid red</code>. Try it out by entering text in the input!`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>The code editor has a simple controlled input component with a styled border. You want to style this border red if the user types more than 15 characters of text in the input box. Add a condition to check for this and, if the condition is valid, set the input border style to <code>3px solid red</code>. You can try it out by entering text in the input.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = `
@@ -98,7 +88,7 @@ class GateKeeper extends React.Component {
 
 export const executeTests = (code) => {
 
-	const error_1 = 'The GateKepper component should render a div element.';
+	const error_1 = 'The GateKeeper component should render a div element.';
 	const error_2 = 'The GateKeeper component should be initialized with a state key input set to an empty string.';
 	const error_3 = 'The GateKeeper component should render an h3 tag and an input tag.';
 	const error_4 = 'The input tag should initially have a style of \'1px solid black\' for the border property.';

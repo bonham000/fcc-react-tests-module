@@ -17,7 +17,7 @@ The last challenge showed how the <code>map</code> method is used to dynamically
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>
-We created an array in the code editor of some front end frameworks and a stateless functional component that needs to map these to an unordered list, much like in the last challenge. Finish writing the <code>map</code> callback to return an <code>li</code> element for each framework in the <code>frontEndFrameworks</code> array. This time, make sure to give each <code>li</code> a <code>key</code> attribute, set to a unique value. You can use the array index for this purpose.
+The code editor has an array with some front end frameworks and a stateless functional component named <code>Frameworks()</code>. <code>Frameworks()</code> needs to map the array to an unordered list, much like in the last challenge. Finish writing the <code>map</code> callback to return an <code>li</code> element for each framework in the <code>frontEndFrameworks</code> array. This time, make sure to give each <code>li</code> a <code>key</code> attribute, set to a unique value. You can use the array index for this purpose.
 `
 
 // ---------------------------- define challenge seed code ----------------------------
@@ -74,8 +74,8 @@ export const executeTests = (code) => {
 
 	const error_0 = 'Your JSX code should transpile successfully.';
 	const error_1 = 'The Frameworks component should exist and render to the page.';
-	const error_2 = 'Frameworkss should render an h1 element.';
-	const error_3 = 'Frameworkss should render a ul element.';
+	const error_2 = 'Frameworks should render an h1 element.';
+	const error_3 = 'Frameworks should render a ul element.';
 	const error_4 = 'The ul tag should render 6 child li elements.';
   const error_5 = 'Each list item element should have a unique key attribute.';
 
@@ -168,7 +168,7 @@ export const executeTests = (code) => {
 		assert(
 			mockedComponent.find('ul').node.childNodes.length === 6 &&
 			mockedComponent.find('ul').node.childNodes[0].tagName === 'LI' &&
-			mockedComponent.find('li').length === 6, 
+			mockedComponent.find('li').length === 6,
 			error_4);
 		testResults[4].status = true;
 	} catch (err) {
