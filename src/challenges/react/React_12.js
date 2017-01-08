@@ -39,7 +39,8 @@ class TypesOfFood extends React.Component {
   }
 };
 
-// change code below this line`
+// change code below this line
+`
 
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode = `

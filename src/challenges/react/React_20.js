@@ -36,7 +36,8 @@ export const seedCode =
     );
   }
 };
-// change code below this line`
+// change code below this line
+`
 
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode =

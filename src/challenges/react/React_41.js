@@ -35,6 +35,7 @@ export const seedCode =
 	}
   render() {
   	// change code below this line
+		
     return (
 	   	<div>
 	   		<button onClick={this.toggleDisplay}>Toggle Display</button>
