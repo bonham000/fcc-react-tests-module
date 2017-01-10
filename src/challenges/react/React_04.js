@@ -12,9 +12,14 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Render 
 export const challengeText = `<span class = 'default'>Intro: </span>
 So far, you've learned that JSX is a convenient tool to write readable HTML in a JavaScript file. React allows you to render your JSX as HTML to the DOM. To do this, you use React's rendering API known as ReactDOM.<br><br>
 
-ReactDOM offers a simple method to render React elements to the DOM which looks like this: <code>ReactDOM.render(componentToRender, targetNode)</code>. The
-first argument is the React element or component that you want to render. The second argument is the DOM node that you want to render the component within. As you would expect, <code>ReactDOM.render()</code> must be called
-after the part in your code where you declared the element you want to render.`
+ReactDOM offers a simple method to render React elements to the DOM which looks like this: <code>ReactDOM.render(componentToRender, targetNode)</code>.
+
+<ul>
+<li>The first argument is the React element or component that you want to render.</li>
+<li>The second argument is the DOM node that you want to render the component within.</li>
+</ul>
+
+As you would expect, <code>ReactDOM.render()</code> must be called after the JSX element declarations, just like how you must declare variables before using them.`
 
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>
 The code editor has a simple JSX component. Use the <code>ReactDOM.render()</code> method to render this component to the page. You can pass defined JSX elements directly in as the first argument and use <code>document.getElementById()</code>
