@@ -24,7 +24,7 @@ of your app. Defining the <code>Provider</code> for an App component might look 
 <pre>
 <code class="codeBlock">&lt;Provider store={store}&gt;
  &lt;App/&gt;
-&lt;Provider/&gt;</code>
+&lt;/Provider&gt;</code>
 </pre>`
 
 // ---------------------------- challenge instructions ----------------------------
