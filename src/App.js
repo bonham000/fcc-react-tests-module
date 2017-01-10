@@ -4,86 +4,88 @@ import ReactTestComponent from './test-components/ReactTestComponent';
 import ReduxTestComponent from './test-components/ReduxTestComponent';
 
 // import React Challenges:
-import * as React_01 from './challenges/react/curriculum/React_01'
-import * as React_02 from './challenges/react/curriculum/React_02'
-import * as React_03 from './challenges/react/curriculum/React_03'
-import * as React_04 from './challenges/react/curriculum/React_04'
-import * as React_05 from './challenges/react/curriculum/React_05'
-import * as React_06 from './challenges/react/curriculum/React_06'
-import * as React_07 from './challenges/react/curriculum/React_07'
-import * as React_08 from './challenges/react/curriculum/React_08'
-import * as React_09 from './challenges/react/curriculum/React_09'
-import * as React_10 from './challenges/react/curriculum/React_10'
-import * as React_11 from './challenges/react/curriculum/React_11'
-import * as React_12 from './challenges/react/curriculum/React_12'
-import * as React_13 from './challenges/react/curriculum/React_13'
-import * as React_14 from './challenges/react/curriculum/React_14'
-import * as React_15 from './challenges/react/curriculum/React_15'
-import * as React_16 from './challenges/react/curriculum/React_16'
-import * as React_17 from './challenges/react/curriculum/React_17'
-import * as React_18 from './challenges/react/curriculum/React_18'
-import * as React_19 from './challenges/react/curriculum/React_19'
-import * as React_20 from './challenges/react/curriculum/React_20'
-import * as React_21 from './challenges/react/curriculum/React_21'
-import * as React_22 from './challenges/react/curriculum/React_22'
-import * as React_23 from './challenges/react/curriculum/React_23'
-import * as React_24 from './challenges/react/curriculum/React_24'
-import * as React_25 from './challenges/react/curriculum/React_25'
-import * as React_26 from './challenges/react/curriculum/React_26'
-import * as React_27 from './challenges/react/curriculum/React_27'
-import * as React_28 from './challenges/react/curriculum/React_28'
-import * as React_29 from './challenges/react/curriculum/React_29'
-import * as React_30 from './challenges/react/curriculum/React_30'
-import * as React_31 from './challenges/react/curriculum/React_31'
-import * as React_32 from './challenges/react/curriculum/React_32'
-import * as React_33 from './challenges/react/curriculum/React_33'
-import * as React_34 from './challenges/react/curriculum/React_34'
-import * as React_35 from './challenges/react/curriculum/React_35'
-import * as React_36 from './challenges/react/curriculum/React_36'
-import * as React_37 from './challenges/react/curriculum/React_37'
-import * as React_38 from './challenges/react/curriculum/React_38'
-import * as React_39 from './challenges/react/curriculum/React_39'
-import * as React_40 from './challenges/react/curriculum/React_40'
-import * as React_41 from './challenges/react/curriculum/React_41'
-import * as React_42 from './challenges/react/curriculum/React_42'
-import * as React_43 from './challenges/react/curriculum/React_43'
-import * as React_44 from './challenges/react/curriculum/React_44'
-import * as React_45 from './challenges/react/curriculum/React_45'
-import * as React_46 from './challenges/react/curriculum/React_46'
-import * as React_47 from './challenges/react/curriculum/React_47'
-import * as React_48 from './challenges/react/curriculum/React_48'
+import * as React_01 from './challenges/react/React_01'
+import * as React_02 from './challenges/react/React_02'
+import * as React_03 from './challenges/react/React_03'
+import * as React_04 from './challenges/react/React_04'
+import * as React_05 from './challenges/react/React_05'
+import * as React_06 from './challenges/react/React_06'
+import * as React_07 from './challenges/react/React_07'
+import * as React_08 from './challenges/react/React_08'
+import * as React_09 from './challenges/react/React_09'
+import * as React_10 from './challenges/react/React_10'
+import * as React_11 from './challenges/react/React_11'
+import * as React_12 from './challenges/react/React_12'
+import * as React_13 from './challenges/react/React_13'
+import * as React_14 from './challenges/react/React_14'
+import * as React_15 from './challenges/react/React_15'
+import * as React_16 from './challenges/react/React_16'
+import * as React_17 from './challenges/react/React_17'
+import * as React_18 from './challenges/react/React_18'
+import * as React_19 from './challenges/react/React_19'
+import * as React_20 from './challenges/react/React_20'
+import * as React_21 from './challenges/react/React_21'
+import * as React_22 from './challenges/react/React_22'
+import * as React_23 from './challenges/react/React_23'
+import * as React_24 from './challenges/react/React_24'
+import * as React_25 from './challenges/react/React_25'
+import * as React_26 from './challenges/react/React_26'
+import * as React_27 from './challenges/react/React_27'
+import * as React_28 from './challenges/react/React_28'
+import * as React_29 from './challenges/react/React_29'
+import * as React_30 from './challenges/react/React_30'
+import * as React_31 from './challenges/react/React_31'
+import * as React_32 from './challenges/react/React_32'
+import * as React_33 from './challenges/react/React_33'
+import * as React_34 from './challenges/react/React_34'
+import * as React_35 from './challenges/react/React_35'
+import * as React_36 from './challenges/react/React_36'
+import * as React_37 from './challenges/react/React_37'
+import * as React_38 from './challenges/react/React_38'
+import * as React_39 from './challenges/react/React_39'
+import * as React_40 from './challenges/react/React_40'
+import * as React_41 from './challenges/react/React_41'
+import * as React_42 from './challenges/react/React_42'
+import * as React_43 from './challenges/react/React_43'
+import * as React_44 from './challenges/react/React_44'
+import * as React_45 from './challenges/react/React_45'
+import * as React_46 from './challenges/react/React_46'
+import * as React_47 from './challenges/react/React_47'
+import * as React_48 from './challenges/react/React_48'
+import * as React_49 from './challenges/react/React_49'
+import * as React_50 from './challenges/react/React_50'
 
 // import Redux Challenges:
-import * as Redux_01 from './challenges/redux/curriculum/Redux_01'
-import * as Redux_02 from './challenges/redux/curriculum/Redux_02'
-import * as Redux_03 from './challenges/redux/curriculum/Redux_03'
-import * as Redux_04 from './challenges/redux/curriculum/Redux_04'
-import * as Redux_05 from './challenges/redux/curriculum/Redux_05'
-import * as Redux_06 from './challenges/redux/curriculum/Redux_06'
-import * as Redux_07 from './challenges/redux/curriculum/Redux_07'
-import * as Redux_08 from './challenges/redux/curriculum/Redux_08'
-import * as Redux_09 from './challenges/redux/curriculum/Redux_09'
-import * as Redux_10 from './challenges/redux/curriculum/Redux_10'
-import * as Redux_11 from './challenges/redux/curriculum/Redux_11'
-import * as Redux_12 from './challenges/redux/curriculum/Redux_12'
-import * as Redux_13 from './challenges/redux/curriculum/Redux_13'
-import * as Redux_14 from './challenges/redux/curriculum/Redux_14'
-import * as Redux_15 from './challenges/redux/curriculum/Redux_15'
-import * as Redux_16 from './challenges/redux/curriculum/Redux_16'
-import * as Redux_17 from './challenges/redux/curriculum/Redux_17'
-import * as Redux_18 from './challenges/redux/curriculum/Redux_18'
+import * as Redux_01 from './challenges/redux/Redux_01'
+import * as Redux_02 from './challenges/redux/Redux_02'
+import * as Redux_03 from './challenges/redux/Redux_03'
+import * as Redux_04 from './challenges/redux/Redux_04'
+import * as Redux_05 from './challenges/redux/Redux_05'
+import * as Redux_06 from './challenges/redux/Redux_06'
+import * as Redux_07 from './challenges/redux/Redux_07'
+import * as Redux_08 from './challenges/redux/Redux_08'
+import * as Redux_09 from './challenges/redux/Redux_09'
+import * as Redux_10 from './challenges/redux/Redux_10'
+import * as Redux_11 from './challenges/redux/Redux_11'
+import * as Redux_12 from './challenges/redux/Redux_12'
+import * as Redux_13 from './challenges/redux/Redux_13'
+import * as Redux_14 from './challenges/redux/Redux_14'
+import * as Redux_15 from './challenges/redux/Redux_15'
+import * as Redux_16 from './challenges/redux/Redux_16'
+import * as Redux_17 from './challenges/redux/Redux_17'
+import * as Redux_18 from './challenges/redux/Redux_18'
 
 // import React-Redux Challenges
-import * as React_Redux_01 from './challenges/react-redux/curriculum/React_Redux_01'
-import * as React_Redux_02 from './challenges/react-redux/curriculum/React_Redux_02'
-import * as React_Redux_03 from './challenges/react-redux/curriculum/React_Redux_03'
-import * as React_Redux_04 from './challenges/react-redux/curriculum/React_Redux_04'
-import * as React_Redux_05 from './challenges/react-redux/curriculum/React_Redux_05'
-import * as React_Redux_06 from './challenges/react-redux/curriculum/React_Redux_06'
-import * as React_Redux_07 from './challenges/react-redux/curriculum/React_Redux_07'
-import * as React_Redux_08 from './challenges/react-redux/curriculum/React_Redux_08'
-import * as React_Redux_09 from './challenges/react-redux/curriculum/React_Redux_09'
-import * as React_Redux_10 from './challenges/react-redux/curriculum/React_Redux_10'
+import * as React_Redux_01 from './challenges/react-redux/React_Redux_01'
+import * as React_Redux_02 from './challenges/react-redux/React_Redux_02'
+import * as React_Redux_03 from './challenges/react-redux/React_Redux_03'
+import * as React_Redux_04 from './challenges/react-redux/React_Redux_04'
+import * as React_Redux_05 from './challenges/react-redux/React_Redux_05'
+import * as React_Redux_06 from './challenges/react-redux/React_Redux_06'
+import * as React_Redux_07 from './challenges/react-redux/React_Redux_07'
+import * as React_Redux_08 from './challenges/react-redux/React_Redux_08'
+import * as React_Redux_09 from './challenges/react-redux/React_Redux_09'
+import * as React_Redux_10 from './challenges/react-redux/React_Redux_10'
 
 // create an array of challenge data to load into the page
 const challenges = [
@@ -101,7 +103,7 @@ const challenges = [
   { type: 'React', id: 'React_11', title: 'Compose React Components'},
   { type: 'React', id: 'React_12', title: 'Render a Class Component to the DOM'},
   { type: 'React', id: 'React_13', title: 'Write a React Component from Scratch'},
-  { type: 'React', id: 'React_14', title: 'Pass a String to a Functional Component'},
+  { type: 'React', id: 'React_14', title: 'Pass Props to a Stateless Functional Component'},
   { type: 'React', id: 'React_15', title: 'Pass an Array as Props'},
   { type: 'React', id: 'React_16', title: 'Use Default Props'},
   { type: 'React', id: 'React_17', title: 'Override Default Props'},
@@ -109,8 +111,8 @@ const challenges = [
   { type: 'React', id: 'React_19', title: 'Access Props Using this.props'},
   { type: 'React', id: 'React_20', title: 'Using Props with Stateless Functional Components'},
   { type: 'React', id: 'React_21', title: 'Create a Stateful Component'},
-  { type: 'React', id: 'React_22', title: 'Render State in the UI'},
-  { type: 'React', id: 'React_23', title: 'Render State in the UI Another Way'},
+  { type: 'React', id: 'React_22', title: 'Render State in the User Interface'},
+  { type: 'React', id: 'React_23', title: 'Render State in the User Interface Another Way'},
   { type: 'React', id: 'React_24', title: 'Set State with this.setState'},
   { type: 'React', id: 'React_25', title: 'Bind \'this\' to a Class Method'},
   { type: 'React', id: 'React_26', title: 'Bind \'this\' with an ES6 Arrow Function'},
@@ -131,11 +133,13 @@ const challenges = [
   { type: 'React', id: 'React_41', title: 'Render with an If/Else Condition'},
   { type: 'React', id: 'React_42', title: 'Use && for a More Concise Conditional'},
   { type: 'React', id: 'React_43', title: 'Return null to Prevent Rendering'},
-  { type: 'React', id: 'React_44', title: 'Use a Ternary Expression to Render Conditionally'},
+  { type: 'React', id: 'React_44', title: 'Use a Ternary Expression for Conditional Rendering'},
   { type: 'React', id: 'React_45', title: 'Render Conditionally from Props'},
-  { type: 'React', id: 'React_46', title: 'Use Array.map() to Dynamically Render Elements'},
-  { type: 'React', id: 'React_47', title: 'Use Array.filter() to Dynamically Filter an Array'},
-  { type: 'React', id: 'React_48', title: 'Render React on the Server with renderToString'},
+  { type: 'React', id: 'React_46', title: 'Change Inline CSS Conditionally Based on Component State'},
+  { type: 'React', id: 'React_47', title: 'Use Array.map() to Dynamically Render Elements'},
+  { type: 'React', id: 'React_48', title: 'Give Sibling Elements a Unique Key Attribute'},
+  { type: 'React', id: 'React_49', title: 'Use Array.filter() to Dynamically Filter an Array'},
+  { type: 'React', id: 'React_50', title: 'Render React on the Server with renderToString'},
 
   // Redux challenges:
   { type: 'Redux', id: 'Redux_01', title: 'Create a Redux Store'},
@@ -230,11 +234,11 @@ export default class App extends React.Component {
         {
 
           challengeType === 'React' ?
-        
-            <ReactTestComponent 
+
+            <ReactTestComponent
               challengeTitle={eval(challenge).challengeTitle}
               challengeText={eval(challenge).challengeText}
-              challengeInstructions={eval(challenge).challengeInstructions} 
+              challengeInstructions={eval(challenge).challengeInstructions}
               seedCode={eval(challenge).seedCode}
               solutionCode={eval(challenge).solutionCode}
               executeTests={eval(challenge).executeTests}
@@ -242,25 +246,25 @@ export default class App extends React.Component {
               QA={eval(challenge).QA}
               selectedChallenge={challenge}
               challenges={this.state.challenges}
-              select={this.select} 
+              select={this.select}
               advanceOneChallenge={this.advanceOneChallenge}
               previousChallenge={this.previousChallenge} />
 
           :
-          
-            <ReduxTestComponent 
+
+            <ReduxTestComponent
               challengeTitle={eval(challenge).challengeTitle}
               challengeText={eval(challenge).challengeText}
-              challengeInstructions={eval(challenge).challengeInstructions} 
+              challengeInstructions={eval(challenge).challengeInstructions}
               seedCode={eval(challenge).seedCode}
               solutionCode={eval(challenge).solutionCode}
               executeTests={eval(challenge).executeTests}
               liveRender={eval(challenge).liveRender}
               QA={eval(challenge).QA}
               selectedChallenge={challenge}
-              challenges={this.state.challenges} 
+              challenges={this.state.challenges}
               select={this.select}
-              advanceOneChallenge={this.advanceOneChallenge} 
+              advanceOneChallenge={this.advanceOneChallenge}
               previousChallenge={this.previousChallenge} />
 
         }

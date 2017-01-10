@@ -9,7 +9,7 @@ import ReduxTestComponent from './test-components/ReduxTestComponent'
 // All you need to do is write a challenge from one of the templates and add its path in the import statement here:
 
 // import React Challenges:
-import * as React_1 from './challenges/react/curriculum/YOUR_CHALLENGE_HERE'
+import * as React_1 from './challenges/react/YOUR_CHALLENGE_HERE'
 
 // add a new challenge to this array:
 const challenges = [ { type: 'React', id: 'React_1'} ];

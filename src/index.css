@@ -5,7 +5,7 @@ body {
   color: white;
   font-family: sans-serif;
 	font-family: 'Montserrat', sans-serif;
-	min-width: 1300px;
+	min-width: 1150px;
 }
 
 .mainContainer {
@@ -31,6 +31,7 @@ body {
 .CodeMirror {
 	height: auto;
 	padding: 12px 3px;
+	word-wrap: break-word;
 }
 
 .instructionsContainer {
@@ -55,7 +56,7 @@ body {
 	font-weight: bold;
 }
 .qa-complete {
-	color: #25F56B;
+	color: #327AFF;
 }
 .qa-needed {
 	color: #FA3F3A;
@@ -78,12 +79,15 @@ body {
 	line-height: 24px;
 	font-family: 'Muli', serif;
 }
+.codeBlock {
+	padding: 0px;
+}
 code {
 	padding: 1px 6px;
 	border-radius: 5px;
 	font-size: 18px;
 	color: #c7254e;
-  background-color: #f9f2f4;
+  	background-color: #f9f2f4;
 }
 
 .title {
@@ -117,9 +121,9 @@ select:focus {
 	color: rgb(225,225,225);
 }
 button {
-	width: 240px;
+	width: 245px;
 	margin: 5px;
-	font-size: 22px;
+	font-size: 20px;
 	padding: 8px 12px;
 	border: none;
 	border-radius: 5px;
@@ -133,11 +137,11 @@ button:hover {
 .testBtn {
 	background: #3FB2FD;
 }
-.testBtn:hover {
-	background: #25F56B;
+.testBtn:hover{
+	background: #327AFF;
 }
 .testBtn {
-	width: 490px;
+	width: 500px;
 }
 .seedBtn:hover {
 	background: #F65A39;
