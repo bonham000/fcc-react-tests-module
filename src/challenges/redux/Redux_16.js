@@ -11,12 +11,10 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Remove an Item from an Array`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>Now let's get some practice removing items from an array. The spread operator can be used here as well.
-Other useful JavaScript methods include <code>slice()</code> and <code>concat()</code>.`
+export const challengeText = `<span class = 'default'>Intro: </span>Time to practice removing items from an array. The spread operator can be used here as well. Other useful JavaScript methods include <code>slice()</code> and <code>concat()</code>.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>We've modified our reducer and action creator to now remove an item from an array based on 
-the index of the item. Finish writing the reducer so a new state array is returned with the item at the specific index removed.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>The reducer and action creator were modified to remove an item from an array based on the index of the item. Finish writing the reducer so a new state array is returned with the item at the specific index removed.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
@@ -24,6 +22,7 @@ export const seedCode =
 	switch(action.type) {
 		case 'REMOVE_ITEM':
 			return // don't mutate state here
+
 		default:
 			return state;
 	}
@@ -63,10 +62,10 @@ const store = Redux.createStore(immutableReducer);`
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your code was transpiled successfully.';
-	const error_1 = 'The Redux store exists and is initialized with a state equal to [0,1,2,3,4,5]';
-	const error_2 = 'removeItem and immutableReducer are both functions.';
-	const error_3 = 'Dispatching the removeItem action creator removes items from the state and returns a new copy of state.';
+	const error_0 = 'Your code should transpile successfully.';
+	const error_1 = 'The Redux store should exist and initialize with a state equal to [0,1,2,3,4,5]';
+	const error_2 = 'removeItem and immutableReducer both should be functions.';
+	const error_3 = 'Dispatching the removeItem action creator should remove items from the state and return a new copy of state.';
 
 	let testResults = [
 		{
@@ -94,13 +93,13 @@ export const executeTests = (code) => {
 	let es5, reduxCode, passed = true;
 	let store, removeItem, immutableReducer;
 
-	// this code hijacks the user input to create an IIFE 
+	// this code hijacks the user input to create an IIFE
 	// which returns the store from Redux as an object
 	// or whatever you need from the client code
 	const prepend = `(function() {`
 	const apend = `;\n return { store, removeItem, immutableReducer } })()`
 	const modifiedCode = prepend.concat(code).concat(apend);
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
@@ -152,7 +151,7 @@ export const executeTests = (code) => {
 		testResults[2].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[2].status = false;		
+		testResults[2].status = false;
 	}
 
 	// test 3:
@@ -191,7 +190,7 @@ export const executeTests = (code) => {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // liveRender modifies console.log in user input and returns message data -----------------------
@@ -201,14 +200,14 @@ export const liveRender = (code) => {
 	// console.log statements as a message array to be
 	// displayed on the client UI
 	const prepend = `
-	(function() { 
+	(function() {
 		let __Custom__Log = []
 		const message = (msg) => __Custom__Log.push(msg);
 	`
 	const apend = `; return __Custom__Log })();`
 	const consoleReplaced = code.replace(/console.log/g, 'message');
 	const hijackedCode = prepend.concat(consoleReplaced).concat(apend);
-	
+
 	let evaluatedCode;
 	try {
 		evaluatedCode = eval(hijackedCode);
