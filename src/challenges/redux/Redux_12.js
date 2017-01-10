@@ -11,30 +11,19 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Use Middleware to Handle Asynchronous Actions`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>So far we've avoided discussing asynchronous actions
-but they are an unavoidable part of web development. Of course we will have to call asynchronous endpoints in our Redux app,
-how do we handle these types of requests? Redux provides some middleware designed specifically for this purpose, Redux Thunk
-middleware, to be exact. Let's briefly describe how to use this with Redux.<br><br>
+export const challengeText = `<span class = 'default'>Intro: </span>So far these challenges have avoided discussing asynchronous actions, but they are an unavoidable part of web development. At some point you'll need to call asynchronous endpoints in your Redux app, so how do you handle these types of requests? Redux provides middleware designed specifically for this purpose, called Redux Thunk middleware. Here's a brief description how to use this with Redux.
+<br><br>
 
-To include Redux Thunk middleware, we pass it as an argument to <code>Redux.applyMiddleware()</code>, which we provide as a
-second optional parameter to our <code>createStore()</code> function. Take a look at the code in the editor to see this. Then,
-to create an asynchronous action, we return a function in our action creator that takes <code>dispatch</code> as an argument.
-Within this function we can dispatch actions and perform asynchronous requests.<br><br>
+To include Redux Thunk middleware, you pass it as an argument to <code>Redux.applyMiddleware()</code>. This statement is then provided as a second optional parameter to the <code>createStore()</code> function. Take a look at the code at the bottom of the editor to see this. Then, to create an asynchronous action, you return a function in the action creator that takes <code>dispatch</code> as an argument. Within this function, you can dispatch actions and perform asynchronous requests.
+<br><br>
 
-For instance, in this example we are going to make a pretend asynchronous request with a <code>setTimeout()</code> call.
-It's common to dispatch an action before initiating any asynchronous behavior so that your application state knows that
-some data is being requested (this state could display a loading icon, for instance). Then, once you receive the data,
-you dispatch another action which carries the data as a payload and information that the action is completed.<br><br>
+In this example, an asynchronous request is simulated with a <code>setTimeout()</code> call. It's common to dispatch an action before initiating any asynchronous behavior so that your application state knows that some data is being requested (this state could display a loading icon, for instance). Then, once you receive the data, you dispatch another action which carries the data as a payload along with information that the action is completed.
+<br><br>
 
-Remember how we said we're passing <code>dispatch</code> as a parameter to this special action creator? This is what we'll
-use to dispatch our actions, we simply pass our action directly to dispatch and the middleware takes care of the rest.`
+Remember that you're passing <code>dispatch</code> as a parameter to this special action creator. This is what you'll use to dispatch your actions, you simply pass the action directly to dispatch and the middleware takes care of the rest.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>So in this example we just have to write both
-dispatches in the <code>handleAsync()</code> action creator. Let's dispatch <code>requestingData()</code> before our
-<code>setTimeout()</code> (pretend API call) and then, after we receive our (pretend) data, let's dispatch our
-<code>receivedData()</code> action, passing in this data. And that's it! Now you know how to handle asynchronous actions
-in Redux. Everything else continues to behave as before.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>Write both dispatches in the <code>handleAsync()</code> action creator. Dispatch <code>requestingData()</code> before the <code>setTimeout()</code> (the simulated API call). Then, after you receive the (pretend) data, dispatch the <code>receivedData()</code> action, passing in this data. Now you know how to handle asynchronous actions in Redux. Everything else continues to behave as before.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
@@ -47,11 +36,13 @@ const receivedData = (data) => { return {type: RECEIVED_DATA, users: data.users}
 const handleAsync = () => {
 	return function(dispatch) {
 		// dispatch request action here
+
 		setTimeout(function() {
 			let data = {
 				users: ['Jeff', 'William', 'Alice']
 			}
 			// dispatch received data action here
+      
 		}, 2500);
 	}
 };
@@ -134,12 +125,12 @@ const store = Redux.createStore(
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your code was transpiled successfully.';
-	const error_1 = 'The requestingData action creator returns an object of type equal to the value of REQUESTING_DATA.';
-	const error_2 = 'The receivedData action creator returns an object of type equal to the value of RECEIVED_DATA.';
-	const error_3 = 'asyncDataReducer is a function.';
-	const error_4 = 'Dispatching the requestingData action creator updates the store\'s state property of fetching to true.';
-	const error_5 = 'Dispatching handleAsync dispatches the data request action and then dispatches the received data action after a delay.';
+	const error_0 = 'Your code should transpile successfully.';
+	const error_1 = 'The requestingData action creator should return an object of type equal to the value of REQUESTING_DATA.';
+	const error_2 = 'The receivedData action creator should return an object of type equal to the value of RECEIVED_DATA.';
+	const error_3 = 'asyncDataReducer should be a function.';
+	const error_4 = 'Dispatching the requestingData action creator should update the store\'s state property of fetching to true.';
+	const error_5 = 'Dispatching handleAsync should dispatch the data request action and then dispatch the received data action after a delay.';
 
 	let testResults = [
 		{
@@ -177,12 +168,12 @@ export const executeTests = (code) => {
 	let es5, reduxCode, passed = true;
 	let REQUESTING_DATA, RECEIVED_DATA, requestingData, receivedData, handleAsync, asyncDataReducer, store;
 
-	// this code hijacks the user input to create an IIFE 
+	// this code hijacks the user input to create an IIFE
 	// which returns the store from Redux as an object
 	// or whatever you need from the client code
 	const prepend = `(function() {`
 	const apend = `;\n
-		return { 
+		return {
 			REQUESTING_DATA,
 			RECEIVED_DATA,
 			requestingData,
@@ -193,7 +184,7 @@ export const executeTests = (code) => {
 		})()`
 	const modifiedCode = prepend.concat(code).concat(apend);
 	const shortenedTimeout = modifiedCode.replace('2500', '250');
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(shortenedTimeout, { presets: [ 'es2015', 'react' ] }).code;
@@ -207,7 +198,7 @@ export const executeTests = (code) => {
 	// now you can access the redux store methods
 	try {
 		reduxCode = eval(es5);
-		
+
 		REQUESTING_DATA = reduxCode.REQUESTING_DATA;
 		RECEIVED_DATA = reduxCode.RECEIVED_DATA;
 		requestingData = reduxCode.requestingData;
@@ -253,13 +244,13 @@ export const executeTests = (code) => {
 		const initialState = store.getState();
 		store.dispatch(requestingData());
 		const reqState = store.getState();
-		
+
 		assert(
 			initialState.fetching === false &&
 			reqState.fetching === true,
 			error_4
 		);
-		
+
 		testResults[4].status = true;
 	} catch (err) {
 		passed = false;
@@ -276,18 +267,18 @@ export const executeTests = (code) => {
 			noWhiteSpace.includes('dispatch(receivedData(data))') === true,
 			error_5
 		);
-		
+
 		testResults[5].status = true;
 	} catch (err) {
 		passed = false;
 		testResults[5].status = false;
-	}	
+	}
 
 	return {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // liveRender modifies console.log in user input and returns message data -----------------------
@@ -297,14 +288,14 @@ export const liveRender = (code) => {
 	// console.log statements as a message array to be
 	// displayed on the client UI
 	const prepend = `
-	(function() { 
+	(function() {
 		let __Custom__Log = []
 		const message = (msg) => __Custom__Log.push(msg);
 	`
 	const apend = `;\n return __Custom__Log })();`
 	const consoleReplaced = code.replace(/console.log/g, 'message');
 	const hijackedCode = prepend.concat(consoleReplaced).concat(apend);
-	
+
 	let evaluatedCode;
 	try {
 		evaluatedCode = eval(hijackedCode);

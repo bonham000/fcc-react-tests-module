@@ -11,21 +11,10 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Write a Counter with Redux`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>Now you've learned all the core principles of Redux!
-You've seen how to create actions and action creators, create a Redux store, dispatch your actions against the store, and
-design state updates with pure reducers. You've even seen how to manage complex state with reducer composition and handle
-asynchronous actions. These examples are simplistic and it may not seem like we've covered that much, but these are the
-core principles of Redux and if you understand them well you're ready to start building your own Redux app. Next we will
-move on to cover some details regarding <code>state</code> immutability, but first lets review everything we've learned
-so far.`
+export const challengeText = `<span class = 'default'>Intro: </span>Now you've learned all the core principles of Redux! You've seen how to create actions and action creators, create a Redux store, dispatch your actions against the store, and design state updates with pure reducers. You've even seen how to manage complex state with reducer composition and handle asynchronous actions. These examples are simplistic, but these concepts are the core principles of Redux. If you understand them well, you're ready to start building your own Redux app. The next challenges cover some of the details regarding <code>state</code> immutability, but first, here's a review of everything you've learned so far.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>In this lesson, we'll try to implement
-a simple counter with Redux from scratch. We've defined the basics but you'll have to fill in the details! Use the names we've
-provided and define <code>incAction</code> and <code>decAction</code> action creators, the <code>counterReducer()</code>,
-<code>INCREMENT</code> and <code>DECREMENT</code> action types, and finally the Redux <code>store</code>. Once you're
-finished you should be able to dispatch <code>INCREMENT</code> or <code>DECREMENT</code> actions to increment or
-decrement the state held in the <code>store</code>. Good luck building your first Redux app!`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>In this lesson, you'll implement a simple counter with Redux from scratch. The basics are provided in the code editor, but you'll have to fill in the details! Use the names that are provided and define <code>incAction</code> and <code>decAction</code> action creators, the <code>counterReducer()</code>, <code>INCREMENT</code> and <code>DECREMENT</code> action types, and finally the Redux <code>store</code>. Once you're finished you should be able to dispatch <code>INCREMENT</code> or <code>DECREMENT</code> actions to increment or decrement the state held in the <code>store</code>. Good luck building your first Redux app!`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
@@ -74,13 +63,13 @@ const store = Redux.createStore(counterReducer);`
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your code was transpiled successfully.';
-	const error_1 = 'The action creator incAction returns an action object with type equal to the value of INCREMENT';
-	const error_2 = 'The action creator decAction returns an action object with type equal to the value of DECREMENT';
-	const error_3 = 'The Redux store is initialized with a state of 0.';
-	const error_4 = 'Dispatching incAction on the Redux store increments the state by 1.';
-	const error_5 = 'Dispatching decAction on the Redux store decrements the state by 1.';
-	const error_6 = 'counterReducer is a function.';
+	const error_0 = 'Your code should transpile successfully.';
+	const error_1 = 'The action creator incAction should return an action object with type equal to the value of INCREMENT';
+	const error_2 = 'The action creator decAction should return an action object with type equal to the value of DECREMENT';
+	const error_3 = 'The Redux store should initialize with a state of 0.';
+	const error_4 = 'Dispatching incAction on the Redux store should increment the state by 1.';
+	const error_5 = 'Dispatching decAction on the Redux store should decrement the state by 1.';
+	const error_6 = 'counterReducer should be a function.';
 
 	let testResults = [
 		{
@@ -123,13 +112,13 @@ export const executeTests = (code) => {
 	let es5, reduxCode, passed = true;
 	let INCREMENT, DECREMENT, counterReducer, incAction, decAction, store;
 
-	// this code hijacks the user input to create an IIFE 
+	// this code hijacks the user input to create an IIFE
 	// which returns the store from Redux as an object
 	// or whatever you need from the client code
 	const prepend = `(function() {`
 	const apend = `;\n return { INCREMENT, DECREMENT, counterReducer, incAction, decAction, store } })()`
 	const modifiedCode = prepend.concat(code).concat(apend);
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
@@ -143,7 +132,7 @@ export const executeTests = (code) => {
 	// now you can access the redux store methods
 	try {
 		reduxCode = eval(es5);
-		
+
 		INCREMENT = reduxCode.INCREMENT;
 		DECREMENT = reduxCode.DECREMENT;
 		counterReducer = reduxCode.counterReducer;
@@ -215,13 +204,13 @@ export const executeTests = (code) => {
 	} catch (err) {
 		passed = false;
 		testResults[6].status = false;
-	}	
+	}
 
 	return {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // liveRender modifies console.log in user input and returns message data -----------------------
@@ -231,14 +220,14 @@ export const liveRender = (code) => {
 	// console.log statements as a message array to be
 	// displayed on the client UI
 	const prepend = `
-	(function() { 
+	(function() {
 		let __Custom__Log = []
 		const message = (msg) => __Custom__Log.push(msg);
 	`
 	const apend = `;\n return __Custom__Log })();`
 	const consoleReplaced = code.replace(/console.log/g, 'message');
 	const hijackedCode = prepend.concat(consoleReplaced).concat(apend);
-	
+
 	let evaluatedCode;
 	try {
 		evaluatedCode = eval(hijackedCode);
