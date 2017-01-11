@@ -13,22 +13,19 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Manage State Locally First`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>Here we will finish creating our DisplayMessages component.`
+export const challengeText = `<span class = 'default'>Intro: </span>Here you'll finish creating the <code>DisplayMessages</code> component.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>First, in the <code>render()</code> method, have the
-component render an <code>input</code> element, <code>button</code> element, and <code>ul</code> element. The <code>input</code> element
-should update changes to a <code>handleChange()</code> method and render the value of <code>input</code> in the component's state.
-The button should trigger a <code>submitMessage()</code> method when clicked.<br><br>
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>First, in the <code>render()</code> method, have the component render an <code>input</code> element, <code>button</code> element, and <code>ul</code> element. The <code>input</code> element should update changes to a <code>handleChange()</code> method and render the value of <code>input</code> that's in the component's state. The button should trigger a <code>submitMessage()</code> method when clicked.
+<br><br>
 
-Second, write these two methods. The <code>handleChange()</code> method simply needs to update the <code>input</code> with what the user is
-typing and the <code>submitMessage()</code> method should concatenate the current message stored in <code>state</code>
-to the <code>messages</code> array in local state, and clear the value of the <code>input</code>.<br><br>
+Second, write these two methods. The <code>handleChange()</code> method should update the <code>input</code> with what the user is typing. The <code>submitMessage()</code> method should concatenate the current message stored in <code>state</code> to the <code>messages</code> array in local state, and clear the value of the <code>input</code>.
+<br><br>
 
 Finally, use the <code>ul</code> to map over the array of <code>messages</code> and render it to the screen as a list of <code>li</code> elements.`
 
 // ---------------------------- define challenge seed code ----------------------------
-export const seedCode = 
+export const seedCode =
 `class DisplayMessages extends React.Component {
 	constructor(props) {
 		super(props);
@@ -39,7 +36,6 @@ export const seedCode =
 	}
   // add handleChange() and submitMessage() methods here
 
-  // change code above this line
   render() {
     return (
     	<div>
@@ -99,13 +95,13 @@ export const solutionCode =
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
-	const error_1 = 'The DisplayMessages component is initialzed with a state equal to {input: \'\', messages: []}';
-	const error_2 = 'The DisplayMessages component renders a div containing an h2 element, button element, and ul element.';
-	const error_3 = 'The input element renders the value of input in local state.';
-	const error_4 = 'Calling the method handleChange updates the input value in state to the user\'s input.';
-	const error_5 = 'Calling the method submitMessage adds the user\'s input to the messages array in state.';
-	const error_6 = 'Calling the method submitMessage clears the user\'s input.';
+	const error_0 = 'Your JSX code should transpile successfully.';
+	const error_1 = 'The DisplayMessages component should initialize with a state equal to {input: \'\', messages: []}';
+	const error_2 = 'The DisplayMessages component should render a div containing an h2 element, button element, and ul element.';
+	const error_3 = 'The input element should render the value of input in local state.';
+	const error_4 = 'Calling the method handleChange should update the input value in state to the user\'s input.';
+	const error_5 = 'Calling the method submitMessage should add the user\'s input to the messages array in state.';
+	const error_6 = 'Calling the method submitMessage should clear the user\'s input.';
 
 	let testResults = [
 		{
@@ -149,10 +145,10 @@ export const executeTests = (code) => {
 
 	// this applies an export to the user's code so
 	// we can access their component here for tests
-	
+
 	const exportScript = '\n export default DisplayMessages'
 	const modifiedCode = code.concat(exportScript);
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
@@ -161,7 +157,7 @@ export const executeTests = (code) => {
 		passed = false;
 		testResults[0].status = false;
 	}
-	
+
 	// now we will try to shallow render the component with Enzyme's shallow method
 	// you can also use mount to perform a full render to the DOM environment
 	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
@@ -206,7 +202,7 @@ export const executeTests = (code) => {
 		testResults[2].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[2].status = false;		
+		testResults[2].status = false;
 	}
 
 	// test 3:
@@ -220,8 +216,8 @@ export const executeTests = (code) => {
 		testResults[3].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[3].status = false;		
-	}	
+		testResults[3].status = false;
+	}
 
 	// test 4:
 	try {
@@ -277,13 +273,13 @@ export const executeTests = (code) => {
 	} catch (err) {
 		passed = false;
 		testResults[6].status = false;
-	}	
+	}
 
 	return {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // ---------------------------- define live render function ----------------------------

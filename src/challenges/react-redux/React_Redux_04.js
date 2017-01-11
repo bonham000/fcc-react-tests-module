@@ -13,13 +13,10 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Use Provider to Connect Redux to React`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>Now that we've created a Redux store to handle our messages array
-and created actions for adding new messages we will learn how we can provide React access to the Redux store and the actions it will need
-to dispatch updates. Here we will begin to use the <code>react-redux</code> package. React Redux provides a small API with two key features:
-<code>Provider</code> and <code>connect</code>. We will learn about the <code>Provider</code> here. The <code>Provider</code> is a wrapper
-component from React Redux which we will wrap our React app with. This wrapper then allows us to access the Redux <code>store</code> and
-<code>dispatch</code> functions throughout our component tree. <code>Provider</code> takes two props, the Redux store and the child components
-of your app. Defining the <code>Provider</code> for an App component might look like this:<br>
+export const challengeText = `<span class = 'default'>Intro: </span>You created a Redux store to handle the messages array and created actions for adding new messages in the last challenge. You'll need to provide React access to the Redux store and the actions it needs to dispatch updates. React Redux provides its <code>react-redux</code> package to help accomplish these tasks.
+<br><br>
+
+React Redux provides a small API with two key features: <code>Provider</code> and <code>connect</code>. Another challenge covers <code>connect</code>. The <code>Provider</code> is a wrapper component from React Redux that wraps your React app. This wrapper then allows you to access the Redux <code>store</code> and <code>dispatch</code> functions throughout your component tree. <code>Provider</code> takes two props, the Redux store and the child components of your app. Defining the <code>Provider</code> for an App component might look like this:<br>
 
 <pre>
 <code class="codeBlock">&lt;Provider store={store}&gt;
@@ -28,17 +25,14 @@ of your app. Defining the <code>Provider</code> for an App component might look 
 </pre>`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>There's a lot of code in the editor now but don't worry
-you've written it all already! We've included our Redux store, actions, and our <code>DisplayMessages</code> component from earlier. The only thing new
-is the <code>AppWrapper</code> component at the bottom. We will use this top level component to render the <code>Provider</code>
-from <code>ReactRedux</code>. Do this, passing the Redux store as a prop, and then render the <code>DisplayMessages</code> component as a child. Once you are
-finished you should see your React component rendered to the page. Nice!<br><br>
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>There's a lot of code in the editor, but don't worry, you've written it all already! It includes the Redux store, actions, and the <code>DisplayMessages</code> component from earlier. The only new piece is the <code>AppWrapper</code> component at the bottom. Use this top level component to render the <code>Provider</code> from <code>ReactRedux</code>, and pass the Redux store as a prop. Then render the <code>DisplayMessages</code> component as a child. Once you are
+finished, you should see your React component rendered to the page.
+<br><br>
 
-Note: Because we are providing React Redux as a global variable here, we can access the Provider with dot notation. We do this and set it to
-a constant <code>Provider</code> for you to use.`
+<strong>Note</strong><br>Because React Redux is available as a global variable here, you can access the Provider with dot notation. The code in the editor takes advantage of this and sets it to a constant <code>Provider</code> for you to use in the <code>AppWrapper</code> render method.`
 
 // ---------------------------- define challenge seed code ----------------------------
-export const seedCode = 
+export const seedCode =
 `// Redux Code:
 const ADD = 'ADD';
 
@@ -195,11 +189,11 @@ class AppWrapper extends React.Component {
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
-	const error_1 = 'The AppWrapper is rendered.';
-	const error_2 = 'The Provider wrapper component is passed a prop of store equal to the Redux store.';
-	const error_3 = 'DisplayMessages is rendered as a child of AppWrapper.';
-	const error_4 = 'The DisplayMessages component renders an h2, input, button, and ul element.';
+	const error_0 = 'Your JSX code should transpile successfully.';
+	const error_1 = 'The AppWrapper should render.';
+	const error_2 = 'The Provider wrapper component should have a prop of store passed to it, equal to the Redux store.';
+	const error_3 = 'DisplayMessages should render as a child of AppWrapper.';
+	const error_4 = 'The DisplayMessages component should render an h2, input, button, and ul element.';
 
 	let testResults = [
 		{
@@ -233,12 +227,12 @@ export const executeTests = (code) => {
 
 	// this applies an export to the user's code so
 	// we can access their component here for tests
-	
+
 	const exportScript = '\n export default AppWrapper'
 	const modifiedCode = code.concat(exportScript);
 
 	console.log(modifiedCode);
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
@@ -247,7 +241,7 @@ export const executeTests = (code) => {
 		passed = false;
 		testResults[0].status = false;
 	}
-	
+
 	// now we will try to shallow render the component with Enzyme's shallow method
 	// you can also use mount to perform a full render to the DOM environment
 	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
@@ -278,7 +272,7 @@ export const executeTests = (code) => {
 		testResults[2].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[2].status = false;		
+		testResults[2].status = false;
 	}
 
 	// test 3:
@@ -311,14 +305,14 @@ export const executeTests = (code) => {
 		testResults[4].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[4].status = false;		
-	}	
+		testResults[4].status = false;
+	}
 
 	return {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // ---------------------------- define live render function ----------------------------
