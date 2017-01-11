@@ -11,20 +11,17 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Extract State Logic to Redux`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>Now that our React component is finished we will extract the logic
-we are performing locally in its <code>state</code> into Redux. This is the first step we will make to connect our simple React app to
-Redux. We are keeping things simple here so our app will only have the functionality to add new messages the user inputs in order to
-demonstrate how React and Redux work together.`
+export const challengeText = `<span class = 'default'>Intro: </span>Now that the React component is finished, you'll move the logic it's performing locally in its <code>state</code> into Redux. This is the first step to connect the simple React app to Redux. This example is simple in order to demonstrate how React and Redux work together. The only functionality it has is to add new messages that the user inputs.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>Start by defining an action type 'ADD' and set it to a
-const <code>ADD</code>. Then define an action creator <code>addMessage()</code> which creates this action to add a message. You will need
-to pass in a <code>message</code> to this action creator and include this message in the returned <code>action</code>. Then create a reducer
-called <code>messageReducer()</code> that handles the state for our messages. This reducer can just add a message to the array of messages held
-in state or return the current state. Finally, create your Redux store, initialize its state to equal an empty array, and pass it the reducer.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>First, define an action type 'ADD' and set it to a const <code>ADD</code>. Next, define an action creator <code>addMessage()</code> which creates the action to add a message. You will need
+to pass in a <code>message</code> to this action creator and include this message in the returned <code>action</code>.
+<br><br>
+
+Then create a reducer called <code>messageReducer()</code> that handles the state for the messages. This reducer can just add a message to the array of messages held in state, or return the current state. Finally, create your Redux store, initialize its state to equal an empty array, and pass it the reducer.`
 
 // ---------------------------- define challenge seed code ----------------------------
-export const seedCode = 
+export const seedCode =
 `// define ADD, addMessage(), messageReducer(), and store here:`
 
 // ---------------------------- define challenge solution code ----------------------------
@@ -53,13 +50,13 @@ const store = Redux.createStore(messageReducer);`
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your code was transpiled successfully.';
-	const error_1 = 'The const ADD exists and holds a value equal to the string \'ADD\'';
-	const error_2 = 'The action creator addMessage returns an object with type equal to ADD and message equal to the message that is passed in.';
-	const error_3 = 'messageReducer is a function.';
-	const error_4 = 'The store exists and has an initial state set to an empty array.';
-	const error_5 = 'Dispatching addMessage against the store adds a new message to the array of messages held in state.';
-	const error_6 = 'The messageReducer returns the current state if called with any other actions.';
+	const error_0 = 'Your code should transpile successfully.';
+	const error_1 = 'The const ADD should exist and hold a value equal to the string \'ADD\'';
+	const error_2 = 'The action creator addMessage should return an object with type equal to ADD and message equal to the message that is passed in.';
+	const error_3 = 'messageReducer should be a function.';
+	const error_4 = 'The store should exist and have an initial state set to an empty array.';
+	const error_5 = 'Dispatching addMessage against the store should add a new message to the array of messages held in state.';
+	const error_6 = 'The messageReducer should return the current state if called with any other actions.';
 
 	let testResults = [
 		{
@@ -102,7 +99,7 @@ export const executeTests = (code) => {
 	let es5, reduxCode, passed = true;
 	let ADD, addMessage, messageReducer, store;
 
-	// this code hijacks the user input to create an IIFE 
+	// this code hijacks the user input to create an IIFE
 	// which returns the store from Redux as an object
 	// or whatever you need from the client code
 	const prepend = `(function() {`
@@ -132,7 +129,7 @@ export const executeTests = (code) => {
 		passed = false;
 	}
 
-	
+
 	// test 1:
 	try {
 		assert.strictEqual(ADD, 'ADD', error_1);
@@ -155,7 +152,7 @@ export const executeTests = (code) => {
 		testResults[2].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[2].status = false;		
+		testResults[2].status = false;
 	}
 
 	// test 3:
@@ -196,7 +193,7 @@ export const executeTests = (code) => {
 		testResults[5].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[5].status = false;		
+		testResults[5].status = false;
 	}
 
 	// test 6:
@@ -210,13 +207,13 @@ export const executeTests = (code) => {
 	} catch (err) {
 		passed = false;
 		testResults[6].status = false;
-	}	
+	}
 
 	return {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // liveRender modifies console.log in user input and returns message data -----------------------
@@ -226,14 +223,14 @@ export const liveRender = (code) => {
 	// console.log statements as a message array to be
 	// displayed on the client UI
 	const prepend = `
-	(function() { 
+	(function() {
 		let __Custom__Log = []
 		const message = (msg) => __Custom__Log.push(msg);
 	`
 	const apend = `; return __Custom__Log })();`
 	const consoleReplaced = code.replace(/console.log/g, 'message');
 	const hijackedCode = prepend.concat(consoleReplaced).concat(apend);
-	
+
 	let evaluatedCode;
 	try {
 		evaluatedCode = eval(hijackedCode);
