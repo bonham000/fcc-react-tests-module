@@ -165,8 +165,9 @@ export const executeTests = (code) => {
 		// propTypes unavailable in production and throw warnings anyway
 		// this was the only way I could devise to check that propTypes are included
 		const noWhiteSpace = modifiedCode.replace(/\s/g, '');
-		const verifyPropTypes = 'Camper.defaultProps={name:\'CamperBot\'}';
-		assert.strictEqual(noWhiteSpace.includes(verifyPropTypes), true, error_3);
+		const verify1 = 'Camper.defaultProps={name:\'CamperBot\'}';
+		const verify2 = 'Camper.defaultProps={name:"CamperBot"}';
+		assert.strictEqual(noWhiteSpace.includes(verify1) || noWhiteSpace.includes(verify2), true, error_3);
 		testResults[3].status = true;
 	} catch (err) {
 		passed = false;
