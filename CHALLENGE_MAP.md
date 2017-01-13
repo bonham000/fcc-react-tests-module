@@ -71,9 +71,9 @@
   - :white_check_mark: :blue_book: 43: Return null to Prevent Rendering
   - :white_check_mark: :blue_book: 44: Use a Ternary Expression for Conditional Rendering
   - :white_check_mark: :blue_book: 45: Render Conditionally from Props
-  - :pencil: 46: Change Inline CSS Conditionally Based on Component State
+  - :white_check_mark: :blue_book: 46: Change Inline CSS Conditionally Based on Component State
   - :white_check_mark: :blue_book: 47: Use Array.map() to Dynamically Render Elements
-  - :blue_book: 48: Give Sibling Elements a Unique Key Attribute
+  - :white_check_mark: :blue_book: 48: Give Sibling Elements a Unique Key Attribute
   - :white_check_mark: :blue_book: 49: Use Array.filter() to Dynamically Filter an Array
   - :white_check_mark: :blue_book: 50: Render React on the Server with renderToString
 
@@ -83,27 +83,27 @@
 
 - **Basic Redux: Store, Actions, & Reducers**
 
-  - :blue_book: 1: Create a Redux Store
-  - :blue_book: 2: Get the State of the Redux Store
-  - :blue_book: 3: Define a Redux Action
-  - :blue_book: 4: Define an Action Creator
-  - :blue_book: 5: Dispatch an Action Event
-  - :blue_book: 6: Handle an Action in the Store
-  - :blue_book: 7: Use a Switch Statement to Handle Multiple Actions
-  - :blue_book: 8: Use const for Action Types
-  - :blue_book: 9: Register a Store Listener
-  - :blue_book: 10: Combine Multiple Reducers
-  - :blue_book: 11: Send Action Data to the Store
-  - :blue_book: 12: Use Middleware to Handle Asynchronous Actions *(Async testing... hacked with regex of course)*
-  - :blue_book: 13: Write a Counter with Redux
+  - :white_check_mark: :blue_book: 1: Create a Redux Store
+  - :white_check_mark: :blue_book: 2: Get the State of the Redux Store
+  - :white_check_mark: :blue_book: 3: Define a Redux Action
+  - :white_check_mark: :blue_book: 4: Define an Action Creator
+  - :white_check_mark: :blue_book: 5: Dispatch an Action Event
+  - :white_check_mark: :blue_book: 6: Handle an Action in the Store
+  - :white_check_mark: :blue_book: 7: Use a Switch Statement to Handle Multiple Actions
+  - :white_check_mark: :blue_book: 8: Use const for Action Types
+  - :white_check_mark: :blue_book: 9: Register a Store Listener
+  - :white_check_mark: :blue_book: 10: Combine Multiple Reducers
+  - :white_check_mark: :blue_book: 11: Send Action Data to the Store
+  - :white_check_mark: :blue_book: 12: Use Middleware to Handle Asynchronous Actions *(Async testing... hacked with regex of course)*
+  - :white_check_mark: :blue_book: 13: Write a Counter with Redux
 
 - **Enforcing State Immutability**
 
-  - :blue_book: 14: Never Mutate State
-  - :blue_book: 15: Use the Spread Operator on Arrays
-  - :blue_book: 16: Remove an Item from an Array
-  - :blue_book: 17: Copy an Object with Object.assign
-  - :blue_book: 18: Use the ES6 Spread Operator with Objects
+  - :white_check_mark: :blue_book: 14: Never Mutate State
+  - :white_check_mark: :blue_book: 15: Use the Spread Operator on Arrays
+  - :white_check_mark: :blue_book: 16: Remove an Item from an Array
+  - :white_check_mark: :blue_book: 17: Copy an Object with Object.assign
+  - :white_check_mark: :blue_book: 18: Use the ES6 Spread Operator with Objects
 
 ---
 
@@ -111,13 +111,13 @@
 
 - **Use `react-redux` to Manage a List of Messages**
 
-  - :blue_book: 1: Getting Started with React Redux
-  - :blue_book: 2: Manage State Locally First
-  - :blue_book: 3: Extract State Logic to Redux
-  - :blue_book: 4: Use Provider to Connect Redux to React
-  - :blue_book: 5: Map State to Props
-  - :blue_book: 6: Map Dispatch to Props
-  - :blue_book: 7: Connect Redux to React
-  - :blue_book: 8: Connect Redux to the Messages App
-  - :blue_book: 9: Extract Local State into Redux
-  - :blue_book: 10: Moving Forward From Here
+  - :white_check_mark: :blue_book: 1: Getting Started with React Redux
+  - :white_check_mark: :blue_book: 2: Manage State Locally First
+  - :white_check_mark: :blue_book: 3: Extract State Logic to Redux
+  - :white_check_mark: :blue_book: 4: Use Provider to Connect Redux to React
+  - :white_check_mark: :blue_book: 5: Map State to Props
+  - :white_check_mark: :blue_book: 6: Map Dispatch to Props
+  - :white_check_mark: :blue_book: 7: Connect Redux to React
+  - :white_check_mark: :blue_book: 8: Connect Redux to the Messages App
+  - :white_check_mark: :blue_book: 9: Extract Local State into Redux
+  - :white_check_mark: :blue_book: 10: Moving Forward From Here
