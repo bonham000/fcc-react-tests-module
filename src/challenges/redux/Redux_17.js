@@ -2,10 +2,8 @@
 import assert from 'assert'
 import { transform } from 'babel-standalone'
 
-// snippet for defining HTML: <code>&#60;div /&#62</code>
-
 // SET TO TRUE WHEN QA IS COMPLETE:
-export const QA = false;
+export const QA = true;
 
 // ---------------------------- define challenge title ----------------------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Copy an Object with Object.assign`

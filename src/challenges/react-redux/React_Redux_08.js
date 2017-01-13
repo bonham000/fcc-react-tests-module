@@ -4,10 +4,8 @@ import assert from 'assert'
 import { mount } from 'enzyme'
 import { transform } from 'babel-standalone'
 
-// snippet for defining HTML: <code>&lt;div /&gt;</code>
-
 // SET TO TRUE WHEN QA IS COMPLETE:
-export const QA = false;
+export const QA = true;
 
 // ---------------------------- define challenge title ----------------------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Connect Redux to the Messages App`
