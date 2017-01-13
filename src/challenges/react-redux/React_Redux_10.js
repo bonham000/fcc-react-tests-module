@@ -11,24 +11,20 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Moving Forward From Here`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>Congratulations! You've finished the lessons on
-React and Redux. One more thing before moving on. You typically won't be writing React apps in a code editor like this.
-In this lesson we've provided a glimpse of what the syntax looks like if you're working with npm and a file system on your 
-own machine. Aside from the use of <code>import</code> statements which we use to pull in all of the dependencies that we've
-been providing as global objects here, everything else should look pretty similar. Take a look at the code and see if you
-can follow what's going on.<br><br>
+export const challengeText = `<span class = 'default'>Intro: </span>Congratulations! You finished the lessons on React and Redux. There's one last item worth pointing out before you move on. Typically, you won't write React apps in a code editor like this. This challenge gives you a glimpse of what the syntax looks like if you're working with npm and a file system on your own machine. The code should look similar, except for the use of <code>import</code> statements (these pull in all of the dependencies that have been provided for you in the challenges). The "Managing Packages with npm" section covers npm in more detail.
+<br><br>
 
-Finally, writing React and Redux code tends to require some configuration. This can tend to get complicated quickly. If
-you are interested in experimenting on your own machine, we recommend
+Finally, writing React and Redux code generally requires some configuration. This can get complicated quickly. If you are interested in experimenting on your own machine, the
 
-<a id='CRA' target ='_blank' href='https://github.com/facebookincubator/create-react-app'>Create React App</a>
+<a id='CRA' target ='_blank' href='https://github.com/facebookincubator/create-react-app'>Create React App </a>
 
-which comes configured and ready to go out of the box. You can also enable Babel as a JavaScript Preprocessor in CodePen, add
-React and ReactDOM as external JavaScript resources, and work there as well. Congratulations on making it this far, you've learned a lot!`
+comes configured and ready to go.
+<br><br>
+
+Alternatively, you can enable Babel as a JavaScript Preprocessor in CodePen, add React and ReactDOM as external JavaScript resources, and work there as well.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>Log the message 
-<code>'Now I know React and Redux!'</code> to the console somewhere in the code. Nice work!`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>Log the message <code>'Now I know React and Redux!'</code> to the console.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
@@ -51,7 +47,10 @@ ReactDOM.render(
 		<App/>
 	</Provider>,
 	document.getElementById('root')
-);`
+);
+
+// change code below this line
+`
 
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode =
@@ -82,7 +81,7 @@ console.log('Now I know React and Redux!');`
 
 export const executeTests = (code) => {
 
-	const error_0 = 'The message \'Now I know React and Redux!\' is logged to the console.';
+	const error_0 = 'The message \'Now I know React and Redux!\' should be logged to the console.';
 
 	let testResults = [
 		{
@@ -93,7 +92,7 @@ export const executeTests = (code) => {
 	];
 
 	let passed = true;
-	
+
 	// test 1:
 	try {
 		assert.strictEqual(code.includes('console.log(\'Now I know React and Redux!\')'), true, error_0);
@@ -107,7 +106,7 @@ export const executeTests = (code) => {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // liveRender modifies console.log in user input and returns message data -----------------------

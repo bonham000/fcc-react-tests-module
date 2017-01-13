@@ -118,7 +118,6 @@
   - :blue_book: 5: Map State to Props
   - :blue_book: 6: Map Dispatch to Props
   - :blue_book: 7: Connect Redux to React
-  - :blue_book: 8: Connect Redux to our Messages App
+  - :blue_book: 8: Connect Redux to the Messages App
   - :blue_book: 9: Extract Local State into Redux
   - :blue_book: 10: Moving Forward From Here
-

@@ -13,30 +13,16 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Extract Local State into Redux`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>Great work! We're almost done here. Let's recall that
-we wrote all this Redux code so that Redux could takeover the state management of our React messages app. Now that we have
-Redux connected we need to extract our state management out of the <code>Presentational</code> component and into Redux. Currently, 
-although we have Redux connected, we are still handling our state locally within the <code>Presentational</code> component. Let's
-extract this state into Redux now.`
+export const challengeText = `<span class = 'default'>Intro: </span>You're almost done! Recall that you wrote all the Redux code so that Redux could control the state management of your React messages app. Now that Redux is connected, you need to extract the state management out of the <code>Presentational</code> component and into Redux. Currently, you have Redux connected, but you are handling the state locally within the <code>Presentational</code> component.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>Let's inspect the <code>Presentational</code> component.
-First, let's get rid of the <code>messages</code> property in the local <code>state</code>. These messages will now be
-managed by Redux. Next, modify the <code>submitMessage()</code> method so that we dispatch <code>submitNewMessage()</code>
-from <code>this.props</code>, passing in the current message input from local <code>state</code>. Because we've removed
-<code>messages</code> from local state, we can remove it from the call to <code>this.setState()</code> here as well. Finally,
-we just have to modify our <code>render()</code> method so that we map over the messages received from <code>props</code>
-rather than <code>state</code>.<br><br>
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>In the <code>Presentational</code> component, first, remove the <code>messages</code> property in the local <code>state</code>. These messages will be managed by Redux. Next, modify the <code>submitMessage()</code> method so that it dispatches <code>submitNewMessage()</code> from <code>this.props</code>, and pass in the current message input from local <code>state</code> as an argument. Because you removed <code>messages</code> from local state, remove the <code>messages</code> property from the call to <code>this.setState()</code> here as well. Finally, modify the <code>render()</code> method so that it maps over the messages received from <code>props</code> rather than <code>state</code>.
+<br><br>
 
-Once these changes are made the app will continue to function just the same except Redux is now managing our state for us.
-This example also illustrates how a component may have local <code>state</code>: our component is still tracking user input
-locally in its own <code>state</code>, while still maintaining app state globally with Redux. Moreover, you can now see how
-Redux provides a useful state management framework on top of React. We achieved the same result using only React's local state at first
-and this is usually possible with simple apps. However, as your apps become larger and more complex so does your state management and this
-is exactly the problem Redux solves for us.`
+Once these changes are made, the app will continue to function the same, except Redux manages the state. This example also illustrates how a component may have local <code>state</code>: your component still tracks user input locally in its own <code>state</code>. You can see how Redux provides a useful state management framework on top of React. You achieved the same result using only React's local state at first, and this is usually possible with simple apps. However, as your apps become larger and more complex, so does your state management, and this is the problem Redux solves.`
 
 // ---------------------------- define challenge seed code ----------------------------
-export const seedCode = 
+export const seedCode =
 `// Redux:
 const ADD = 'ADD';
 
@@ -109,7 +95,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return { 
+  return {
     submitNewMessage: (message) => {
       dispatch(addMessage(message))
     }
@@ -201,7 +187,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return { 
+  return {
     submitNewMessage: (message) => {
       dispatch(addMessage(message))
     }
@@ -224,16 +210,16 @@ class AppWrapper extends React.Component {
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
-	const error_1 = 'The AppWrapper is rendered to the page.';
-	const error_2 = 'The Presentational component is rendered to the page.';
-	const error_3 = 'The Presentational component renders an h2, input, button, and ul elements.';
-	const error_4 = 'The Presentational component receives messages from the Redux store as a prop.';
-	const error_5 = 'The Presentational component receives the submitMessage() action creator as a prop.';
-	const error_6 = 'The Presentational component\' state contains one property, \'input\', which is initialized to an empty string.';
-	const error_7 = 'Typing in the input element updates the state of the Presentational component.';
-	const error_8 = 'Dispatching the submitMessage() on the Presentational component updates Redux store and clears the input in local state.';
-	const error_9 = 'The Presentational component renders the messages from the Redux store.';
+	const error_0 = 'Your JSX code should transpile successfully.';
+	const error_1 = 'The AppWrapper should render to the page.';
+	const error_2 = 'The Presentational component should render to the page.';
+	const error_3 = 'The Presentational component should render an h2, input, button, and ul elements.';
+	const error_4 = 'The Presentational component should receive messages from the Redux store as a prop.';
+	const error_5 = 'The Presentational component should receive the submitMessage() action creator as a prop.';
+	const error_6 = 'The Presentational component\'s state should contain one property, \'input\', which is initialized to an empty string.';
+	const error_7 = 'Typing in the input element should update the state of the Presentational component.';
+	const error_8 = 'Dispatching the submitMessage() on the Presentational component should update Redux store and clear the input in local state.';
+	const error_9 = 'The Presentational component should render the messages from the Redux store.';
 
 	let testResults = [
 		{
@@ -292,10 +278,10 @@ export const executeTests = (code) => {
 
 	// this applies an export to the user's code so
 	// we can access their component here for tests
-	
+
 	const exportScript = '\n export default AppWrapper;'
 	const modifiedCode = code.concat(exportScript);
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
@@ -304,7 +290,7 @@ export const executeTests = (code) => {
 		passed = false;
 		testResults[0].status = false;
 	}
-	
+
 	// now we will try to shallow render the component with Enzyme's shallow method
 	// you can also use mount to perform a full render to the DOM environment
 	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
@@ -332,7 +318,7 @@ export const executeTests = (code) => {
 		testResults[2].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[2].status = false;		
+		testResults[2].status = false;
 	}
 
 	let PresentationalComponent, props;
@@ -340,7 +326,7 @@ export const executeTests = (code) => {
 	// test 3:
 	try {
 
-		PresentationalComponent = mockedComponent.find('Presentational');		
+		PresentationalComponent = mockedComponent.find('Presentational');
 		assert(
 			PresentationalComponent.find('div').length === 1 &&
 			PresentationalComponent.find('h2').length === 1 &&
@@ -419,7 +405,7 @@ export const executeTests = (code) => {
 			afterState.input === '',
 			error_8
 		);
-		
+
 		testResults[8].status = true;
 	} catch (err) {
 		passed = false;
@@ -452,7 +438,7 @@ export const executeTests = (code) => {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // ---------------------------- define live render function ----------------------------

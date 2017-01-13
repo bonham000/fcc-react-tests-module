@@ -10,29 +10,19 @@ import { transform } from 'babel-standalone'
 export const QA = false;
 
 // ---------------------------- define challenge title ----------------------------
-export const challengeTitle = `<span class = 'default'>Challenge: </span>Connect Redux to our Messages App`
+export const challengeTitle = `<span class = 'default'>Challenge: </span>Connect Redux to the Messages App`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>Now that we've learned how to use <code>connect</code> to
-connect React to Redux let's apply what we've learned to our React component that handles messages. Here we will connect
-Redux to this component.
+export const challengeText = `<span class = 'default'>Intro: </span>Now that you understand how to use <code>connect</code> to connect React to Redux, you can apply what you've learned to your React component that handles messages.
+<br><br>
 
-In the last lesson we called the component we were connecting <code>Presentational</code> and this wasn't arbitrary. This term
-<i>generally</i> refers to React components which are not directly connected to Redux. They are simply responsible
-for the presentation of UI and do this as a function of the props they receive. By contrast, container components are
-connected to Redux. These are typically responsible for dispatching actions to the store and will often pass store
-state to child components as props.`
+In the last lesson, the component you connected to Redux was named <code>Presentational</code>, and this wasn't arbitrary. This term <i>generally</i> refers to React components that are not directly connected to Redux. They are simply responsible for the presentation of UI and do this as a function of the props they receive. By contrast, container components are connected to Redux. These are typically responsible for dispatching actions to the store and often pass store state to child components as props.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>Here we've provided all the code we've
-been working on so far. The only change is that we've renamed our React component to <code>Presentational</code>. Create a new
-component called <code>Container</code> using <code>connect</code> to connect the <code>Presentational</code> component to Redux.
-Then, in the <code>AppWrapper</code>, render the React Redux <code>Provider</code> component, passing in our Redux
-<code>store</code> as a prop and <code>Container</code> as a child. Once everything is setup you will see our messages app
-rendered to the page again, awesome!`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>The code editor has all the code you've written in this section so far. The only change is that the React component is renamed to <code>Presentational</code>. Create a new component held in a constant called <code>Container</code> that uses <code>connect</code> to connect the <code>Presentational</code> component to Redux. Then, in the <code>AppWrapper</code>, render the React Redux <code>Provider</code> component. Pass <code>Provider</code> the Redux <code>store</code> as a prop and render <code>Container</code> as a child. Once everything is setup, you will see the messages app rendered to the page again.`
 
 // ---------------------------- define challenge seed code ----------------------------
-export const seedCode = 
+export const seedCode =
 `// Redux:
 const ADD = 'ADD';
 
@@ -96,13 +86,13 @@ class Presentational extends React.Component {
   }
 };
 
-// React-Redux: 
+// React-Redux:
 const mapStateToProps = (state) => {
   return { messages: state }
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return { 
+  return {
     submitNewMessage: (newMessage) => {
        dispatch(addMessage(newMessage))
     }
@@ -113,6 +103,7 @@ const Provider = ReactRedux.Provider;
 const connect = ReactRedux.connect;
 
 // define the Container component here:
+
 
 class AppWrapper extends React.Component {
 	constructor(props) {
@@ -191,13 +182,13 @@ class Presentational extends React.Component {
   }
 };
 
-// React-Redux: 
+// React-Redux:
 const mapStateToProps = (state) => {
   return { messages: state }
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return { 
+  return {
     submitNewMessage: (newMessage) => {
        dispatch(addMessage(newMessage))
     }
@@ -228,12 +219,12 @@ class AppWrapper extends React.Component {
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your JSX code was transpiled successfully.';
-	const error_1 = 'The AppWrapper is rendered to the page.';
-	const error_2 = 'The Presentational component is rendered to the page.';
-	const error_3 = 'The Presentational component renders an h2, input, button, and ul elements.';
-	const error_4 = 'The Presentational component receives messages from the Redux store as a prop.';
-	const error_5 = 'The Presentational component receives the submitMessage() action creator as a prop.';
+	const error_0 = 'Your JSX code should transpile successfully.';
+	const error_1 = 'The AppWrapper should render to the page.';
+	const error_2 = 'The Presentational component should render to the page.';
+	const error_3 = 'The Presentational component should render an h2, input, button, and ul elements.';
+	const error_4 = 'The Presentational component should receive messages from the Redux store as a prop.';
+	const error_5 = 'The Presentational component should receive the submitMessage() action creator as a prop.';
 
 	let testResults = [
 		{
@@ -272,10 +263,10 @@ export const executeTests = (code) => {
 
 	// this applies an export to the user's code so
 	// we can access their component here for tests
-	
+
 	const exportScript = '\n export default AppWrapper'
 	const modifiedCode = code.concat(exportScript);
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
@@ -284,7 +275,7 @@ export const executeTests = (code) => {
 		passed = false;
 		testResults[0].status = false;
 	}
-	
+
 	// now we will try to shallow render the component with Enzyme's shallow method
 	// you can also use mount to perform a full render to the DOM environment
 	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
@@ -312,7 +303,7 @@ export const executeTests = (code) => {
 		testResults[2].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[2].status = false;		
+		testResults[2].status = false;
 	}
 
 	let PresentationalComponent, props;
@@ -320,7 +311,7 @@ export const executeTests = (code) => {
 	// test 3:
 	try {
 
-		PresentationalComponent = mockedComponent.find('Presentational');		
+		PresentationalComponent = mockedComponent.find('Presentational');
 		assert(
 			PresentationalComponent.find('div').length === 1 &&
 			PresentationalComponent.find('h2').length === 1 &&
@@ -358,7 +349,7 @@ export const executeTests = (code) => {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // ---------------------------- define live render function ----------------------------

@@ -11,18 +11,19 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Extract State Logic to Redux`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>Now that the React component is finished, you'll move the logic it's performing locally in its <code>state</code> into Redux. This is the first step to connect the simple React app to Redux. This example is simple in order to demonstrate how React and Redux work together. The only functionality it has is to add new messages that the user inputs.`
+export const challengeText = `<span class = 'default'>Intro: </span>Now that you finished the React component, you need to move the logic it's performing locally in its <code>state</code> into Redux. This is the first step to connect the simple React app to Redux. The only functionality your app has is to add new messages from the user to an unordered list. The example is simple in order to demonstrate how React and Redux work together.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>First, define an action type 'ADD' and set it to a const <code>ADD</code>. Next, define an action creator <code>addMessage()</code> which creates the action to add a message. You will need
-to pass in a <code>message</code> to this action creator and include this message in the returned <code>action</code>.
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>First, define an action type 'ADD' and set it to a const <code>ADD</code>. Next, define an action creator <code>addMessage()</code> which creates the action to add a message. You'll need
+to pass a <code>message</code> to this action creator and include the message in the returned <code>action</code>.
 <br><br>
 
-Then create a reducer called <code>messageReducer()</code> that handles the state for the messages. This reducer can just add a message to the array of messages held in state, or return the current state. Finally, create your Redux store, initialize its state to equal an empty array, and pass it the reducer.`
+Then create a reducer called <code>messageReducer()</code> that handles the state for the messages. The initial state should equal an empty array. This reducer should add a message to the array of messages held in state, or return the current state. Finally, create your Redux store and pass it the reducer.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
-`// define ADD, addMessage(), messageReducer(), and store here:`
+`// define ADD, addMessage(), messageReducer(), and store here:
+`
 
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode =
