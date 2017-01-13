@@ -13,7 +13,7 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Use Provider to Connect Redux to React`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>You created a Redux store to handle the messages array and created actions for adding new messages in the last challenge. You'll need to provide React access to the Redux store and the actions it needs to dispatch updates. React Redux provides its <code>react-redux</code> package to help accomplish these tasks.
+export const challengeText = `<span class = 'default'>Intro: </span>In the last challenge, you created a Redux store to handle the messages array and created actions for adding new messages. The next step is to provide React access to the Redux store and the actions it needs to dispatch updates. React Redux provides its <code>react-redux</code> package to help accomplish these tasks.
 <br><br>
 
 React Redux provides a small API with two key features: <code>Provider</code> and <code>connect</code>. Another challenge covers <code>connect</code>. The <code>Provider</code> is a wrapper component from React Redux that wraps your React app. This wrapper then allows you to access the Redux <code>store</code> and <code>dispatch</code> functions throughout your component tree. <code>Provider</code> takes two props, the Redux store and the child components of your app. Defining the <code>Provider</code> for an App component might look like this:<br>
@@ -25,11 +25,11 @@ React Redux provides a small API with two key features: <code>Provider</code> an
 </pre>`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>There's a lot of code in the editor, but don't worry, you've written it all already! It includes the Redux store, actions, and the <code>DisplayMessages</code> component from earlier. The only new piece is the <code>AppWrapper</code> component at the bottom. Use this top level component to render the <code>Provider</code> from <code>ReactRedux</code>, and pass the Redux store as a prop. Then render the <code>DisplayMessages</code> component as a child. Once you are
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>The code editor now shows all your Redux and React code from the past several challenges. It includes the Redux store, actions, and the <code>DisplayMessages</code> component. The only new piece is the <code>AppWrapper</code> component at the bottom. Use this top level component to render the <code>Provider</code> from <code>ReactRedux</code>, and pass the Redux store as a prop. Then render the <code>DisplayMessages</code> component as a child. Once you are
 finished, you should see your React component rendered to the page.
 <br><br>
 
-<strong>Note</strong><br>Because React Redux is available as a global variable here, you can access the Provider with dot notation. The code in the editor takes advantage of this and sets it to a constant <code>Provider</code> for you to use in the <code>AppWrapper</code> render method.`
+<strong>Note</strong><br>React Redux is available as a global variable here, so you can access the Provider with dot notation. The code in the editor takes advantage of this and sets it to a constant <code>Provider</code> for you to use in the <code>AppWrapper</code> render method.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =

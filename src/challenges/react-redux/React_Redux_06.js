@@ -11,20 +11,12 @@ export const QA = false;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Map Dispatch to Props`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>Now we will map dispatch to props with
-<code>mapDispatchToProps()</code>. This is how we will provide specific action creators to our React components so they
-can dispatch actions against our Redux store. <code>mapDispatchToProps()</code> is very similiar in structure to
-<code>mapStateToProps()</code>. It also returns an object where you map dispatch actions to property names which will
-become component <code>props</code>. Instead of returning a piece of <code>state</code>, however, we will return a
-function which calls <code>dispatch</code> and passes in our action creator and any relevant action data. We have access
-to this <code>dispatch</code> because we pass it in to <code>mapDispatchToProps()</code> as a parameter when we define
-the function, just like we pass <code>state</code> to <code>mapStateToProps()</code>. Behind the scenes, React-Redux
-is using Redux's <code>store.dispatch()</code> to conduct these dispatches with <code>mapDispatchToProps()</code>,
-just like it is using <code>store.subscribe()</code> for components that we have mapped <code>state</code> to.<br><br>
+export const challengeText = `<span class = 'default'>Intro: </span>The <code>mapDispatchToProps()</code> function is used to provide specific action creators to your React components so they can dispatch actions against the Redux store. It's similar in structure to the <code>mapStateToProps()</code> function you wrote in the last challenge. It returns an object that maps dispatch actions to property names, which become component <code>props</code>. However, instead of returning a piece of <code>state</code>, each property returns a function that calls <code>dispatch</code> with an action creator and any relevant action data. You have access to this <code>dispatch</code> because it's passed in to <code>mapDispatchToProps()</code> as a parameter when you define the function, just like you passed <code>state</code> to <code>mapStateToProps()</code>. Behind the scenes, React Redux is using Redux's <code>store.dispatch()</code> to conduct these dispatches with <code>mapDispatchToProps()</code>. This is similar to how it uses <code>store.subscribe()</code> for components that are mapped to <code>state</code>.
+<br><br>
 
-To give an example, let's say we have a <code>loginUser()</code> action creator which takes a <code>username</code>
-as an action payload. The object returned from <code>mapDispatchToProps()</code> for this action creator would look
-something like:<br>
+For example, you have a <code>loginUser()</code> action creator that takes a <code>username</code> as an action payload. The object returned from <code>mapDispatchToProps()</code> for this action creator would look
+something like:
+<br>
 
 <pre>
 <code class="codeBlock">{
@@ -35,14 +27,10 @@ submitLoginUser: function(username) {
 </pre>`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>To use <code>mapDispatchToProps()</code>
-we will need to have our action creator <code>addMessage()</code>. We've provided it here. Write a function
-<code>mapDispatchToProps()</code> which takes <code>dispatch</code> as an argument and returns an object where you assign
-the dispatch function to a property <code>submitNewMessage</code>. This property will be assigned as the <code>props</code> of our
-React component, so we can name it anything. Let's call this one <code>submitNewMessage</code>.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>The code editor provides an action creator called <code>addMessage()</code>. Write the function <code>mapDispatchToProps()</code> that takes <code>dispatch</code> as an argument, then returns an object. The object should have a property <code>submitNewMessage</code> set to the dispatch function, which takes a parameter for the new message to add when it dispatches <code>addMessage()</code>.`
 
 // ---------------------------- define challenge seed code ----------------------------
-export const seedCode = 
+export const seedCode =
 `const addMessage = (message) => {
 	return {
     type: 'ADD',
@@ -50,7 +38,8 @@ export const seedCode =
   }
 };
 
-// change code below this line`
+// change code below this line
+`
 
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode =
@@ -75,11 +64,11 @@ const mapDispatchToProps = (dispatch) => {
 
 export const executeTests = (code) => {
 
-	const error_0 = 'Your code was transpiled successfully.';
-	const error_1 = 'addMessage returns an object with keys \'type\' and \'message\'.';
-	const error_2 = 'mapDispatchToProps is a function.';
-	const error_3 = 'mapDispatchToProps returns an object.';
-	const error_4 = 'Dispatching addMessage with submitNewMessage from mapDispatchToProps returns a message to the dispatch function.';
+	const error_0 = 'Your code should transpile successfully.';
+	const error_1 = 'addMessage should return an object with keys \'type\' and \'message\'.';
+	const error_2 = 'mapDispatchToProps should be a function.';
+	const error_3 = 'mapDispatchToProps should return an object.';
+	const error_4 = 'Dispatching addMessage with submitNewMessage from mapDispatchToProps should return a message to the dispatch function.';
 
 	let testResults = [
 		{
@@ -112,13 +101,13 @@ export const executeTests = (code) => {
 	let es5, reduxCode, passed = true;
 	let addMessage, mapDispatchToProps;
 
-	// this code hijacks the user input to create an IIFE 
+	// this code hijacks the user input to create an IIFE
 	// which returns the store from Redux as an object
 	// or whatever you need from the client code
 	const prepend = `(function() {`
 	const apend = `;\n return { addMessage, mapDispatchToProps } })()`
 	const modifiedCode = prepend.concat(code).concat(apend);
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
@@ -155,7 +144,7 @@ export const executeTests = (code) => {
 		passed = false;
 		testResults[1].status = false;
 	}
-	
+
 	// test 2:
 	try {
 		assert.strictEqual(typeof mapDispatchToProps, 'function', error_2);
@@ -174,7 +163,7 @@ export const executeTests = (code) => {
 		testResults[3].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[3].status = false;		
+		testResults[3].status = false;
 	}
 
 	// test 4:
@@ -203,7 +192,7 @@ export const executeTests = (code) => {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // liveRender modifies console.log in user input and returns message data -----------------------
@@ -213,14 +202,14 @@ export const liveRender = (code) => {
 	// console.log statements as a message array to be
 	// displayed on the client UI
 	const prepend = `
-	(function() { 
+	(function() {
 		let __Custom__Log = []
 		const message = (msg) => __Custom__Log.push(msg);
 	`
 	const apend = `; return __Custom__Log })();`
 	const consoleReplaced = code.replace(/console.log/g, 'message');
 	const hijackedCode = prepend.concat(consoleReplaced).concat(apend);
-	
+
 	let evaluatedCode;
 	try {
 		evaluatedCode = eval(hijackedCode);
