@@ -143,7 +143,8 @@ export const liveRender = (code) => {
 
 	try {
 		const exportScript = '\n export default MyComponent'
-		const modifiedCode = code.concat(exportScript);
+		const noWhiteSpace = code.replace(/\s/g, '');
+		const modifiedCode = (noWhiteSpace.includes('ReactDOM.render(<MyComponent/>,document.getElementById(\'challenge-node\'))') || noWhiteSpace.includes('ReactDOM.render(<MyComponent/>,document.getElementById("challenge-node"))')) ? code.concat(exportScript) : '';
 		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		const renderedComponent = React.createElement(eval(es5));
 		return renderedComponent;
