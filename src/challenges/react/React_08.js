@@ -32,7 +32,7 @@ This creates an ES6 class <code>Kitten</code> which extends the <code>React.Comp
 Also notice the <code>Kitten</code> class has a <code>constructor</code> defined within it that calls <code>super()</code>. It uses <code>super()</code> to call the constructor of the parent class, in this case <code>React.Component</code>. The constructor is a special method used during the initialization of objects that are created with the <code>class</code> keyword. It is best practice to call a component's <code>constructor</code> with <code>super</code>, and pass <code>props</code> to both. This makes sure the component is initialized properly. For now, know that it is standard for this code to be included. Soon you will see other uses for the constructor as well as <code>props</code>.`
 
 export const challengeInstructions = `
-	<span class = 'default'>Instructions: </span><code>MyComponent</code> is defined in the code editor using class syntax. Modify the <code>render</code> method so it returns a <code>div</code> element that contains an <code>h1</code> with the text <code>Hello React!</code>.'
+	<span class = 'default'>Instructions: </span><code>MyComponent</code> is defined in the code editor using class syntax. Finish writing the <code>render</code> method so it returns a <code>div</code> element that contains an <code>h1</code> with the text <code>Hello React!</code>.'
 `
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = `
@@ -41,13 +41,11 @@ class MyComponent extends React.Component {
 		super(props);
 	}
   render() {
-    return (
-	    // change code below this line
+	  // change code below this line
 
 
 
-	    // change code above this line
-    );
+	  // change code above this line
   }
 };`
 

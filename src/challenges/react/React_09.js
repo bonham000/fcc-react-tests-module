@@ -10,9 +10,7 @@ export const QA = true;
 // -------------- define challenge title and challenge instructions --------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Create a Component with Composition`
 
-export const challengeText = `<span class = 'default'>Intro: </span>The last two challenges showed how to create a simple React component with two different methods. In React, everything is a component and multiple components can be composed together to create more complex components. Here's an example of how this works. Imagine you are building an App and have created three components, a <code>Navbar</code>, <code>Dashboard</code>, and <code>Footer</code>.
-<br /><br />
-
+export const challengeText = `<span class = 'default'>Intro: </span>Now we will look at how we can compose multiple React components together. Imagine you are building an App and have created three components, a <code>Navbar</code>, <code>Dashboard</code>, and <code>Footer</code>.
 To compose these components together, you could create an <code>App</code> <i>parent</i> component which renders each of these three components as <i>children</i>. To render a component as a child in a React component, you include the component name written as a custom HTML tag in the JSX. For example, in the <code>render</code> method you could write:
 
 <pre>
