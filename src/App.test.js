@@ -5,17 +5,17 @@ import { shallow } from 'enzyme';
 
 import App from './App';
 
-const shallowRender = shallow(React.createElement(App));
+const shallowRenderApp = shallow(React.createElement(App));
 
 it('App returns a div', () => {
-	expect(shallowRender.find('div').length).toEqual(1);
+	expect(shallowRenderApp.find('div').length).toEqual(1);
 });
 
 it('App renders React Test Component', () => {
-	expect(shallowRender.find('ReactTestComponent').length).toEqual(1);
+	expect(shallowRenderApp.find('ReactTestComponent').length).toEqual(1);
 });
 
-let initialState = shallowRender.state();
+let initialState = shallowRenderApp.state();
 
 it('App initializes state with an array of challenges', () => {
 	expect(Array.isArray(initialState.challenges)).toBe(true);

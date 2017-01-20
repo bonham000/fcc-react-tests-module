@@ -4,8 +4,6 @@ import assert from 'assert'
 import { shallow } from 'enzyme'
 import { transform } from 'babel-standalone'
 
-// snippet for defining HTML: <code>&lt;div /&gt;</code>
-
 // SET TO TRUE WHEN QA IS COMPLETE:
 export const QA = false;
 
