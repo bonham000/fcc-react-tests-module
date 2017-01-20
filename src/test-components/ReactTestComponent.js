@@ -159,7 +159,7 @@ export default class ReactTestComponent extends React.Component {
     return (
     	<div>
 
-    		<h1 className='title mainTitle'>Free Code Camp React Challenge Demo:
+    		<h1 className='title mainTitle'>Free Code Camp React Challenge Alpha:
 
 	        <select value={this.props.selectedChallenge} onChange={this.select}>
 	          {renderChallenges}
