@@ -2,9 +2,11 @@
 
 ###This app is an in-browser test module for developing the React/Redux challenges for the upcoming Free Code Camp Curriculum Expansion.###
 
-[See this project live here and try out the challenges now](http://hysterical-amusement.surge.sh/)
+[View the interactive app which is running all of these challenges.](http://hysterical-amusement.surge.sh/)
 
-**We need help QA'ing these!** [See here to contribute](https://github.com/bonham000/fcc-react-tests-module/blob/master/CONTRIBUTING.md)
+The now live Beta of Free Code Camp's expanded curriculum redirects campers to the link above while we work on merging these challenges into the FCC platform and ironing out other bugs in the Beta branch. Eventually the goal is for all of these challenges to be built directly into FCC.
+
+**We have finished the initial QA and review of all of these challenges, but if you happen to find any errors or bugs, [see here to contribute your feedback](https://github.com/bonham000/fcc-react-tests-module/blob/master/CONTRIBUTING.md).**
 
 ###Curriculum Overview:###
 
