@@ -213,8 +213,6 @@ export const executeTests = (code) => {
 		passed = false;
 	}
 
-	console.log(mockedComponent);
-
 	let initialState, state_1, state_2, state_3, state_4, state_5, state_6, state_7, state_8, state_9, state_10;
 	// run specific tests to verify the functionality
 	// that the challenge is trying to assess:
@@ -308,7 +306,6 @@ export const executeTests = (code) => {
 		];
 		const hasIndex = statesArray.filter((state, i) => answersArray.indexOf(state) !== -1);
 		const notAllEqual = statesArray.filter((state, i, arr) => arr[i] === arr[0]);
-		console.log(statesArray, hasIndex, notAllEqual)
 		assert(hasIndex.length === 10 && notAllEqual.length !== 10, error_6);
 		testResults[6].status = true;
 	} catch (err) {

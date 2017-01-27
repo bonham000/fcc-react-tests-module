@@ -216,8 +216,6 @@ export const executeTests = (code) => {
 		passed = false;
 	}
 
-	//console.log(modifiedCode.search(/if/g) === -1, modifiedCode.search(/else/g) === -1);
-
 	let initialState, state_1, state_2, state_3, state_4;
 
 	// run specific tests to verify the functionality

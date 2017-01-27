@@ -198,8 +198,6 @@ export const executeTests = (code) => {
 		passed = false;
 	}
 
-	//console.log(shallowRender.nodes[0].props.children);
-
 	let initialState, state_1, state_2, state_3;
 
 	// test 1:

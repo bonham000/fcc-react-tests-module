@@ -200,8 +200,6 @@ export const executeTests = (code) => {
 		passed = false;
 	}
 
-	//console.log(mockedComponent.find('Results').props());
-
 	// run specific tests to verify the functionality
 	// that the challenge is trying to assess:
 

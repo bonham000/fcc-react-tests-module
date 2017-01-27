@@ -204,7 +204,6 @@ export const executeTests = (code) => {
 
 	// test 5:
 	try {
-		console.log(mountedComponent.find('ReturnTempPassword'))
 		assert.strictEqual(mountedComponent.find('strong').node.innerHTML, mountedComponent.find('ReturnTempPassword').node.props.tempPassword, error_5)
 		testResults[5].status = true;
 	} catch (err) {

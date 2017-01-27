@@ -229,8 +229,6 @@ export const executeTests = (code) => {
 	const exportScript = '\n export default AppWrapper'
 	const modifiedCode = code.concat(exportScript);
 
-	console.log(modifiedCode);
-
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
@@ -248,8 +246,6 @@ export const executeTests = (code) => {
 	} catch (err) {
 		passed = false;
 	}
-
-	console.log(mockedComponent);
 
 	// run specific tests to verify the functionality
 	// that the challenge is trying to assess:
