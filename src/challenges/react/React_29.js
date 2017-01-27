@@ -81,7 +81,7 @@ export const executeTests = (code) => {
 	const error_0 = 'Your JSX code should transpile successfully.';
 	const error_1 = 'ControlledInput should return a div element which contains an input and a p tag.';
 	const error_2 = 'The state of ControlledInput should initialize with an input property set to an empty string.';
-	const error_3 = 'Typing in the input element should update the state.';
+	const error_3 = 'Typing in the input element should update the state and the value of the input element.';
 
 	let testResults = [
 		{
@@ -156,8 +156,9 @@ export const executeTests = (code) => {
 		const before = mockedComponent.state('input');
 		mockedComponent.find('input').simulate('change', {target: {value: 'TestInput'}});
 		const after = mockedComponent.state('input');
+		const inputText = mockedComponent.find('input').node.value;
 
-		assert.strictEqual(before === '' && after === 'TestInput', true, error_3);
+		assert.strictEqual(before === '' && after === 'TestInput' && inputText === 'TestInput', true, error_3);
 		testResults[3].status = true;
 	} catch (err) {
 		passed = false;
