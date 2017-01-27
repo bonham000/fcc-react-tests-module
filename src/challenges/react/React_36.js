@@ -111,10 +111,9 @@ export const executeTests = (code) => {
 
 	const error_0 = 'Your JSX code should transpile successfully.';
 	const error_1 = 'The Controller component should render the Dialog component as a child.';
-	const error_2 = 'The h1 rendered by the Dialog component should update when the parent state changes.';
-	const error_3 = 'The componentWillReceiveProps method in the Dialog component should log this.props to the console.';
-	const error_4 = 'The componentWillReceiveProps method in the Dialog component should log nextProps to the console.';
-	const error_5 = 'The Dialog component should call the componentDidUpdate method and log a message to the console.';
+	const error_2 = 'The componentWillReceiveProps method in the Dialog component should log this.props to the console.';
+	const error_3 = 'The componentWillReceiveProps method in the Dialog component should log nextProps to the console.';
+	const error_4 = 'The Dialog component should call the componentDidUpdate method and log a message to the console.';
 
 	let testResults = [
 		{
@@ -141,11 +140,6 @@ export const executeTests = (code) => {
 			test: 4,
 			status: false,
 			condition: error_4
-		},
-		{
-			test: 5,
-			status: false,
-			condition: error_5
 		}
 	];
 
@@ -190,22 +184,6 @@ export const executeTests = (code) => {
 		testResults[1].status = false;
 	}
 
-	// test 2:
-	try {
-
-		const beforeState = mockedComponent.find('h1').node.innerText;
-		mockedComponent.setState({ message: 'TestMessage' });
-		const afterState = mockedComponent.find('h1').node.innerText;;
-
-		assert.notStrictEqual(beforeState, afterState, error_2);
-
-		testResults[2].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[2].status = false;
-	}
-
-
 	// specifically perform a separate export for the child component
 	// here to test for lifecycle methods
 	let es5Child, lifecycleChild;
@@ -222,12 +200,26 @@ export const executeTests = (code) => {
 		testResults[0].status = false;
 	}
 
-	// test 3:
+	// test 2:
 	try {
 		lifecycleChild = React.createElement(eval(es5Child)).type.prototype.componentWillReceiveProps.toString().replace(/\s/g,'');
 		assert(
 			lifecycleChild.includes('console.log') === true &&
 			lifecycleChild.includes('this.props') === true,
+			error_2
+		);
+		testResults[2].status = true;
+	} catch (err) {
+		passed = false;
+		testResults[2].status = false;
+	}
+
+	// test 3:
+	try {
+		lifecycleChild = React.createElement(eval(es5Child)).type.prototype.componentWillReceiveProps.toString().replace(/\s/g,'');
+		assert(
+			lifecycleChild.includes('console.log') === true &&
+			lifecycleChild.includes('nextProps') === true,
 			error_3
 		);
 		testResults[3].status = true;
@@ -238,30 +230,16 @@ export const executeTests = (code) => {
 
 	// test 4:
 	try {
-		lifecycleChild = React.createElement(eval(es5Child)).type.prototype.componentWillReceiveProps.toString().replace(/\s/g,'');
+		lifecycleChild = React.createElement(eval(es5Child)).type.prototype.componentDidUpdate.toString().replace(/\s/g,'');
 		assert(
-			lifecycleChild.includes('console.log') === true &&
-			lifecycleChild.includes('nextProps') === true,
+			lifecycleChild.length !== 'undefined' &&
+			lifecycleChild.includes('console.log') === true,
 			error_4
 		);
 		testResults[4].status = true;
 	} catch (err) {
 		passed = false;
 		testResults[4].status = false;
-	}
-
-	// test 5:
-	try {
-		lifecycleChild = React.createElement(eval(es5Child)).type.prototype.componentDidUpdate.toString().replace(/\s/g,'');
-		assert(
-			lifecycleChild.length !== 'undefined' &&
-			lifecycleChild.includes('console.log') === true,
-			error_5
-		);
-		testResults[5].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[5].status = false;
 	}
 
 	return {
