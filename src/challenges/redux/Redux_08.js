@@ -285,8 +285,8 @@ export const executeTests = (code) => {
 	// test 7:
 	try {
 		assert(
-			noWhiteSpace.includes('constLOGIN=\'LOGIN\'') &&
-			noWhiteSpace.includes('constLOGOUT=\'LOGOUT\''),
+			(noWhiteSpace.includes('constLOGIN=\'LOGIN\'') || noWhiteSpace.includes('constLOGIN="LOGIN"')) &&
+			(noWhiteSpace.includes('constLOGOUT=\'LOGOUT\'') || noWhiteSpace.includes('constLOGOUT="LOGOUT"')),
 			error_7);
 		testResults[7].status = true;
 	} catch (err) {
