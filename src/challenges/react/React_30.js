@@ -173,8 +173,9 @@ export const executeTests = (code) => {
 		const before = mockedComponent.state('input');
 		mockedComponent.find('input').simulate('change', {target: {value: 'TestInput'}});
 		const after = mockedComponent.state('input');
+		const inputText = mockedComponent.find('input').node.value;
 
-		assert.strictEqual(before === '' && after === 'TestInput', true, error_3);
+		assert.strictEqual(before === '' && after === 'TestInput' && inputText === 'TestInput', true, error_3);
 		testResults[3].status = true;
 	} catch (err) {
 		passed = false;
