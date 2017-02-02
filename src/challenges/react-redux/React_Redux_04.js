@@ -19,7 +19,7 @@ React Redux provides a small API with two key features: <code>Provider</code> an
 <pre>
 <code class="codeBlock">&lt;Provider store={store}&gt;
  &lt;App/&gt;
-&lt;Provider/&gt;</code>
+&lt;/Provider&gt;</code>
 </pre>`
 
 // ---------------------------- challenge instructions ----------------------------
