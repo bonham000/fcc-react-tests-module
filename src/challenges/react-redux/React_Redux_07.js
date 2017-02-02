@@ -53,7 +53,7 @@ class Presentational extends React.Component {
 		super(props);
 	}
 	render() {
-		return <div/>
+		return <h3>This is a Presentational Component</h3>
 	}
 };
 
