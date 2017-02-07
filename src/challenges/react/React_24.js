@@ -18,7 +18,7 @@ export const challengeText = `<span class = 'default'>Intro: </span>The previous
 });</code>
 </pre>
 
-React expects you to never modify <code>state</code> directly, instead always using <code>this.setState()</code> when state changes occur.`
+React expects you to never modify <code>state</code> directly, instead always use <code>this.setState()</code> when state changes occur. Also, you should note that React may batch multiple state updates in order to improve performance. What this means is that state updates through the <code>setState</code> method can be asynchronous. There is an alternative syntax for the <code>setState</code> method which provides a way around this problem. This is rarely needed but it's good to keep it in mind! Please consult the <a target="_blank" href="https://facebook.github.io/react/docs/state-and-lifecycle.html">React documentation</a> for further details.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>There is a <code>button</code> element in the code editor which has an <code>onClick()</code> handler. This handler is triggered when the <code>button</code> receives a click event in the browser, and runs the <code>click</code> method defined on <code>MyComponent</code>. Within the <code>click</code> method, update the component <code>state</code> using <code>this.setState()</code>. Set the
