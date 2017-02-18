@@ -89,6 +89,7 @@ export const executeTests = (code) => {
 	const error_2 = 'The state of MyForm should initialize with input and submit properties, both set to empty strings.';
 	const error_3 = 'Typing in the input element should update the input property in the state.';
 	const error_4 = 'Clicking the button should run handleSubmit which should set the submit property in state equal to the current input.';
+	const error_5 = 'The h1 element should render the value of the submit field from the component\'s state.';
 
 	let testResults = [
 		{
@@ -115,7 +116,13 @@ export const executeTests = (code) => {
 			test: 4,
 			status: false,
 			condition: error_4
+		},
+		{
+			test: 5,
+			status: false,
+			condition: error_5
 		}
+
 	];
 
 	let es5, shallowRender, mockedComponent, passed = true;
@@ -197,6 +204,25 @@ export const executeTests = (code) => {
 	} catch (err) {
 		passed = false;
 		testResults[4].status = false;
+	}
+
+	//test 5:
+	try {
+
+		mockedComponent.setState({input: ''});
+		mockedComponent.setState({submit: ''});
+		
+		mockedComponent.find('input').simulate('change', {target: {value: 'TestInput'}});
+		const h1Before = mockedComponent.find('h1').node.innerText;
+
+		mockedComponent.find('button').simulate('click');
+		const h1After = mockedComponent.find('h1').node.innerText;
+
+		assert.strictEqual(h1Before === '' && h1After === 'TestInput', true, error_5);
+		testResults[5].status = true;
+	} catch (err) {
+		passed = false;
+		testResults[5].status = false;
 	}
 
 	return {

@@ -188,7 +188,7 @@ export const executeTests = (code) => {
 	// here to test for lifecycle methods
 	let es5Child, lifecycleChild;
 
-	const exportScriptChild = '\n export default Dialog'
+	const exportScriptChild = '\n export default Dialog';
 	const modifiedCodeChild = code.concat(exportScriptChild);
 
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
