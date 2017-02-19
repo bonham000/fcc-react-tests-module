@@ -19,7 +19,7 @@ You can also write JavaScript directly in your <code>render</code> methods, befo
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>
-In the code provided, the <code>render</code> method has an array that contains 20 phrases to represent the answers found in the classic 1980's Magic Eight Ball toy. The button click event is bound to the <code>ask</code> method, so each time the button is clicked, a random number between <code>1</code> and <code>20</code> is stored in the component's state object. On line 38, delete the string <code>"change me!"</code> and reassign the <code>answer</code> const so your code randomly accesses a different index of the <code>possibleAnswers</code> array each time the component updates. Finally, insert the <code>answer</code> const inside the <code>p</code> tags.`
+In the code provided, the <code>render</code> method has an array that contains 20 phrases to represent the answers found in the classic 1980's Magic Eight Ball toy. The button click event is bound to the <code>ask</code> method, so each time the button is clicked a random number will be generated and stored as the <code>randomIndex</code> in state. On line 38, delete the string <code>"change me!"</code> and reassign the <code>answer</code> const so your code randomly accesses a different index of the <code>possibleAnswers</code> array each time the component updates. Finally, insert the <code>answer</code> const inside the <code>p</code> tags.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
@@ -41,7 +41,7 @@ class MagicEightBall extends React.Component {
 	ask() {
 		if (this.state.userInput) {
 			this.setState({
-				randomIndex: 20 - Math.floor(Math.random() * 20),
+				randomIndex: Math.floor(Math.random() * 20),
 				userInput: ''
 			});
 		}
@@ -53,12 +53,12 @@ class MagicEightBall extends React.Component {
 	}
 	render() {
 		const possibleAnswers = [
-		"It is certain", "It is decidedly so", "Without a doubt",
-		"Yes, definitely", "You may rely on it", "As I see it, yes",
-		"Outlook good", "Yes", "Signs point to yes", "Reply hazy try again",
-		"Ask again later", "Better not tell you now", "Cannot predict now",
-		"Concentrate and ask again", "Don't count on it", "My reply is no",
-		"My sources say no", "Outlook not so good","Very doubtful", "Most likely"
+			"It is certain", "It is decidedly so", "Without a doubt",
+			"Yes, definitely", "You may rely on it", "As I see it, yes",
+			"Outlook good", "Yes", "Signs point to yes", "Reply hazy try again",
+			"Ask again later", "Better not tell you now", "Cannot predict now",
+			"Concentrate and ask again", "Don't count on it", "My reply is no",
+			"My sources say no", "Outlook not so good","Very doubtful", "Most likely"
 		];
 		const answer = "change me!" // << change code here
 		return (
@@ -100,7 +100,7 @@ class MagicEightBall extends React.Component {
 	ask() {
 		if (this.state.userInput) {
 			this.setState({
-				randomIndex: 20 - Math.floor(Math.random() * 20),
+				randomIndex: Math.floor(Math.random() * 20),
 				userInput: ''
 			});
 		}
@@ -112,12 +112,12 @@ class MagicEightBall extends React.Component {
 	}
 	render() {
 		const possibleAnswers = [
-		"It is certain", "It is decidedly so", "Without a doubt",
-		"Yes, definitely", "You may rely on it", "As I see it, yes",
-		"Outlook good", "Yes", "Signs point to yes", "Reply hazy try again",
-		"Ask again later", "Better not tell you now", "Cannot predict now",
-		"Concentrate and ask again", "Don't count on it", "My reply is no",
-		"My sources say no", "Outlook not so good","Very doubtful", "Most likely"
+			"It is certain", "It is decidedly so", "Without a doubt",
+			"Yes, definitely", "You may rely on it", "As I see it, yes",
+			"Outlook good", "Yes", "Signs point to yes", "Reply hazy try again",
+			"Ask again later", "Better not tell you now", "Cannot predict now",
+			"Concentrate and ask again", "Don't count on it", "My reply is no",
+			"My sources say no", "Outlook not so good","Very doubtful", "Most likely"
 		];
 		const answer = possibleAnswers[this.state.randomIndex];
 		return (
