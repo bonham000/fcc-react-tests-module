@@ -269,7 +269,7 @@ export const executeTests = (code) => {
 
 	// test 6:
 	try {
-		mockedComponent.find('input').simulate('change', {target: { value: 0 }});
+		mockedComponent.find('input').simulate('change', {target: { value: 1 }});
 		mockedComponent.find('button').simulate('click');
 		state_1 = mockedComponent.find('button').nodes[0].innerText;
 		mockedComponent.find('input').simulate('change', {target: { value: 10 }});
