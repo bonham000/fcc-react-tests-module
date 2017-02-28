@@ -102,16 +102,16 @@ export const executeTests = (code) => {
 		testResults[0].status = false;
 	}
 
-	// shallow render the component with Enzyme
 	try {
 		jsx = eval(es5);
+		mockedComponent = shallow(jsx);
 	} catch (err) {
 		passed = false;
 	}
 
+
 	// test 1:
 	try {
-
 		assert.strictEqual(jsx.type, 'div', 'The constant JSX should return a div element.');
 		testResults[1].status = true;
 	} catch (err) {
@@ -121,7 +121,8 @@ export const executeTests = (code) => {
 
 	// test 2:
 	try {
-		assert.strictEqual(jsx.props.children[2].type, 'br', 'The div should contain a br tag.');
+		assert.strictEqual(mockedComponent.contains(<br/>), true, 'The div should contain a br tag.');
+		//assert.strictEqual(jsx.props.children[2].type, 'br', 'The div should contain a br tag.');
 		testResults[2].status = true;
 	} catch (err) {
 		passed = false;
@@ -130,7 +131,8 @@ export const executeTests = (code) => {
 
 	// test 3:
 	try {
-		assert.strictEqual(jsx.props.children[4].type, 'hr', 'The div should contain an hr tag.');
+		assert.strictEqual(mockedComponent.contains(<hr/>), true, 'The div should contain an hr tag.');
+		//assert.strictEqual(jsx.props.children[4].type, 'hr', 'The div should contain an hr tag.');
 		testResults[3].status = true;
 	} catch (err) {
 		passed = false;
