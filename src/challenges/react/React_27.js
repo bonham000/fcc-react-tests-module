@@ -21,7 +21,7 @@ Currently, there is no way of updating the <code>visibility</code> property in t
 
 Finally, click the button to see the conditional rendering of the component based on its <code>state</code>.<br><br>
 
-<strong>Hint</strong><br>Make sure to either explicitly bind the <code>this</code> keyword to the method, or use a fat arrow function.`
+<strong>Hint</strong><br>Make sure to either explicitly bind the <code>this</code> keyword to the method, or use an ES6 arrow function.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
