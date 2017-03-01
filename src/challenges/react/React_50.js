@@ -18,7 +18,7 @@ There are two key reasons why rendering on the server may be used in a real worl
 markup which can be crawled by search engines. Second, this creates a faster initial page load experience because the rendered HTML is smaller than the JavaScript code of the entire app. React will still be able to recognize your app and manage it after the initial load.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>The <code>renderToString()</code> method is provided on <code>ReactDOMServer</code>, which is available here as a global object. Use this to render <code>App</code> to a string.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>The <code>renderToString()</code> method is provided on <code>ReactDOMServer</code>, which is available here as a global object. The method takes one argument which is a React element. Use this to render <code>App</code> to a string.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = `
