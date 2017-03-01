@@ -17,7 +17,7 @@ export const challengeText = `<span class = 'default'>Intro: </span>The <code>ma
 <code>let onlineUsers = users.filter(user => user.online);`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>In the code editor, <code>MyComponent</code>'s <code>state</code> is initialized with an array of users. Some users are online and some aren't. Filter the array so you see only the users who are online. To do this, first use <code>filter</code> to return a new array containing only the users whose <code>online</code> property is <code>true</code>. Then, in the <code>renderOnline</code> variable, map over the filtered array, and return a <code>p</code> element for each user that contains the text of their <code>username</code>.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>In the code editor, <code>MyComponent</code>'s <code>state</code> is initialized with an array of users. Some users are online and some aren't. Filter the array so you see only the users who are online. To do this, first use <code>filter</code> to return a new array containing only the users whose <code>online</code> property is <code>true</code>. Then, in the <code>renderOnline</code> variable, map over the filtered array, and return a <code>li</code> element for each user that contains the text of their <code>username</code>.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = `
@@ -54,12 +54,14 @@ class MyComponent extends React.Component {
 		}
 	}
   render() {
-  	const filterUsers = // change code here
+  	const usersOnline = // change code here
   	const renderOnline = // change code here
     return (
 	   	<div>
 	   		<h1>Current Online Users:</h1>
-	   		{renderOnline}
+	   		<ul>
+	   			{renderOnline}
+	   		</ul>
 	   	</div>
     );
   }
@@ -100,18 +102,20 @@ class MyComponent extends React.Component {
 		}
 	}
   render() {
-  	const filterUsers = this.state.users.filter( (user) => {
+  	const usersOnline = this.state.users.filter((user) => {
   		return user.online;
   	});
-  	const renderOnlineUsers = filterUsers.map( (user) => {
+  	const renderOnlineUsers = usersOnline.map((user) => {
   		return (
-  			<p>{user.username}</p>
+  			<li>{user.username}</li>
   		);
   	});
     return (
 	   	<div>
 	   		<h1>Current Online Users:</h1>
-				{renderOnlineUsers}
+	   		<ul>
+					{renderOnlineUsers}
+				</ul>
 	   	</div>
     );
   }
@@ -124,8 +128,8 @@ export const executeTests = (code) => {
 	const error_0 = 'Your JSX code should transpile successfully.';
 	const error_1 = 'MyComponent should exist and render to the page.';
 	const error_2 = 'MyComponent\'s state should be initialized to an array of six users.';
-	const error_3 = 'MyComponent should return a div, an h1, and then a p tag for every user whose online status is set to true.';
-	const error_4 = 'MyComponent should render p elements that contain the username of each online user.';
+	const error_3 = 'MyComponent should return a div, an h1, and then an unordered list containing li tags for every user whose online status is set to true.';
+	const error_4 = 'MyComponent should render li elements that contain the username of each online user.';
 
 	let testResults = [
 		{
@@ -171,17 +175,11 @@ export const executeTests = (code) => {
 		testResults[0].status = false;
 	}
 
-	// now we will try to shallow render the component with Enzyme's shallow method
-	// you can also use mount to perform a full render to the DOM environment
-	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
 	try {
 		mockedComponent = mount(React.createElement(eval(es5)));
 	} catch (err) {
 		passed = false;
 	}
-
-	// run specific tests to verify the functionality
-	// that the challenge is trying to assess:
 
 	// test 1:
 	try {
@@ -210,7 +208,7 @@ export const executeTests = (code) => {
 
 	// test 3:
 	try {
-		state_1 = mockedComponent.find('p');
+		state_1 = mockedComponent.find('li');
 		mockedComponent.setState({
 			users:[
 				{
@@ -235,7 +233,7 @@ export const executeTests = (code) => {
 				}
 			]
 		});
-		state_2 = mockedComponent.find('p');
+		state_2 = mockedComponent.find('li');
 		mockedComponent.setState({
 			users:[
 				{
@@ -260,12 +258,13 @@ export const executeTests = (code) => {
 				}
 			]
 		});
-		state_3 = mockedComponent.find('p');
+		state_3 = mockedComponent.find('li');
 		mockedComponent.setState({users: []});
-		state_4 = mockedComponent.find('p');
+		state_4 = mockedComponent.find('li');
 		assert(
 			mockedComponent.find('div').length === 1 &&
 			mockedComponent.find('h1').length === 1 &&
+			mockedComponent.find('ul').length === 1 &&
 			state_1.length === 4 &&
 			state_2.length === 5 &&
 			state_3.length === 0 &&

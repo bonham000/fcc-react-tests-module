@@ -18,8 +18,8 @@ something like:
 
 <pre>
 <code class="codeBlock">{
-submitLoginUser: function(username) {
- dispatch(loginUser(username));
+ submitLoginUser: function(username) {
+  dispatch(loginUser(username));
  }
 }</code>
 </pre>`

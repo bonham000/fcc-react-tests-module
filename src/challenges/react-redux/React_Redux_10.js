@@ -14,10 +14,7 @@ export const challengeText = `<span class = 'default'>Intro: </span>Congratulati
 
 Finally, writing React and Redux code generally requires some configuration. This can get complicated quickly. If you are interested in experimenting on your own machine, the
 
-<a id='CRA' target ='_blank' href='https://github.com/facebookincubator/create-react-app'>Create React App </a>
-
-comes configured and ready to go.
-<br><br>
+<a id='CRA' target ='_blank' href='https://github.com/facebookincubator/create-react-app'>Create React App</a> comes configured and ready to go.<br><br>
 
 Alternatively, you can enable Babel as a JavaScript Preprocessor in CodePen, add React and ReactDOM as external JavaScript resources, and work there as well.`
 

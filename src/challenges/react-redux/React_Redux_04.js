@@ -11,14 +11,14 @@ export const QA = true;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Use Provider to Connect Redux to React`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>In the last challenge, you created a Redux store to handle the messages array and created actions for adding new messages. The next step is to provide React access to the Redux store and the actions it needs to dispatch updates. React Redux provides its <code>react-redux</code> package to help accomplish these tasks.
+export const challengeText = `<span class = 'default'>Intro: </span>In the last challenge, you created a Redux store to handle the messages array and created an action for adding new messages. The next step is to provide React access to the Redux store and the actions it needs to dispatch updates. React Redux provides its <code>react-redux</code> package to help accomplish these tasks.
 <br><br>
 
 React Redux provides a small API with two key features: <code>Provider</code> and <code>connect</code>. Another challenge covers <code>connect</code>. The <code>Provider</code> is a wrapper component from React Redux that wraps your React app. This wrapper then allows you to access the Redux <code>store</code> and <code>dispatch</code> functions throughout your component tree. <code>Provider</code> takes two props, the Redux store and the child components of your app. Defining the <code>Provider</code> for an App component might look like this:<br>
 
 <pre>
 <code class="codeBlock">&lt;Provider store={store}&gt;
- &lt;App/&gt;
+  &lt;App/&gt;
 &lt;/Provider&gt;</code>
 </pre>`
 
