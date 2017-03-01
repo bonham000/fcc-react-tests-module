@@ -98,8 +98,8 @@ export const executeTests = (code) => {
 	const error_2 = 'The DisplayMessages component should render a div containing an h2 element, button element, and ul element.';
 	const error_3 = 'The input element should render the value of input in local state.';
 	const error_4 = 'Calling the method handleChange should update the input value in state to the user\'s input.';
-	const error_5 = 'Calling the method submitMessage should add the user\'s input to the messages array in state.';
-	const error_6 = 'Calling the method submitMessage should clear the user\'s input.';
+	const error_5 = 'Clicking the \'Add message\' button should call the method submitMessage which should add the user\'s input to the messages array in state.';
+	const error_6 = 'The submitMessage method should clear the user\'s input.';
 
 	let testResults = [
 		{
@@ -242,7 +242,7 @@ export const executeTests = (code) => {
 	try {
 
 		beforeSubmit = mockedComponent.state();
-		mockedComponent.instance().submitMessage();
+		mockedComponent.find('button').simulate('click');
 		afterSubmit = mockedComponent.state();
 
 		assert(

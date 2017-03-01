@@ -9,7 +9,7 @@ export const QA = true;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Copy an Object with Object.assign`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `<span class = 'default'>Intro: </span>The last several challenges worked with arrays, but there are ways to help enforce state immutability when state is an <code>object</code>, too. A useful tool for handling objects is the <code>Object.assign()</code> utility. <code>Object.assign()</code> takes a target object and source objects and maps properties from the source objects to the target object. Any matching properties are overwritten by properties in the source objects. If you write this method and pass an empty object <code>{}</code> as the first argument, the target is an empty object. Basically, you use the method to assign and return a new object. Just what you need! Here's an example:
+export const challengeText = `<span class = 'default'>Intro: </span>The last several challenges worked with arrays, but there are ways to help enforce state immutability when state is an <code>object</code>, too. A useful tool for handling objects is the <code>Object.assign()</code> utility. <code>Object.assign()</code> takes a target object and source objects and maps properties from the source objects to the target object. Any matching properties are overwritten by properties in the source objects. This behavior is commonly used to make shallow copies of objects by passing an empty object as the first argument followed by the object(s) you want to copy. Here's an example:
 <br><br>
 
 <code>const newObject = Object.assign({}, obj1, obj2);</code>
