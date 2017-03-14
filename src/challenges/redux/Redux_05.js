@@ -9,7 +9,9 @@ export const QA = true;
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Dispatch an Action Event`
 
 // ---------------------------- challenge text ----------------------------
-export const challengeText = `The <code>store.dispatch()</code> method is what you use to dispatch actions to the Redux store. Calling <code>store.dispatch()</code> passing the value returned from an action creator sends an action back to the store. <br /> Recall that action creators return an object with a type property that specifies the action that has occurred. Then the method dispatches an action object to the Redux store. Based on the previous challenge's example, the following lines are equivalent, and both dispatch the action of type <code>LOGIN</code>:
+export const challengeText = `The <code>store.dispatch()</code> method is what you use to dispatch actions to the Redux store. Calling <code>store.dispatch()</code> and passing the value returned from an action creator sends an action back to the store.
+<br><br>
+Recall that action creators return an object with a type property that specifies the action that has occurred. Then the method dispatches an action object to the Redux store. Based on the previous challenge's example, the following lines are equivalent, and both dispatch the action of type <code>LOGIN</code>:
 <br><br>
 
 <code class="codeBlock">store.dispatch(actionCreator());<br>store.dispatch({ type: 'LOGIN' });</code>`
