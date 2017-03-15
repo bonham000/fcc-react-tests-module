@@ -1,6 +1,6 @@
-#Free Code Camp React/Redux Challenge Development#
+# Free Code Camp React/Redux Challenge Development
 
-###This repository contains the code for the Alpha version of the Free Code Camp React/Redux Curriculum Expansion.###
+### This repository contains the code for the Alpha version of the Free Code Camp React/Redux Curriculum Expansion.
 
 [View the challenges live here](http://hysterical-amusement.surge.sh/)
 [View on overview of the completed curriculum here](https://github.com/bonham000/fcc-react-tests-module/blob/master/CHALLENGE_MAP.md)
@@ -9,7 +9,7 @@ The now [live Beta Version of Free Code Camp's expanded curriculum](http://beta.
 
 **Currently, we have finished the initial QA and review of all of these challenges and are quite happy with them. There is still a possibility that there are bugs or typos we have not found yet. If you find something you think needs to be fixed, or have a suggestion for any of the challenges, please open an Issue here first so we can discuss it.**
 
-###Curriculum Overview:###
+### Curriculum Overview:
 
 * **React: 50 Challenges**
 * **Redux: 18 Challenges**
