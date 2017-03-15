@@ -71,7 +71,7 @@ export default class ReactTestComponent extends React.Component {
 			if (condition) {
 				document.getElementById('liveOutput').innerHTML = '';
 			}
-			console.log('Live rendering error:', err);
+			console.error('Live rendering error:', err);
 		}
 
 	}
@@ -90,8 +90,8 @@ export default class ReactTestComponent extends React.Component {
 		this.setState({
 			code: this.props.seedCode
 		});
-		setTimeout( () => { 
-			this.liveRender(condition); 
+		setTimeout( () => {
+			this.liveRender(condition);
 			this.testCode();
 		}, 35);
 	}
@@ -99,9 +99,9 @@ export default class ReactTestComponent extends React.Component {
 		this.setState({
 			code: this.props.solutionCode
 		});
-		setTimeout( () => { 
+		setTimeout( () => {
 			this.liveRender();
-			this.testCode(); 
+			this.testCode();
 		}, 35);
 	}
 	select = (event) => {
@@ -124,7 +124,7 @@ export default class ReactTestComponent extends React.Component {
       theme: 'monokai',
       tabSize: 2,
       extraKeys: {
-      	'Cmd-Enter': () => { 
+      	'Cmd-Enter': () => {
 	    		this.testCode();
 	    		return false;
 	    	},
@@ -140,7 +140,7 @@ export default class ReactTestComponent extends React.Component {
     const renderInstructions = () => { return { __html: this.props.challengeInstructions }}
 
     const { testResults } = this.state;
-    
+
     let passingTests, totalTests;
 
     if (testResults.length > 0) {
@@ -187,7 +187,7 @@ export default class ReactTestComponent extends React.Component {
 			    <div className='testWrapper'>
 
 				    <h1 className='title'>Tests</h1>
-			    	
+
 			    	<div className='testControls'>
 			    		<button onClick={this.seedCode} className='seedBtn'>Reload Seed</button>
 			    		<button onClick={this.solutionCode} className='solnBtn'>Solution Code</button>
@@ -201,7 +201,7 @@ export default class ReactTestComponent extends React.Component {
 				    	{ this.state.passed ?
 		    				<p className='msg success'>All tests passed!</p> :
 		    				<p className='msg error'>Your code does not pass the tests, {passingTests} out of {totalTests} tests are passing</p> }
-				    	
+
 				    	{
 				    		testResults.map( (test, idx) => {
 					    		if (test.status) {

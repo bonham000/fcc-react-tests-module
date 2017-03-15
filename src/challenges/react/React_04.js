@@ -10,7 +10,7 @@ export const QA = true;
 // -------------- define challenge title and challenge instructions --------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Render HTML Elements to the DOM`
 export const challengeText = `<span class = 'default'>Intro: </span>
-So far, you've learned that JSX is a convenient tool to write readable HTML in a JavaScript file. React allows you to render your JSX as HTML to the DOM. To do this, you use React's rendering API known as ReactDOM.<br><br>
+React allows you to render your JSX as HTML to the DOM. We will do this using React's rendering API known as ReactDOM.<br><br>
 
 ReactDOM offers a simple method to render React elements to the DOM which looks like this: <code>ReactDOM.render(componentToRender, targetNode)</code>.
 
@@ -19,11 +19,15 @@ ReactDOM offers a simple method to render React elements to the DOM which looks 
 <li>The second argument is the DOM node that you want to render the component within.</li>
 </ul>
 
-As you would expect, <code>ReactDOM.render()</code> must be called after the JSX element declarations, just like how you must declare variables before using them.`
+<code>ReactDOM.render()</code> must be called after the JSX element declarations, just like how you must declare variables before using them.`
 
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>
-The code editor has a simple JSX component. Use the <code>ReactDOM.render()</code> method to render this component to the page. You can pass defined JSX elements directly in as the first argument and use <code>document.getElementById()</code>
-to select the DOM node to render them to. There is a <code>div</code> with <code>id='challenge-node'</code> available for you to use. Make sure you don't change the <code>JSX</code> constant.`
+The code editor has a JSX component. Use the <code>ReactDOM.render()</code> method to render this component to the page. <br></br>
+<ol>
+<li>Pass defined JSX elements directly in as the first argument of the <code>ReactDOM.render()</code> method and use <code>document.getElementById()</code> to select the DOM node to render them to.</li>
+<li> There is a <code>div</code> with <code>id='challenge-node'</code> available for you to use in the second parameter. Make sure you don't change the <code>JSX</code> constant.</li>
+</ol>
+`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
