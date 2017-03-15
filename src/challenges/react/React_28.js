@@ -16,7 +16,7 @@ export const challengeText = `<span class = 'default'>Intro: </span>You can desi
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>The <code>Counter</code> component keeps track of a <code>count</code> value in <code>state</code>. There are two buttons which call methods <code>increment()</code> and <code>decrement()</code>. Write these methods so the counter value is incremented or decremented by 1 when the appropriate button is clicked. Also, create a <code>reset()</code> method so when the reset button is clicked, the count is set to 0.
 <br><br>
 
-<strong>Note</strong><br>Make sure you don't modify the <code>classNames</code> of the buttons.`
+<strong>Note:</strong>&nbsp;Make sure you don't modify the <code>classNames</code> of the buttons.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =

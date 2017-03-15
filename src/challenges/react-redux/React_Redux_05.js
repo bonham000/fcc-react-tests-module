@@ -15,7 +15,7 @@ export const challengeText = `<span class = 'default'>Intro: </span>The <code>Pr
 In these functions, you declare what pieces of state you want to have access to and which action creators you need to be able to dispatch. Once these functions are in place, you'll see how to use the React Redux <code>connect</code> method to connect them to your components in another challenge.
 <br><br>
 
-<strong>Note</strong><br>Behind the scenes, React Redux uses the <code>store.subscribe()</code> method to implement <code>mapStateToProps()</code>.`
+<strong>Note:</strong>&nbsp;Behind the scenes, React Redux uses the <code>store.subscribe()</code> method to implement <code>mapStateToProps()</code>.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>Create a function <code>mapStateToProps()</code>. This function should take <code>state</code> as an argument, then return an object which maps that state to specific property names. These properties will become accessible to your component via <code>props</code>. Since this example keeps the entire state of the app in a single array, you can pass that entire state to your component. Create a property <code>messages</code> in the object that's being returned, and set it to <code>state</code>.`
@@ -84,8 +84,8 @@ export const executeTests = (code) => {
 	// which returns the store from Redux as an object
 	// or whatever you need from the client code
 	const prepend = `(function() {`
-	const apend = `;\n return { state, mapStateToProps } })()`
-	const modifiedCode = prepend.concat(code).concat(apend);
+	const append = `;\n return { state, mapStateToProps } })()`
+	const modifiedCode = prepend.concat(code).concat(append);
 
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
@@ -169,9 +169,9 @@ export const liveRender = (code) => {
 		let __Custom__Log = []
 		const message = (msg) => __Custom__Log.push(msg);
 	`
-	const apend = `; return __Custom__Log })();`
+	const append = `; return __Custom__Log })();`
 	const consoleReplaced = code.replace(/console.log/g, 'message');
-	const hijackedCode = prepend.concat(consoleReplaced).concat(apend);
+	const hijackedCode = prepend.concat(consoleReplaced).concat(append);
 
 	let evaluatedCode;
 	try {

@@ -15,7 +15,7 @@ export const challengeText = `<span class = 'default'>Intro: </span>A common pra
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>Declare <code>LOGIN</code> and <code>LOGOUT</code> as <code>const</code> values and assign them to the strings <code>'LOGIN'</code> and <code>'LOGOUT'</code>, respectively. Then, edit the <code>authReducer()</code> and the action creators to reference these constants instead of string values.
 <br><br>
 
-<strong>Note</strong><br>It's generally a convention to write constants in all uppercase, and this is
+<strong>Note:</strong>&nbsp;It's generally a convention to write constants in all uppercase, and this is
 standard practice in Redux as well.`
 
 // ---------------------------- define challenge seed code ----------------------------
@@ -173,8 +173,8 @@ export const executeTests = (code) => {
 	// which returns the store from Redux as an object
 	// or whatever you need from the client code
 	const prepend = `(function() {`
-	const apend = `;\n return {store, LOGIN, LOGOUT, loginUser, logoutUser} })()`
-	const modifiedCode = prepend.concat(code).concat(apend);
+	const append = `;\n return {store, LOGIN, LOGOUT, loginUser, logoutUser} })()`
+	const modifiedCode = prepend.concat(code).concat(append);
 
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
@@ -326,9 +326,9 @@ export const liveRender = (code) => {
 		let log = []
 		const message = (msg) => log.push(msg);
 	`
-	const apend = `;\n return log })();`
+	const append = `;\n return log })();`
 	const consoleReplaced = code.replace(/console.log/g, 'message');
-	const hijackedCode = prepend.concat(consoleReplaced).concat(apend);
+	const hijackedCode = prepend.concat(consoleReplaced).concat(append);
 
 	let evaluatedCode;
 	try {

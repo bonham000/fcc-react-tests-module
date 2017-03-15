@@ -30,7 +30,7 @@ export const challengeInstructions = `
 
 <br /><br />
 
-<strong>Note</strong><br /><code>ChildComponent</code> is defined with an ES6 arrow function because this is a very common practice when using React. However, know that this is just a function. If you aren't familiar with the arrow function syntax, please refer to the JavaScript section.`
+<strong>Note:</strong>&nbsp;<code>ChildComponent</code> is defined with an ES6 arrow function because this is a very common practice when using React. However, know that this is just a function. If you aren't familiar with the arrow function syntax, please refer to the JavaScript section.`
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
 `const ChildComponent = () => {

@@ -24,7 +24,7 @@ export const challengeInstructions = `<span class = 'default'>Instructions: </sp
 Next, add <code>componentDidUpdate()</code> in the <code>Dialog</code> component, and log a statement that says the component has updated. This method works similar to <code>componentWillUpdate()</code>, which is provided for you. Now click the button to change the message and watch your browser console. The order of the console statements show the order the methods are called.
 
 <br /><br />
-<strong>Note</strong><br />You'll need to write the lifecycle methods as normal functions and not as arrow functions to pass the tests (there is also no advantage to writing lifecycle methods as arrow functions).`
+<strong>Note:</strong>&nbsp;You'll need to write the lifecycle methods as normal functions and not as arrow functions to pass the tests (there is also no advantage to writing lifecycle methods as arrow functions).`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
