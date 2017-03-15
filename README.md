@@ -1,20 +1,19 @@
 #Free Code Camp React/Redux Challenge Development#
 
-###This app is the development platform for the React/Redux Challenges which will be part of Free Code Camp's upcoming curriculum expansion.###
+###This repository contains the code for the Alpha version of the Free Code Camp React/Redux Curriculum Expansion.###
 
-[View the interactive app which is running all of these challenges.](http://hysterical-amusement.surge.sh/)
+[View the challenges live here](http://hysterical-amusement.surge.sh/)
+[View on overview of the completed curriculum here](https://github.com/bonham000/fcc-react-tests-module/blob/master/CHALLENGE_MAP.md)
 
-The now [live Beta Version of Free Code Camp's expanded curriculum](http://beta.freecodecamp.com/en/) redirects campers to the link above while we work on merging these challenges into the FCC platform and ironing out other bugs in the Beta branch. Eventually the goal is for all of these challenges to be built directly into FCC.
+The now [live Beta Version of Free Code Camp's expanded curriculum](http://beta.freecodecamp.com/en/) redirects campers to the link above while we work on merging these challenges into the FCC platform and ironing out other bugs in the Beta branch. Eventually the goal is for all of these challenges to be moved directly into the [FCC codebase](https://github.com/freeCodeCamp/freeCodeCamp).
 
-**We have finished the initial QA and review of all of these challenges, but if you happen to find any errors or bugs, [see here to contribute your feedback](https://github.com/bonham000/fcc-react-tests-module/blob/master/CONTRIBUTING.md).**
+**Currently, we have finished the initial QA and review of all of these challenges and are quite happy with them. There is still a possibility that there are bugs or typos we have not found yet. If you find something you think needs to be fixed, or have a suggestion for any of the challenges, please open an Issue here first so we can discuss it.**
 
 ###Curriculum Overview:###
 
 * **React: 50 Challenges**
 * **Redux: 18 Challenges**
 * **React-Redux: 10 Challenges**
-
-*View [`CHALLENGE_MAP.md`](https://github.com/bonham000/fcc-react-tests-module/blob/master/CHALLENGE_MAP.md) to see a detailed overview of all the challenge topics.*
 
 ---
 
