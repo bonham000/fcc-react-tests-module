@@ -42,7 +42,7 @@ const immutableReducer = (state = defaultState, action) => {
 
 const wakeUp = () => {
 	return {
-		type: ONLINE,
+		type: ONLINE
 	}
 };
 
@@ -74,7 +74,7 @@ const immutableReducer = (state = defaultState, action) => {
 
 const wakeUp = () => {
 	return {
-		type: ONLINE,
+		type: ONLINE
 	}
 };
 
