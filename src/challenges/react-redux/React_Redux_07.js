@@ -20,7 +20,7 @@ To use this method, pass in the functions as arguments, and immediately call the
 <code>connect(mapStateToProps, mapDispatchToProps)(MyComponent)</code>
 <br><br>
 
-<strong>Note</strong><br>If you want to omit one of the arguments to the <code>connect</code> method, you pass <code>null</code> in its place.`
+<strong>Note:</strong>&nbsp;If you want to omit one of the arguments to the <code>connect</code> method, you pass <code>null</code> in its place.`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>The code editor has the <code>mapStateToProps()</code> and <code>mapDispatchToProps()</code> functions and a new React component called <code>Presentational</code>. Connect this component to Redux with the <code>connect</code> method from the <code>ReactRedux</code> global object, and call it immediately on the <code>Presentational</code> component. Assign the result to a new <code>const</code> called <code>ConnectedComponent</code> that represents the connected component. That's it, now you're connected to Redux! Try changing either of <code>connect</code>'s arguments to <code>null</code> and observe the test results.`

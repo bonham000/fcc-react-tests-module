@@ -1,4 +1,4 @@
-#Challenge Map:#
+# Challenge Map:
 
 - :white_check_mark: Challenge is fully QA'd and ready to ship
 - :blue_book: Challenge has been reviewed and is ready for QA
@@ -7,7 +7,7 @@
 
 ---
 
-###React Challenges:###
+### React Challenges:
 
 - **Introducing JSX Elements**
 
@@ -79,7 +79,7 @@
 
 ---
 
-###Redux Challenges:###
+### Redux Challenges:
 
 - **Basic Redux: Store, Actions, & Reducers**
 
@@ -107,7 +107,7 @@
 
 ---
 
-###React-Redux Challenges:###
+### React-Redux Challenges:
 
 - **Use `react-redux` to Manage a List of Messages**
 

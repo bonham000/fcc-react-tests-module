@@ -67,11 +67,12 @@ export default class ReactTestComponent extends React.Component {
 		try {
 			ReactDOM.render(renderComponent, document.getElementById('liveOutput'));
 		} catch (err) {
-			// this will clear the preview box on initial load if live-rendering fails
-			if (condition) {
-				document.getElementById('liveOutput').innerHTML = '';
-			}
-			console.error('Live rendering error:', err);
+
+			if (condition) document.getElementById('liveOutput').innerHTML = '';
+			/*
+			 * we will suppress this error here because the live preview refresh will
+			 * throw continue to throw errors at this point that may be misleading to the user
+			*/
 		}
 
 	}

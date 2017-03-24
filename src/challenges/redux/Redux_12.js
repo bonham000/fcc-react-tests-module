@@ -170,7 +170,7 @@ export const executeTests = (code) => {
 	// which returns the store from Redux as an object
 	// or whatever you need from the client code
 	const prepend = `(function() {`
-	const apend = `;\n
+	const append = `;\n
 		return {
 			REQUESTING_DATA,
 			RECEIVED_DATA,
@@ -180,7 +180,7 @@ export const executeTests = (code) => {
 			asyncDataReducer,
 			store }
 		})()`
-	const modifiedCode = prepend.concat(code).concat(apend);
+	const modifiedCode = prepend.concat(code).concat(append);
 	const shortenedTimeout = modifiedCode.replace('2500', '250');
 
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
@@ -290,9 +290,9 @@ export const liveRender = (code) => {
 		let __Custom__Log = []
 		const message = (msg) => __Custom__Log.push(msg);
 	`
-	const apend = `;\n return __Custom__Log })();`
+	const append = `;\n return __Custom__Log })();`
 	const consoleReplaced = code.replace(/console.log/g, 'message');
-	const hijackedCode = prepend.concat(consoleReplaced).concat(apend);
+	const hijackedCode = prepend.concat(consoleReplaced).concat(append);
 
 	let evaluatedCode;
 	try {

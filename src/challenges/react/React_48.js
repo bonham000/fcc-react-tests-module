@@ -80,7 +80,7 @@ export const executeTests = (code) => {
 	const error_2 = 'Frameworks should render an h1 element.';
 	const error_3 = 'Frameworks should render a ul element.';
 	const error_4 = 'The ul tag should render 6 child li elements.';
-  const error_5 = 'Each list item element should have a unique key attribute.';
+  	const error_5 = 'Each list item element should have a unique key attribute.';
 
 	let testResults = [
 		{

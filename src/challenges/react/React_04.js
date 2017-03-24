@@ -10,7 +10,7 @@ export const QA = true;
 // -------------- define challenge title and challenge instructions --------------
 export const challengeTitle = `<span class = 'default'>Challenge: </span>Render HTML Elements to the DOM`
 export const challengeText = `<span class = 'default'>Intro: </span>
-So far, you've learned that JSX is a convenient tool to write readable HTML in a JavaScript file. React allows you to render your JSX as HTML to the DOM. To do this, you use React's rendering API known as ReactDOM.<br><br>
+So far, you've learned that JSX is a convenient tool to write readable HTML within JavaScript. With React, we can render this JSX directly to the HTML DOM using React's rendering API known as ReactDOM.<br><br>
 
 ReactDOM offers a simple method to render React elements to the DOM which looks like this: <code>ReactDOM.render(componentToRender, targetNode)</code>.
 
@@ -85,8 +85,8 @@ export const executeTests = (code) => {
 	];
 
 	const prepend = `(function() {`
-	const apend = `;\n return JSX })()`
-	const modifiedCode = prepend.concat(code).concat(apend);
+	const append = `;\n return JSX })()`
+	const modifiedCode = prepend.concat(code).concat(append);
 
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {

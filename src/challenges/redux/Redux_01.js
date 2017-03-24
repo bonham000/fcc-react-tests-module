@@ -23,7 +23,7 @@ export const challengeInstructions = `<span class = 'default'>Instructions: </sp
 Declare a <code>store</code> variable and assign it to the <code>createStore()</code> method, passing in the <code>reducer</code> as an argument.
 <br><br>
 
-<strong>Note</strong><br>The code in the editor uses ES6 default argument syntax to initialize this state to hold a value of <code>5</code>. If you're not familiar with default arguments, you can refer to the ES6 section.
+<strong>Note:</strong>&nbsp;The code in the editor uses ES6 default argument syntax to initialize this state to hold a value of <code>5</code>. If you're not familiar with default arguments, you can refer to the ES6 section.
 `
 
 // ---------------------------- define challenge seed code ----------------------------
@@ -77,8 +77,8 @@ export const executeTests = (code) => {
 	// this code hijacks the user input to create an IIFE
 	// which returns the store from Redux as an object
 	const prepend = `(function() {`
-	const apend = `;\n return store })()`
-	const modifiedCode = prepend.concat(code).concat(apend);
+	const append = `;\n return store })()`
+	const modifiedCode = prepend.concat(code).concat(append);
 
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
@@ -132,9 +132,9 @@ export const liveRender = (code) => {
 		let log = []
 		const message = (msg) => log.push(msg);
 	`
-	const apend = `;\n return log })();`
+	const append = `;\n return log })();`
 	const consoleReplaced = code.replace(/console.log/g, 'message');
-	const hijackedCode = prepend.concat(consoleReplaced).concat(apend);
+	const hijackedCode = prepend.concat(consoleReplaced).concat(append);
 
 	let evaluatedCode;
 	try {

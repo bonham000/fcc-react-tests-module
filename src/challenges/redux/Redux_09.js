@@ -102,8 +102,8 @@ export const executeTests = (code) => {
 	// which returns the store from Redux as an object
 	// or whatever you need from the client code
 	const prepend = `(function() {`
-	const apend = `;\n return { store, ADD } })()`
-	const modifiedCode = prepend.concat(code).concat(apend);
+	const append = `;\n return { store, ADD } })()`
+	const modifiedCode = prepend.concat(code).concat(append);
 
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
@@ -160,9 +160,9 @@ export const executeTests = (code) => {
 				let log = []
 				const message = (msg) => log.push(msg);
 			`
-		const apend = `; return log })();`
+		const append = `; return log })();`
 		const consoleReplaced = code.replace(/console.log/g, 'message');
-		const hijackedCode = prepend.concat(consoleReplaced).concat(apend);
+		const hijackedCode = prepend.concat(consoleReplaced).concat(append);
 
 		const log = eval(hijackedCode);
 
@@ -192,9 +192,9 @@ export const liveRender = (code) => {
 		let __Custom__Log = []
 		const message = (msg) => __Custom__Log.push(msg);
 	`
-	const apend = `;\n return __Custom__Log })();`
+	const append = `;\n return __Custom__Log })();`
 	const consoleReplaced = code.replace(/console.log/g, 'message');
-	const hijackedCode = prepend.concat(consoleReplaced).concat(apend);
+	const hijackedCode = prepend.concat(consoleReplaced).concat(append);
 
 	let evaluatedCode;
 	try {

@@ -17,7 +17,7 @@ export const challengeText = `<span class = 'default'>Intro: </span>The <code>ma
 <code>let onlineUsers = users.filter(user => user.online);`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>In the code editor, <code>MyComponent</code>'s <code>state</code> is initialized with an array of users. Some users are online and some aren't. Filter the array so you see only the users who are online. To do this, first use <code>filter</code> to return a new array containing only the users whose <code>online</code> property is <code>true</code>. Then, in the <code>renderOnline</code> variable, map over the filtered array, and return a <code>li</code> element for each user that contains the text of their <code>username</code>.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>In the code editor, <code>MyComponent</code>'s <code>state</code> is initialized with an array of users. Some users are online and some aren't. Filter the array so you see only the users who are online. To do this, first use <code>filter</code> to return a new array containing only the users whose <code>online</code> property is <code>true</code>. Then, in the <code>renderOnline</code> variable, map over the filtered array, and return a <code>li</code> element for each user that contains the text of their <code>username</code>. Be sure to include a unique <code>key</code> as well, like in the last challenges.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = `
@@ -102,12 +102,12 @@ class MyComponent extends React.Component {
 		}
 	}
   render() {
-  	const usersOnline = this.state.users.filter((user) => {
+  	const usersOnline = this.state.users.filter(user => {
   		return user.online;
   	});
-  	const renderOnlineUsers = usersOnline.map((user) => {
+  	const renderOnlineUsers = usersOnline.map(user => {
   		return (
-  			<li>{user.username}</li>
+  			<li key={user.username}>{user.username}</li>
   		);
   	});
     return (
@@ -130,6 +130,7 @@ export const executeTests = (code) => {
 	const error_2 = 'MyComponent\'s state should be initialized to an array of six users.';
 	const error_3 = 'MyComponent should return a div, an h1, and then an unordered list containing li tags for every user whose online status is set to true.';
 	const error_4 = 'MyComponent should render li elements that contain the username of each online user.';
+	const error_5 = 'Each list item element should have a unique key attribute.';
 
 	let testResults = [
 		{
@@ -156,6 +157,11 @@ export const executeTests = (code) => {
 			test: 4,
 			status: false,
 			condition: error_4
+		},
+		{
+			test: 5,
+			status: false,
+			condition: error_5
 		}
 	];
 
@@ -294,6 +300,23 @@ export const executeTests = (code) => {
 	} catch (err) {
 		passed = false;
 		testResults[4].status = false;
+	}
+
+  	// test 5:
+	try {
+		let node1 = state_1.nodes[1].outerHTML;
+		let node2 = state_1.nodes[2].outerHTML;
+		let match1 = node1.match(/\$/);
+		let match2 = node2.match(/\$/);
+    assert(
+    	code.replace(/\s/g, '').includes('<likey={') &&
+    	node1[match1.index + 1] !== node2[match2.index + 1],
+    	error_5
+    );
+		testResults[5].status = true;
+	} catch (err) {
+		passed = false;
+		testResults[5].status = false;
 	}
 
 	return {

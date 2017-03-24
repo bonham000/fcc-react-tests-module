@@ -54,8 +54,8 @@ export const executeTests = (code) => {
 	];
 
 	const prepend = `(function() {`
-	const apend = `;\n return JSX })()`
-	const modifiedCode = prepend.concat(code).concat(apend);
+	const append = `;\n return JSX })()`
+	const modifiedCode = prepend.concat(code).concat(append);
 
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
