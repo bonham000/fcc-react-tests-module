@@ -25,7 +25,7 @@ Note that if you make a component stateful, no other components are aware of its
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>In the code editor, <code>MyComponent</code> is already stateful. Define an <code>h1</code> tag in the component's render method which renders the value of <code>name</code> from the component's state.
 <br><br>
 
-<strong>Note</strong><br>The <code>h1</code> should only render the value from <code>state</code> and nothing else. In JSX, any code you write with curly braces <code>{ }</code> will be treated as JavaScript. So to access the value from <code>state</code> just enclose the reference in curly braces.`
+<strong>Note:</strong>&nbsp;The <code>h1</code> should only render the value from <code>state</code> and nothing else. In JSX, any code you write with curly braces <code>{ }</code> will be treated as JavaScript. So to access the value from <code>state</code> just enclose the reference in curly braces.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =

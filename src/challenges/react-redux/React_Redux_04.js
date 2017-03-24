@@ -27,7 +27,7 @@ export const challengeInstructions = `<span class = 'default'>Instructions: </sp
 finished, you should see your React component rendered to the page.
 <br><br>
 
-<strong>Note</strong><br>React Redux is available as a global variable here, so you can access the Provider with dot notation. The code in the editor takes advantage of this and sets it to a constant <code>Provider</code> for you to use in the <code>AppWrapper</code> render method.`
+<strong>Note:</strong>&nbsp;React Redux is available as a global variable here, so you can access the Provider with dot notation. The code in the editor takes advantage of this and sets it to a constant <code>Provider</code> for you to use in the <code>AppWrapper</code> render method.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =

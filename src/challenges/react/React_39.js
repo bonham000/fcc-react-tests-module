@@ -111,8 +111,8 @@ export const executeTests = (code) => {
 
 	// for analyzing just the styles const
 	const prepend = `(function() {`
-	const apend = `;\n return styles })()`
-	const partialCode = prepend.concat(code).concat(apend);
+	const append = `;\n return styles })()`
+	const partialCode = prepend.concat(code).concat(append);
 
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
