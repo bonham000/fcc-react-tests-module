@@ -20,7 +20,9 @@ standard practice in Redux as well.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
-`
+`// change code below this line
+
+// change code above this line
 
 const defaultState = {
 	authenticated: false
