@@ -110,7 +110,7 @@ export default class ReduxTestComponent extends React.Component {
       theme: 'monokai',
       tabSize: 2,
       extraKeys: {
-      	'Cmd-Enter': () => { 
+      	'Cmd-Enter': () => {
 	    		this.testCode();
 	    		return false;
 	    	},
@@ -118,21 +118,21 @@ export default class ReduxTestComponent extends React.Component {
 	    		this.testCode();
 	    		return false;
 	    	}
-	    } 
+	    }
     };
 
     const renderTitle = () => { return { __html: this.props.challengeTitle }}
     const renderText = () => { return { __html: this.props.challengeText }}
     const renderInstructions = () => { return { __html: this.props.challengeInstructions }}
-    
+
     const { testResults } = this.state;
-    
+
     let passingTests, totalTests
     if (testResults.length > 0) {
 	    passingTests = testResults.filter( (test) => test.status === true ).length;
 	    totalTests = testResults.length;
     }
-    
+
     const renderChallenges=this.props.challenges.map( (challenge, idx) => {
       return (
       	<option value={challenge.id} key={idx}>
@@ -149,7 +149,7 @@ export default class ReduxTestComponent extends React.Component {
 	        <select value={this.props.selectedChallenge} onChange={this.select}>
 	          {renderChallenges}
 	        </select>
-	        
+
     		</h1>
 
     		<div className='instructionsContainer'>
@@ -172,7 +172,7 @@ export default class ReduxTestComponent extends React.Component {
 
 					<div className="testWrapper">
 				    <h1 className='title'>Tests</h1>
-			    	
+
 			    	<div className='testControls'>
 			    		<button onClick={this.seedCode} className='seedBtn'>Reload Seed</button>
 			    		<button onClick={this.solutionCode} className='solnBtn'>Solution Code</button>
@@ -186,7 +186,7 @@ export default class ReduxTestComponent extends React.Component {
 				    	{ this.state.passed ?
 		    				<p className='msg success'>All tests passed!</p> :
 		    				<p className='msg error'>Your code does not pass the tests, {passingTests} out of {totalTests} tests are passing</p> }
-				    	
+
 				    	{
 				    		testResults.map( (test, idx) => {
 					    		if (test.status) {
@@ -225,8 +225,7 @@ export default class ReduxTestComponent extends React.Component {
 
 		    <div>
 		    	<p className='referenceLink'>- This project is testing Redux live in a browser with JavaScript | &nbsp;
-		    		<a target="_blank" href="https://github.com/bonham000/fcc-react-tests-module">View the code on GitHub</a>&nbsp;|&nbsp;
-		    		<a target = "_blank" href="https://github.com/bonham000/fcc-react-tests-module/blob/master/CONTRIBUTING.md">Contribute</a>
+		    		<a target="_blank" href="https://github.com/bonham000/fcc-react-tests-module">View on GitHub</a>
 		    	</p>
 		    </div>
 

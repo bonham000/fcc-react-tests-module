@@ -37,7 +37,7 @@ const ADD = 'ADD';
 const addMessage = (message) => {
 	return {
     type: ADD,
-    message: message
+    message
   }
 };
 
@@ -111,7 +111,7 @@ const ADD = 'ADD';
 const addMessage = (message) => {
 	return {
     type: ADD,
-    message: message
+    message
   }
 };
 
