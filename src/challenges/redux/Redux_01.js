@@ -23,7 +23,7 @@ export const challengeInstructions = `<span class = 'default'>Instructions: </sp
 Declare a <code>store</code> variable and assign it to the <code>createStore()</code> method, passing in the <code>reducer</code> as an argument.
 <br><br>
 
-<strong>Note:</strong>&nbsp;The code in the editor uses ES6 default argument syntax to initialize this state to hold a value of <code>5</code>. If you're not familiar with default arguments, you can refer to the ES6 section.
+<strong>Note:</strong>&nbsp;The code in the editor uses ES6 default argument syntax to initialize this state to hold a value of <code>5</code>. If you're not familiar with default arguments, you can refer to the <a target="_blank" href="http://beta.freecodecamp.com/en/challenges/es6/set-default-parameters-for-your-functions">ES6 section in the Beta Curriculum</a> which covers this topic.
 `
 
 // ---------------------------- define challenge seed code ----------------------------
