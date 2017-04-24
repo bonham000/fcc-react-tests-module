@@ -105,7 +105,7 @@ export const executeTests = (code) => {
 
 	// test 1:
 	try {
-		assert.strictEqual(mockedComponent.find('div').length, 1, error_1);
+		assert(code.replace(/\s/g, '').includes('classMyComponentextendsReact.Component{'), error_1);
 		testResults[1].status = true;
 	} catch (err) {
 		passed = false;
