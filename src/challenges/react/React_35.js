@@ -27,7 +27,7 @@ export const seedCode =
 	constructor(props) {
 		super(props);
 		this.state = {
-			message: null
+			message: ''
 		};
 	}
 	// change code below this line
@@ -40,7 +40,7 @@ export const seedCode =
 	// change code above this line
 	handleEnter = () => {
 		this.setState({
-			message: 'You pressed the enter key!'
+			message: this.state.message + 'You pressed the enter key! '
 		});
 	}
 	handleKeyPress = (event) => {
@@ -78,7 +78,7 @@ export const solutionCode =
 	}
 	handleEnter = () => {
 		this.setState({
-			message: this.state.message.concat('You pressed the enter key! ')
+			message: this.state.message + 'You pressed the enter key! '
 		});
 	}
 	handleKeyPress = (event) => {
