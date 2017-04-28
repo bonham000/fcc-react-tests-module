@@ -6,7 +6,7 @@
 
 * **50 React Challenges, 18 Redux Challenges, 10 React-Redux Challenges**
 
-The now [live Beta Version of freeCodeCamp's expanded curriculum](http://beta.freecodecamp.com/en/) redirects campers to [a separate host site for these challenges](http://hysterical-amusement.surge.sh/), while we work on merging them into the FCC platform. Eventually, the goal is for all of these challenges to be moved directly into the [freeCodeCamp codebase](https://github.com/freeCodeCamp/freeCodeCamp).
+The now [live Beta Version of freeCodeCamp's expanded curriculum](http://beta.freecodecamp.com/en/) redirects campers to [a separate host site for these React challenges](http://hysterical-amusement.surge.sh/), while we work on merging them into the FCC platform. Eventually, the goal is for all of these challenges to be moved directly into the [freeCodeCamp codebase](https://github.com/freeCodeCamp/freeCodeCamp).
 
 **Currently, we have finished the initial QA and review of all of these challenges and are quite happy with them. There is still a possibility that there are bugs or typos we have not found yet. If you find something you think needs to be fixed, or have a suggestion for any of the challenges, please open an Issue here first so we can discuss it.**
 
