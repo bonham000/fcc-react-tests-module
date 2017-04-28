@@ -249,14 +249,29 @@ export const executeTests = (code) => {
 
 	// test 6:
 	try {
+
 		state_1 = mockedComponent.find('ul').find('li');
-		mockedComponent.find('textarea').simulate('change', {target: {value: "test, test, test"}});
+
+		mockedComponent.find('textarea').simulate('change', {target: {value: "testA, testB, testC"}});
 		mockedComponent.find('button').simulate('click');
+
 		state_2 = mockedComponent.find('ul').find('li');
-		mockedComponent.find('textarea').simulate('change', {target: {value: "test, test, test, test, test, test"}});
+		const state_2_text = state_2.nodes.reduce((t, n) => t + n.innerText, '');
+
+		mockedComponent.find('textarea').simulate('change', {target: {value: "t1, t2, t3, t4, t5, t6"}});
 		mockedComponent.find('button').simulate('click');
+
 		state_3 = mockedComponent.find('ul').find('li');
-		assert(state_1.length === 0 && state_2.length === 3 && state_3.length === 6, error_6)
+		const state_3_text = state_3.nodes.reduce((t, n) => t + n.innerText, '');
+
+		assert(
+			state_1.length === 0 &&
+			state_2.length === 3 &&
+			state_3.length === 6 &&
+			state_2_text === 'testA testB testC' &&
+			state_3_text === 't1 t2 t3 t4 t5 t6',
+			error_6);
+
 		testResults[6].status = true;
 	} catch (err) {
 		passed = false;
