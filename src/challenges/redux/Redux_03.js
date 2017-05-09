@@ -15,7 +15,7 @@ export const challengeText = `<span class = 'default'>Intro: </span>Since Redux 
 Think of Redux actions as messengers that deliver information about events happening in your app to the Redux store. The store then conducts the business of updating state based on the action that occurred.`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>Writing a Redux action is as simple as declaring an object with a type property. Declare an object <code>action</code> and give it a property <code>type</code> set to the string <code>'LOGIN'</code>.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>Writing a Redux action is as simple as declaring an object with a type property. Declare an object variable <code>action</code> and give it a property <code>type</code> set to the string <code>'LOGIN'</code>.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =`// Define an action here:

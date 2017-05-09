@@ -67,6 +67,7 @@ export default class ReactTestComponent extends React.Component {
 		try {
 			ReactDOM.render(renderComponent, document.getElementById('liveOutput'));
 		} catch (err) {
+
 			if (condition) document.getElementById('liveOutput').innerHTML = '';
 			/*
 			 * we will suppress this error here because the live preview refresh will
