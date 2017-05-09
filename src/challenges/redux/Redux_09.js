@@ -71,7 +71,7 @@ export const executeTests = (code) => {
 	const error_0 = 'Your code should transpile successfully.';
 	const error_1 = 'Dispatching the ADD action on the store should increment the state by 1.';
 	const error_2 = 'There should be a listener function subscribed to the store using store.subscribe().';
-	const error_3 = 'An action of type ADD should be dispatched three times and a message should be logged to the console on each dispatch.';
+	const error_3 = 'An action of type ADD should be dispatched three times and a text message should be logged to the console on each dispatch.';
 
 	let testResults = [
 		{
@@ -166,7 +166,11 @@ export const executeTests = (code) => {
 
 		const log = eval(hijackedCode);
 
-		assert.strictEqual(log.length, 3, error_3);
+		const typeOf = log.reduce((a,i) => (
+			typeof a === 'string' && typeof i === 'string' ? 'string' : false
+		), 'string');
+
+		assert(log.length === 3 && typeOf === 'string', error_3);
 
 		testResults[3].status = true;
 	} catch (err) {
