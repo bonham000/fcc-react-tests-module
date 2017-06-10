@@ -1,24 +1,24 @@
 /* eslint-disable */
-import React from 'react'
+import React, { PropTypes } from 'react'
 import CodeMirror from 'react-codemirror'
 
 import 'codemirror/mode/jsx/jsx';
 
 export default class ReduxTestComponent extends React.Component {
 	static propTypes = {
-		challengeTitle: React.PropTypes.string.isRequired,
-		challengeText: React.PropTypes.string.isRequired,
-		challengeInstructions: React.PropTypes.string.isRequired,
-		seedCode: React.PropTypes.string.isRequired,
-		solutionCode: React.PropTypes.string.isRequired,
-		executeTests: React.PropTypes.func.isRequired,
-		liveRender: React.PropTypes.func.isRequired,
-		QA: React.PropTypes.bool.isRequired,
-		selectedChallenge: React.PropTypes.string.isRequired,
-		challenges: React.PropTypes.array.isRequired,
-		select: React.PropTypes.func.isRequired,
-		advanceOneChallenge: React.PropTypes.func.isRequired,
-		previousChallenge: React.PropTypes.func.isRequired
+		challengeTitle: PropTypes.string.isRequired,
+		challengeText: PropTypes.string.isRequired,
+		challengeInstructions: PropTypes.string.isRequired,
+		seedCode: PropTypes.string.isRequired,
+		solutionCode: PropTypes.string.isRequired,
+		executeTests: PropTypes.func.isRequired,
+		liveRender: PropTypes.func.isRequired,
+		QA: PropTypes.bool.isRequired,
+		selectedChallenge: PropTypes.string.isRequired,
+		challenges: PropTypes.array.isRequired,
+		select: PropTypes.func.isRequired,
+		advanceOneChallenge: PropTypes.func.isRequired,
+		previousChallenge: PropTypes.func.isRequired
 	}
 	constructor(props) {
 		super(props);

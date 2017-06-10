@@ -64,7 +64,7 @@ const Camper = (props) => {
 };
 
 Camper.propTypes = {
-	name: React.PropTypes.string.isRequired
+	name: PropTypes.string.isRequired
 };
 
 Camper.defaultProps = {
@@ -121,9 +121,13 @@ export const executeTests = (code) => {
 	const exportScript = '\n export default CampSite'
 	const modifiedCode = code.concat(exportScript);
 
+  /* Crude patch to deal with PropTypes deprecation in React v15.5.0 */
+  const index = modifiedCode.indexOf('PropTypes.string.isRequired');
+	const patchPropTypes = modifiedCode.slice(0, index) + 'React.' + modifiedCode.slice(index);
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
-		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
+		es5 = transform(patchPropTypes, { presets: [ 'es2015', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
 		passed = false;
@@ -177,7 +181,7 @@ export const executeTests = (code) => {
 		// test 4:
 	try {
 		const noWhiteSpace = modifiedCode.replace(/\s/g, '');
-		const verifyDefaultProps = 'Camper.propTypes={name:React.PropTypes.string.isRequired';
+		const verifyDefaultProps = 'Camper.propTypes={name:PropTypes.string.isRequired';
 		assert.strictEqual(noWhiteSpace.includes(verifyDefaultProps), true, error_4);
 		testResults[4].status = true;
 	} catch (err) {

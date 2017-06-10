@@ -15,9 +15,13 @@ export const challengeText = `<span class = 'default'>Intro: </span>React provid
 
 It's considered a best practice to set <code>propTypes</code> when you know the type of a prop ahead of time. You can define a <code>propTypes</code> property for a component in the same way you defined <code>defaultProps</code>. Doing this will check that props of a given key are present with a given type. Here's an example to require the type <code>function</code> for a prop called <code>handleClick</code>:<br><br>
 
-<code>MyComponent.propTypes = { handleClick: React.PropTypes.func.isRequired }</code><br><br>
+<code>MyComponent.propTypes = { handleClick: PropTypes.func.isRequired }</code><br><br>
 
-In the example above, the <code>React.PropTypes.func</code> part checks that <code>handleClick</code> is a function. Adding <code>isRequired</code> tells React that <code>handleClick</code> is a required property for that component. You will see a warning if that prop isn't provided. Also notice that <code>func</code> represents <code>function</code>. Among the seven JavaScript primitive types, <code>function</code> and <code>boolean</code> (written as <code>bool</code>) are the only two that use unusual spelling. In addition to the primitive types, there are other types available. For example, you can check that a prop is a React element. Please refer to the documentation for all of the options.`
+In the example above, the <code>PropTypes.func</code> part checks that <code>handleClick</code> is a function. Adding <code>isRequired</code> tells React that <code>handleClick</code> is a required property for that component. You will see a warning if that prop isn't provided. Also notice that <code>func</code> represents <code>function</code>. Among the seven JavaScript primitive types, <code>function</code> and <code>boolean</code> (written as <code>bool</code>) are the only two that use unusual spelling. In addition to the primitive types, there are other types available. For example, you can check that a prop is a React element. Please refer to the documentation for all of the options.<br><br>
+
+<strong>Note:</strong> As of React v15.5.0, <code>PropTypes</code> is imported independently from React, like this:<br><br>
+
+<code>import React, { PropTypes } from 'react';</code>`
 
 // ---------------------------- challenge instructions ----------------------------
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>Define <code>propTypes</code> for the <code>Items</code> component to require <code>quantity</code> as a prop and verify that it is of type <code>number</code>.`
@@ -53,7 +57,7 @@ export const solutionCode =
 
 // change code below this line
 Items.propTypes = {
-	quantity: React.PropTypes.number.isRequired
+	quantity: PropTypes.number.isRequired
 };
 // change code above this line
 
@@ -104,12 +108,16 @@ export const executeTests = (code) => {
 
 	let es5, mockedComponent, passed = true;
 
-	const exportScript = '\n export default ShoppingCart'
+	const exportScript = '\n export default ShoppingCart';
 	const modifiedCode = code.concat(exportScript);
+
+	/* Crude patch to deal with PropTypes deprecation in React v15.5.0 */
+	const index = modifiedCode.indexOf('PropTypes.number.isRequired');
+	const patchPropTypes = modifiedCode.slice(0, index) + 'React.' + modifiedCode.slice(index);
 
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
-		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
+		es5 = transform(patchPropTypes, { presets: [ 'es2015', 'react' ] }).code;
 		testResults[0].status = true;
 	} catch (err) {
 		passed = false;
@@ -151,7 +159,7 @@ export const executeTests = (code) => {
 		// propTypes unavailable in production and throw warnings anyway
 		// this was the only way I could devise to check that propTypes are included
 		const noWhiteSpace = modifiedCode.replace(/\s/g, '');
-		const verifyPropTypes = 'Items.propTypes={quantity:React.PropTypes.number.isRequired}';
+		const verifyPropTypes = 'Items.propTypes={quantity:PropTypes.number.isRequired}';
 		assert.strictEqual(noWhiteSpace.includes(verifyPropTypes), true, error_3);
 		testResults[3].status = true;
 	} catch (err) {
