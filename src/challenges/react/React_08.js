@@ -56,13 +56,13 @@ class MyComponent extends React.Component {
 		super(props);
 	}
   render() {
+    // change code below this line
     return (
-	    // change code below this line
 	    <div>
 	    	<h1>Hello React!</h1>
 	    </div>
-	    // change code above this line
     );
+    // change code above this line
   }
 };`
 

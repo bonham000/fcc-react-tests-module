@@ -47,12 +47,12 @@ class Controller extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			message: 'first'
+			message: 'Fist Message'
 		};
 	}
 	changeMessage = () => {
 		this.setState({
-			message: 'second'
+			message: 'Second Message'
 		});
 	}
   render() {
@@ -71,15 +71,17 @@ export const solutionCode =
 	constructor(props) {
 		super(props);
 	}
-	componentWillReceiveProps(nextProps) {
-		console.log(this.props, nextProps);
-	}
 	componentWillUpdate() {
 		console.log('Component is about to update...');
+	}
+	// change code below this line
+	componentWillReceiveProps(nextProps) {
+		console.log(this.props, nextProps);
 	}
 	componentDidUpdate() {
 		console.log('Component re-rendered');
 	}
+	// change code above this line
   render() {
     return <h1>{this.props.message}</h1>
   }
