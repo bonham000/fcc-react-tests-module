@@ -47,7 +47,7 @@ class Controller extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			message: 'Fist Message'
+			message: 'First Message'
 		};
 	}
 	changeMessage = () => {
