@@ -92,7 +92,7 @@ export const executeTests = (code) => {
 
 	const error_1 = 'The React component should return a single div element.';
 	const error_2 = 'The component should return two nested elements.';
-	const error_3 = 'The component should return the ChildComponent as its second child';
+	const error_3 = 'The component should return the ChildComponent as its second child.';
 
 	let testResults = [
 		{
