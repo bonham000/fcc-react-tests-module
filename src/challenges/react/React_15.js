@@ -12,90 +12,75 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Pass an
 
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>
-The last challenge demonstrated how to pass information from a parent component to a child component as props. It passed a string value as a property, but React allows other data types as well, such as arrays.<br><br>
+The last challenge demonstrated how to pass information from a parent component to a child component as props or properties. This challenge looks at how Arrays can also be passed as props.  While Strings can be passed as props to a JSX element with just regular string quotes.  To pass an Array to a JSX element, it must be treated as Javascript and wrapped in curly braces.<br><br>
 
-The way to pass an array to a child component is a little different than the process for passing a string. Both data types use the HTML-like attribute syntax, but you wrap a string value in quotes (<code>&lt;ChildComponent myProp="stringData" /&gt;</code>), and you treat an array value as JavaScript. Since you are composing this code within a JSX element, it must be wrapped by curly braces (<code>&lt;ChildComponent myProp={arrayData} /&gt;</code>).`
+<code>&lt;ChildComponent myProp={["green", "blue", "red"]} /&gt;</code><br><br>
+
+You can also pass a variable that has been assigned array data, but the variable also needs to be treated as Javascript and wrapped in curly braces.<br><br>
+
+<code>&lt;ChildComponent myProp={arrayData} /&gt;</code><br><br>`
+
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>
-Take a look at the different props passed to the <code>Selections</code> component. There are props for <code>attire</code>, <code>shirts</code>, <code>pants</code>, and <code>shoes</code>. Edit the <code>Selections</code> component so it returns a type of outfit and the shirt, pants, and shoes to create it. Assume that today you are at home coding, and are wearing a super-casual outfit. Within the <code>Selections</code> component, use bracket notation to access the arrays that are passed as props. The first instance of the <code>Selections</code> component should render the text: "A super-casual day. I'm going to wear a sweatshirt, pajama pants, and slippers.".<br><br>
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>There is a <code>UnorderedList</code> and <code>ToDo</code> component in the code editor. The <code>UnorderedList</code> component takes an array passed to it as <code>list</code> prop.  Then uses the <code>map</code> function to return a <code>ul</code> with an <code>li</code> element for each <code>item</code> in the <code>list</code> array.<br><br>
 
-Tomorrow you have work, but you work as a programmer at a start up and your outfit can be casual. In the space indicated in the <code>OutfitSelector</code> component, render a second instance of the <code>Selections</code> component. Pass the same arrays as props, but this time, reorder the elements so that the rendered text reads: "A casual day. I'm going to wear a t-shirt, blue jeans, and sneakers."`
+Pass a <code>list</code> prop to each instance of the <code>UnorderedList</code> component in the <code>ToDo</code> component.   Today's <code>list</code> should be an array of at least 2 items and Tomorrow's <code>list</code> should have at least 3 items.`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = `
-const Selections = (props) => {
-  return (
-    <div>
-      A { /* change code here */ } day.
-      I'm going to wear a { /* change code here */ }, { /* change code here */ }, and { /* change code here */ }.
-    </div>
+const UnorderedList= (props) => { 
+  const listItems = props.list.map((item) =>  
+    <li>{item}</li>  
+  );  
+  return (  
+    <ul>{listItems}</ul>  
   );
 };
 
-class OutfitSelector extends React.Component {
+class ToDo extends React.Component {
   constructor(props) {
   	super(props);
   }
   render() {
     return (
       <div>
-        <h1>What to wear?!</h1>
-        <h3>Today is:</h3>
-        <Selections
-          attire={['casual', 'formal', 'super-casual']}
-          shirts={['t-shirt', 'sweatshirt', 'collared shirt']}
-          pants={['slacks', 'blue jeans', 'khakis', 'shorts', 'pajama pants']}
-          shoes={['dress shoes', 'slippers', 'sneakers']}
-        />
-        <h3>Tomorrow is:</h3>
-        { /* change code below this line */ }
-
-        { /* change code above this line */ }
+        <h1>To Do Lists</h1>
+				{ /* change code below this line */ }
+        <h3>Today</h3>
+        <UnorderedList/>
+        <h3>Tomorrow </h3>
+        <UnorderedList/>
+				{ /* change code above this line */ }
       </div>
     );
   }
 };`
 
 // ---------------------------- define challenge solution code ----------------------------
-export const solutionCode =
-`const Selections = (props) => {
-  return (
-      <div>
-        A {props.attire[2]} day.
-        I'm going to wear a {props.shirts[1]}, {props.pants[4]}, and {props.shoes[1]}.
-      </div>
-  );
+export const solutionCode = 
+`const UnorderedList= (props) => {  
+  const listItems = props.list.map((item) =>  
+    <li>{item}</li>  
+  );  
+  return (  
+    <ul>{listItems}</ul>  
+  );  
 };
 
-class OutfitSelector extends React.Component {
+class ToDo extends React.Component {
   constructor(props) {
   	super(props);
-
   }
   render() {
     return (
-        <div>
-        	<h1>What to wear?!</h1>
-        	<h3>Today is:</h3>
-        	{ /* change code below this line */ }
-        	<Selections
-            attire={['casual', 'formal', 'super-casual']}
-            shirts={['t-shirt', 'sweatshirt', 'collared shirt']}
-            pants={['slacks', 'blue jeans', 'khakis', 'shorts', 'pajama pants']}
-            shoes={['dress shoes', 'slippers', 'sneakers']}
-            />
-        	{ /* change code above this line */ }
-        	<h3>Tomorrow is:</h3>
-        	{ /* change code below this line */ }
-          <Selections
-            attire={['formal', 'super-casual', 'casual']}
-            shirts={['collared shirt', 't-shirt', 'sweatshirt']}
-            pants={['slacks', 'khakis', 'shorts', 'pajama pants', 'blue jeans']}
-            shoes={['dress shoes', 'sneakers', 'slippers']}
-            />
-        	{ /* change code above this line */ }
-        </div>
+      <div>
+        <h1>To Do Lists</h1>
+        <h3>Today</h3>
+        <UnorderedList list={['study', 'exercise']} />
+        <h3>Tomorrow </h3>
+        <UnorderedList
+          list={['call Sam', 'grocery shopping', 'order concert tickets']} />
+      </div>
     );
   }
 };`
@@ -105,12 +90,12 @@ class OutfitSelector extends React.Component {
 export const executeTests = (code) => {
 
 	const error_0 = 'Your JSX code should transpile successfully.';
-	const error_1 = 'The OutfitSelector component should return a single outer div.';
-	const error_2 = 'The OutfitSelector component\'s third child should be an instance of the Selections component.';
-	const error_3 = 'The OutfitSelector component\'s fifth child should be an instance of the Selections component.';
-	const error_4 = 'Both instances of the Selections component should have props called attire, shirts, pants, and shoes, and the value of each of these props should be an array.';
-	const error_5 = 'The first instance of the Selections component should return the text "A super-casual day. I\'m going to wear a sweatshirt, pajama pants, and slippers."';
-	const error_6 = 'The second instance of the Selections component should return the text "A casual day. I\'m going to wear a t-shirt, blue jeans, and sneakers."';
+	const error_1 = 'The ToDo component should return a single outer div.';
+	const error_2 = 'The ToDo component\'s third child should be an instance of the UnorderedList component.';
+	const error_3 = 'The ToDo component\'s fifth child should be an instance of the UnorderedList component.';
+	const error_4 = 'Both instances of the UnorderedList component should have a property called list and list should be an array.';
+	const error_5 = 'The first instance of the UnorderedList component should return an unordered list with 2 or more items.';
+	const error_6 = 'The second instance of the UnorderedList component should return an unordered list with 3 or more items';
 
 	let testResults = [
 		{
@@ -154,7 +139,7 @@ export const executeTests = (code) => {
 
 	// this applies an export to the user's code so
 	// we can access their component here for tests
-	const exportScript = '\n export default OutfitSelector'
+	const exportScript = '\n export default ToDo'
 	const modifiedCode = code.concat(exportScript);
 
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
@@ -190,7 +175,7 @@ export const executeTests = (code) => {
 
 	// test 2:
 	try {
-		assert.strictEqual(mockedComponent.nodes[0].props.children[2].type.name, 'Selections', error_2)
+		assert.strictEqual(mockedComponent.nodes[0].props.children[2].type.name, 'UnorderedList', error_2)
 		testResults[2].status = true;
 	} catch (err) {
 		passed = false;
@@ -199,7 +184,7 @@ export const executeTests = (code) => {
 
 	// test 3:
 	try {
-		assert.strictEqual(mockedComponent.nodes[0].props.children[4].type.name, 'Selections', error_2)
+		assert.strictEqual(mockedComponent.nodes[0].props.children[2].type.name, 'UnorderedList', error_3)
 		testResults[3].status = true;
 	} catch (err) {
 		passed = false;
@@ -208,14 +193,7 @@ export const executeTests = (code) => {
 
 	// test 4:
 	try {
-		assert(Array.isArray(mockedComponent.props().children[2].props.attire) === true &&
-			Array.isArray(mockedComponent.props().children[2].props.pants) === true &&
-			Array.isArray(mockedComponent.props().children[2].props.shirts) === true &&
-			Array.isArray(mockedComponent.props().children[2].props.shoes) === true &&
-			Array.isArray(mockedComponent.props().children[4].props.attire) === true &&
-			Array.isArray(mockedComponent.props().children[4].props.pants) === true &&
-			Array.isArray(mockedComponent.props().children[4].props.shirts) === true &&
-			Array.isArray(mockedComponent.props().children[4].props.shoes) === true, error_4)
+		assert(Array.isArray(mockedComponent.props().children[4].props.list) === true, error_4)
 		testResults[4].status = true;
 	} catch (err) {
 		passed = false;
@@ -224,7 +202,7 @@ export const executeTests = (code) => {
 
 	// test 5:
 	try {
-		assert.strictEqual(mockRender.find('div').nodes[1].innerText, "A super-casual day. I\'m going to wear a sweatshirt, pajama pants, and slippers.", error_4)
+		assert(mockedComponent.props().children[2].props.list.length >= 2, error_5)
 		testResults[5].status = true;
 	} catch (err) {
 		passed = false;
@@ -233,7 +211,7 @@ export const executeTests = (code) => {
 
 	// test 6:
 	try {
-		assert.strictEqual(mockRender.find('div').nodes[2].innerText, "A casual day. I\'m going to wear a t-shirt, blue jeans, and sneakers.", error_4)
+		assert(mockedComponent.props().children[4].props.list.length >= 3, error_6)
 		testResults[6].status = true;
 	} catch (err) {
 		passed = false;
@@ -252,7 +230,7 @@ export const executeTests = (code) => {
 export const liveRender = (code) => {
 
 	try {
-		const exportScript = '\n export default OutfitSelector'
+		const exportScript = '\n export default ToDo'
 		const modifiedCode = code.concat(exportScript);
 		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		const renderedComponent = React.createElement(eval(es5));
