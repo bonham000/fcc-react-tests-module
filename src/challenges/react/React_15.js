@@ -12,29 +12,30 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Pass an
 
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>
-The last challenge demonstrated how to pass information from a parent component to a child component as <code>props</code> or properties. This challenge looks at how arrays can be passed as <code>props</code>.  To pass an array to a JSX element, it must be treated as Javascript and wrapped in curly braces.
+The last challenge demonstrated how to pass information from a parent component to a child component as <code>props</code> or properties. This challenge looks at how arrays can be passed as <code>props</code>.  To pass an array to a JSX element, it must be treated as JavaScript and wrapped in curly braces.
 
 <pre>
 <code class="codeBlock">&lt;ParentComponent&gt;
-  &lt;ChildComponent myProp={["green", "blue", "red"]} /&gt;
+  &lt;ChildComponent colors={["green", "blue", "red"]} /&gt;
  &lt;/ParentComponent&gt;</code>
 </pre>
 
-The Child component then has access to the array property <code>myProp</code>.  Array methods such as <code>join()</code> can be used when accessing the property.<br><br>   
+The child component then has access to the array property <code>colors</code>.  Array methods such as <code>join()</code> can be used when accessing the property.<br><br>
 
-<code>const ChildComponent = (props) => &lt;p&gt{props.myProp.join(', ')}&lt;/p&gt</code><br><br> 
+<code>const ChildComponent = (props) => &lt;p&gt{props.colors.join(', ')}&lt;/p&gt</code><br><br>
 
-This will join all <code>myProp</code> array items into a comma separated string and produce:<br><br>
+This will join all <code>colors</code> array items into a comma separated string and produce:<br><br>
 
- <code> &lt;p&gt;green, blue, red&lt;/p&gt;</code><br><br> 
+ <code> &lt;p&gt;green, blue, red&lt;/p&gt;</code><br><br>
+
+Later, we will learn about other common methods to render arrays of data in React.
 `
 
-
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>There are <code>List</code> and <code>ToDo</code> components in the code editor. When rendering each <code>List</code> from the <code>ToDo</code> component, pass in a <code>tasks</code> property assigned to an array of to-do tasks, for example ["walk dog", "workout"]. Then access this <code>props.tasks</code> array in the <code>List</code> component, showing its value within the <code>p</code> element.  Use <code>join(", ")</code> to display the <code>props.tasks</code>array in the <code>p</code> element as a comma separated list. Today's list should have least 2 tasks and Tomorrow's should have at least 3 tasks.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>There are <code>List</code> and <code>ToDo</code> components in the code editor. When rendering each <code>List</code> from the <code>ToDo</code> component, pass in a <code>tasks</code> property assigned to an array of to-do tasks, for example <code>["walk dog", "workout"]</code>. Then access this <code>tasks</code> array in the <code>List</code> component, showing its value within the <code>p</code> element.  Use <code>join(", ")</code> to display the <code>props.tasks</code>array in the <code>p</code> element as a comma separated list. Today's list should have at least 2 tasks and tomorrow's should have at least 3 tasks.`
 
 // ---------------------------- define challenge seed code ----------------------------
-export const seedCode = 
+export const seedCode =
 `const List= (props) => {
 	{ /* change code below this line */ }
 	return <p>{}</p>
@@ -77,7 +78,7 @@ class ToDo extends React.Component {
 				<h2>Today</h2>
         <List tasks={['study', 'exercise']} />
 				<h2>Tomorrow</h2>
-        <List tasks={['call Sam', 'grocery shopping', 'order tickets']} />				
+        <List tasks={['call Sam', 'grocery shopping', 'order tickets']} />
       </div>
     );
   }
@@ -91,9 +92,9 @@ export const executeTests = (code) => {
 	const error_1 = 'The ToDo component should return a single outer div.';
 	const error_2 = 'The ToDo component\'s third child should be an instance of the List component.';
 	const error_3 = 'The ToDo component\'s fifth child should be an instance of the List component.';
-	const error_4 = 'Both instances of the List component should have a property called tasks and tasks should be of type Array.';
-	const error_5 = 'The first List component should have a tasks prop with length >= 2 , ';
-	const error_6 = 'The second List component should have a tasks prop with length >= 3';
+	const error_4 = 'Both instances of the List component should have a property called tasks and tasks should be of type array.';
+	const error_5 = 'The first List component representing Today\'s tasks should have 2 or more iteams.';
+	const error_6 = 'The second List component representing Tomorrow\'s tasks should have 3 or more items.';
 	const error_7 = 'The List component should render the value from the tasks prop in the p tag.'
 
 	let testResults = [
@@ -136,7 +137,7 @@ export const executeTests = (code) => {
 			test: 7,
 			status: false,
 			condition: error_7
-		}		
+		}
 	];
 
 	let es5, mockedComponent, mockRender, propsObj, passed = true;
@@ -211,27 +212,25 @@ export const executeTests = (code) => {
 	} catch (err) {
 		passed = false;
 		testResults[5].status = false;
-	}	
+	}
 
 	// test 6:
 	try {
-		console.log(mockedComponent.props().children[4].props.tasks.length);
-		
 		assert(mockedComponent.props().children[4].props.tasks.length >= 3, error_6)
 		testResults[6].status = true;
 	} catch (err) {
 		passed = false;
 		testResults[6].status = false;
-	}	
+	}
 
 	// test 7:
 	try {
-		assert(mockRender.find("p").nodes[0].innerHTML == mockedComponent.props().children[2].props.tasks.join(", ") || mockRender.find("p").nodes[0].innerHTML == mockedComponent.props().children[2].props.tasks.join(","), error_7)
+		assert(mockRender.find("p").nodes[0].innerHTML === mockedComponent.props().children[2].props.tasks.join(", ") || mockRender.find("p").nodes[0].innerHTML === mockedComponent.props().children[2].props.tasks.join(","), error_7)
 		testResults[7].status = true;
 	} catch (err) {
 		passed = false;
 		testResults[7].status = false;
-	}		
+	}
 
 	return {
 		passed,
