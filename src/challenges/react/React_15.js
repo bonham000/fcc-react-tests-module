@@ -12,29 +12,33 @@ export const challengeTitle = `<span class = 'default'>Challenge: </span>Pass an
 
 // ---------------------------- challenge text ----------------------------
 export const challengeText = `<span class = 'default'>Intro: </span>
-The last challenge demonstrated how to pass information from a parent component to a child component as props or properties. This challenge looks at how Arrays can also be passed as props.  While Strings can be passed as props to a JSX element with just regular string quotes.  To pass an Array to a JSX element, it must be treated as Javascript and wrapped in curly braces.<br><br>
+The last challenge demonstrated how to pass information from a parent component to a child component as <code>props</code> or properties. This challenge looks at how arrays can be passed as <code>props</code>.  To pass an array to a JSX element, it must be treated as Javascript and wrapped in curly braces.
 
-<code>&lt;ChildComponent myProp={["green", "blue", "red"]} /&gt;</code><br><br>
+<pre>
+<code class="codeBlock">&lt;ParentComponent&gt;
+  &lt;ChildComponent myProp={["green", "blue", "red"]} /&gt;
+ &lt;/ParentComponent&gt;</code>
+</pre>
 
-You can also pass a variable that has been assigned array data, but the variable also needs to be treated as Javascript and wrapped in curly braces.<br><br>
+The Child component then has access to the array property <code>myProp</code>.  Array methods such as <code>join()</code> can be used when accessing the property.<br><br>   
 
-<code>&lt;ChildComponent myProp={arrayData} /&gt;</code><br><br>`
+<code>const ChildComponent = (props) => &lt;p&gt{props.myProp.join(', ')}&lt;/p&gt</code><br><br> 
+
+This will join all <code>myProp</code> array items into a comma separated string and produce:<br><br>
+
+ <code> &lt;p&gt;green, blue, red&lt;/p&gt;</code><br><br> 
+`
 
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>There is a <code>UnorderedList</code> and <code>ToDo</code> component in the code editor. The <code>UnorderedList</code> component takes an array passed to it as <code>list</code> prop.  Then uses the <code>map</code> function to return a <code>ul</code> with an <code>li</code> element for each <code>item</code> in the <code>list</code> array.<br><br>
-
-Pass a <code>list</code> prop to each instance of the <code>UnorderedList</code> component in the <code>ToDo</code> component.   Today's <code>list</code> should be an array of at least 2 items and Tomorrow's <code>list</code> should have at least 3 items.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>There are <code>List</code> and <code>ToDo</code> components in the code editor. When rendering each <code>List</code> from the <code>ToDo</code> component, pass in a <code>tasks</code> property assigned to an array of to-do tasks, for example ["walk dog", "workout"]. Then access this <code>props.tasks</code> array in the <code>List</code> component, showing its value within the <code>p</code> element.  Use <code>join(", ")</code> to display the <code>props.tasks</code>array in the <code>p</code> element as a comma separated list. Today's list should have least 2 tasks and Tomorrow's should have at least 3 tasks.`
 
 // ---------------------------- define challenge seed code ----------------------------
-export const seedCode = `
-const UnorderedList= (props) => { 
-  const listItems = props.list.map((item) =>  
-    <li>{item}</li>  
-  );  
-  return (  
-    <ul>{listItems}</ul>  
-  );
+export const seedCode = 
+`const List= (props) => {
+	{ /* change code below this line */ }
+	return <p>{}</p>
+	{ /* change code above this line */ }
 };
 
 class ToDo extends React.Component {
@@ -45,11 +49,11 @@ class ToDo extends React.Component {
     return (
       <div>
         <h1>To Do Lists</h1>
+				<h2>Today</h2>
 				{ /* change code below this line */ }
-        <h3>Today</h3>
-        <UnorderedList/>
-        <h3>Tomorrow </h3>
-        <UnorderedList/>
+        <List/>
+				<h2>Tomorrow</h2>
+        <List/>
 				{ /* change code above this line */ }
       </div>
     );
@@ -57,14 +61,9 @@ class ToDo extends React.Component {
 };`
 
 // ---------------------------- define challenge solution code ----------------------------
-export const solutionCode = 
-`const UnorderedList= (props) => {  
-  const listItems = props.list.map((item) =>  
-    <li>{item}</li>  
-  );  
-  return (  
-    <ul>{listItems}</ul>  
-  );  
+export const solutionCode =
+	`const List= (props) => {
+	return <p>{props.tasks.join(', ')}</p>
 };
 
 class ToDo extends React.Component {
@@ -75,11 +74,10 @@ class ToDo extends React.Component {
     return (
       <div>
         <h1>To Do Lists</h1>
-        <h3>Today</h3>
-        <UnorderedList list={['study', 'exercise']} />
-        <h3>Tomorrow </h3>
-        <UnorderedList
-          list={['call Sam', 'grocery shopping', 'order concert tickets']} />
+				<h2>Today</h2>
+        <List tasks={['study', 'exercise']} />
+				<h2>Tomorrow</h2>
+        <List tasks={['call Sam', 'grocery shopping', 'order tickets']} />				
       </div>
     );
   }
@@ -91,11 +89,12 @@ export const executeTests = (code) => {
 
 	const error_0 = 'Your JSX code should transpile successfully.';
 	const error_1 = 'The ToDo component should return a single outer div.';
-	const error_2 = 'The ToDo component\'s third child should be an instance of the UnorderedList component.';
-	const error_3 = 'The ToDo component\'s fifth child should be an instance of the UnorderedList component.';
-	const error_4 = 'Both instances of the UnorderedList component should have a property called list and list should be an array.';
-	const error_5 = 'The first instance of the UnorderedList component should return an unordered list with 2 or more items.';
-	const error_6 = 'The second instance of the UnorderedList component should return an unordered list with 3 or more items';
+	const error_2 = 'The ToDo component\'s third child should be an instance of the List component.';
+	const error_3 = 'The ToDo component\'s fifth child should be an instance of the List component.';
+	const error_4 = 'Both instances of the List component should have a property called tasks and tasks should be of type Array.';
+	const error_5 = 'The first List component should have a tasks prop with length >= 2 , ';
+	const error_6 = 'The second List component should have a tasks prop with length >= 3';
+	const error_7 = 'The List component should render the value from the tasks prop in the p tag.'
 
 	let testResults = [
 		{
@@ -132,7 +131,12 @@ export const executeTests = (code) => {
 			test: 6,
 			status: false,
 			condition: error_6
-		}
+		},
+		{
+			test: 7,
+			status: false,
+			condition: error_7
+		}		
 	];
 
 	let es5, mockedComponent, mockRender, propsObj, passed = true;
@@ -175,7 +179,7 @@ export const executeTests = (code) => {
 
 	// test 2:
 	try {
-		assert.strictEqual(mockedComponent.nodes[0].props.children[2].type.name, 'UnorderedList', error_2)
+		assert.strictEqual(mockedComponent.nodes[0].props.children[2].type.name, 'List', error_2)
 		testResults[2].status = true;
 	} catch (err) {
 		passed = false;
@@ -184,7 +188,7 @@ export const executeTests = (code) => {
 
 	// test 3:
 	try {
-		assert.strictEqual(mockedComponent.nodes[0].props.children[2].type.name, 'UnorderedList', error_3)
+		assert.strictEqual(mockedComponent.nodes[0].props.children[2].type.name, 'List', error_3)
 		testResults[3].status = true;
 	} catch (err) {
 		passed = false;
@@ -193,7 +197,7 @@ export const executeTests = (code) => {
 
 	// test 4:
 	try {
-		assert(Array.isArray(mockedComponent.props().children[4].props.list) === true, error_4)
+		assert(Array.isArray(mockedComponent.props().children[4].props.tasks) === true, error_4)
 		testResults[4].status = true;
 	} catch (err) {
 		passed = false;
@@ -202,21 +206,32 @@ export const executeTests = (code) => {
 
 	// test 5:
 	try {
-		assert(mockedComponent.props().children[2].props.list.length >= 2, error_5)
+		assert(mockedComponent.props().children[2].props.tasks.length >= 2, error_5)
 		testResults[5].status = true;
 	} catch (err) {
 		passed = false;
 		testResults[5].status = false;
-	}
+	}	
 
 	// test 6:
 	try {
-		assert(mockedComponent.props().children[4].props.list.length >= 3, error_6)
+		console.log(mockedComponent.props().children[4].props.tasks.length);
+		
+		assert(mockedComponent.props().children[4].props.tasks.length >= 3, error_6)
 		testResults[6].status = true;
 	} catch (err) {
 		passed = false;
 		testResults[6].status = false;
-	}
+	}	
+
+	// test 7:
+	try {
+		assert(mockRender.find("p").nodes[0].innerHTML == mockedComponent.props().children[2].props.tasks.join(", ") || mockRender.find("p").nodes[0].innerHTML == mockedComponent.props().children[2].props.tasks.join(","), error_7)
+		testResults[7].status = true;
+	} catch (err) {
+		passed = false;
+		testResults[7].status = false;
+	}		
 
 	return {
 		passed,
