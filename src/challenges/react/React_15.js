@@ -93,7 +93,7 @@ export const executeTests = (code) => {
 	const error_2 = 'The ToDo component\'s third child should be an instance of the List component.';
 	const error_3 = 'The ToDo component\'s fifth child should be an instance of the List component.';
 	const error_4 = 'Both instances of the List component should have a property called tasks and tasks should be of type array.';
-	const error_5 = 'The first List component representing Today\'s tasks should have 2 or more iteams.';
+	const error_5 = 'The first List component representing Today\'s tasks should have 2 or more items.';
 	const error_6 = 'The second List component representing Tomorrow\'s tasks should have 3 or more items.';
 	const error_7 = 'The List component should render the value from the tasks prop in the p tag.'
 
