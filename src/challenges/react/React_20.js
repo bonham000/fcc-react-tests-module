@@ -211,9 +211,15 @@ export const executeTests = (code) => {
 export const liveRender = (code) => {
 
 	try {
-		const exportScript = '\n export default CampSite'
-		const modifiedCode = code.concat(exportScript);
-		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
+
+    const exportScript = '\n export default CampSite'
+    const modifiedCode = code.concat(exportScript);
+
+    /* Crude patch to deal with PropTypes deprecation in React v15.5.0 */
+    const index = modifiedCode.indexOf('PropTypes.string.isRequired');
+    const patchPropTypes = modifiedCode.slice(0, index) + 'React.' + modifiedCode.slice(index);
+
+		const es5 = transform(patchPropTypes, { presets: [ 'es2015', 'react' ] }).code;
 		const renderedComponent = React.createElement(eval(es5));
 		return renderedComponent;
 	} catch (err) {
