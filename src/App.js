@@ -228,47 +228,29 @@ export default class App extends React.Component {
     const { selectedChallenge } = this.state;
     const challengeType = selectedChallenge.type;
     const challenge = selectedChallenge.id;
+
+    const createComponent = (Component) => (
+      <Component
+        select={this.select}
+        QA={eval(challenge).QA}
+        selectedChallenge={challenge}
+        challenges={this.state.challenges}
+        seedCode={eval(challenge).seedCode}
+        liveRender={eval(challenge).liveRender}
+        previousChallenge={this.previousChallenge}
+        executeTests={eval(challenge).executeTests}
+        solutionCode={eval(challenge).solutionCode}
+        challengeText={eval(challenge).challengeText}
+        challengeTitle={eval(challenge).challengeTitle}
+        advanceOneChallenge={this.advanceOneChallenge}
+        challengeInstructions={eval(challenge).challengeInstructions} />
+    );
+
     return (
       <div>
-
-        {
-
-          challengeType === 'React' ?
-
-            <ReactTestComponent
-              challengeTitle={eval(challenge).challengeTitle}
-              challengeText={eval(challenge).challengeText}
-              challengeInstructions={eval(challenge).challengeInstructions}
-              seedCode={eval(challenge).seedCode}
-              solutionCode={eval(challenge).solutionCode}
-              executeTests={eval(challenge).executeTests}
-              liveRender={eval(challenge).liveRender}
-              QA={eval(challenge).QA}
-              selectedChallenge={challenge}
-              challenges={this.state.challenges}
-              select={this.select}
-              advanceOneChallenge={this.advanceOneChallenge}
-              previousChallenge={this.previousChallenge} />
-
-          :
-
-            <ReduxTestComponent
-              challengeTitle={eval(challenge).challengeTitle}
-              challengeText={eval(challenge).challengeText}
-              challengeInstructions={eval(challenge).challengeInstructions}
-              seedCode={eval(challenge).seedCode}
-              solutionCode={eval(challenge).solutionCode}
-              executeTests={eval(challenge).executeTests}
-              liveRender={eval(challenge).liveRender}
-              QA={eval(challenge).QA}
-              selectedChallenge={challenge}
-              challenges={this.state.challenges}
-              select={this.select}
-              advanceOneChallenge={this.advanceOneChallenge}
-              previousChallenge={this.previousChallenge} />
-
-        }
-
+        {challengeType === 'React'
+          ? createComponent(ReactTestComponent)
+          : createComponent(ReduxTestComponent)}
       </div>
     );
   }

@@ -135,9 +135,17 @@ export default class ReactTestComponent extends React.Component {
 	    }
     };
 
-    const renderTitle = () => { return { __html: this.props.challengeTitle }}
-    const renderText = () => { return { __html: this.props.challengeText }}
-    const renderInstructions = () => { return { __html: this.props.challengeInstructions }}
+		const {
+			QA,
+			challengeText,
+			challengeTitle,
+			selectedChallenge,
+			challenges, challengeInstructions,
+		} = this.props;
+
+    const renderTitle = () => { return { __html: challengeTitle }}
+    const renderText = () => { return { __html: challengeText }}
+    const renderInstructions = () => { return { __html: challengeInstructions }}
 
     const { testResults } = this.state;
 
@@ -148,7 +156,7 @@ export default class ReactTestComponent extends React.Component {
 	    totalTests = testResults.length;
     }
 
-    const renderChallenges = this.props.challenges.map( (challenge, idx) => {
+    const renderChallenges = challenges.map( (challenge, idx) => {
       return (
       	<option value={challenge.id} key={idx}>
       		{challenge.id.replace(/_/g, ' ') + ': ' + challenge.title}
@@ -156,19 +164,41 @@ export default class ReactTestComponent extends React.Component {
       );
     });
 
+		console.log(selectedChallenge);
+
     return (
     	<div>
 
     		<h1 className='title mainTitle'>Free Code Camp React Challenge Alpha:
 
-	        <select value={this.props.selectedChallenge} onChange={this.select}>
+	        <select value={selectedChallenge} onChange={this.select}>
 	          {renderChallenges}
 	        </select>
 
     		</h1>
 
+				{selectedChallenge === 'React_30' && (
+					<div className='callToAction'>
+						&#9733; This challenge has an open issue: <a
+							target='_blank'
+							className='CTA-Link'
+							href="https://github.com/bonham000/fcc-react-tests-module/issues/227">
+							Take a look if you are interesting in helping resolve it.
+						</a>
+					</div>)}
+
+				{selectedChallenge === 'React_35' && (
+					<div className='callToAction'>
+						&#9733; This challenge has an open issue: <a
+							target='_blank'
+							className='CTA-Link'
+							href="https://github.com/bonham000/fcc-react-tests-module/issues/228">
+							Take a look if you are interesting in helping resolve it.
+						</a>
+					</div>)}
+
     		<div className='instructionsContainer'>
-    			<p className='qa'>QA status: {this.props.QA ?
+    			<p className='qa'>QA status: {QA ?
 						<span className='qa-complete'>Review Complete</span> :
 						<span className='qa-needed'>Needs Review</span>}
 					</p>

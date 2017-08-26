@@ -121,9 +121,17 @@ export default class ReduxTestComponent extends React.Component {
 	    }
     };
 
-    const renderTitle = () => { return { __html: this.props.challengeTitle }}
-    const renderText = () => { return { __html: this.props.challengeText }}
-    const renderInstructions = () => { return { __html: this.props.challengeInstructions }}
+		const {
+			QA,
+			challengeText,
+			challengeTitle,
+			selectedChallenge,
+			challenges, challengeInstructions,
+		} = this.props;
+
+    const renderTitle = () => { return { __html: challengeTitle }}
+    const renderText = () => { return { __html: challengeText }}
+    const renderInstructions = () => { return { __html: challengeInstructions }}
 
     const { testResults } = this.state;
 
@@ -133,7 +141,7 @@ export default class ReduxTestComponent extends React.Component {
 	    totalTests = testResults.length;
     }
 
-    const renderChallenges=this.props.challenges.map( (challenge, idx) => {
+    const renderChallenges=challenges.map( (challenge, idx) => {
       return (
       	<option value={challenge.id} key={idx}>
       		{challenge.id.replace(/_/g, ' ') + ': ' + challenge.title}
@@ -146,14 +154,14 @@ export default class ReduxTestComponent extends React.Component {
 
     		<h1 className='title mainTitle'>Free Code Camp Redux Challenge Alpha:
 
-	        <select value={this.props.selectedChallenge} onChange={this.select}>
+	        <select value={selectedChallenge} onChange={this.select}>
 	          {renderChallenges}
 	        </select>
 
     		</h1>
 
     		<div className='instructionsContainer'>
-    		  <p className='qa'>QA status: {this.props.QA ?
+    		  <p className='qa'>QA status: {QA ?
 						<span className='qa-complete'>Review Complete</span> :
 						<span className='qa-needed'>Needs Review</span>}
 					</p>
