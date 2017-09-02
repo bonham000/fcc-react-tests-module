@@ -71,7 +71,7 @@ export const executeTests = (code) => {
 	const error_0 = 'Your JSX code should transpile successfully.';
 	const error_1 = 'MyComponent should return a div element which wraps two elements, a button and an h1 element, in that order.'
 	const error_2 = 'The state of MyComponent should initialize with a message containing the string \'Hello!\'';
-	const error_3 = 'Clicking the button element should run the setMessage method and upate the message property in the state to say \'Goodbye!\'';
+	const error_3 = 'Clicking the button element should run the setMessage method and update the message property in the state to say \'Goodbye!\'';
 	const error_4 = 'The setMessage method should be defined with a fat arrow function.'
 
 	let testResults = [
