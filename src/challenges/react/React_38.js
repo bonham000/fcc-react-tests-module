@@ -30,14 +30,15 @@ JSX elements use the <code>style</code> attribute, but because of the way JSX is
 <code>&lt;div style={{color: "yellow", fontSize: 16}}&gt;Mellow Yellow&lt;/div&gt;</code>`
 
 // ---------------------------- challenge instructions ----------------------------
-export const challengeInstructions = `<span class = 'default'>Instructions: </span>Uncomment the JSX code in the editor to see the styles applied to the <code>Colorful</code> component.`
+export const challengeInstructions = `<span class = 'default'>Instructions: </span>Add a <code>style</code> attribute to the <code>div</code> in the code editor to give the text a color of red and font size of 72px.
+Note that you can optionally set the font size to be a number, omitting the units "px", or write it as "72px".`
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = `
 class Colorful extends React.Component {
   render() {
     return (
-	    <div {/* style={{color: "red", fontSize: 72}} */}>Big Red</div>
+	    <div>Big Red</div>
     );
   }
 };
@@ -130,13 +131,17 @@ export const executeTests = (code) => {
 
 	// test 2:
 	try {
-		assert.strictEqual(testRender.nodes[0].props.style.fontSize, 72, error_3);
+    assert(
+      testRender.nodes[0].props.style.fontSize === 72 ||
+      testRender.nodes[0].props.style.fontSize === '72' ||
+      testRender.nodes[0].props.style.fontSize === '72px',
+      error_3
+    );
 		testResults[3].status = true;
 	} catch (err) {
 		passed = false;
 		testResults[3].status = false;
 	}
-
 
 	return {
 		passed,
