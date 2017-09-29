@@ -24,7 +24,15 @@ export const challengeInstructions = `<span class = 'default'>Instructions: </sp
 export const seedCode =
 `const ADD_TO_DO = 'ADD_TO_DO';
 
-const immutableReducer = (state = ['Do not mutate state!'], action) => {
+// A list of strings representing tasks to do:
+const todos = [
+	'Go to the store',
+	'Clean the house',
+	'Cook dinner',
+	'Learn to code',
+];
+
+const immutableReducer = (state = todos, action) => {
 	switch(action.type) {
 		case ADD_TO_DO:
 			return // don't mutate state here
@@ -34,10 +42,11 @@ const immutableReducer = (state = ['Do not mutate state!'], action) => {
 	}
 };
 
+// an example todo argument would be 'Learn React',
 const addToDo = (todo) => {
 	return {
 		type: ADD_TO_DO,
-		todo
+		payload: todo
 	}
 }
 
@@ -47,19 +56,28 @@ const store = Redux.createStore(immutableReducer);`
 export const solutionCode =
 `const ADD_TO_DO = 'ADD_TO_DO';
 
-const immutableReducer = (state = ['Do not mutate state!'], action) => {
+// A list of strings representing tasks to do:
+const todos = [
+	'Go to the store',
+	'Clean the house',
+	'Cook dinner',
+	'Learn to code',
+];
+
+const immutableReducer = (state = todos, action) => {
 	switch(action.type) {
 		case ADD_TO_DO:
-			return state.concat(action.todo);
+			return state.concat(action.payload);
 		default:
 			return state;
 	}
 };
 
+// an example todo argument would be 'Learn React',
 const addToDo = (todo) => {
 	return {
 		type: ADD_TO_DO,
-		todo
+		payload: todo
 	}
 }
 
@@ -70,7 +88,7 @@ const store = Redux.createStore(immutableReducer);`
 export const executeTests = (code) => {
 
 	const error_0 = 'Your code should transpile successfully.';
-	const error_1 = 'The Redux store should exist and initialize with a state equal to [\'Don\'t mutate state!\']';
+	const error_1 = 'The Redux store should exist and initialize with a state equal to the todos array in the code editor.';
 	const error_2 = 'addToDo and immutableReducer both should be functions.';
 	const error_3 = 'Dispatching an action of type \'ADD_TO_DO\' on the Redux store should add a todo and return a new copy of state.';
 
@@ -131,10 +149,16 @@ export const executeTests = (code) => {
 
 	// test 1:
 	try {
+		const todos = [
+			'Go to the store',
+			'Clean the house',
+			'Cook dinner',
+			'Learn to code',
+		];
 		initialState = store.getState();
 		assert(
 			Array.isArray(initialState) === true &&
-			initialState[0] === 'Do not mutate state!',
+			initialState.join(',')  === todos.join(','),
 			error_1
 		);
 		testResults[1].status = true;
@@ -161,11 +185,9 @@ export const executeTests = (code) => {
 		store.dispatch(addToDo('__TEST__TO__DO__'));
 		finalState = store.getState();
 		assert(
-			initialState.length === 1 &&
-			initialState[0] === 'Do not mutate state!' &&
-			finalState.length === 2 &&
-			finalState[0] === 'Do not mutate state!' &&
-			finalState[1] === '__TEST__TO__DO__',
+			finalState.length === initialState.length + 1 &&
+			finalState.join(',') === initialState.concat('__TEST__TO__DO__').join(',') &&
+			finalState.pop() === '__TEST__TO__DO__',
 			error_3
 		);
 		testResults[3].status = true;
