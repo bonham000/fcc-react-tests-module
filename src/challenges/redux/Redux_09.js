@@ -126,7 +126,19 @@ export const executeTests = (code) => {
 
 	// test 1:
 	try {
+		// hack out the console here...
+		const prepend = `
+			(function() {
+				let log = []
+				const message = (msg) => log.push(msg);
+			`;
+		const append = `;
+			return { log, store, ADD };
+		})();`
+		const consoleReplaced = code.replace(/console.log/g, 'message');
+		const hijackedCode = prepend.concat(consoleReplaced).concat(append);
 
+		const { store } = eval(hijackedCode);
 		const initialState = store.getState();
 		store.dispatch({type: ADD});
 		const newState = store.getState();
@@ -159,7 +171,7 @@ export const executeTests = (code) => {
 			(function() {
 				let log = []
 				const message = (msg) => log.push(msg);
-			`
+			`;
 		const append = `; return log })();`
 		const consoleReplaced = code.replace(/console.log/g, 'message');
 		const hijackedCode = prepend.concat(consoleReplaced).concat(append);

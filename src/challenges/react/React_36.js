@@ -224,7 +224,7 @@ export const executeTests = (code) => {
 		lifecycleChild = React.createElement(eval(es5Child)).type.prototype.componentWillReceiveProps.toString().replace(/\s/g,'');
 		assert(
 			lifecycleChild.includes('console.log') === true &&
-			lifecycleChild.includes('nextProps') === true,
+			lifecycleChild.match(/nextProps/g).length === 2,
 			error_3
 		);
 		testResults[3].status = true;
