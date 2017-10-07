@@ -51,6 +51,7 @@
     "whatwg-fetch": "1.0.0"
   },
   "dependencies": {
+    "axios": "^0.16.2",
     "babel-standalone": "^6.19.0",
     "enzyme": "^2.6.0",
     "react": "^15.4.1",

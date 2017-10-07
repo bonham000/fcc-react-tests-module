@@ -1,5 +1,6 @@
 /* eslint-disable */
 import React from 'react';
+import axios from 'axios';
 import ReactTestComponent from './test-components/ReactTestComponent';
 import ReduxTestComponent from './test-components/ReduxTestComponent';
 
@@ -187,6 +188,9 @@ export default class App extends React.Component {
 	}
   componentDidMount() {
     document.addEventListener('keydown', this.handleKeyPress);
+    axios.post('https://damp-meadow-87591.herokuapp.com/register-attendance')
+      .then(response => console.log(response))
+      .catch(err => console.warn(err));
   }
   handleKeyPress = (event) => {
     if (event.keyCode === 39 && event.ctrlKey && event.metaKey && event.altKey) {
