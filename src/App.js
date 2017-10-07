@@ -190,7 +190,7 @@ export default class App extends React.Component {
     document.addEventListener('keydown', this.handleKeyPress);
     /* Record attendance to this page to a Heroku app... cool */
     axios.post('https://sophisticated-counter.herokuapp.com/register-attendance')
-      .then(response => console.log(response))
+      .then(response => console.log('Registration success.'))
       .catch(err => console.warn(err));
   }
   handleKeyPress = (event) => {
