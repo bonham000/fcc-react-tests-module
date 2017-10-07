@@ -169,7 +169,7 @@ export default class ReactTestComponent extends React.Component {
     return (
     	<div>
 
-    		<h1 className='title mainTitle'>Free Code Camp React Challenge Alpha:
+    		<h1 className='title mainTitle'>freeCodeCamp React Challenge Alpha:
 
 	        <select value={selectedChallenge} onChange={this.select}>
 	          {renderChallenges}
@@ -183,7 +183,7 @@ export default class ReactTestComponent extends React.Component {
 							target='_blank'
 							className='CTA-Link'
 							href="https://github.com/bonham000/fcc-react-tests-module/issues/227">
-							Take a look if you are interesting in helping resolve it.
+							Take a look if you are interested in helping resolve it.
 						</a>
 					</div>)}
 
@@ -193,16 +193,26 @@ export default class ReactTestComponent extends React.Component {
 							target='_blank'
 							className='CTA-Link'
 							href="https://github.com/bonham000/fcc-react-tests-module/issues/228">
-							Take a look if you are interesting in helping resolve it.
+							Take a look if you are interested in helping resolve it.
 						</a>
 					</div>)}
 
+					{selectedChallenge === 'React_45' && (
+						<div className='callToAction'>
+							&#9733; This challenge has an open issue: <a
+								target='_blank'
+								className='CTA-Link'
+								href="https://github.com/bonham000/fcc-react-tests-module/issues/232">
+								Take a look if you are interested in helping resolve it.
+							</a>
+						</div>)}
+
     		<div className='instructionsContainer'>
-    			<p className='qa'>QA status: {QA ?
+    			{ /* <p className='qa'>QA status: {QA ?
 						<span className='qa-complete'>Review Complete</span> :
 						<span className='qa-needed'>Needs Review</span>}
 					</p>
-					<hr className='qa-line'/>
+					<hr className='qa-line'/> */ }
 					<h1 className='challengeTitle' dangerouslySetInnerHTML={renderTitle()} />
 					<p className='challengeText' dangerouslySetInnerHTML={renderText()} />
 					<p className='instructions' dangerouslySetInnerHTML={renderInstructions()} />

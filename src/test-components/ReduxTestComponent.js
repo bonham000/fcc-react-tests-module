@@ -152,7 +152,7 @@ export default class ReduxTestComponent extends React.Component {
     return (
     	<div>
 
-    		<h1 className='title mainTitle'>Free Code Camp Redux Challenge Alpha:
+    		<h1 className='title mainTitle'>freeCodeCamp Redux Challenge Alpha:
 
 	        <select value={selectedChallenge} onChange={this.select}>
 	          {renderChallenges}
@@ -161,11 +161,11 @@ export default class ReduxTestComponent extends React.Component {
     		</h1>
 
     		<div className='instructionsContainer'>
-    		  <p className='qa'>QA status: {QA ?
+    		  { /* <p className='qa'>QA status: {QA ?
 						<span className='qa-complete'>Review Complete</span> :
 						<span className='qa-needed'>Needs Review</span>}
 					</p>
-					<hr className='qa-line'/>
+					<hr className='qa-line'/> */ }
 					<h1 className='challengeTitle' dangerouslySetInnerHTML={renderTitle()} />
 					<p className='challengeText' dangerouslySetInnerHTML={renderText()} />
 					<p className='instructions' dangerouslySetInnerHTML={renderInstructions()} />
