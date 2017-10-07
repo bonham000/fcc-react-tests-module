@@ -222,9 +222,12 @@ export const executeTests = (code) => {
 	// test 3:
 	try {
 		lifecycleChild = React.createElement(eval(es5Child)).type.prototype.componentWillReceiveProps.toString().replace(/\s/g,'');
+		const nextPropsAsParameterTest = /componentWillReceiveProps(| *?= *?)(\(|)nextProps(\)|)( *?=> *?{| *?{|{)/;
+		const nextPropsInConsoleLogTest = /console\.log\(.*?nextProps\b.*?\)/;
 		assert(
 			lifecycleChild.includes('console.log') === true &&
-			lifecycleChild.match(/nextProps/g).length === 2,
+			nextPropsInConsoleLogTest.test(lifecycleChild) === true &&
+			nextPropsAsParameterTest.test(lifecycleChild) === true,
 			error_3
 		);
 		testResults[3].status = true;
