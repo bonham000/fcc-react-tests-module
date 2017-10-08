@@ -50,7 +50,7 @@ ReactDOMServer.renderToString(<App/>);`
 
 // ---------------------------- define challenge tests ----------------------------
 
-export const executeTests = (code) => {
+export const executeTests = (code, errorSuppression) => {
 
 	const error_0 = 'The App component should render to a string using ReactDOMServer.renderToString.';
 
@@ -68,9 +68,11 @@ export const executeTests = (code) => {
 	try {
 		assert.strictEqual(code.replace(/\s/g,'').includes('ReactDOMServer.renderToString(<App/>)'), true, error_0);
 		testResults[0].status = true;
+		if (!errorSuppression) console.log('No transpilation errors!');
 	} catch (err) {
 		passed = false;
 		testResults[0].status = false;
+		if (!errorSuppression) console.error(`Transpilation error: ${err}`);
 	}
 
 	return {

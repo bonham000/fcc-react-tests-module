@@ -47,7 +47,7 @@ const store = Redux.createStore(messageReducer);`
 
 // ---------------------------- define challenge tests ----------------------------
 
-export const executeTests = (code) => {
+export const executeTests = (code, errorSuppression) => {
 
 	const error_0 = 'Your code should transpile successfully.';
 	const error_1 = 'The const ADD should exist and hold a value equal to the string \'ADD\'';
@@ -109,9 +109,11 @@ export const executeTests = (code) => {
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		testResults[0].status = true;
+		if (!errorSuppression) console.log('No transpilation errors!');
 	} catch (err) {
 		passed = false;
 		testResults[0].status = false;
+		if (!errorSuppression) console.error(`Transpilation error: ${err}`);
 	}
 
 	// save the store from redux to test here
@@ -234,7 +236,7 @@ export const liveRender = (code) => {
 	try {
 		evaluatedCode = eval(hijackedCode);
 	} catch (err) {
-		console.log(err);
+		// console.log(`Live rendering failure: ${err}`);
 	}
 
 	return evaluatedCode;

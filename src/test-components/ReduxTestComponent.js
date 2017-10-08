@@ -3,23 +3,10 @@ import React, { PropTypes } from 'react'
 import CodeMirror from 'react-codemirror'
 
 import 'codemirror/mode/jsx/jsx';
+import { challengeProps } from './ReactTestComponent';
 
 export default class ReduxTestComponent extends React.Component {
-	static propTypes = {
-		challengeTitle: PropTypes.string.isRequired,
-		challengeText: PropTypes.string.isRequired,
-		challengeInstructions: PropTypes.string.isRequired,
-		seedCode: PropTypes.string.isRequired,
-		solutionCode: PropTypes.string.isRequired,
-		executeTests: PropTypes.func.isRequired,
-		liveRender: PropTypes.func.isRequired,
-		QA: PropTypes.bool.isRequired,
-		selectedChallenge: PropTypes.string.isRequired,
-		challenges: PropTypes.array.isRequired,
-		select: PropTypes.func.isRequired,
-		advanceOneChallenge: PropTypes.func.isRequired,
-		previousChallenge: PropTypes.func.isRequired
-	}
+	static propTypes = challengeProps;
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -30,6 +17,11 @@ export default class ReduxTestComponent extends React.Component {
 	componentDidMount() {
 		this.testCode();
 		document.addEventListener('keydown', this.handleKeyPress);
+	}
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.selectedChallenge !== this.props.selectedChallenge) {
+			this.seedCode();
+		}
 	}
 	componentWillUnmount() {
 		document.removeEventListener('keydown', this.handleKeyPress);
@@ -54,10 +46,15 @@ export default class ReduxTestComponent extends React.Component {
         code: newCode
     });
 	}
-	testCode = () => {
+	testCode = (calledFirstTime = false) => {
+
+		console.clear();
+		console.warn('Note: console output is cleared before the tests are run.');
+		console.warn(`Error suppression is currently ${this.props.errorSuppression ? 'on' : 'off'}.`);
 
 		const { code } = this.state;
-		const results = this.props.executeTests(code);
+		const showError = calledFirstTime ? true : this.props.errorSuppression;
+		const results = this.props.executeTests(code, showError);
 
 		this.setState({
 			passed: results.passed,
@@ -82,7 +79,7 @@ export default class ReduxTestComponent extends React.Component {
 		this.setState({
 			code: this.props.seedCode
 		});
-		setTimeout(() => {this.testCode()}, 35);
+		setTimeout(() => {this.testCode(true)}, 35);
 	}
 	solutionCode = () => {
 		this.setState({
@@ -91,15 +88,12 @@ export default class ReduxTestComponent extends React.Component {
 		setTimeout(() => {this.testCode()}, 35);
 	}
 	select = (event) => {
-		setTimeout( () => { this.seedCode(true) }, 25);
 		this.props.select(event.target.value);
 	}
 	nextChallenge = () => {
-		setTimeout( () => { this.seedCode() }, 25);
 		this.props.advanceOneChallenge();
 	}
 	previousChallenge = () => {
-		setTimeout( () => { this.seedCode() }, 25);
 		this.props.previousChallenge();
 	}
 	render() {
@@ -123,10 +117,13 @@ export default class ReduxTestComponent extends React.Component {
 
 		const {
 			QA,
+			challenges,
 			challengeText,
 			challengeTitle,
+			errorSuppression,
 			selectedChallenge,
-			challenges, challengeInstructions,
+			challengeInstructions,
+			toggleErrorSuppression,
 		} = this.props;
 
     const renderTitle = () => { return { __html: challengeTitle }}
@@ -161,11 +158,6 @@ export default class ReduxTestComponent extends React.Component {
     		</h1>
 
     		<div className='instructionsContainer'>
-    		  { /* <p className='qa'>QA status: {QA ?
-						<span className='qa-complete'>Review Complete</span> :
-						<span className='qa-needed'>Needs Review</span>}
-					</p>
-					<hr className='qa-line'/> */ }
 					<h1 className='challengeTitle' dangerouslySetInnerHTML={renderTitle()} />
 					<p className='challengeText' dangerouslySetInnerHTML={renderText()} />
 					<p className='instructions' dangerouslySetInnerHTML={renderInstructions()} />
@@ -180,6 +172,21 @@ export default class ReduxTestComponent extends React.Component {
 
 					<div className="testWrapper">
 				    <h1 className='title'>Tests</h1>
+
+						<div className="toggleSwitch">
+							<p className="toggleMeta" style={{ color: errorSuppression ? '#969696' : '#2196F3' }}>
+								{errorSuppression
+									? '(Errors will be suppressed)'
+									: '(Errors will be logged to the console)'}
+							</p>
+							<label className="switch">
+								<input
+									type="checkbox"
+									checked={!errorSuppression}
+									onChange={toggleErrorSuppression} />
+								<span className="slider round"></span>
+							</label>
+						</div>
 
 			    	<div className='testControls'>
 			    		<button onClick={this.seedCode} className='seedBtn'>Reload Seed</button>

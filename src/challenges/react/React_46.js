@@ -86,7 +86,7 @@ class GateKeeper extends React.Component {
 
 // ---------------------------- define challenge tests ----------------------------
 
-export const executeTests = (code) => {
+export const executeTests = (code, errorSuppression) => {
 
 	const error_1 = 'The GateKeeper component should render a div element.';
 	const error_2 = 'The GateKeeper component should be initialized with a state key input set to an empty string.';
@@ -135,15 +135,18 @@ export const executeTests = (code) => {
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		testResults[0].status = true;
+		if (!errorSuppression) console.log('No transpilation errors!');
 	} catch (err) {
 		passed = false;
 		testResults[0].status = false;
+		if (!errorSuppression) console.error(`Transpilation error: ${err}`);
 	}
 
 	try {
 		mockedComponent = mount(React.createElement(eval(es5)));
 	} catch (err) {
 		passed = false;
+		if (!errorSuppression) console.error(`Invalid React code: ${err}`);
 	}
 
 	// test 1:
@@ -223,7 +226,7 @@ export const liveRender = (code) => {
 		const renderedComponent = React.createElement(eval(es5));
 		return renderedComponent;
 	} catch (err) {
-		console.log('Live rendering failed', err);
+		// console.log(`Live rendering failure: ${err}`);
 	}
 
 }

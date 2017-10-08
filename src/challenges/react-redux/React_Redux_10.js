@@ -74,7 +74,7 @@ console.log('Now I know React and Redux!');`
 
 // ---------------------------- define challenge tests ----------------------------
 
-export const executeTests = (code) => {
+export const executeTests = (code, errorSuppression) => {
 
 	const error_0 = 'The message \'Now I know React and Redux!\' should be logged to the console.';
 
@@ -92,9 +92,11 @@ export const executeTests = (code) => {
 	try {
 		assert.strictEqual(code.includes('console.log("Now I know React and Redux!")') || code.includes('console.log(\'Now I know React and Redux!\')'), true, error_0);
 		testResults[0].status = true;
+		if (!errorSuppression) console.log('No transpilation errors!');
 	} catch (err) {
 		passed = false;
 		testResults[0].status = false;
+		if (!errorSuppression) console.error(`Transpilation error: ${err}`);
 	}
 
 	return {

@@ -69,7 +69,7 @@ export const solutionCode =
 
 // ---------------------------- define challenge tests ----------------------------
 
-export const executeTests = (code) => {
+export const executeTests = (code, errorSuppression) => {
 
 	const error_0 = 'Your JSX code should transpile successfully.';
 	const error_1 = 'MyComponent should have a key \'name\' with value \'Free Code Camp\' stored in its state.';
@@ -108,9 +108,11 @@ export const executeTests = (code) => {
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		testResults[0].status = true;
+		if (!errorSuppression) console.log('No transpilation errors!');
 	} catch (err) {
 		passed = false;
 		testResults[0].status = false;
+		if (!errorSuppression) console.error(`Transpilation error: ${err}`);
 	}
 
 	// try to shallow render the component with Enzyme
@@ -166,7 +168,7 @@ export const liveRender = (code) => {
 		const renderedComponent = React.createElement(eval(es5));
 		return renderedComponent;
 	} catch (err) {
-		console.log('Live rendering failed', err);
+		// console.log(`Live rendering failure: ${err}`);
 	}
 
 }

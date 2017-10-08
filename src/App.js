@@ -179,6 +179,7 @@ export default class App extends React.Component {
 	constructor(props) {
 		super(props);
     this.state = {
+      errorSuppression: true,
       challenges,
       selectedChallenge: {
         type: 'React',
@@ -190,8 +191,8 @@ export default class App extends React.Component {
     document.addEventListener('keydown', this.handleKeyPress);
     /* Record attendance to this page to a Heroku app... cool */
     axios.post('https://sophisticated-counter.herokuapp.com/register-attendance')
-      .then(response => console.log('Registration success.'))
-      .catch(err => console.warn(err));
+      .then(() => null)
+      .catch(() => null);
   }
   handleKeyPress = (event) => {
     if (event.keyCode === 39 && event.ctrlKey && event.metaKey && event.altKey) {
@@ -229,8 +230,13 @@ export default class App extends React.Component {
       });
     }
   }
+  toggleErrorSuppression = () => {
+    this.setState(prevState => ({
+      errorSuppression: !prevState.errorSuppression
+    }));
+  }
   render() {
-    const { selectedChallenge } = this.state;
+    const { selectedChallenge, errorSuppression } = this.state;
     const challengeType = selectedChallenge.type;
     const challenge = selectedChallenge.id;
 
@@ -240,6 +246,7 @@ export default class App extends React.Component {
         QA={eval(challenge).QA}
         selectedChallenge={challenge}
         challenges={this.state.challenges}
+        errorSuppression={errorSuppression}
         seedCode={eval(challenge).seedCode}
         liveRender={eval(challenge).liveRender}
         previousChallenge={this.previousChallenge}
@@ -248,6 +255,7 @@ export default class App extends React.Component {
         challengeText={eval(challenge).challengeText}
         challengeTitle={eval(challenge).challengeTitle}
         advanceOneChallenge={this.advanceOneChallenge}
+        toggleErrorSuppression={this.toggleErrorSuppression}
         challengeInstructions={eval(challenge).challengeInstructions} />
     );
 

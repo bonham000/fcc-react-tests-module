@@ -124,7 +124,7 @@ class MyToDoList extends React.Component {
 
 // ---------------------------- define challenge tests ----------------------------
 
-export const executeTests = (code) => {
+export const executeTests = (code, errorSuppression) => {
 
 	const error_0 = 'Your JSX code should transpile successfully.';
 	const error_1 = 'The MyToDoList component should exist and render to the page.';
@@ -183,9 +183,11 @@ export const executeTests = (code) => {
 	try {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		testResults[0].status = true;
+		if (!errorSuppression) console.log('No transpilation errors!');
 	} catch (err) {
 		passed = false;
 		testResults[0].status = false;
+		if (!errorSuppression) console.error(`Transpilation error: ${err}`);
 	}
 
 	// now we will try to shallow render the component with Enzyme's shallow method
@@ -196,6 +198,7 @@ export const executeTests = (code) => {
 		shallowRender = shallow(React.createElement(eval(es5)));
 	} catch (err) {
 		passed = false;
+		if (!errorSuppression) console.error(`Invalid React code: ${err}`);
 	}
 
 	let initialState, state_1, state_2, state_3;
@@ -296,7 +299,7 @@ export const liveRender = (code) => {
 		const renderedComponent = React.createElement(eval(es5));
 		return renderedComponent;
 	} catch (err) {
-		console.log(err);
+		// console.log(`Live rendering failure: ${err}`);
 	}
 
 }
