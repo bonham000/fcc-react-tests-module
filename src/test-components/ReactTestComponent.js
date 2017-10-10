@@ -38,7 +38,6 @@ export default class ReactTestComponent extends React.Component {
 		document.addEventListener('keydown', this.handleKeyPress);
 	}
 	componentWillReceiveProps(nextProps) {
-		console.log('hi');
 		if (nextProps.selectedChallenge !== this.props.selectedChallenge) {
 			this.seedCode();
 		}
