@@ -190,9 +190,11 @@ export default class App extends React.Component {
   componentDidMount() {
     document.addEventListener('keydown', this.handleKeyPress);
     /* Record attendance to this page to a Heroku app... cool */
-    axios.post('https://sophisticated-counter.herokuapp.com/register-attendance')
-      .then(() => null)
-      .catch(() => null);
+    if (process.env.NODE_ENV === 'production') {
+      axios.post('https://sophisticated-counter.herokuapp.com/register-attendance')
+        .then(() => null)
+        .catch(() => null);
+    }
   }
   handleKeyPress = (event) => {
     if (event.keyCode === 39 && event.ctrlKey && event.metaKey && event.altKey) {
