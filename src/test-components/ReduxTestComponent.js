@@ -138,7 +138,7 @@ export default class ReduxTestComponent extends React.Component {
 	    totalTests = testResults.length;
     }
 
-    const renderChallenges=challenges.map( (challenge, idx) => {
+    const renderChallenges = challenges.map((challenge, idx) => {
       return (
       	<option value={challenge.id} key={idx}>
       		{challenge.id.replace(/_/g, ' ') + ': ' + challenge.title}
