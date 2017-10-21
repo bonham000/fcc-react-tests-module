@@ -92,9 +92,9 @@ export const executeTests = (code, errorSuppression) => {
 	const error_0 = 'Your code should transpile successfully.';
 	const error_1 = 'Calling the function loginUser should return an object with type property set to the string \'LOGIN\'.';
 	const error_2 = 'Calling the function logoutUser should return an object with type property set to the string \'LOGOUT\'.';
-	const error_3 = 'The store should be initialized with an object with property login set to false.';
-	const error_4 = 'Dispatching loginUser should update the login property in the store\'s state to true.';
-	const error_5 = 'Dispatching logoutUser should update the login property in the store\'s state to false.';
+	const error_3 = 'The store should be initialized with an object with an authenticated property set to false.';
+	const error_4 = 'Dispatching loginUser should update the authenticated property in the store\'s state to true.';
+	const error_5 = 'Dispatching logoutUser should update the authenticated property in the store\'s state to false.';
 	const error_6 = 'The authReducer function should handle multiple action types with a switch statement.';
 
 	let testResults = [
