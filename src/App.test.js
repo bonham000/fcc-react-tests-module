@@ -5,6 +5,8 @@ import { shallow } from 'enzyme';
 
 import App from './App';
 
+// TODO: add tests
+
 const shallowRenderApp = shallow(React.createElement(App));
 
 it('App returns a div', () => {

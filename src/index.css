@@ -132,9 +132,6 @@ select:focus {
 	margin-bottom: 22px;
 	width: 510px;
 }
-.keyShortcut {
-	color: rgb(225,225,225);
-}
 button {
 	width: 245px;
 	margin: 5px;
@@ -191,18 +188,19 @@ hr {
 }
 .testResults {
 	margin-bottom: 20px;
+  padding-right: 5px;
 }
 .outputTitle {
 	color: rgb(150,150,150);
 	font-size: 26px;
 }
 .test {
-	font-size: 16px;
+	font-size: 18px;
 	margin-top: 4px;
 	margin-bottom: 4px;
 	margin-left: 22px;
 	text-indent: -12px;
-	font-family: 'Raleway', serif;
+  font-family: 'Muli', serif;
 }
 .resultsTitle {
 	font-size: 26px;

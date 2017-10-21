@@ -7,7 +7,6 @@ import {
 	challengeProps,
 	renderChallenges,
 } from './shared.js';
-
 import 'codemirror/mode/jsx/jsx';
 
 export default class ReduxTestComponent extends React.Component {
@@ -15,8 +14,9 @@ export default class ReduxTestComponent extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			testResults: [],
+			editorFocused: false,
 			code: this.props.seedCode,
-			testResults: []
 		}
 	}
 	componentDidMount() {
@@ -32,22 +32,21 @@ export default class ReduxTestComponent extends React.Component {
 		document.removeEventListener('keydown', this.handleKeyPress);
 	}
 	handleKeyPress = (event) => {
+		const { editorFocused } = this.state;
 		if (keyboard.isNextChallenge(event)) {
       this.seedCode(true);
     } else if (keyboard.isPreviousChallenge(event)) {
       this.seedCode(true);
 		} else if (keyboard.isSubmitCode(event)) {
 			this.testCode();
-		} else if (keyboard.isSolutionCode(event)) {
+		} else if (keyboard.isSolutionCode(event) && !editorFocused) {
 			this.solutionCode();
-		} else if (keyboard.isReloadCode(event)) {
+		} else if (keyboard.isReloadCode(event) && !editorFocused) {
 			this.seedCode();
 		}
 	}
   updateCode = (newCode) => {
-    this.setState({
-        code: newCode
-    });
+    this.setState({ code: newCode });
 	}
 	testCode = (calledFirstTime = false) => {
 
@@ -66,7 +65,6 @@ export default class ReduxTestComponent extends React.Component {
 
 		// run live render function to get console.log messages
 		const result = this.props.liveRender(code);
-
 		document.getElementById('consoleOutput').innerHTML = '';
 
 		// display these messages to the UI
@@ -86,17 +84,8 @@ export default class ReduxTestComponent extends React.Component {
 		const { solutionCode } = this.props;
 		this.setState({ code: solutionCode }, () => this.testCode());
 	}
-	select = (event) => {
-		this.props.select(event.target.value);
-	}
-	nextChallenge = () => {
-		this.props.advanceOneChallenge();
-	}
-	previousChallenge = () => {
-		this.props.previousChallenge();
-	}
 	render() {
-		const { testResults } = this.state;
+		const { code, passed, testResults } = this.state;
 		const {
 			QA,
 			challenges,
@@ -123,7 +112,7 @@ export default class ReduxTestComponent extends React.Component {
 
     		<h1 className='title mainTitle'>freeCodeCamp Redux Challenge Alpha:
 
-	        <select value={selectedChallenge} onChange={this.select}>
+	        <select value={selectedChallenge} onChange={e => this.props.select(e.target.value)}>
 	          {renderChallenges(challenges)}
 	        </select>
 
@@ -161,18 +150,18 @@ export default class ReduxTestComponent extends React.Component {
 						</div>
 
 			    	<div className='testControls'>
-			    		<button onClick={this.seedCode} className='seedBtn'>Reload Seed</button>
-			    		<button onClick={this.solutionCode} className='solnBtn'>Solution Code</button>
-			    		<button onClick={this.previousChallenge.bind(this)} className='travelBtn'>Previous Challenge</button>
-			    		<button onClick={this.nextChallenge.bind(this)} className='travelBtn'>Next Challenge</button>
-			    		<button onClick={this.testCode} className='testBtn'>Test Code</button>
+			    		<button onClick={this.seedCode} className='seedBtn'>Reload Challenge</button>
+			    		<button onClick={this.solutionCode} className='solnBtn'>View Solution</button>
+			    		<button onClick={this.props.previousChallenge} className='travelBtn'>Previous Challenge</button>
+			    		<button onClick={this.props.nextChallenge} className='travelBtn'>Next Challenge</button>
+			    		<button onClick={this.testCode} className='testBtn'>Run Tests (Cmd/Ctrl + Enter)</button>
 				    </div>
 
 				    <div className='testResults'>
 
-				    	{ this.state.passed ?
-		    				<p className='msg success'>All tests passed!</p> :
-		    				<p className='msg error'>Your code does not pass the tests, {passingTests} out of {totalTests} tests are passing</p> }
+				    	{ passed ?
+		    				<p className='msg success'>Great job — all tests passed!</p> :
+		    				<p className='msg error'>Your code does not pass the tests, {passingTests} out of {totalTests} tests are passing:</p> }
 
 				    	{
 				    		testResults.map( (test, idx) => {
@@ -198,12 +187,13 @@ export default class ReduxTestComponent extends React.Component {
 					</div>
 
 					<div className='codeWrapper'>
-		    		<h1 className='title'>Code <span className='keyShortcut'>(press Cmd/Ctrl + Enter to run)</span></h1>
+		    		<h1 className='title'>Code Editor</h1>
 			    	<CodeMirror
 			    		className='editor'
-			    		value={this.state.code}
+							value={code}
+							options={editorOptions}
 			    		onChange={this.updateCode}
-			    		options={editorOptions} />
+							onFocusChange={f => this.setState({ editorFocused: f })} />
 		    	</div>
 
 		    </div>
@@ -211,7 +201,7 @@ export default class ReduxTestComponent extends React.Component {
 		    <hr />
 
 		    <div>
-		    	<p className='referenceLink'>- This project is testing Redux live in a browser with JavaScript | &nbsp;
+		    	<p className='referenceLink'>- This project tests Redux code live in a browser using JavaScript | &nbsp;
 		    		<a target="_blank" href="https://github.com/bonham000/fcc-react-tests-module">View on GitHub</a>
 		    	</p>
 		    </div>

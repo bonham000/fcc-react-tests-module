@@ -62,7 +62,6 @@ export const executeTests = (code, errorSuppression) => {
 		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
 		testResults[0].status = true;
 		if (!errorSuppression) console.log('No transpilation errors!');
-		if (!errorSuppression) console.log('No transpilation errors!');
 	} catch (err) {
 		passed = false;
 		testResults[0].status = false;
@@ -88,6 +87,7 @@ export const executeTests = (code, errorSuppression) => {
 
 	// test 2:
 	try {
+		console.warn(jsx.props.children);
 		assert.strictEqual(jsx.props.children, 'Hello JSX!', true, 'The h1 tag should include the text \'Hello JSX!\'');
 		testResults[2].status = true;
 	} catch (err) {

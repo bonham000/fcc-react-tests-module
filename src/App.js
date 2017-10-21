@@ -198,7 +198,7 @@ export default class App extends React.Component {
   }
   handleKeyPress = (event) => {
     if (event.keyCode === 39 && event.ctrlKey && event.metaKey && event.altKey) {
-      this.advanceOneChallenge();
+      this.nextChallenge();
     } else if (event.keyCode === 37 && event.ctrlKey && event.metaKey && event.altKey) {
       this.previousChallenge();
     }
@@ -214,7 +214,7 @@ export default class App extends React.Component {
       return challenge.id === identifier ? idx : index;
     }, null);
   }
-  advanceOneChallenge = () => {
+  nextChallenge = () => {
     const { challenges, selectedChallenge } = this.state;
     let currentIndex = this.findIndex(selectedChallenge.id);
     if (currentIndex <= challenges.length - 2) {
@@ -245,6 +245,7 @@ export default class App extends React.Component {
       select={this.select}
       QA={eval(challenge).QA}
       selectedChallenge={challenge}
+      nextChallenge={this.nextChallenge}
       challenges={this.state.challenges}
       errorSuppression={errorSuppression}
       seedCode={eval(challenge).seedCode}
@@ -254,7 +255,6 @@ export default class App extends React.Component {
       solutionCode={eval(challenge).solutionCode}
       challengeText={eval(challenge).challengeText}
       challengeTitle={eval(challenge).challengeTitle}
-      advanceOneChallenge={this.advanceOneChallenge}
       toggleErrorSuppression={this.toggleErrorSuppression}
       challengeInstructions={eval(challenge).challengeInstructions} />
     );
