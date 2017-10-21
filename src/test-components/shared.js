@@ -1,5 +1,5 @@
 
-import { PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 
 // shared challenge proptypes
 export const challengeProps = {
@@ -18,6 +18,15 @@ export const challengeProps = {
 	selectedChallenge: PropTypes.string.isRequired,
 	toggleErrorSuppression: PropTypes.func.isRequired,
 	challengeInstructions: PropTypes.string.isRequired,
+};
+
+// helper for rendering challenge list
+export const renderChallenges = (challenges) => {
+  return challenges.map((challenge, idx) => (
+    <option value={challenge.id} key={idx}>
+      {challenge.id.replace(/_/g, ' ') + ': ' + challenge.title}
+    </option>
+  ));
 };
 
 // Code Mirror configuration options

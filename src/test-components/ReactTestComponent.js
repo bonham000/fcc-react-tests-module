@@ -2,7 +2,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import CodeMirror from 'react-codemirror';
-import { editorOptions, keyboard, challengeProps } from './shared.js';
+import {
+	keyboard,
+	editorOptions,
+	challengeProps,
+	renderChallenges,
+} from './shared.js';
 
 import 'codemirror/mode/jsx/jsx';
 
@@ -124,21 +129,13 @@ export default class ReactTestComponent extends React.Component {
 	    totalTests = testResults.length;
     }
 
-    const renderChallenges = challenges.map( (challenge, idx) => {
-      return (
-      	<option value={challenge.id} key={idx}>
-      		{challenge.id.replace(/_/g, ' ') + ': ' + challenge.title}
-      	</option>
-      );
-    });
-
     return (
     	<div>
 
     		<h1 className='title mainTitle'>freeCodeCamp React Challenge Alpha:
 
 	        <select value={selectedChallenge} onChange={this.select}>
-	          {renderChallenges}
+	          {renderChallenges(challenges)}
 	        </select>
 
     		</h1>

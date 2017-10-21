@@ -1,7 +1,12 @@
 /* eslint-disable */
-import React, { PropTypes } from 'react'
-import { editorOptions, keyboard, challengeProps } from './shared.js';
-import CodeMirror from 'react-codemirror'
+import React, { PropTypes } from 'react';
+import CodeMirror from 'react-codemirror';
+import {
+	keyboard,
+	editorOptions,
+	challengeProps,
+	renderChallenges,
+} from './shared.js';
 
 import 'codemirror/mode/jsx/jsx';
 
@@ -113,21 +118,13 @@ export default class ReduxTestComponent extends React.Component {
 	    totalTests = testResults.length;
     }
 
-    const renderChallenges = challenges.map((challenge, idx) => {
-      return (
-      	<option value={challenge.id} key={idx}>
-      		{challenge.id.replace(/_/g, ' ') + ': ' + challenge.title}
-      	</option>
-      );
-    });
-
     return (
     	<div>
 
     		<h1 className='title mainTitle'>freeCodeCamp Redux Challenge Alpha:
 
 	        <select value={selectedChallenge} onChange={this.select}>
-	          {renderChallenges}
+	          {renderChallenges(challenges)}
 	        </select>
 
     		</h1>

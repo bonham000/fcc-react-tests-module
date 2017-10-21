@@ -237,35 +237,35 @@ export default class App extends React.Component {
       errorSuppression: !prevState.errorSuppression
     }));
   }
-  render() {
+  createComponent = (Component) => {
     const { selectedChallenge, errorSuppression } = this.state;
-    const challengeType = selectedChallenge.type;
     const challenge = selectedChallenge.id;
-
-    const createComponent = (Component) => (
-      <Component
-        select={this.select}
-        QA={eval(challenge).QA}
-        selectedChallenge={challenge}
-        challenges={this.state.challenges}
-        errorSuppression={errorSuppression}
-        seedCode={eval(challenge).seedCode}
-        liveRender={eval(challenge).liveRender}
-        previousChallenge={this.previousChallenge}
-        executeTests={eval(challenge).executeTests}
-        solutionCode={eval(challenge).solutionCode}
-        challengeText={eval(challenge).challengeText}
-        challengeTitle={eval(challenge).challengeTitle}
-        advanceOneChallenge={this.advanceOneChallenge}
-        toggleErrorSuppression={this.toggleErrorSuppression}
-        challengeInstructions={eval(challenge).challengeInstructions} />
+    return (
+     <Component
+      select={this.select}
+      QA={eval(challenge).QA}
+      selectedChallenge={challenge}
+      challenges={this.state.challenges}
+      errorSuppression={errorSuppression}
+      seedCode={eval(challenge).seedCode}
+      liveRender={eval(challenge).liveRender}
+      previousChallenge={this.previousChallenge}
+      executeTests={eval(challenge).executeTests}
+      solutionCode={eval(challenge).solutionCode}
+      challengeText={eval(challenge).challengeText}
+      challengeTitle={eval(challenge).challengeTitle}
+      advanceOneChallenge={this.advanceOneChallenge}
+      toggleErrorSuppression={this.toggleErrorSuppression}
+      challengeInstructions={eval(challenge).challengeInstructions} />
     );
-
+  }
+  render() {
+    const { type } = this.state.selectedChallenge;
     return (
       <div>
-        {challengeType === 'React'
-          ? createComponent(ReactTestComponent)
-          : createComponent(ReduxTestComponent)}
+        {type === 'React'
+          ? this.createComponent(ReactTestComponent)
+          : this.createComponent(ReduxTestComponent)}
       </div>
     );
   }
