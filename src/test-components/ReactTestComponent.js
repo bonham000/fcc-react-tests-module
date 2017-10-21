@@ -1,27 +1,10 @@
 /* eslint-disable */
-import React, { PropTypes } from 'react'
-import ReactDOM from 'react-dom'
-import CodeMirror from 'react-codemirror'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import CodeMirror from 'react-codemirror';
+import { editorOptions, keyboard, challengeProps } from './shared.js';
 
 import 'codemirror/mode/jsx/jsx';
-
-export const challengeProps = {
-	QA: PropTypes.bool.isRequired,
-	select: PropTypes.func.isRequired,
-	seedCode: PropTypes.string.isRequired,
-	liveRender: PropTypes.func.isRequired,
-	challenges: PropTypes.array.isRequired,
-	executeTests: PropTypes.func.isRequired,
-	solutionCode: PropTypes.string.isRequired,
-	challengeText: PropTypes.string.isRequired,
-	errorSuppression: PropTypes.bool.isRequired,
-	challengeTitle: PropTypes.string.isRequired,
-	previousChallenge: PropTypes.func.isRequired,
-	advanceOneChallenge: PropTypes.func.isRequired,
-	selectedChallenge: PropTypes.string.isRequired,
-	toggleErrorSuppression: PropTypes.func.isRequired,
-	challengeInstructions: PropTypes.string.isRequired,
-};
 
 export default class ReactTestComponent extends React.Component {
 	static propTypes = challengeProps;
@@ -37,8 +20,8 @@ export default class ReactTestComponent extends React.Component {
 		this.liveRender();
 		document.addEventListener('keydown', this.handleKeyPress);
 	}
-	componentWillReceiveProps(nextProps) {
-		if (nextProps.selectedChallenge !== this.props.selectedChallenge) {
+	componentDidUpdate(prevProps) {
+		if (prevProps.selectedChallenge !== this.props.selectedChallenge) {
 			this.seedCode();
 		}
 	}
@@ -46,24 +29,20 @@ export default class ReactTestComponent extends React.Component {
 		document.removeEventListener('keydown', this.handleKeyPress);
 	}
 	handleKeyPress = (event) => {
-		if (event.keyCode === 39 && event.ctrlKey && event.metaKey && event.altKey) {
-      setTimeout( () => { this.seedCode(true) }, 25);
-    } else if (event.keyCode === 37 && event.ctrlKey && event.metaKey && event.altKey) {
-      setTimeout( () => { this.seedCode(true) }, 25);
-		} else if (event.keyCode === 13 && event.metaKey) {
+		if (keyboard.isNextChallenge(event)) {
+      this.seedCode(true);
+    } else if (keyboard.isPreviousChallenge(event)) {
+      this.seedCode(true);
+		} else if (keyboard.isSubmitCode(event)) {
 			this.testCode();
-		} else if (event.keyCode === 13 && event.ctrlKey) {
-			this.testCode();
-		} else if (event.keyCode === 83 && event.shiftKey) {
+		} else if (keyboard.isSolutionCode(event)) {
 			this.solutionCode();
-		} else if (event.keyCode === 82 && event.shiftKey) {
+		} else if (keyboard.isReloadCode(event)) {
 			this.seedCode();
 		}
 	}
   updateCode = (newCode) => {
-    this.setState({
-        code: newCode
-    });
+    this.setState({ code: newCode });
     this.liveRender();
 	}
 	liveRender = (condition) =>{
@@ -101,22 +80,16 @@ export default class ReactTestComponent extends React.Component {
 
 	}
 	seedCode = (condition) => {
-		this.setState({
-			code: this.props.seedCode
-		});
-		setTimeout(() => {
+		this.setState({ code: this.props.seedCode }, () => {
 			this.liveRender(condition);
 			this.testCode(true);
-		}, 35);
+		});
 	}
 	solutionCode = () => {
-		this.setState({
-			code: this.props.solutionCode
-		});
-		setTimeout(() => {
+		this.setState({ code: this.props.solutionCode }, () => {
 			this.liveRender();
 			this.testCode();
-		}, 35);
+		});
 	}
 	select = (event) => {
 		this.props.select(event.target.value);
@@ -128,24 +101,7 @@ export default class ReactTestComponent extends React.Component {
 		this.props.previousChallenge();
 	}
 	render() {
-
-    const options = {
-    	mode: 'jsx',
-      lineNumbers: true,
-      theme: 'monokai',
-      tabSize: 2,
-      extraKeys: {
-      	'Cmd-Enter': () => {
-	    		this.testCode();
-	    		return false;
-	    	},
-	    	'Ctrl-Enter': () => {
-	    		this.testCode();
-	    		return false;
-	    	}
-	    }
-    };
-
+		const { testResults } = this.state;
 		const {
 			QA,
 			challenges,
@@ -157,11 +113,9 @@ export default class ReactTestComponent extends React.Component {
 			toggleErrorSuppression,
 		} = this.props;
 
-    const renderTitle = () => { return { __html: challengeTitle }}
-    const renderText = () => { return { __html: challengeText }}
-    const renderInstructions = () => { return { __html: challengeInstructions }}
-
-    const { testResults } = this.state;
+    const renderTitle = () => ({ __html: challengeTitle });
+    const renderText = () => ({ __html: challengeText });
+    const renderInstructions = () => ({ __html: challengeInstructions });
 
     let passingTests, totalTests;
 
@@ -293,7 +247,7 @@ export default class ReactTestComponent extends React.Component {
 			    		className='editor'
 			    		value={this.state.code}
 			    		onChange={this.updateCode}
-			    		options={options} />
+			    		options={editorOptions} />
 			    </div>
 
 			  </div>

@@ -1,9 +1,9 @@
 /* eslint-disable */
 import React, { PropTypes } from 'react'
+import { editorOptions, keyboard, challengeProps } from './shared.js';
 import CodeMirror from 'react-codemirror'
 
 import 'codemirror/mode/jsx/jsx';
-import { challengeProps } from './ReactTestComponent';
 
 export default class ReduxTestComponent extends React.Component {
 	static propTypes = challengeProps;
@@ -18,8 +18,8 @@ export default class ReduxTestComponent extends React.Component {
 		this.testCode();
 		document.addEventListener('keydown', this.handleKeyPress);
 	}
-	componentWillReceiveProps(nextProps) {
-		if (nextProps.selectedChallenge !== this.props.selectedChallenge) {
+	componentDidUpdate(prevProps) {
+		if (prevProps.selectedChallenge !== this.props.selectedChallenge) {
 			this.seedCode();
 		}
 	}
@@ -27,17 +27,15 @@ export default class ReduxTestComponent extends React.Component {
 		document.removeEventListener('keydown', this.handleKeyPress);
 	}
 	handleKeyPress = (event) => {
-		if (event.keyCode === 39 && event.ctrlKey && event.metaKey && event.altKey) {
-      setTimeout( () => { this.seedCode(true) }, 25);
-    } else if (event.keyCode === 37 && event.ctrlKey && event.metaKey && event.altKey) {
-      setTimeout( () => { this.seedCode(true) }, 25);
-    } else if (event.keyCode === 13 && event.metaKey) {
+		if (keyboard.isNextChallenge(event)) {
+      this.seedCode(true);
+    } else if (keyboard.isPreviousChallenge(event)) {
+      this.seedCode(true);
+		} else if (keyboard.isSubmitCode(event)) {
 			this.testCode();
-		} else if (event.keyCode === 13 && event.ctrlKey) {
-			this.testCode();
-		} else if (event.keyCode === 83 && event.shiftKey) {
+		} else if (keyboard.isSolutionCode(event)) {
 			this.solutionCode();
-		} else if (event.keyCode === 82 && event.shiftKey) {
+		} else if (keyboard.isReloadCode(event)) {
 			this.seedCode();
 		}
 	}
@@ -76,16 +74,12 @@ export default class ReduxTestComponent extends React.Component {
 
 	}
 	seedCode = () => {
-		this.setState({
-			code: this.props.seedCode
-		});
-		setTimeout(() => {this.testCode(true)}, 35);
+		const { seedCode } = this.props;
+		this.setState({ code: seedCode }, () => this.testCode());
 	}
 	solutionCode = () => {
-		this.setState({
-			code: this.props.solutionCode
-		});
-		setTimeout(() => {this.testCode()}, 35);
+		const { solutionCode } = this.props;
+		this.setState({ code: solutionCode }, () => this.testCode());
 	}
 	select = (event) => {
 		this.props.select(event.target.value);
@@ -97,24 +91,7 @@ export default class ReduxTestComponent extends React.Component {
 		this.props.previousChallenge();
 	}
 	render() {
-
-    const options = {
-    	mode: 'jsx',
-      lineNumbers: true,
-      theme: 'monokai',
-      tabSize: 2,
-      extraKeys: {
-      	'Cmd-Enter': () => {
-	    		this.testCode();
-	    		return false;
-	    	},
-	    	'Ctrl-Enter': () => {
-	    		this.testCode();
-	    		return false;
-	    	}
-	    }
-    };
-
+		const { testResults } = this.state;
 		const {
 			QA,
 			challenges,
@@ -126,11 +103,9 @@ export default class ReduxTestComponent extends React.Component {
 			toggleErrorSuppression,
 		} = this.props;
 
-    const renderTitle = () => { return { __html: challengeTitle }}
-    const renderText = () => { return { __html: challengeText }}
-    const renderInstructions = () => { return { __html: challengeInstructions }}
-
-    const { testResults } = this.state;
+    const renderTitle = () => ({ __html: challengeTitle });
+    const renderText = () => ({ __html: challengeText });
+    const renderInstructions = () => ({ __html: challengeInstructions });
 
     let passingTests, totalTests
     if (testResults.length > 0) {
@@ -231,7 +206,7 @@ export default class ReduxTestComponent extends React.Component {
 			    		className='editor'
 			    		value={this.state.code}
 			    		onChange={this.updateCode}
-			    		options={options} />
+			    		options={editorOptions} />
 		    	</div>
 
 		    </div>
