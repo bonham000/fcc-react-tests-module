@@ -1,5 +1,7 @@
 /* eslint-disable */
 import assert from 'assert'
+import deepEqual from 'deep-equal';
+import deepFreeze from 'deep-freeze';
 import { transform } from 'babel-standalone'
 
 // SET TO TRUE WHEN QA IS COMPLETE:
@@ -35,8 +37,8 @@ const todos = [
 const immutableReducer = (state = todos, action) => {
 	switch(action.type) {
 		case ADD_TO_DO:
-			return // don't mutate state here
-
+			// don't mutate state here or the tests will fail
+			return
 		default:
 			return state;
 	}
@@ -46,7 +48,7 @@ const immutableReducer = (state = todos, action) => {
 const addToDo = (todo) => {
 	return {
 		type: ADD_TO_DO,
-		payload: todo
+		todo
 	}
 }
 
@@ -67,7 +69,7 @@ const todos = [
 const immutableReducer = (state = todos, action) => {
 	switch(action.type) {
 		case ADD_TO_DO:
-			return state.concat(action.payload);
+			return state.concat(action.todo);
 		default:
 			return state;
 	}
@@ -77,7 +79,7 @@ const immutableReducer = (state = todos, action) => {
 const addToDo = (todo) => {
 	return {
 		type: ADD_TO_DO,
-		payload: todo
+		todo
 	}
 }
 
@@ -90,7 +92,7 @@ export const executeTests = (code, errorSuppression) => {
 	const error_0 = 'Your code should transpile successfully.';
 	const error_1 = 'The Redux store should exist and initialize with a state equal to the todos array in the code editor.';
 	const error_2 = 'addToDo and immutableReducer both should be functions.';
-	const error_3 = 'Dispatching an action of type \'ADD_TO_DO\' on the Redux store should add a todo and return a new copy of state.';
+	const error_3 = 'Dispatching an action of type \'ADD_TO_DO\' on the Redux store should add a todo and should NOT mutate state.';
 
 	let testResults = [
 		{
@@ -185,12 +187,19 @@ export const executeTests = (code, errorSuppression) => {
 
 	// test 3:
 	try {
+		const isFrozen = deepFreeze(initialState);
 		store.dispatch(addToDo('__TEST__TO__DO__'));
 		finalState = store.getState();
+		const expectedState = [
+			'Go to the store',
+			'Clean the house',
+			'Cook dinner',
+			'Learn to code',
+			'__TEST__TO__DO__'
+		];
 		assert(
-			finalState.length === initialState.length + 1 &&
-			finalState.join(',') === initialState.concat('__TEST__TO__DO__').join(',') &&
-			finalState.pop() === '__TEST__TO__DO__',
+			isFrozen &&
+			deepEqual(finalState, expectedState),
 			error_3
 		);
 		testResults[3].status = true;

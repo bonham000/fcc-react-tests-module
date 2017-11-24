@@ -2,13 +2,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import CodeMirror from 'react-codemirror';
+import 'codemirror/mode/jsx/jsx';
+import 'codemirror/addon/edit/matchbrackets';
+import 'codemirror/addon/edit/closebrackets';
+import 'codemirror/keymap/sublime';
 import {
 	keyboard,
 	editorOptions,
 	challengeProps,
 	renderChallenges,
 } from './shared.js';
-import 'codemirror/mode/jsx/jsx';
 
 export default class ReactTestComponent extends React.Component {
 	static propTypes = challengeProps;
