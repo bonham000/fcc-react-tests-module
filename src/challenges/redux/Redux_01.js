@@ -29,7 +29,7 @@ Declare a <code>store</code> variable and assign it to the <code>createStore()</
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
 `const reducer = (state = 5) => {
-	return state;
+  return state;
 }
 
 // Redux methods are available from a Redux object
@@ -41,7 +41,7 @@ export const seedCode =
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode =
 `const reducer = (state = 5) => {
-	return state;
+  return state;
 }
 
 // Redux methods are available from a Redux object
@@ -54,98 +54,98 @@ const store = Redux.createStore(reducer);`
 
 export const executeTests = (code, errorSuppression) => {
 
-	let es5, store, passed = true;
+  let es5, store, passed = true;
 
-	let testResults = [
-		{
-			test: 0,
-			status: false,
-			condition: 'Your code should transpile successfully.'
-		},
-		{
-			test: 1,
-			status: false,
-			condition: 'The redux store should exist.'
-		},
-		{
-			test: 2,
-			status: false,
-			condition: 'The redux store should have a value of 5 for the state.'
-		}
-	]
+  let testResults = [
+    {
+      test: 0,
+      status: false,
+      condition: 'Your code should transpile successfully.'
+    },
+    {
+      test: 1,
+      status: false,
+      condition: 'The redux store should exist.'
+    },
+    {
+      test: 2,
+      status: false,
+      condition: 'The redux store should have a value of 5 for the state.'
+    }
+  ]
 
-	// this code hijacks the user input to create an IIFE
-	// which returns the store from Redux as an object
-	const prepend = `(function() {`
-	const append = `;\n return store })()`
-	const modifiedCode = prepend.concat(code).concat(append);
+  // this code hijacks the user input to create an IIFE
+  // which returns the store from Redux as an object
+  const prepend = `(function() {`
+  const append = `;\n return store })()`
+  const modifiedCode = prepend.concat(code).concat(append);
 
-	// test 0: try to transpile JSX, ES6 code to ES5 in browser
-	try {
-		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
-		testResults[0].status = true;
-		if (!errorSuppression) console.log('No transpilation errors!');
-	} catch (err) {
-		passed = false;
-		testResults[0].status = false;
-		if (!errorSuppression) console.error(`Transpilation error: ${err}`);
-	}
+  // test 0: try to transpile JSX, ES6 code to ES5 in browser
+  try {
+    es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
+    testResults[0].status = true;
+    if (!errorSuppression) console.log('No transpilation errors!');
+  } catch (err) {
+    passed = false;
+    testResults[0].status = false;
+    if (!errorSuppression) console.error(`Transpilation error: ${err}`);
+  }
 
-	// save the store from redux to test here
-	try {
-		store = eval(es5)
-	} catch (err) {
-		passed = false;
-		if (!errorSuppression) console.error(`Code evaluation error: ${err}`);
-	}
+  // save the store from redux to test here
+  try {
+    store = eval(es5)
+  } catch (err) {
+    passed = false;
+    if (!errorSuppression) console.error(`Code evaluation error: ${err}`);
+  }
 
-	// test 1:
-	try {
-		assert.strictEqual(typeof store.getState, 'function', 'The redux store exists.');
-		testResults[1].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[1].status = false;
-	}
+  // test 1:
+  try {
+    assert.strictEqual(typeof store.getState, 'function', 'The redux store exists.');
+    testResults[1].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[1].status = false;
+  }
 
-	// test 2:
-	try {
-		assert.strictEqual(store.getState(), 5, 'The redux store has a value of 5 for the state.');
-		testResults[2].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[2].status = false;
-	}
+  // test 2:
+  try {
+    assert.strictEqual(store.getState(), 5, 'The redux store has a value of 5 for the state.');
+    testResults[2].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[2].status = false;
+  }
 
-	return {
-		passed,
-		testResults
-	}
+  return {
+    passed,
+    testResults
+  }
 
 }
 
 // liveRender modifies console.log in user input and returns message data
 export const liveRender = (code) => {
 
-	// this code modifies the user input to return all
-	// console.log statements as a message array to be
-	// displayed on the client UI
-	const prepend = `
-	(function() {
-		let log = []
-		const message = (msg) => log.push(msg);
-	`
-	const append = `;\n return log })();`
-	const consoleReplaced = code.replace(/console.log/g, 'message');
-	const hijackedCode = prepend.concat(consoleReplaced).concat(append);
+  // this code modifies the user input to return all
+  // console.log statements as a message array to be
+  // displayed on the client UI
+  const prepend = `
+  (function() {
+    let log = []
+    const message = (msg) => log.push(msg);
+  `
+  const append = `;\n return log })();`
+  const consoleReplaced = code.replace(/console.log/g, 'message');
+  const hijackedCode = prepend.concat(consoleReplaced).concat(append);
 
-	let evaluatedCode;
-	try {
-		evaluatedCode = eval(hijackedCode);
-	} catch (err) {
-		// console.log(`Live rendering failure: ${err}`);
-	}
+  let evaluatedCode;
+  try {
+    evaluatedCode = eval(hijackedCode);
+  } catch (err) {
+    // console.log(`Live rendering failure: ${err}`);
+  }
 
-	return evaluatedCode;
+  return evaluatedCode;
 
 }

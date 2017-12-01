@@ -21,21 +21,21 @@ export const challengeInstructions = `<span class = 'default'>Instructions: </sp
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
 `class MyComponent extends React.Component {
-	constructor(props) {
-		super(props);
-		// change code below this line
+  constructor(props) {
+    super(props);
+    // change code below this line
 
-		// change code above this line
-	}
-	// change code below this line
+    // change code above this line
+  }
+  // change code below this line
 
-	// change code above this line
-	render() {
-  	return (
-	    <div>
+  // change code above this line
+  render() {
+    return (
+      <div>
         <button onClick = {this.setMessage}>Click Me</button>
         <h1>{this.state.message}</h1>
-	    </div>
+      </div>
     );
   }
 };`
@@ -43,23 +43,23 @@ export const seedCode =
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode =
 `class MyComponent extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			message: 'Hello!'
-		};
-	}
-	setMessage = () => {
-		this.setState({
-			message: 'Goodbye!'
-		});
-	}
-	render() {
-  	return (
-	    <div>
+  constructor(props) {
+    super(props);
+    this.state = {
+      message: 'Hello!'
+    };
+  }
+  setMessage = () => {
+    this.setState({
+      message: 'Goodbye!'
+    });
+  }
+  render() {
+    return (
+      <div>
         <button onClick = {this.setMessage}>Click Me</button>
         <h1>{this.state.message}</h1>
-	    </div>
+      </div>
     );
   }
 };`
@@ -68,114 +68,114 @@ export const solutionCode =
 
 export const executeTests = (code, errorSuppression) => {
 
-	const error_0 = 'Your JSX code should transpile successfully.';
-	const error_1 = 'MyComponent should return a div element which wraps two elements, a button and an h1 element, in that order.'
-	const error_2 = 'The state of MyComponent should initialize with a message containing the string \'Hello!\'';
-	const error_3 = 'Clicking the button element should run the setMessage method and update the message property in the state to say \'Goodbye!\'';
-	const error_4 = 'The setMessage method should be defined with a fat arrow function.'
+  const error_0 = 'Your JSX code should transpile successfully.';
+  const error_1 = 'MyComponent should return a div element which wraps two elements, a button and an h1 element, in that order.'
+  const error_2 = 'The state of MyComponent should initialize with a message containing the string \'Hello!\'';
+  const error_3 = 'Clicking the button element should run the setMessage method and update the message property in the state to say \'Goodbye!\'';
+  const error_4 = 'The setMessage method should be defined with a fat arrow function.'
 
-	let testResults = [
-		{
-			test: 0,
-			status: false,
-			condition: error_0
-		},
-		{
-			test: 1,
-			status: false,
-			condition: error_1
-		},
-		{
-			test: 2,
-			status: false,
-			condition: error_2
-		},
-		{
-			test: 3,
-			status: false,
-			condition: error_3
-		},
-		{
-			test: 4,
-			status: false,
-			condition: error_4
-		}
-	];
+  let testResults = [
+    {
+      test: 0,
+      status: false,
+      condition: error_0
+    },
+    {
+      test: 1,
+      status: false,
+      condition: error_1
+    },
+    {
+      test: 2,
+      status: false,
+      condition: error_2
+    },
+    {
+      test: 3,
+      status: false,
+      condition: error_3
+    },
+    {
+      test: 4,
+      status: false,
+      condition: error_4
+    }
+  ];
 
-	let es5, shallowRender, mockedComponent, passed = true;
+  let es5, shallowRender, mockedComponent, passed = true;
 
-	const exportScript = '\n export default MyComponent'
-	const modifiedCode = code.concat(exportScript);
+  const exportScript = '\n export default MyComponent'
+  const modifiedCode = code.concat(exportScript);
 
-	// test 0: try to transpile JSX, ES6 code to ES5 in browser
-	try {
-		es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
-		testResults[0].status = true;
-		if (!errorSuppression) console.log('No transpilation errors!');
-	} catch (err) {
-		passed = false;
-		testResults[0].status = false;
-		if (!errorSuppression) console.error(`Transpilation error: ${err}`);
-	}
+  // test 0: try to transpile JSX, ES6 code to ES5 in browser
+  try {
+    es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
+    testResults[0].status = true;
+    if (!errorSuppression) console.log('No transpilation errors!');
+  } catch (err) {
+    passed = false;
+    testResults[0].status = false;
+    if (!errorSuppression) console.error(`Transpilation error: ${err}`);
+  }
 
-	// try to shallow render the component with Enzyme
-	try {
-		mockedComponent = mount(React.createElement(eval(es5)));
-	} catch (err) {
-		passed = false;
-		if (!errorSuppression) console.error(`Invalid React code: ${err}`);
-	}
+  // try to shallow render the component with Enzyme
+  try {
+    mockedComponent = mount(React.createElement(eval(es5)));
+  } catch (err) {
+    passed = false;
+    if (!errorSuppression) console.error(`Invalid React code: ${err}`);
+  }
 
-	// test 1:
-	try {
-		assert(
-			mockedComponent.find('div').length === 1
-			&& mockedComponent.find('div').children().nodes[0].tagName === 'BUTTON'
-			&& mockedComponent.find('div').children().nodes[1].tagName === 'H1',
-			error_1
-		);
-		testResults[1].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[1].status = false;
-	}
+  // test 1:
+  try {
+    assert(
+      mockedComponent.find('div').length === 1
+      && mockedComponent.find('div').children().nodes[0].tagName === 'BUTTON'
+      && mockedComponent.find('div').children().nodes[1].tagName === 'H1',
+      error_1
+    );
+    testResults[1].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[1].status = false;
+  }
 
-	// test 2:
-	try {
-		assert.strictEqual(mockedComponent.state('message'), 'Hello!', error_2);
-		testResults[2].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[2].status = false;
-	}
+  // test 2:
+  try {
+    assert.strictEqual(mockedComponent.state('message'), 'Hello!', error_2);
+    testResults[2].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[2].status = false;
+  }
 
-	//test 3:
-	try {
-		mockedComponent.setState({message: 'InitialState!'});
-		const before = mockedComponent.state('message');
-		mockedComponent.find('button').simulate('click');
-		const after = mockedComponent.state('message');
-		assert.strictEqual(before === 'InitialState!' && after === 'Goodbye!', true, error_3);
-		testResults[3].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[3].status = false;
-	}
+  //test 3:
+  try {
+    mockedComponent.setState({message: 'InitialState!'});
+    const before = mockedComponent.state('message');
+    mockedComponent.find('button').simulate('click');
+    const after = mockedComponent.state('message');
+    assert.strictEqual(before === 'InitialState!' && after === 'Goodbye!', true, error_3);
+    testResults[3].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[3].status = false;
+  }
 
-	// test 4:
-	try {
-		const noWhiteSpace = modifiedCode.replace(/\s/g,'');
-		assert.strictEqual(noWhiteSpace.includes('setMessage=()=>{this.setState({message:\'Goodbye!\'})') || noWhiteSpace.includes('setMessage=()=>{this.setState({message:\'Goodbye!\'})') || noWhiteSpace.includes('setMessage=()=>{this.setState({message:"Goodbye!"})') || noWhiteSpace.includes('setMessage=()=>this.setState({message:"Goodbye!"});') || noWhiteSpace.includes('setMessage=()=>this.setState({message:"Goodbye!"})') || noWhiteSpace.includes('setMessage=()=>this.setState({message:\'Goodbye!\'});') || noWhiteSpace.includes('setMessage=()=>this.setState({message:\'Goodbye!\'})'), true, error_4);
-		testResults[4].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[4].status = false;
-	}
+  // test 4:
+  try {
+    const noWhiteSpace = modifiedCode.replace(/\s/g,'');
+    assert.strictEqual(noWhiteSpace.includes('setMessage=()=>{this.setState({message:\'Goodbye!\'})') || noWhiteSpace.includes('setMessage=()=>{this.setState({message:\'Goodbye!\'})') || noWhiteSpace.includes('setMessage=()=>{this.setState({message:"Goodbye!"})') || noWhiteSpace.includes('setMessage=()=>this.setState({message:"Goodbye!"});') || noWhiteSpace.includes('setMessage=()=>this.setState({message:"Goodbye!"})') || noWhiteSpace.includes('setMessage=()=>this.setState({message:\'Goodbye!\'});') || noWhiteSpace.includes('setMessage=()=>this.setState({message:\'Goodbye!\'})'), true, error_4);
+    testResults[4].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[4].status = false;
+  }
 
-	return {
-		passed,
-		testResults
-	}
+  return {
+    passed,
+    testResults
+  }
 
 }
 
@@ -183,14 +183,14 @@ export const executeTests = (code, errorSuppression) => {
 
 export const liveRender = (code) => {
 
-	try {
-		const exportScript = '\n export default MyComponent'
-		const modifiedCode = code.concat(exportScript);
-		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
-		const renderedComponent = React.createElement(eval(es5));
-		return renderedComponent;
-	} catch (err) {
-		// console.log(`Live rendering failure: ${err}`);
-	}
+  try {
+    const exportScript = '\n export default MyComponent'
+    const modifiedCode = code.concat(exportScript);
+    const es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
+    const renderedComponent = React.createElement(eval(es5));
+    return renderedComponent;
+  } catch (err) {
+    // console.log(`Live rendering failure: ${err}`);
+  }
 
 }

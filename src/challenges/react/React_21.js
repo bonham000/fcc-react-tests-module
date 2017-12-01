@@ -30,16 +30,16 @@ export const challengeInstructions = `<span class = 'default'>Instructions: </sp
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = `
 class StatefulComponent extends React.Component {
-	constructor(props) {
-		super(props);
-		// initialize state here
+  constructor(props) {
+    super(props);
+    // initialize state here
 
-	}
+  }
   render() {
     return (
-	    <div>
-	    	<h1>{this.state.name}</h1>
-	    </div>
+      <div>
+        <h1>{this.state.name}</h1>
+      </div>
     );
   }
 };`
@@ -47,17 +47,17 @@ class StatefulComponent extends React.Component {
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode = `
 class StatefulComponent extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			name: 'Free Code Camp!'
-		}
-	}
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: 'Free Code Camp!'
+    }
+  }
   render() {
     return (
-	    <div>
-	    	<h1>{this.state.name}</h1>
-	    </div>
+      <div>
+        <h1>{this.state.name}</h1>
+      </div>
     );
   }
 };`
@@ -66,122 +66,122 @@ class StatefulComponent extends React.Component {
 
 export const executeTests = (code, errorSuppression) => {
 
-	const error_0 = 'Your JSX code should transpile successfully.';
-	const error_1 = 'StatefulComponent should exist and render.';
-	const error_2 = 'StatefulComponent should render a div and an h1 element.';
-	const error_3 = 'StatefulComponent\'s state should be initalized with a property \'name\' set to a string.';
-	const error_4 = 'The property \'name\' in the state of StatefulComponent should render in the h1 element.';
+  const error_0 = 'Your JSX code should transpile successfully.';
+  const error_1 = 'StatefulComponent should exist and render.';
+  const error_2 = 'StatefulComponent should render a div and an h1 element.';
+  const error_3 = 'StatefulComponent\'s state should be initalized with a property \'name\' set to a string.';
+  const error_4 = 'The property \'name\' in the state of StatefulComponent should render in the h1 element.';
 
-	let testResults = [
-		{
-			test: 0,
-			status: false,
-			condition: error_0
-		},
-		{
-			test: 1,
-			status: false,
-			condition: error_1
-		},
-		{
-			test: 2,
-			status: false,
-			condition: error_2
-		},
-		{
-			test: 3,
-			status: false,
-			condition: error_3
-		},
-		{
-			test: 4,
-			status: false,
-			condition: error_4
-		}
-	];
+  let testResults = [
+    {
+      test: 0,
+      status: false,
+      condition: error_0
+    },
+    {
+      test: 1,
+      status: false,
+      condition: error_1
+    },
+    {
+      test: 2,
+      status: false,
+      condition: error_2
+    },
+    {
+      test: 3,
+      status: false,
+      condition: error_3
+    },
+    {
+      test: 4,
+      status: false,
+      condition: error_4
+    }
+  ];
 
-	let es5, mockedComponent, passed = true;
+  let es5, mockedComponent, passed = true;
 
-	// this applies an export to the user's code so
-	// we can access their component here for tests
-	const exportScript = '\n export default StatefulComponent'
-	const modifiedCode = code.concat(exportScript);
+  // this applies an export to the user's code so
+  // we can access their component here for tests
+  const exportScript = '\n export default StatefulComponent'
+  const modifiedCode = code.concat(exportScript);
 
-	// test 0: try to transpile JSX, ES6 code to ES5 in browser
-	try {
-		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
-		testResults[0].status = true;
-		if (!errorSuppression) console.log('No transpilation errors!');
-	} catch (err) {
-		passed = false;
-		testResults[0].status = false;
-		if (!errorSuppression) console.error(`Transpilation error: ${err}`);
-	}
+  // test 0: try to transpile JSX, ES6 code to ES5 in browser
+  try {
+    es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
+    testResults[0].status = true;
+    if (!errorSuppression) console.log('No transpilation errors!');
+  } catch (err) {
+    passed = false;
+    testResults[0].status = false;
+    if (!errorSuppression) console.error(`Transpilation error: ${err}`);
+  }
 
-	// now we will try to shallow render the component with Enzyme's shallow method
-	// you can also use mount to perform a full render to the DOM environment
-	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
-	try {
-		mockedComponent = mount(React.createElement(eval(es5)));
-	} catch (err) {
-		passed = false;
-		if (!errorSuppression) console.error(`Invalid React code: ${err}`);
-	}
+  // now we will try to shallow render the component with Enzyme's shallow method
+  // you can also use mount to perform a full render to the DOM environment
+  // to do this you must import mount above; i.e. import { shallow, mount } from enzyme
+  try {
+    mockedComponent = mount(React.createElement(eval(es5)));
+  } catch (err) {
+    passed = false;
+    if (!errorSuppression) console.error(`Invalid React code: ${err}`);
+  }
 
-	// run specific tests to verify the functionality
-	// that the challenge is trying to assess:
+  // run specific tests to verify the functionality
+  // that the challenge is trying to assess:
 
-	// test 1:
-	try {
-		assert.strictEqual(mockedComponent.find('StatefulComponent').length, 1, error_1);
-		testResults[1].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[1].status = false;
-	}
+  // test 1:
+  try {
+    assert.strictEqual(mockedComponent.find('StatefulComponent').length, 1, error_1);
+    testResults[1].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[1].status = false;
+  }
 
-	// test 2:
-	try {
-		assert(
-			mockedComponent.find('div').length === 1 &&
-			mockedComponent.find('h1').length === 1,
-			error_2
-		);
-		testResults[2].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[2].status = false;
-	}
+  // test 2:
+  try {
+    assert(
+      mockedComponent.find('div').length === 1 &&
+      mockedComponent.find('h1').length === 1,
+      error_2
+    );
+    testResults[2].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[2].status = false;
+  }
 
-	let initialState;
+  let initialState;
 
-	// test 3:
-	try {
-		initialState = mockedComponent.state();
-		assert(
-			typeof initialState === 'object' &&
-			typeof initialState.name === 'string',
-			error_3
-		);
-		testResults[3].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[3].status = false;
-	}
+  // test 3:
+  try {
+    initialState = mockedComponent.state();
+    assert(
+      typeof initialState === 'object' &&
+      typeof initialState.name === 'string',
+      error_3
+    );
+    testResults[3].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[3].status = false;
+  }
 
-	// test 4:
-	try {
-		assert.strictEqual(mockedComponent.find('h1').node.innerText, initialState.name, error_4);
-		testResults[4].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[4].status = false;
-	}
+  // test 4:
+  try {
+    assert.strictEqual(mockedComponent.find('h1').node.innerText, initialState.name, error_4);
+    testResults[4].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[4].status = false;
+  }
 
-	return {
-		passed,
-		testResults
-	}
+  return {
+    passed,
+    testResults
+  }
 
 }
 
@@ -189,14 +189,14 @@ export const executeTests = (code, errorSuppression) => {
 
 export const liveRender = (code) => {
 
-	try {
-		const exportScript = '\n export default StatefulComponent'
-		const modifiedCode = code.concat(exportScript);
-		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
-		const renderedComponent = React.createElement(eval(es5));
-		return renderedComponent;
-	} catch (err) {
-		console.log(err);
-	}
+  try {
+    const exportScript = '\n export default StatefulComponent'
+    const modifiedCode = code.concat(exportScript);
+    const es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
+    const renderedComponent = React.createElement(eval(es5));
+    return renderedComponent;
+  } catch (err) {
+    console.log(err);
+  }
 
 }

@@ -23,9 +23,9 @@ export const challengeInstructions = `<span class = 'default'>Instructions: </sp
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = `
 class App extends React.Component {
-	constructor(props) {
-		super(props);
-	}
+  constructor(props) {
+    super(props);
+  }
   render() {
     return <div/>
   }
@@ -37,9 +37,9 @@ class App extends React.Component {
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode = `
 class App extends React.Component {
-	constructor(props) {
-		super(props);
-	}
+  constructor(props) {
+    super(props);
+  }
   render() {
     return <div/>
   }
@@ -52,33 +52,33 @@ ReactDOMServer.renderToString(<App/>);`
 
 export const executeTests = (code, errorSuppression) => {
 
-	const error_0 = 'The App component should render to a string using ReactDOMServer.renderToString.';
+  const error_0 = 'The App component should render to a string using ReactDOMServer.renderToString.';
 
-	let testResults = [
-		{
-			test: 0,
-			status: false,
-			condition: error_0
-		}
-	];
+  let testResults = [
+    {
+      test: 0,
+      status: false,
+      condition: error_0
+    }
+  ];
 
-	let passed = true;
+  let passed = true;
 
-	// test 0:
-	try {
-		assert.strictEqual(code.replace(/\s/g,'').includes('ReactDOMServer.renderToString(<App/>)'), true, error_0);
-		testResults[0].status = true;
-		if (!errorSuppression) console.log('No transpilation errors!');
-	} catch (err) {
-		passed = false;
-		testResults[0].status = false;
-		if (!errorSuppression) console.error(`Transpilation error: ${err}`);
-	}
+  // test 0:
+  try {
+    assert.strictEqual(code.replace(/\s/g,'').includes('ReactDOMServer.renderToString(<App/>)'), true, error_0);
+    testResults[0].status = true;
+    if (!errorSuppression) console.log('No transpilation errors!');
+  } catch (err) {
+    passed = false;
+    testResults[0].status = false;
+    if (!errorSuppression) console.error(`Transpilation error: ${err}`);
+  }
 
-	return {
-		passed,
-		testResults
-	}
+  return {
+    passed,
+    testResults
+  }
 
 }
 

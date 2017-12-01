@@ -33,72 +33,72 @@ export const solutionCode = `const JSX = <h1>Hello JSX!</h1>;`
 
 export const executeTests = (code, errorSuppression) => {
 
-	let es5, mockedComponent, jsx, passed = true;
+  let es5, mockedComponent, jsx, passed = true;
 
-	let testResults = [
-		{
-			test: 0,
-			status: false,
-			condition: 'Your JSX code should transpile successfully.'
-		},
-		{
-			test: 1,
-			status: false,
-			condition: 'The constant JSX should return an h1 element.'
-		},
-		{
-			test: 2,
-			status: false,
-			condition: 'The h1 tag should include the text \'Hello JSX!\''
-		}
-	];
+  let testResults = [
+    {
+      test: 0,
+      status: false,
+      condition: 'Your JSX code should transpile successfully.'
+    },
+    {
+      test: 1,
+      status: false,
+      condition: 'The constant JSX should return an h1 element.'
+    },
+    {
+      test: 2,
+      status: false,
+      condition: 'The h1 tag should include the text \'Hello JSX!\''
+    }
+  ];
 
-	const prepend = `(function() {`
-	const append = `;\n return JSX })()`
-	const modifiedCode = prepend.concat(code).concat(append);
+  const prepend = `(function() {`
+  const append = `;\n return JSX })()`
+  const modifiedCode = prepend.concat(code).concat(append);
 
-	// test 0: try to transpile JSX, ES6 code to ES5 in browser
-	try {
-		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
-		testResults[0].status = true;
-		if (!errorSuppression) console.log('No transpilation errors!');
-	} catch (err) {
-		passed = false;
-		testResults[0].status = false;
-		if (!errorSuppression) console.error(`Transpilation error: ${err}`);
-	}
+  // test 0: try to transpile JSX, ES6 code to ES5 in browser
+  try {
+    es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
+    testResults[0].status = true;
+    if (!errorSuppression) console.log('No transpilation errors!');
+  } catch (err) {
+    passed = false;
+    testResults[0].status = false;
+    if (!errorSuppression) console.error(`Transpilation error: ${err}`);
+  }
 
-	// shallow render the component with Enzyme
-	try {
-		jsx = eval(es5);
-	} catch (err) {
-		passed = false;
-	}
+  // shallow render the component with Enzyme
+  try {
+    jsx = eval(es5);
+  } catch (err) {
+    passed = false;
+  }
 
-	// test 1:
-	try {
-		assert.strictEqual(jsx.type, 'h1', 'The constant JSX should return an h1 element.');
-		testResults[1].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[1].status = false;
-		if (!errorSuppression) console.error(`Invalid React code: ${err}`);
-	}
+  // test 1:
+  try {
+    assert.strictEqual(jsx.type, 'h1', 'The constant JSX should return an h1 element.');
+    testResults[1].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[1].status = false;
+    if (!errorSuppression) console.error(`Invalid React code: ${err}`);
+  }
 
-	// test 2:
-	try {
-		console.warn(jsx.props.children);
-		assert.strictEqual(jsx.props.children, 'Hello JSX!', true, 'The h1 tag should include the text \'Hello JSX!\'');
-		testResults[2].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[2].status = false;
-	}
+  // test 2:
+  try {
+    console.warn(jsx.props.children);
+    assert.strictEqual(jsx.props.children, 'Hello JSX!', true, 'The h1 tag should include the text \'Hello JSX!\'');
+    testResults[2].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[2].status = false;
+  }
 
-	return {
-		passed,
-		testResults,
-	}
+  return {
+    passed,
+    testResults,
+  }
 
 }
 
@@ -106,14 +106,14 @@ export const executeTests = (code, errorSuppression) => {
 
 export const liveRender = (code) => {
 
-	try {
-		const exportScript = `;\n export default JSX`
-		const modifiedCode = code.concat(exportScript);
-		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
-		const renderedComponent = eval(es5);
-		return renderedComponent;
-	} catch (err) {
-		// console.log(`Live rendering failure: ${err}`);
-	}
+  try {
+    const exportScript = `;\n export default JSX`
+    const modifiedCode = code.concat(exportScript);
+    const es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
+    const renderedComponent = eval(es5);
+    return renderedComponent;
+  } catch (err) {
+    // console.log(`Live rendering failure: ${err}`);
+  }
 
 }

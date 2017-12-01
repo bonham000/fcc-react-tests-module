@@ -29,38 +29,38 @@ Next, add <code>componentDidUpdate()</code> in the <code>Dialog</code> component
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
 `class Dialog extends React.Component {
-	constructor(props) {
-		super(props);
-	}
-	componentWillUpdate() {
-		console.log('Component is about to update...');
-	}
-	// change code below this line
+  constructor(props) {
+    super(props);
+  }
+  componentWillUpdate() {
+    console.log('Component is about to update...');
+  }
+  // change code below this line
 
-	// change code above this line
+  // change code above this line
   render() {
     return <h1>{this.props.message}</h1>
   }
 };
 
 class Controller extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			message: 'First Message'
-		};
-	}
-	changeMessage = () => {
-		this.setState({
-			message: 'Second Message'
-		});
-	}
+  constructor(props) {
+    super(props);
+    this.state = {
+      message: 'First Message'
+    };
+  }
+  changeMessage = () => {
+    this.setState({
+      message: 'Second Message'
+    });
+  }
   render() {
     return (
-			<div>
-				<button onClick={this.changeMessage}>Update</button>
-				<Dialog message={this.state.message}/>
-			</div>
+      <div>
+        <button onClick={this.changeMessage}>Update</button>
+        <Dialog message={this.state.message}/>
+      </div>
     );
   }
 };`
@@ -68,43 +68,43 @@ class Controller extends React.Component {
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode =
 `class Dialog extends React.Component {
-	constructor(props) {
-		super(props);
-	}
-	componentWillUpdate() {
-		console.log('Component is about to update...');
-	}
-	// change code below this line
-	componentWillReceiveProps(nextProps) {
-		console.log(this.props, nextProps);
-	}
-	componentDidUpdate() {
-		console.log('Component re-rendered');
-	}
-	// change code above this line
+  constructor(props) {
+    super(props);
+  }
+  componentWillUpdate() {
+    console.log('Component is about to update...');
+  }
+  // change code below this line
+  componentWillReceiveProps(nextProps) {
+    console.log(this.props, nextProps);
+  }
+  componentDidUpdate() {
+    console.log('Component re-rendered');
+  }
+  // change code above this line
   render() {
     return <h1>{this.props.message}</h1>
   }
 };
 
 class Controller extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			message: 'First Message'
-		};
-	}
-	changeMessage = () => {
-		this.setState({
-			message: 'Second Message'
-		});
-	}
+  constructor(props) {
+    super(props);
+    this.state = {
+      message: 'First Message'
+    };
+  }
+  changeMessage = () => {
+    this.setState({
+      message: 'Second Message'
+    });
+  }
   render() {
     return (
-			<div>
-				<button onClick={this.changeMessage}>Update</button>
-				<Dialog message={this.state.message}/>
-			</div>
+      <div>
+        <button onClick={this.changeMessage}>Update</button>
+        <Dialog message={this.state.message}/>
+      </div>
     );
   }
 };`
@@ -114,151 +114,151 @@ class Controller extends React.Component {
 
 export const executeTests = (code, errorSuppression) => {
 
-	const error_0 = 'Your JSX code should transpile successfully.';
-	const error_1 = 'The Controller component should render the Dialog component as a child.';
-	const error_2 = 'The componentWillReceiveProps method in the Dialog component should log this.props to the console.';
-	const error_3 = 'The componentWillReceiveProps method in the Dialog component should log nextProps to the console.';
-	const error_4 = 'The Dialog component should call the componentDidUpdate method and log a message to the console.';
+  const error_0 = 'Your JSX code should transpile successfully.';
+  const error_1 = 'The Controller component should render the Dialog component as a child.';
+  const error_2 = 'The componentWillReceiveProps method in the Dialog component should log this.props to the console.';
+  const error_3 = 'The componentWillReceiveProps method in the Dialog component should log nextProps to the console.';
+  const error_4 = 'The Dialog component should call the componentDidUpdate method and log a message to the console.';
 
-	let testResults = [
-		{
-			test: 0,
-			status: false,
-			condition: error_0
-		},
-		{
-			test: 1,
-			status: false,
-			condition: error_1
-		},
-		{
-			test: 2,
-			status: false,
-			condition: error_2
-		},
-		{
-			test: 3,
-			status: false,
-			condition: error_3
-		},
-		{
-			test: 4,
-			status: false,
-			condition: error_4
-		}
-	];
+  let testResults = [
+    {
+      test: 0,
+      status: false,
+      condition: error_0
+    },
+    {
+      test: 1,
+      status: false,
+      condition: error_1
+    },
+    {
+      test: 2,
+      status: false,
+      condition: error_2
+    },
+    {
+      test: 3,
+      status: false,
+      condition: error_3
+    },
+    {
+      test: 4,
+      status: false,
+      condition: error_4
+    }
+  ];
 
-	let es5, mockedComponent, lifecycle, passed = true;
+  let es5, mockedComponent, lifecycle, passed = true;
 
-	// this applies an export to the user's code so
-	// we can access their component here for tests
-	const exportScript = '\n export default Controller'
-	const modifiedCode = code.concat(exportScript);
+  // this applies an export to the user's code so
+  // we can access their component here for tests
+  const exportScript = '\n export default Controller'
+  const modifiedCode = code.concat(exportScript);
 
-	// test 0: try to transpile JSX, ES6 code to ES5 in browser
-	try {
-		es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
-		testResults[0].status = true;
-		if (!errorSuppression) console.log('No transpilation errors!');
-	} catch (err) {
-		passed = false;
-		testResults[0].status = false;
-		if (!errorSuppression) console.error(`Transpilation error: ${err}`);
-	}
+  // test 0: try to transpile JSX, ES6 code to ES5 in browser
+  try {
+    es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
+    testResults[0].status = true;
+    if (!errorSuppression) console.log('No transpilation errors!');
+  } catch (err) {
+    passed = false;
+    testResults[0].status = false;
+    if (!errorSuppression) console.error(`Transpilation error: ${err}`);
+  }
 
-	// now we will try to shallow render the component with Enzyme's shallow method
-	// you can also use mount to perform a full render to the DOM environment
-	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
-	try {
-		mockedComponent = mount(React.createElement(eval(es5)));
-	} catch (err) {
-		passed = false;
-		if (!errorSuppression) console.error(`Invalid React code: ${err}`);
-	}
+  // now we will try to shallow render the component with Enzyme's shallow method
+  // you can also use mount to perform a full render to the DOM environment
+  // to do this you must import mount above; i.e. import { shallow, mount } from enzyme
+  try {
+    mockedComponent = mount(React.createElement(eval(es5)));
+  } catch (err) {
+    passed = false;
+    if (!errorSuppression) console.error(`Invalid React code: ${err}`);
+  }
 
-	// run specific tests to verify the functionality
-	// that the challenge is trying to assess:
+  // run specific tests to verify the functionality
+  // that the challenge is trying to assess:
 
-	// test 1:
-	try {
-		assert(
-			mockedComponent.find('Controller').length === 1 &&
-			mockedComponent.find('Dialog').length === 1,
-			error_1
-		);
-		testResults[1].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[1].status = false;
-	}
+  // test 1:
+  try {
+    assert(
+      mockedComponent.find('Controller').length === 1 &&
+      mockedComponent.find('Dialog').length === 1,
+      error_1
+    );
+    testResults[1].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[1].status = false;
+  }
 
-	// specifically perform a separate export for the child component
-	// here to test for lifecycle methods
-	let es5Child, lifecycleChild;
+  // specifically perform a separate export for the child component
+  // here to test for lifecycle methods
+  let es5Child, lifecycleChild;
 
-	const exportScriptChild = '\n export default Dialog';
-	const modifiedCodeChild = code.concat(exportScriptChild);
+  const exportScriptChild = '\n export default Dialog';
+  const modifiedCodeChild = code.concat(exportScriptChild);
 
-	// test 0: try to transpile JSX, ES6 code to ES5 in browser
-	try {
-		es5Child = transform(modifiedCodeChild, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
-		testResults[0].status = true;
-		if (!errorSuppression) console.log('No transpilation errors!');
-	} catch (err) {
-		passed = false;
-		testResults[0].status = false;
-		if (!errorSuppression) console.error(`Transpilation error: ${err}`);
-	}
+  // test 0: try to transpile JSX, ES6 code to ES5 in browser
+  try {
+    es5Child = transform(modifiedCodeChild, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
+    testResults[0].status = true;
+    if (!errorSuppression) console.log('No transpilation errors!');
+  } catch (err) {
+    passed = false;
+    testResults[0].status = false;
+    if (!errorSuppression) console.error(`Transpilation error: ${err}`);
+  }
 
-	// test 2:
-	try {
-		lifecycleChild = React.createElement(eval(es5Child)).type.prototype.componentWillReceiveProps.toString().replace(/\s/g,'');
-		assert(
-			lifecycleChild.includes('console.log') === true &&
-			lifecycleChild.includes('this.props') === true,
-			error_2
-		);
-		testResults[2].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[2].status = false;
-	}
+  // test 2:
+  try {
+    lifecycleChild = React.createElement(eval(es5Child)).type.prototype.componentWillReceiveProps.toString().replace(/\s/g,'');
+    assert(
+      lifecycleChild.includes('console.log') === true &&
+      lifecycleChild.includes('this.props') === true,
+      error_2
+    );
+    testResults[2].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[2].status = false;
+  }
 
-	// test 3:
-	try {
-		lifecycleChild = React.createElement(eval(es5Child)).type.prototype.componentWillReceiveProps.toString().replace(/\s/g,'');
-		const nextPropsAsParameterTest = /componentWillReceiveProps(| *?= *?)(\(|)nextProps(\)|)( *?=> *?{| *?{|{)/;
-		const nextPropsInConsoleLogTest = /console\.log\(.*?nextProps\b.*?\)/;
-		assert(
-			lifecycleChild.includes('console.log') === true &&
-			nextPropsInConsoleLogTest.test(lifecycleChild) === true &&
-			nextPropsAsParameterTest.test(lifecycleChild) === true,
-			error_3
-		);
-		testResults[3].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[3].status = false;
-	}
+  // test 3:
+  try {
+    lifecycleChild = React.createElement(eval(es5Child)).type.prototype.componentWillReceiveProps.toString().replace(/\s/g,'');
+    const nextPropsAsParameterTest = /componentWillReceiveProps(| *?= *?)(\(|)nextProps(\)|)( *?=> *?{| *?{|{)/;
+    const nextPropsInConsoleLogTest = /console\.log\(.*?nextProps\b.*?\)/;
+    assert(
+      lifecycleChild.includes('console.log') === true &&
+      nextPropsInConsoleLogTest.test(lifecycleChild) === true &&
+      nextPropsAsParameterTest.test(lifecycleChild) === true,
+      error_3
+    );
+    testResults[3].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[3].status = false;
+  }
 
-	// test 4:
-	try {
-		lifecycleChild = React.createElement(eval(es5Child)).type.prototype.componentDidUpdate.toString().replace(/\s/g,'');
-		assert(
-			lifecycleChild.length !== 'undefined' &&
-			lifecycleChild.includes('console.log') === true,
-			error_4
-		);
-		testResults[4].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[4].status = false;
-	}
+  // test 4:
+  try {
+    lifecycleChild = React.createElement(eval(es5Child)).type.prototype.componentDidUpdate.toString().replace(/\s/g,'');
+    assert(
+      lifecycleChild.length !== 'undefined' &&
+      lifecycleChild.includes('console.log') === true,
+      error_4
+    );
+    testResults[4].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[4].status = false;
+  }
 
-	return {
-		passed,
-		testResults
-	}
+  return {
+    passed,
+    testResults
+  }
 
 }
 
@@ -266,14 +266,14 @@ export const executeTests = (code, errorSuppression) => {
 
 export const liveRender = (code) => {
 
-	try {
-		const exportScript = '\n export default Controller'
-		const modifiedCode = code.concat(exportScript);
-		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
-		const renderedComponent = React.createElement(eval(es5));
-		return renderedComponent;
-	} catch (err) {
-		// console.log(`Live rendering failure: ${err}`);
-	}
+  try {
+    const exportScript = '\n export default Controller'
+    const modifiedCode = code.concat(exportScript);
+    const es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
+    const renderedComponent = React.createElement(eval(es5));
+    return renderedComponent;
+  } catch (err) {
+    // console.log(`Live rendering failure: ${err}`);
+  }
 
 }

@@ -33,15 +33,15 @@ import rootReducer from './redux/reducers'
 import App from './components/App'
 
 const store = createStore(
-	rootReducer,
-	applyMiddleware(thunk)
+  rootReducer,
+  applyMiddleware(thunk)
 );
 
 ReactDOM.render(
-	<Provider store={store}>
-		<App/>
-	</Provider>,
-	document.getElementById('root')
+  <Provider store={store}>
+    <App/>
+  </Provider>,
+  document.getElementById('root')
 );
 
 // change code below this line
@@ -59,15 +59,15 @@ import rootReducer from './redux/reducers'
 import App from './components/App'
 
 const store = createStore(
-	rootReducer,
-	applyMiddleware(thunk)
+  rootReducer,
+  applyMiddleware(thunk)
 );
 
 ReactDOM.render(
-	<Provider store={store}>
-		<App/>
-	</Provider>,
-	document.getElementById('root')
+  <Provider store={store}>
+    <App/>
+  </Provider>,
+  document.getElementById('root')
 );
 
 console.log('Now I know React and Redux!');`
@@ -76,33 +76,33 @@ console.log('Now I know React and Redux!');`
 
 export const executeTests = (code, errorSuppression) => {
 
-	const error_0 = 'The message \'Now I know React and Redux!\' should be logged to the console.';
+  const error_0 = 'The message \'Now I know React and Redux!\' should be logged to the console.';
 
-	let testResults = [
-		{
-			test: 0,
-			status: false,
-			condition: error_0
-		}
-	];
+  let testResults = [
+    {
+      test: 0,
+      status: false,
+      condition: error_0
+    }
+  ];
 
-	let passed = true;
+  let passed = true;
 
-	// test 1:
-	try {
-		assert.strictEqual(code.includes('console.log("Now I know React and Redux!")') || code.includes('console.log(\'Now I know React and Redux!\')'), true, error_0);
-		testResults[0].status = true;
-		if (!errorSuppression) console.log('No transpilation errors!');
-	} catch (err) {
-		passed = false;
-		testResults[0].status = false;
-		if (!errorSuppression) console.error(`Transpilation error: ${err}`);
-	}
+  // test 1:
+  try {
+    assert.strictEqual(code.includes('console.log("Now I know React and Redux!")') || code.includes('console.log(\'Now I know React and Redux!\')'), true, error_0);
+    testResults[0].status = true;
+    if (!errorSuppression) console.log('No transpilation errors!');
+  } catch (err) {
+    passed = false;
+    testResults[0].status = false;
+    if (!errorSuppression) console.error(`Transpilation error: ${err}`);
+  }
 
-	return {
-		passed,
-		testResults
-	}
+  return {
+    passed,
+    testResults
+  }
 
 }
 

@@ -26,14 +26,14 @@ export const seedCode = `// change code below this line
 export const solutionCode =
 `// change code below this line
 class MyComponent extends React.Component {
-	constructor(props) {
-		super(props);
-	}
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
-			<div>
-				<h1>My First React Component!</h1>
-			</div>
+      <div>
+        <h1>My First React Component!</h1>
+      </div>
     );
   }
 };
@@ -44,99 +44,99 @@ ReactDOM.render(<MyComponent />, document.getElementById('challenge-node'));`
 
 export const executeTests = (code, errorSuppression) => {
 
-	// this will clear the target DOM node before the challenge code
-	document.getElementById('challenge-node').innerHTML = '';
+  // this will clear the target DOM node before the challenge code
+  document.getElementById('challenge-node').innerHTML = '';
 
-	const error_0 = 'Your JSX code should transpile successfully.';
-	const error_1 = 'There should be a React component called MyComponent';
-	const error_2 = 'MyComponent should contain an h1 tag with text \'My First React Component!\' Case and punctuation matter.';
-	const error_3 = 'MyComponent should render to the DOM.';
+  const error_0 = 'Your JSX code should transpile successfully.';
+  const error_1 = 'There should be a React component called MyComponent';
+  const error_2 = 'MyComponent should contain an h1 tag with text \'My First React Component!\' Case and punctuation matter.';
+  const error_3 = 'MyComponent should render to the DOM.';
 
-	let testResults = [
-		{
-			test: 0,
-			status: false,
-			condition: error_0
-		},
-		{
-			test: 1,
-			status: false,
-			condition: error_1
-		},
-		{
-			test: 2,
-			status: false,
-			condition: error_2
-		},
-		{
-			test: 3,
-			status: false,
-			condition: error_3
-		}
-	];
+  let testResults = [
+    {
+      test: 0,
+      status: false,
+      condition: error_0
+    },
+    {
+      test: 1,
+      status: false,
+      condition: error_1
+    },
+    {
+      test: 2,
+      status: false,
+      condition: error_2
+    },
+    {
+      test: 3,
+      status: false,
+      condition: error_3
+    }
+  ];
 
-	let es5, mockedComponent, passed = true;
+  let es5, mockedComponent, passed = true;
 
-	// this applies an export to the user's code so
-	// we can access their component here for tests
-	const exportScript = '\n export default MyComponent'
-	const modifiedCode = code.concat(exportScript);
+  // this applies an export to the user's code so
+  // we can access their component here for tests
+  const exportScript = '\n export default MyComponent'
+  const modifiedCode = code.concat(exportScript);
 
-	// test 0: try to transpile JSX, ES6 code to ES5 in browser
-	try {
-		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
-		testResults[0].status = true;
-		if (!errorSuppression) console.log('No transpilation errors!');
-	} catch (err) {
-		passed = false;
-		testResults[0].status = false;
-		if (!errorSuppression) console.error(`Transpilation error: ${err}`);
-	}
+  // test 0: try to transpile JSX, ES6 code to ES5 in browser
+  try {
+    es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
+    testResults[0].status = true;
+    if (!errorSuppression) console.log('No transpilation errors!');
+  } catch (err) {
+    passed = false;
+    testResults[0].status = false;
+    if (!errorSuppression) console.error(`Transpilation error: ${err}`);
+  }
 
-	// now we will try to shallow render the component with Enzyme's shallow method
-	// you can also use mount to perform a full render to the DOM environment
-	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
-	try {
-		mockedComponent = shallow(React.createElement(eval(es5)));
-	} catch (err) {
-		passed = false;
-		if (!errorSuppression) console.error(`Invalid React code: ${err}`);
-	}
+  // now we will try to shallow render the component with Enzyme's shallow method
+  // you can also use mount to perform a full render to the DOM environment
+  // to do this you must import mount above; i.e. import { shallow, mount } from enzyme
+  try {
+    mockedComponent = shallow(React.createElement(eval(es5)));
+  } catch (err) {
+    passed = false;
+    if (!errorSuppression) console.error(`Invalid React code: ${err}`);
+  }
 
-	// run specific tests to verify the functionality
-	// that the challenge is trying to assess:
+  // run specific tests to verify the functionality
+  // that the challenge is trying to assess:
 
-	// test 1:
-	try {
-		assert(code.replace(/\s/g, '').includes('classMyComponentextendsReact.Component{'), error_1);
-		testResults[1].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[1].status = false;
-	}
+  // test 1:
+  try {
+    assert(code.replace(/\s/g, '').includes('classMyComponentextendsReact.Component{'), error_1);
+    testResults[1].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[1].status = false;
+  }
 
-	// test 2:
-	try {
-		assert.strictEqual(mockedComponent.contains(<h1>My First React Component!</h1>), true, error_2);
-		testResults[2].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[2].status = false;
-	}
+  // test 2:
+  try {
+    assert.strictEqual(mockedComponent.contains(<h1>My First React Component!</h1>), true, error_2);
+    testResults[2].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[2].status = false;
+  }
 
-	// test 3:
-	try {
-		assert.strictEqual(document.getElementById('challenge-node').childNodes.length, 1, error_3);
-		testResults[3].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[3].status = false;
-	}
+  // test 3:
+  try {
+    assert.strictEqual(document.getElementById('challenge-node').childNodes.length, 1, error_3);
+    testResults[3].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[3].status = false;
+  }
 
-	return {
-		passed,
-		testResults
-	}
+  return {
+    passed,
+    testResults
+  }
 
 }
 
@@ -144,15 +144,15 @@ export const executeTests = (code, errorSuppression) => {
 
 export const liveRender = (code) => {
 
-	try {
-		const exportScript = '\n export default MyComponent'
-		const noWhiteSpace = code.replace(/\s/g, '');
-		const modifiedCode = (noWhiteSpace.includes('ReactDOM.render(<MyComponent/>,document.getElementById(\'challenge-node\'))') || noWhiteSpace.includes('ReactDOM.render(<MyComponent/>,document.getElementById("challenge-node"))')) ? code.concat(exportScript) : '';
-		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
-		const renderedComponent = React.createElement(eval(es5));
-		return renderedComponent;
-	} catch (err) {
-		// console.log(`Live rendering failure: ${err}`);
-	}
+  try {
+    const exportScript = '\n export default MyComponent'
+    const noWhiteSpace = code.replace(/\s/g, '');
+    const modifiedCode = (noWhiteSpace.includes('ReactDOM.render(<MyComponent/>,document.getElementById(\'challenge-node\'))') || noWhiteSpace.includes('ReactDOM.render(<MyComponent/>,document.getElementById("challenge-node"))')) ? code.concat(exportScript) : '';
+    const es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
+    const renderedComponent = React.createElement(eval(es5));
+    return renderedComponent;
+  } catch (err) {
+    // console.log(`Live rendering failure: ${err}`);
+  }
 
 }

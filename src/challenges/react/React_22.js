@@ -30,19 +30,19 @@ export const challengeInstructions = `<span class = 'default'>Instructions: </sp
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
 `class MyComponent extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			name: 'Free Code Camp'
-		}
-	}
-	render() {
-  	return (
-	    <div>
-	    	{ /* change code below this line */ }
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: 'Free Code Camp'
+    }
+  }
+  render() {
+    return (
+      <div>
+        { /* change code below this line */ }
 
-	    	{ /* change code above this line */ }
-	    </div>
+        { /* change code above this line */ }
+      </div>
     );
   }
 };`
@@ -50,19 +50,19 @@ export const seedCode =
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode =
 `class MyComponent extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			name: 'Free Code Camp'
-		}
-	}
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: 'Free Code Camp'
+    }
+  }
   render() {
     return (
-	    <div>
-				{ /* change code below this line */ }
-				<h1>{this.state.name}</h1>
-	    	{ /* change code above this line */ }
-	    </div>
+      <div>
+        { /* change code below this line */ }
+        <h1>{this.state.name}</h1>
+        { /* change code above this line */ }
+      </div>
     );
   }
 };`
@@ -71,89 +71,89 @@ export const solutionCode =
 
 export const executeTests = (code, errorSuppression) => {
 
-	const error_0 = 'Your JSX code should transpile successfully.';
-	const error_1 = 'MyComponent should have a key \'name\' with value \'Free Code Camp\' stored in its state.';
-	const error_2 = 'MyComponent should render an h1 tag.';
-	const error_3 = 'The rendered h1 tag should contain text rendered from the component\'s state.';
+  const error_0 = 'Your JSX code should transpile successfully.';
+  const error_1 = 'MyComponent should have a key \'name\' with value \'Free Code Camp\' stored in its state.';
+  const error_2 = 'MyComponent should render an h1 tag.';
+  const error_3 = 'The rendered h1 tag should contain text rendered from the component\'s state.';
 
-	let testResults = [
-		{
-			test: 0,
-			status: false,
-			condition: error_0
-		},
-		{
-			test: 1,
-			status: false,
-			condition: error_1
-		},
-		{
-			test: 2,
-			status: false,
-			condition: error_2
-		},
-		{
-			test: 3,
-			status: false,
-			condition: error_3
-		}
-	];
+  let testResults = [
+    {
+      test: 0,
+      status: false,
+      condition: error_0
+    },
+    {
+      test: 1,
+      status: false,
+      condition: error_1
+    },
+    {
+      test: 2,
+      status: false,
+      condition: error_2
+    },
+    {
+      test: 3,
+      status: false,
+      condition: error_3
+    }
+  ];
 
-	let es5, mockedComponent, passed = true;
+  let es5, mockedComponent, passed = true;
 
-	const exportScript = '\n export default MyComponent'
-	const modifiedCode = code.concat(exportScript);
+  const exportScript = '\n export default MyComponent'
+  const modifiedCode = code.concat(exportScript);
 
-	// test 0: try to transpile JSX, ES6 code to ES5 in browser
-	try {
-		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
-		testResults[0].status = true;
-		if (!errorSuppression) console.log('No transpilation errors!');
-	} catch (err) {
-		passed = false;
-		testResults[0].status = false;
-		if (!errorSuppression) console.error(`Transpilation error: ${err}`);
-	}
+  // test 0: try to transpile JSX, ES6 code to ES5 in browser
+  try {
+    es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
+    testResults[0].status = true;
+    if (!errorSuppression) console.log('No transpilation errors!');
+  } catch (err) {
+    passed = false;
+    testResults[0].status = false;
+    if (!errorSuppression) console.error(`Transpilation error: ${err}`);
+  }
 
-	// try to shallow render the component with Enzyme
-	try {
-		mockedComponent = mount(React.createElement(eval(es5)));
-	} catch (err) {
-		passed = false;
-	}
+  // try to shallow render the component with Enzyme
+  try {
+    mockedComponent = mount(React.createElement(eval(es5)));
+  } catch (err) {
+    passed = false;
+  }
 
-	// test 1:
-	try {
-		assert.strictEqual(mockedComponent.state('name'), 'Free Code Camp', error_1);
-		testResults[1].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[1].status = false;
-	}
+  // test 1:
+  try {
+    assert.strictEqual(mockedComponent.state('name'), 'Free Code Camp', error_1);
+    testResults[1].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[1].status = false;
+  }
 
-	// test 2:
-	try {
-		assert.strictEqual(mockedComponent.children().type(), 'h1', error_2);
-		testResults[2].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[2].status = false;
-	}
+  // test 2:
+  try {
+    assert.strictEqual(mockedComponent.children().type(), 'h1', error_2);
+    testResults[2].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[2].status = false;
+  }
 
-	// test 3:
-	try {
-		mockedComponent.setState({name: 'TestName'});
-		assert.strictEqual(mockedComponent.contains(<h1>TestName</h1>), true, error_3);
-		testResults[3].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[3].status = false;
-	}
+  // test 3:
+  try {
+    mockedComponent.setState({name: 'TestName'});
+    assert.strictEqual(mockedComponent.contains(<h1>TestName</h1>), true, error_3);
+    testResults[3].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[3].status = false;
+  }
 
-	return {
-		passed,
-		testResults
-	}
+  return {
+    passed,
+    testResults
+  }
 
 }
 
@@ -161,14 +161,14 @@ export const executeTests = (code, errorSuppression) => {
 
 export const liveRender = (code) => {
 
-	try {
-		const exportScript = '\n export default MyComponent'
-		const modifiedCode = code.concat(exportScript);
-		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
-		const renderedComponent = React.createElement(eval(es5));
-		return renderedComponent;
-	} catch (err) {
-		// console.log(`Live rendering failure: ${err}`);
-	}
+  try {
+    const exportScript = '\n export default MyComponent'
+    const modifiedCode = code.concat(exportScript);
+    const es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
+    const renderedComponent = React.createElement(eval(es5));
+    return renderedComponent;
+  } catch (err) {
+    // console.log(`Live rendering failure: ${err}`);
+  }
 
 }

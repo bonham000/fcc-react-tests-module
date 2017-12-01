@@ -24,85 +24,85 @@ Apply a class of <code>myDiv</code> to the <code>div</code> provided in the JSX 
 export const seedCode =
 `const JSX = (
 <div>
-	<h1>Add a class to this div</h1>
+  <h1>Add a class to this div</h1>
 </div>);`
 
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode =
 `const JSX = (
 <div className = 'myDiv'>
-	<h1>Add a class to this div</h1>
+  <h1>Add a class to this div</h1>
 </div>);`
 
 // ---------------------------- define challenge tests ----------------------------
 
 export const executeTests = (code, errorSuppression) => {
 
-	let es5, mockedComponent, jsx, passed = true;
+  let es5, mockedComponent, jsx, passed = true;
 
-	let testResults = [
-		{
-			test: 0,
-			status: false,
-			condition: 'Your JSX code should transpile successfully.'
-		},
-		{
-			test: 1,
-			status: false,
-			condition: 'The constant JSX should return a div element.'
-		},
-		{
-			test: 2,
-			status: false,
-			condition: 'The div has a class of \'myDiv\'.'
-		}
-	];
+  let testResults = [
+    {
+      test: 0,
+      status: false,
+      condition: 'Your JSX code should transpile successfully.'
+    },
+    {
+      test: 1,
+      status: false,
+      condition: 'The constant JSX should return a div element.'
+    },
+    {
+      test: 2,
+      status: false,
+      condition: 'The div has a class of \'myDiv\'.'
+    }
+  ];
 
-	const prepend = `(function() {`
-	const append = `;\n return JSX })()`
-	const modifiedCode = prepend.concat(code).concat(append);
+  const prepend = `(function() {`
+  const append = `;\n return JSX })()`
+  const modifiedCode = prepend.concat(code).concat(append);
 
-	// test 0: try to transpile JSX, ES6 code to ES5 in browser
-	try {
-		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
-		testResults[0].status = true;
-		if (!errorSuppression) console.log('No transpilation errors!');
-	} catch (err) {
-		passed = false;
-		testResults[0].status = false;
-		if (!errorSuppression) console.error(`Transpilation error: ${err}`);
-	}
+  // test 0: try to transpile JSX, ES6 code to ES5 in browser
+  try {
+    es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
+    testResults[0].status = true;
+    if (!errorSuppression) console.log('No transpilation errors!');
+  } catch (err) {
+    passed = false;
+    testResults[0].status = false;
+    if (!errorSuppression) console.error(`Transpilation error: ${err}`);
+  }
 
-	// shallow render the component with Enzyme
-	try {
-		jsx = eval(es5);
-	} catch (err) {
-		passed = false;
-		if (!errorSuppression) console.error(`Invalid React code: ${err}`);
-	}
+  // shallow render the component with Enzyme
+  try {
+    jsx = eval(es5);
+  } catch (err) {
+    passed = false;
+    if (!errorSuppression) console.error(`Invalid React code: ${err}`);
+  }
 
-	// test 1:
-	try {
-		assert.strictEqual(jsx.type, 'div', 'The constant JSX should return a div element.');
-		testResults[1].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[1].status = false;
-	}
+  // test 1:
+  try {
+    assert.strictEqual(jsx.type, 'div', 'The constant JSX should return a div element.');
+    testResults[1].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[1].status = false;
+  }
 
-	// test 2:
-	try {
-		assert.strictEqual(jsx.props.className, 'myDiv', 'The div has a class of \'myDiv\'.');
-		testResults[2].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[2].status = false;
-	}
+  // test 2:
+  try {
+    assert.strictEqual(jsx.props.className, 'myDiv', 'The div has a class of \'myDiv\'.');
+    testResults[2].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[2].status = false;
+  }
 
-	return {
-		passed,
-		testResults,
-	}
+  return {
+    passed,
+    testResults,
+  }
 
 }
 
@@ -110,14 +110,14 @@ export const executeTests = (code, errorSuppression) => {
 
 export const liveRender = (code) => {
 
-	try {
-		const exportScript = `;\n export default JSX`
-		const modifiedCode = code.concat(exportScript);
-		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
-		const renderedComponent = eval(es5);
-		return renderedComponent;
-	} catch (err) {
-		// console.log(`Live rendering failure: ${err}`);
-	}
+  try {
+    const exportScript = `;\n export default JSX`
+    const modifiedCode = code.concat(exportScript);
+    const es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
+    const renderedComponent = eval(es5);
+    return renderedComponent;
+  } catch (err) {
+    // console.log(`Live rendering failure: ${err}`);
+  }
 
 }
