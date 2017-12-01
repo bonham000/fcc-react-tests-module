@@ -17,7 +17,7 @@ export const challengeText = `<span class = 'default'>Intro: </span>_CHALLENGE_T
 export const challengeInstructions = `<span class = 'default'>Instructions: </span>_ADD_YOUR_INSTRUCTIONS_HERE_`
 
 // ---------------------------- define challenge seed code ----------------------------
-export const seedCode = 
+export const seedCode =
 `// Redux:
 const ADD = 'ADD';
 
@@ -31,7 +31,10 @@ const addMessage = (message) => {
 const reducer = (state = [], action) => {
   switch (action.type) {
     case ADD:
-      return state.concat(action.message);
+      return [
+			  ...state,
+			  action.message
+			];
     default:
       return state;
   }
@@ -87,7 +90,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return { 
+  return {
     submitMessage:
     	(newMessage) => {
         dispatch(addMessage(newMessage))
@@ -149,10 +152,10 @@ export const executeTests = (code) => {
 
 	// this applies an export to the user's code so
 	// we can access their component here for tests
-	
+
 	// const exportScript = '\n export default MyComponent'
 	// const modifiedCode = code.concat(exportScript);
-	
+
 	// test 0: try to transpile JSX, ES6 code to ES5 in browser
 	try {
 		es5 = transform(code, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
@@ -160,7 +163,7 @@ export const executeTests = (code) => {
 		passed = false;
 		testResults[0].status = false;
 	}
-	
+
 	// now we will try to shallow render the component with Enzyme's shallow method
 	// you can also use mount to perform a full render to the DOM environment
 	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
@@ -188,7 +191,7 @@ export const executeTests = (code) => {
 		testResults[2].status = true;
 	} catch (err) {
 		passed = false;
-		testResults[2].status = false;		
+		testResults[2].status = false;
 	}
 
 	// test 3:
@@ -204,7 +207,7 @@ export const executeTests = (code) => {
 		passed,
 		testResults
 	}
-	
+
 }
 
 // ---------------------------- define live render function ----------------------------

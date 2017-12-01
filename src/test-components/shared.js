@@ -31,20 +31,23 @@ export const renderChallenges = (challenges) => {
 
 // Code Mirror configuration options
 export const editorOptions = {
+	autoCloseBrackets: true,
+	extraKeys: {
+		'Cmd-Enter': () => {
+			this.testCode();
+			return false;
+		},
+		'Ctrl-Enter': () => {
+			this.testCode();
+			return false;
+		}
+	},
+	keymap: 'sublime',
+	lineNumbers: true,
+	matchBrackets: true,
   mode: 'jsx',
-  lineNumbers: true,
+	tabSize: 2,
   theme: 'monokai',
-  tabSize: 2,
-  extraKeys: {
-    'Cmd-Enter': () => {
-      this.testCode();
-      return false;
-    },
-    'Ctrl-Enter': () => {
-      this.testCode();
-      return false;
-    }
-  }
 };
 
 // helper for evaluating keypresses

@@ -1,6 +1,7 @@
 /* eslint-disable */
 import assert from 'assert'
 import { transform } from 'babel-standalone'
+import deepFreeze from 'deep-freeze';
 
 // SET TO TRUE WHEN QA IS COMPLETE:
 export const QA = true;
@@ -37,7 +38,10 @@ const addMessage = (message) => {
 const messageReducer = (state = [], action) => {
   switch (action.type) {
     case ADD:
-      return state.concat(action.message);
+      return [
+        ...state,
+        action.message
+      ];
     default:
       return state;
   }
@@ -54,7 +58,7 @@ export const executeTests = (code, errorSuppression) => {
 	const error_2 = 'The action creator addMessage should return an object with type equal to ADD and message equal to the message that is passed in.';
 	const error_3 = 'messageReducer should be a function.';
 	const error_4 = 'The store should exist and have an initial state set to an empty array.';
-	const error_5 = 'Dispatching addMessage against the store should add a new message to the array of messages held in state.';
+	const error_5 = 'Dispatching addMessage against the store should immutably add a new message to the array of messages held in state.';
 	const error_6 = 'The messageReducer should return the current state if called with any other actions.';
 
 	let testResults = [
@@ -186,10 +190,10 @@ export const executeTests = (code, errorSuppression) => {
 
 	// test 5:
 	try {
-
+		const isFrozen = deepFreeze(initialState);
 		store.dispatch(addMessage('__A__TEST__MESSAGE'));
 		addState = store.getState();
-		assert.strictEqual(addState[0], '__A__TEST__MESSAGE', error_5);
+		assert(isFrozen && addState[0] === '__A__TEST__MESSAGE', error_5);
 
 		testResults[5].status = true;
 	} catch (err) {

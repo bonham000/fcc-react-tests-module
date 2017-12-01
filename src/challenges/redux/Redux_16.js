@@ -1,5 +1,7 @@
 /* eslint-disable */
 import assert from 'assert'
+import deepEqual from 'deep-equal';
+import deepFreeze from 'deep-freeze';
 import { transform } from 'babel-standalone'
 
 // SET TO TRUE WHEN QA IS COMPLETE:
@@ -19,8 +21,8 @@ export const seedCode =
 `const immutableReducer = (state = [0,1,2,3,4,5], action) => {
 	switch(action.type) {
 		case 'REMOVE_ITEM':
-			return // don't mutate state here
-
+			// don't mutate state here or the tests will fail
+			return
 		default:
 			return state;
 	}
@@ -40,8 +42,10 @@ export const solutionCode =
 `const immutableReducer = (state = [0,1,2,3,4,5], action) => {
 	switch(action.type) {
 		case 'REMOVE_ITEM':
-			return [...state.slice(0, action.index),
-							...state.slice(action.index + 1)];
+			return [
+				...state.slice(0, action.index),
+				...state.slice(action.index + 1)
+			];
 		default:
 			return state;
 	}
@@ -63,7 +67,7 @@ export const executeTests = (code, errorSuppression) => {
 	const error_0 = 'Your code should transpile successfully.';
 	const error_1 = 'The Redux store should exist and initialize with a state equal to [0,1,2,3,4,5]';
 	const error_2 = 'removeItem and immutableReducer both should be functions.';
-	const error_3 = 'Dispatching the removeItem action creator should remove items from the state and return a new copy of state.';
+	const error_3 = 'Dispatching the removeItem action creator should remove items from the state and should NOT mutate state.';
 
 	let testResults = [
 		{
@@ -128,12 +132,7 @@ export const executeTests = (code, errorSuppression) => {
 		initialState = store.getState();
 		assert(
 			Array.isArray(initialState) === true &&
-			initialState[0] === 0 &&
-			initialState[1] === 1 &&
-			initialState[2] === 2 &&
-			initialState[3] === 3 &&
-			initialState[4] === 4 &&
-			initialState[5] === 5,
+			deepEqual(initialState, [0, 1, 2, 3, 4, 5]),
 			error_1
 		);
 		testResults[1].status = true;
@@ -157,6 +156,7 @@ export const executeTests = (code, errorSuppression) => {
 
 	// test 3:
 	try {
+		const isFrozen = deepFreeze(initialState);
 		store.dispatch(removeItem(3));
 		state_1 = store.getState();
 		store.dispatch(removeItem(2));
@@ -166,19 +166,10 @@ export const executeTests = (code, errorSuppression) => {
 		store.dispatch(removeItem(0));
 		state_3 = store.getState();
 		assert(
-			state_1[0] === 0 &&
-			state_1[1] === 1 &&
-			state_1[2] === 2 &&
-			state_1[3] === 4 &&
-			state_1[4] === 5 &&
-			state_1.length === 5 &&
-			state_2[0] === 0 &&
-			state_2[1] === 1 &&
-			state_2[2] === 4 &&
-			state_2[3] === 5 &&
-			state_2.length === 4 &&
-			state_3[0] === 5 &&
-			state_3.length === 1,
+			isFrozen &&
+			deepEqual(state_1, [0, 1, 2, 4, 5]),
+			deepEqual(state_2, [0, 1, 4, 5]),
+			deepEqual(state_3, [5]),
 			error_3
 		);
 		testResults[3].status = true;

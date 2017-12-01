@@ -1,5 +1,7 @@
 /* eslint-disable */
 import assert from 'assert'
+import deepEqual from 'deep-equal';
+import deepFreeze from 'deep-freeze';
 import { transform } from 'babel-standalone'
 
 // SET TO TRUE WHEN QA IS COMPLETE:
@@ -22,19 +24,18 @@ export const challengeInstructions = `<span class = 'default'>Instructions: </sp
 
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
-`const ONLINE = 'ONLINE';
-
-const defaultState = {
+`const defaultState = {
 	user: 'CamperBot',
   status: 'offline',
   friends: '732,982',
-  community: 'Free Code Camp'
+  community: 'freeCodeCamp'
 };
 
 const immutableReducer = (state = defaultState, action) => {
 	switch(action.type) {
-		case ONLINE:
-			return // don't mutate state here
+		case 'ONLINE':
+			// don't mutate state here or the tests will fail
+			return
 		default:
 			return state;
 	}
@@ -42,7 +43,7 @@ const immutableReducer = (state = defaultState, action) => {
 
 const wakeUp = () => {
 	return {
-		type: ONLINE
+		type: 'ONLINE'
 	}
 };
 
@@ -50,23 +51,19 @@ const store = Redux.createStore(immutableReducer);`
 
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode =
-`const ONLINE = 'ONLINE';
-
-const defaultState = {
+`const defaultState = {
 	user: 'CamperBot',
-  status: 'offline',
-  friends: '732,982',
-  community: 'Free Code Camp'
+	status: 'offline',
+	friends: '732,982',
+	community: 'freeCodeCamp'
 };
 
 const immutableReducer = (state = defaultState, action) => {
 	switch(action.type) {
-		case ONLINE:
-			return Object.assign(
-				{},
-				state,
-        {status: 'online'}
-			);
+		case 'ONLINE':
+			return Object.assign({}, state, {
+				status: 'online'
+			});
 		default:
 			return state;
 	}
@@ -74,7 +71,7 @@ const immutableReducer = (state = defaultState, action) => {
 
 const wakeUp = () => {
 	return {
-		type: ONLINE
+		type: 'ONLINE'
 	}
 };
 
@@ -85,9 +82,10 @@ const store = Redux.createStore(immutableReducer);`
 export const executeTests = (code, errorSuppression) => {
 
 	const error_0 = 'Your code should transpile successfully.';
-	const error_1 = 'The Redux store should exist and initialize with a state that\'s an object with keys \'user\', \'status\', \'friends\', and \'community\'';
+	const error_1 = 'The Redux store should exist and initialize with a state that\'s equivalent to the defaultState object declared on line 1.';
 	const error_2 = 'wakeUp and immutableReducer both should be functions.';
-	const error_3 = 'Dispatching an action of type \'ONLINE\' should update the property \'status\' in state to \'online\' and return a new state object.';
+	const error_3 = 'Dispatching an action of type \'ONLINE\' should update the property \'status\' in state to \'online\' and should NOT mutate state.';
+	const error_4 = 'Object.assign should be used to return new state.';
 
 	let testResults = [
 		{
@@ -109,6 +107,11 @@ export const executeTests = (code, errorSuppression) => {
 			test: 3,
 			status: false,
 			condition: error_3
+		},
+		{
+			test: 4,
+			status: false,
+			condition: error_4
 		}
 	];
 
@@ -146,17 +149,20 @@ export const executeTests = (code, errorSuppression) => {
 		if (!errorSuppression) console.error(`Code evaluation error: ${err}`);
 	}
 
-	let initialState, newState;
+	let initialState, finalState;
 
 	// test 1:
 	try {
+		const expectedState = {
+			user: 'CamperBot',
+			status: 'offline',
+			friends: '732,982',
+			community: 'freeCodeCamp'
+		};
 		initialState = store.getState();
-		assert(
-			typeof initialState === 'object' &&
-			initialState.hasOwnProperty('user') &&
-			initialState.hasOwnProperty('status') &&
-			initialState.hasOwnProperty('friends') &&
-			initialState.hasOwnProperty('community'),
+		assert.deepEqual(
+			expectedState,
+			initialState,
 			error_1
 		);
 		testResults[1].status = true;
@@ -180,17 +186,33 @@ export const executeTests = (code, errorSuppression) => {
 
 	// test 3:
 	try {
+		const isFrozen = deepFreeze(initialState);
 		store.dispatch({type: 'ONLINE'});
-		newState = store.getState();
+		finalState = store.getState();
+		const expectedState = {
+			user: 'CamperBot',
+		  status: 'online',
+		  friends: '732,982',
+		  community: 'freeCodeCamp'
+		};
 		assert(
-			initialState.status === 'offline' &&
-			newState.status === 'online',
+			isFrozen &&
+			deepEqual(finalState, expectedState),
 			error_3
 		);
 		testResults[3].status = true;
 	} catch (err) {
 		passed = false;
 		testResults[3].status = false;
+	}
+
+	// test 4:
+	try {
+		assert.strictEqual(code.includes('Object.assign'), true, error_4);
+		testResults[4].status = true;
+	} catch (err) {
+		passed = false;
+		testResults[4].status = false;
 	}
 
 	return {

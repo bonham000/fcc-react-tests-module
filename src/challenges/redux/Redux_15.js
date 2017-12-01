@@ -1,5 +1,7 @@
 /* eslint-disable */
 import assert from 'assert'
+import deepEqual from 'deep-equal';
+import deepFreeze from 'deep-freeze';
 import { transform } from 'babel-standalone'
 
 // SET TO TRUE WHEN QA IS COMPLETE:
@@ -25,8 +27,8 @@ export const seedCode =
 `const immutableReducer = (state = ['Do not mutate state!'], action) => {
 	switch(action.type) {
 		case 'ADD_TO_DO':
-			return // don't mutate state here
-
+			// don't mutate state here or the tests will fail
+			return
 		default:
 			return state;
 	}
@@ -46,7 +48,10 @@ export const solutionCode =
 `const immutableReducer = (state = ['Do not mutate state!'], action) => {
 	switch(action.type) {
 		case 'ADD_TO_DO':
-			return [...state, action.todo];
+			return [
+				...state,
+				action.todo
+			];
 		default:
 			return state;
 	}
@@ -68,7 +73,7 @@ export const executeTests = (code, errorSuppression) => {
 	const error_0 = 'Your code should transpile successfully.';
 	const error_1 = 'The Redux store should exist and initialize with a state equal to [\'Don\'t mutate state!\']';
 	const error_2 = 'addToDo and immutableReducer both should be functions.';
-	const error_3 = 'Dispatching an action of type \'ADD_TO_DO\' on the Redux store should add a todo and returns a new copy of state.';
+	const error_3 = 'Dispatching an action of type \'ADD_TO_DO\' on the Redux store should add a todo and should NOT mutate state.';
 	const error_4 = 'The spread operator should be used to return new state.';
 
 	let testResults = [
@@ -163,14 +168,16 @@ export const executeTests = (code, errorSuppression) => {
 
 	// test 3:
 	try {
+		const isFrozen = deepFreeze(initialState);
 		store.dispatch(addToDo('__TEST__TO__DO__'));
 		finalState = store.getState();
+		const expectedState = [
+			'Do not mutate state!',
+			'__TEST__TO__DO__'
+		];
 		assert(
-			initialState.length === 1 &&
-			initialState[0] === 'Do not mutate state!' &&
-			finalState.length === 2 &&
-			finalState[0] === 'Do not mutate state!' &&
-			finalState[1] === '__TEST__TO__DO__',
+			isFrozen &&
+			deepEqual(finalState, expectedState),
 			error_3
 		);
 		testResults[3].status = true;
