@@ -37,25 +37,25 @@ export const challengeInstructions = `<span class = 'default'>Instructions: </sp
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
 `const List= (props) => {
-	{ /* change code below this line */ }
-	return <p>{}</p>
-	{ /* change code above this line */ }
+  { /* change code below this line */ }
+  return <p>{}</p>
+  { /* change code above this line */ }
 };
 
 class ToDo extends React.Component {
   constructor(props) {
-  	super(props);
+    super(props);
   }
   render() {
     return (
       <div>
         <h1>To Do Lists</h1>
-				<h2>Today</h2>
-				{ /* change code below this line */ }
+        <h2>Today</h2>
+        { /* change code below this line */ }
         <List/>
-				<h2>Tomorrow</h2>
+        <h2>Tomorrow</h2>
         <List/>
-				{ /* change code above this line */ }
+        { /* change code above this line */ }
       </div>
     );
   }
@@ -63,21 +63,21 @@ class ToDo extends React.Component {
 
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode =
-	`const List= (props) => {
-	return <p>{props.tasks.join(', ')}</p>
+  `const List= (props) => {
+  return <p>{props.tasks.join(', ')}</p>
 };
 
 class ToDo extends React.Component {
   constructor(props) {
-  	super(props);
+    super(props);
   }
   render() {
     return (
       <div>
         <h1>To Do Lists</h1>
-				<h2>Today</h2>
+        <h2>Today</h2>
         <List tasks={['study', 'exercise']} />
-				<h2>Tomorrow</h2>
+        <h2>Tomorrow</h2>
         <List tasks={['call Sam', 'grocery shopping', 'order tickets']} />
       </div>
     );
@@ -88,157 +88,157 @@ class ToDo extends React.Component {
 
 export const executeTests = (code, errorSuppression) => {
 
-	const error_0 = 'Your JSX code should transpile successfully.';
-	const error_1 = 'The ToDo component should return a single outer div.';
-	const error_2 = 'The ToDo component\'s third child should be an instance of the List component.';
-	const error_3 = 'The ToDo component\'s fifth child should be an instance of the List component.';
-	const error_4 = 'Both instances of the List component should have a property called tasks and tasks should be of type array.';
-	const error_5 = 'The first List component representing Today\'s tasks should have 2 or more items.';
-	const error_6 = 'The second List component representing Tomorrow\'s tasks should have 3 or more items.';
-	const error_7 = 'The List component should render the value from the tasks prop in the p tag.'
+  const error_0 = 'Your JSX code should transpile successfully.';
+  const error_1 = 'The ToDo component should return a single outer div.';
+  const error_2 = 'The ToDo component\'s third child should be an instance of the List component.';
+  const error_3 = 'The ToDo component\'s fifth child should be an instance of the List component.';
+  const error_4 = 'Both instances of the List component should have a property called tasks and tasks should be of type array.';
+  const error_5 = 'The first List component representing Today\'s tasks should have 2 or more items.';
+  const error_6 = 'The second List component representing Tomorrow\'s tasks should have 3 or more items.';
+  const error_7 = 'The List component should render the value from the tasks prop in the p tag.'
 
-	let testResults = [
-		{
-			test: 0,
-			status: false,
-			condition: error_0
-		},
-		{
-			test: 1,
-			status: false,
-			condition: error_1
-		},
-		{
-			test: 2,
-			status: false,
-			condition: error_2
-		},
-		{
-			test: 3,
-			status: false,
-			condition: error_3
-		},
-		{
-			test: 4,
-			status: false,
-			condition: error_4
-		},
-		{
-			test: 5,
-			status: false,
-			condition: error_5
-		},
-		{
-			test: 6,
-			status: false,
-			condition: error_6
-		},
-		{
-			test: 7,
-			status: false,
-			condition: error_7
-		}
-	];
+  let testResults = [
+    {
+      test: 0,
+      status: false,
+      condition: error_0
+    },
+    {
+      test: 1,
+      status: false,
+      condition: error_1
+    },
+    {
+      test: 2,
+      status: false,
+      condition: error_2
+    },
+    {
+      test: 3,
+      status: false,
+      condition: error_3
+    },
+    {
+      test: 4,
+      status: false,
+      condition: error_4
+    },
+    {
+      test: 5,
+      status: false,
+      condition: error_5
+    },
+    {
+      test: 6,
+      status: false,
+      condition: error_6
+    },
+    {
+      test: 7,
+      status: false,
+      condition: error_7
+    }
+  ];
 
-	let es5, mockedComponent, mockRender, propsObj, passed = true;
+  let es5, mockedComponent, mockRender, propsObj, passed = true;
 
-	// this applies an export to the user's code so
-	// we can access their component here for tests
-	const exportScript = '\n export default ToDo'
-	const modifiedCode = code.concat(exportScript);
+  // this applies an export to the user's code so
+  // we can access their component here for tests
+  const exportScript = '\n export default ToDo'
+  const modifiedCode = code.concat(exportScript);
 
-	// test 0: try to transpile JSX, ES6 code to ES5 in browser
-	try {
-		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
-		testResults[0].status = true;
-		if (!errorSuppression) console.log('No transpilation errors!');
-	} catch (err) {
-		passed = false;
-		testResults[0].status = false;
-		if (!errorSuppression) console.error(`Transpilation error: ${err}`);
-	}
+  // test 0: try to transpile JSX, ES6 code to ES5 in browser
+  try {
+    es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
+    testResults[0].status = true;
+    if (!errorSuppression) console.log('No transpilation errors!');
+  } catch (err) {
+    passed = false;
+    testResults[0].status = false;
+    if (!errorSuppression) console.error(`Transpilation error: ${err}`);
+  }
 
-	// now we will try to shallow render the component with Enzyme's shallow method
-	// you can also use mount to perform a full render to the DOM environment
-	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
-	try {
-		mockedComponent = shallow(React.createElement(eval(es5)));
-		mockRender = mount(React.createElement(eval(es5)));
-	} catch (err) {
-		passed = false;
+  // now we will try to shallow render the component with Enzyme's shallow method
+  // you can also use mount to perform a full render to the DOM environment
+  // to do this you must import mount above; i.e. import { shallow, mount } from enzyme
+  try {
+    mockedComponent = shallow(React.createElement(eval(es5)));
+    mockRender = mount(React.createElement(eval(es5)));
+  } catch (err) {
+    passed = false;
     if (!errorSuppression) console.error(`Invalid React code: ${err}`);
-	}
+  }
 
-	// run specific tests to verify the functionality
-	// that the challenge is trying to assess:
+  // run specific tests to verify the functionality
+  // that the challenge is trying to assess:
 
-	// test 1:
-	try {
-		assert.strictEqual(mockedComponent.type(), 'div', error_1)
-		testResults[1].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[1].status = false;
-	}
+  // test 1:
+  try {
+    assert.strictEqual(mockedComponent.type(), 'div', error_1)
+    testResults[1].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[1].status = false;
+  }
 
-	// test 2:
-	try {
-		assert.strictEqual(mockedComponent.nodes[0].props.children[2].type.name, 'List', error_2)
-		testResults[2].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[2].status = false;
-	}
+  // test 2:
+  try {
+    assert.strictEqual(mockedComponent.nodes[0].props.children[2].type.name, 'List', error_2)
+    testResults[2].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[2].status = false;
+  }
 
-	// test 3:
-	try {
-		assert.strictEqual(mockedComponent.nodes[0].props.children[2].type.name, 'List', error_3)
-		testResults[3].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[3].status = false;
-	}
+  // test 3:
+  try {
+    assert.strictEqual(mockedComponent.nodes[0].props.children[2].type.name, 'List', error_3)
+    testResults[3].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[3].status = false;
+  }
 
-	// test 4:
-	try {
-		assert(Array.isArray(mockedComponent.props().children[4].props.tasks) === true, error_4)
-		testResults[4].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[4].status = false;
-	}
+  // test 4:
+  try {
+    assert(Array.isArray(mockedComponent.props().children[4].props.tasks) === true, error_4)
+    testResults[4].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[4].status = false;
+  }
 
-	// test 5:
-	try {
-		assert(mockedComponent.props().children[2].props.tasks.length >= 2, error_5)
-		testResults[5].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[5].status = false;
-	}
+  // test 5:
+  try {
+    assert(mockedComponent.props().children[2].props.tasks.length >= 2, error_5)
+    testResults[5].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[5].status = false;
+  }
 
-	// test 6:
-	try {
-		assert(mockedComponent.props().children[4].props.tasks.length >= 3, error_6)
-		testResults[6].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[6].status = false;
-	}
+  // test 6:
+  try {
+    assert(mockedComponent.props().children[4].props.tasks.length >= 3, error_6)
+    testResults[6].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[6].status = false;
+  }
 
-	// test 7:
-	try {
-		assert(mockRender.find("p").nodes[0].innerHTML === mockedComponent.props().children[2].props.tasks.join(", ") || mockRender.find("p").nodes[0].innerHTML === mockedComponent.props().children[2].props.tasks.join(","), error_7)
-		testResults[7].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[7].status = false;
-	}
+  // test 7:
+  try {
+    assert(mockRender.find("p").nodes[0].innerHTML === mockedComponent.props().children[2].props.tasks.join(", ") || mockRender.find("p").nodes[0].innerHTML === mockedComponent.props().children[2].props.tasks.join(","), error_7)
+    testResults[7].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[7].status = false;
+  }
 
-	return {
-		passed,
-		testResults
-	}
+  return {
+    passed,
+    testResults
+  }
 
 }
 
@@ -246,14 +246,14 @@ export const executeTests = (code, errorSuppression) => {
 
 export const liveRender = (code) => {
 
-	try {
-		const exportScript = '\n export default ToDo'
-		const modifiedCode = code.concat(exportScript);
-		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
-		const renderedComponent = React.createElement(eval(es5));
-		return renderedComponent;
-	} catch (err) {
-		// console.log(`Live rendering failure: ${err}`);
-	}
+  try {
+    const exportScript = '\n export default ToDo'
+    const modifiedCode = code.concat(exportScript);
+    const es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
+    const renderedComponent = React.createElement(eval(es5));
+    return renderedComponent;
+  } catch (err) {
+    // console.log(`Live rendering failure: ${err}`);
+  }
 
 }

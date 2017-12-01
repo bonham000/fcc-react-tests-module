@@ -35,7 +35,7 @@ export const seedCode =
 const ADD = 'ADD';
 
 const addMessage = (message) => {
-	return {
+  return {
     type: ADD,
     message
   }
@@ -60,20 +60,20 @@ const store = Redux.createStore(messageReducer);
 // React Code:
 
 class DisplayMessages extends React.Component {
-	constructor(props) {
-		super(props);
+  constructor(props) {
+    super(props);
     this.state = {
       input: '',
       messages: []
     }
-	}
+  }
   handleChange = (event) => {
     this.setState({
       input: event.target.value
     });
   }
-	submitMessage = () => {
-		const currentMessage = this.state.input;
+  submitMessage = () => {
+    const currentMessage = this.state.input;
     this.setState({
       input: '',
       messages: this.state.messages.concat(currentMessage)
@@ -81,21 +81,21 @@ class DisplayMessages extends React.Component {
   }
   render() {
     return (
-    	<div>
+      <div>
         <h2>Type in a new Message:</h2>
         <input
           value={this.state.input}
           onChange={this.handleChange}/><br/>
-    		<button onClick={this.submitMessage}>Submit</button>
-    		<ul>
-		    	{this.state.messages.map( (message, idx) => {
-		    			return (
-		    			 	<li key={idx}>{message}</li>
-		    			)
-		    		})
-	    		}
-	    	</ul>
-    	</div>
+        <button onClick={this.submitMessage}>Submit</button>
+        <ul>
+          {this.state.messages.map( (message, idx) => {
+              return (
+                 <li key={idx}>{message}</li>
+              )
+            })
+          }
+        </ul>
+      </div>
     );
   }
 };
@@ -103,9 +103,9 @@ class DisplayMessages extends React.Component {
 const Provider = ReactRedux.Provider;
 
 class AppWrapper extends React.Component {
-	// render the Provider here
+  // render the Provider here
 
-	// change code above this line
+  // change code above this line
 };`
 
 // ---------------------------- define challenge solution code ----------------------------
@@ -114,7 +114,7 @@ export const solutionCode =
 const ADD = 'ADD';
 
 const addMessage = (message) => {
-	return {
+  return {
     type: ADD,
     message
   }
@@ -137,20 +137,20 @@ const store = Redux.createStore(messageReducer);
 // React Code:
 
 class DisplayMessages extends React.Component {
-	constructor(props) {
-		super(props);
+  constructor(props) {
+    super(props);
     this.state = {
       input: '',
       messages: []
     }
-	}
+  }
   handleChange = (event) => {
     this.setState({
       input: event.target.value
     });
   }
-	submitMessage = () => {
-		const currentMessage = this.state.input;
+  submitMessage = () => {
+    const currentMessage = this.state.input;
     this.setState({
       input: '',
       messages: this.state.messages.concat(currentMessage)
@@ -158,21 +158,21 @@ class DisplayMessages extends React.Component {
   }
   render() {
     return (
-    	<div>
+      <div>
         <h2>Type in a new Message:</h2>
         <input
           value={this.state.input}
           onChange={this.handleChange}/><br/>
-    		<button onClick={this.submitMessage}>Submit</button>
-    		<ul>
-		    	{this.state.messages.map( (message, idx) => {
-		    			return (
-		    			 	<li key={idx}>{message}</li>
-		    			)
-		    		})
-	    		}
-	    	</ul>
-    	</div>
+        <button onClick={this.submitMessage}>Submit</button>
+        <ul>
+          {this.state.messages.map( (message, idx) => {
+              return (
+                 <li key={idx}>{message}</li>
+              )
+            })
+          }
+        </ul>
+      </div>
     );
   }
 };
@@ -180,143 +180,143 @@ class DisplayMessages extends React.Component {
 const Provider = ReactRedux.Provider;
 
 class AppWrapper extends React.Component {
-	// change code below this line
-	render() {
-		return (
-			<Provider store = {store}>
-				<DisplayMessages/>
-			</Provider>
-		);
-	}
-	// change code above this line
+  // change code below this line
+  render() {
+    return (
+      <Provider store = {store}>
+        <DisplayMessages/>
+      </Provider>
+    );
+  }
+  // change code above this line
 };`
 
 // ---------------------------- define challenge tests ----------------------------
 
 export const executeTests = (code, errorSuppression) => {
 
-	const error_0 = 'Your JSX code should transpile successfully.';
-	const error_1 = 'The AppWrapper should render.';
-	const error_2 = 'The Provider wrapper component should have a prop of store passed to it, equal to the Redux store.';
-	const error_3 = 'DisplayMessages should render as a child of AppWrapper.';
-	const error_4 = 'The DisplayMessages component should render an h2, input, button, and ul element.';
+  const error_0 = 'Your JSX code should transpile successfully.';
+  const error_1 = 'The AppWrapper should render.';
+  const error_2 = 'The Provider wrapper component should have a prop of store passed to it, equal to the Redux store.';
+  const error_3 = 'DisplayMessages should render as a child of AppWrapper.';
+  const error_4 = 'The DisplayMessages component should render an h2, input, button, and ul element.';
 
-	let testResults = [
-		{
-			test: 0,
-			status: false,
-			condition: error_0
-		},
-		{
-			test: 1,
-			status: false,
-			condition: error_1
-		},
-		{
-			test: 2,
-			status: false,
-			condition: error_2
-		},
-		{
-			test: 3,
-			status: false,
-			condition: error_3
-		},
-		{
-			test: 4,
-			status: false,
-			condition: error_4
-		}
-	];
+  let testResults = [
+    {
+      test: 0,
+      status: false,
+      condition: error_0
+    },
+    {
+      test: 1,
+      status: false,
+      condition: error_1
+    },
+    {
+      test: 2,
+      status: false,
+      condition: error_2
+    },
+    {
+      test: 3,
+      status: false,
+      condition: error_3
+    },
+    {
+      test: 4,
+      status: false,
+      condition: error_4
+    }
+  ];
 
-	let es5, mockedComponent, passed = true;
+  let es5, mockedComponent, passed = true;
 
-	// this applies an export to the user's code so
-	// we can access their component here for tests
+  // this applies an export to the user's code so
+  // we can access their component here for tests
 
-	const exportScript = '\n export default AppWrapper'
-	const modifiedCode = code.concat(exportScript);
+  const exportScript = '\n export default AppWrapper'
+  const modifiedCode = code.concat(exportScript);
 
-	// test 0: try to transpile JSX, ES6 code to ES5 in browser
-	try {
-		es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
-		testResults[0].status = true;
-		if (!errorSuppression) console.log('No transpilation errors!');
-	} catch (err) {
-		passed = false;
-		testResults[0].status = false;
-		if (!errorSuppression) console.error(`Transpilation error: ${err}`);
-	}
+  // test 0: try to transpile JSX, ES6 code to ES5 in browser
+  try {
+    es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
+    testResults[0].status = true;
+    if (!errorSuppression) console.log('No transpilation errors!');
+  } catch (err) {
+    passed = false;
+    testResults[0].status = false;
+    if (!errorSuppression) console.error(`Transpilation error: ${err}`);
+  }
 
-	// now we will try to shallow render the component with Enzyme's shallow method
-	// you can also use mount to perform a full render to the DOM environment
-	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
-	try {
-		mockedComponent = mount(React.createElement(eval(es5)));
-	} catch (err) {
-		passed = false;
+  // now we will try to shallow render the component with Enzyme's shallow method
+  // you can also use mount to perform a full render to the DOM environment
+  // to do this you must import mount above; i.e. import { shallow, mount } from enzyme
+  try {
+    mockedComponent = mount(React.createElement(eval(es5)));
+  } catch (err) {
+    passed = false;
     if (!errorSuppression) console.error(`Invalid React code: ${err}`);
-	}
+  }
 
-	// run specific tests to verify the functionality
-	// that the challenge is trying to assess:
+  // run specific tests to verify the functionality
+  // that the challenge is trying to assess:
 
-	// test 1:
-	try {
-		assert.strictEqual(mockedComponent.find('AppWrapper').length, 1, error_1);
-		testResults[1].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[1].status = false;
-	}
+  // test 1:
+  try {
+    assert.strictEqual(mockedComponent.find('AppWrapper').length, 1, error_1);
+    testResults[1].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[1].status = false;
+  }
 
-	// test 2:
-	try {
-		const noWhiteSpace = code.replace(/\s/g,'');
-		assert.strictEqual(noWhiteSpace.includes('<Providerstore={store}>'), true, error_2);
-		testResults[2].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[2].status = false;
-	}
+  // test 2:
+  try {
+    const noWhiteSpace = code.replace(/\s/g,'');
+    assert.strictEqual(noWhiteSpace.includes('<Providerstore={store}>'), true, error_2);
+    testResults[2].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[2].status = false;
+  }
 
-	// test 3:
-	try {
+  // test 3:
+  try {
 
-		let parent = mockedComponent.find('DisplayMessages').root.node._reactInternalInstance._currentElement.type.name;
-		assert(
-			mockedComponent.find('DisplayMessages').length === 1 &&
-			parent === 'AppWrapper',
-			error_3
-		);
+    let parent = mockedComponent.find('DisplayMessages').root.node._reactInternalInstance._currentElement.type.name;
+    assert(
+      mockedComponent.find('DisplayMessages').length === 1 &&
+      parent === 'AppWrapper',
+      error_3
+    );
 
-		testResults[3].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[3].status = false;
-	}
+    testResults[3].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[3].status = false;
+  }
 
-	// test 4:
-	try {
+  // test 4:
+  try {
 
-		assert(
-			mockedComponent.find('div').length === 1 &&
-			mockedComponent.find('h2').length === 1 &&
-			mockedComponent.find('button').length === 1 &&
-			mockedComponent.find('ul').length === 1,
-			error_4
-		);
+    assert(
+      mockedComponent.find('div').length === 1 &&
+      mockedComponent.find('h2').length === 1 &&
+      mockedComponent.find('button').length === 1 &&
+      mockedComponent.find('ul').length === 1,
+      error_4
+    );
 
-		testResults[4].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[4].status = false;
-	}
+    testResults[4].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[4].status = false;
+  }
 
-	return {
-		passed,
-		testResults
-	}
+  return {
+    passed,
+    testResults
+  }
 
 }
 
@@ -324,14 +324,14 @@ export const executeTests = (code, errorSuppression) => {
 
 export const liveRender = (code) => {
 
-	try {
-		const exportScript = '\n export default AppWrapper'
-		const modifiedCode = code.concat(exportScript);
-		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
-		const renderedComponent = React.createElement(eval(es5));
-		return renderedComponent;
-	} catch (err) {
-		// console.log(`Live rendering failure: ${err}`);
-	}
+  try {
+    const exportScript = '\n export default AppWrapper'
+    const modifiedCode = code.concat(exportScript);
+    const es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
+    const renderedComponent = React.createElement(eval(es5));
+    return renderedComponent;
+  } catch (err) {
+    // console.log(`Live rendering failure: ${err}`);
+  }
 
 }

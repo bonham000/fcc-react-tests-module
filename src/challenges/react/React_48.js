@@ -26,184 +26,184 @@ Normally, you want to make the key something that uniquely identifies the elemen
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode = `
 const frontEndFrameworks = [
-	'React',
-	'Angular',
-	'Ember',
-	'Knockout',
-	'Backbone',
-	'Vue'
+  'React',
+  'Angular',
+  'Ember',
+  'Knockout',
+  'Backbone',
+  'Vue'
 ];
 
 function Frameworks() {
-	const renderFrameworks = // change code here
-	return (
-		<div>
-			<h1>Popular Front End JavaScript Frameworks</h1>
-			<ul>
-				{renderFrameworks}
-			</ul>
-		</div>
-	);
+  const renderFrameworks = // change code here
+  return (
+    <div>
+      <h1>Popular Front End JavaScript Frameworks</h1>
+      <ul>
+        {renderFrameworks}
+      </ul>
+    </div>
+  );
 };`
 
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode = `
 const frontEndFrameworks = [
-	'React',
-	'Angular',
-	'Ember',
-	'Knockout',
-	'Backbone',
-	'Vue'
+  'React',
+  'Angular',
+  'Ember',
+  'Knockout',
+  'Backbone',
+  'Vue'
 ];
 
 function Frameworks() {
-	const renderFrameworks = frontEndFrameworks.map((fw, i) => {
-		return <li key={i}>{fw}</li>
-	})
-	return (
-		<div>
-			<h1>Popular Front End JavaScript Frameworks</h1>
-			<ul>
-				{renderFrameworks}
-			</ul>
-		</div>
-	);
+  const renderFrameworks = frontEndFrameworks.map((fw, i) => {
+    return <li key={i}>{fw}</li>
+  })
+  return (
+    <div>
+      <h1>Popular Front End JavaScript Frameworks</h1>
+      <ul>
+        {renderFrameworks}
+      </ul>
+    </div>
+  );
 };`
 
 // ---------------------------- define challenge tests ----------------------------
 
 export const executeTests = (code, errorSuppression) => {
 
-	const error_0 = 'Your JSX code should transpile successfully.';
-	const error_1 = 'The Frameworks component should exist and render to the page.';
-	const error_2 = 'Frameworks should render an h1 element.';
-	const error_3 = 'Frameworks should render a ul element.';
-	const error_4 = 'The ul tag should render 6 child li elements.';
-  	const error_5 = 'Each list item element should have a unique key attribute.';
+  const error_0 = 'Your JSX code should transpile successfully.';
+  const error_1 = 'The Frameworks component should exist and render to the page.';
+  const error_2 = 'Frameworks should render an h1 element.';
+  const error_3 = 'Frameworks should render a ul element.';
+  const error_4 = 'The ul tag should render 6 child li elements.';
+    const error_5 = 'Each list item element should have a unique key attribute.';
 
-	let testResults = [
-		{
-			test: 0,
-			status: false,
-			condition: error_0
-		},
-		{
-			test: 1,
-			status: false,
-			condition: error_1
-		},
-		{
-			test: 2,
-			status: false,
-			condition: error_2
-		},
-		{
-			test: 3,
-			status: false,
-			condition: error_3
-		},
+  let testResults = [
     {
-			test: 4,
-			status: false,
-			condition: error_4
-		},
+      test: 0,
+      status: false,
+      condition: error_0
+    },
     {
-			test: 5,
-			status: false,
-			condition: error_5
-		}
-	];
+      test: 1,
+      status: false,
+      condition: error_1
+    },
+    {
+      test: 2,
+      status: false,
+      condition: error_2
+    },
+    {
+      test: 3,
+      status: false,
+      condition: error_3
+    },
+    {
+      test: 4,
+      status: false,
+      condition: error_4
+    },
+    {
+      test: 5,
+      status: false,
+      condition: error_5
+    }
+  ];
 
-	let es5, mockedComponent, passed = true;
+  let es5, mockedComponent, passed = true;
 
-	// this applies an export to the user's code so
-	// we can access their component here for tests
-	const exportScript = '\n export default Frameworks'
-	const modifiedCode = code.concat(exportScript);
+  // this applies an export to the user's code so
+  // we can access their component here for tests
+  const exportScript = '\n export default Frameworks'
+  const modifiedCode = code.concat(exportScript);
 
-	// test 0: try to transpile JSX, ES6 code to ES5 in browser
-	try {
-		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
-		testResults[0].status = true;
-		if (!errorSuppression) console.log('No transpilation errors!');
-	} catch (err) {
-		passed = false;
-		testResults[0].status = false;
-		if (!errorSuppression) console.error(`Transpilation error: ${err}`);
-	}
+  // test 0: try to transpile JSX, ES6 code to ES5 in browser
+  try {
+    es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
+    testResults[0].status = true;
+    if (!errorSuppression) console.log('No transpilation errors!');
+  } catch (err) {
+    passed = false;
+    testResults[0].status = false;
+    if (!errorSuppression) console.error(`Transpilation error: ${err}`);
+  }
 
-	try {
-		mockedComponent = mount(React.createElement(eval(es5)));
-	} catch (err) {
-		passed = false;
-		if (!errorSuppression) console.error(`Invalid React code: ${err}`);
-	}
+  try {
+    mockedComponent = mount(React.createElement(eval(es5)));
+  } catch (err) {
+    passed = false;
+    if (!errorSuppression) console.error(`Invalid React code: ${err}`);
+  }
 
-	let initialState, state_1, state_2, state_3;
+  let initialState, state_1, state_2, state_3;
 
-	// test 1:
-	try {
-		assert.strictEqual(mockedComponent.find('Frameworks').length, 1, error_1);
-		testResults[1].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[1].status = false;
-	}
+  // test 1:
+  try {
+    assert.strictEqual(mockedComponent.find('Frameworks').length, 1, error_1);
+    testResults[1].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[1].status = false;
+  }
 
-	// test 2:
-	try {
-		assert.strictEqual(mockedComponent.find('h1').length, 1, error_2);
-		testResults[2].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[2].status = false;
-	}
+  // test 2:
+  try {
+    assert.strictEqual(mockedComponent.find('h1').length, 1, error_2);
+    testResults[2].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[2].status = false;
+  }
 
-	// test 3:
-	try {
-		assert.strictEqual(mockedComponent.find('ul').length, 1, error_2);
-		testResults[3].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[3].status = false;
-	}
+  // test 3:
+  try {
+    assert.strictEqual(mockedComponent.find('ul').length, 1, error_2);
+    testResults[3].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[3].status = false;
+  }
 
-	// test 4:
-	try {
-		assert(
-			mockedComponent.find('ul').node.childNodes.length === 6 &&
-			mockedComponent.find('ul').node.childNodes[0].tagName === 'LI' &&
-			mockedComponent.find('li').length === 6,
-			error_4);
-		testResults[4].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[4].status = false;
-	}
+  // test 4:
+  try {
+    assert(
+      mockedComponent.find('ul').node.childNodes.length === 6 &&
+      mockedComponent.find('ul').node.childNodes[0].tagName === 'LI' &&
+      mockedComponent.find('li').length === 6,
+      error_4);
+    testResults[4].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[4].status = false;
+  }
 
   // test 5:
-	try {
-		let li = mockedComponent.find('li');
-		let node1 = li.nodes[1].outerHTML;
-		let node2 = li.nodes[2].outerHTML;
-		let match1 = node1.match(/\$/);
-		let match2 = node2.match(/\$/);
+  try {
+    let li = mockedComponent.find('li');
+    let node1 = li.nodes[1].outerHTML;
+    let node2 = li.nodes[2].outerHTML;
+    let match1 = node1.match(/\$/);
+    let match2 = node2.match(/\$/);
     assert(
-    	code.replace(/\s/g, '').includes('<likey={') &&
-    	node1[match1.index + 1] !== node2[match2.index + 1],
-    	error_5
+      code.replace(/\s/g, '').includes('<likey={') &&
+      node1[match1.index + 1] !== node2[match2.index + 1],
+      error_5
     );
-		testResults[5].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[5].status = false;
-	}
+    testResults[5].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[5].status = false;
+  }
 
-	return {
-		passed,
-		testResults
-	}
+  return {
+    passed,
+    testResults
+  }
 
 }
 
@@ -212,14 +212,14 @@ export const executeTests = (code, errorSuppression) => {
 
 export const liveRender = (code) => {
 
-	try {
-		const exportScript = '\n export default Frameworks'
-		const modifiedCode = code.concat(exportScript);
-		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
-		const renderedComponent = React.createElement(eval(es5));
-		return renderedComponent;
-	} catch (err) {
-		// console.log(`Live rendering failure: ${err}`);
-	}
+  try {
+    const exportScript = '\n export default Frameworks'
+    const modifiedCode = code.concat(exportScript);
+    const es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
+    const renderedComponent = React.createElement(eval(es5));
+    return renderedComponent;
+  } catch (err) {
+    // console.log(`Live rendering failure: ${err}`);
+  }
 
 }
