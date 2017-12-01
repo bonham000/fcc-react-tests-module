@@ -34,7 +34,10 @@ const addMessage = (message) => {
 const messageReducer = (state = [], action) => {
   switch (action.type) {
     case ADD:
-      return state.concat(action.message);
+      return [
+        ...state,
+        action.message
+      ];
     default:
       return state;
   }
@@ -127,7 +130,10 @@ const addMessage = (message) => {
 const messageReducer = (state = [], action) => {
   switch (action.type) {
     case ADD:
-      return state.concat(action.message);
+      return [
+        ...state,
+        action.message
+      ];
     default:
       return state;
   }
