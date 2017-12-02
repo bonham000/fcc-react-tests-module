@@ -184,6 +184,8 @@ export const executeTests = (code, errorSuppression) => {
 	try {
 		lifecycle = React.createElement(eval(es5)).type.prototype.componentDidMount.toString().replace(/\s/g,'');
 		assert(
+			((modifiedCode.match(/this.handleKeyPress/g) || []).length === 2) &&
+			modifiedCode.includes('this.handleKeyPress') &&
 			lifecycle.includes('document.addEventListener') === true &&
 			lifecycle.includes('keydown') === true &&
 			lifecycle.includes('handleKeyPress') === true,
