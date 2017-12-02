@@ -145,7 +145,10 @@ export const executeTests = (code, errorSuppression) => {
 
 	// test 3:
 	try {
-		assert.strictEqual(modifiedCode.includes('<h1>{name}</h1>'), true, error_3);
+		assert(
+			modifiedCode.includes('<h1>') &&
+			modifiedCode.includes('</h1>') &&
+			modifiedCode.includes('{name}'), error_3);
 		testResults[3].status = true;
 	} catch (err) {
 		passed = false;
