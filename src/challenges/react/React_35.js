@@ -214,7 +214,6 @@ export const executeTests = (code, errorSuppression) => {
 
 	// test 4:
 	try {
-
 		lifecycle = React.createElement(eval(es5)).type.prototype.componentDidMount.toString().replace(/\s/g,'');
 
 		const beforeState = mockedComponent.state('message');
