@@ -135,36 +135,6 @@ export default class ReactTestComponent extends React.Component {
 
     		</h1>
 
-				{selectedChallenge === 'React_30' && (
-					<div className='callToAction'>
-						&#9733; This challenge has an open issue: <a
-							target='_blank'
-							className='CTA-Link'
-							href="https://github.com/bonham000/fcc-react-tests-module/issues/227">
-							Take a look if you are interested in helping resolve it.
-						</a>
-					</div>)}
-
-				{selectedChallenge === 'React_35' && (
-					<div className='callToAction'>
-						&#9733; This challenge has an open issue: <a
-							target='_blank'
-							className='CTA-Link'
-							href="https://github.com/bonham000/fcc-react-tests-module/issues/228">
-							Take a look if you are interested in helping resolve it.
-						</a>
-					</div>)}
-
-					{selectedChallenge === 'React_45' && (
-						<div className='callToAction'>
-							&#9733; This challenge has an open issue: <a
-								target='_blank'
-								className='CTA-Link'
-								href="https://github.com/bonham000/fcc-react-tests-module/issues/232">
-								Take a look if you are interested in helping resolve it.
-							</a>
-						</div>)}
-
     		<div className='instructionsContainer'>
 					<h1 className='challengeTitle' dangerouslySetInnerHTML={renderTitle()} />
 					<p className='challengeText' dangerouslySetInnerHTML={renderText()} />

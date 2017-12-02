@@ -112,21 +112,6 @@ select:focus {
 	outline: none;
 }
 
-.callToAction {
-  color: white;
-  margin: -15px 15px 25px 15px;
-  color: #FF613B;
-}
-
-.CTA-Link {
-  text-decoration: none;
-}
-
-.CTA-Link:hover {
-  text-decoration: underline;
-  color: #33DD78;
-}
-
 .testControls {
 	margin-top: 22px;
 	margin-bottom: 22px;
