@@ -51,20 +51,22 @@
     "whatwg-fetch": "1.0.0"
   },
   "dependencies": {
-    "axios": "^0.16.2",
-    "babel-standalone": "^6.19.0",
-    "deep-equal": "^1.0.1",
+    "axios": "0.16.2",
+    "babel-cli": "6.26.0",
+    "babel-standalone": "6.19.0",
+    "deep-equal": "1.0.1",
     "deep-freeze": "0.0.1",
-    "enzyme": "^2.6.0",
-    "react": "^15.4.1",
-    "react-codemirror": "^0.3.0",
-    "react-dom": "^15.4.1"
+    "enzyme": "2.6.0",
+    "react": "15.4.1",
+    "react-codemirror": "0.3.0",
+    "react-dom": "15.4.1"
   },
   "scripts": {
     "start": "node scripts/start.js",
     "deploy": "git push origin master && npm run build",
     "build": "node scripts/build.js && surge ./build ./ --domain hysterical-amusement.surge.sh",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "convert": "cd conversions && npm run cc"
   },
   "jest": {
     "moduleFileExtensions": [
