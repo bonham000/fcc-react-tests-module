@@ -26,7 +26,7 @@ and <code>messages</code>, that's set to an empty array.`
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
 `class DisplayMessages extends React.Component {
-	// change code below this line
+  // change code below this line
 
   // change code above this line
   render() {
@@ -37,13 +37,13 @@ export const seedCode =
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode =
 `class DisplayMessages extends React.Component {
-	constructor(props) {
-		super(props);
+  constructor(props) {
+    super(props);
     this.state = {
       input: '',
       messages: []
     }
-	}
+  }
   render() {
     return <div/>
   }
@@ -53,109 +53,109 @@ export const solutionCode =
 
 export const executeTests = (code, errorSuppression) => {
 
-	const error_0 = 'Your JSX code should transpile successfully.';
-	const error_1 = 'The DisplayMessages component should render an empty div element.';
-	const error_2 = 'The DisplayMessages component\'s constructor should be called properly with super, passing in props.';
-	const error_3 = 'The DisplayMessages component should have an initial state equal to {input: \'\', messages: []}';
+  const error_0 = 'Your JSX code should transpile successfully.';
+  const error_1 = 'The DisplayMessages component should render an empty div element.';
+  const error_2 = 'The DisplayMessages component\'s constructor should be called properly with super, passing in props.';
+  const error_3 = 'The DisplayMessages component should have an initial state equal to {input: \'\', messages: []}';
 
-	let testResults = [
-		{
-			test: 0,
-			status: false,
-			condition: error_0
-		},
-		{
-			test: 1,
-			status: false,
-			condition: error_1
-		},
-		{
-			test: 2,
-			status: false,
-			condition: error_2
-		},
-		{
-			test: 3,
-			status: false,
-			condition: error_3
-		}
-	];
+  let testResults = [
+    {
+      test: 0,
+      status: false,
+      condition: error_0
+    },
+    {
+      test: 1,
+      status: false,
+      condition: error_1
+    },
+    {
+      test: 2,
+      status: false,
+      condition: error_2
+    },
+    {
+      test: 3,
+      status: false,
+      condition: error_3
+    }
+  ];
 
-	let es5, mockedComponent, passed = true;
+  let es5, mockedComponent, passed = true;
 
-	// this applies an export to the user's code so
-	// we can access their component here for tests
+  // this applies an export to the user's code so
+  // we can access their component here for tests
 
-	const exportScript = '\n export default DisplayMessages'
-	const modifiedCode = code.concat(exportScript);
+  const exportScript = '\n export default DisplayMessages'
+  const modifiedCode = code.concat(exportScript);
 
-	// test 0: try to transpile JSX, ES6 code to ES5 in browser
-	try {
-		es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
-		testResults[0].status = true;
-		if (!errorSuppression) console.log('No transpilation errors!');
-	} catch (err) {
-		passed = false;
-		testResults[0].status = false;
-		if (!errorSuppression) console.error(`Transpilation error: ${err}`);
-	}
+  // test 0: try to transpile JSX, ES6 code to ES5 in browser
+  try {
+    es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
+    testResults[0].status = true;
+    if (!errorSuppression) console.log('No transpilation errors!');
+  } catch (err) {
+    passed = false;
+    testResults[0].status = false;
+    if (!errorSuppression) console.error(`Transpilation error: ${err}`);
+  }
 
-	// now we will try to shallow render the component with Enzyme's shallow method
-	// you can also use mount to perform a full render to the DOM environment
-	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
-	try {
-		mockedComponent = mount(React.createElement(eval(es5)));
-	} catch (err) {
-		passed = false;
-		if (!errorSuppression) console.error(`Invalid React code: ${err}`);
-	}
+  // now we will try to shallow render the component with Enzyme's shallow method
+  // you can also use mount to perform a full render to the DOM environment
+  // to do this you must import mount above; i.e. import { shallow, mount } from enzyme
+  try {
+    mockedComponent = mount(React.createElement(eval(es5)));
+  } catch (err) {
+    passed = false;
+    if (!errorSuppression) console.error(`Invalid React code: ${err}`);
+  }
 
-	// run specific tests to verify the functionality
-	// that the challenge is trying to assess:
+  // run specific tests to verify the functionality
+  // that the challenge is trying to assess:
 
-	// test 1:
-	try {
-		assert.strictEqual(mockedComponent.find('div').node.innerHTML, '', error_1);
-		testResults[1].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[1].status = false;
-	}
+  // test 1:
+  try {
+    assert.strictEqual(mockedComponent.find('div').node.innerHTML, '', error_1);
+    testResults[1].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[1].status = false;
+  }
 
-	// test 2:
-	try {
-		const noWhiteSpace = code.replace(/\s/g,'');
-		assert(
-			noWhiteSpace.includes('constructor(props)') &&
-			noWhiteSpace.includes('super(props'),
-			error_2
-		);
-		testResults[2].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[2].status = false;
-	}
+  // test 2:
+  try {
+    const noWhiteSpace = code.replace(/\s/g,'');
+    assert(
+      noWhiteSpace.includes('constructor(props)') &&
+      noWhiteSpace.includes('super(props'),
+      error_2
+    );
+    testResults[2].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[2].status = false;
+  }
 
-	// test 3:
-	try {
-		const initialState = mockedComponent.state();
-		assert(
-			typeof initialState === 'object' &&
-			initialState.input === '' &&
-			Array.isArray(initialState.messages) &&
-			initialState.messages.length === 0,
-			error_3
-		);
-		testResults[3].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[3].status = false;
-	}
+  // test 3:
+  try {
+    const initialState = mockedComponent.state();
+    assert(
+      typeof initialState === 'object' &&
+      initialState.input === '' &&
+      Array.isArray(initialState.messages) &&
+      initialState.messages.length === 0,
+      error_3
+    );
+    testResults[3].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[3].status = false;
+  }
 
-	return {
-		passed,
-		testResults
-	}
+  return {
+    passed,
+    testResults
+  }
 
 }
 
@@ -163,14 +163,14 @@ export const executeTests = (code, errorSuppression) => {
 
 export const liveRender = (code) => {
 
-	try {
-		const exportScript = '\n export default DisplayMessages'
-		const modifiedCode = code.concat(exportScript);
-		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
-		const renderedComponent = React.createElement(eval(es5));
-		return renderedComponent;
-	} catch (err) {
-		// console.log(`Live rendering failure: ${err}`);
-	}
+  try {
+    const exportScript = '\n export default DisplayMessages'
+    const modifiedCode = code.concat(exportScript);
+    const es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
+    const renderedComponent = React.createElement(eval(es5));
+    return renderedComponent;
+  } catch (err) {
+    // console.log(`Live rendering failure: ${err}`);
+  }
 
 }

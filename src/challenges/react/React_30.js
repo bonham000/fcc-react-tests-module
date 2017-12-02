@@ -89,7 +89,7 @@ export const solutionCode =
   render() {
     return (
       <div>
-         <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit}>
           <input
             value={this.state.input}
             onChange={this.handleChange} />

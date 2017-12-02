@@ -22,42 +22,42 @@ There are two functional components defined in the code editor, called <code>Typ
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
 `const TypesOfFruit = () => {
-	return (
-		<div>
-			<h2>Fruits:</h2>
-			<ul>
-				<li>Apples</li>
-				<li>Blueberries</li>
-				<li>Strawberries</li>
-				<li>Bananas</li>
-			</ul>
-		</div>
-	);
+  return (
+    <div>
+      <h2>Fruits:</h2>
+      <ul>
+        <li>Apples</li>
+        <li>Blueberries</li>
+        <li>Strawberries</li>
+        <li>Bananas</li>
+      </ul>
+    </div>
+  );
 };
 
 const Fruits = () => {
-	return (
-		<div>
-			{ /* change code below this line */ }
+  return (
+    <div>
+      { /* change code below this line */ }
 
-			{ /* change code above this line */ }
-		</div>
-	);
+      { /* change code above this line */ }
+    </div>
+  );
 };
 
 class TypesOfFood extends React.Component {
   constructor(props) {
-  	super(props);
+    super(props);
   }
 
   render() {
     return (
-	    <div>
-	    	<h1>Types of Food:</h1>
-		    { /* change code below this line */ }
+      <div>
+        <h1>Types of Food:</h1>
+        { /* change code below this line */ }
 
-		    { /* change code above this line */ }
-	    </div>
+        { /* change code above this line */ }
+      </div>
     );
   }
 };`
@@ -65,42 +65,42 @@ class TypesOfFood extends React.Component {
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode =
 `const TypesOfFruit = () => {
-	return (
-		<div>
-			<h2>Fruits:</h2>
-			<ul>
-				<li>Apples</li>
-				<li>Blueberries</li>
-				<li>Strawberries</li>
-				<li>Bananas</li>
-			</ul>
-		</div>
-	);
+  return (
+    <div>
+      <h2>Fruits:</h2>
+      <ul>
+        <li>Apples</li>
+        <li>Blueberries</li>
+        <li>Strawberries</li>
+        <li>Bananas</li>
+      </ul>
+    </div>
+  );
 };
 
 const Fruits = () => {
-	return (
-		<div>
-			{ /* change code below this line */ }
-				<TypesOfFruit />
-			{ /* change code above this line */ }
-		</div>
-	);
+  return (
+    <div>
+      { /* change code below this line */ }
+        <TypesOfFruit />
+      { /* change code above this line */ }
+    </div>
+  );
 };
 
 class TypesOfFood extends React.Component {
   constructor(props) {
-  	super(props);
+    super(props);
   }
 
   render() {
     return (
-	    <div>
-	    	<h1>Types of Food:</h1>
-		    { /* change code below this line */ }
-				<Fruits />
-		    { /* change code above this line */ }
-	    </div>
+      <div>
+        <h1>Types of Food:</h1>
+        { /* change code below this line */ }
+        <Fruits />
+        { /* change code above this line */ }
+      </div>
     );
   }
 };`
@@ -109,104 +109,104 @@ class TypesOfFood extends React.Component {
 
 export const executeTests = (code, errorSuppression) => {
 
-	let es5, mockedComponent, mockRender, shallowRender, passed = true;
+  let es5, mockedComponent, mockRender, shallowRender, passed = true;
 
-	const error_1 = 'The TypesOfFood component should return a single div element.';
-	const error_2 = 'The TypesOfFood component should return the Fruits component.';
-	const error_3 = 'The Fruits component should return the TypesOfFruit component.';
-	const error_4 = 'The TypesOfFruit component should return the h2 and ul elements.';
+  const error_1 = 'The TypesOfFood component should return a single div element.';
+  const error_2 = 'The TypesOfFood component should return the Fruits component.';
+  const error_3 = 'The Fruits component should return the TypesOfFruit component.';
+  const error_4 = 'The TypesOfFruit component should return the h2 and ul elements.';
 
-	let testResults = [
-		{
-			test: 0,
-			status: false,
-			condition: 'Your JSX code should transpile successfully.'
-		},
-		{
-			test: 1,
-			status: false,
-			condition: error_1
-		},
-		{
-			test: 2,
-			status: false,
-			condition: error_2
-		},
-		{
-			test: 3,
-			status: false,
-			condition: error_3
-		},
-		{
-			test: 4,
-			status: false,
-			condition: error_4
-		}
-	];
+  let testResults = [
+    {
+      test: 0,
+      status: false,
+      condition: 'Your JSX code should transpile successfully.'
+    },
+    {
+      test: 1,
+      status: false,
+      condition: error_1
+    },
+    {
+      test: 2,
+      status: false,
+      condition: error_2
+    },
+    {
+      test: 3,
+      status: false,
+      condition: error_3
+    },
+    {
+      test: 4,
+      status: false,
+      condition: error_4
+    }
+  ];
 
-	const exportScript = '\n export default TypesOfFood'
-	const modifiedCode = code.concat(exportScript);
+  const exportScript = '\n export default TypesOfFood'
+  const modifiedCode = code.concat(exportScript);
 
-	// test 0: try to transpile JSX, ES6 code to ES5 in browser
-	try {
-		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
-		testResults[0].status = true;
-		if (!errorSuppression) console.log('No transpilation errors!');
-	} catch (err) {
-		passed = false;
-		testResults[0].status = false;
-		if (!errorSuppression) console.error(`Transpilation error: ${err}`);
-	}
+  // test 0: try to transpile JSX, ES6 code to ES5 in browser
+  try {
+    es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
+    testResults[0].status = true;
+    if (!errorSuppression) console.log('No transpilation errors!');
+  } catch (err) {
+    passed = false;
+    testResults[0].status = false;
+    if (!errorSuppression) console.error(`Transpilation error: ${err}`);
+  }
 
-	// shallow render the component with Enzyme
-	try {
-		mockRender = mount(React.createElement(eval(es5)));
-	} catch (err) {
-		passed = false;
-		if (!errorSuppression) console.error(`Invalid React code: ${err}`);
-	}
+  // shallow render the component with Enzyme
+  try {
+    mockRender = mount(React.createElement(eval(es5)));
+  } catch (err) {
+    passed = false;
+    if (!errorSuppression) console.error(`Invalid React code: ${err}`);
+  }
 
-	// test 1:
-	try {
-		shallowRender = shallow(React.createElement(eval(es5)));
-		assert.strictEqual(shallowRender.type(), 'div', error_1);
-		testResults[1].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[1].status = false;
-	}
+  // test 1:
+  try {
+    shallowRender = shallow(React.createElement(eval(es5)));
+    assert.strictEqual(shallowRender.type(), 'div', error_1);
+    testResults[1].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[1].status = false;
+  }
 
-	//test 2:
-	try {
-		assert.strictEqual(shallowRender.nodes[0].props.children[1].type.name, 'Fruits', error_2);
-		testResults[2].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[2].status = false;
-	}
+  //test 2:
+  try {
+    assert.strictEqual(shallowRender.nodes[0].props.children[1].type.name, 'Fruits', error_2);
+    testResults[2].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[2].status = false;
+  }
 
-	// test 3:
-	try {
-		assert.strictEqual(mockRender.find('h2').node.innerHTML, 'Fruits:', error_3);
-		testResults[3].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[3].status = false;
-	}
+  // test 3:
+  try {
+    assert.strictEqual(mockRender.find('h2').node.innerHTML, 'Fruits:', error_3);
+    testResults[3].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[3].status = false;
+  }
 
-	// test 4:
-	try {
-		assert.strictEqual(mockRender.find('ul').node.innerText, 'ApplesBlueberriesStrawberriesBananas', error_4);
-		testResults[4].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[4].status = false;
-	}
+  // test 4:
+  try {
+    assert.strictEqual(mockRender.find('ul').node.innerText, 'ApplesBlueberriesStrawberriesBananas', error_4);
+    testResults[4].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[4].status = false;
+  }
 
-	return {
-		passed,
-		testResults
-	}
+  return {
+    passed,
+    testResults
+  }
 
 }
 
@@ -214,14 +214,14 @@ export const executeTests = (code, errorSuppression) => {
 
 export const liveRender = (code) => {
 
-	try {
-		const exportScript = '\n export default TypesOfFood'
-		const modifiedCode = code.concat(exportScript);
-		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
-		const renderedComponent = React.createElement(eval(es5));
-		return renderedComponent;
-	} catch (err) {
-		// console.log(`Live rendering failure: ${err}`);
-	}
+  try {
+    const exportScript = '\n export default TypesOfFood'
+    const modifiedCode = code.concat(exportScript);
+    const es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
+    const renderedComponent = React.createElement(eval(es5));
+    return renderedComponent;
+  } catch (err) {
+    // console.log(`Live rendering failure: ${err}`);
+  }
 
 }

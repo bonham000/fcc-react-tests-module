@@ -32,44 +32,44 @@ const requestingData = () => { return {type: REQUESTING_DATA} }
 const receivedData = (data) => { return {type: RECEIVED_DATA, users: data.users} }
 
 const handleAsync = () => {
-	return function(dispatch) {
-		// dispatch request action here
+  return function(dispatch) {
+    // dispatch request action here
 
-		setTimeout(function() {
-			let data = {
-				users: ['Jeff', 'William', 'Alice']
-			}
-			// dispatch received data action here
+    setTimeout(function() {
+      let data = {
+        users: ['Jeff', 'William', 'Alice']
+      }
+      // dispatch received data action here
 
-		}, 2500);
-	}
+    }, 2500);
+  }
 };
 
 const defaultState = {
-	fetching: false,
-	users: []
+  fetching: false,
+  users: []
 };
 
 const asyncDataReducer = (state = defaultState, action) => {
-	switch(action.type) {
-		case REQUESTING_DATA:
-			return {
-				fetching: true,
-				users: []
-			}
-		case RECEIVED_DATA:
-			return {
-				fetching: false,
-				users: action.users
-			}
-		default:
-			return state;
-	}
+  switch(action.type) {
+    case REQUESTING_DATA:
+      return {
+        fetching: true,
+        users: []
+      }
+    case RECEIVED_DATA:
+      return {
+        fetching: false,
+        users: action.users
+      }
+    default:
+      return state;
+  }
 };
 
 const store = Redux.createStore(
-	asyncDataReducer,
-	Redux.applyMiddleware(ReduxThunk.default)
+  asyncDataReducer,
+  Redux.applyMiddleware(ReduxThunk.default)
 );`
 
 // ---------------------------- define challenge solution code ----------------------------
@@ -81,229 +81,229 @@ const requestingData = () => { return {type: REQUESTING_DATA} }
 const receivedData = (data) => { return {type: RECEIVED_DATA, users: data.users} }
 
 const handleAsync = () => {
-	return function(dispatch) {
-		dispatch(requestingData());
-		setTimeout(function() {
-			let data = {
-				users: ['Jeff', 'William', 'Alice']
-			}
-			dispatch(receivedData(data));
-		}, 2500);
-	}
+  return function(dispatch) {
+    dispatch(requestingData());
+    setTimeout(function() {
+      let data = {
+        users: ['Jeff', 'William', 'Alice']
+      }
+      dispatch(receivedData(data));
+    }, 2500);
+  }
 };
 
 const defaultState = {
-	fetching: false,
-	users: []
+  fetching: false,
+  users: []
 };
 
 const asyncDataReducer = (state = defaultState, action) => {
-	switch(action.type) {
-		case REQUESTING_DATA:
-			return {
-				fetching: true,
-				users: []
-			}
-		case RECEIVED_DATA:
-			return {
-				fetching: false,
-				users: action.users
-			}
-		default:
-			return state;
-	}
+  switch(action.type) {
+    case REQUESTING_DATA:
+      return {
+        fetching: true,
+        users: []
+      }
+    case RECEIVED_DATA:
+      return {
+        fetching: false,
+        users: action.users
+      }
+    default:
+      return state;
+  }
 };
 
 const store = Redux.createStore(
-	asyncDataReducer,
-	Redux.applyMiddleware(ReduxThunk.default)
+  asyncDataReducer,
+  Redux.applyMiddleware(ReduxThunk.default)
 );`
 
 // ---------------------------- define challenge tests ----------------------------
 
 export const executeTests = (code, errorSuppression) => {
 
-	const error_0 = 'Your code should transpile successfully.';
-	const error_1 = 'The requestingData action creator should return an object of type equal to the value of REQUESTING_DATA.';
-	const error_2 = 'The receivedData action creator should return an object of type equal to the value of RECEIVED_DATA.';
-	const error_3 = 'asyncDataReducer should be a function.';
-	const error_4 = 'Dispatching the requestingData action creator should update the store\'s state property of fetching to true.';
-	const error_5 = 'Dispatching handleAsync should dispatch the data request action and then dispatch the received data action after a delay.';
+  const error_0 = 'Your code should transpile successfully.';
+  const error_1 = 'The requestingData action creator should return an object of type equal to the value of REQUESTING_DATA.';
+  const error_2 = 'The receivedData action creator should return an object of type equal to the value of RECEIVED_DATA.';
+  const error_3 = 'asyncDataReducer should be a function.';
+  const error_4 = 'Dispatching the requestingData action creator should update the store\'s state property of fetching to true.';
+  const error_5 = 'Dispatching handleAsync should dispatch the data request action and then dispatch the received data action after a delay.';
 
-	let testResults = [
-		{
-			test: 0,
-			status: false,
-			condition: error_0
-		},
-		{
-			test: 1,
-			status: false,
-			condition: error_1
-		},
-		{
-			test: 2,
-			status: false,
-			condition: error_2
-		},
-		{
-			test: 3,
-			status: false,
-			condition: error_3
-		},
-		{
-			test: 4,
-			status: false,
-			condition: error_4
-		},
-		{
-			test: 5,
-			status: false,
-			condition: error_5
-		}
-	];
+  let testResults = [
+    {
+      test: 0,
+      status: false,
+      condition: error_0
+    },
+    {
+      test: 1,
+      status: false,
+      condition: error_1
+    },
+    {
+      test: 2,
+      status: false,
+      condition: error_2
+    },
+    {
+      test: 3,
+      status: false,
+      condition: error_3
+    },
+    {
+      test: 4,
+      status: false,
+      condition: error_4
+    },
+    {
+      test: 5,
+      status: false,
+      condition: error_5
+    }
+  ];
 
-	let es5, reduxCode, passed = true;
-	let REQUESTING_DATA, RECEIVED_DATA, requestingData, receivedData, handleAsync, asyncDataReducer, store;
+  let es5, reduxCode, passed = true;
+  let REQUESTING_DATA, RECEIVED_DATA, requestingData, receivedData, handleAsync, asyncDataReducer, store;
 
-	// this code hijacks the user input to create an IIFE
-	// which returns the store from Redux as an object
-	// or whatever you need from the client code
-	const prepend = `(function() {`
-	const append = `;\n
-		return {
-			REQUESTING_DATA,
-			RECEIVED_DATA,
-			requestingData,
-			receivedData,
-			handleAsync,
-			asyncDataReducer,
-			store }
-		})()`
-	const modifiedCode = prepend.concat(code).concat(append);
-	const shortenedTimeout = modifiedCode.replace('2500', '250');
+  // this code hijacks the user input to create an IIFE
+  // which returns the store from Redux as an object
+  // or whatever you need from the client code
+  const prepend = `(function() {`
+  const append = `;\n
+    return {
+      REQUESTING_DATA,
+      RECEIVED_DATA,
+      requestingData,
+      receivedData,
+      handleAsync,
+      asyncDataReducer,
+      store }
+    })()`
+  const modifiedCode = prepend.concat(code).concat(append);
+  const shortenedTimeout = modifiedCode.replace('2500', '250');
 
-	// test 0: try to transpile JSX, ES6 code to ES5 in browser
-	try {
-		es5 = transform(shortenedTimeout, { presets: [ 'es2015', 'react' ] }).code;
-		testResults[0].status = true;
-		if (!errorSuppression) console.log('No transpilation errors!');
-	} catch (err) {
-		passed = false;
-		testResults[0].status = false;
-		if (!errorSuppression) console.error(`Transpilation error: ${err}`);
-	}
+  // test 0: try to transpile JSX, ES6 code to ES5 in browser
+  try {
+    es5 = transform(shortenedTimeout, { presets: [ 'es2015', 'react' ] }).code;
+    testResults[0].status = true;
+    if (!errorSuppression) console.log('No transpilation errors!');
+  } catch (err) {
+    passed = false;
+    testResults[0].status = false;
+    if (!errorSuppression) console.error(`Transpilation error: ${err}`);
+  }
 
-	// save the store from redux to test here
-	// now you can access the redux store methods
-	try {
-		reduxCode = eval(es5);
+  // save the store from redux to test here
+  // now you can access the redux store methods
+  try {
+    reduxCode = eval(es5);
 
-		REQUESTING_DATA = reduxCode.REQUESTING_DATA;
-		RECEIVED_DATA = reduxCode.RECEIVED_DATA;
-		requestingData = reduxCode.requestingData;
-		receivedData = reduxCode.receivedData;
-		handleAsync = reduxCode.handleAsync;
-		asyncDataReducer = reduxCode.asyncDataReducer;
-		store = reduxCode.store;
+    REQUESTING_DATA = reduxCode.REQUESTING_DATA;
+    RECEIVED_DATA = reduxCode.RECEIVED_DATA;
+    requestingData = reduxCode.requestingData;
+    receivedData = reduxCode.receivedData;
+    handleAsync = reduxCode.handleAsync;
+    asyncDataReducer = reduxCode.asyncDataReducer;
+    store = reduxCode.store;
 
-	} catch (err) {
-		passed = false;
-		if (!errorSuppression) console.error(`Code evaluation error: ${err}`);
-	}
+  } catch (err) {
+    passed = false;
+    if (!errorSuppression) console.error(`Code evaluation error: ${err}`);
+  }
 
-	// test 1:
-	try {
-		assert.strictEqual(requestingData().type, REQUESTING_DATA, error_1);
-		testResults[1].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[1].status = false;
-	}
+  // test 1:
+  try {
+    assert.strictEqual(requestingData().type, REQUESTING_DATA, error_1);
+    testResults[1].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[1].status = false;
+  }
 
-	// test 2:
-	try {
-		assert.strictEqual(receivedData('data').type, RECEIVED_DATA, error_2);
-		testResults[2].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[2].status = false;
-	}
+  // test 2:
+  try {
+    assert.strictEqual(receivedData('data').type, RECEIVED_DATA, error_2);
+    testResults[2].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[2].status = false;
+  }
 
-	// test 3:
-	try {
-		assert.strictEqual(typeof asyncDataReducer, 'function', error_3);
-		testResults[3].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[3].status = false;
-	}
+  // test 3:
+  try {
+    assert.strictEqual(typeof asyncDataReducer, 'function', error_3);
+    testResults[3].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[3].status = false;
+  }
 
-	// test 4:
-	try {
+  // test 4:
+  try {
 
-		const initialState = store.getState();
-		store.dispatch(requestingData());
-		const reqState = store.getState();
+    const initialState = store.getState();
+    store.dispatch(requestingData());
+    const reqState = store.getState();
 
-		assert(
-			initialState.fetching === false &&
-			reqState.fetching === true,
-			error_4
-		);
+    assert(
+      initialState.fetching === false &&
+      reqState.fetching === true,
+      error_4
+    );
 
-		testResults[4].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[4].status = false;
-	}
+    testResults[4].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[4].status = false;
+  }
 
-	// test 5:
-	try {
+  // test 5:
+  try {
 
-		const noWhiteSpace = handleAsync.toString().replace(/\s/g,'');
+    const noWhiteSpace = handleAsync.toString().replace(/\s/g,'');
 
-		assert(
-			noWhiteSpace.includes('dispatch(requestingData())') === true &&
-			noWhiteSpace.includes('dispatch(receivedData(data))') === true,
-			error_5
-		);
+    assert(
+      noWhiteSpace.includes('dispatch(requestingData())') === true &&
+      noWhiteSpace.includes('dispatch(receivedData(data))') === true,
+      error_5
+    );
 
-		testResults[5].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[5].status = false;
-	}
+    testResults[5].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[5].status = false;
+  }
 
-	return {
-		passed,
-		testResults
-	}
+  return {
+    passed,
+    testResults
+  }
 
 }
 
 // liveRender modifies console.log in user input and returns message data -----------------------
 export const liveRender = (code) => {
 
-	// this code modifies the user input to return all
-	// console.log statements as a message array to be
-	// displayed on the client UI
-	const prepend = `
-	(function() {
-		let __Custom__Log = []
-		const message = (msg) => __Custom__Log.push(msg);
-	`
-	const append = `;\n return __Custom__Log })();`
-	const consoleReplaced = code.replace(/console.log/g, 'message');
-	const hijackedCode = prepend.concat(consoleReplaced).concat(append);
+  // this code modifies the user input to return all
+  // console.log statements as a message array to be
+  // displayed on the client UI
+  const prepend = `
+  (function() {
+    let __Custom__Log = []
+    const message = (msg) => __Custom__Log.push(msg);
+  `
+  const append = `;\n return __Custom__Log })();`
+  const consoleReplaced = code.replace(/console.log/g, 'message');
+  const hijackedCode = prepend.concat(consoleReplaced).concat(append);
 
-	let evaluatedCode;
-	try {
-		evaluatedCode = eval(hijackedCode);
-	} catch (err) {
-		// console.log(`Live rendering failure: ${err}`);
-	}
+  let evaluatedCode;
+  try {
+    evaluatedCode = eval(hijackedCode);
+  } catch (err) {
+    // console.log(`Live rendering failure: ${err}`);
+  }
 
-	return evaluatedCode;
+  return evaluatedCode;
 
 }

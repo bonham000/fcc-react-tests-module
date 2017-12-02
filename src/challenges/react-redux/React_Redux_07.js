@@ -28,7 +28,7 @@ export const challengeInstructions = `<span class = 'default'>Instructions: </sp
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
 `const addMessage = (message) => {
-	return {
+  return {
     type: 'ADD',
     message: message
   }
@@ -36,25 +36,25 @@ export const seedCode =
 
 const mapStateToProps = (state) => {
   return {
-  	messages: state
+    messages: state
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-  	submitNewMessage: (message) => {
-  		dispatch(addMessage(message));
-  	}
+    submitNewMessage: (message) => {
+      dispatch(addMessage(message));
+    }
   }
 };
 
 class Presentational extends React.Component {
-	constructor(props) {
-		super(props);
-	}
-	render() {
-		return <h3>This is a Presentational Component</h3>
-	}
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return <h3>This is a Presentational Component</h3>
+  }
 };
 
 const connect = ReactRedux.connect;
@@ -64,7 +64,7 @@ const connect = ReactRedux.connect;
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode =
 `const addMessage = (message) => {
-	return {
+  return {
     type: 'ADD',
     message: message
   }
@@ -72,25 +72,25 @@ export const solutionCode =
 
 const mapStateToProps = (state) => {
   return {
-  	messages: state
+    messages: state
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-  	submitNewMessage: (message) => {
-  		dispatch(addMessage(message));
-  	}
+    submitNewMessage: (message) => {
+      dispatch(addMessage(message));
+    }
   }
 };
 
 class Presentational extends React.Component {
-	constructor(props) {
-		super(props);
-	}
-	render() {
-		return <h3>This is a Presentational Component</h3>
-	}
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return <h3>This is a Presentational Component</h3>
+  }
 };
 
 const connect = ReactRedux.connect;
@@ -102,113 +102,113 @@ const ConnectedComponent = connect(mapStateToProps, mapDispatchToProps)(Presenta
 
 export const executeTests = (code, errorSuppression) => {
 
-	const error_0 = 'Your JSX code should transpile successfully.';
-	const error_1 = 'The Presentational component should render.';
-	const error_2 = 'The Presentational component should receive a prop \'messages\' via connect.';
-	const error_3 = 'The Presentational component should receive a prop \'submitNewMessage\' via connect.';
+  const error_0 = 'Your JSX code should transpile successfully.';
+  const error_1 = 'The Presentational component should render.';
+  const error_2 = 'The Presentational component should receive a prop \'messages\' via connect.';
+  const error_3 = 'The Presentational component should receive a prop \'submitNewMessage\' via connect.';
 
-	let testResults = [
-		{
-			test: 0,
-			status: false,
-			condition: error_0
-		},
-		{
-			test: 1,
-			status: false,
-			condition: error_1
-		},
-		{
-			test: 2,
-			status: false,
-			condition: error_2
-		},
-		{
-			test: 3,
-			status: false,
-			condition: error_3
-		}
-	];
+  let testResults = [
+    {
+      test: 0,
+      status: false,
+      condition: error_0
+    },
+    {
+      test: 1,
+      status: false,
+      condition: error_1
+    },
+    {
+      test: 2,
+      status: false,
+      condition: error_2
+    },
+    {
+      test: 3,
+      status: false,
+      condition: error_3
+    }
+  ];
 
-	let es5, mockedComponent, passed = true;
+  let es5, mockedComponent, passed = true;
 
-	// this applies an export to the user's code so
-	// we can access their component here for tests
+  // this applies an export to the user's code so
+  // we can access their component here for tests
 
-	const exportScript = `\n
-		const store = Redux.createStore(
-			(state = '__INITIAL__STATE__', action) => state
-		);
+  const exportScript = `\n
+    const store = Redux.createStore(
+      (state = '__INITIAL__STATE__', action) => state
+    );
 
-		class AppWrapper extends React.Component {
-			render() {
-				return (
-					<ReactRedux.Provider store = {store}>
-						<ConnectedComponent/>
-					</ReactRedux.Provider>
-				);
-			}
-		}; export default AppWrapper;`
-	const modifiedCode = code.concat(exportScript);
+    class AppWrapper extends React.Component {
+      render() {
+        return (
+          <ReactRedux.Provider store = {store}>
+            <ConnectedComponent/>
+          </ReactRedux.Provider>
+        );
+      }
+    }; export default AppWrapper;`
+  const modifiedCode = code.concat(exportScript);
 
-	// test 0: try to transpile JSX, ES6 code to ES5 in browser
-	try {
-		es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
-		testResults[0].status = true;
-		if (!errorSuppression) console.log('No transpilation errors!');
-	} catch (err) {
-		passed = false;
-		testResults[0].status = false;
-		if (!errorSuppression) console.error(`Transpilation error: ${err}`);
-	}
+  // test 0: try to transpile JSX, ES6 code to ES5 in browser
+  try {
+    es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
+    testResults[0].status = true;
+    if (!errorSuppression) console.log('No transpilation errors!');
+  } catch (err) {
+    passed = false;
+    testResults[0].status = false;
+    if (!errorSuppression) console.error(`Transpilation error: ${err}`);
+  }
 
-	// now we will try to shallow render the component with Enzyme's shallow method
-	// you can also use mount to perform a full render to the DOM environment
-	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
-	try {
-		mockedComponent = mount(React.createElement(eval(es5)));
-	} catch (err) {
-		passed = false;
-		if (!errorSuppression) console.error(`Invalid React code: ${err}`);
-	}
+  // now we will try to shallow render the component with Enzyme's shallow method
+  // you can also use mount to perform a full render to the DOM environment
+  // to do this you must import mount above; i.e. import { shallow, mount } from enzyme
+  try {
+    mockedComponent = mount(React.createElement(eval(es5)));
+  } catch (err) {
+    passed = false;
+    if (!errorSuppression) console.error(`Invalid React code: ${err}`);
+  }
 
-	// run specific tests to verify the functionality
-	// that the challenge is trying to assess:
+  // run specific tests to verify the functionality
+  // that the challenge is trying to assess:
 
-	// test 1:
-	try {
-		assert.strictEqual(mockedComponent.find('Presentational').length, 1, error_1);
-		testResults[1].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[1].status = false;
-	}
+  // test 1:
+  try {
+    assert.strictEqual(mockedComponent.find('Presentational').length, 1, error_1);
+    testResults[1].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[1].status = false;
+  }
 
-	let props;
+  let props;
 
-	// test 2:
-	try {
-		props = mockedComponent.find('Presentational').node.props;
-		assert.strictEqual(props.messages, '__INITIAL__STATE__', error_2);
-		testResults[2].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[2].status = false;
-	}
+  // test 2:
+  try {
+    props = mockedComponent.find('Presentational').node.props;
+    assert.strictEqual(props.messages, '__INITIAL__STATE__', error_2);
+    testResults[2].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[2].status = false;
+  }
 
-	// test 3:
-	try {
-		assert.strictEqual(typeof props.submitNewMessage, 'function', error_3);
-		testResults[3].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[3].status = false;
-	}
+  // test 3:
+  try {
+    assert.strictEqual(typeof props.submitNewMessage, 'function', error_3);
+    testResults[3].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[3].status = false;
+  }
 
-	return {
-		passed,
-		testResults
-	}
+  return {
+    passed,
+    testResults
+  }
 
 }
 
@@ -216,27 +216,27 @@ export const executeTests = (code, errorSuppression) => {
 
 export const liveRender = (code) => {
 
-	try {
-	const exportScript = `\n
-		const store = Redux.createStore(
-			(state = '__INITIAL__STATE__', action) => state
-		);
+  try {
+  const exportScript = `\n
+    const store = Redux.createStore(
+      (state = '__INITIAL__STATE__', action) => state
+    );
 
-		class AppWrapper extends React.Component {
-			render() {
-				return (
-					<ReactRedux.Provider store = {store}>
-						<ConnectedComponent/>
-					</ReactRedux.Provider>
-				);
-			}
-		}; export default AppWrapper;`
-		const modifiedCode = code.concat(exportScript);
-		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
-		const renderedComponent = React.createElement(eval(es5));
-		return renderedComponent;
-	} catch (err) {
-		// console.log(`Live rendering failure: ${err}`);
-	}
+    class AppWrapper extends React.Component {
+      render() {
+        return (
+          <ReactRedux.Provider store = {store}>
+            <ConnectedComponent/>
+          </ReactRedux.Provider>
+        );
+      }
+    }; export default AppWrapper;`
+    const modifiedCode = code.concat(exportScript);
+    const es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
+    const renderedComponent = React.createElement(eval(es5));
+    return renderedComponent;
+  } catch (err) {
+    // console.log(`Live rendering failure: ${err}`);
+  }
 
 }

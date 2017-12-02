@@ -20,22 +20,22 @@ Next, in the return statement, render this value in an <code>h1</code> tag using
 // ---------------------------- define challenge seed code ----------------------------
 export const seedCode =
 `class MyComponent extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			name: 'Free Code Camp'
-		}
-	}
-	render() {
-		// change code below this line
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: 'Free Code Camp'
+    }
+  }
+  render() {
+    // change code below this line
 
-	  // change code above this line
-  	return (
-	    <div>
-	    	{ /* change code below this line */ }
+    // change code above this line
+    return (
+      <div>
+        { /* change code below this line */ }
 
-	    	{ /* change code above this line */ }
-	    </div>
+        { /* change code above this line */ }
+      </div>
     );
   }
 };`
@@ -43,22 +43,22 @@ export const seedCode =
 // ---------------------------- define challenge solution code ----------------------------
 export const solutionCode =
 `class MyComponent extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			name: 'Free Code Camp'
-		}
-	}
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: 'Free Code Camp'
+    }
+  }
   render() {
-  	// change code below this line
-		const name = this.state.name;
-	  // change code above this line
+    // change code below this line
+    const name = this.state.name;
+    // change code above this line
     return (
-	    <div>
-	    	{ /* change code below this line */ }
-				<h1>{name}</h1>
-	    	{ /* change code above this line */ }
-	    </div>
+      <div>
+        { /* change code below this line */ }
+        <h1>{name}</h1>
+        { /* change code above this line */ }
+      </div>
     );
   }
 };`
@@ -176,14 +176,14 @@ export const executeTests = (code, errorSuppression) => {
 
 export const liveRender = (code) => {
 
-	try {
-		const exportScript = '\n export default MyComponent'
-		const modifiedCode = code.concat(exportScript);
-		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
-		const renderedComponent = React.createElement(eval(es5));
-		return renderedComponent;
-	} catch (err) {
-		// console.log(`Live rendering failure: ${err}`);
-	}
+  try {
+    const exportScript = '\n export default MyComponent'
+    const modifiedCode = code.concat(exportScript);
+    const es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
+    const renderedComponent = React.createElement(eval(es5));
+    return renderedComponent;
+  } catch (err) {
+    // console.log(`Live rendering failure: ${err}`);
+  }
 
 }

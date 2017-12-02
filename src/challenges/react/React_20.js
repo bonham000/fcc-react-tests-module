@@ -64,7 +64,7 @@ const Camper = (props) => {
 };
 
 Camper.propTypes = {
-	name: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired
 };
 
 Camper.defaultProps = {
@@ -76,136 +76,136 @@ Camper.defaultProps = {
 
 export const executeTests = (code, errorSuppression) => {
 
-	const error_0 = 'Your JSX code should transpile successfully.';
-	const error_1 = 'The CampSite component should render.';
-	const error_2 = 'The Camper component should render.';
-	const error_3 = 'The Camper component should include default props which assign the string \'CamperBot\' to the key name.';
-	const error_4 = 'The Camper component should include prop types which require the name prop to be of type string.';
-	const error_5 = 'The Camper component should contain a p element with only the text from the name prop.';
+  const error_0 = 'Your JSX code should transpile successfully.';
+  const error_1 = 'The CampSite component should render.';
+  const error_2 = 'The Camper component should render.';
+  const error_3 = 'The Camper component should include default props which assign the string \'CamperBot\' to the key name.';
+  const error_4 = 'The Camper component should include prop types which require the name prop to be of type string.';
+  const error_5 = 'The Camper component should contain a p element with only the text from the name prop.';
 
-	let testResults = [
-		{
-			test: 0,
-			status: false,
-			condition: error_0
-		},
-		{
-			test: 1,
-			status: false,
-			condition: error_1
-		},
-		{
-			test: 2,
-			status: false,
-			condition: error_2
-		},
-		{
-			test: 3,
-			status: false,
-			condition: error_3
-		},
-		{
-			test: 4,
-			status: false,
-			condition: error_4
-		},
-		{
-			test: 5,
-			status: false,
-			condition: error_5
-		}
-	];
+  let testResults = [
+    {
+      test: 0,
+      status: false,
+      condition: error_0
+    },
+    {
+      test: 1,
+      status: false,
+      condition: error_1
+    },
+    {
+      test: 2,
+      status: false,
+      condition: error_2
+    },
+    {
+      test: 3,
+      status: false,
+      condition: error_3
+    },
+    {
+      test: 4,
+      status: false,
+      condition: error_4
+    },
+    {
+      test: 5,
+      status: false,
+      condition: error_5
+    }
+  ];
 
-	let es5, mockedComponent, passed = true;
+  let es5, mockedComponent, passed = true;
 
-	const exportScript = '\n export default CampSite'
-	const modifiedCode = code.concat(exportScript);
+  const exportScript = '\n export default CampSite'
+  const modifiedCode = code.concat(exportScript);
 
   /* Crude patch to deal with PropTypes deprecation in React v15.5.0 */
   const index = modifiedCode.indexOf('PropTypes.string.isRequired');
-	const patchPropTypes = modifiedCode.slice(0, index) + 'React.' + modifiedCode.slice(index);
+  const patchPropTypes = modifiedCode.slice(0, index) + 'React.' + modifiedCode.slice(index);
 
-	// test 0: try to transpile JSX, ES6 code to ES5 in browser
-	try {
-		es5 = transform(patchPropTypes, { presets: [ 'es2015', 'react' ] }).code;
-		testResults[0].status = true;
-		if (!errorSuppression) console.log('No transpilation errors!');
-	} catch (err) {
-		passed = false;
-		testResults[0].status = false;
-		if (!errorSuppression) console.error(`Transpilation error: ${err}`);
-	}
+  // test 0: try to transpile JSX, ES6 code to ES5 in browser
+  try {
+    es5 = transform(patchPropTypes, { presets: [ 'es2015', 'react' ] }).code;
+    testResults[0].status = true;
+    if (!errorSuppression) console.log('No transpilation errors!');
+  } catch (err) {
+    passed = false;
+    testResults[0].status = false;
+    if (!errorSuppression) console.error(`Transpilation error: ${err}`);
+  }
 
-	// now we will try to shallow render the component with Enzyme's shallow method
-	// you can also use mount to perform a full render to the DOM environment
-	// to do this you must import mount above; i.e. import { shallow, mount } from enzyme
-	try {
-		mockedComponent = mount(React.createElement(eval(es5)));
-	} catch (err) {
-		passed = false;
+  // now we will try to shallow render the component with Enzyme's shallow method
+  // you can also use mount to perform a full render to the DOM environment
+  // to do this you must import mount above; i.e. import { shallow, mount } from enzyme
+  try {
+    mockedComponent = mount(React.createElement(eval(es5)));
+  } catch (err) {
+    passed = false;
     if (!errorSuppression) console.error(`Invalid React code: ${err}`);
-	}
+  }
 
-	// run specific tests to verify the functionality
-	// that the challenge is trying to assess:
+  // run specific tests to verify the functionality
+  // that the challenge is trying to assess:
 
-	// test 1:
-	try {
-		assert.strictEqual(mockedComponent.find('CampSite').length, 1, error_1);
-		testResults[1].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[1].status = false;
-	}
+  // test 1:
+  try {
+    assert.strictEqual(mockedComponent.find('CampSite').length, 1, error_1);
+    testResults[1].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[1].status = false;
+  }
 
-	// test 2:
-	try {
-		assert.strictEqual(mockedComponent.find('Camper').length, 1, error_2);
-		testResults[2].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[2].status = false;
-	}
+  // test 2:
+  try {
+    assert.strictEqual(mockedComponent.find('Camper').length, 1, error_2);
+    testResults[2].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[2].status = false;
+  }
 
-	// test 3:
-	try {
-		// propTypes unavailable in production and throw warnings anyway
-		// this was the only way I could devise to check that propTypes are included
-		const noWhiteSpace = modifiedCode.replace(/\s/g, '');
-		const verify1 = 'Camper.defaultProps={name:\'CamperBot\'}';
-		const verify2 = 'Camper.defaultProps={name:"CamperBot"}';
-		assert.strictEqual(noWhiteSpace.includes(verify1) || noWhiteSpace.includes(verify2), true, error_3);
-		testResults[3].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[3].status = false;
-	}
+  // test 3:
+  try {
+    // propTypes unavailable in production and throw warnings anyway
+    // this was the only way I could devise to check that propTypes are included
+    const noWhiteSpace = modifiedCode.replace(/\s/g, '');
+    const verify1 = 'Camper.defaultProps={name:\'CamperBot\'}';
+    const verify2 = 'Camper.defaultProps={name:"CamperBot"}';
+    assert.strictEqual(noWhiteSpace.includes(verify1) || noWhiteSpace.includes(verify2), true, error_3);
+    testResults[3].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[3].status = false;
+  }
 
-		// test 4:
-	try {
-		const noWhiteSpace = modifiedCode.replace(/\s/g, '');
-		const verifyDefaultProps = 'Camper.propTypes={name:PropTypes.string.isRequired';
-		assert.strictEqual(noWhiteSpace.includes(verifyDefaultProps), true, error_4);
-		testResults[4].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[4].status = false;
-	}
+    // test 4:
+  try {
+    const noWhiteSpace = modifiedCode.replace(/\s/g, '');
+    const verifyDefaultProps = 'Camper.propTypes={name:PropTypes.string.isRequired';
+    assert.strictEqual(noWhiteSpace.includes(verifyDefaultProps), true, error_4);
+    testResults[4].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[4].status = false;
+  }
 
-	// test 5:
-	try {
-		assert.strictEqual(mockedComponent.contains(<p>{mockedComponent.find('Camper').props().name}</p>), true, error_5);
-		testResults[5].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[5].status = false;
-	}
+  // test 5:
+  try {
+    assert.strictEqual(mockedComponent.contains(<p>{mockedComponent.find('Camper').props().name}</p>), true, error_5);
+    testResults[5].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[5].status = false;
+  }
 
 
-	return {
-		passed,
-		testResults
-	}
+  return {
+    passed,
+    testResults
+  }
 
 }
 
@@ -213,7 +213,7 @@ export const executeTests = (code, errorSuppression) => {
 
 export const liveRender = (code) => {
 
-	try {
+  try {
 
     const exportScript = '\n export default CampSite'
     const modifiedCode = code.concat(exportScript);
@@ -222,11 +222,11 @@ export const liveRender = (code) => {
     const index = modifiedCode.indexOf('PropTypes.string.isRequired');
     const patchPropTypes = modifiedCode.slice(0, index) + 'React.' + modifiedCode.slice(index);
 
-		const es5 = transform(patchPropTypes, { presets: [ 'es2015', 'react' ] }).code;
-		const renderedComponent = React.createElement(eval(es5));
-		return renderedComponent;
-	} catch (err) {
-		// console.log(`Live rendering failure: ${err}`);
-	}
+    const es5 = transform(patchPropTypes, { presets: [ 'es2015', 'react' ] }).code;
+    const renderedComponent = React.createElement(eval(es5));
+    return renderedComponent;
+  } catch (err) {
+    // console.log(`Live rendering failure: ${err}`);
+  }
 
 }

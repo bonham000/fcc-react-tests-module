@@ -29,11 +29,11 @@ they are needed.`
 export const seedCode =
 `const JSX = (
 <div>
-	{/* change code below this line */}
-	<h2>Welcome to React!</h2> <br >
-	<p>Be sure to close all tags!</p>
-	<hr >
-	{/* change code above this line */}
+  {/* change code below this line */}
+  <h2>Welcome to React!</h2> <br >
+  <p>Be sure to close all tags!</p>
+  <hr >
+  {/* change code above this line */}
 </div>
 );
 
@@ -43,11 +43,11 @@ ReactDOM.render(JSX, document.getElementById('challenge-node'));`
 export const solutionCode =
 `const JSX = (
 <div>
-	{/* change code below this line */}
-	<h2>Welcome to React!</h2> <br />
-	<p>Be sure to close all tags!</p>
-	<hr />
-	{/* change code above this line */}
+  {/* change code below this line */}
+  <h2>Welcome to React!</h2> <br />
+  <p>Be sure to close all tags!</p>
+  <hr />
+  {/* change code above this line */}
 </div>
 );
 
@@ -57,109 +57,109 @@ ReactDOM.render(JSX, document.getElementById('challenge-node'));`
 
 export const executeTests = (code, errorSuppression) => {
 
-	document.getElementById('challenge-node').innerHTML = '';
+  document.getElementById('challenge-node').innerHTML = '';
 
-	let es5, mockedComponent, jsx, passed = true;
+  let es5, mockedComponent, jsx, passed = true;
 
-	let testResults = [
-		{
-			test: 0,
-			status: false,
-			condition: 'Your JSX code should transpile successfully.'
-		},
-		{
-			test: 1,
-			status: false,
-			condition: 'The constant JSX should return a div element.'
-		},
-		{
-			test: 2,
-			status: false,
-			condition: 'The div should contain a br tag.'
-		},
-		{
-			test: 3,
-			status: false,
-			condition: 'The div should contain an hr tag.'
-		},
-		{
-			test: 4,
-			status: false,
-			condition: 'The provided JSX element should render to the DOM node with id \'challenge-node\'.'
-		}
-	];
+  let testResults = [
+    {
+      test: 0,
+      status: false,
+      condition: 'Your JSX code should transpile successfully.'
+    },
+    {
+      test: 1,
+      status: false,
+      condition: 'The constant JSX should return a div element.'
+    },
+    {
+      test: 2,
+      status: false,
+      condition: 'The div should contain a br tag.'
+    },
+    {
+      test: 3,
+      status: false,
+      condition: 'The div should contain an hr tag.'
+    },
+    {
+      test: 4,
+      status: false,
+      condition: 'The provided JSX element should render to the DOM node with id \'challenge-node\'.'
+    }
+  ];
 
-	const prepend = `(function() {`
-	const append = `;\n return JSX })()`
-	const modifiedCode = prepend.concat(code).concat(append);
+  const prepend = `(function() {`
+  const append = `;\n return JSX })()`
+  const modifiedCode = prepend.concat(code).concat(append);
 
-	// test 0: try to transpile JSX, ES6 code to ES5 in browser
-	try {
-		es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
-		testResults[0].status = true;
-		if (!errorSuppression) console.log('No transpilation errors!');
-	} catch (err) {
-		passed = false;
-		testResults[0].status = false;
-		if (!errorSuppression) console.error(`Transpilation error: ${err}`);
-	}
+  // test 0: try to transpile JSX, ES6 code to ES5 in browser
+  try {
+    es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
+    testResults[0].status = true;
+    if (!errorSuppression) console.log('No transpilation errors!');
+  } catch (err) {
+    passed = false;
+    testResults[0].status = false;
+    if (!errorSuppression) console.error(`Transpilation error: ${err}`);
+  }
 
-	try {
-		jsx = eval(es5);
-		mockedComponent = shallow(jsx);
-	} catch (err) {
-		passed = false;
-		if (!errorSuppression) console.error(`Invalid React code: ${err}`);
-	}
+  try {
+    jsx = eval(es5);
+    mockedComponent = shallow(jsx);
+  } catch (err) {
+    passed = false;
+    if (!errorSuppression) console.error(`Invalid React code: ${err}`);
+  }
 
 
-	// test 1:
-	try {
-		assert.strictEqual(jsx.type, 'div', 'The constant JSX should return a div element.');
-		testResults[1].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[1].status = false;
-	}
+  // test 1:
+  try {
+    assert.strictEqual(jsx.type, 'div', 'The constant JSX should return a div element.');
+    testResults[1].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[1].status = false;
+  }
 
-	// test 2:
-	try {
-		assert.strictEqual(mockedComponent.contains(<br/>), true, 'The div should contain a br tag.');
-		//assert.strictEqual(jsx.props.children[2].type, 'br', 'The div should contain a br tag.');
-		testResults[2].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[2].status = false;
-	}
+  // test 2:
+  try {
+    assert.strictEqual(mockedComponent.contains(<br/>), true, 'The div should contain a br tag.');
+    //assert.strictEqual(jsx.props.children[2].type, 'br', 'The div should contain a br tag.');
+    testResults[2].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[2].status = false;
+  }
 
-	// test 3:
-	try {
-		assert.strictEqual(mockedComponent.contains(<hr/>), true, 'The div should contain an hr tag.');
-		//assert.strictEqual(jsx.props.children[4].type, 'hr', 'The div should contain an hr tag.');
-		testResults[3].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[3].status = false;
-	}
+  // test 3:
+  try {
+    assert.strictEqual(mockedComponent.contains(<hr/>), true, 'The div should contain an hr tag.');
+    //assert.strictEqual(jsx.props.children[4].type, 'hr', 'The div should contain an hr tag.');
+    testResults[3].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[3].status = false;
+  }
 
-	// test 4:
-	try {
-		let testDiv = document.getElementById('challenge-node').childNodes[0].innerHTML.replace(/\s/g,'');
-		assert(
-			testDiv.includes('<h2>WelcometoReact!</h2>') &&
-			testDiv.includes('<p>Besuretoclosealltags!</p>'),
-			'The provided JSX element should render as is to the DOM node with id \'challenge-node\'.'
-		);
-		testResults[4].status = true;
-	} catch (err) {
-		passed = false;
-		testResults[4].status = false;
-	}
+  // test 4:
+  try {
+    let testDiv = document.getElementById('challenge-node').childNodes[0].innerHTML.replace(/\s/g,'');
+    assert(
+      testDiv.includes('<h2>WelcometoReact!</h2>') &&
+      testDiv.includes('<p>Besuretoclosealltags!</p>'),
+      'The provided JSX element should render as is to the DOM node with id \'challenge-node\'.'
+    );
+    testResults[4].status = true;
+  } catch (err) {
+    passed = false;
+    testResults[4].status = false;
+  }
 
-	return {
-		passed,
-		testResults,
-	}
+  return {
+    passed,
+    testResults,
+  }
 
 }
 
@@ -167,14 +167,14 @@ export const executeTests = (code, errorSuppression) => {
 
 export const liveRender = (code) => {
 
-	try {
-		const exportScript = `;\n export default JSX`
-		const modifiedCode = code.concat(exportScript);
-		const es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
-		const renderedComponent = eval(es5);
-		return renderedComponent;
-	} catch (err) {
-		// console.log(`Live rendering failure: ${err}`);
-	}
+  try {
+    const exportScript = `;\n export default JSX`
+    const modifiedCode = code.concat(exportScript);
+    const es5 = transform(modifiedCode, { presets: [ 'es2015', 'react' ] }).code;
+    const renderedComponent = eval(es5);
+    return renderedComponent;
+  } catch (err) {
+    // console.log(`Live rendering failure: ${err}`);
+  }
 
 }
