@@ -57,22 +57,14 @@
         "For instance, several JSX elements written as siblings with no parent wrapper element will not transpile.",
         "Here's an example:",
         "",
-        "",
-        "",
         "<b>Valid JSX:</b>",
         "",
         "<blockquote>&lt;div&gt;<br>  &lt;p&gt;Paragraph One&lt;/p&gt;<br>  &lt;p&gt;Paragraph Two&lt;/p&gt;<br>  &lt;p&gt;Paragraph Three&lt;/p&gt;<br>&lt;/div&gt;</blockquote>",
         "",
-        "",
-        "",
-        "",
         "<b>Invalid JSX:</b>",
-        "",
-        "<blockquote>&lt;p&gt;Paragraph One&lt;/p&gt;<br>&lt;p&gt;Paragraph Two&lt;/p&gt;<br>&lt;p&gt;Paragraph Three&lt;/p&gt;<br></blockquote>",
         "<hr>",
         "Define a new constant <code>JSX</code> that renders a <code>div</code> which contains the following elements in order:",
         "An <code>h1</code>, a <code>p</code>, and an unordered list that contains three <code>li</code> items. You can include any text you want within each element.",
-        "",
         "<strong>Note:</strong>&nbsp;When rendering multiple elements like this, you can wrap them all in parentheses, but it's not strictly required. Also notice this challenge uses a <code>div</code> tag to wrap all the child elements within a single parent element. If you remove the <code>div</code>, the JSX will no longer transpile. Keep this in mind, since it will also apply when you return JSX elements in React components."
       ],
       "files": {
@@ -102,7 +94,6 @@
       "releasedOn": "December 25, 2017",
       "description": [
         "So far, you've learned that JSX is a convenient tool to write readable HTML within JavaScript. With React, we can render this JSX directly to the HTML DOM using React's rendering API known as ReactDOM.",
-        "",
         "ReactDOM offers a simple method to render React elements to the DOM which looks like this: <code>ReactDOM.render(componentToRender, targetNode)</code>.",
         "",
         "<ul>",
@@ -147,13 +138,11 @@
       "title": "Create a React Component",
       "releasedOn": "December 25, 2017",
       "description": [
-        "he other way to define a React component is with the ES6 <code>class</code> syntax. In the following example, <code>Kitten</code> extends <code>React.Component</code>:",
-        "",
+        "The other way to define a React component is with the ES6 <code>class</code> syntax. In the following example, <code>Kitten</code> extends <code>React.Component</code>:",
         "",
         "<blockquote>class Kitten extends React.Component {<br>  constructor(props) {<br>    super(props);<br>  }<br><br>  render() {<br>    return (<br>      &lt;h1&gt;Hi&lt;/h1&gt;<br>    );<br>  }<br>}</blockquote>",
         "<hr>",
-        "code>MyComponent</code> is defined in the code editor using class syntax. Finish writing the <code>render</code> method so it returns a <code>div</code> element that contains an <code>h1</code> with the text <code>Hello React!</code>.'",
-        ""
+        "<code>MyComponent</code> is defined in the code editor using class syntax. Finish writing the <code>render</code> method so it returns a <code>div</code> element that contains an <code>h1</code> with the text <code>Hello React!</code>.'"
       ],
       "files": {
         "indexjsx": {

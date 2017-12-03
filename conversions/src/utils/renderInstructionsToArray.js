@@ -1,7 +1,10 @@
 import truncateText from './truncateText';
+import removeUnwantedNewLines from './removeUnwantedNewLines';
+import makeStringReplacements from './makeStringReplacements';
 
 export default (str) => {
-  return truncateText(str, 46)
-    .replace(/<br>|<br \/>/g, '')
-    .split('\n');
+  str = truncateText(str, 45);
+  str = makeStringReplacements(str);
+  const results = str.split('\n');
+  return removeUnwantedNewLines(results);
 }
