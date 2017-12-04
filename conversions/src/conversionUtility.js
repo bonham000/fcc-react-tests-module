@@ -72,8 +72,10 @@ function constructChallenge (challenge, type) {
   // add challenge type key
   if (type === 'react') {
     newChallenge.react = true;
-  } else {
+  } else if (type === 'redux') {
     newChallenge.redux = true;
+  } else {
+    newChallenge.reactRedux = true;
   }
 
   // construct challenge
@@ -121,7 +123,7 @@ const sourceTargets = [
   {
     source: ReactReduxSource,
     target: './src/target/react-and-redux.json',
-    type: 'react'
+    type: 'react-redux'
   }
 ];
 
