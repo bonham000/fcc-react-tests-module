@@ -1,5 +1,5 @@
 // import React Challenges:
-import * as React_01 from '../../../src/challenges/react/React_01'
+// first challenge already in place, start with React_02
 import * as React_02 from '../../../src/challenges/react/React_02'
 import * as React_03 from '../../../src/challenges/react/React_03'
 import * as React_04 from '../../../src/challenges/react/React_04'
