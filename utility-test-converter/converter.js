@@ -14,6 +14,9 @@ const updateCheckbox = (e) => {
 	label.innerHTML = `<code>${text}</code>`;
 }
 
+// Clear confirmation message on change
+const handleChange = () => confirmation('');
+
 // Converter
 const convert = () => {
 	const testField = document.getElementById('test');
@@ -22,8 +25,13 @@ const convert = () => {
 	const { value: test } = testField;
 	const { value: message } = messageField;
 	
-	if (!test || !message) {
-		confirmation("Failed! Empty input!");
+	if (!test) {
+		confirmation("No Test Statement!");
+		return;
+	}
+	
+	if (!message) {
+		confirmation("No Test Message!");
 		return;
 	}
 
@@ -45,7 +53,6 @@ const convert = () => {
 	copyText.select();
 	document.execCommand("Copy");
 	confirmation("Copied to clipboard!");
-	console.log(result);
 
 	testField.value = '';
 	messageField.value = '';
