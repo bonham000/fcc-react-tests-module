@@ -53,6 +53,7 @@
   "dependencies": {
     "axios": "^0.16.2",
     "babel-standalone": "^6.19.0",
+    "codemirror": "^5.32.0",
     "deep-equal": "^1.0.1",
     "deep-freeze": "0.0.1",
     "enzyme": "^2.6.0",

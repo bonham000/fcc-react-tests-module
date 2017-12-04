@@ -8,6 +8,9 @@
       "src": "https://cdnjs.cloudflare.com/ajax/libs/react/16.1.1/umd/react.development.js"
     },
     {
+      "src": "https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.1.1/umd/react-dom.development.js"
+    },
+    {
       "src": "https://cdnjs.cloudflare.com/ajax/libs/redux/3.7.2/redux.js"
     },
     {
