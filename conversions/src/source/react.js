@@ -1,5 +1,6 @@
 // import React Challenges:
 // first challenge already in place, start with React_02
+// import * as React_01 from '../../../src/challenges/react/React_01'
 import * as React_02 from '../../../src/challenges/react/React_02'
 import * as React_03 from '../../../src/challenges/react/React_03'
 import * as React_04 from '../../../src/challenges/react/React_04'
@@ -51,7 +52,7 @@ import * as React_49 from '../../../src/challenges/react/React_49'
 import * as React_50 from '../../../src/challenges/react/React_50'
 
 export default [
-  React_01,
+  // React_01,
   React_02,
   React_03,
   React_04,
