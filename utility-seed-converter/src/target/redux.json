@@ -1,0 +1,18 @@
+{
+  "name": "Redux",
+  "order": 6,
+  "time": "5 hours",
+  "helpRoom": "Help",
+  "required": [
+    {
+      "src": "https://cdnjs.cloudflare.com/ajax/libs/redux/3.7.2/redux.js"
+    },
+    {
+      "src": "https://wzrd.in/standalone/deep-freeze@latest"
+    },
+    {
+      "src": "https://wzrd.in/standalone/deep-equal@latest"
+    }
+  ],
+  "challenges": []
+}
