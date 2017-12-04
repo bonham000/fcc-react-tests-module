@@ -1,0 +1,62 @@
+
+<!-- Conveter utility for transforming tests to FCC JSON seed format -->
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>@Converter@</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+	<h3>Test and Assertion Statement:</h3>
+  
+  <input
+  type="checkbox"
+  onClick="updateCheckbox();"
+  id="conversionTypeCheckbox"/>
+  <label id="checkboxLabel">
+    <code>Simple return statement (test is one-line condition)</code>
+  </label>
+  
+  <br>
+  <br>
+
+	<textarea
+  id="test"
+  onkeydown="handleChange();"
+  placeholder="(Simple example):
+    
+jsx.type === 'div'
+    
+(IIFE example):
+  
+mockedComponent.setState({display: false});
+return 
+mockedComponent.find('div').length === 1 &&
+mockedComponent.find('button').length === 1 &&
+mockedComponent.find('h1').length === 0"
+  ></textarea><br>
+
+	<h3>Test Condition Message:</h3>
+
+	<textarea
+  id="message"
+  onkeydown="handleChange();"  
+  placeholder="(example):
+  
+When display is set to false, only a div and button should render."  
+  ></textarea>
+
+  <br>
+  
+  <h3>Transformed Output:</h3>
+	<textarea id="dummy" placeholder="Converted output shown here"></textarea>
+  
+  <button onClick="convert()">Convert It! (Cmd + Enter)</button>
+  <h1 id="success"></h1>
+
+  <script src="converter.js"></script>
+</body>
+</html>
