@@ -12,12 +12,10 @@
     },
     {
       "src": "https://cdnjs.cloudflare.com/ajax/libs/react-redux/5.0.6/react-redux.js"
-    }
+    },
     {
       "src": "https://wzrd.in/standalone/deep-freeze@latest"
-    },
+    }
   ],
-  "challenges": [
-
-  ]
+  "challenges": []
 }

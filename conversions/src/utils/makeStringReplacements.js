@@ -5,7 +5,7 @@ export default (str) => {
   // NOTE: these regex can prob be consolidated into 1 .replace()
   return str
     .replace(/<pre>\s*<code class="codeBlock">\n*/g, '<blockquote>')
-    .replace(/<\/code>\s*<\/pre>\n/g, '</blockquote>')
+    .replace(/<\/code>\s*<\/pre>\n*/g, '</blockquote>')
     .replace(/<br><br>\n/g, '')
     .replace(/<br \/><br \/>\n/g, '')
     .replace(/<br>|<br \/>\n/g, '');

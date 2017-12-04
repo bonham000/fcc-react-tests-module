@@ -1,20 +1,11 @@
 /* eslint-disable */
 import fs from 'fs';
+import mongoose from 'mongoose';
 import parseChallenge from './utils/parseChallenge';
 import copyChallengeTemplate from './utils/copyChallengeTemplate';
-// import ReactSource from './source/react';
+import ReactSource from './source/react';
 import ReduxSource from './source/redux';
 import ReactReduxSource from './source/react-redux';
-
-import * as React_02 from '../../src/challenges/react/React_02';
-import * as React_04 from '../../src/challenges/react/React_04';
-import * as React_08 from '../../src/challenges/react/React_08';
-
-const ReactSource = [,
-  React_02,
-  React_04,
-  React_08
-];
 
 /*
 This is a utility for converting the prototype React, Redux, and React-Redux
@@ -25,7 +16,7 @@ a basic run-down of the process that's happening in this utility:
   1. Source arrays of challenge modules are imported. From each module,
      we aaccess all of the relevant info: title,intro, directions, etc.
   2. We pair each array (in an array of objects) with a corresponding
-     challenge template and a json file to read from and write results to.
+     json file to read from and write results to.
   3. Then we loop through the array of object containing the above:
       1. In each loop iteration we parse the JSON file associated with
          each source array back into JS.
@@ -40,13 +31,14 @@ parseChallenge >                                                                
 
       4. Then, with a nicely parsed challenge, in the correcr format, we
          simply contruct a new challenge by assigning the pieces to the
-         right keys of the challenge template objects.
+         right keys of the challenge template object, including a unique
+         mongo objectID.
       5. We push each new challenge on to the parsed JSON object, and
          once complete, convert the entire thing back into JSON and
          write it back to the appropriate JSON file.
 */
 
-const reactChallengeTemplate = {
+const challengeTemplate = {
   id: '',
   title: '',
   releasedOn: 'December 25, 2017',
@@ -68,15 +60,13 @@ const reactChallengeTemplate = {
   translations: {}
 };
 
-const reduxChallengeTemplate = copyChallengeTemplate(reactChallengeTemplate);
-reduxChallengeTemplate.files.indexjsx.ext = 'js';
-
 // make a new challenge
-function constructChallenge (challenge, template) {
+function constructChallenge (challenge) {
   // extract parts from prototype challenges
   const parsedChallenge = parseChallenge(challenge);
   // deep copy challengeTemplate and construct from parsed
-  const newChallenge = copyChallengeTemplate(template);
+  const newChallenge = copyChallengeTemplate(challengeTemplate);
+  newChallenge.id = mongoose.Types.ObjectId();
   newChallenge.title = parsedChallenge.title;
   newChallenge.description = parsedChallenge.description;
   newChallenge.files.indexjsx.contents = parsedChallenge.seedCode;
@@ -85,7 +75,7 @@ function constructChallenge (challenge, template) {
 }
 
 // parse, push, write
-function appendChallengesToJSON(source, target, template) {
+function appendChallengesToJSON(source, target) {
   fs.readFile(target, 'utf8', (err, data) => {
     if (err) {
       console.log(err);
@@ -95,7 +85,7 @@ function appendChallengesToJSON(source, target, template) {
       // loop through challenges & format
       // add each new challenge to seed
       source.forEach(challenge => {
-        seed.challenges.push(constructChallenge(challenge, template));
+        seed.challenges.push(constructChallenge(challenge));
       });
       // convert back to json
       const json = JSON.stringify(seed, null, 2);
@@ -109,22 +99,19 @@ function appendChallengesToJSON(source, target, template) {
 const sourceTargets = [
   {
     source: ReactSource,
-    target: './src/target/react.json',
-    template: reactChallengeTemplate
+    target: './src/target/react.json'
   },
-  // {
-  //   source: ReduxSource,
-  //   target: './src/target/redux.json',
-  //   template: reduxChallengeTemplate
-  // },
-  // {
-  //   source: ReactReduxSource,
-  //   target: './src/target/react-and-redux.json',
-  //   template: reactChallengeTemplate
-  // }
+  {
+    source: ReduxSource,
+    target: './src/target/redux.json'
+  },
+  {
+    source: ReactReduxSource,
+    target: './src/target/react-and-redux.json'
+  }
 ];
 
 // intitiate conversion. yes!
 sourceTargets.forEach(obj => {
-  appendChallengesToJSON(obj.source, obj.target, obj.template);
+  appendChallengesToJSON(obj.source, obj.target);
 });
