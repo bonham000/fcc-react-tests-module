@@ -65,7 +65,7 @@
     "deploy": "git push origin master && npm run build",
     "build": "node scripts/build.js && surge ./build ./ --domain hysterical-amusement.surge.sh",
     "test": "node scripts/test.js --env=jsdom",
-    "convert": "cd conversions && npm run cc"
+    "convert": "cd conversions && npm run cc",
     "tc": "cd utility-test-converter && live-server",
     "tc-update": "cd utility-test-converter && surge ./ --domain react-test-converter.surge.sh"
   },
