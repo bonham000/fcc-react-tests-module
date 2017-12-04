@@ -61,11 +61,22 @@ const challengeTemplate = {
 };
 
 // make a new challenge
-function constructChallenge (challenge) {
+function constructChallenge (challenge, type) {
+
   // extract parts from prototype challenges
   const parsedChallenge = parseChallenge(challenge);
+
   // deep copy challengeTemplate and construct from parsed
   const newChallenge = copyChallengeTemplate(challengeTemplate);
+
+  // add challenge type key
+  if (type === 'react') {
+    newChallenge.react = true;
+  } else {
+    newChallenge.redux = true;
+  }
+
+  // construct challenge
   newChallenge.id = mongoose.Types.ObjectId();
   newChallenge.title = parsedChallenge.title;
   newChallenge.description = parsedChallenge.description;
@@ -75,7 +86,7 @@ function constructChallenge (challenge) {
 }
 
 // parse, push, write
-function appendChallengesToJSON(source, target) {
+function appendChallengesToJSON(source, target, type) {
   fs.readFile(target, 'utf8', (err, data) => {
     if (err) {
       console.log(err);
@@ -85,7 +96,7 @@ function appendChallengesToJSON(source, target) {
       // loop through challenges & format
       // add each new challenge to seed
       source.forEach(challenge => {
-        seed.challenges.push(constructChallenge(challenge));
+        seed.challenges.push(constructChallenge(challenge, type));
       });
       // convert back to json
       const json = JSON.stringify(seed, null, 2);
@@ -99,19 +110,22 @@ function appendChallengesToJSON(source, target) {
 const sourceTargets = [
   {
     source: ReactSource,
-    target: './src/target/react.json'
+    target: './src/target/react.json',
+    type: 'react'
   },
   {
     source: ReduxSource,
-    target: './src/target/redux.json'
+    target: './src/target/redux.json',
+    type: 'redux'
   },
   {
     source: ReactReduxSource,
-    target: './src/target/react-and-redux.json'
+    target: './src/target/react-and-redux.json',
+    type: 'react'
   }
 ];
 
 // intitiate conversion. yes!
 sourceTargets.forEach(obj => {
-  appendChallengesToJSON(obj.source, obj.target);
+  appendChallengesToJSON(obj.source, obj.target, obj.type);
 });

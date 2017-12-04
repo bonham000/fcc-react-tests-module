@@ -45,6 +45,7 @@
       "solutions": [
         "const jsx = <h1>Hello JSX!</h1>;"
       ],
+      "react": true,
       "type": "modern",
       "isRequired": false,
       "translations": {}
