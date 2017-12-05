@@ -1,22 +1,4 @@
 export default (arr) => {
-  // save this for now in case we do want new lines
-  // in the seed later for some reason:
-
-  // remove repeating new lines
-  // for (let i = 0; i < results.length; i++) {
-  //   if (!results[i] && !results[i+1] && !results[i+2]) {
-  //     results.splice(i, 2);
-  //   } else if (!results[i] && !results[i+1]) {
-  //     results.splice(i, 1);
-  //   }
-  // }
-  //
-  // // remove trailing new line
-  // if (!results[results.length-1]) {
-  //   results = results.slice(0, results.length);
-  // }
-
-  // updated solution removes all lines that contain nothing:
   const results = [];
   // remove empty lines
   for (let i = 0; i < arr.length; i++) {
