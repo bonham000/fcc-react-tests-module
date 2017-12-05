@@ -1,0 +1,54 @@
+{
+  "name": "React",
+  "order": 5,
+  "time": "5 hours",
+  "helpRoom": "Help",
+  "required": [
+    {
+      "src": "https://cdnjs.cloudflare.com/ajax/libs/react/16.1.1/umd/react.development.js"
+    },
+    {
+      "src": "https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.1.1/umd/react-dom.development.js"
+    }
+  ],
+  "challenges": [
+    {
+      "id": "587d7dbc367417b2b2512bb1",
+      "title": "Create a Simple JSX Element",
+      "releasedOn": "December 25, 2017",
+      "description": [
+        "<strong>Intro:</strong> React is an Open Source view library created and maintained by Facebook. It's a great tool to render the User Interface (UI) of modern web applications.",
+        "React uses a syntax extension of JavaScript called JSX that allows you to write HTML directly within JavaScript. This has several benefits. It lets you use the full programmatic power of JavaScript within HTML, and helps to keep your code readable. For the most part, JSX is similar to the HTML that you have already learned, however there are a few key differences that will be covered throughout these challenges.",
+        "For instance, because JSX is a syntactic extension of JavaScript, you can actually write JavaScript directly within JSX. To do this, you simply include the code you want to be treated as JavaScript within curly braces: <code>{ 'this is treated as JavaScript code' }</code>. Keep this in mind, since it's used in several future challenges.",
+        "However, because JSX is not valid JavaScript, JSX code must be compiled into JavaScript. The transpiler Babel is a popular tool for this process. For your convenience, it's already added behind the scenes for these challenges. If you happen to write syntactically invalid JSX, you will see the first test in these challenges fail.",
+        "<hr>",
+        "<strong>Instructions:</strong> The current code uses JSX to assign a <code>div</code> element to the constant <code>JSX</code>. Replace the <code>div</code> with an <code>h1</code> element and add the text <code>Hello JSX!</code> inside it."
+      ],
+      "files": {
+        "indexjsx": {
+          "key": "indexjsx",
+          "ext": "jsx",
+          "name": "index",
+          "contents": [
+            "",
+            "var jsx = <div></div>;",
+            ""
+          ]
+        }
+      },
+      "tests": [
+        "assert(Enzyme.shallow(jsx).type() === 'h1', 'message: The constant JSX should return an <code>h1</code> element.');",
+        "assert(Enzyme.shallow(jsx).contains( 'Hello JSX!'), 'message: The <code>h1</code> tag should include the text <code>Hello JSX!</code>');"
+      ],
+      "head": [],
+      "tail": [],
+      "solutions": [
+        "const jsx = <h1>Hello JSX!</h1>;"
+      ],
+      "type": "modern",
+      "isRequired": false,
+      "translations": {},
+      "react": true
+    }
+  ]
+}

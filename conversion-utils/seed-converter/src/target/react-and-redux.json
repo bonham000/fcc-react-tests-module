@@ -1,0 +1,24 @@
+{
+  "name": "React and Redux",
+  "order": 7,
+  "time": "5 hours",
+  "helpRoom": "Help",
+  "required": [
+    {
+      "src": "https://cdnjs.cloudflare.com/ajax/libs/react/16.1.1/umd/react.development.js"
+    },
+    {
+      "src": "https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.1.1/umd/react-dom.development.js"
+    },
+    {
+      "src": "https://cdnjs.cloudflare.com/ajax/libs/redux/3.7.2/redux.js"
+    },
+    {
+      "src": "https://cdnjs.cloudflare.com/ajax/libs/react-redux/5.0.6/react-redux.js"
+    },
+    {
+      "src": "https://wzrd.in/standalone/deep-freeze@latest"
+    }
+  ],
+  "challenges": []
+}
