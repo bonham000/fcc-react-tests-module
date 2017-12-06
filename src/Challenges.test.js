@@ -171,20 +171,20 @@ const challenges = [
   { type: 'Redux', id: 'React_Redux_10', title: 'Moving Forward From Here'}
 ];
 
+const logFailure = ({ test, status, condition }) => {
+    if (!status) console.error(`Test ${test} failed: ${condition}`);
+}
+
+// Challenge Tester:
 export default () => {
 
-    console.log('Starting Tests:');
-
-    const logFailure = ({ test, status, condition }) => {
-        if (!status) console.error(`Test ${test} failed: ${condition}`);
-    }
-
+    console.warn('Starting Tests:');
     let challengesPassed = 0;
     let failures = [];
     let skipped = [];
 
     const filterSome = ({ id, title }) => {
-    const shouldFilter = (
+        const shouldFilter = (
             id !== 'React_04' &&
             id !== 'React_06' &&
             id !== 'React_12' &&

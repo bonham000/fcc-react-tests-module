@@ -176,8 +176,7 @@ const challenges = [
 ];
 
 /* Run All Challenge Tests: ************************************************************************/
-import ChallengeTester from './Challenges.test.js';
-ChallengeTester();
+require('./Challenges.test.js').default();
 /* *************************************************************************************************/
 
 export default class App extends React.Component {
