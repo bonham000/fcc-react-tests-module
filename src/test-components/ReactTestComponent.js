@@ -74,7 +74,7 @@ export default class ReactTestComponent extends React.Component {
 	}
 	testCode = (calledFirstTime = false) => {
 
-		console.clear();
+		// console.clear();
 		console.warn('Note: console output is cleared before the tests are run.');
 		console.warn(`Error suppression is currently ${this.props.errorSuppression ? 'on' : 'off'}.`);
 

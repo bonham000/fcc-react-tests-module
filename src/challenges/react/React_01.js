@@ -87,7 +87,6 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 2:
   try {
-    console.warn(jsx.props.children);
     assert.strictEqual(jsx.props.children, 'Hello JSX!', true, 'The h1 tag should include the text \'Hello JSX!\'');
     testResults[2].status = true;
   } catch (err) {
