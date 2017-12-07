@@ -4,7 +4,7 @@
 
 ---
 
-# freeCodeCamp Curriculum Migration:
+# Curriculum Migration:
 
 **Note: These challenges are currently being migrated into the FCC codebase.**
 
