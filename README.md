@@ -12,7 +12,13 @@ The now [live Beta Version of freeCodeCamp's expanded curriculum](http://beta.fr
 
 **Currently, we have finished the initial QA and review of all of these challenges and are quite happy with them. There is still a possibility that there are bugs or typos we have not found yet. If you find something you think needs to be fixed, or have a suggestion for any of the challenges, please open an Issue here first so we can discuss it.**
 
+# freeCodeCamp Curriculum Migration:
 
+**Notes:**
+
+- [Enzyme Docs](http://airbnb.io/enzyme/docs/api/ReactWrapper/name.html)
+- [Tests Converter Helper](https://react-test-converter.surge.sh/)
+- [freeCodeCamp PR](https://github.com/freeCodeCamp/freeCodeCamp/pull/16138)
 
 ---
 
