@@ -179,7 +179,7 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 2:
   try {
-    assert.strictEqual(mockedComponent.nodes[0].props.children[1].type.name, 'CurrentDate', error_2)
+    assert.strictEqual(mockedComponent.props().children[1].type.name, 'CurrentDate', error_2)
     testResults[2].status = true;
   } catch (err) {
     passed = false;
@@ -207,7 +207,7 @@ export const executeTests = (code, errorSuppression) => {
 
 // test 5:
   try {
-    assert.strictEqual(mountedComponent.find('p').node.innerHTML.includes(Date().substr(3)), true, error_5);
+    assert.strictEqual(mountedComponent.find('p').html().includes(Date().substr(3)), true, error_5);
     testResults[5].status = true;
   } catch (err) {
     passed = false;

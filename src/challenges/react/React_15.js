@@ -188,7 +188,7 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 2:
   try {
-    assert.strictEqual(mockedComponent.nodes[0].props.children[2].type.name, 'List', error_2)
+    assert.strictEqual(mockedComponent.props().children[2].type.name, 'List', error_2)
     testResults[2].status = true;
   } catch (err) {
     passed = false;
@@ -197,7 +197,7 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 3:
   try {
-    assert.strictEqual(mockedComponent.nodes[0].props.children[2].type.name, 'List', error_3)
+    assert.strictEqual(mockedComponent.props().children[2].type.name, 'List', error_3)
     testResults[3].status = true;
   } catch (err) {
     passed = false;
@@ -233,9 +233,11 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 7:
   try {
-    assert(mockRender.find("p").nodes[0].innerHTML === mockedComponent.props().children[2].props.tasks.join(", ") || mockRender.find("p").nodes[0].innerHTML === mockedComponent.props().children[2].props.tasks.join(","), error_7)
+    console.log(mockRender.find('p').first().html()); // in progress...
+    assert(mockRender.find("p").html() === mockedComponent.props().children[2].props().tasks.join(", ") || mockRender.find("p").html() === mockedComponent.props().children[2].props().tasks.join(","), error_7)
     testResults[7].status = true;
   } catch (err) {
+    // console.log(err);
     passed = false;
     testResults[7].status = false;
   }
