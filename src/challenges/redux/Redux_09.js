@@ -101,7 +101,7 @@ export const executeTests = (code, errorSuppression) => {
   // this code hijacks the user input to create an IIFE
   // which returns the store from Redux as an object
   // or whatever you need from the client code
-  const prepend = `(function() {`
+  const prepend = `(function() { const console = { log: () => null };`
   const append = `;\n return { store, ADD } })()`
   const modifiedCode = prepend.concat(code).concat(append);
 
@@ -119,6 +119,8 @@ export const executeTests = (code, errorSuppression) => {
   // save the store from redux to test here
   // now you can access the redux store methods
   try {
+    var React = require('react');
+    var Redux = require('redux');
     reduxCode = eval(es5)
     store = reduxCode.store;
     ADD = reduxCode.ADD

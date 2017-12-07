@@ -1,10 +1,14 @@
 /* eslint-disable */
 import React from 'react'
 import assert from 'assert'
-import { shallow, mount } from 'enzyme'
+
 import { transform } from 'babel-standalone'
 
 import Enzyme from '../Enzyme';
+const shallow = Enzyme.shallow;
+const mount = Enzyme.mount;
+const render = Enzyme.render;
+
 export const QA = true;
 
 // ---------------------------- define challenge title ----------------------------
@@ -134,6 +138,7 @@ export const executeTests = (code, errorSuppression) => {
   }
 
   try {
+    var React = require('react');
     mockedComponent = mount(React.createElement(eval(es5)));
   } catch (err) {
     passed = false;

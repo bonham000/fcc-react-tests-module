@@ -1,10 +1,14 @@
 /* eslint-disable */
 import React from 'react'
 import assert from 'assert'
-import { shallow } from 'enzyme'
+
 import { transform } from 'babel-standalone'
 
 import Enzyme from '../Enzyme';
+const shallow = Enzyme.shallow;
+const mount = Enzyme.mount;
+const render = Enzyme.render;
+
 export const QA = true;
 
 // -------------- define challenge title and challenge instructions --------------
@@ -111,6 +115,7 @@ export const executeTests = (code, errorSuppression) => {
 
   // shallow render the component with Enzyme
   try {
+    var React = require('react');
     shallowRender = shallow(React.createElement(eval(es5)))
   } catch (err) {
     passed = false;

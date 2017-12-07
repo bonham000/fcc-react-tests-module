@@ -1,10 +1,14 @@
 /* eslint-disable */
 import React from 'react'
 import assert from 'assert'
-import { shallow } from 'enzyme'
+
 import { transform } from 'babel-standalone'
 
 import Enzyme from '../Enzyme';
+const shallow = Enzyme.shallow;
+const mount = Enzyme.mount;
+const render = Enzyme.render;
+
 export const QA = true;
 
 // -------------- define challenge title and challenge instructions --------------
@@ -50,6 +54,26 @@ ReactDOM.render(JSX, document.getElementById('challenge-node'));`
 // ---------------------------- define challenge tests ----------------------------
 
 export const executeTests = (code, errorSuppression) => {
+  
+  let document;
+
+  if (process.env.NODE_ENV === 'test') {
+    const { JSDOM } = require('jsdom');
+    // Mock DOM document for ReactDOM.render method
+    const jsdom = new JSDOM(`<!doctype html>
+      <html>
+        <body>
+          <div id="challenge-node"></div>
+        </body>
+      </html>
+    `);
+    const { window } = jsdom;
+
+    // Mock DOM for ReactDOM tests
+    document = window.document;
+    global.window = window;
+    global.document = window.document;
+  };
 
   // clear the target DOM node before running the tests
   document.getElementById('challenge-node').innerHTML = '';
@@ -101,6 +125,8 @@ export const executeTests = (code, errorSuppression) => {
 
   // shallow render the component with Enzyme
   try {
+    var React = require('react');
+    var ReactDOM = require('react-dom');
     jsx = eval(es5);
   } catch (err) {
     passed = false;
@@ -111,6 +137,7 @@ export const executeTests = (code, errorSuppression) => {
     assert.strictEqual(jsx.type, 'div', 'The constant JSX should return a div element.');
     testResults[1].status = true;
   } catch (err) {
+    console.log(err);
     passed = false;
     testResults[1].status = false;
   }
@@ -120,6 +147,7 @@ export const executeTests = (code, errorSuppression) => {
     assert.strictEqual(jsx.props.children[0].type, 'h1', 'The div should contain an h1 tag as the first element.');
     testResults[2].status = true;
   } catch (err) {
+    console.log(err);
     passed = false;
     testResults[2].status = false;
   }
@@ -129,6 +157,7 @@ export const executeTests = (code, errorSuppression) => {
     assert.strictEqual(jsx.props.children[1].type, 'p', 'The div should contain a p tag as the second element.');
     testResults[3].status = true;
   } catch (err) {
+    console.log(err);
     passed = false;
     testResults[3].status = false;
   }
@@ -138,6 +167,7 @@ export const executeTests = (code, errorSuppression) => {
     assert.strictEqual(document.getElementById('challenge-node').childNodes[0].innerHTML, '<h1>Hello World</h1><p>Lets render this to the DOM</p>', 'The provided JSX element should render to the DOM node with id \'challenge-node\'.');
     testResults[4].status = true;
   } catch (err) {
+    console.log(err);
     passed = false;
     testResults[4].status = false;
   }

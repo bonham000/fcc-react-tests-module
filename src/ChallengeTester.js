@@ -1,8 +1,4 @@
 /* eslint-disable */
-import React from 'react';
-import axios from 'axios';
-import ReactTestComponent from './test-components/ReactTestComponent';
-import ReduxTestComponent from './test-components/ReduxTestComponent';
 
 // import React Challenges:
 import * as React_01 from './challenges/react/React_01'
@@ -175,102 +171,57 @@ const challenges = [
   { type: 'Redux', id: 'React_Redux_10', title: 'Moving Forward From Here'}
 ];
 
-/* In-app test runner: view status of all tests within browser console:
-require('./ChallengeTester.js').default();
-/* *************************************************************************************************/
+// Challenge Tester:
+export default () => {
 
-export default class App extends React.Component {
-	constructor(props) {
-		super(props);
-    this.state = {
-      errorSuppression: true,
-      challenges,
-      selectedChallenge: {
-        type: 'React',
-        id: 'React_01'
-      }
+    console.warn('Starting Tests:');
+    let challengesPassed = 0;
+    let failures = [];
+    let skipped = [];
+    
+    let totalFailedTests = 0;
+
+    const logFailure = ({ test, status, condition }) => {
+        if (!status) {
+          totalFailedTests ++;
+          console.error(`Test ${test} failed: ${condition}`);
+        }
     }
-	}
-  componentDidMount() {
-    document.addEventListener('keydown', this.handleKeyPress);
-    /* Record attendance to this page to a Heroku app... cool */
-    if (process.env.NODE_ENV === 'production') {
-      axios.post('https://sophisticated-counter.herokuapp.com/register-attendance')
-        .then(() => null)
-        .catch(() => null);
+
+    const filterSome = ({ id, title }) => {
+        const shouldFilter = (
+            id !== 'React_04' &&
+            id !== 'React_06' &&
+            id !== 'React_12' &&
+            id !== 'React_13'
+        );
+        if (!shouldFilter) skipped.push(`Skipped Challenge: ${id}: ${title}`);
+        return shouldFilter;
     }
-  }
-  handleKeyPress = (event) => {
-    if (event.keyCode === 39 && event.ctrlKey && event.metaKey && event.altKey) {
-      this.nextChallenge();
-    } else if (event.keyCode === 37 && event.ctrlKey && event.metaKey && event.altKey) {
-      this.previousChallenge();
-    }
-  }
-  select = (selectID) => {
-    const challenge = this.state.challenges.filter( (challenge) => challenge.id === selectID );
-    this.setState({
-      selectedChallenge: challenge[0]
+
+    challenges.slice(0).filter(filterSome).map(({ id, title }) => {
+        console.info(`Testing challenge ${id}`);
+        const {  solutionCode, executeTests } = eval(id);
+        {
+          const console = { log: () => null }; // block console.log in tests
+          let { passed, testResults } = executeTests(solutionCode, true);
+          if (passed) {
+              challengesPassed++;
+          } else {
+              failures.push(`Failed Challenge: ${id}: ${title}`);
+              testResults.map(logFailure);
+          }  
+        }
     });
-  }
-  findIndex = (identifier) => {
-    return this.state.challenges.reduce((index, challenge, idx) => {
-      return challenge.id === identifier ? idx : index;
-    }, null);
-  }
-  nextChallenge = () => {
-    const { challenges, selectedChallenge } = this.state;
-    let currentIndex = this.findIndex(selectedChallenge.id);
-    if (currentIndex <= challenges.length - 2) {
-      this.setState({
-        selectedChallenge: challenges[currentIndex + 1]
-      });
-    }
-  }
-  previousChallenge = () => {
-    const { challenges, selectedChallenge } = this.state;
-    let currentIndex = this.findIndex(selectedChallenge.id);
-    if (currentIndex > 0) {
-      this.setState({
-        selectedChallenge: challenges[currentIndex - 1]
-      });
-    }
-  }
-  toggleErrorSuppression = () => {
-    this.setState(prevState => ({
-      errorSuppression: !prevState.errorSuppression
-    }));
-  }
-  createComponent = (Component) => {
-    const { selectedChallenge, errorSuppression } = this.state;
-    const challenge = selectedChallenge.id;
-    return (
-     <Component
-      select={this.select}
-      QA={eval(challenge).QA}
-      selectedChallenge={challenge}
-      nextChallenge={this.nextChallenge}
-      challenges={this.state.challenges}
-      errorSuppression={errorSuppression}
-      seedCode={eval(challenge).seedCode}
-      liveRender={eval(challenge).liveRender}
-      previousChallenge={this.previousChallenge}
-      executeTests={eval(challenge).executeTests}
-      solutionCode={eval(challenge).solutionCode}
-      challengeText={eval(challenge).challengeText}
-      challengeTitle={eval(challenge).challengeTitle}
-      toggleErrorSuppression={this.toggleErrorSuppression}
-      challengeInstructions={eval(challenge).challengeInstructions} />
-    );
-  }
-  render() {
-    const { type } = this.state.selectedChallenge;
-    return (
-      <div>
-        {type === 'React'
-          ? this.createComponent(ReactTestComponent)
-          : this.createComponent(ReduxTestComponent)}
-      </div>
-    );
-  }
+
+    console.log('\n');
+    console.warn(`${challengesPassed} tests passed out of ${challenges.length} total challenges. Results:`);
+    console.log('\n');
+    console.warn(`${skipped.length} challenges skipped:`)
+    skipped.forEach(m => console.log(m));
+    console.warn(`${failures.length} challenges failed:`)
+    failures.forEach(m => console.log(m));
+    console.log('\n');
+    console.error(`Total Failed Test Cases: ${totalFailedTests}\n`);
 };
+

@@ -1,10 +1,14 @@
 /* eslint-disable */
 import React from 'react'
 import assert from 'assert'
-import { shallow } from 'enzyme'
+
 import { transform } from 'babel-standalone'
 
 import Enzyme from '../Enzyme';
+const shallow = Enzyme.shallow;
+const mount = Enzyme.mount;
+const render = Enzyme.render;
+
 export const QA = true;
 
 // ---------------------------- define challenge title ----------------------------

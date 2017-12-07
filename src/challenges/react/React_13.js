@@ -1,10 +1,14 @@
 /* eslint-disable */
 import React from 'react'
 import assert from 'assert'
-import { shallow } from 'enzyme'
+
 import { transform } from 'babel-standalone'
 
 import Enzyme from '../Enzyme';
+const shallow = Enzyme.shallow;
+const mount = Enzyme.mount;
+const render = Enzyme.render;
+
 export const QA = true;
 
 // ---------------------------- define challenge title ----------------------------
@@ -43,6 +47,25 @@ ReactDOM.render(<MyComponent />, document.getElementById('challenge-node'));`
 // ---------------------------- define challenge tests ----------------------------
 
 export const executeTests = (code, errorSuppression) => {
+
+  let document;
+  if (process.env.NODE_ENV === 'test') {
+    const { JSDOM } = require('jsdom');
+    // Mock DOM document for ReactDOM.render method
+    const jsdom = new JSDOM(`<!doctype html>
+      <html>
+        <body>
+          <div id="challenge-node"></div>
+        </body>
+      </html>
+    `);
+    const { window } = jsdom;
+
+    // Mock DOM for ReactDOM tests
+    document = window.document;
+    global.window = window;
+    global.document = window.document;
+  }
 
   // this will clear the target DOM node before the challenge code
   document.getElementById('challenge-node').innerHTML = '';
@@ -97,6 +120,8 @@ export const executeTests = (code, errorSuppression) => {
   // you can also use mount to perform a full render to the DOM environment
   // to do this you must import mount above; i.e. import { shallow, mount } from enzyme
   try {
+    var React = require('react');
+    var ReactDOM = require('react-dom');
     mockedComponent = shallow(React.createElement(eval(es5)));
   } catch (err) {
     passed = false;

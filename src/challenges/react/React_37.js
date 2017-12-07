@@ -1,10 +1,14 @@
 /* eslint-disable */
 import React from 'react'
 import assert from 'assert'
-import { mount } from 'enzyme'
+
 import { transform } from 'babel-standalone'
 
 import Enzyme from '../Enzyme';
+const shallow = Enzyme.shallow;
+const mount = Enzyme.mount;
+const render = Enzyme.render;
+
 export const QA = true;
 
 // ---------------------------- define challenge title ----------------------------
@@ -153,8 +157,9 @@ export const executeTests = (code, errorSuppression) => {
 
   // this applies an export to the user's code so
   // we can access their component here for tests
+  const blockConsole = `const console = { log: () => null };`;
   const exportScript = '\n export default Controller'
-  const modifiedCode = code.concat(exportScript);
+  const modifiedCode = blockConsole.concat(code.concat(exportScript));
 
   // test 0: try to transpile JSX, ES6 code to ES5 in browser
   try {
@@ -171,6 +176,7 @@ export const executeTests = (code, errorSuppression) => {
   // you can also use mount to perform a full render to the DOM environment
   // to do this you must import mount above; i.e. import { shallow, mount } from enzyme
   try {
+    var React = require('react');
     mockedComponent = mount(React.createElement(eval(es5)));
   } catch (err) {
     passed = false;
@@ -198,7 +204,7 @@ export const executeTests = (code, errorSuppression) => {
   let es5Child, lifecycleChild;
 
   const exportScriptChild = '\n export default OnlyEvens'
-  const modifiedCodeChild = code.concat(exportScriptChild);
+  const modifiedCodeChild = blockConsole.concat(code.concat(exportScriptChild));
 
   // test 0: try to transpile JSX, ES6 code to ES5 in browser
   try {
@@ -213,6 +219,7 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 2:
   try {
+    var React = require('react');
     lifecycleChild = React.createElement(eval(es5Child)).type.prototype.shouldComponentUpdate.toString().replace(/\s/g,'');
     assert.notStrictEqual(lifecycleChild, 'undefined', error_2);
     testResults[2].status = true;

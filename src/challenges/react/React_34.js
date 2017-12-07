@@ -1,10 +1,14 @@
 /* eslint-disable */
 import React from 'react'
 import assert from 'assert'
-import { mount } from 'enzyme'
+
 import { transform } from 'babel-standalone'
 
 import Enzyme from '../Enzyme';
+const shallow = Enzyme.shallow;
+const mount = Enzyme.mount;
+const render = Enzyme.render;
+
 export const QA = true;
 
 // ---------------------------- define challenge title ----------------------------
@@ -124,6 +128,7 @@ export const executeTests = (code, errorSuppression) => {
   // you can also use mount to perform a full render to the DOM environment
   // to do this you must import mount above; i.e. import { shallow, mount } from enzyme
   try {
+    var React = require('react');
     mockedComponent = mount(React.createElement(eval(es5)));
   } catch (err) {
     passed = false;
@@ -148,6 +153,7 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 2:
   try {
+    var React = require('react');
     const lifecycle = React.createElement(eval(es5)).type.prototype.componentDidMount.toString().replace(/\s/g,'');
     assert(
       lifecycle.includes('setTimeout') === true &&

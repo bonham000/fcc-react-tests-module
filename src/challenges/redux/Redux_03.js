@@ -76,6 +76,8 @@ export const executeTests = (code, errorSuppression) => {
   // save the store from redux to test here
   // now you can access the redux store methods
   try {
+    var React = require('react');
+    var Redux = require('redux');
     action = eval(es5)
   } catch (err) {
     passed = false;

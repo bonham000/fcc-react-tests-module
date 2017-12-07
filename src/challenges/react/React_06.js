@@ -1,10 +1,14 @@
 /* eslint-disable */
 import React from 'react'
 import assert from 'assert'
-import { shallow } from 'enzyme'
+
 import { transform } from 'babel-standalone'
 
 import Enzyme from '../Enzyme';
+const shallow = Enzyme.shallow;
+const mount = Enzyme.mount;
+const render = Enzyme.render;
+
 export const QA = true;
 
 // ---------------------------- define challenge title ----------------------------
@@ -56,6 +60,25 @@ ReactDOM.render(JSX, document.getElementById('challenge-node'));`
 // ---------------------------- define challenge tests ----------------------------
 
 export const executeTests = (code, errorSuppression) => {
+  
+  let document;
+  if (process.env.NODE_ENV === 'test') {
+    const { JSDOM } = require('jsdom');
+    // Mock DOM document for ReactDOM.render method
+    const jsdom = new JSDOM(`<!doctype html>
+      <html>
+        <body>
+          <div id="challenge-node"></div>
+        </body>
+      </html>
+    `);
+    const { window } = jsdom;
+
+    // Mock DOM for ReactDOM tests
+    document = window.document;
+    global.window = window;
+    global.document = window.document;
+  }
 
   document.getElementById('challenge-node').innerHTML = '';
 
@@ -105,6 +128,8 @@ export const executeTests = (code, errorSuppression) => {
   }
 
   try {
+    var React = require('react');
+    var ReactDOM = require('react-dom');
     jsx = eval(es5);
     mockedComponent = shallow(jsx);
   } catch (err) {

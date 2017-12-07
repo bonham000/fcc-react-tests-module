@@ -197,6 +197,9 @@ export const executeTests = (code, errorSuppression) => {
   // save the store from redux to test here
   // now you can access the redux store methods
   try {
+    var React = require('react');
+    var Redux = require('redux');
+    var ReduxThunk = require('redux-thunk');
     reduxCode = eval(es5);
 
     REQUESTING_DATA = reduxCode.REQUESTING_DATA;

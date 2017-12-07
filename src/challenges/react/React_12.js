@@ -1,10 +1,14 @@
 /* eslint-disable */
 import React from 'react'
 import assert from 'assert'
-import { shallow } from 'enzyme'
+
 import { transform } from 'babel-standalone'
 
 import Enzyme from '../Enzyme';
+const shallow = Enzyme.shallow;
+const mount = Enzyme.mount;
+const render = Enzyme.render;
+
 export const QA = true;
 
 // ---------------------------- define challenge title ----------------------------
@@ -102,6 +106,25 @@ const Vegetables = () => {
 
 export const executeTests = (code, errorSuppression) => {
 
+  let document;
+  if (process.env.NODE_ENV === 'test') {
+    const { JSDOM } = require('jsdom');
+    // Mock DOM document for ReactDOM.render method
+    const jsdom = new JSDOM(`<!doctype html>
+      <html>
+        <body>
+          <div id="challenge-node"></div>
+        </body>
+      </html>
+    `);
+    const { window } = jsdom;
+
+    // Mock DOM for ReactDOM tests
+    document = window.document;
+    global.window = window;
+    global.document = window.document;
+  }
+
   // clear the target DOM node before running the tests
   document.getElementById('challenge-node').innerHTML = '';
 
@@ -161,6 +184,8 @@ export const executeTests = (code, errorSuppression) => {
   // you can also use mount to perform a full render to the DOM environment
   // to do this you must import mount above; i.e. import { shallow, mount } from enzyme
   try {
+    var React = require('react');
+    var ReactDOM = require('react-dom');
     mockedComponent = shallow(React.createElement(eval(es5)));
   } catch (err) {
     passed = false;
@@ -181,7 +206,7 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 2:
   try {
-    assert.strictEqual(mockedComponent.nodes[0].props.children[1].type.name,'Fruits', error_2)
+    assert.strictEqual(mockedComponent.props().children[1].type.name,'Fruits', error_2)
     testResults[2].status = true;
   } catch (err) {
     passed = false;
@@ -190,7 +215,7 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 3:
   try {
-    assert.strictEqual(mockedComponent.nodes[0].props.children[2].type.name, 'Vegetables', error_3)
+    assert.strictEqual(mockedComponent.props().children[2].type.name, 'Vegetables', error_3)
     testResults[3].status = true;
   } catch (err) {
     passed = false;

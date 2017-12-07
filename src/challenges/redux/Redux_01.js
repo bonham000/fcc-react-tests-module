@@ -93,6 +93,8 @@ export const executeTests = (code, errorSuppression) => {
 
   // save the store from redux to test here
   try {
+    var React = require('react');
+    var Redux = require('redux');
     store = eval(es5)
   } catch (err) {
     passed = false;
