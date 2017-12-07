@@ -184,7 +184,7 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 2:
   try {
-    assert.strictEqual(mockedComponent.nodes[0].props.children[3].type.name, 'ReturnTempPassword', error_2)
+    assert.strictEqual(mockedComponent.props().children[3].type.name, 'ReturnTempPassword', error_2)
     testResults[2].status = true;
   } catch (err) {
     passed = false;
