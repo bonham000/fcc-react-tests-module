@@ -4,7 +4,7 @@ import assert from 'assert'
 import { shallow, mount} from 'enzyme'
 import { transform } from 'babel-standalone'
 
-// SET TO TRUE WHEN QA IS COMPLETE:
+import Enzyme from '../Enzyme';
 export const QA = true;
 
 // ---------------------------- define challenge title ----------------------------

@@ -4,7 +4,7 @@ import assert from 'assert'
 import { mount } from 'enzyme'
 import { transform } from 'babel-standalone'
 
-// SET TO TRUE WHEN QA IS COMPLETE:
+import Enzyme from '../Enzyme';
 export const QA = true;
 
 // ---------------------------- define challenge title ----------------------------
@@ -335,7 +335,7 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 4:
   try {
-    props = PresentationalComponent.node.props;
+    props = PresentationalComponent.props();
     assert.strictEqual(Array.isArray(props.messages), true, error_4);
     testResults[4].status = true;
   } catch (err) {
