@@ -1,5 +1,10 @@
 /* eslint-disable */
 
+/* NOTE: This file runs tests against the challenge and outputs in the browser console.
+ *
+ * Why not? ( ^-^)_旦
+ */
+
 // import React Challenges:
 import * as React_01 from './challenges/react/React_01'
 import * as React_02 from './challenges/react/React_02'
@@ -86,7 +91,6 @@ import * as React_Redux_10 from './challenges/react-redux/React_Redux_10'
 
 // create an array of challenge data to load into the page
 const challenges = [
-  // React challenges:
   { type: 'React', id: 'React_01', title: 'Create a Simple JSX Element'},
   { type: 'React', id: 'React_02', title: 'Create a Complex JSX Element'},
   { type: 'React', id: 'React_03', title: 'Add Comments in JSX'},
@@ -138,7 +142,6 @@ const challenges = [
   { type: 'React', id: 'React_49', title: 'Use Array.filter() to Dynamically Filter an Array'},
   { type: 'React', id: 'React_50', title: 'Render React on the Server with renderToString'},
 
-  // Redux challenges:
   { type: 'Redux', id: 'Redux_01', title: 'Create a Redux Store'},
   { type: 'Redux', id: 'Redux_02', title: 'Get the State of the Redux Store'},
   { type: 'Redux', id: 'Redux_03', title: 'Define a Redux Action'},
@@ -158,7 +161,6 @@ const challenges = [
   { type: 'Redux', id: 'Redux_17', title: 'Copy an Object with Object.assign'},
   { type: 'Redux', id: 'Redux_18', title: 'Use the ES6 Spread Operator with Objects'},
 
-  // React-Redux challenges:
   { type: 'React', id: 'React_Redux_01', title: 'Getting Started with React Redux'},
   { type: 'React', id: 'React_Redux_02', title: 'Manage State Locally First'},
   { type: 'Redux', id: 'React_Redux_03', title: 'Extract State Logic to Redux'},

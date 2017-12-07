@@ -1,5 +1,20 @@
 /* eslint-disable */
-import React from 'react';
+
+/* NOTE: About running these tests:
+ *
+ * All the challenges are imported and tested below. Uncommented the ones you do
+ * not want in the challenges[] array below to run one in isolation.
+ *
+ * Then, uncomment line 22 to see the test results for the challenge in the
+ * console.
+ *
+ * The boolean in line 21 (true) is there to turn error suppression on
+ * for some of the default logging we have.
+ *
+ * You can add additional logs in the test file as needed when updating the tests.
+ *
+ * Run `npm test` in terminal to get started. Have fun. ┻━┻ ︵ ლ(⌒-⌒ლ)
+ */
 
 const createJestTest = ({ id }) => {
   return test(id, () => {
@@ -95,7 +110,7 @@ import * as React_Redux_08 from './challenges/react-redux/React_Redux_08'
 import * as React_Redux_09 from './challenges/react-redux/React_Redux_09'
 import * as React_Redux_10 from './challenges/react-redux/React_Redux_10'
 
-// Challenge Array
+// Challenge Array, comment out to isolate challenges
 const challenges = [
   { id: 'React_01', title: 'Create a Simple JSX Element'},
   { id: 'React_02', title: 'Create a Complex JSX Element'},
@@ -179,5 +194,5 @@ const challenges = [
   { id: 'React_Redux_10', title: 'Moving Forward From Here'}
 ];
 
-// Run tests:
+// Run tests against each challenge
 challenges.forEach(createJestTest);
