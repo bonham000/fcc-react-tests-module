@@ -192,7 +192,4 @@ const challenges = [
   { id: 'React_Redux_08', title: 'Connect Redux to the Messages App'},
   { id: 'React_Redux_09', title: 'Extract Local State into Redux'},
   { id: 'React_Redux_10', title: 'Moving Forward From Here'}
-];
-
-// Run tests against each challenge
-challenges.forEach(createJestTest);
+].forEach(createJestTest); // Run tests against each challenge

@@ -145,7 +145,7 @@ export const executeTests = (code, errorSuppression) => {
 
   const error_1 = 'The TypesOfFood component should return a single div element.';
   const error_2 = 'The TypesOfFood component should return the Fruits component.';
-  const error_3 = 'The Fruits component should return the NonCitrus component, followed by the Citrus component.';
+  const error_3 = 'The Fruits component should return the NonCitrus component and the Citrus component.';
   const error_4 = 'The TypesOfFood component should return the Vegetables component below the Fruits component.';
 
   let testResults = [
@@ -210,7 +210,7 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 1:
   try {
-    assert.strictEqual(mockRender.node.type, 'div', error_1);
+    assert.strictEqual(mockRender.type(), 'div', error_1);
     testResults[1].status = true;
   } catch (err) {
     passed = false;
@@ -219,7 +219,7 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 2:
   try {
-    assert.strictEqual(mockRender.nodes[0].props.children[1].type.name, 'Fruits', error_2);
+    assert.strictEqual(mockRender.props().children[1].type.name, 'Fruits', error_2);
     testResults[2].status = true;
   } catch (err) {
     passed = false;
@@ -228,17 +228,21 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 3:
   try {
-    assert(mockedComponent.childAt(1).childAt(1).name() === 'NonCitrus' &&
-    mockedComponent.childAt(1).childAt(2).name() === 'Citrus', error_3)
+    assert(
+      mockedComponent.find('Fruits').children().find('NonCitrus') &&
+      mockedComponent.find('Fruits').children().find('Citrus'),
+      error_3
+    );
     testResults[3].status = true;
   } catch (err) {
+    console.log(err);
     passed = false;
     testResults[3].status = false;
   }
 
   // test 4:
   try {
-    assert.strictEqual(mockRender.nodes[0].props.children[2].type.name, 'Vegetables', error_4);
+    assert.strictEqual(mockRender.props().children[2].type.name, 'Vegetables', error_4);
     testResults[4].status = true;
   } catch (err) {
     passed = false;

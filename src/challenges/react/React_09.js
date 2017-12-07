@@ -164,7 +164,7 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 3:
   try {
-    assert.strictEqual(shallowRender.node.props.children[1].type.name, 'ChildComponent', error_3);
+    assert.strictEqual(shallowRender.props().children[1].type.name, 'ChildComponent', error_3);
     testResults[3].status = true;
   } catch (err) {
     passed = false;
