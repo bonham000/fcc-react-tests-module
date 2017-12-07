@@ -2,6 +2,20 @@
 
 ### This repository contains the code for the Alpha version of the freeCodeCamp React/Redux Curriculum Expansion.
 
+---
+
+# freeCodeCamp Curriculum Migration:
+
+**Note: These challenges are currently being migrated into the FCC codebase.**
+
+**Resources:**
+
+- [Enzyme Docs](http://airbnb.io/enzyme/docs/api/)
+- [Tests Converter Helper](https://react-test-converter.surge.sh/)
+- [freeCodeCamp PR](https://github.com/freeCodeCamp/freeCodeCamp/pull/16138)
+
+---
+
 ### Overview:
 
 * **50 React Challenges**
@@ -11,14 +25,6 @@
 The now [live Beta Version of freeCodeCamp's expanded curriculum](http://beta.freecodecamp.com/en/) redirects campers to [a separate host site for these React challenges](http://hysterical-amusement.surge.sh/), while we work on merging them into the FCC platform. Eventually, the goal is for all of these challenges to be moved directly into the [freeCodeCamp codebase](https://github.com/freeCodeCamp/freeCodeCamp).
 
 **Currently, we have finished the initial QA and review of all of these challenges and are quite happy with them. There is still a possibility that there are bugs or typos we have not found yet. If you find something you think needs to be fixed, or have a suggestion for any of the challenges, please open an Issue here first so we can discuss it.**
-
-# freeCodeCamp Curriculum Migration:
-
-**Notes:**
-
-- [Enzyme Docs](http://airbnb.io/enzyme/docs/api/ReactWrapper/name.html)
-- [Tests Converter Helper](https://react-test-converter.surge.sh/)
-- [freeCodeCamp PR](https://github.com/freeCodeCamp/freeCodeCamp/pull/16138)
 
 ---
 
