@@ -241,7 +241,7 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 4:
   try {
-
+    // NOTE: State not changing!!!
     mockedComponent.setState({inputValue: ''});
     const before = mockedComponent.state('inputValue');
     mockedComponent.find('input').simulate('change', {target: {value: 'TestInput'}});
