@@ -1,5 +1,12 @@
 /* eslint-disable */
 
+import assert from 'assert'
+import { transform } from 'babel-standalone'
+import Enzyme from './challenges/Enzyme';
+const shallow = Enzyme.shallow;
+const mount = Enzyme.mount;
+const render = Enzyme.render;
+
 /* NOTE: About running these tests:
  *
  * All the challenges are imported and tested below. Uncommented the ones you do
@@ -16,15 +23,56 @@
  * Run `npm test` in terminal to get started. Have fun. ┻━┻ ︵ ლ(⌒-⌒ლ)
  */
 
-const createJestTest = ({ id }) => {
-  return test(id, () => {
-    const solutionCode = eval(id).solutionCode
-    const executeTests = eval(id).executeTests;
-    const { passed, testResults } = executeTests(solutionCode, true);
-    // console.log(testResults);
-    expect(passed).toBe(true);
-  });
+// const createJestTest = ({ id }) => {
+//   return test(id, () => {
+//     const solutionCode = eval(id).solutionCode
+//     const executeTests = eval(id).executeTests;
+//     const { passed, testResults } = executeTests(solutionCode, true);
+//     // console.log(testResults);
+//     expect(passed).toBe(true);
+//   });
+// }
+
+const waitForIt = (fn) => {
+  return new Promise((resolve, reject) => {
+      return setTimeout(() => {
+        resolve(fn());
+      }, 250);
+    });
 }
+
+import { solutionCode, executeTests } from './challenges/react/React_37';
+
+test("Run Async Test", async () => {
+
+  const React = require('react');
+  const Redux = require('redux');
+  const ReactRedux = require('react-redux');
+  const ReduxThunk = require('redux-thunk');
+
+  const blockConsole = `const console = { log: () => null };`;
+  const exportScript = '\n export default Controller'
+  const modifiedCode = blockConsole.concat(solutionCode.concat(exportScript));
+
+  const es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
+  const mockedComponent = mount(React.createElement(eval(es5)));
+
+  const first = () => {
+    mockedComponent.setState({ value: 1000 });
+    return waitForIt(() => mockedComponent.state());
+  }
+
+  const second = () => {
+    mockedComponent.setState({ value: 10 });
+    return waitForIt(() => mockedComponent.state());
+  }
+
+  const firstValue = await first();
+  const secondValue = await second();
+
+  assert(firstValue.value === 1000 && secondValue.value === 10);
+
+});
 
 // import React Challenges:
 import * as React_01 from './challenges/react/React_01'
@@ -192,4 +240,4 @@ const challenges = [
   { id: 'React_Redux_08', title: 'Connect Redux to the Messages App'},
   { id: 'React_Redux_09', title: 'Extract Local State into Redux'},
   { id: 'React_Redux_10', title: 'Moving Forward From Here'}
-].forEach(createJestTest); // Run tests against each challenge
+]//.forEach(createJestTest); // Run tests against each challenge
