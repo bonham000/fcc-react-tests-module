@@ -212,7 +212,11 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 5:
   try {
-    assert.strictEqual(mountedComponent.find('strong').node.innerHTML, mountedComponent.find('ReturnTempPassword').node.props.tempPassword, error_5)
+    assert.strictEqual(
+      mountedComponent.find('strong').text(),
+      mountedComponent.find('ReturnTempPassword').props().tempPassword,
+      error_5
+    );
     testResults[5].status = true;
   } catch (err) {
     passed = false;

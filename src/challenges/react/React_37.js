@@ -230,11 +230,13 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 3:
   try {
-
-    mockedComponent.setState({ value: 0 });
-    const initial = mockedComponent.find('h1').node.innerText;
+    // NOTE: setState does not seem to be working here, rendering initial value
+    mockedComponent.setState({ value: 100 }, () => {
+      console.log(mockedComponent.state()); // 0
+    });
+    const initial = mockedComponent.find('h1').text(); // 0
     mockedComponent.setState({ value: 6 });
-    const after = mockedComponent.find('h1').node.innerText;
+    const after = mockedComponent.find('h1').text(); // 0
     assert.notStrictEqual(initial, after, error_3);
 
     testResults[3].status = true;
@@ -247,11 +249,11 @@ export const executeTests = (code, errorSuppression) => {
   try {
 
     mockedComponent.setState({ value: 0 });
-    const initial = mockedComponent.find('h1').node.innerText;
+    const initial = mockedComponent.find('h1').text();
     mockedComponent.setState({ value: 1 });
-    const odd = mockedComponent.find('h1').node.innerText;
+    const odd = mockedComponent.find('h1').text();
     mockedComponent.setState({ value: 2 });
-    const even = mockedComponent.find('h1').node.innerText;
+    const even = mockedComponent.find('h1').text();
 
     assert(
       initial === odd &&
