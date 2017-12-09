@@ -16,12 +16,18 @@
 
 **Migration Process:**
 
-- Update any failing tests in this repository to work with Enzyme 3.
+- Update any failing tests in this repository to work with Enzyme 3 (_see note_)
 - Migrate all the test cases into the FCC codebase (use [tests converter helper](https://react-test-converter.surge.sh/)).
 - Verify the solution code passes the tests using `npm test` in FCC.
 - Manually verify the solution code passes the tests in the FCC UI.
 - QA the challenges in the UI (descriptions are correct, formatting, etc.).
 - Ship it! :boat:
+
+_Note:_ Challenges here may be in one of three states:
+
+**1)** Good to go! Ready for migration.
+**2)** Enzyme tests need to be updated, otherwise good to go.
+**3)** There is a bigger problem, the tests need async support and need to be re-written.
 
 ---
 
