@@ -25,7 +25,7 @@
 
 _Note:_ **Challenges here may be in one of three states:**
 
-- Good to go! Ready for migration.
+- Good to go! Ready for migration out of the box.
 - Enzyme tests need to be updated, otherwise good to go.
 - There is a bigger problem, the tests need async support and need to be re-written.
 
