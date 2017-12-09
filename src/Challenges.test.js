@@ -67,6 +67,7 @@ const waitForIt = (fn) => {
     });
 }
 
+// import challenge here:
 import { solutionCode, executeTests } from './challenges/react/React_37';
 
 test("Run Async Test", async () => {
