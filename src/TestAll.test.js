@@ -1,4 +1,5 @@
 /* eslint-disable */
+/* All Challenge Test Runner */
 
 import assert from 'assert'
 import { transform } from 'babel-standalone'
@@ -7,99 +8,15 @@ const shallow = Enzyme.shallow;
 const mount = Enzyme.mount;
 const render = Enzyme.render;
 
-/* NOTE: About running these tests:
- *
- * All the challenges are imported and tested below. Uncommented the ones you do
- * not want in the challenges[] array below to run one in isolation.
- *
- * Then, uncomment line 22 to see the test results for the challenge in the
- * console.
- *
- * The boolean in line 21 (true) is there to turn error suppression on
- * for some of the default logging we have.
- *
- * You can add additional logs in the test file as needed when updating the tests.
- *
- * Run `npm test` in terminal to get started. Have fun. ┻━┻ ︵ ლ(⌒-⌒ლ)
- */
-
-// const createJestTest = ({ id }) => {
-//   return test(id, () => {
-//     const solutionCode = eval(id).solutionCode
-//     const executeTests = eval(id).executeTests;
-//     const { passed, testResults } = executeTests(solutionCode, true);
-//     // console.log(testResults);
-//     expect(passed).toBe(true);
-//   });
-// }
-
-// if (title.includes('Optimize')) {
-//   try {
-//     (() => {
-//       const result = eval(
-//         head + '\n;;' +
-//         solution + '\n;;' +
-//         tail + '\n;;' +
-//         test);
-
-//       if (typeof result === 'object' && result.then) {
-//         return Observable.fromPromise(result);
-//       }
-
-//     })();
-//   } catch (e) {
-//     console.log('Error:');
-//     console.log(e);
-//   }
-// }
-
-"class OnlyEvens extends React.Component {\n  constructor(props) {\n    super(props);\n  }\n  shouldComponentUpdate(nextProps, nextState) {\n    console.log('Should I update?');\n    // change code below this line\n    return nextProps.value % 2 === 0;\n    // change code above this line\n  }\n  componentWillReceiveProps(nextProps) {\n    console.log('Receiving new props...');\n  }\n  componentDidUpdate() {\n    console.log('Component re-rendered.');\n  }\n  render() {\n    return <h1>{this.props.value}</h1>\n  }\n};\n\nclass Controller extends React.Component {\n  constructor(props) {\n    super(props);\n    this.state = {\n      value: 0\n    };\n this.addValue = this.addValue.bind(this); \n  }\n  addValue() {\n    this.setState({\n      value: this.state.value + 1\n    });\n  }\n  render() {\n    return (\n      <div>\n        <button onClick={this.addValue}>Add</button>\n        <OnlyEvens value={this.state.value}/>\n      </div>\n    );\n  }\n};"
-
-"const waitForIt = (fn) => new Promise((resolve, reject) => setTimeout(() => resolve(fn()), 250));"
-
-"(async function() {  const mockedComponent = Enzyme.mount(React.createElement(Controller)); const first = () => { mockedComponent.setState({ value: 1000 }); return waitForIt(() => mockedComponent.state()); }; const second = () => { mockedComponent.setState({ value: 10 }); return waitForIt(() => mockedComponent.state()); }; const firstValue = await first(); const secondValue = await second(); return (firstValue.value === 1000 && secondValue.value === 10); })()"
-
-const waitForIt = (fn) => {
-  return new Promise((resolve, reject) => {
-      return setTimeout(() => {
-        resolve(fn());
-      }, 250);
-    });
+const createJestTest = ({ id }) => {
+  return test(id, () => {
+    const solutionCode = eval(id).solutionCode
+    const executeTests = eval(id).executeTests;
+    const { passed, testResults } = executeTests(solutionCode, true);
+    // console.log(testResults); Uncomment to see indivdual challenge output
+    expect(passed).toBe(true);
+  });
 }
-
-// import challenge here:
-import { solutionCode, executeTests } from './challenges/react/React_37';
-
-test("Run Async Test", async () => {
-
-  const React = require('react');
-  const Redux = require('redux');
-  const ReactRedux = require('react-redux');
-  const ReduxThunk = require('redux-thunk');
-
-  const blockConsole = `const console = { log: () => null };`;
-  const exportScript = '\n export default Controller'
-  const modifiedCode = blockConsole.concat(solutionCode.concat(exportScript));
-
-  const es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
-  const mockedComponent = mount(React.createElement(eval(es5)));
-
-  const first = () => {
-    mockedComponent.setState({ value: 1000 });
-    return waitForIt(() => mockedComponent.state());
-  };
-
-  const second = () => {
-    mockedComponent.setState({ value: 10 });
-    return waitForIt(() => mockedComponent.state());
-  };
-
-  const firstValue = await first();
-  const secondValue = await second();
-
-  assert(firstValue.value === 1000 && secondValue.value === 10);
-
-});
 
 // import React Challenges:
 import * as React_01 from './challenges/react/React_01'
@@ -267,4 +184,4 @@ const challenges = [
   { id: 'React_Redux_08', title: 'Connect Redux to the Messages App'},
   { id: 'React_Redux_09', title: 'Extract Local State into Redux'},
   { id: 'React_Redux_10', title: 'Moving Forward From Here'}
-]//.forEach(createJestTest); // Run tests against each challenge
+].forEach(createJestTest); // Run tests against each challenge
