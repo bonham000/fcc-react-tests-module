@@ -23,11 +23,11 @@
 - QA the challenges in the UI (descriptions are correct, formatting, etc.).
 - Ship it! :boat:
 
-_Note:_ Challenges here may be in one of three states:
+_Note:_ **Challenges here may be in one of three states:**
 
-**1.** Good to go! Ready for migration.
-**2.** Enzyme tests need to be updated, otherwise good to go.
-**3.** There is a bigger problem, the tests need async support and need to be re-written.
+- Good to go! Ready for migration.
+- Enzyme tests need to be updated, otherwise good to go.
+- There is a bigger problem, the tests need async support and need to be re-written.
 
 ---
 
