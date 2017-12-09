@@ -177,7 +177,11 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 3:
   try {
+    // NOTE: State not updating!!!
     mockedComponent.setState({ name: 'TestName' });
+
+    console.log(mockedComponent.state('name')); // 'CamperBot'
+
     const inspectProps = mockedComponent.find('Navbar').props().name;
     assert.strictEqual(inspectProps, 'TestName', error_3);
     testResults[3].status = true;
@@ -189,7 +193,7 @@ export const executeTests = (code, errorSuppression) => {
   // test 4:
   try {
     mockedComponent.setState({ name: 'TestName' });
-    assert.strictEqual(mockedComponent.find('h1').node.innerText.includes('TestName'), true, error_4);
+    assert.strictEqual(mockedComponent.find('h1').text().includes('TestName'), true, error_4);
     testResults[4].status = true;
   } catch (err) {
     passed = false;

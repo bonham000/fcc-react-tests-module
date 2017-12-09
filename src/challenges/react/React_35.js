@@ -221,16 +221,18 @@ export const executeTests = (code, errorSuppression) => {
 
 	// test 4:
 	try {
+
+    // NOTE: State does not seem to be updating!!!
+
 		var React = require('react');
 		lifecycle = React.createElement(eval(es5)).type.prototype.componentDidMount.toString().replace(/\s/g,'');
-
 		const beforeState = mockedComponent.state('message');
-		const beforeText = mockedComponent.find('h1').node.innerText;
+		const beforeText = mockedComponent.find('h1').text(); // ''
 
 		mockedComponent.instance().handleKeyPress({ keyCode: 13 });
 
 		const afterState = mockedComponent.state('message');
-		const afterText = mockedComponent.find('h1').node.innerText;
+		const afterText = mockedComponent.find('h1').text(); // ''
 
 		assert(
 			beforeState !== afterState &&
