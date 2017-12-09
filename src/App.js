@@ -176,7 +176,7 @@ const challenges = [
 ];
 
 /* In-app test runner: view status of all tests within browser console:
-require('./challenges/ChallengeTester.js').default();
+require('./utils/BrowserTester.js').default();
 /* *************************************************************************************************/
 
 export default class App extends React.Component {

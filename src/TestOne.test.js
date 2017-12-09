@@ -1,79 +1,31 @@
 /* eslint-disable */
-/* Single Challenge Test Runner */
-
-/* Import Challenge */
-import { solutionCode, executeTests } from './challenges/react/React_37';
+/* All Challenge Test Runner */
 
 import assert from 'assert'
 import { transform } from 'babel-standalone'
-
 import Enzyme from './challenges/Enzyme';
 const shallow = Enzyme.shallow;
 const mount = Enzyme.mount;
 const render = Enzyme.render;
 
-import { JSDOM } from 'jsdom';
-let document;
-const jsdom = new JSDOM(`<!doctype html>
-  <html>
-    <body>
-      <div id="challenge-node"></div>
-    </body>
-  </html>
-`);
-const { window } = jsdom;
-
-document = window.document;
+import { getDocument } from './utils';
+const { document, window } = getDocument();
 global.window = window;
 global.document = window.document;
 
-// const waitForIt = (fn) => {
-//   return new Promise((resolve, reject) => {
-//       return setTimeout(() => {
-//         resolve(fn());
-//       }, 250);
-//     });
-// }
+const createJestTest = ({ solutionCode, executeTests }) => {
+  return test('Running Test:', () => {
+    const { passed, testResults } = executeTests(solutionCode, true);
+    console.log(testResults);
+    expect(passed).toBe(true);
+  });
+}
 
-test("Run Async Test", async () => {
+// React Challenges:
+import * as React_15 from './challenges/react/React_15';
+// Redux Challenges:
+import * as Redux_01 from './challenges/redux/Redux_01';
+// React-Redux Challenges
+import * as React_Redux_01 from './challenges/react-redux/React_Redux_01';
 
-  const React = require('react');
-  const Redux = require('redux');
-  const ReactRedux = require('react-redux');
-  const ReduxThunk = require('redux-thunk');
-
-  const blockConsole = `const console = { log: () => null };`;
-  const exportScript = '\n export default Controller'
-  const modifiedCode = blockConsole.concat(solutionCode.concat(exportScript));
-
-  const es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
-
-  const waitForIt = (fn) => new Promise((resolve, reject) => setTimeout(() => resolve(fn()), 250));
-  const mockedComponent = mount(React.createElement(eval(es5)));
-
-  const first = () => {
-    mockedComponent.setState({ value: 8 });
-    return waitForIt(() => mockedComponent.find('h1').text());
-  };
-
-  const second = () => {
-    mockedComponent.setState({ value: 7 });
-    return waitForIt(() => mockedComponent.find('h1').text());
-  };
-  
-  const third = () => {
-    mockedComponent.setState({ value: 42 });
-    return waitForIt(() => mockedComponent.find('h1').text());
-  };
-  
-  const firstValue = await first();
-  const secondValue = await second();
-  const thirdValue = await third();
-
-  assert(
-    firstValue === '8' &&
-    secondValue === '8' &&
-    thirdValue === '42'
-  );
-
-});
+createJestTest(React_15);

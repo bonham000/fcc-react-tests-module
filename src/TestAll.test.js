@@ -8,12 +8,16 @@ const shallow = Enzyme.shallow;
 const mount = Enzyme.mount;
 const render = Enzyme.render;
 
+import { getDocument } from './utils';
+const { document, window } = getDocument();
+global.window = window;
+global.document = window.document;
+
 const createJestTest = ({ id }) => {
   return test(id, () => {
     const solutionCode = eval(id).solutionCode
     const executeTests = eval(id).executeTests;
     const { passed, testResults } = executeTests(solutionCode, true);
-    // console.log(testResults); Uncomment to see indivdual challenge output
     expect(passed).toBe(true);
   });
 }
@@ -154,7 +158,7 @@ const challenges = [
   { id: 'React_48', title: 'Give Sibling Elements a Unique Key Attribute'},
   { id: 'React_49', title: 'Use Array.filter() to Dynamically Filter an Array'},
   { id: 'React_50', title: 'Render React on the Server with renderToString'},
-  
+
   { id: 'Redux_01', title: 'Create a Redux Store'},
   { id: 'Redux_02', title: 'Get the State of the Redux Store'},
   { id: 'Redux_03', title: 'Define a Redux Action'},
@@ -173,7 +177,7 @@ const challenges = [
   { id: 'Redux_16', title: 'Remove an Item from an Array'},
   { id: 'Redux_17', title: 'Copy an Object with Object.assign'},
   { id: 'Redux_18', title: 'Use the ES6 Spread Operator with Objects'},
-  
+
   { id: 'React_Redux_01', title: 'Getting Started with React Redux'},
   { id: 'React_Redux_02', title: 'Manage State Locally First'},
   { id: 'React_Redux_03', title: 'Extract State Logic to Redux'},
@@ -184,4 +188,6 @@ const challenges = [
   { id: 'React_Redux_08', title: 'Connect Redux to the Messages App'},
   { id: 'React_Redux_09', title: 'Extract Local State into Redux'},
   { id: 'React_Redux_10', title: 'Moving Forward From Here'}
-].forEach(createJestTest); // Run tests against each challenge
+];
+
+challenges.forEach(createJestTest); // Execute Tests

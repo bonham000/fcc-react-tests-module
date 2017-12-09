@@ -9,6 +9,7 @@
     "test": "node scripts/test.js --env=jsdom",
     "one": "jest ./src/TestOne.test.js --watch",
     "all": "jest ./src/TestAll.test.js --watch",
+    "async": "jest ./src/TestAsync.test.js --watch",
     "convert": "cd conversion-utils/seed-converter && npm run cc",
     "tc": "cd conversion-utils/test-converter && live-server",
     "tc-update": "cd conversion-utils/test-converter && surge ./ --domain react-test-converter.surge.sh"

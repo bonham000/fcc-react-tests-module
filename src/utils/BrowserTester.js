@@ -180,7 +180,7 @@ export default () => {
     let challengesPassed = 0;
     let failures = [];
     let skipped = [];
-    
+
     let totalFailedTests = 0;
 
     const logFailure = ({ test, status, condition }) => {
@@ -212,7 +212,7 @@ export default () => {
           } else {
               failures.push(`Failed Challenge: ${id}: ${title}`);
               testResults.map(logFailure);
-          }  
+          }
         }
     });
 
@@ -226,4 +226,3 @@ export default () => {
     console.log('\n');
     console.error(`Total Failed Test Cases: ${totalFailedTests}\n`);
 };
-

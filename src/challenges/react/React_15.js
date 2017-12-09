@@ -161,87 +161,87 @@ export const executeTests = (code, errorSuppression) => {
     testResults[0].status = false;
     if (!errorSuppression) console.error(`Transpilation error: ${err}`);
   }
-
   // now we will try to shallow render the component with Enzyme's shallow method
   // you can also use mount to perform a full render to the DOM environment
   // to do this you must import mount above; i.e. import { shallow, mount } from enzyme
   try {
     var React = require('react');
-    mockedComponent = shallow(React.createElement(eval(es5)));
-    mockRender = mount(React.createElement(eval(es5)));
+    mockedComponent = mount(React.createElement(eval(es5)));
   } catch (err) {
     passed = false;
     if (!errorSuppression) console.error(`Invalid React code: ${err}`);
   }
-
   // run specific tests to verify the functionality
   // that the challenge is trying to assess:
 
   // test 1:
   try {
-    assert.strictEqual(mockedComponent.type(), 'div', error_1)
+    assert(mockedComponent.children().first().type() === 'div', error_1);
     testResults[1].status = true;
   } catch (err) {
     passed = false;
-    testResults[1].status = false;
+    testResults[1].tatus = false;
   }
-
   // test 2:
   try {
-    assert.strictEqual(mockedComponent.props().children[2].type.name, 'List', error_2)
+    assert(mockedComponent.children().first().childAt(2).name() === 'List', error_2)
     testResults[2].status = true;
   } catch (err) {
     passed = false;
     testResults[2].status = false;
   }
-
   // test 3:
   try {
-    assert.strictEqual(mockedComponent.props().children[2].type.name, 'List', error_3)
+    assert(mockedComponent.children().first().childAt(4).name() === 'List', error_3)
     testResults[3].status = true;
   } catch (err) {
     passed = false;
     testResults[3].status = false;
   }
-
   // test 4:
   try {
-    assert(Array.isArray(mockedComponent.props().children[4].props.tasks) === true, error_4)
+    assert(
+      Array.isArray(mockedComponent.find('List').get(0).props.tasks) &&
+      Array.isArray(mockedComponent.find('List').get(1).props.tasks),
+      error_4
+    );
     testResults[4].status = true;
   } catch (err) {
     passed = false;
     testResults[4].status = false;
   }
-
   // test 5:
   try {
-    assert(mockedComponent.props().children[2].props.tasks.length >= 2, error_5)
+    assert(mockedComponent.find('List').get(0).props.tasks.length >= 2, error_5)
     testResults[5].status = true;
   } catch (err) {
     passed = false;
     testResults[5].status = false;
   }
-
   // test 6:
   try {
-    assert(mockedComponent.props().children[4].props.tasks.length >= 3, error_6)
+    assert(mockedComponent.find('List').get(1).props.tasks.length >= 3, error_6)
     testResults[6].status = true;
   } catch (err) {
     passed = false;
     testResults[6].status = false;
   }
-
+ 
   // test 7:
   try {
-    console.log(mockRender.find('p').first().html()); // in progress...
-    assert(mockRender.find("p").html() === mockedComponent.props().children[2].props().tasks.join(", ") || mockRender.find("p").html() === mockedComponent.props().children[2].props().tasks.join(","), error_7)
+    assert(
+      mockedComponent.find("p").get(0).props.children === mockedComponent.find('List').get(0).props.tasks.join(", ") &&
+      mockedComponent.find("p").get(1).props.children === mockedComponent.find('List').get(1).props.tasks.join(", "),
+      error_7
+    );
+
     testResults[7].status = true;
   } catch (err) {
     // console.log(err);
     passed = false;
     testResults[7].status = false;
   }
-
+ 
   return {
     passed,
     testResults
