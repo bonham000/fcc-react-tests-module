@@ -33,6 +33,32 @@ const render = Enzyme.render;
 //   });
 // }
 
+// if (title.includes('Optimize')) {
+//   try {
+//     (() => {
+//       const result = eval(
+//         head + '\n;;' +
+//         solution + '\n;;' +
+//         tail + '\n;;' +
+//         test);
+
+//       if (typeof result === 'object' && result.then) {
+//         return Observable.fromPromise(result);
+//       }
+
+//     })();
+//   } catch (e) {
+//     console.log('Error:');
+//     console.log(e);
+//   }
+// }
+
+"class OnlyEvens extends React.Component {\n  constructor(props) {\n    super(props);\n  }\n  shouldComponentUpdate(nextProps, nextState) {\n    console.log('Should I update?');\n    // change code below this line\n    return nextProps.value % 2 === 0;\n    // change code above this line\n  }\n  componentWillReceiveProps(nextProps) {\n    console.log('Receiving new props...');\n  }\n  componentDidUpdate() {\n    console.log('Component re-rendered.');\n  }\n  render() {\n    return <h1>{this.props.value}</h1>\n  }\n};\n\nclass Controller extends React.Component {\n  constructor(props) {\n    super(props);\n    this.state = {\n      value: 0\n    };\n this.addValue = this.addValue.bind(this); \n  }\n  addValue() {\n    this.setState({\n      value: this.state.value + 1\n    });\n  }\n  render() {\n    return (\n      <div>\n        <button onClick={this.addValue}>Add</button>\n        <OnlyEvens value={this.state.value}/>\n      </div>\n    );\n  }\n};"
+
+"const waitForIt = (fn) => new Promise((resolve, reject) => setTimeout(() => resolve(fn()), 250));"
+
+"(async function() {  const mockedComponent = Enzyme.mount(React.createElement(Controller)); const first = () => { mockedComponent.setState({ value: 1000 }); return waitForIt(() => mockedComponent.state()); }; const second = () => { mockedComponent.setState({ value: 10 }); return waitForIt(() => mockedComponent.state()); }; const firstValue = await first(); const secondValue = await second(); return (firstValue.value === 1000 && secondValue.value === 10); })()"
+
 const waitForIt = (fn) => {
   return new Promise((resolve, reject) => {
       return setTimeout(() => {
@@ -60,12 +86,12 @@ test("Run Async Test", async () => {
   const first = () => {
     mockedComponent.setState({ value: 1000 });
     return waitForIt(() => mockedComponent.state());
-  }
+  };
 
   const second = () => {
     mockedComponent.setState({ value: 10 });
     return waitForIt(() => mockedComponent.state());
-  }
+  };
 
   const firstValue = await first();
   const secondValue = await second();
