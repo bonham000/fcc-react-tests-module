@@ -142,8 +142,7 @@ export const executeTests = (code, errorSuppression) => {
 	// test 2:
 	try {
     assert(
-      mockedComponent.children().type() === 'div' &&
-      mockedComponent.children().children().type() === 'h1',
+      /<div><h1>.*<\/h1><\/div>/.test(mockedComponent.html()),
       error_2
     );
 		testResults[2].status = true;
