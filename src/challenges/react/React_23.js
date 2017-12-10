@@ -163,7 +163,7 @@ export const executeTests = (code, errorSuppression) => {
 	// test 4:
 	try {
     // Async test!
-    // "(async function() { const waitForIt = (fn) => new Promise((resolve, reject) => setTimeout(() => resolve(fn()), 250)); const mockedComponent = Enzyme.mount(React.createElement(MyComponent)); const first = () => { mockedComponent.setState({ name: 'TestName' });   return waitForIt(() => mockedComponent.contains(<h1>TestName</h1>)); }; const firstValue = await first(); return firstValue; })(); // message: The rendered <code>h1</code> header should contain text rendered from the component's state.",
+    // "(async function() { const waitForIt = (fn) => new Promise((resolve, reject) => setTimeout(() => resolve(fn()), 250)); const mockedComponent = Enzyme.mount(React.createElement(MyComponent)); const first = () => { mockedComponent.setState({ name: 'TestName' });   return waitForIt(() => mockedComponent.html()); }; const firstValue = await first(); return firstValue === '<div><h1>TestName</h1></div>'; })(); // message: The rendered <code>h1</code> header should contain text rendered from the component's state.",
 		mockedComponent.setState({name: 'TestName'});
 		assert.strictEqual(mockedComponent.contains(<h1>TestName</h1>), true, error_4);
 		testResults[4].status = true;

@@ -165,6 +165,8 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 3:
   try {
+    // Async test!
+    // "(async function() { const waitForIt = (fn) => new Promise((resolve, reject) => setTimeout(() => resolve(fn()), 250)); const mockedComponent = Enzyme.mount(React.createElement(MyComponent)); const first = () => { mockedComponent.setState({ name: 'TestName' }); return waitForIt(() => mockedComponent.html()); }; const firstValue = await first(); return /<h1>TestName<\\/h1>/.test(firstValue); })(); // message: The rendered <code>h1</code> header should contain text rendered from the component's state.",
     mockedComponent.setState({name: 'TestName'});
     assert.strictEqual(mockedComponent.contains(<h1>TestName</h1>), true, error_3);
     testResults[3].status = true;
@@ -175,6 +177,8 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 4:
   try {
+    // Async test!
+    // "(async function() { const waitForIt = (fn) => new Promise((resolve, reject) => setTimeout(() => resolve(fn()), 250)); const mockedComponent = Enzyme.mount(React.createElement(MyComponent)); const first = () => { mockedComponent.setState({ name: 'Before' }); return waitForIt(() => mockedComponent.state('name')); }; const second = () => { mockedComponent.setState({ name: 'React Rocks!' }); return waitForIt(() => mockedComponent.state('name')); }; const firstValue = await first(); const secondValue = await second(); return firstValue === 'Before' && secondValue === 'React Rocks!'; })(); // message: Calling the <code>handleClick</code> method on <code>MyComponent</code> should set the name property in state to equal <code>React Rocks!</code>.",
     mockedComponent.setState({name: 'Before'});
     const before = mockedComponent.state('name');
     // run click method and test state afterwards

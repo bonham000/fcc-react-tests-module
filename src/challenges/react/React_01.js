@@ -71,7 +71,7 @@ export const executeTests = (code, errorSuppression) => {
     testResults[0].status = false;
     if (!errorSuppression) console.error(`Transpilation error: ${err}`);
   }
-  
+
   // shallow render the component with Enzyme
   try {
     var React = require('react');
