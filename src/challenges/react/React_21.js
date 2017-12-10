@@ -176,7 +176,7 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 4:
   try {
-    assert.strictEqual(mockedComponent.find('h1').node.innerText, initialState.name, error_4);
+    assert.strictEqual(mockedComponent.find('h1').text(), initialState.name, error_4);
     testResults[4].status = true;
   } catch (err) {
     passed = false;

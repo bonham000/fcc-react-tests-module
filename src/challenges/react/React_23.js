@@ -27,7 +27,7 @@ export const seedCode =
   constructor(props) {
     super(props);
     this.state = {
-      name: 'Free Code Camp'
+      name: 'freeCodeCamp'
     }
   }
   render() {
@@ -50,7 +50,7 @@ export const solutionCode =
   constructor(props) {
     super(props);
     this.state = {
-      name: 'Free Code Camp'
+      name: 'freeCodeCamp'
     }
   }
   render() {
@@ -72,10 +72,10 @@ export const solutionCode =
 export const executeTests = (code, errorSuppression) => {
 
 	const error_0 = 'Your JSX code should transpile successfully.';
-	const error_1 = 'MyComponent should have a key \'name\' with value \'Free Code Camp\' stored in its state.';
-	const error_2 = 'MyComponent should render an h1 tag.';
+	const error_1 = 'MyComponent should have a key \'name\' with value \'freeCodeCamp\' stored in its state.';
+	const error_2 = 'MyComponent should render an h1 header enclosed in a single div.';
 	const error_3 = 'The rendered h1 tag should include a reference to {name}.';
-	const error_4 = 'The rendered h1 tag should contain text rendered from the component\'s state.';
+	const error_4 = 'The rendered h1 header should contain text rendered from the component\'s state.';
 
 	let testResults = [
 		{
@@ -132,7 +132,7 @@ export const executeTests = (code, errorSuppression) => {
 
 	// test 1:
 	try {
-		assert.strictEqual(mockedComponent.state('name'), 'Free Code Camp', error_1);
+		assert.strictEqual(mockedComponent.state('name'), 'freeCodeCamp', error_1);
 		testResults[1].status = true;
 	} catch (err) {
 		passed = false;
@@ -141,7 +141,10 @@ export const executeTests = (code, errorSuppression) => {
 
 	// test 2:
 	try {
-		assert.strictEqual(mockedComponent.children().type(), 'h1', error_2);
+    assert(
+      /<div><h1>.*<\/h1><\/div>/.test(mockedComponent.html()),
+      error_2
+    );
 		testResults[2].status = true;
 	} catch (err) {
 		passed = false;
@@ -150,10 +153,7 @@ export const executeTests = (code, errorSuppression) => {
 
 	// test 3:
 	try {
-		assert(
-			modifiedCode.includes('<h1>') &&
-			modifiedCode.includes('</h1>') &&
-			modifiedCode.includes('{name}'), error_3);
+		assert(/<h1>\n*\s*\{\s*name\s*\}\s*\n*<\/h1>/.test(modifiedCode), error_3);
 		testResults[3].status = true;
 	} catch (err) {
 		passed = false;
@@ -162,6 +162,8 @@ export const executeTests = (code, errorSuppression) => {
 
 	// test 4:
 	try {
+    // Async test!
+    // "(async function() { const waitForIt = (fn) => new Promise((resolve, reject) => setTimeout(() => resolve(fn()), 250)); const mockedComponent = Enzyme.mount(React.createElement(MyComponent)); const first = () => { mockedComponent.setState({ name: 'TestName' });   return waitForIt(() => mockedComponent.html()); }; const firstValue = await first(); return firstValue === '<div><h1>TestName</h1></div>'; })(); // message: The rendered <code>h1</code> header should contain text rendered from the component's state.",
 		mockedComponent.setState({name: 'TestName'});
 		assert.strictEqual(mockedComponent.contains(<h1>TestName</h1>), true, error_4);
 		testResults[4].status = true;

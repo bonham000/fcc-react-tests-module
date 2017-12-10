@@ -67,3 +67,15 @@ test("Run Async Test", async () => {
   );
 
 });
+
+/*
+(async function() {
+  const waitForIt = (fn) => new Promise((resolve, reject) => setTimeout(() => resolve(fn()), 250));
+  const mockedComponent = Enzyme.mount(React.createElement(MyComponent));
+  const first = () => { mockedComponent.setState({ name: 'Before' }); return waitForIt(() => mockedComponent.state('name')); };
+  const second = () => { mockedComponent.setState({ name: 'React Rocks!' }); return waitForIt(() => mockedComponent.state('name')); };
+  const firstValue = await first();
+  const secondValue = await second();
+  return firstValue === 'Before' && secondValue === 'React Rocks!';
+})(); // message: Calling the <code>handleClick</code> method on <code>MyComponent</code> should set the name property in state to equal <code>React Rocks!</code>.",
+*/
