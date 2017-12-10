@@ -195,7 +195,7 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 2:
   try {
-    props = mockedComponent.find('Presentational').node.props;
+    props = mockedComponent.find('Presentational').props();
     assert.strictEqual(props.messages, '__INITIAL__STATE__', error_2);
     testResults[2].status = true;
   } catch (err) {

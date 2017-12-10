@@ -289,14 +289,10 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 3:
   try {
-
-    let parent = mockedComponent.find('DisplayMessages').root.node._reactInternalInstance._currentElement.type.name;
     assert(
-      mockedComponent.find('DisplayMessages').length === 1 &&
-      parent === 'AppWrapper',
+      mockedComponent.find('AppWrapper').find('DisplayMessages').length === 1,
       error_3
     );
-
     testResults[3].status = true;
   } catch (err) {
     passed = false;

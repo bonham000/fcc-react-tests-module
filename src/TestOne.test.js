@@ -26,6 +26,6 @@ import * as React_15 from './challenges/react/React_15';
 // Redux Challenges:
 import * as Redux_01 from './challenges/redux/Redux_01';
 // React-Redux Challenges
-import * as React_Redux_01 from './challenges/react-redux/React_Redux_01';
+import * as React_Redux_04 from './challenges/react-redux/React_Redux_04';
 
-createJestTest(React_15);
+createJestTest(React_Redux_04);

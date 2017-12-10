@@ -122,7 +122,7 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 1:
   try {
-    assert.strictEqual(mockedComponent.find('div').node.innerHTML, '', error_1);
+    assert.strictEqual(mockedComponent.find('div').text(), '', error_1);
     testResults[1].status = true;
   } catch (err) {
     passed = false;
