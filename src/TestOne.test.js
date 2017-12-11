@@ -13,19 +13,20 @@ const { document, window } = getDocument();
 global.window = window;
 global.document = window.document;
 
-const createJestTest = ({ solutionCode, executeTests }) => {
+const createJestTest = ({ challengeTitle, solutionCode, executeTests }) => {
   return test('Running Test:', () => {
     const { passed, testResults } = executeTests(solutionCode, true);
+    console.log(`Testing Challenge: ${challengeTitle}`);
     console.log(testResults);
     expect(passed).toBe(true);
   });
 }
 
 // React Challenges:
-import * as React_42 from './challenges/react/React_42';
+import * as React_40 from './challenges/react/React_40';
 // Redux Challenges:
 import * as Redux_01 from './challenges/redux/Redux_01';
 // React-Redux Challenges
 import * as React_Redux_09 from './challenges/react-redux/React_Redux_09';
 
-createJestTest(React_42);
+createJestTest(React_40);

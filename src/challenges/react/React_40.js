@@ -236,7 +236,7 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 2:
   try {
-    assert.strictEqual(shallowRender.nodes[0].props.children[0].type, "input", error_2);
+    assert.strictEqual(mockedComponent.children().childAt(0).name(), "input", error_2);
     testResults[2].status = true;
   } catch (err) {
     passed = false;
@@ -245,7 +245,7 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 3:
   try {
-    assert.strictEqual(shallowRender.nodes[0].props.children[2].type, "button", error_2);
+    assert.strictEqual(mockedComponent.children().childAt(2).name(), "button", error_2);
     testResults[3].status = true;
   } catch (err) {
     passed = false;
@@ -264,7 +264,7 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 3:
   try {
-    assert(mockedComponent.find('p').length === 1 && mockedComponent.find('p').nodes[0].innerHTML === '', error_6)
+    assert(mockedComponent.find('p').length === 1 && mockedComponent.find('p').text() === '', error_6)
     testResults[5].status = true;
   } catch (err) {
     passed = false;

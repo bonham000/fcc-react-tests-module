@@ -32,15 +32,16 @@ test("Run Async Test", async () => {
   const es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
   const waitForIt = (fn) => new Promise((resolve, reject) => setTimeout(() => resolve(fn()), 250));
   const mockedComponent = mount(React.createElement(eval(es5)));
+
   // const mockedComponent = mount(React.createElement(MyComponent));
   const state_1 = () => { mockedComponent.setState({display: false}); return waitForIt(() => mockedComponent )};
   const updated = await state_1();
 
     assert(
-      updated.find('div').length === 1 &&
-      updated.find('div').children().length === 1 &&
-      updated.find('button').length === 1 &&
-      updated.find('h1').length === 0,
+      mockedComponent.find('div').length === 1 &&
+      mockedComponent.find('div').children().length === 1 &&
+      mockedComponent.find('button').length === 1 &&
+      mockedComponent.find('h1').length === 0,
     );
 
 });
