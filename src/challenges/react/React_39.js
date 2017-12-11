@@ -186,9 +186,9 @@ export const executeTests = (code, errorSuppression) => {
   }
 
   try {
-    assert(testRender.nodes[0].props.style.color === "purple" &&
-      testRender.nodes[0].props.style.fontSize === 40 &&
-      testRender.nodes[0].props.style.border === "2px solid purple", error_6);
+    assert(testRender.props().style.color === "purple" &&
+      testRender.props().style.fontSize === 40 &&
+      testRender.props().style.border === "2px solid purple", error_6);
     testResults[6].status = true;
   } catch (err) {
     passed = false;

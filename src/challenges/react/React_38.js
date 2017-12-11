@@ -110,7 +110,7 @@ export const executeTests = (code, errorSuppression) => {
   // to do this you must import mount above; i.e. import { shallow, mount } from enzyme
   try {
     var React = require('react');
-    testRender = shallow(React.createElement(eval(es5)));
+    mockedComponent = mount(React.createElement(eval(es5)));
   } catch (err) {
     passed = false;
     if (!errorSuppression) console.error(`Invalid React code: ${err}`);
@@ -121,7 +121,7 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 1:
   try {
-    assert.strictEqual(testRender.type(), 'div', error_1);
+    assert.strictEqual(mockedComponent.children().type(), 'div', error_1);
     testResults[1].status = true;
   } catch (err) {
     passed = false;
@@ -130,7 +130,7 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 2:
   try {
-    assert.strictEqual(testRender.nodes[0].props.style.color, "red", error_2);
+    assert.strictEqual(mockedComponent.children().props().style.color, "red", error_2);
     testResults[2].status = true;
   } catch (err) {
     passed = false;
@@ -140,9 +140,9 @@ export const executeTests = (code, errorSuppression) => {
   // test 2:
   try {
     assert(
-      testRender.nodes[0].props.style.fontSize === 72 ||
-      testRender.nodes[0].props.style.fontSize === '72' ||
-      testRender.nodes[0].props.style.fontSize === '72px',
+      mockedComponent.children().props().style.fontSize === 72 ||
+      mockedComponent.children().props().style.fontSize === '72' ||
+      mockedComponent.children().props().style.fontSize === '72px',
       error_3
     );
     testResults[3].status = true;

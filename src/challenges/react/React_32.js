@@ -257,7 +257,7 @@ export const executeTests = (code, errorSuppression) => {
   // test 5:
   try {
     mockedComponent.setState({ inputValue: 'TestName' });
-    assert.strictEqual(mockedComponent.find('p').node.innerText.includes('TestName'), true, error_5);
+    assert.strictEqual(mockedComponent.find('p').text().includes('TestName'), true, error_5);
     testResults[5].status = true;
   } catch (err) {
     passed = false;
