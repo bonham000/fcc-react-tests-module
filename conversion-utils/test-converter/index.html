@@ -11,15 +11,16 @@
 <body>
 
 	<h3>Test and Assertion Statement:</h3>
-  
+
   <input
   type="checkbox"
+  checked=true
   onClick="updateCheckbox();"
   id="conversionTypeCheckbox"/>
   <label id="checkboxLabel">
-    <code>Simple return statement (test is one-line condition)</code>
+    <code>IIFE (test is multiline condition with setup variables)</code>
   </label>
-  
+
   <br>
   <br>
 
@@ -27,13 +28,13 @@
   id="test"
   onkeydown="handleChange();"
   placeholder="(Simple example):
-    
+
 jsx.type === 'div'
-    
+
 (IIFE example):
-  
+
 mockedComponent.setState({display: false});
-return 
+return
 mockedComponent.find('div').length === 1 &&
 mockedComponent.find('button').length === 1 &&
 mockedComponent.find('h1').length === 0"
@@ -43,17 +44,17 @@ mockedComponent.find('h1').length === 0"
 
 	<textarea
   id="message"
-  onkeydown="handleChange();"  
+  onkeydown="handleChange();"
   placeholder="(example):
-  
-When display is set to false, only a div and button should render."  
+
+When display is set to false, only a div and button should render."
   ></textarea>
 
   <br>
-  
+
   <h3>Transformed Output:</h3>
 	<textarea id="dummy" placeholder="Converted output shown here"></textarea>
-  
+
   <button onClick="convert()">Convert It! (Cmd + Enter)</button>
   <h1 id="success"></h1>
 

@@ -233,7 +233,7 @@ export const executeTests = (code, errorSuppression) => {
   try {
     assert(
       mockedComponent.find('MyToDoList').children().childAt(2).type() === 'button',
-      error_2
+      error_3
     );
     testResults[3].status = true;
   } catch (err) {

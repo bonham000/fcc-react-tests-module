@@ -43,18 +43,20 @@ const convert = () => {
 
 	const { value: test } = testField;
 	const { value: message } = messageField;
-	
+
 	if (!test) {
 		confirmation("No Test Statement!");
 		return;
 	}
-	
+
 	if (!message) {
 		confirmation("No Test Message!");
 		return;
 	}
 
 	const convertedTest = test
+		.replace(/mount/g, 'Enzyme.mount') // Convert Enzyme mount
+		.replace(/shallow/g, 'Enzyme.shallow') // Convert Enzyme shallow
 		.replace(/\n/g, ' ') // multi-line string to single-line
 		.replace(/\s\s+/g, ' ') // replace multiple spaces
 		.replace(/;;+/g, ';'); // replace multiple semicolons
@@ -64,7 +66,7 @@ const convert = () => {
 	const testLine = !checked
 		? `assert(${convertedTest}, ${convertedMessage});`
 		: `assert((function() { ${convertedTest} })(), ${convertedMessage});`;
-		
+
 	const result = `"${testLine}",`;
 
 	document.getElementById("dummy").value = result;
@@ -73,7 +75,7 @@ const convert = () => {
 	document.execCommand("Copy");
 	confirmation("Copied to clipboard!");
 
-	testField.value = '';
+	// testField.value = '';
 	messageField.value = '';
 	testField.focus();
 
