@@ -177,8 +177,8 @@ export const executeTests = (code, errorSuppression) => {
   // test 4:
   try {
     assert(
-      mockedComponent.find('ul').node.childNodes.length === 6 &&
-      mockedComponent.find('ul').node.childNodes[0].tagName === 'LI' &&
+      mockedComponent.find('ul').children().length === 6 &&
+      mockedComponent.find('ul').childAt(0).name() === 'li' &&
       mockedComponent.find('li').length === 6,
       error_4);
     testResults[4].status = true;
@@ -189,14 +189,21 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 5:
   try {
-    let li = mockedComponent.find('li');
-    let node1 = li.nodes[1].outerHTML;
-    let node2 = li.nodes[2].outerHTML;
-    let match1 = node1.match(/\$/);
-    let match2 = node2.match(/\$/);
+
+    const shallowComponent = shallow(React.createElement(eval(es5)));
+    const ul = shallowComponent.find('ul');
+    
+    const keys = new Set([
+      ul.childAt(0).key(),
+      ul.childAt(1).key(),
+      ul.childAt(2).key(),
+      ul.childAt(3).key(),
+      ul.childAt(4).key(),
+      ul.childAt(5).key(),
+    ]);
+    
     assert(
-      code.replace(/\s/g, '').includes('<likey={') &&
-      node1[match1.index + 1] !== node2[match2.index + 1],
+      keys.size === 6,
       error_5
     );
     testResults[5].status = true;
