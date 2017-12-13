@@ -122,7 +122,7 @@ export const executeTests = (code, errorSuppression) => {
   try {
     var React = require('react');
     var ReactDOM = require('react-dom');
-    mockedComponent = shallow(React.createElement(eval(es5)));
+    mockedComponent = mount(React.createElement(eval(es5)));
   } catch (err) {
     passed = false;
     if (!errorSuppression) console.error(`Invalid React code: ${err}`);
@@ -142,7 +142,14 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 2:
   try {
-    assert.strictEqual(mockedComponent.contains(<h1>My First React Component!</h1>), true, error_2);
+    // old:
+    // mockedComponent.contains('<h1>My First React Component!</h1>')
+    // new:
+    // mockedComponent.find('h1').text() ===  'My First React Component!',
+    assert(
+      mockedComponent.find('h1').text() ===  'My First React Component!',
+      error_2
+    );
     testResults[2].status = true;
   } catch (err) {
     passed = false;

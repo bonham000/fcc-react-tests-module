@@ -164,7 +164,8 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 3:
   try {
-    assert.strictEqual(shallowRender.props().children[1].type.name, 'ChildComponent', error_3);
+    const mockedComponent = mount(React.createElement(eval(es5)));
+    assert(mockedComponent.find('ParentComponent').find('ChildComponent').length === 1, error_3);
     testResults[3].status = true;
   } catch (err) {
     passed = false;

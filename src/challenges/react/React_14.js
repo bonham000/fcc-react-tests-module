@@ -158,7 +158,6 @@ export const executeTests = (code, errorSuppression) => {
   // to do this you must import mount above; i.e. import { shallow, mount } from enzyme
   try {
     var React = require('react');
-    mockedComponent = shallow(React.createElement(eval(es5)));
     mountedComponent = mount(React.createElement(eval(es5)));
   } catch (err) {
     passed = false;
@@ -170,7 +169,7 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 1:
   try {
-    assert.strictEqual(mockedComponent.type(), 'div', error_1);
+    assert.strictEqual(mountedComponent.children().type(), 'div', error_1);
     testResults[1].status = true;
   } catch (err) {
     passed = false;
@@ -179,7 +178,7 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 2:
   try {
-    assert.strictEqual(mockedComponent.props().children[1].type.name, 'CurrentDate', error_2)
+    assert.strictEqual(mountedComponent.children().childAt(1).name(), 'CurrentDate', error_2)
     testResults[2].status = true;
   } catch (err) {
     passed = false;
@@ -188,7 +187,7 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 3:
   try {
-    assert(mockedComponent.props().children[1].props.hasOwnProperty('date'), error_3)
+    assert(mountedComponent.children().childAt(1).props().date, error_3)
     testResults[3].status = true;
   } catch (err) {
     passed = false;
@@ -197,8 +196,11 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 4:
   try {
-    assert(typeof mockedComponent.props().children[1].props.date === 'string' &&
-      mockedComponent.props().children[1].props.date.length > 0, error_4)
+    const prop = mountedComponent.children().childAt(1).props().date;
+    assert(
+      typeof prop === 'string' && prop.length > 0,
+      error_4
+    );
     testResults[4].status = true;
   } catch (err) {
     passed = false;
