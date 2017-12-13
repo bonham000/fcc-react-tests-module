@@ -186,7 +186,7 @@ export const executeTests = (code, errorSuppression) => {
   try {
     var React = require('react');
     var ReactDOM = require('react-dom');
-    mockedComponent = shallow(React.createElement(eval(es5)));
+    mockedComponent = mount(React.createElement(eval(es5)));
   } catch (err) {
     passed = false;
     if (!errorSuppression) console.error(`Invalid React code: ${err}`);
@@ -197,7 +197,7 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 1:
   try {
-    assert.strictEqual(mockedComponent.type(), 'div', error_1)
+    assert.strictEqual(mockedComponent.children().type(), 'div', error_1)
     testResults[1].status = true;
   } catch (err) {
     passed = false;
@@ -206,7 +206,7 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 2:
   try {
-    assert.strictEqual(mockedComponent.props().children[1].type.name,'Fruits', error_2)
+    assert.strictEqual(mockedComponent.children().childAt(1).name(), 'Fruits', error_2)
     testResults[2].status = true;
   } catch (err) {
     passed = false;
@@ -215,7 +215,7 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 3:
   try {
-    assert.strictEqual(mockedComponent.props().children[2].type.name, 'Vegetables', error_3)
+    assert.strictEqual(mockedComponent.children().childAt(2).name(), 'Vegetables', error_3)
     testResults[3].status = true;
   } catch (err) {
     passed = false;

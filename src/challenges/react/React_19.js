@@ -163,8 +163,7 @@ export const executeTests = (code, errorSuppression) => {
   // to do this you must import mount above; i.e. import { shallow, mount } from enzyme
   try {
     var React = require('react');
-    mockedComponent = shallow(React.createElement(eval(es5)));
-    mountedComponent = mount(React.createElement(eval(es5)));
+    mockedComponent = mount(React.createElement(eval(es5)));
   } catch (err) {
     passed = false;
     if (!errorSuppression) console.error(`Invalid React code: ${err}`);
@@ -175,7 +174,7 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 1:
   try {
-    assert.strictEqual(mockedComponent.type(), 'div', error_1);
+    assert.strictEqual(mockedComponent.children().type(), 'div', error_1);
     testResults[1].status = true;
   } catch (err) {
     passed = false;
@@ -184,7 +183,7 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 2:
   try {
-    assert.strictEqual(mockedComponent.props().children[3].type.name, 'ReturnTempPassword', error_2)
+    assert.strictEqual(mockedComponent.children().childAt(3).name(), 'ReturnTempPassword', error_2)
     testResults[2].status = true;
   } catch (err) {
     passed = false;
@@ -193,7 +192,7 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 3:
   try {
-    assert(mockedComponent.props().children[3].props.hasOwnProperty('tempPassword'), error_3)
+    assert(mockedComponent.find('ReturnTempPassword').props().tempPassword, error_3)
     testResults[3].status = true;
   } catch (err) {
     passed = false;
@@ -202,8 +201,11 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 4:
   try {
-    assert(typeof mockedComponent.props().children[3].props.tempPassword === 'string' &&
-      mockedComponent.props().children[3].props.tempPassword.length >= 8, error_4)
+    const temp = mockedComponent.find('ReturnTempPassword').props().tempPassword;
+    assert(
+      typeof temp === 'string' && temp.length >= 8,
+      error_4
+    );
     testResults[4].status = true;
   } catch (err) {
     passed = false;
@@ -213,8 +215,8 @@ export const executeTests = (code, errorSuppression) => {
   // test 5:
   try {
     assert.strictEqual(
-      mountedComponent.find('strong').text(),
-      mountedComponent.find('ReturnTempPassword').props().tempPassword,
+      mockedComponent.find('strong').text(),
+      mockedComponent.find('ReturnTempPassword').props().tempPassword,
       error_5
     );
     testResults[5].status = true;

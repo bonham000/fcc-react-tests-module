@@ -210,7 +210,7 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 1:
   try {
-    assert.strictEqual(mockRender.type(), 'div', error_1);
+    assert.strictEqual(mockedComponent.children().type(), 'div', error_1);
     testResults[1].status = true;
   } catch (err) {
     passed = false;
@@ -219,7 +219,7 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 2:
   try {
-    assert.strictEqual(mockRender.props().children[1].type.name, 'Fruits', error_2);
+    assert.strictEqual(mockedComponent.children().childAt(1).name(), 'Fruits', error_2);
     testResults[2].status = true;
   } catch (err) {
     passed = false;
@@ -242,7 +242,7 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 4:
   try {
-    assert.strictEqual(mockRender.props().children[2].type.name, 'Vegetables', error_4);
+    assert.strictEqual(mockedComponent.children().childAt(2).name(), 'Vegetables', error_4);
     testResults[4].status = true;
   } catch (err) {
     passed = false;
