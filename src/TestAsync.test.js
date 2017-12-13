@@ -2,7 +2,7 @@
 /* Async Test Runner */
 
 /* Import Challenge */
-import { solutionCode, executeTests } from './challenges/react/React_32';
+import { solutionCode, executeTests } from './challenges/react/React_43';
 
 import assert from 'assert'
 import { transform } from 'babel-standalone'
@@ -26,17 +26,21 @@ test("Run Async Test", async () => {
   const ReduxThunk = require('redux-thunk');
 
   const blockConsole = `const console = { log: () => null };`;
-  const exportScript = '\n export default MyApp'
+  const exportScript = '\n export default Parent'
   const modifiedCode = blockConsole.concat(solutionCode.concat(exportScript));
 
+  const waitForIt = (fn) => new Promise((resolve, reject) => setTimeout(() => resolve(fn()), 100));
   const es5 = transform(modifiedCode, { presets: [ 'es2015', 'stage-2', 'react' ] }).code;
-  const waitForIt = (fn) => new Promise((resolve, reject) => setTimeout(() => resolve(fn()), 250));
   const mockedComponent = mount(React.createElement(eval(es5)));
-
-  const mockedComponent = mount(React.createElement(MyApp));
-  const state_1 = () => { mockedComponent.setState({inputValue: 'TestName'}); return waitForIt(() => mockedComponent )};
-  const updated_1 = await state_1();
-  assert(updated_1.find('p').text().includes('TestName'));
+  
+  const state_1 = () => { mockedComponent.setState({display: false}); return waitForIt(() => mockedComponent )};
+  
+  const updated = await state_1();
+  assert(
+    updated.find('div').length === 1 &&
+    updated.find('button').length === 1 &&
+    updated.find('h1').length === 1
+  );
 
 });
 

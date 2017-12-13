@@ -11,4 +11,5 @@ export const getDocument = () => {
 	const { window } = jsdom;
 	const document = window.document;
 	return { document, window };
+
 }
