@@ -147,6 +147,11 @@ export const executeTests = (code, errorSuppression) => {
     const initialState = store.getState();
     store.dispatch({type: ADD});
     const newState = store.getState();
+    
+    const initialState = store.getState();
+    store.dispatch(({ type: 'ADD' }));
+    const newState = store.getState();
+    return initialState === 0 && newState === 1;
 
     assert.strictEqual(newState, initialState + 1, error_1);
 

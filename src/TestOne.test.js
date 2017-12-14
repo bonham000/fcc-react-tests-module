@@ -23,10 +23,10 @@ const createJestTest = ({ challengeTitle, solutionCode, executeTests }) => {
 }
 
 // React Challenges:
-import * as React_14 from './challenges/react/React_14';
+import * as React_36 from './challenges/react/React_36';
 // Redux Challenges:
 import * as Redux_01 from './challenges/redux/Redux_01';
 // React-Redux Challenges
 import * as React_Redux_02 from './challenges/react-redux/React_Redux_02';
 
-createJestTest(React_Redux_02);
+createJestTest(React_36);

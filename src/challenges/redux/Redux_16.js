@@ -158,20 +158,20 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 3:
   try {
-    const isFrozen = deepFreeze(initialState);
+    const isFrozen = DeepFreeze(initialState);
     store.dispatch(removeItem(3));
-    state_1 = store.getState();
+    const state_1 = store.getState();
     store.dispatch(removeItem(2));
-    state_2 = store.getState();
+    const state_2 = store.getState();
     store.dispatch(removeItem(0));
     store.dispatch(removeItem(0));
     store.dispatch(removeItem(0));
-    state_3 = store.getState();
+    const state_3 = store.getState();
     assert(
       isFrozen &&
-      deepEqual(state_1, [0, 1, 2, 4, 5]),
-      deepEqual(state_2, [0, 1, 4, 5]),
-      deepEqual(state_3, [5]),
+      DeepEqual(state_1, [0, 1, 2, 4, 5]),
+      DeepEqual(state_2, [0, 1, 4, 5]),
+      DeepEqual(state_3, [5]),
       error_3
     );
     testResults[3].status = true;

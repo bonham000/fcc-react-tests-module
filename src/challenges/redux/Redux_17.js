@@ -161,7 +161,7 @@ export const executeTests = (code, errorSuppression) => {
       friends: '732,982',
       community: 'freeCodeCamp'
     };
-    initialState = store.getState();
+    const initialState = store.getState();
     assert.deepEqual(
       expectedState,
       initialState,
@@ -188,9 +188,10 @@ export const executeTests = (code, errorSuppression) => {
 
   // test 3:
   try {
+    const initialState = store.getState();
     const isFrozen = deepFreeze(initialState);
     store.dispatch({type: 'ONLINE'});
-    finalState = store.getState();
+    const finalState = store.getState();
     const expectedState = {
       user: 'CamperBot',
       status: 'online',

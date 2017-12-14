@@ -254,7 +254,7 @@ export const executeTests = (code, errorSuppression) => {
     lifecycleChild = React.createElement(eval(es5Child)).type.prototype.componentDidUpdate.toString().replace(/\s/g,'');
     assert(
       lifecycleChild.length !== 'undefined' &&
-      lifecycleChild.includes('console.log') === true,
+      lifecycleChild.includes('console.log')
       error_4
     );
     testResults[4].status = true;
