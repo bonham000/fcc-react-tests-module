@@ -1,18 +1,10 @@
+**This project has been deprecated!!!** :bomb:
+
+---
+
 # freeCodeCamp React/Redux Challenge Development
 
 ### This repository contains the code for the Alpha version of the freeCodeCamp React/Redux Curriculum Expansion.
-
----
-
-``` javascript
-/* *****************************************************************************************************
-
-This project has been deprecated!!! :bomb:
-
-***************************************************************************************************** */
-```
-
----
 
 ### Overview:
 
