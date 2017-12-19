@@ -12,9 +12,9 @@ ________                                             __             .___._.
 
 ```
 
-**This is the original project used to develop the React/Redux curriculum for freeCodeCamp. This curriculum has been migrated to [freeCodeCamp](http://freecodecamp.com/) and will be accessible there from now on. Any issues related to these challenges should be posted in the [freeCodeCamp Github](https://github.com/freeCodeCamp/freeCodeCamp). This project is now deprecated and will not be maintained any further. :bomb:
+**This is the original project used to develop the React/Redux curriculum for freeCodeCamp. This curriculum has been migrated to [freeCodeCamp](http://freecodecamp.com/) and will be accessible there from now on. Any issues related to these challenges should be posted in the [freeCodeCamp Github](https://github.com/freeCodeCamp/freeCodeCamp). This project is now deprecated and will not be maintained any further.** :bomb:
 
-The original challenges (which require an out-dated version of Enzyme), will continue living [at their original home](http://hysterical-amusement.surge.sh/).
+**The original challenges (which require an out of date version of Enzyme), will continue living [at their original home](http://hysterical-amusement.surge.sh/).**
 
 ---
 
