@@ -1,8 +1,24 @@
-**This project has been deprecated!!!** :bomb:
+``` javascript
+/* **********************************************************************************************************
+
+________                                             __             .___._.
+\______ \   ____ _____________   ____   ____ _____ _/  |_  ____   __| _/| |
+ |    |  \_/ __ \\____ \_  __ \_/ __ \_/ ___\\__  \\   __\/ __ \ / __ | | |
+ |    `   \  ___/|  |_> >  | \/\  ___/\  \___ / __ \|  | \  ___// /_/ |  \|
+/_______  /\___  >   __/|__|    \___  >\___  >____  /__|  \___  >____ |  __
+        \/     \/|__|               \/     \/     \/          \/     \/  \/
+
+************************************************************************************************************ */
+
+```
+
+**This is the original project used to develop the React/Redux curriculum for freeCodeCamp. This curriculum has been migrated to [freeCodeCamp](http://freecodecamp.com/) and will be accessible there from now on. Any issues related to these challenges should be posted in the [freeCodeCamp Github](https://github.com/freeCodeCamp/freeCodeCamp). This project is now deprecated and will not be maintained any further. :bomb:
+
+The original challenges (which require an out-dated version of Enzyme), will continue living [at their original home](http://hysterical-amusement.surge.sh/).
 
 ---
 
-# freeCodeCamp React/Redux Challenge Development
+# freeCodeCamp React/Redux Curriculum
 
 ### This repository contains the code for the Alpha version of the freeCodeCamp React/Redux Curriculum Expansion.
 
@@ -11,10 +27,6 @@
 * **50 React Challenges**
 * **18 Redux Challenges**
 * **10 React-Redux Challenges**
-
-The now [live Beta Version of freeCodeCamp's expanded curriculum](http://beta.freecodecamp.com/en/) redirects campers to [a separate host site for these React challenges](http://hysterical-amusement.surge.sh/), while we work on merging them into the FCC platform. Eventually, the goal is for all of these challenges to be moved directly into the [freeCodeCamp codebase](https://github.com/freeCodeCamp/freeCodeCamp).
-
-**Currently, we have finished the initial QA and review of all of these challenges and are quite happy with them. There is still a possibility that there are bugs or typos we have not found yet. If you find something you think needs to be fixed, or have a suggestion for any of the challenges, please open an Issue here first so we can discuss it.**
 
 ---
 
