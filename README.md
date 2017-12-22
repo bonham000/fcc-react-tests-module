@@ -153,7 +153,7 @@ To run this project locally, clone the repository, install the dependencies, and
 This project is running tests against React components, ES6 code, and plain JavaScript which users write directly into an in-browser code editor. To accomplish this we are using the [Babel standalone package](https://github.com/babel/babel-standalone) to transpile JavaScript and the testing library [Enzyme](http://airbnb.io/enzyme/) to conduct tests. At a basic level the tests we're writing for React components generally look like this:
 
 ```javascript
-assert.strictEqual(shallowRender.type(), 'div', 'The component renders a div element');
+assert(Enzyme.mount(<App />).type() === 'div', 'The component renders a div element');
 ```
 
 ***
